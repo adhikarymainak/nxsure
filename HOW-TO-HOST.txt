@@ -1,0 +1,40 @@
+NxSure app - how to host it, free
+
+What is in this folder
+- index.html             The NxSure website, with the buy journey.
+- partners.html          The NxSure Partners portal.
+- manifest.webmanifest   The app name, icons and colours for the website app.
+- partners.webmanifest   The same for the partner portal app.
+- sw.js                  Keeps both on the device, so they open instantly and work offline.
+- icon-*.png, maskable-*.png, apple-touch-icon.png, favicon-32.png, icon.svg   App icons.
+
+Upload the whole folder as it is, to any host that serves https. All three below are free.
+
+Option 1: Netlify Drop (quickest, about 2 minutes)
+1. Go to app.netlify.com/drop and sign up free (an email or Google account is enough).
+2. Drag this whole folder onto the page.
+3. You get a link like https://something.netlify.app. Rename it in Site settings if you like.
+
+Option 2: GitHub Pages
+1. Create a free GitHub account, then a new public repository, for example "nxsure".
+2. Upload every file in this folder (Add file, Upload files).
+3. Settings > Pages > Deploy from a branch > main, / (root) > Save.
+4. Your link is https://YOUR-NAME.github.io/nxsure/ after a minute or two.
+
+Option 3: Cloudflare Pages
+1. Sign up free at dash.cloudflare.com, then Workers and Pages > Create > Pages > Upload assets.
+2. Drag this folder in, and deploy. You get https://something.pages.dev.
+
+Installing it
+- iPhone and iPad (Safari): open the link, tap Share, then Add to Home Screen.
+- Android (Chrome): open the link and tap Install, or Menu > Install app.
+- Laptop (Chrome or Edge): open the link and click the install icon in the address bar.
+  Mac Safari: File > Add to Dock.
+- The partner portal installs as its own app: open /partners.html and install it the same way.
+
+Updating
+- Upload the new files over the old ones. Installed apps pick up the new version the next time they open with a connection.
+
+Before real customers use it
+- KYC, bank statement, credit report, payments, the video exam's face match and the fitness apps are simulated in this build,
+  and need your real services connected.
