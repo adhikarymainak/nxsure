@@ -1534,6 +1534,21 @@ button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:
 .vm-lvl-t{margin-top:-4px}
 .vm-reply .vm-err:not([hidden]){color:#FFD48A}
 
+/* wellness benefits: a switch to take them out */
+.wb-sw{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;margin:-4px 0 14px;padding:10px 14px;border-radius:14px;background:var(--surface);border:1px dashed var(--line);font-size:13.5px;color:var(--ink-2)}
+.wb-sw .link{font-weight:650}
+.wb-sw .btn-soft{margin:0;padding:8px 14px}
+.wb.is-off .wb-ic{background:var(--ink-2);font-weight:800}
+.wb.is-off .wb-c{opacity:.5;filter:grayscale(.8)}
+
+/* the buy journey has no chat bar: Nyra's notes still show, just above the bottom edge */
+.stage>form.ask{height:0;padding:0;margin:0;overflow:visible}
+.stage>form.ask>*:not(.pop){display:none!important}
+.stage>form.ask .pop{bottom:92px;max-width:640px;margin:0 auto;z-index:20}
+/* the card's buttons stay in view, at the bottom of the screen, however long the card is */
+.q>.q-foot{position:sticky;bottom:-20px;z-index:6;margin:0 calc(-1 * clamp(22px,3.6vw,40px)) calc(-1 * clamp(22px,3.6vw,40px));padding:14px clamp(22px,3.6vw,40px) clamp(16px,2.4vw,24px);background:var(--surface);border-top:1px solid var(--line);border-radius:0 0 28px 28px;box-shadow:0 -16px 26px -22px rgba(16,12,40,.45)}
+@media (max-width:640px){.q>.q-foot{border-radius:0 0 22px 22px}}
+
 /* ================= NxSure Partners: ink sidebar, warm paper canvas, one typeface, one accent ================= */
 :root{
   --p-font:"NxPortal",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
@@ -2450,9 +2465,12 @@ body:not(.jx-open) .recwin:not(.docked){left:49px!important;right:auto!important
 .pf .xs-tier.on{box-shadow:none;border-color:var(--p-ink)}
 .pf .wb{border-radius:12px;background:var(--p-sub)}
 .pf .wb-c{border-radius:10px;box-shadow:none}
+/* Back and Continue stay in view at the bottom of the screen, on every size */
+@media (min-width:861px){.pf-foot{position:sticky;bottom:0;z-index:5;background:var(--p-canvas);padding:12px 0 calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--p-line)}}
 </style>
 </head>
 <body>
+<noscript><style>body>*:not(noscript):not(.nojs-wrap){display:none!important}</style><div class="nojs-wrap" style="min-height:100vh;display:grid;place-items:center;padding:24px;background:#F6F5FB;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#16142B"><div style="max-width:460px;background:#fff;border-radius:22px;padding:28px;box-shadow:0 20px 40px -24px rgba(22,20,43,.4)"><b style="font-size:20px;display:block;margin-bottom:10px">NxSure Partners opens in a browser</b><p style="margin:0 0 14px;line-height:1.5;color:#4A4766">This is an app, so it needs to run in a browser. The file preview in Mail, WhatsApp or Files can't run it.</p><p style="margin:0 0 6px;line-height:1.5"><b>On iPad or iPhone:</b> open this link in Safari, then tap Share and Add to Home Screen to use it like an app.</p><p style="margin:0;word-break:break-all"><a href="https://adhikarymainak.github.io/nxsure/partners.html" style="color:#5B3CF5;font-weight:700">https://adhikarymainak.github.io/nxsure/partners.html</a></p></div></div></noscript>
 <div id="papp" class="p-login"></div>
 <div class="jx" id="jx" hidden>
 <div class="jx-cust" id="jxCust" hidden><span id="jxCustT"></span><button type="button" id="jxCustBack">Back to my view</button></div>
@@ -3016,7 +3034,9 @@ function healthCalc(H, tierOverride) {
   if (H.addons.has('ci')) { const amt = mem.filter(m => Number(m.age) >= 18).reduce((s, m) => s + band(A.ci, Number(m.age)), 0); if (amt) adds.push({ k: 'ci', label: 'Critical illness ₹10 lakh, each adult', amt }); }
   if (H.addons.has('pa') && mem.some(m => m.rel === 'self')) adds.push({ k: 'pa', label: 'Personal accident ₹25 lakh, for you', amt: A.pa });
   const addTotal = adds.reduce((s, a) => s + a.amt, 0);
-  const annual = baseTotal + loadTotal + addTotal;
+  // the wellness benefits are part of the premium; taken out, that part comes off
+  const wellOff = H.noWell ? Math.round(baseTotal * (((C.wellPct || { essential: 0.03, plus: 0.04, premier: 0.05 })[tier]) || 0)) : 0;
+  const annual = baseTotal + loadTotal + addTotal - wellOff;
   const gross = annual * H.term;
   const discAmt = Math.round(gross * C.tenure[H.term]);
   // 5% off for sharing 12 months of bank statements through an account aggregator
@@ -3027,14 +3047,14 @@ function healthCalc(H, tierOverride) {
   const wellBase = (gross - discAmt) * share, fitPct = H.fitPct || 0, wearPct = Math.min(7.5 - fitPct, H.wearPct || 0);
   const fitAmt = Math.round(wellBase * fitPct / 100), wearAmt = Math.round(wellBase * Math.max(0, wearPct) / 100);
   const total = gross - discAmt - aaAmt - cbAmt - fitAmt - wearAmt;
-  return { tier, rows, baseTotal, loadTotal, adds, addTotal, annual, term: H.term, gross, discAmt, aaAmt, cbAmt, fitAmt, wearAmt, fitPct, wearPct, total, perYear: Math.round(total / H.term), zone };
+  return { tier, rows, baseTotal, loadTotal, adds, addTotal, wellOff, annual, term: H.term, gross, discAmt, aaAmt, cbAmt, fitAmt, wearAmt, fitPct, wearPct, total, perYear: Math.round(total / H.term), zone };
 }
 function healthBenefits(H) {
   const T = TIERS[H.tier];
   const out = [`Hospital stays up to ${siLabel(H.si)}${H.type === 'floater' && active(H).length > 1 ? ', shared by everyone' : ' for each person'}`, T.room, `Costs ${T.prepost} a hospital stay`, 'All day-care procedures', 'AYUSH treatment up to the cover amount', 'Road ambulance', T.bonus];
   if (T.restore !== 'Not included') out.push(T.restore);
-  if (H.tier === 'plus') out.push('Free health check-up every year');
-  if (H.tier === 'premier') out.push('Doctor visits up to ₹5,000 a year', 'Emergency hospital care worldwide');
+  if (H.tier === 'plus' && !H.noWell) out.push('Free health check-up every year');
+  if (H.tier === 'premier') out.push(...(H.noWell ? [] : ['Doctor visits up to ₹5,000 a year']), 'Emergency hospital care worldwide');
   if (H.tier === 'essential') out.push(T.copay);
   if (H.copay) out.push(`A ${H.copay}% co-pay on each claim, as agreed after the health assessment`);
   return out;
@@ -3764,6 +3784,7 @@ function priceInfo() {
     const from = !(H.si && H.tier);
     const rows = p.rows.map(r => [`${relLabel(H, r.m)}, ${r.m.age}${r.loadPct ? ` (+${r.loadPct}%)` : ''}`, inr(r.prem)]);
     p.adds.forEach(a => rows.push([a.label, inr(a.amt)]));
+    if (p.wellOff) rows.push(['Wellness benefits taken out', '- ' + inr(p.wellOff)]);
     if (H.term > 1) rows.push([`${H.term} years`, inr(p.gross)], [`Multi-year discount`, '- ' + inr(p.discAmt)]);
     if (p.aaAmt) rows.push(['Bank statement discount, 5%', '- ' + inr(p.aaAmt)]);
     if (p.cbAmt) rows.push(['Credit report discount, 5%', '- ' + inr(p.cbAmt)]);
@@ -4521,7 +4542,7 @@ STEP.done = {
       body: `<div class="done-hero"><span class="done-badge">${ICO.check}</span><h1 class="q-title" tabindex="-1">You're covered, ${esc(first(S.kyc.name))}</h1><p class="q-help" style="margin:0">${esc(listText(active(H).map(m => first(mName(H, m)))))} ${active(H).length > 1 ? 'are' : 'is'} covered from ${fd(H.start)}.</p></div>
         <div class="found"><span class="muted">Policy number</span><span class="pol-no">${esc(H.policyNo)}</span>${factList([['Plan', `NxSure Health ${TIERS[H.tier].name}, ${siLabel(H.si)}`], ['Period', `${fd(H.start)} to ${fd(addDays(addYears(H.start, H.term), -1))}`], ['Premium paid', inr(p.total)], ['Free look', '30 days to review']])}</div>${extrasDoneHtml()}
         ${doneManage('policy')}
-        ${wbHtml({ tier: H.tier, adds: H.addons, max: 6, compact: true, only: true, title: 'Start using your wellness benefits', sub: 'Book a doctor, a check-up or a lab test from the NxSure app, from today.' })}
+        ${H.noWell ? '' : wbHtml({ tier: H.tier, adds: H.addons, max: 6, compact: true, only: true, title: 'Start using your wellness benefits', sub: 'Book a doctor, a check-up or a lab test from the NxSure app, from today.' })}
         ${typeof recDoneHtml === 'function' ? recDoneHtml() : ''}
         <button type="button" class="xsell" data-a="xsell"><svg class="art" viewBox="0 0 260 140">${ART.motor().replace(/^<svg[^>]*>|<\/svg>$/g, '')}</svg><span><b>Insure your vehicle too</b><span class="muted">Your KYC is done, so it takes about a minute.</span></span><span class="go">${ICO.right}</span></button>`,
     };
@@ -4609,6 +4630,7 @@ function healthPdf(kind) {
   const rows = [['Base premium', inr(p.baseTotal)]];
   if (p.loadTotal) rows.push(['Extra premium after the health assessment', inr(p.loadTotal)]);
   p.adds.forEach(a => rows.push([a.label, inr(a.amt)]));
+  if (p.wellOff) rows.push(['Wellness benefits taken out', '- ' + inr(p.wellOff)]);
   rows.push({ cells: ['Premium a year', inr(p.annual)], bold: true });
   if (H.term > 1) rows.push([`${H.term} years`, inr(p.gross)], ['Multi-year discount', '- ' + inr(p.discAmt)]);
   if (p.aaAmt) rows.push(['Bank statement discount (5%), shared through an account aggregator', '- ' + inr(p.aaAmt)]);
@@ -5208,12 +5230,12 @@ STEP.hquote = {
       body: `<div class="price-hero"><b>${inr(p.total)}</b><span>for ${H.term} year${H.term > 1 ? 's' : ''}, no GST on health</span></div>
         <details class="more" open><summary>Premium by person</summary><div><table class="brk"><thead><tr><th>Person</th><th>Age</th><th>A year</th></tr></thead><tbody>
           ${p.rows.map(r => `<tr><td>${esc(relLabel(H, r.m))}</td><td>${r.m.age}</td><td>${inr(r.prem)}</td></tr>`).join('')}
-          ${p.adds.map(a => `<tr><td colspan="2">${esc(a.label)}</td><td>${inr(a.amt)}</td></tr>`).join('')}
+          ${p.adds.map(a => `<tr><td colspan="2">${esc(a.label)}</td><td>${inr(a.amt)}</td></tr>`).join('')}${p.wellOff ? `<tr class="neg"><td colspan="2">Wellness benefits taken out</td><td>- ${inr(p.wellOff)}</td></tr>` : ''}
           ${H.term > 1 ? `<tr class="neg"><td colspan="2">${H.term}-year discount</td><td>- ${inr(p.discAmt)}</td></tr>` : ''}
           ${p.aaAmt ? `<tr class="neg"><td colspan="2">Bank statement discount, 5%</td><td>- ${inr(p.aaAmt)}</td></tr>` : ''}${p.cbAmt ? `<tr class="neg"><td colspan="2">Credit report discount, 5%</td><td>- ${inr(p.cbAmt)}</td></tr>` : ''}${p.fitAmt ? `<tr class="neg"><td colspan="2">Active lifestyle, ${p.fitPct}%</td><td>- ${inr(p.fitAmt)}</td></tr>` : ''}${p.wearAmt ? `<tr class="neg"><td colspan="2">Healthy habits, ${p.wearPct}%</td><td>- ${inr(p.wearAmt)}</td></tr>` : ''}
           <tr class="sum"><td colspan="2">Total for ${H.term} year${H.term > 1 ? 's' : ''}</td><td>${inr(p.total)}</td></tr></tbody></table></div></details>
         <details class="more"><summary>What's covered, and the waiting periods</summary><div class="cols"><div><span class="sec-h">Covered</span><ul class="ticks">${healthBenefits(H).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div><div><span class="sec-h">Waiting periods</span><ul class="crosses">${healthWaits(H).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div></div></details>
-        ${wbHtml({ tier: H.tier, adds: H.addons })}
+        ${wbHtml({ tier: H.tier, adds: H.addons, H })}
         <div class="acts"><button type="button" class="btn-soft" data-a="pdf">${ICO.down}Download quote</button><button type="button" class="link" data-a="edit">Change my plan</button></div>`,
       next: 'Continue', hint: 'Say “continue” or “download”',
     };
@@ -7262,7 +7284,7 @@ function xsHealthHtml(s) {
     <div class="fld"><span>Cover amount${mem.length > 1 && H.type === 'floater' ? ', shared' : ''}</span><div class="chips">${CFG.health.si.map(x => x[0]).filter(v => v >= 500000 && v <= 5000000).map(v => chip('xsi', v, siLabel(v), H.si === v)).join('')}</div></div>
     <div class="fld"><span>Plan</span><div class="xs-tiers">${T.map(t => `<label class="xs-tier ${H.tier === t ? 'on' : ''}"><input type="radio" name="xtier" value="${t}" ${H.tier === t ? 'checked' : ''}><b>${esc(TIERS[t].name)}</b><span class="xs-tp">${inr(price({ tier: t }))}<small> a year</small></span><small>${esc(TIERS[t].card.slice(0, 2).join('. '))}</small></label>`).join('')}</div></div>
     <div class="fld"><span>Add-ons</span><div class="sw-list">${H_ADDS.filter(([k]) => !(k === 'room' && H.tier !== 'essential') && !(k === 'ped' && H.tier === 'premier')).map(([k, t, sub]) => { const on = H.addons.has(k), a = new Set(H.addons); if (on) a.delete(k); else a.add(k); const d = Math.abs(price({ addons: a }) - (p ? p.total : 0)); return sw('xadd', k, t, sub, d ? `${on ? '' : '+'}${inr(d)}` : '', on); }).join('')}</div></div>
-    ${wbHtml({ tier: H.tier, adds: H.addons, title: `Wellness benefits in ${TIERS[H.tier].name}` })}
+    ${wbHtml({ tier: H.tier, adds: H.addons, H, title: `Wellness benefits in ${TIERS[H.tier].name}` })}
   </section>`;
 }
 function xsOtherHtml(s, o) {
@@ -7772,6 +7794,8 @@ function personaHtml(s) {
    Used from the NxSure app: a doctor on call day and night, a yearly check-up, lab tests at home, doctor visits,
    dental and eye care, counselling, medicines and diet advice. What each plan includes is set here, so the product
    team can change it in one place. */
+// the part of the premium that pays for them: what comes off if a customer doesn't want them
+CFG.health.wellPct = CFG.health.wellPct || { essential: 0.03, plus: 0.04, premier: 0.05 };
 CFG.wellbeing = CFG.wellbeing || [
   { k: 'doc', t: '24x7 online doctor', d: 'Video or chat with a doctor any time, day or night, for everyone on the policy', v: { essential: 'Unlimited', plus: 'Unlimited', premier: 'Unlimited, with specialists' } },
   { k: 'check', t: 'Health check-up', d: 'Blood tests and a doctor\'s review, at home or at a partner lab', v: { essential: 'After 2 claim-free years', plus: 'Every year', premier: 'Full-body, every year' } },
@@ -7807,15 +7831,29 @@ function wbHtml(o = {}) {
   const tier = o.tier, T = Object.keys(TIERS);
   // on what they bought, only what they actually have
   const list = CFG.wellbeing.filter(b => !o.only || (tier && wbVal(b, tier, o.adds) && !/^With the add-on/.test(wbVal(b, tier, o.adds)))).slice(0, o.max || CFG.wellbeing.length);
-  return `<section class="wb ${o.compare ? 'cmp' : ''} ${o.compact ? 'compact' : ''}" aria-label="Wellness benefits">
-    <div class="wb-h"><span class="wb-ic">${ICO.check}</span><div><b>${esc(o.title || (o.compare ? 'Wellness benefits, in every plan' : tier ? `Wellness benefits in ${TIERS[tier].name}` : 'Wellness benefits'))}</b><small>${esc(o.sub || 'Used from the NxSure app, all year. Not only when you\'re in hospital.')}</small></div></div>
+  const H = o.H, off = !!(H && H.noWell), save = H && !off ? wbSave(H) : 0;
+  const sw = H && !o.compare ? `<div class="wb-sw">${off ? `<span>Taken out${H.wbSaved ? `, saving ${inr(H.wbSaved)} a year` : ''}</span><button type="button" class="btn-soft" data-wbtoggle="on">Add them back</button>` : `<span>${save ? `Don't want them? Take them out and save ${inr(save)} a year` : 'Don\'t want them? You can take them out'}</span><button type="button" class="link" data-wbtoggle="off">Take them out</button>`}</div>` : '';
+  return `<section class="wb ${o.compare ? 'cmp' : ''} ${o.compact ? 'compact' : ''} ${off ? 'is-off' : ''}" aria-label="Wellness benefits">
+    <div class="wb-h"><span class="wb-ic">${off ? '–' : ICO.check}</span><div><b>${esc(off ? 'Wellness benefits: taken out' : o.title || (o.compare ? 'Wellness benefits, in every plan' : tier ? `Wellness benefits in ${TIERS[tier].name}` : 'Wellness benefits'))}</b><small>${esc(off ? 'The plan still covers hospital stays in full. You can add these back before you pay.' : o.sub || 'Used from the NxSure app, all year. Not only when you\'re in hospital.')}</small></div></div>${sw}
     <div class="wb-grid">${list.map(b => {
-      const v = tier ? wbVal(b, tier, o.adds) : null;
+      const v = tier ? (off ? (b.add && o.adds && o.adds.has && o.adds.has(b.add) ? b.addV : null) : wbVal(b, tier, o.adds)) : null;
       return `<article class="wb-c ${tier && !v ? 'off' : ''}">${wbArt(b.k)}<b>${esc(b.t)}</b><small>${esc(b.d)}</small>${o.compare ? `<dl class="wb-t">${T.map(t => `<div class="${b.v[t] ? '' : 'no'}"><dt>${esc(TIERS[t].name)}</dt><dd>${esc(b.v[t] || 'Not included')}</dd></div>`).join('')}</dl>` : tier ? `<span class="wb-v">${v ? `${ICO.check}${esc(v)}` : 'Not in this plan'}</span>` : ''}</article>`;
     }).join('')}</div>
     ${o.more ? `<p class="wb-more">${esc(o.more)}</p>` : ''}</section>`;
 }
-const wbLines = H => CFG.wellbeing.map(b => [b.t, wbVal(b, H.tier, H.addons)]).filter(x => x[1] && !/^With the add-on/.test(x[1]));
+const wbLines = H => H.noWell ? [['Wellness benefits', 'Taken out at the customer\'s request']] : CFG.wellbeing.map(b => [b.t, wbVal(b, H.tier, H.addons)]).filter(x => x[1] && !/^With the add-on/.test(x[1]));
+// what taking them out saves a year
+const wbSave = H => { const a = healthCalc(H), b = healthCalc(Object.assign({}, H, { noWell: true })); return a && b ? Math.max(0, a.total - b.total) : 0; };
+// the switch, on any screen that shows it
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-wbtoggle]'); if (!b || !S || !S.health) return;
+  const H = S.health, off = b.dataset.wbtoggle === 'off';
+  if (off) H.wbSaved = wbSave(H);
+  H.noWell = off;
+  if (typeof aaMark === 'function') aaMark(off ? `Wellness benefits taken out, saving ${inr(H.wbSaved || 0)} a year` : 'Wellness benefits added back');
+  if (typeof pfPaint === 'function' && document.querySelector('.pf')) { pfPaint(); if (typeof pfLive === 'function') pfLive(); }
+  else if (S.api && S.cur) { const y = $('#stageScroll') ? $('#stageScroll').scrollTop : 0; show(S.cur, 0); if ($('#stageScroll')) $('#stageScroll').scrollTop = y; if (typeof toast === 'function') toast(off ? `Wellness benefits taken out. Premium now ${inr(healthCalc(H).total)}.` : `Wellness benefits added back. Premium now ${inr(healthCalc(H).total)}.`); }
+});
 
 /* ================= voice =================
    In the video medical exam the microphone is on for the whole call: it's the call's own microphone, so it isn't
@@ -7833,13 +7871,13 @@ const VOICE = {
   subs: [], ui: new Set(), lv: new Set(),
   said: [], tts: null, ttsEnd: 0,
   meter: null, level: 0, noise: 0.01, thr: 0.02, talk: false, talkMs: 0, quietMs: 0, peak: 0, cust: 0, peaks: [], hist: [], echo: [],
-  sens: 'normal', dropped: 0,
+  sens: 'normal', dropped: 0, cal: 0,
 };
 // how hard the microphone listens. In a noisy place a voice has to be clearly louder than the room to count
 const VOICE_SENS = {
-  quiet: { label: 'Quiet room', min: 0.012, k: 2.2, ms: 250, conf: 0.35 },
-  normal: { label: 'Normal', min: 0.02, k: 2.8, ms: 350, conf: 0.5 },
-  noisy: { label: 'Noisy place', min: 0.035, k: 3.6, ms: 500, conf: 0.65 },
+  quiet: { label: 'Quiet room', min: 0.004, k: 1.8, f: 0.18, ms: 200, conf: 0.25 },
+  normal: { label: 'Normal', min: 0.006, k: 2.2, f: 0.28, ms: 250, conf: 0.35 },
+  noisy: { label: 'Noisy place', min: 0.012, k: 3, f: 0.45, ms: 400, conf: 0.55 },
 };
 // sounds that aren't an answer
 const V_FILL = new Set(['uh', 'um', 'umm', 'hmm', 'hm', 'mm', 'ah', 'aah', 'oh', 'er', 'erm', 'the', 'a', 'an', 'and', 'so', 'is', 'it', 'to', 'of', 'i', 'you', 'that', 'this', 'what', 'huh']);
@@ -7905,7 +7943,7 @@ function voiceRec() {
 }
 // while Nyra is speaking, and for a moment after, the microphone mostly hears her: that's set aside, unless the
 // customer clearly talks over her
-const voiceNyra = () => !!VOICE.tts || Date.now() - VOICE.ttsEnd < 900;
+const voiceNyra = () => !!VOICE.tts || (Date.now() - VOICE.ttsEnd < 350 && !(VOICE.meter && voiceSpokeMs(VOICE.ttsEnd + 80, Date.now()) >= 200));
 // a turn is what's said until a short pause: then it's checked and handed to the screen asking
 function voiceHeard() {
   const all = `${VOICE.heard} ${VOICE.interim}`.trim();
@@ -7929,19 +7967,30 @@ function voiceTurnEnd() {
   VOICE.heard = ''; VOICE.interim = ''; VOICE.turn0 = 0; VOICE.conf = 1;
   voicePaint();
   if (!t || voiceEcho(t)) return;
-  const why = voiceNoise(t, t0, conf);
-  if (why) { VOICE.dropped++; const top = voiceTop(); if (top && top.noise) top.noise(t, why); return; }
-  VOICE.dropped = 0;
+  const why = voiceNoise(t, t0, conf), top0 = voiceTop();
+  // a filler sound is never an answer. Unclear or quiet speech can still be one, if it plainly matches a choice on screen
+  if (why === 'filler' || (why && !(top0 && top0.weak))) { VOICE.dropped++; if (top0 && top0.noise) top0.noise(t, why); return; }
+  if (why) { if (top0.weak(t, why)) { VOICE.dropped = 0; voiceCal(t0); } else { VOICE.dropped++; if (top0.noise) top0.noise(t, why); } return; }
+  VOICE.dropped = 0; voiceCal(t0);
   if (VOICE.peak) { VOICE.peaks.push(VOICE.peak); if (VOICE.peaks.length > 9) VOICE.peaks.shift(); VOICE.cust = VOICE.peaks.slice().sort((a, b) => a - b)[Math.floor(VOICE.peaks.length / 2)]; VOICE.peak = 0; }
   const top = voiceTop(); if (top && top.utter) top.utter(t);
+}
+// calibration: how loud this person's voice is, from what they've said so far. The line speech has to pass sits
+// between the room's level and their voice, so a quiet speaker isn't missed and the room isn't taken for speech
+function voiceCal(t0) {
+  if (!VOICE.meter) return;
+  const xs = VOICE.hist.filter(x => x.t >= t0 - 1800).map(x => x.r).sort((a, b) => a - b); if (xs.length < 4) return;
+  const lvl = xs[Math.floor(xs.length * 0.8)]; if (lvl < VOICE.noise * 1.8) return;
+  VOICE.cal = VOICE.cal ? VOICE.cal * 0.7 + lvl * 0.3 : lvl;
 }
 // was it really someone speaking to us? A voice has to have been heard above the room, the words recognised with
 // some certainty, and be more than a filler sound
 function voiceNoise(t, t0, conf, sim) {
   const S0 = VOICE_SENS[VOICE.sens] || VOICE_SENS.normal, w = vWords(t);
   if (!w.length || w.every(x => V_FILL.has(x))) return 'filler';
-  if (conf && conf < 1 && (conf < S0.conf * 0.6 || (w.length <= 2 && conf < S0.conf))) return 'unclear';
-  if (VOICE.meter && !sim && voiceSpokeMs(t0 - 1800, Date.now()) < S0.ms) return 'quiet';
+  if (conf && conf < 1 && (conf < S0.conf * 0.5 || (w.length <= 2 && conf < S0.conf))) return 'unclear';
+  // until the voice is calibrated, the first answer isn't held to the level
+  if (VOICE.meter && !sim && VOICE.cal && voiceSpokeMs(t0 - 1800, Date.now()) < S0.ms) return 'quiet';
   return '';
 }
 // how long the voice was above the room's level in a stretch of time
@@ -7981,7 +8030,7 @@ function voiceSpeak(text, o = {}) {
     if (over) return; over = true; rec.end = Date.now(); if (VOICE.tts === T) VOICE.tts = null;
     if (how !== 'end' && o.audio !== false) { try { speechSynthesis.cancel(); } catch (e) { /* nothing playing */ } }
     // what the microphone picked up while she spoke was her: it's set aside, unless the customer talked over her
-    if (how !== 'cut') { VOICE.ttsEnd = Date.now(); voiceFlush(); }
+    if (how !== 'cut') { VOICE.ttsEnd = Date.now(); const p = `${VOICE.heard} ${VOICE.interim}`.trim(); if (!p || voiceEcho(p) || !(VOICE.meter && voiceSpokeMs(Date.now() - 500, Date.now()) >= 200)) voiceFlush(); }
     voicePaint(); fin(how);
   };
   T.cut = why => end(why === 'barge' ? 'cut' : 'stop');
@@ -8020,7 +8069,7 @@ function voiceMeter(st) {
       if (VOICE.tts) { VOICE.echo.push(rms); if (VOICE.echo.length > 60) VOICE.echo.shift(); }
       // the room's level: a low point of the last few seconds, so a steady noise raises it rather than counting as speech
       if (++n % 5 === 0) { const xs = VOICE.hist.slice(-60).map(x => x.r).sort((a, b) => a - b); VOICE.noise = xs[Math.floor(xs.length * 0.2)] || VOICE.noise; }
-      VOICE.thr = Math.max(S0.min, VOICE.noise * S0.k + 0.004);
+      VOICE.thr = VOICE.cal ? Math.max(VOICE.noise * 1.6 + 0.002, VOICE.noise + (VOICE.cal - VOICE.noise) * S0.f) : Math.max(S0.min, VOICE.noise * S0.k + 0.002);
       if (rms > VOICE.thr) { VOICE.talkMs += 100; VOICE.quietMs = 0; VOICE.peak = Math.max(VOICE.peak, rms); }
       else { VOICE.quietMs += 100; if (VOICE.quietMs >= 400) VOICE.talkMs = 0; }
       const talk = VOICE.talkMs >= 300 && !VOICE.tts;
@@ -8040,7 +8089,7 @@ window.__voiceSay = text => {
   return true;
 };
 // tests: noise the recogniser turned into words, with low certainty
-window.__voiceNoise = (text, conf = 0.2) => { if (!VOICE.want) return false; const why = voiceNoise(text, Date.now(), conf, true) || 'kept'; if (why !== 'kept') { VOICE.dropped++; const t2 = voiceTop(); if (t2 && t2.noise) t2.noise(text, why); } return why; };
+window.__voiceNoise = (text, conf = 0.2) => { if (!VOICE.want) return false; const why = voiceNoise(text, Date.now(), conf, true) || 'kept', t2 = voiceTop(); if (why === 'kept') { if (t2 && t2.utter) t2.utter(text); return why; } if (why !== 'filler' && t2 && t2.weak && t2.weak(text, why)) return 'taken: it matched a choice'; VOICE.dropped++; if (t2 && t2.noise) t2.noise(text, why); return why; };
 
 /* ---------- understanding a spoken answer to a question with choices ---------- */
 const V_NUM = { zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, a: 1, an: 1, few: 2, couple: 2 };
@@ -8310,6 +8359,8 @@ async function vmFaceMatch(s, url) {
 
 /* ---------- the call ---------- */
 function vmCall(s, o = {}) {
+  // iPhone and iPad only let a page speak after a tap: an empty line now, inside the tap, lets Nyra speak for the rest of the call
+  try { if ('speechSynthesis' in window && !navigator.webdriver) { const u0 = new SpeechSynthesisUtterance(' '); u0.volume = 0; speechSynthesis.speak(u0); } } catch (e) { /* no speech here */ }
   return new Promise(resolve => {
     const H = s.health, V = vmOf(H), k = s.kyc, nm = first(k.name);
     const resume = !!(V.saved && V.doneIds && V.doneIds.length && V.tx && V.tx.length);
@@ -8448,6 +8499,8 @@ function vmCall(s, o = {}) {
     const vRel = voiceTake({
       interim: t => { if (!ended && stack.length && !reply.classList.contains('hold')) heard(t, true); },
       utter: t => { noiseN = 0; hear(t); },
+      // said quietly, or not clearly: taken only when it plainly matches one of the choices on screen
+      weak: t => { if (ended || busy || reply.classList.contains('hold')) return false; const top = stack[stack.length - 1]; if (!top || !(top.q.chips && top.q.chips.length)) return false; if (!vMatch(top.q.chips.filter(c => c[0] !== 'upload'), t)) return false; noiseN = 0; hear(t); return true; },
       // sounds the recogniser turned into words: not taken as an answer. If it keeps happening, the mic listens for a clearer voice
       noise: (t, why) => {
         if (ended) return; heard('');
