@@ -1517,6 +1517,21 @@ body.voice-on #ask::placeholder{color:var(--brand-ink);opacity:.8}
 @media (max-width:640px){.xs-tiers{grid-template-columns:1fr}.xs-sec{padding:14px}}
 /* six code boxes always fit the card, on the narrowest phones too */
 .otp input{flex:1 1 0;min-width:0;max-width:52px}
+/* the call's microphone: on for the whole call, with its sensitivity */
+.vm-micw{position:relative}
+button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:650}
+.vm-micpop{position:absolute;right:0;top:calc(100% + 8px);z-index:5;width:min(320px,86vw);display:grid;gap:10px;padding:14px;border-radius:16px;background:#1E1A33;border:1px solid rgba(255,255,255,.14);box-shadow:0 20px 40px -12px rgba(0,0,0,.6);color:#fff;text-align:left}
+.vm-micpop>b{font-size:14px}
+.vm-micpop small{color:rgba(255,255,255,.7);font-size:12.5px;line-height:1.45}
+.vm-sens{display:grid;gap:6px}
+.vm-sens label{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.16);cursor:pointer;font-size:13.5px;font-weight:600}
+.vm-sens label:has(input:checked){border-color:#7FF0D2;background:rgba(127,240,210,.12)}
+.vm-sens input{accent-color:#7FF0D2;margin:0}
+.vm-lvl{position:relative;height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
+.vm-lvl i{position:absolute;left:0;top:0;bottom:0;width:0;background:#7FF0D2;border-radius:999px;transition:width .1s}
+.vm-lvl b{position:absolute;top:-2px;bottom:-2px;width:2px;background:#FFD48A;left:0}
+.vm-lvl-t{margin-top:-4px}
+.vm-reply .vm-err:not([hidden]){color:#FFD48A}
 
 [hidden]{display:none!important}
 
@@ -4405,7 +4420,7 @@ function show(id, dir = 1) {
   </article>`);
   const api = {
     q, body: q.querySelector('.q-body'),
-    err(msg) { const e = q.querySelector('.err'); e.textContent = msg || ''; e.hidden = !msg; if (msg) { e.scrollIntoView({ block: 'nearest', behavior: REDUCED ? 'auto' : 'smooth' }); if (typeof jxSay === 'function') jxSay(msg); } },
+    err(msg) { const e = q.querySelector('.err'); e.textContent = msg || ''; e.hidden = !msg; if (msg) e.scrollIntoView({ block: 'nearest', behavior: REDUCED ? 'auto' : 'smooth' }); },
     setNext(label, enabled = true) { const b = q.querySelector('.q-foot .btn-next'); if (!b) return; if (label != null) b.querySelector('span').textContent = label; b.disabled = !enabled; b.hidden = false; },
     hideNext(h = true) { const b = q.querySelector('.q-foot .btn-next'); if (b) b.hidden = h; },
     live() { livePrice(); renderRail(); },
@@ -4529,7 +4544,7 @@ function nyraSays(html, keep) {
   const p = el(`<div class="pop" role="status"><span class="nyra-av" aria-hidden="true">${ICO.spark}</span><p>${html}</p><button class="x" type="button" aria-label="Close">×</button></div>`);
   p.querySelector('.x').addEventListener('click', () => p.remove());
   $('.ask').appendChild(p);
-  if (!keep) { setTimeout(() => p.remove(), 9000); if (typeof jxSay === 'function') jxSay(html); }
+  if (!keep) setTimeout(() => p.remove(), 9000);
   return p.querySelector('p');
 }
 function press(sel) { const b = S.api && S.api.q.querySelector(sel); if (!b || b.disabled || b.hidden) return false; b.click(); return true; }
@@ -8407,22 +8422,32 @@ function wbHtml(o = {}) {
 }
 const wbLines = H => CFG.wellbeing.map(b => [b.t, wbVal(b, H.tier, H.addons)]).filter(x => x[1] && !/^With the add-on/.test(x[1]));
 
-/* ================= voice: one microphone, asked for once and kept on =================
-   The microphone is asked for once: with the camera when the recording starts, or on the first tap of the mic.
-   After that it stays on, through the rest of the journey and the video medical exam. One speech recogniser runs
-   all the way through, and whichever screen is asking a question listens to it. What's heard is put together
-   into one turn: when the customer stops speaking for a moment, the turn is handed over and understood.
-   Nyra's own words are filtered out of what the microphone picks up, and the customer can talk over her: she
-   stops and listens. Speech recognition is the browser's own (Chrome, Edge, Safari). Where a browser doesn't
-   have it, answers are tapped or typed. */
+/* ================= voice =================
+   In the video medical exam the microphone is on for the whole call: it's the call's own microphone, so it isn't
+   asked for again. In the proposal itself, the mic is a tap-to-talk button for one answer at a time.
+   What's heard is put together into one turn: when the customer stops speaking for a moment, the turn is checked
+   and handed over. A turn counts only when a voice was heard above the room's own level, the words were
+   recognised with some certainty, and it's more than a filler sound. While Nyra speaks, what the microphone picks
+   up is her, so it's set aside, unless the customer clearly talks over her. Sensitivity can be set to a quiet room,
+   normal or a noisy place. Speech recognition is the browser's own (Chrome, Edge, Safari). Where a browser
+   doesn't have it, answers are tapped or typed. */
 const VOICE = {
   SR: window.SpeechRecognition || window.webkitSpeechRecognition || null,
   want: false, live: false, blocked: '', r: null, starts: [], net: 0,
-  heard: '', interim: '', cut: 0, len: 0, endT: 0, turnAt: 0,
+  heard: '', interim: '', cut: 0, len: 0, endT: 0, turnAt: 0, turn0: 0, conf: 1,
   subs: [], ui: new Set(), lv: new Set(),
-  said: [], tts: null,
-  meter: null, level: 0, noise: 0.008, talk: false, talkMs: 0, quietMs: 0, peak: 0, cust: 0, peaks: [],
+  said: [], tts: null, ttsEnd: 0,
+  meter: null, level: 0, noise: 0.01, thr: 0.02, talk: false, talkMs: 0, quietMs: 0, peak: 0, cust: 0, peaks: [], hist: [], echo: [],
+  sens: 'normal', dropped: 0,
 };
+// how hard the microphone listens. In a noisy place a voice has to be clearly louder than the room to count
+const VOICE_SENS = {
+  quiet: { label: 'Quiet room', min: 0.012, k: 2.2, ms: 250, conf: 0.35 },
+  normal: { label: 'Normal', min: 0.02, k: 2.8, ms: 350, conf: 0.5 },
+  noisy: { label: 'Noisy place', min: 0.035, k: 3.6, ms: 500, conf: 0.65 },
+};
+// sounds that aren't an answer
+const V_FILL = new Set(['uh', 'um', 'umm', 'hmm', 'hm', 'mm', 'ah', 'aah', 'oh', 'er', 'erm', 'the', 'a', 'an', 'and', 'so', 'is', 'it', 'to', 'of', 'i', 'you', 'that', 'this', 'what', 'huh']);
 // in automated tests there's no speech service: the recogniser isn't started, and window.__voiceSay(text) stands in for it
 const voiceSim = () => !!navigator.webdriver;
 const voiceOk = () => !!VOICE.SR || voiceSim();
@@ -8431,6 +8456,9 @@ function voicePaint() { VOICE.ui.forEach(f => { try { f(VOICE); } catch (e) { /*
 const voiceTop = () => VOICE.subs[VOICE.subs.length - 1] || null;
 // a screen that asks questions takes the voice while it's open; the one underneath gets it back after
 function voiceTake(sub) { VOICE.subs.push(sub); voicePaint(); return () => { const i = VOICE.subs.indexOf(sub); if (i >= 0) VOICE.subs.splice(i, 1); voicePaint(); }; }
+// a choice the customer makes is kept for next time; a change made for them, because of noise, is for this call only
+function voiceSens(k, keep = true) { if (VOICE_SENS[k]) { VOICE.sens = k; if (keep) { try { localStorage.setItem('nxsure-mic', k); } catch (e) { /* not kept */ } } voicePaint(); } }
+try { const k = localStorage.getItem('nxsure-mic'); if (VOICE_SENS[k]) VOICE.sens = k; } catch (e) { /* default */ }
 
 function voiceOn(stream) {
   if (!voiceOk()) return false;
@@ -8446,12 +8474,14 @@ function voiceOff() {
   if (VOICE.tts) VOICE.tts.cut();
   voicePaint();
 }
+// drops whatever was heard so far, and anything the recogniser is still working on
+function voiceFlush() { clearTimeout(VOICE.endT); VOICE.heard = ''; VOICE.interim = ''; VOICE.cut = Math.max(VOICE.cut, VOICE.len); VOICE.turn0 = 0; VOICE.conf = 1; voicePaint(); }
 
 /* ---------- the recogniser: continuous, restarted quietly when the browser ends it ---------- */
 function voiceRec() {
   if (!VOICE.SR || VOICE.r || !VOICE.want) return;
-  const now = Date.now(); VOICE.starts = VOICE.starts.filter(t => now - t < 30000);
-  if (VOICE.starts.length >= 8) { VOICE.want = false; VOICE.blocked = 'Voice keeps stopping in this browser. Tap or type your answers for now.'; voicePaint(); return; }
+  const now = Date.now(); VOICE.starts = VOICE.starts.filter(t => now - t < 60000);
+  if (VOICE.starts.length >= 12) { VOICE.want = false; VOICE.blocked = 'Voice keeps stopping in this browser. Tap or type your answers for now.'; voicePaint(); return; }
   VOICE.starts.push(now);
   let r; try { r = new VOICE.SR(); } catch (e) { VOICE.blocked = 'Voice isn\'t available in this window. Tap or type your answers.'; voicePaint(); return; }
   r.lang = 'en-IN'; r.continuous = true; r.interimResults = true; r.maxAlternatives = 1;
@@ -8460,7 +8490,11 @@ function voiceRec() {
   r.onresult = e => {
     let fin = '', mid = '', last = -1;
     VOICE.len = e.results.length;
-    for (let i = Math.max(e.resultIndex, VOICE.cut); i < e.results.length; i++) { const x = e.results[i]; if (x.isFinal) { fin += x[0].transcript + ' '; last = i; } else mid += x[0].transcript + ' '; }
+    for (let i = Math.max(e.resultIndex, VOICE.cut); i < e.results.length; i++) {
+      const x = e.results[i];
+      if (x.isFinal) { fin += x[0].transcript + ' '; last = i; if (x[0].confidence > 0) VOICE.conf = Math.min(VOICE.conf, x[0].confidence); }
+      else mid += x[0].transcript + ' ';
+    }
     if (fin.trim()) { VOICE.heard = `${VOICE.heard} ${fin}`.trim(); VOICE.cut = Math.max(VOICE.cut, last + 1); }
     VOICE.interim = mid.trim();
     voiceHeard();
@@ -8471,43 +8505,73 @@ function voiceRec() {
     else if (e.error === 'network' && ++VOICE.net >= 3) { VOICE.want = false; VOICE.blocked = 'Voice needs a connection to the speech service. Tap or type your answers for now.'; }
     voicePaint();
   };
-  r.onend = () => { VOICE.live = false; VOICE.r = null; voicePaint(); if (VOICE.want) setTimeout(voiceRec, 300); };
+  r.onend = () => { VOICE.live = false; VOICE.r = null; voicePaint(); if (VOICE.want) setTimeout(voiceRec, 250); };
   try { r.start(); } catch (e) { VOICE.r = null; }
 }
-// a turn is what's said until a short pause: then it's handed to the screen asking
+// while Nyra is speaking, and for a moment after, the microphone mostly hears her: that's set aside, unless the
+// customer clearly talks over her
+const voiceNyra = () => !!VOICE.tts || Date.now() - VOICE.ttsEnd < 900;
+// a turn is what's said until a short pause: then it's checked and handed to the screen asking
 function voiceHeard() {
   const all = `${VOICE.heard} ${VOICE.interim}`.trim();
   if (!all) return;
-  if (voiceEcho(all)) { if (!VOICE.interim) VOICE.heard = ''; return; }
+  if (!VOICE.turn0) { VOICE.turn0 = Date.now(); }
+  if (voiceNyra()) {
+    if (VOICE.tts && voiceBargeable(all)) { voiceBarge(all); }
+    else { voiceFlush(); return; }
+  }
+  if (voiceEcho(all)) { if (!VOICE.interim) voiceFlush(); return; }
   VOICE.turnAt = Date.now();
-  if (VOICE.tts && voiceBargeable(all)) voiceBarge(all);
   const top = voiceTop(); if (top && top.interim) top.interim(all);
   voicePaint();
   clearTimeout(VOICE.endT);
-  VOICE.endT = setTimeout(voiceTurnEnd, VOICE.interim ? 1500 : 750);
+  VOICE.endT = setTimeout(voiceTurnEnd, VOICE.interim ? 1600 : 900);
 }
 function voiceTurnEnd() {
-  const t = `${VOICE.heard} ${VOICE.interim}`.trim();
+  const t = `${VOICE.heard} ${VOICE.interim}`.trim(), t0 = VOICE.turn0 || Date.now(), conf = VOICE.conf;
   // anything still in progress belongs to this turn: the recogniser's later version of it is ignored
   VOICE.cut = Math.max(VOICE.cut, VOICE.len);
-  VOICE.heard = ''; VOICE.interim = '';
-  if (VOICE.peak) { VOICE.peaks.push(VOICE.peak); if (VOICE.peaks.length > 9) VOICE.peaks.shift(); VOICE.cust = VOICE.peaks.slice().sort((a, b) => a - b)[Math.floor(VOICE.peaks.length / 2)]; VOICE.peak = 0; }
+  VOICE.heard = ''; VOICE.interim = ''; VOICE.turn0 = 0; VOICE.conf = 1;
   voicePaint();
   if (!t || voiceEcho(t)) return;
+  const why = voiceNoise(t, t0, conf);
+  if (why) { VOICE.dropped++; const top = voiceTop(); if (top && top.noise) top.noise(t, why); return; }
+  VOICE.dropped = 0;
+  if (VOICE.peak) { VOICE.peaks.push(VOICE.peak); if (VOICE.peaks.length > 9) VOICE.peaks.shift(); VOICE.cust = VOICE.peaks.slice().sort((a, b) => a - b)[Math.floor(VOICE.peaks.length / 2)]; VOICE.peak = 0; }
   const top = voiceTop(); if (top && top.utter) top.utter(t);
 }
+// was it really someone speaking to us? A voice has to have been heard above the room, the words recognised with
+// some certainty, and be more than a filler sound
+function voiceNoise(t, t0, conf, sim) {
+  const S0 = VOICE_SENS[VOICE.sens] || VOICE_SENS.normal, w = vWords(t);
+  if (!w.length || w.every(x => V_FILL.has(x))) return 'filler';
+  if (conf && conf < 1 && (conf < S0.conf * 0.6 || (w.length <= 2 && conf < S0.conf))) return 'unclear';
+  if (VOICE.meter && !sim && voiceSpokeMs(t0 - 1800, Date.now()) < S0.ms) return 'quiet';
+  return '';
+}
+// how long the voice was above the room's level in a stretch of time
+function voiceSpokeMs(a, b, lvl) { const thr = lvl || VOICE.thr; return VOICE.hist.filter(x => x.t >= a && x.t <= b && x.r > thr).length * 100; }
 // Nyra's own voice, picked up by the microphone, isn't the customer speaking
 function voiceEcho(t) {
   const w = vWords(t); if (!w.length) return true;
-  const now = Date.now(), recent = VOICE.said.filter(x => !x.end || now - x.end < 2500);
+  const now = Date.now(), recent = VOICE.said.filter(x => !x.end || now - x.end < 4000);
   if (!recent.length) return false;
   const bag = new Set(recent.flatMap(x => x.w)), hit = w.filter(x => bag.has(x)).length / w.length;
-  return w.length >= 3 ? hit >= 0.8 : !!VOICE.tts && hit === 1 && w.length > 0 && !/^(yes|no|stop|wait|haan|nahi|ok|okay|sorry)$/.test(w[0]);
+  return w.length >= 3 ? hit >= 0.6 : voiceNyra() && hit === 1;
 }
-const voiceBargeable = t => { const w = vWords(t); return !!VOICE.tts && Date.now() - VOICE.tts.at > 500 && (w.length >= 2 || /^(stop|wait|yes|no|haan|nahi|okay|ok|sorry|pardon|repeat|ready)$/.test(w[0] || '')); };
-function voiceBarge(t) { const T = VOICE.tts; if (!T) return; T.cut('barge'); const top = voiceTop(); if (top && top.barge) top.barge(t); }
+// talking over Nyra: several words of their own, louder than her voice coming back through the microphone
+function voiceBargeable(t, sim) {
+  const T = VOICE.tts; if (!T || Date.now() - T.at < 800) return false;
+  const w = vWords(t), cur = new Set(T.rec.w), own = w.filter(x => !cur.has(x) && !V_FILL.has(x));
+  const strong = /\b(stop|wait|sorry|repeat|pardon)\b/.test(w.join(' '));
+  if (!(own.length >= 3 || (strong && own.length >= 1))) return false;
+  if (!VOICE.meter || sim) return true;
+  const e = VOICE.echo.length ? VOICE.echo.slice().sort((a, b) => a - b)[Math.floor(VOICE.echo.length * 0.8)] : 0;
+  return voiceSpokeMs(Date.now() - 1500, Date.now(), Math.max(VOICE.thr * 1.4, e * 1.6)) >= 400;
+}
+function voiceBarge(t) { const T = VOICE.tts; if (!T) return; T.cut('barge'); VOICE.ttsEnd = 0; const top = voiceTop(); if (top && top.barge) top.barge(t); }
 
-/* ---------- Nyra speaking: her voice can be muted, and she stops when the customer talks ---------- */
+/* ---------- Nyra speaking: her voice can be muted, and she stops when the customer talks over her ---------- */
 function voicePick() {
   try {
     const vs = speechSynthesis.getVoices();
@@ -8518,10 +8582,16 @@ function voiceSpeak(text, o = {}) {
   const rec = { w: vWords(text), at: Date.now(), end: 0 }; VOICE.said.push(rec); if (VOICE.said.length > 6) VOICE.said.shift();
   let fin = null, over = false; const done = new Promise(r => { fin = r; });
   const T = { at: Date.now(), text, rec };
-  const end = how => { if (over) return; over = true; rec.end = Date.now(); if (VOICE.tts === T) VOICE.tts = null; if (how !== 'end' && o.audio !== false) { try { speechSynthesis.cancel(); } catch (e) { /* nothing playing */ } } voicePaint(); fin(how); };
+  const end = how => {
+    if (over) return; over = true; rec.end = Date.now(); if (VOICE.tts === T) VOICE.tts = null;
+    if (how !== 'end' && o.audio !== false) { try { speechSynthesis.cancel(); } catch (e) { /* nothing playing */ } }
+    // what the microphone picked up while she spoke was her: it's set aside, unless the customer talked over her
+    if (how !== 'cut') { VOICE.ttsEnd = Date.now(); voiceFlush(); }
+    voicePaint(); fin(how);
+  };
   T.cut = why => end(why === 'barge' ? 'cut' : 'stop');
   if (VOICE.tts) VOICE.tts.cut();
-  VOICE.tts = T; voicePaint();
+  VOICE.tts = T; VOICE.echo = []; voicePaint();
   const ms = o.ms != null ? o.ms : Math.min(12000, 700 + rec.w.length * 300);
   if (o.audio !== false && 'speechSynthesis' in window && !voiceSim()) {
     try {
@@ -8534,38 +8604,48 @@ function voiceSpeak(text, o = {}) {
   return { done, cut: T.cut };
 }
 
-/* ---------- the sound level: who's speaking, and how loudly the customer usually speaks ---------- */
+/* ---------- the sound level: the room's own level, and when someone is speaking above it ---------- */
 function voiceMeter(st) {
   if (!st || !st.getAudioTracks || !st.getAudioTracks().length) return;
   if (VOICE.meter && VOICE.meter.st === st) return;
   voiceMeterStop();
   try {
     const AC = window.AudioContext || window.webkitAudioContext, ac = new AC(), an = ac.createAnalyser(); an.fftSize = 1024;
-    ac.createMediaStreamSource(st).connect(an);
+    // a band-pass on the voice range, so a fan, traffic or a hum counts for less
+    const hp = ac.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 150;
+    const lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 3800;
+    ac.createMediaStreamSource(st).connect(hp); hp.connect(lp); lp.connect(an);
     if (ac.state === 'suspended') { const go = () => { ac.resume().catch(() => { /* still waiting */ }); }; go(); document.addEventListener('pointerdown', go, { once: true }); }
-    const buf = new Float32Array(an.fftSize);
+    const buf = new Float32Array(an.fftSize); let n = 0;
     VOICE.meter = { st, ac, t: setInterval(() => {
       an.getFloatTimeDomainData(buf); let sq = 0; for (let i = 0; i < buf.length; i++) sq += buf[i] * buf[i];
-      const rms = Math.sqrt(sq / buf.length), thr = Math.max(0.016, VOICE.noise * 3.2);
+      const rms = Math.sqrt(sq / buf.length), now = Date.now(), S0 = VOICE_SENS[VOICE.sens] || VOICE_SENS.normal;
       VOICE.level = rms;
-      if (rms > thr) { VOICE.talkMs += 100; VOICE.quietMs = 0; VOICE.peak = Math.max(VOICE.peak, rms); }
-      else { VOICE.quietMs += 100; if (VOICE.quietMs >= 400) VOICE.talkMs = 0; VOICE.noise = VOICE.noise * 0.96 + rms * 0.04; }
-      const talk = VOICE.talkMs >= 200;
+      VOICE.hist.push({ t: now, r: rms }); if (VOICE.hist.length > 120) VOICE.hist.shift();
+      if (VOICE.tts) { VOICE.echo.push(rms); if (VOICE.echo.length > 60) VOICE.echo.shift(); }
+      // the room's level: a low point of the last few seconds, so a steady noise raises it rather than counting as speech
+      if (++n % 5 === 0) { const xs = VOICE.hist.slice(-60).map(x => x.r).sort((a, b) => a - b); VOICE.noise = xs[Math.floor(xs.length * 0.2)] || VOICE.noise; }
+      VOICE.thr = Math.max(S0.min, VOICE.noise * S0.k + 0.004);
+      if (rms > VOICE.thr) { VOICE.talkMs += 100; VOICE.quietMs = 0; VOICE.peak = Math.max(VOICE.peak, rms); }
+      else { VOICE.quietMs += 100; if (VOICE.quietMs >= 400) VOICE.talkMs = 0; }
+      const talk = VOICE.talkMs >= 300 && !VOICE.tts;
       if (talk !== VOICE.talk) { VOICE.talk = talk; voicePaint(); }
       VOICE.lv.forEach(f => { try { f(rms); } catch (e) { /* a meter went away */ } });
     }, 100) };
   } catch (e) { VOICE.meter = null; }
 }
-function voiceMeterStop() { const m = VOICE.meter; if (!m) return; clearInterval(m.t); try { m.ac.close(); } catch (e) { /* closed */ } VOICE.meter = null; VOICE.talk = false; }
+function voiceMeterStop() { const m = VOICE.meter; if (!m) return; clearInterval(m.t); try { m.ac.close(); } catch (e) { /* closed */ } VOICE.meter = null; VOICE.talk = false; VOICE.hist = []; }
 
 // tests: the customer "says" something
 window.__voiceSay = text => {
   if (!VOICE.want) return false;
-  if (VOICE.tts && voiceBargeable(text)) voiceBarge(text);
+  if (VOICE.tts) { if (voiceBargeable(text, true)) voiceBarge(text); else return 'ignored while Nyra speaks'; }
   const top = voiceTop(); if (top && top.interim) top.interim(text);
-  setTimeout(() => { const t2 = voiceTop(); if (t2 && t2.utter) t2.utter(text); }, 80);
+  setTimeout(() => { const t2 = voiceTop(); if (!t2) return; const why = voiceNoise(text, Date.now(), 1, true); if (why) { if (t2.noise) t2.noise(text, why); return; } if (t2.utter) t2.utter(text); }, 80);
   return true;
 };
+// tests: noise the recogniser turned into words, with low certainty
+window.__voiceNoise = (text, conf = 0.2) => { if (!VOICE.want) return false; const why = voiceNoise(text, Date.now(), conf, true) || 'kept'; if (why !== 'kept') { VOICE.dropped++; const t2 = voiceTop(); if (t2 && t2.noise) t2.noise(text, why); } return why; };
 
 /* ---------- understanding a spoken answer to a question with choices ---------- */
 const V_NUM = { zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, a: 1, an: 1, few: 2, couple: 2 };
@@ -8742,7 +8822,7 @@ function vmScript(s) {
   const H = s.health, k = s.kyc, nm = first(k.name), V = H.vmer, Q = [];
   const who = m => m.rel === 'self' ? { sub: 'you', pos: 'your' } : { sub: `your ${relLabel(H, m).toLowerCase()}`, pos: `your ${relLabel(H, m).toLowerCase()}'s` };
   const yn = [['no', 'No'], ['yes', 'Yes']];
-  Q.push({ id: 'hi', say: `Hi ${nm}, I'm Nyra, ${CFG.brand}'s AI medical examiner. This video call is recorded, and everything we say is written down below, so you can check it as we go. It takes about ten minutes, and you can stop and carry on later. Shall we start?`, chips: [['yes', 'Yes, let\'s start']] });
+  Q.push({ id: 'hi', say: `Hi ${nm}, I'm Nyra, ${CFG.brand}'s AI medical examiner. This video call is recorded, and everything we say is written down below, so you can check it as we go. It takes about ten minutes, and you can stop and carry on later. Answer out loud once I've finished speaking, or tap your answer. Shall we start?`, chips: [['yes', 'Yes, let\'s start']] });
   Q.push({ id: 'room', kind: 'room' });
   Q.push({ id: 'id', kind: 'identity', say: 'First, please look at the camera, and tell me your full name and your date of birth.' });
   active(H).forEach(m => {
@@ -8843,7 +8923,10 @@ function vmCall(s, o = {}) {
     const ov = el(`<div class="vm ${CFG.channel === 'agent' ? 'pf-theme' : ''}" role="dialog" aria-modal="true" aria-label="Video medical exam with Nyra">
       <div class="vm-top"><span class="vm-rec"><i></i>Recorded</span><b>Video <span class="vm-long">medical </span>exam</b><span class="vm-t" data-x="t">0:00</span>
         <button type="button" class="vm-later" data-vm="later">${VM_ICO.pause}<span>Continue later</span></button>
-        <span class="vm-mic" data-x="mic" title="Your microphone stays on for the whole call">${VM_ICO.mic}<span>Mic on</span></span><button type="button" class="vm-ib on" data-vm="voice" aria-pressed="true" aria-label="Nyra's voice" title="Nyra's voice">${VM_ICO.voice}</button><button type="button" class="vm-end" data-vm="end">${VM_ICO.end}<span>End call</span></button></div>
+        <span class="vm-micw"><button type="button" class="vm-mic" data-x="mic" data-vm="micset" aria-haspopup="true" aria-expanded="false" title="Your microphone stays on for the call. Tap to set how sensitive it is">${VM_ICO.mic}<span>Mic on</span></button>
+          <div class="vm-micpop" data-x="micpop" hidden><b>Microphone</b><small>It's on for the whole call. If I pick up noise, or answer for you, choose Noisy place. If I miss what you say, choose Quiet room.</small>
+            <div class="vm-sens" role="radiogroup" aria-label="Microphone sensitivity">${Object.entries(VOICE_SENS).map(([k, x]) => `<label><input type="radio" name="vmsens" value="${k}" ${VOICE.sens === k ? 'checked' : ''}><span>${esc(x.label)}</span></label>`).join('')}</div>
+            <div class="vm-lvl" aria-hidden="true"><i data-x="lvl"></i><b data-x="thr"></b></div><small class="vm-lvl-t">The bar moves when you speak. Speech needs to go past the line.</small></div></span><button type="button" class="vm-ib on" data-vm="voice" aria-pressed="true" aria-label="Nyra's voice" title="Nyra's voice">${VM_ICO.voice}</button><button type="button" class="vm-end" data-vm="end">${VM_ICO.end}<span>End call</span></button></div>
       <div class="vm-scroll"><div class="vm-grid">
         <aside class="vm-side vm-l" data-x="left" aria-label="Covers Nyra suggests" hidden><span class="vm-sh">Covers made for you</span><div data-x="xs"></div></aside>
         <div class="vm-stage" data-x="stage">
@@ -8863,7 +8946,7 @@ function vmCall(s, o = {}) {
     if (typeof faceHold === 'function') faceHold(true);
     aaMark(resume ? 'Video medical exam resumed with Nyra' : 'Video medical exam started with Nyra');
     // the camera: the recording's stream if one is running, otherwise its own
-    (async () => { let st = typeof REC !== 'undefined' && REC.cur && REC.cur.stream; if (!st) { try { own = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 } }, audio: { echoCancellation: true, noiseSuppression: true } }); st = own; } catch (e) { st = null; } } if (!ov.isConnected) { if (own) own.getTracks().forEach(t => t.stop()); return; } if (st) { video.srcObject = st; video.play().catch(() => { /* waits for a tap */ }); } else ov.querySelector('.vm-me').classList.add('off'); })();
+    (async () => { let st = typeof REC !== 'undefined' && REC.cur && REC.cur.stream; if (!st) { try { own = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 } }, audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: false } }); st = own; } catch (e) { st = null; } } if (!ov.isConnected) { if (own) own.getTracks().forEach(t => t.stop()); return; } if (st) { video.srcObject = st; video.play().catch(() => { /* waits for a tap */ }); } else ov.querySelector('.vm-me').classList.add('off'); })();
     const tick = setInterval(() => { $v('t').textContent = mmssOf(performance.now() - t0); }, 500);
     const stamp = () => mmssOf(performance.now() - t0);
     const paintLine = i => {
@@ -8956,6 +9039,8 @@ function vmCall(s, o = {}) {
         if (m) { give(top, { v: m[0], text: m[1], said: t, voice: true }); return; }
         if (q.open || q.input) { give(top, { v: 'text', text: t, voice: true }); return; }
         top.miss++;
+        // the first time, a quiet note rather than Nyra stopping everything: it may only have been a sound in the room
+        if (top.miss === 1) { err(`I heard “${t}”. Say one of the answers below, or tap it.`); return; }
         const say2 = q.chips.filter(c => c[0] !== 'upload').map(c => `“${c[1]}”`);
         aside(top.miss > 1 ? 'Sorry, I still didn\'t get that. You can tap your answer below.' : `Sorry, I didn't catch that. You can say ${orText(say2)}.`);
         return;
@@ -8964,8 +9049,20 @@ function vmCall(s, o = {}) {
     }
     // the microphone, on for the whole call: the same one the recording opened, so it isn't asked for again
     const vWas = VOICE.want;
-    const vRel = voiceTake({ interim: t => { if (!ended && stack.length && !reply.classList.contains('hold')) heard(t, true); }, utter: t => hear(t) });
-    const micPaint = () => { const m = $v('mic'), l = $v('lst'); if (m) { m.classList.toggle('on', VOICE.want); m.classList.toggle('talk', VOICE.talk); m.querySelector('span').textContent = VOICE.want ? (VOICE.talk ? 'Hearing you' : 'Mic on') : VOICE.blocked ? 'Mic off' : vOn ? 'Mic on' : 'No voice'; } if (l) l.textContent = $v('orb').classList.contains('talk') ? 'Nyra is speaking' : VOICE.talk ? 'Hearing you' : 'Listening'; };
+    let noiseN = 0, noiseAt = 0;
+    const vRel = voiceTake({
+      interim: t => { if (!ended && stack.length && !reply.classList.contains('hold')) heard(t, true); },
+      utter: t => { noiseN = 0; hear(t); },
+      // sounds the recogniser turned into words: not taken as an answer. If it keeps happening, the mic listens for a clearer voice
+      noise: (t, why) => {
+        if (ended) return; heard('');
+        noiseN = performance.now() - noiseAt < 30000 ? noiseN + 1 : 1; noiseAt = performance.now();
+        if (noiseN >= 3 && VOICE.sens !== 'noisy') { voiceSens(VOICE.sens === 'quiet' ? 'normal' : 'noisy', false); const r0 = $v('micpop').querySelector(`[value=${VOICE.sens}]`); if (r0) r0.checked = true; noiseN = 0; aaMark('Video exam: background noise, microphone made less sensitive'); ban(`There's noise around you, so I'm listening for a clearer voice. Microphone: ${VOICE_SENS[VOICE.sens].label}`, VM_ICO.mic); setTimeout(() => { if (!W.gate) ban(''); }, 5000); }
+      },
+    });
+    const lvlPaint = rms => { const l = $v('lvl'), b = $v('thr'); if (!l || $v('micpop').hidden) return; const sc = v => Math.min(100, Math.round(Math.sqrt(Math.min(1, v / 0.25)) * 100)); l.style.width = `${sc(rms)}%`; b.style.left = `${sc(VOICE.thr)}%`; };
+    VOICE.lv.add(lvlPaint);
+    const micPaint = () => { const m = $v('mic'), l = $v('lst'); if (m) { m.classList.toggle('on', VOICE.want); m.classList.toggle('talk', VOICE.talk); m.querySelector('span').textContent = VOICE.want ? (VOICE.talk ? 'Hearing you' : `Mic on · ${VOICE_SENS[VOICE.sens].label}`) : VOICE.blocked ? 'Mic off' : vOn ? 'Mic on' : 'No voice'; } if (l) l.textContent = $v('orb').classList.contains('talk') ? 'Nyra is speaking' : VOICE.talk ? 'Hearing you' : 'Listening'; };
     VOICE.ui.add(micPaint);
 
     /* the picture, checked every second: who's in the frame, the light, whether it's a live person, and where they look */
@@ -9277,7 +9374,7 @@ function vmCall(s, o = {}) {
     const finish = how => {
       if (ended) return; ended = true;
       clearInterval(tick); clearInterval(watch); if (aud) clearInterval(aud.t); try { speechSynthesis.cancel(); } catch (e) { /* no speech */ }
-      clipStop(); vRel(); VOICE.ui.delete(micPaint); if (VOICE.tts) VOICE.tts.cut(); if (!vWas) voiceOff();
+      clipStop(); vRel(); VOICE.ui.delete(micPaint); VOICE.lv.delete(lvlPaint); if (VOICE.tts) VOICE.tts.cut(); if (!vWas) voiceOff();
       if (own && VOICE.meter && VOICE.meter.st === own) { voiceMeterStop(); if (typeof REC !== 'undefined' && REC.cur) voiceMeter(REC.cur.stream); }
       if (own) own.getTracks().forEach(t => t.stop());
       if (typeof faceHold === 'function') faceHold(false);
@@ -9291,6 +9388,8 @@ function vmCall(s, o = {}) {
     const confirmBox = (msg, a, b2, onA) => { reply.innerHTML = `<div class="vm-ask"><span>${esc(msg)}</span><div class="vm-chips"><button type="button" data-k="no">${esc(b2)}</button><button type="button" data-k="yes">${esc(a)}</button></div></div>`; reply.querySelector('[data-k=yes]').addEventListener('click', onA); reply.querySelector('[data-k=no]').addEventListener('click', () => renderAns()); };
     ov.addEventListener('click', e => {
       const b = e.target.closest('[data-vm]');
+      if (b && b.dataset.vm === 'micset') { const p = $v('micpop'); p.hidden = !p.hidden; b.setAttribute('aria-expanded', String(!p.hidden)); return; }
+      if (!e.target.closest('.vm-micw') && !$v('micpop').hidden) { $v('micpop').hidden = true; $v('mic').setAttribute('aria-expanded', 'false'); }
       if (b && b.dataset.vm === 'voice') { voice = !voice; b.classList.toggle('on', voice); b.setAttribute('aria-pressed', String(voice)); if (!voice) try { speechSynthesis.cancel(); } catch (er) { /* no speech */ } return; }
       if (b && b.dataset.vm === 'later') { confirmBox('Stop here and carry on later? Everything so far is saved, and you pick up from this point.', 'Save and leave', 'Keep going', () => finish('park')); return; }
       if (b && b.dataset.vm === 'end') {
@@ -9307,6 +9406,7 @@ function vmCall(s, o = {}) {
         f.addEventListener('submit', ev => { ev.preventDefault(); const t = f.a.value.trim(); if (t && t !== L.text) { L.was = L.was || L.text; L.text = t; L.edited = true; aaMark('Customer corrected the transcript'); } paintLine(i); });
       }
     });
+    ov.addEventListener('change', e => { if (e.target.name === 'vmsens') { voiceSens(e.target.value); aaMark(`Video exam: microphone set to ${VOICE_SENS[e.target.value].label.toLowerCase()}`); } });
     // saying "later" in an answer offers to stop and carry on later
     const LATER = /\b(continue|carry on|finish|do (this|it)|call( me)?( back)?)\s+(it\s+)?later\b|another time|not now,? later/i;
     (async () => {
@@ -10125,8 +10225,8 @@ function recAsk() {
   S.recAsked = true;
   const ag = CFG.channel === 'agent', cu = CFG.channel === 'cust';
   const T = ag ? ['This proposal is recorded on video', 'From now until the proposal is paid, the camera and microphone on this device record the sale. If the customer is with you, show them this.', ['The proposal pauses if no one is in the frame, and carries on when someone is back', 'Every question shown is marked in the recording', 'The policy document carries a QR code for the recording'], 'Start the camera', 'The camera isn\'t working']
-    : S.product === 'motor' ? ['I\'ll record your health answers on video', 'Health cover needs your answers on video. From here until you pay, your camera and microphone record you answering. The car insurance itself isn\'t recorded.', ['I\'ll read each question out, and you can answer by talking, tapping or typing. The microphone is asked for once, here', 'Stay in the frame. If I can\'t see you, the journey pauses until you\'re back', 'Recording stops the moment you pay'], 'Allow camera and start', 'I can\'t use a camera']
-    : [cu ? 'I\'ll record your acceptance on video' : 'I\'ll record your purchase on video', cu ? 'While you check and accept your proposal, your camera and microphone record you. It\'s kept with your proposal and linked from your policy document by a QR code.' : 'From here until you pay, your camera and microphone record you answering. It\'s the record of what you told us, kept with your proposal and linked from your policy document by a QR code.', ['You\'ll see yourself in a small window that you can move or shrink', 'I\'ll read each question out, and you can answer by talking, tapping or typing. The microphone is asked for once, here', 'Stay in the frame. If I can\'t see you, the journey pauses until you\'re back', 'Recording stops the moment you pay'], 'Allow camera and start', 'I can\'t use a camera'];
+    : S.product === 'motor' ? ['I\'ll record your health answers on video', 'Health cover needs your answers on video. From here until you pay, your camera and microphone record you answering. The car insurance itself isn\'t recorded.', ['You\'ll see yourself in a small window that you can move or shrink', 'Stay in the frame. If I can\'t see you, the journey pauses until you\'re back', 'Recording stops the moment you pay'], 'Allow camera and start', 'I can\'t use a camera']
+    : [cu ? 'I\'ll record your acceptance on video' : 'I\'ll record your purchase on video', cu ? 'While you check and accept your proposal, your camera and microphone record you. It\'s kept with your proposal and linked from your policy document by a QR code.' : 'From here until you pay, your camera and microphone record you answering. It\'s the record of what you told us, kept with your proposal and linked from your policy document by a QR code.', ['You\'ll see yourself in a small window that you can move or shrink', 'Stay in the frame. If I can\'t see you, the journey pauses until you\'re back', 'Recording stops the moment you pay'], 'Allow camera and start', 'I can\'t use a camera'];
   const ov = el(`<div class="rec-consent" role="dialog" aria-modal="true" aria-labelledby="recT"><div class="rec-card">
     <span class="rc-ic">${ICO_CAM}</span><h2 id="recT">${T[0]}</h2><p>${T[1]}</p><ul>${T[2].map(x => `<li>${x}</li>`).join('')}</ul>
     <div class="rc-acts"><button type="button" class="btn-next" data-a="yes"><span>${T[3]}</span>${ICO.right}</button><button type="button" class="link" data-a="no">${T[4]}</button>${typeof JX !== 'undefined' ? '<button type="button" class="link rc-leave" data-a="leave">Not now, back to the website</button>' : ''}</div>
@@ -10152,7 +10252,7 @@ async function recStart() {
   const s0 = S;
   if (!REC.ok()) { S.recBlocked = true; S.verifyCall = true; nyraSays('Recording isn\'t available in this browser. You can carry on, and we\'ll confirm the answers on a short verification call before the policy is issued.'); return; }
   let stream;
-  try { stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } }, audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } }); }
+  try { stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } }, audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: false } }); }
   catch (e) {
     S.recBlocked = true; S.verifyCall = true;
     nyraSays(esc(e && (e.name === 'NotAllowedError' || e.name === 'SecurityError') ? 'The camera or microphone is blocked here, so I can\'t record this proposal. You can carry on, and we\'ll confirm the answers on a short verification call before the policy is issued. To record instead, allow both in your browser\'s site settings.' : 'I couldn\'t find a camera and microphone, so I can\'t record this proposal. You can carry on, and we\'ll confirm the answers on a short verification call before the policy is issued.'));
@@ -10174,9 +10274,7 @@ async function recStart() {
   if (typeof faceStart === 'function') faceStart(r);
   toast(`Recording started. Reference ${r.ref}`);
   REC.changed();
-  // voice comes on with the camera: the microphone was just allowed, so it isn't asked for again
   if (typeof voiceMeter === 'function') voiceMeter(stream);
-  if (CFG.channel !== 'agent' && typeof jxVoice === 'function' && !navigator.webdriver && $('#mic') && !$('#mic').hidden) jxVoice(true);
 }
 function recMark(id) {
   const r = REC.cur; if (!r || !STEP[id]) return;
@@ -10414,54 +10512,41 @@ function wireAsk() {
   });
 }
 
-/* voice: one tap (or the recording consent) turns it on, and it stays on. Nyra reads each question out, and
-   listens all the time: what's said is answered like anything typed. The microphone is asked for once */
-const JV = { speak: true, cur: null, rel: null };
+/* voice in the proposal: a tap-to-talk button for one answer at a time. The microphone stays on only in the video
+   medical exam, which is the one part that's spoken with Nyra */
+const JV = { rel: null, t: 0 };
 function jxVoice(on) {
   if (on) {
+    if (document.body.classList.contains('vm-open')) return false;
     if (!voiceOn(typeof REC !== 'undefined' && REC.cur ? REC.cur.stream : null)) return false;
-    if (!JV.rel) JV.rel = voiceTake({ utter: t => { if (document.body.classList.contains('vm-open') || !S || !S.api) return; $('#ask').value = ''; onAsk(t); }, interim: t => { if (!document.body.classList.contains('vm-open')) { $('#ask').value = t; } } });
-    jxSpeakStep();
+    if (!JV.rel) JV.rel = voiceTake({ utter: t => { jxVoice(false); $('#ask').value = ''; if (S && S.api) onAsk(t); }, interim: t => { $('#ask').value = t; }, noise: () => { /* not an answer */ } });
+    voicePaint();
+    // stops by itself if nothing is said
+    clearTimeout(JV.t); JV.t = setTimeout(() => { if (JV.rel) { jxVoice(false); nyraSays('I didn\'t hear anything. Tap the mic and try again, or type your answer.'); } }, 9000);
   } else {
-    if (JV.cur) JV.cur.cut(); JV.cur = null;
+    clearTimeout(JV.t);
     if (JV.rel) { JV.rel(); JV.rel = null; }
-    voiceOff();
+    if (!document.body.classList.contains('vm-open')) voiceOff();
   }
   return true;
-}
-// and anything she says in reply, or a message about the answer
-function jxSay(text) {
-  if (!VOICE.want || !JV.rel || document.body.classList.contains('vm-open')) return;
-  const t = String(text || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); if (!t) return;
-  if (JV.cur) JV.cur.cut(); JV.cur = voiceSpeak(t, { audio: JV.speak });
-}
-// Nyra reads out the question on screen when it changes
-function jxSpeakStep() {
-  if (!VOICE.want || !JV.rel || document.body.classList.contains('vm-open') || !S || !S.api) return;
-  const q = S.api.q, a = q.querySelector('.nyra-say'), t = q.querySelector('.q-title');
-  const text = [a && a.textContent, t && t.textContent].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
-  if (!text) return;
-  if (JV.cur) JV.cur.cut();
-  JV.cur = voiceSpeak(text, { audio: JV.speak });
 }
 function wireVoice() {
   const mic = $('#mic'), live = $('#listenText'), ask = $('#ask');
   if (!voiceOk()) { mic.hidden = true; return; }
   let ph = '';
   const paint = () => {
-    const on = VOICE.want && !!JV.rel, hear = on && !!(VOICE.interim || VOICE.heard || VOICE.talk);
+    const on = !!JV.rel && VOICE.want, hear = on && !!(VOICE.interim || VOICE.heard || VOICE.talk);
     mic.classList.toggle('on', on); mic.classList.toggle('hear', hear);
-    mic.setAttribute('aria-pressed', String(on)); mic.setAttribute('aria-label', on ? 'Voice is on. Tap to turn it off' : 'Talk to Nyra');
-    document.body.classList.toggle('voice-on', on); document.body.classList.toggle('listening', hear);
-    if (!ph) ph = ask.placeholder;
-    ask.placeholder = on && VOICE.tts ? 'Nyra is speaking. Just talk to answer' : on && /^Ask me anything/.test(ph) ? 'Listening. Say your answer, or type it' : ph;
+    mic.setAttribute('aria-pressed', String(on)); mic.setAttribute('aria-label', on ? 'Listening. Tap to stop' : 'Speak your answer');
+    document.body.classList.toggle('listening', on);
+    if (on) { if (!ph) ph = ask.placeholder; ask.placeholder = 'Listening…'; } else if (ph) { ask.placeholder = ph; ph = ''; }
     if (live) live.textContent = VOICE.interim || VOICE.heard || 'Listening…';
-    if (VOICE.blocked && !on && mic.dataset.told !== VOICE.blocked) { mic.dataset.told = VOICE.blocked; nyraSays(esc(VOICE.blocked)); }
+    if (VOICE.blocked && !VOICE.want && mic.dataset.told !== VOICE.blocked && !document.body.classList.contains('vm-open')) { mic.dataset.told = VOICE.blocked; nyraSays(esc(VOICE.blocked)); }
   };
   VOICE.ui.add(paint);
-  mic.addEventListener('click', () => { if (VOICE.want && JV.rel) jxVoice(false); else { mic.dataset.told = ''; jxVoice(true); } });
+  mic.addEventListener('click', () => { if (JV.rel) jxVoice(false); else { mic.dataset.told = ''; closePop(); jxVoice(true); } });
   const stop = $('#listenStop'); if (stop) stop.addEventListener('click', () => jxVoice(false));
-  HOOKS.shown.push(() => { ph = ask.placeholder; paint(); if (VOICE.want && JV.rel) setTimeout(jxSpeakStep, 350); });
+  HOOKS.shown.push(() => { if (JV.rel) jxVoice(false); });
   if (HOOKS.closed) HOOKS.closed.push(() => jxVoice(false));
 }
 
