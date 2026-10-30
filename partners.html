@@ -1549,6 +1549,33 @@ button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:
 .q>.q-foot{position:sticky;bottom:-20px;z-index:6;margin:0 calc(-1 * clamp(22px,3.6vw,40px)) calc(-1 * clamp(22px,3.6vw,40px));padding:14px clamp(22px,3.6vw,40px) clamp(16px,2.4vw,24px);background:var(--surface);border-top:1px solid var(--line);border-radius:0 0 28px 28px;box-shadow:0 -16px 26px -22px rgba(16,12,40,.45)}
 @media (max-width:640px){.q>.q-foot{border-radius:0 0 22px 22px}}
 
+/* KYC: the ID and the mobile number side by side, sample details for the demo, and the account it sets up */
+.kyc-ids .big-in{max-width:none}
+.kyc-ids input[name=kmob]{letter-spacing:.06em}
+.kyc-demo{margin-top:2px}
+.kyc-demo .od-l + b{margin-right:4px}
+.kyc-acct{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;margin-top:14px;padding:14px 16px;border-radius:18px;background:var(--brand-soft);color:var(--ink)}
+.kyc-acct-ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:#fff}
+.kyc-acct-ic svg{width:15px;height:15px}
+.kyc-acct b{display:block;font:600 15px/1.35 var(--display)}
+.kyc-acct small{display:block;color:var(--ink-2);font-size:13.5px;margin-top:3px}
+
+/* saved journeys, at the start of a new one */
+.jx-saved{display:grid;gap:10px;margin-top:22px}
+.jx-sv{display:grid;grid-template-columns:76px minmax(0,1fr) auto auto;gap:14px;align-items:center;text-align:left;padding:10px 14px 10px 10px;border:1.5px solid var(--line);border-radius:20px;background:var(--surface);color:var(--ink);cursor:pointer;transition:border-color .18s,transform .18s}
+.jx-sv:hover{border-color:var(--brand);transform:translateY(-1px)}
+.jx-sv-art{display:block;background:var(--surface-2);border-radius:14px;padding:6px 6px 0}
+.jx-sv-bd{display:grid;gap:2px;min-width:0}
+.jx-sv-bd b{font:600 15px/1.3 var(--display)}
+.jx-sv-bd small{color:var(--ink-2);font-size:13px;line-height:1.4}
+.jx-sv-amt{font:650 15px/1.2 var(--display);white-space:nowrap;text-align:right}
+.jx-sv-amt small{display:block;font:500 11.5px var(--text,inherit);color:var(--ink-2)}
+.jx-sv .go{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand-ink)}
+.jx-sv .go svg{width:17px;height:17px}
+@media (max-width:560px){.jx-sv{grid-template-columns:60px minmax(0,1fr) auto}.jx-sv .go{display:none}}
+.kyc-ids>*{min-width:0}
+.kyc-ids input{width:100%;min-width:0;box-sizing:border-box}
+
 /* ================= NxSure Partners: ink sidebar, warm paper canvas, one typeface, one accent ================= */
 :root{
   --p-font:"NxPortal",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
@@ -3755,7 +3782,7 @@ function pay(amount, ref, label) {
 /* ================= journey framework ================= */
 let S = null;
 const STEP = {};
-const HOOKS = { shown: [], restart: [] };
+const HOOKS = { shown: [], restart: [], kycDone: [] };
 // after KYC: the discount tiles and the consents, then (health) the declaration, the photo and cover made for them
 const MOTOR_IDS = ['vehicle', 'confirm', 'policy', 'plan', 'addons', 'quote', 'kyc', 'data', 'aa', 'bureau', 'needs', 'xsetup', 'hdecl', 'photo', 'pcheck', 'review', 'sent', 'inspect', 'done'];
 const HEALTH_IDS = ['members', 'pincode', 'cover', 'tier', 'tune', 'hquote', 'kyc', 'data', 'aa', 'bureau', 'health', 'family', 'wellness', 'outcome', 'photo', 'needs', 'xsetup', 'pcheck', 'review', 'sent', 'done'];
@@ -4109,10 +4136,10 @@ STEP.product = {
     body: `<div class="tiles prod-tiles">
       ${tile('data-p="motor"', `<span class="tile-art">${ART.motor()}</span><span class="tile-name">Motor</span><span class="tile-sub">Car, two-wheeler or commercial vehicle. Renew in a minute with last year's policy.</span>`, S.product === 'motor')}
       ${tile('data-p="health"', `<span class="tile-art">${ART.health()}</span><span class="tile-name">Health</span><span class="tile-sub">You, your family and your parents, with your cover decided right here.</span>`, S.product === 'health')}
-    </div>`,
+    </div>${typeof jxSavedHtml === 'function' ? jxSavedHtml() : ''}`,
     next: null, back: CFG.channel === 'agent' ? undefined : false, hint: 'Say “motor” or “health”',
   }),
-  wire(api) { api.body.addEventListener('click', e => { const t = e.target.closest('[data-p]'); if (t) pickProduct(t.dataset.p); }); },
+  wire(api) { api.body.addEventListener('click', e => { const l = e.target.closest('[data-lead]'); if (l && typeof JX !== 'undefined' && JX.resume) { JX.resume(l.dataset.lead); return; } const t = e.target.closest('[data-p]'); if (t) pickProduct(t.dataset.p); }); },
   value: () => S.product === 'motor' ? 'Motor' : S.product === 'health' ? 'Health' : '',
   done: () => !!S.product,
   cmd(t) { const l = t.toLowerCase(); if (/health|medic|family|parent|mediclaim/.test(l)) { pickProduct('health'); return ''; } if (/motor|car|bike|scooter|vehicle|truck|taxi|two.?wheeler|lorry/.test(l)) { pickProduct('motor'); return ''; } return null; },
@@ -4128,12 +4155,17 @@ function pickProduct(p) {
 
 /* ================= KYC: PAN or Aadhaar with a code, DigiLocker with consent, or an uploaded ID ================= */
 const KYC_TITLE = 'Verify with PAN, Aadhaar, DigiLocker or an ID';
+// sample details for trying the demo: a valid-format PAN, an Aadhaar number that passes the checksum, and a mobile
+const DEMO_KYC = { pan: 'ABCPS1234F', aadhaar: '234123412346', mobile: '9845012345' };
+const KYC_NEEDS_MOB = t => t === 'pan' || t === 'aadhaar';
+const kycKnownMobile = () => (S.docOwner && S.docOwner.mobile) || (typeof CFG.knownMobile === 'function' ? CFG.knownMobile() || '' : '');
+const spaced = (v, t) => t === 'aadhaar' ? v.replace(/(\d{4})(?=\d)/g, '$1 ') : t === 'mobile' ? v.replace(/^(\d{5})(\d{5})$/, '$1 $2') : v.replace(/^([A-Z]{5})(\d{4})([A-Z])$/, '$1 $2$3');
 STEP.kyc = {
   label: 'Identity',
   view() {
     const k = S.kyc, mot = S.product === 'motor';
     return {
-      say: k ? (mot ? `I'll use the KYC you've already done. The policy has to be in the owner's name, so switch if the ${CLS[S.motor.v.cls].noun} isn't yours.` : `You're already verified, ${esc(first(k.name))}.`) : mot ? 'Now the owner\'s identity. I\'ll fetch the details from the KYC record, so there\'s nothing to type.' : 'Let\'s make sure it\'s you. I\'ll fetch your details from your KYC record, so there\'s nothing to type.',
+      say: k ? (mot ? `I'll use the KYC you've already done. The policy has to be in the owner's name, so switch if the ${CLS[S.motor.v.cls].noun} isn't yours.` : `You're already verified, ${esc(first(k.name))}.`) : mot ? 'Now the owner\'s identity. Give me the PAN or Aadhaar and a mobile number, and I\'ll fetch the rest from the KYC record.' : 'Let\'s make sure it\'s you. Give me your PAN or Aadhaar and your mobile number, and I\'ll fetch the rest from your KYC record.',
       title: k ? `Hi ${esc(first(k.name))}, here's what I have` : KYC_TITLE,
       body: '<div class="q-body" data-x="kyc"></div>',
       next: k ? 'Yes, continue' : 'Get OTP',
@@ -4157,7 +4189,7 @@ function kycDoneHtml(k) {
 }
 function kycWire(api) {
   const box = api.body.querySelector('[data-x=kyc]');
-  const U = S.kycUi = { phase: S.kyc ? 'done' : 'id', type: 'pan', id: '', rec: null, timer: 0, note: '', dgOk: false, doc: { type: 'passport', front: null, back: null, thumb: '', ai: null, f: null, issues: [] } };
+  const U = S.kycUi = { phase: S.kyc ? 'done' : 'id', type: 'pan', id: '', mob: kycKnownMobile(), rec: null, timer: 0, note: '', dgOk: false, doc: { type: 'passport', front: null, back: null, thumb: '', ai: null, f: null, issues: [] } };
   const title = t => { const h = api.q.querySelector('.q-title'); if (h) h.textContent = t; };
   function idForm() {
     const D = ID[U.type], dis = U.phase !== 'id' ? 'disabled' : '';
@@ -4171,7 +4203,13 @@ function kycWire(api) {
     if (U.type === 'digilocker') return `<div class="dg-box"><span class="sec-h">With your consent, DigiLocker shares</span><ul class="dg-list">${dgShares(S).map(([t, s]) => `<li><b>${esc(t)}</b><small>${esc(s)}</small></li>`).join('')}</ul></div>
       <label class="agree"><input type="checkbox" name="dgok" ${U.dgOk ? 'checked' : ''} ${dis}><span>I agree to ${esc(CFG.insurer)} fetching these documents from my DigiLocker, for KYC and for underwriting and servicing this policy.</span></label>${field}
       ${U.phase === 'id' ? '<p class="hint">DigiLocker sends a code to the mobile number linked to it. Your documents come straight from the issuers, so they\'re already verified.</p>' : ''}`;
-    return `${field}${U.phase === 'id' ? `<p class="hint">I'll fetch your name, date of birth and address from ${D.source}, after a one-time password to the mobile number linked to it.${U.type === 'aadhaar' ? ' Your Aadhaar number isn\'t stored.' : ''}</p>` : ''}`;
+    const mob = KYC_NEEDS_MOB(U.type) ? `<label class="fld"><span>${U.type === 'aadhaar' ? 'Mobile number linked to your Aadhaar' : 'Mobile number'}</span><input type="text" name="kmob" class="big-in" value="${esc(U.mob || '')}" placeholder="10-digit mobile" inputmode="numeric" maxlength="10" autocomplete="tel-national" ${dis}></label>` : '';
+    return `${mob ? `<div class="row2 kyc-ids">${field}${mob}</div>` : field}${U.phase === 'id' ? `<p class="hint">I'll send a one-time password to ${U.type === 'aadhaar' ? 'this number' : 'your mobile'}, then fetch your name, date of birth and address from ${D.source}. Your policy and its updates go to this number.${U.type === 'aadhaar' ? ' Your Aadhaar number isn\'t stored.' : ''}</p>${kycDemoHtml()}` : ''}`;
+  }
+  function kycDemoHtml() {
+    if (U.type === 'digilocker') return `<p class="otp-demo kyc-demo" role="note"><span class="od-l">Demo, use mobile</span><b>${spaced(DEMO_KYC.mobile, 'mobile')}</b><button type="button" data-a="demo">Fill it in</button></p>`;
+    if (!KYC_NEEDS_MOB(U.type)) return '';
+    return `<p class="otp-demo kyc-demo" role="note"><span class="od-l">Demo, use ${U.type === 'pan' ? 'PAN' : 'Aadhaar'}</span><b>${spaced(DEMO_KYC[U.type], U.type)}</b><span class="od-l">and mobile</span><b>${spaced(DEMO_KYC.mobile, 'mobile')}</b><button type="button" data-a="demo">Fill them in</button></p>`;
   }
   function docForm() {
     const d = U.doc, f = d.f, X = DOCS[d.type];
@@ -4225,6 +4263,7 @@ function kycWire(api) {
     }
     U.phase = 'done'; render(); title(`Hi ${first(S.kyc.name)}, here's what I found`);
     api.live();
+    HOOKS.kycDone.forEach(f => { try { f(S.kyc, box); } catch (e) { /* a listener failing doesn't stop the journey */ } });
   }
   const readForm = () => { const v = n => { const x = box.querySelector(`[name=${n}]`); return x ? x.value.trim() : ''; }, g = box.querySelector('[name=kg]:checked'); Object.assign(U.doc.f, { name: v('kn'), dob: v('kd'), gender: g ? g.value : '', num: v('kno'), addr: v('ka'), pin: v('kp'), mobile: v('km') }); };
   box.addEventListener('change', async e => {
@@ -4237,6 +4276,7 @@ function kycWire(api) {
   });
   box.addEventListener('input', e => {
     if (e.target.name === 'idn') U.id = e.target.value;
+    if (e.target.name === 'kmob') { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10); U.mob = e.target.value; }
     if (U.phase === 'form' && ['kn', 'kno', 'ka', 'kp', 'km'].includes(e.target.name)) { if (['kp', 'km'].includes(e.target.name)) e.target.value = e.target.value.replace(/\D/g, ''); readForm(); }
     const o = e.target.dataset.o;
     if (o != null) { const v = e.target.value.replace(/\D/g, ''); if (v.length > 1) { fillOtp(v.slice(0, 6)); return; } e.target.value = v; if (v && +o < 5) box.querySelector(`[data-o="${+o + 1}"]`).focus(); checkOtp(); }
@@ -4244,12 +4284,14 @@ function kycWire(api) {
   box.addEventListener('keydown', e => {
     const o = e.target.dataset.o;
     if (o != null && e.key === 'Backspace' && !e.target.value && +o > 0) box.querySelector(`[data-o="${+o - 1}"]`).focus();
-    if (e.target.name === 'idn' && e.key === 'Enter') api.next();
+    if (e.target.name === 'idn' && e.key === 'Enter') { const m = box.querySelector('[name=kmob]'); if (m && !U.mob) m.focus(); else api.next(); }
+    if (e.target.name === 'kmob' && e.key === 'Enter') api.next();
   });
   box.addEventListener('paste', e => { if (e.target.dataset.o == null) return; const d = (e.clipboardData.getData('text') || '').replace(/\D/g, '').slice(0, 6); if (d) { e.preventDefault(); fillOtp(d); } });
   box.addEventListener('click', e => {
     const a = e.target.closest('[data-a]'); if (!a) return;
     if (a.dataset.a === 'reset') { S.kyc = null; U.phase = 'id'; U.id = ''; title(KYC_TITLE); render(); renderRail(); }
+    if (a.dataset.a === 'demo') { if (U.type === 'digilocker') U.id = DEMO_KYC.mobile; else { U.id = DEMO_KYC[U.type]; U.mob = DEMO_KYC.mobile; } api.err(''); render(); const nb = api.q.querySelector('.q-foot .btn-next'); if (nb) nb.focus(); }
     if (a.dataset.a === 'change') { clearInterval(U.timer); U.phase = U.type === 'doc' ? 'form' : 'id'; render(); }
     if (a.dataset.a === 'redoc') { readForm(); U.phase = 'id'; render(); }
     if (a.dataset.a === 'resend') { toast(`A new OTP is on its way to ${maskMobile(U.type === 'doc' ? U.doc.f.mobile : U.rec.mobile)}`); startTimer(); }
@@ -4282,8 +4324,10 @@ async function kycCommit(api) {
   const D = ID[U.type], v = D.norm(U.id || '');
   if (U.type === 'digilocker' && !U.dgOk) return 'Tick the box to let DigiLocker share your documents.';
   const e = D.check(v); if (e) return e;
+  if (KYC_NEEDS_MOB(U.type) && !/^[6-9]\d{9}$/.test(U.mob || '')) { const m = api.body.querySelector('[name=kmob]'); if (m) m.focus(); return U.mob ? 'That mobile number isn\'t valid. Enter the 10 digits, starting with 6, 7, 8 or 9.' : 'Enter your mobile number. The one-time password goes there.'; }
   api.err('');
   U.idn = v; U.rec = kycRecord(U.type, v, null);
+  if (KYC_NEEDS_MOB(U.type)) U.rec.mobile = U.mob;
   if (U.type === 'digilocker' && v.length === 10) U.rec.mobile = v;
   U.phase = 'otp'; U.render(); return 'STAY';
 }
@@ -4296,8 +4340,10 @@ function kycCmd(t) {
   let type = null, id = null;
   const pan = up.match(/[A-Z]{5}\d{4}[A-Z]/);
   if (pan) { type = 'pan'; id = pan[0]; } else if (/^\d{12}$/.test(digs)) { type = 'aadhaar'; id = digs; }
+  if (!type && U.phase === 'id' && KYC_NEEDS_MOB(U.type) && /^[6-9]\d{9}$/.test(digs)) { U.mob = digs; U.render(); press('.btn-next'); return ''; }
   if (!type) return null;
   U.type = type; U.id = id; U.phase = 'id'; U.render();
+  if (!/^[6-9]\d{9}$/.test(U.mob || '')) return 'Got it. Now your 10-digit mobile number.';
   press('.btn-next'); return '';
 }
 

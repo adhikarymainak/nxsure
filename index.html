@@ -1548,6 +1548,34 @@ button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:
 .q>.q-foot{position:sticky;bottom:-20px;z-index:6;margin:0 calc(-1 * clamp(22px,3.6vw,40px)) calc(-1 * clamp(22px,3.6vw,40px));padding:14px clamp(22px,3.6vw,40px) clamp(16px,2.4vw,24px);background:var(--surface);border-top:1px solid var(--line);border-radius:0 0 28px 28px;box-shadow:0 -16px 26px -22px rgba(16,12,40,.45)}
 @media (max-width:640px){.q>.q-foot{border-radius:0 0 22px 22px}}
 
+/* KYC: the ID and the mobile number side by side, sample details for the demo, and the account it sets up */
+.kyc-ids .big-in{max-width:none}
+.kyc-ids input[name=kmob]{letter-spacing:.06em}
+.kyc-demo{margin-top:2px}
+.kyc-demo .od-l + b{margin-right:4px}
+.kyc-acct{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;margin-top:14px;padding:14px 16px;border-radius:18px;background:var(--brand-soft);color:var(--ink)}
+.kyc-acct-ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:#fff}
+.kyc-acct-ic svg{width:15px;height:15px}
+.kyc-acct b{display:block;font:600 15px/1.35 var(--display)}
+.kyc-acct small{display:block;color:var(--ink-2);font-size:13.5px;margin-top:3px}
+
+/* saved journeys, at the start of a new one */
+.jx-saved{display:grid;gap:10px;margin-top:22px}
+.jx-sv{display:grid;grid-template-columns:76px minmax(0,1fr) auto auto;gap:14px;align-items:center;text-align:left;padding:10px 14px 10px 10px;border:1.5px solid var(--line);border-radius:20px;background:var(--surface);color:var(--ink);cursor:pointer;transition:border-color .18s,transform .18s}
+.jx-sv:hover{border-color:var(--brand);transform:translateY(-1px)}
+.jx-sv-art{display:block;background:var(--surface-2);border-radius:14px;padding:6px 6px 0}
+.jx-sv-bd{display:grid;gap:2px;min-width:0}
+.jx-sv-bd b{font:600 15px/1.3 var(--display)}
+.jx-sv-bd small{color:var(--ink-2);font-size:13px;line-height:1.4}
+.jx-sv-amt{font:650 15px/1.2 var(--display);white-space:nowrap;text-align:right}
+.jx-sv-amt small{display:block;font:500 11.5px var(--text,inherit);color:var(--ink-2)}
+.jx-sv .go{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand-ink)}
+.jx-sv .go svg{width:17px;height:17px}
+@media (max-width:560px){.jx-sv{grid-template-columns:60px minmax(0,1fr) auto}.jx-sv .go{display:none}}
+.kyc-ids>*{min-width:0}
+.kyc-ids input{width:100%;min-width:0;box-sizing:border-box}
+.kyc-demo{width:auto}
+
 [hidden]{display:none!important}
 
 /* ================= NxSure website =================
@@ -2612,6 +2640,35 @@ a.a-row:hover{border-color:var(--w-brand)}
 @media (prefers-reduced-motion: reduce){.w *{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 .w-page .wb{margin-top:8px;background:var(--w-card,#fff)}
 .w-page .wb-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+
+/* saved journeys: a card on every page to carry on where you stopped */
+.w-park{position:fixed;left:16px;bottom:16px;z-index:65;display:grid;grid-template-columns:76px minmax(0,1fr) auto auto;gap:14px;align-items:center;max-width:min(640px,calc(100% - 32px));padding:12px;border-radius:22px;background:var(--w-card);border:1px solid var(--w-line2);box-shadow:0 22px 50px -20px rgba(22,20,43,.38);animation:wpark .45s cubic-bezier(.2,1.2,.4,1)}
+@keyframes wpark{from{transform:translateY(24px);opacity:0}}
+.w-park-art{display:block;background:var(--w-bg2);border-radius:14px;padding:6px 6px 0;--la-bg:var(--w-bg2)}
+.w-park-bd{display:grid;gap:3px;min-width:0}
+.w-park-bd .a-pill{justify-self:start;margin-bottom:2px}
+.w-park-bd b{font-size:15px;line-height:1.3}
+.w-park-bd small{color:var(--w-ink2);font-size:13px;line-height:1.4}
+.w-park-bd .w-link{display:inline;font-size:13px}
+.w-park-x{width:32px;height:32px;border-radius:50%;border:0;background:var(--w-bg2);color:var(--w-ink2);font-size:19px;line-height:1;cursor:pointer;align-self:start}
+.w-park-x:hover{color:var(--w-ink)}
+body.jx-open .w-park{display:none}
+@media (max-width:640px){.w-park{left:10px;right:10px;bottom:10px;max-width:none;grid-template-columns:58px minmax(0,1fr) auto;gap:10px 12px}.w-park>.w-btn{grid-column:1/-1;justify-content:center}.w-park-x{grid-column:3;grid-row:1}}
+
+/* My NxSure: where each application stands */
+.a-lead .bd a{text-decoration:none;color:inherit}
+.a-lead .bd a:hover b{color:var(--w-brand-ink)}
+.a-lead-sub{font-weight:500;color:var(--w-ink2);font-size:14px}
+.a-lead .bd small.a-lead-amt{color:var(--w-ink);font-weight:650}
+.a-lead-go{display:grid;justify-items:end;gap:6px}
+.a-lead-go .w-btn{white-space:nowrap}
+.a-lead-x{font-size:13px!important;color:var(--w-mute)!important;font-weight:600}
+a.a-row-art{display:block}
+.a-leads .a-list{gap:10px}
+.a-leads .a-row{box-shadow:none}
+.a-empty{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:860px){.a-lead-go{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;flex-direction:row-reverse}}
+.a-row .bd .a-pill,.a-lead .bd .a-pill{justify-self:start}
 </style>
 </head>
 <body>
@@ -4385,7 +4442,7 @@ function pay(amount, ref, label) {
 /* ================= journey framework ================= */
 let S = null;
 const STEP = {};
-const HOOKS = { shown: [], restart: [] };
+const HOOKS = { shown: [], restart: [], kycDone: [] };
 // after KYC: the discount tiles and the consents, then (health) the declaration, the photo and cover made for them
 const MOTOR_IDS = ['vehicle', 'confirm', 'policy', 'plan', 'addons', 'quote', 'kyc', 'data', 'aa', 'bureau', 'needs', 'xsetup', 'hdecl', 'photo', 'pcheck', 'review', 'sent', 'inspect', 'done'];
 const HEALTH_IDS = ['members', 'pincode', 'cover', 'tier', 'tune', 'hquote', 'kyc', 'data', 'aa', 'bureau', 'health', 'family', 'wellness', 'outcome', 'photo', 'needs', 'xsetup', 'pcheck', 'review', 'sent', 'done'];
@@ -4739,10 +4796,10 @@ STEP.product = {
     body: `<div class="tiles prod-tiles">
       ${tile('data-p="motor"', `<span class="tile-art">${ART.motor()}</span><span class="tile-name">Motor</span><span class="tile-sub">Car, two-wheeler or commercial vehicle. Renew in a minute with last year's policy.</span>`, S.product === 'motor')}
       ${tile('data-p="health"', `<span class="tile-art">${ART.health()}</span><span class="tile-name">Health</span><span class="tile-sub">You, your family and your parents, with your cover decided right here.</span>`, S.product === 'health')}
-    </div>`,
+    </div>${typeof jxSavedHtml === 'function' ? jxSavedHtml() : ''}`,
     next: null, back: CFG.channel === 'agent' ? undefined : false, hint: 'Say “motor” or “health”',
   }),
-  wire(api) { api.body.addEventListener('click', e => { const t = e.target.closest('[data-p]'); if (t) pickProduct(t.dataset.p); }); },
+  wire(api) { api.body.addEventListener('click', e => { const l = e.target.closest('[data-lead]'); if (l && typeof JX !== 'undefined' && JX.resume) { JX.resume(l.dataset.lead); return; } const t = e.target.closest('[data-p]'); if (t) pickProduct(t.dataset.p); }); },
   value: () => S.product === 'motor' ? 'Motor' : S.product === 'health' ? 'Health' : '',
   done: () => !!S.product,
   cmd(t) { const l = t.toLowerCase(); if (/health|medic|family|parent|mediclaim/.test(l)) { pickProduct('health'); return ''; } if (/motor|car|bike|scooter|vehicle|truck|taxi|two.?wheeler|lorry/.test(l)) { pickProduct('motor'); return ''; } return null; },
@@ -4758,12 +4815,17 @@ function pickProduct(p) {
 
 /* ================= KYC: PAN or Aadhaar with a code, DigiLocker with consent, or an uploaded ID ================= */
 const KYC_TITLE = 'Verify with PAN, Aadhaar, DigiLocker or an ID';
+// sample details for trying the demo: a valid-format PAN, an Aadhaar number that passes the checksum, and a mobile
+const DEMO_KYC = { pan: 'ABCPS1234F', aadhaar: '234123412346', mobile: '9845012345' };
+const KYC_NEEDS_MOB = t => t === 'pan' || t === 'aadhaar';
+const kycKnownMobile = () => (S.docOwner && S.docOwner.mobile) || (typeof CFG.knownMobile === 'function' ? CFG.knownMobile() || '' : '');
+const spaced = (v, t) => t === 'aadhaar' ? v.replace(/(\d{4})(?=\d)/g, '$1 ') : t === 'mobile' ? v.replace(/^(\d{5})(\d{5})$/, '$1 $2') : v.replace(/^([A-Z]{5})(\d{4})([A-Z])$/, '$1 $2$3');
 STEP.kyc = {
   label: 'Identity',
   view() {
     const k = S.kyc, mot = S.product === 'motor';
     return {
-      say: k ? (mot ? `I'll use the KYC you've already done. The policy has to be in the owner's name, so switch if the ${CLS[S.motor.v.cls].noun} isn't yours.` : `You're already verified, ${esc(first(k.name))}.`) : mot ? 'Now the owner\'s identity. I\'ll fetch the details from the KYC record, so there\'s nothing to type.' : 'Let\'s make sure it\'s you. I\'ll fetch your details from your KYC record, so there\'s nothing to type.',
+      say: k ? (mot ? `I'll use the KYC you've already done. The policy has to be in the owner's name, so switch if the ${CLS[S.motor.v.cls].noun} isn't yours.` : `You're already verified, ${esc(first(k.name))}.`) : mot ? 'Now the owner\'s identity. Give me the PAN or Aadhaar and a mobile number, and I\'ll fetch the rest from the KYC record.' : 'Let\'s make sure it\'s you. Give me your PAN or Aadhaar and your mobile number, and I\'ll fetch the rest from your KYC record.',
       title: k ? `Hi ${esc(first(k.name))}, here's what I have` : KYC_TITLE,
       body: '<div class="q-body" data-x="kyc"></div>',
       next: k ? 'Yes, continue' : 'Get OTP',
@@ -4787,7 +4849,7 @@ function kycDoneHtml(k) {
 }
 function kycWire(api) {
   const box = api.body.querySelector('[data-x=kyc]');
-  const U = S.kycUi = { phase: S.kyc ? 'done' : 'id', type: 'pan', id: '', rec: null, timer: 0, note: '', dgOk: false, doc: { type: 'passport', front: null, back: null, thumb: '', ai: null, f: null, issues: [] } };
+  const U = S.kycUi = { phase: S.kyc ? 'done' : 'id', type: 'pan', id: '', mob: kycKnownMobile(), rec: null, timer: 0, note: '', dgOk: false, doc: { type: 'passport', front: null, back: null, thumb: '', ai: null, f: null, issues: [] } };
   const title = t => { const h = api.q.querySelector('.q-title'); if (h) h.textContent = t; };
   function idForm() {
     const D = ID[U.type], dis = U.phase !== 'id' ? 'disabled' : '';
@@ -4801,7 +4863,13 @@ function kycWire(api) {
     if (U.type === 'digilocker') return `<div class="dg-box"><span class="sec-h">With your consent, DigiLocker shares</span><ul class="dg-list">${dgShares(S).map(([t, s]) => `<li><b>${esc(t)}</b><small>${esc(s)}</small></li>`).join('')}</ul></div>
       <label class="agree"><input type="checkbox" name="dgok" ${U.dgOk ? 'checked' : ''} ${dis}><span>I agree to ${esc(CFG.insurer)} fetching these documents from my DigiLocker, for KYC and for underwriting and servicing this policy.</span></label>${field}
       ${U.phase === 'id' ? '<p class="hint">DigiLocker sends a code to the mobile number linked to it. Your documents come straight from the issuers, so they\'re already verified.</p>' : ''}`;
-    return `${field}${U.phase === 'id' ? `<p class="hint">I'll fetch your name, date of birth and address from ${D.source}, after a one-time password to the mobile number linked to it.${U.type === 'aadhaar' ? ' Your Aadhaar number isn\'t stored.' : ''}</p>` : ''}`;
+    const mob = KYC_NEEDS_MOB(U.type) ? `<label class="fld"><span>${U.type === 'aadhaar' ? 'Mobile number linked to your Aadhaar' : 'Mobile number'}</span><input type="text" name="kmob" class="big-in" value="${esc(U.mob || '')}" placeholder="10-digit mobile" inputmode="numeric" maxlength="10" autocomplete="tel-national" ${dis}></label>` : '';
+    return `${mob ? `<div class="row2 kyc-ids">${field}${mob}</div>` : field}${U.phase === 'id' ? `<p class="hint">I'll send a one-time password to ${U.type === 'aadhaar' ? 'this number' : 'your mobile'}, then fetch your name, date of birth and address from ${D.source}. Your policy and its updates go to this number.${U.type === 'aadhaar' ? ' Your Aadhaar number isn\'t stored.' : ''}</p>${kycDemoHtml()}` : ''}`;
+  }
+  function kycDemoHtml() {
+    if (U.type === 'digilocker') return `<p class="otp-demo kyc-demo" role="note"><span class="od-l">Demo, use mobile</span><b>${spaced(DEMO_KYC.mobile, 'mobile')}</b><button type="button" data-a="demo">Fill it in</button></p>`;
+    if (!KYC_NEEDS_MOB(U.type)) return '';
+    return `<p class="otp-demo kyc-demo" role="note"><span class="od-l">Demo, use ${U.type === 'pan' ? 'PAN' : 'Aadhaar'}</span><b>${spaced(DEMO_KYC[U.type], U.type)}</b><span class="od-l">and mobile</span><b>${spaced(DEMO_KYC.mobile, 'mobile')}</b><button type="button" data-a="demo">Fill them in</button></p>`;
   }
   function docForm() {
     const d = U.doc, f = d.f, X = DOCS[d.type];
@@ -4855,6 +4923,7 @@ function kycWire(api) {
     }
     U.phase = 'done'; render(); title(`Hi ${first(S.kyc.name)}, here's what I found`);
     api.live();
+    HOOKS.kycDone.forEach(f => { try { f(S.kyc, box); } catch (e) { /* a listener failing doesn't stop the journey */ } });
   }
   const readForm = () => { const v = n => { const x = box.querySelector(`[name=${n}]`); return x ? x.value.trim() : ''; }, g = box.querySelector('[name=kg]:checked'); Object.assign(U.doc.f, { name: v('kn'), dob: v('kd'), gender: g ? g.value : '', num: v('kno'), addr: v('ka'), pin: v('kp'), mobile: v('km') }); };
   box.addEventListener('change', async e => {
@@ -4867,6 +4936,7 @@ function kycWire(api) {
   });
   box.addEventListener('input', e => {
     if (e.target.name === 'idn') U.id = e.target.value;
+    if (e.target.name === 'kmob') { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10); U.mob = e.target.value; }
     if (U.phase === 'form' && ['kn', 'kno', 'ka', 'kp', 'km'].includes(e.target.name)) { if (['kp', 'km'].includes(e.target.name)) e.target.value = e.target.value.replace(/\D/g, ''); readForm(); }
     const o = e.target.dataset.o;
     if (o != null) { const v = e.target.value.replace(/\D/g, ''); if (v.length > 1) { fillOtp(v.slice(0, 6)); return; } e.target.value = v; if (v && +o < 5) box.querySelector(`[data-o="${+o + 1}"]`).focus(); checkOtp(); }
@@ -4874,12 +4944,14 @@ function kycWire(api) {
   box.addEventListener('keydown', e => {
     const o = e.target.dataset.o;
     if (o != null && e.key === 'Backspace' && !e.target.value && +o > 0) box.querySelector(`[data-o="${+o - 1}"]`).focus();
-    if (e.target.name === 'idn' && e.key === 'Enter') api.next();
+    if (e.target.name === 'idn' && e.key === 'Enter') { const m = box.querySelector('[name=kmob]'); if (m && !U.mob) m.focus(); else api.next(); }
+    if (e.target.name === 'kmob' && e.key === 'Enter') api.next();
   });
   box.addEventListener('paste', e => { if (e.target.dataset.o == null) return; const d = (e.clipboardData.getData('text') || '').replace(/\D/g, '').slice(0, 6); if (d) { e.preventDefault(); fillOtp(d); } });
   box.addEventListener('click', e => {
     const a = e.target.closest('[data-a]'); if (!a) return;
     if (a.dataset.a === 'reset') { S.kyc = null; U.phase = 'id'; U.id = ''; title(KYC_TITLE); render(); renderRail(); }
+    if (a.dataset.a === 'demo') { if (U.type === 'digilocker') U.id = DEMO_KYC.mobile; else { U.id = DEMO_KYC[U.type]; U.mob = DEMO_KYC.mobile; } api.err(''); render(); const nb = api.q.querySelector('.q-foot .btn-next'); if (nb) nb.focus(); }
     if (a.dataset.a === 'change') { clearInterval(U.timer); U.phase = U.type === 'doc' ? 'form' : 'id'; render(); }
     if (a.dataset.a === 'redoc') { readForm(); U.phase = 'id'; render(); }
     if (a.dataset.a === 'resend') { toast(`A new OTP is on its way to ${maskMobile(U.type === 'doc' ? U.doc.f.mobile : U.rec.mobile)}`); startTimer(); }
@@ -4912,8 +4984,10 @@ async function kycCommit(api) {
   const D = ID[U.type], v = D.norm(U.id || '');
   if (U.type === 'digilocker' && !U.dgOk) return 'Tick the box to let DigiLocker share your documents.';
   const e = D.check(v); if (e) return e;
+  if (KYC_NEEDS_MOB(U.type) && !/^[6-9]\d{9}$/.test(U.mob || '')) { const m = api.body.querySelector('[name=kmob]'); if (m) m.focus(); return U.mob ? 'That mobile number isn\'t valid. Enter the 10 digits, starting with 6, 7, 8 or 9.' : 'Enter your mobile number. The one-time password goes there.'; }
   api.err('');
   U.idn = v; U.rec = kycRecord(U.type, v, null);
+  if (KYC_NEEDS_MOB(U.type)) U.rec.mobile = U.mob;
   if (U.type === 'digilocker' && v.length === 10) U.rec.mobile = v;
   U.phase = 'otp'; U.render(); return 'STAY';
 }
@@ -4926,8 +5000,10 @@ function kycCmd(t) {
   let type = null, id = null;
   const pan = up.match(/[A-Z]{5}\d{4}[A-Z]/);
   if (pan) { type = 'pan'; id = pan[0]; } else if (/^\d{12}$/.test(digs)) { type = 'aadhaar'; id = digs; }
+  if (!type && U.phase === 'id' && KYC_NEEDS_MOB(U.type) && /^[6-9]\d{9}$/.test(digs)) { U.mob = digs; U.render(); press('.btn-next'); return ''; }
   if (!type) return null;
   U.type = type; U.id = id; U.phase = 'id'; U.render();
+  if (!/^[6-9]\d{9}$/.test(U.mob || '')) return 'Got it. Now your 10-digit mobile number.';
   press('.btn-next'); return '';
 }
 
@@ -10641,13 +10717,17 @@ HOOKS.closed = [];
 REC.linkable = true;
 const JX = {
   open(o = {}) {
+    if (o.lead) { JX.resume(o.lead); return; }
     const jx = $('#jx');
-    // a video medical exam left for later picks up where it stopped
-    if ((!o.product || o.product === 'health') && !(S && S.product === 'health' && S.cur !== 'product') && vmResumeParked()) {
-      const jx0 = $('#jx'); jx0.hidden = false; document.body.classList.add('jx-open'); closeRail(); closePop(); show('outcome', 1); const pb = $('.vm-park'); if (pb) pb.remove(); return;
+    // a vehicle number that already has a saved quote picks that quote up
+    if (o.reg) {
+      const hit = leadsMine().find(l => !l.s.paid && l.s.product === 'motor' && l.s.motor && l.s.motor.reg && keyOf(l.s.motor.reg.display) === keyOf(o.reg));
+      if (hit) { JX.resume(hit.id, `Welcome back. I kept your quote for ${hit.s.motor.reg.display}, so you can carry on from here.`); return; }
     }
     const resume = !!(S && S.product && o.product === S.product && !S.paid && !o.reg && !o.members && !o.doc && S.cur !== 'product' && (!o.cls || o.cls === S.clsHint));
     if (!resume) {
+      // the journey on screen is kept before a new one starts
+      if (S && !S.paid) leadKeep(S, { quiet: true });
       S = fresh(); shownPrice = null;
       if (o.product) {
         S.product = o.product; S.seen.add('product');
@@ -10659,7 +10739,7 @@ const JX = {
       }
     }
     jx.hidden = false; document.body.classList.add('jx-open');
-    closeRail(); closePop();
+    closeRail(); closePop(); leadsPaint();
     if (resume) show(S.cur, 1);
     else show(o.product ? order()[1] : 'product', 1);
     if (!resume && o.reg && S.cur === 'vehicle') {
@@ -10669,14 +10749,32 @@ const JX = {
       const f = S.api.body.querySelector(`[data-doc=${o.doc}]`); if (f) f.click();
     }
   },
+  // carry on a saved journey from the step where it stopped
+  resume(id, msg) {
+    const L = leadGet(id); if (!L) return false;
+    if (S && S !== L.s && !S.paid) leadKeep(S, { quiet: true });
+    S = L.s; shownPrice = null; S.recAsked = false;
+    const H = S.health;
+    if (H && vmSaved(H)) { S.cur = 'outcome'; H.vmer.mode = 'now'; }
+    $('#jx').hidden = false; document.body.classList.add('jx-open');
+    closeRail(); closePop(); leadsPaint();
+    const ids = order(), at = ids.includes(S.cur) ? S.cur : nextTarget(ids[0]);
+    show(at, 1);
+    setTimeout(() => toast(msg || 'Welcome back. Your answers are saved, so you can carry on from here.'), 450);
+    return true;
+  },
   close() {
     if (!$('#paySheet').hidden) return;
     const cs = $('.rec-consent'); if (cs) cs.remove();
     if (REC.cur) { REC.stop(S && S.paid ? 'paid' : 'closed'); }
     if (S) S.recAsked = false;
     $('#jx').hidden = true; document.body.classList.remove('jx-open'); closePop(); closeRail();
+    const kept = S && !S.paid ? leadKeep(S, { quiet: true }) : null;
+    if (S && S.paid) leadKeep(S, { quiet: true });
     HOOKS.closed.forEach(f => f());
     if (S && S.paid) S = fresh();
+    leadsPaint();
+    if (kept) toast('Saved. You can carry on from where you stopped, any time.');
   },
   isOpen: () => !$('#jx').hidden,
 };
@@ -10698,13 +10796,6 @@ const JX = {
   $('#jx .logo').addEventListener('click', () => JX.close());
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && JX.isOpen() && $('#paySheet').hidden && !$('#rail').classList.contains('open') && !$('.pop')) JX.close(); });
   S = fresh();
-  // a saved video exam: offer to carry on, from any page of the site
-  const P = vmParked();
-  if (P) {
-    const b = el(`<div class="vm-park" role="region" aria-label="Your saved video medical exam"><span class="vm-park-ic">${VM_ICO.video}</span><span><b>Your video medical exam is saved</b><small>Carry on from where you stopped, ${esc(fdt(P.health.vmer.saved.at))}.</small></span><button type="button" class="btn-next" data-a="go" style="margin:0"><span>Carry on</span>${ICO.right}</button><button type="button" class="x" data-a="x" aria-label="Dismiss">×</button></div>`);
-    document.body.appendChild(b);
-    b.addEventListener('click', e => { const a = e.target.closest('[data-a]'); if (!a) return; b.remove(); if (a.dataset.a === 'go') JX.open({ product: 'health' }); });
-  }
 })();
 
 const WIC = {
@@ -11090,6 +11181,228 @@ If you don't know a specific figure, say so instead of guessing.
 Question: ${q}`, { modelTier: 'quick', cache: false, onText: ({ text }) => { out.textContent = text; log.scrollTop = log.scrollHeight; } });
   } catch (e) { out.textContent = e && e.text ? e.text : 'I couldn\'t answer that just now. Try again in a moment.'; }
 }
+/* ================= Saved journeys: every quote and proposal is kept on this device, so a customer who stops
+   can carry on from where they left off, from any page, from the start of a new journey, or from My NxSure ================= */
+const LEADS = { key: 'nxsure-leads', ver: 1, ttl: 30 * 864e5, keepOpen: 10, keepPaid: 24, list: null };
+const CUSTS = { key: 'nxsure-customers' };
+const LEAD_STAGE = {
+  vehicle: 'Vehicle details', confirm: 'Vehicle details', policy: 'Current policy', plan: 'Choosing cover', addons: 'Choosing add-ons', quote: 'Quote ready',
+  members: 'Who to cover', pincode: 'Who to cover', cover: 'Choosing cover', tier: 'Choosing a plan', tune: 'Choosing a plan', hquote: 'Quote ready',
+  kyc: 'KYC pending', data: 'KYC done', aa: 'KYC done', bureau: 'KYC done', needs: 'KYC done', xsetup: 'Extra covers',
+  hdecl: 'Health questions', health: 'Health questions', reports: 'Reports needed', family: 'Health questions', wellness: 'Health questions', outcome: 'Health assessment',
+  photo: 'Photo pending', pcheck: 'Final checks', review: 'Ready to pay',
+};
+const leadNewId = () => 'L' + Date.now().toString(36).toUpperCase() + Math.random().toString(36).slice(2, 6).toUpperCase();
+
+/* ---------- storing ---------- */
+function leadRevive(k, v) {
+  if (v && typeof v === 'object' && !Array.isArray(v)) {
+    const ks = Object.keys(v);
+    if (ks.length === 1 && ks[0] === '__d') return new Date(v.__d);
+    if (ks.length === 1 && ks[0] === '__s') return new Set(v.__s);
+  }
+  return v;
+}
+// what can't be kept (the screen, files, camera streams) is left out; 'lite' also drops photos when the device is short of space
+function leadPack(list, lite) {
+  return JSON.stringify({ v: LEADS.ver, uid: typeof UID !== 'undefined' ? UID : 0, list: list.map(l => ({ id: l.id, at: l.at, owner: l.owner, s: l.s })) }, function (k, v) {
+    if (k === 'api' || k === 'kycUi' || k === 'enter' || k === 'audio' || k === 'file' || k === 'ready' || k === 'stream' || k === 'acctDone') return undefined;
+    if (lite && (k === 'photo' || k === 'docUrl' || k === 'thumb' || k === 'shots' || k === 'frames')) return undefined;
+    const raw = this[k];
+    if (raw instanceof Date) return { __d: raw.getTime() };
+    if (raw instanceof Set) return { __s: [...raw] };
+    if (typeof Blob !== 'undefined' && raw instanceof Blob) return undefined;
+    if (typeof Node !== 'undefined' && raw instanceof Node) return undefined;
+    if (raw && ArrayBuffer.isView(raw)) return Array.from(raw);
+    if (lite && typeof v === 'string' && v.length > 40000) return undefined;
+    return v;
+  });
+}
+function leadFix(o) {
+  const s = Object.assign(fresh(), o);
+  if (!(s.seen instanceof Set)) s.seen = new Set(s.seen || []);
+  if (!Array.isArray(s.issued)) s.issued = [];
+  if (s.photo && s.photo.url) s.photo.ready = Promise.resolve(s.photo); else if (s.photo) s.photo = null;
+  // a report that was still being read when the page closed goes back to waiting for an upload
+  if (s.health) (s.health.members || []).forEach(m => {
+    Object.values(m.rq || {}).forEach(st => { if (st.status === 'reading') Object.assign(st, { status: 'open', file: null, fileName: '' }); });
+    Object.values(m.rb || {}).forEach(st => { if (st.status === 'reading') Object.assign(st, { status: 'book', file: null, fileName: '' }); });
+  });
+  return s;
+}
+function leadsAll() {
+  if (LEADS.list) return LEADS.list;
+  LEADS.list = [];
+  let o = null;
+  try { const raw = localStorage.getItem(LEADS.key); if (raw) o = JSON.parse(raw, leadRevive); } catch (e) { o = null; }
+  if (o && o.v === LEADS.ver && Array.isArray(o.list)) {
+    if (typeof UID !== 'undefined') UID = Math.max(UID, Number(o.uid) || 0);
+    o.list.forEach(l => {
+      try {
+        if (!l || !l.s || !l.s.product) return;
+        if (!l.s.paid && Date.now() - l.at > LEADS.ttl) return;
+        const s = leadFix(l.s); s.did = l.id;
+        LEADS.list.push({ id: l.id, at: l.at, owner: l.owner || '', s });
+      } catch (e) { /* a record that can't be read is skipped */ }
+    });
+  }
+  // a video medical exam left for later is a saved journey too
+  try {
+    const P = typeof vmParked === 'function' ? vmParked() : null;
+    if (P) { P.did = P.did || leadNewId(); if (!LEADS.list.some(l => l.id === P.did)) LEADS.list.push({ id: P.did, at: Date.now(), owner: (P.kyc && P.kyc.mobile) || '', s: P }); vmUnpark(); }
+  } catch (e) { /* nothing parked */ }
+  LEADS.list.sort((a, b) => b.at - a.at);
+  return LEADS.list;
+}
+function leadsSave() {
+  const all = leadsAll().sort((a, b) => b.at - a.at);
+  const keep = [...all.filter(l => !l.s.paid).slice(0, LEADS.keepOpen), ...all.filter(l => l.s.paid).slice(0, LEADS.keepPaid)];
+  LEADS.list = all.filter(l => keep.includes(l));
+  try { localStorage.setItem(LEADS.key, leadPack(LEADS.list, false)); return true; } catch (e) { /* too big: try without photos */ }
+  try { localStorage.setItem(LEADS.key, leadPack(LEADS.list, true)); return true; } catch (e) { return false; }
+}
+// a journey is worth keeping once there's something to come back to: a vehicle found, or the people chosen
+function leadWorthy(s) {
+  if (!s || !s.product || CFG.channel !== 'web') return false;
+  if (s.paid) return true;
+  try { return withS(s, () => order().indexOf(s.furthest) >= 2); } catch (e) { return false; }
+}
+function leadKeep(s, o = {}) {
+  if (!leadWorthy(s)) return null;
+  const list = leadsAll();
+  if (!s.did) s.did = leadNewId();
+  let L = list.find(l => l.id === s.did);
+  if (!L) { L = { id: s.did, at: 0, owner: '', s }; list.unshift(L); }
+  L.s = s; L.at = Date.now();
+  if (!L.owner) L.owner = (ACCT.session && ACCT.session.mobile) || (s.kyc && s.kyc.mobile) || '';
+  list.sort((a, b) => b.at - a.at);
+  leadsSave();
+  if (!o.quiet) leadsPaint();
+  return L;
+}
+const leadGet = id => leadsAll().find(l => l.id === id) || null;
+function leadDrop(id) { LEADS.list = leadsAll().filter(l => l.id !== id); leadsSave(); leadsPaint(); }
+// whose journeys these are: the account that's logged in, or the person this device remembers; journeys started before
+// anyone logged in belong to whoever logs in next
+function leadsMine() {
+  const me = ACCT.session ? ACCT.session.mobile : ((typeof DEV !== 'undefined' && DEV.get()) || {}).mobile || '';
+  return leadsAll().filter(l => !l.owner || l.owner === me);
+}
+function leadsClaim(mobile) { let n = 0; leadsAll().forEach(l => { if (!l.owner) { l.owner = mobile; n++; } }); if (n) leadsSave(); }
+
+/* ---------- people who became customers through KYC on this site ---------- */
+function custAll() { try { return JSON.parse(localStorage.getItem(CUSTS.key) || '{}') || {}; } catch (e) { return {}; } }
+const custGet = mobile => custAll()[mobile] || null;
+function custPut(k, product) {
+  const all = custAll(), was = all[k.mobile];
+  all[k.mobile] = Object.assign({}, was || { since: Date.now() }, { name: k.name, gender: k.gender, dob: k.dob, addr: k.addr, city: k.city, pin: k.pin, email: k.email || (was && was.email) || '', via: k.idType === 'doc' ? `${kycLabel(k)}, uploaded` : k.idType === 'digilocker' ? 'DigiLocker' : `${kycLabel(k)} with OTP`, id: k.idMasked, at: Date.now(), motor: (was && was.motor) || product === 'motor' });
+  try { localStorage.setItem(CUSTS.key, JSON.stringify(all)); } catch (e) { /* storage unavailable */ }
+  return !was;
+}
+
+function custEmail(mobile, email) {
+  const all = custAll(); if (!all[mobile] || all[mobile].email === email) return;
+  all[mobile].email = email;
+  try { localStorage.setItem(CUSTS.key, JSON.stringify(all)); } catch (e) { /* storage unavailable */ }
+  if (ACCT.user && ACCT.session && ACCT.session.mobile === mobile) ACCT.user.email = email;
+}
+
+/* ---------- what each one is, and where it stands ---------- */
+function leadTitle(s) {
+  if (s.product === 'motor') { const v = s.motor && s.motor.v; return v ? `${v.cls === 'car' ? 'Car' : CLS[v.cls].label} insurance` : 'Motor insurance'; }
+  return 'Health insurance';
+}
+function leadSub(s) {
+  if (s.product === 'motor') { const M = s.motor || {}, v = M.v; return [M.reg && M.reg.display, v && `${v.make} ${v.model}`].filter(Boolean).join(' · '); }
+  const H = s.health; if (!H) return '';
+  return withS(s, () => 'For ' + listText(active(H).map(m => relLabel(H, m)).map(x => x === 'You' ? 'you' : 'your ' + x.toLowerCase())));
+}
+const leadArt = s => s.product === 'health' ? LA.spotHealth() : s.motor && s.motor.v && s.motor.v.cls === 'bike' ? LA.spotBike() : s.motor && s.motor.v && (s.motor.v.cls === 'gcv' || s.motor.v.cls === 'taxi') ? LA.spotTempo() : LA.spotCar();
+function leadInfo(L) {
+  const s = L.s;
+  return withS(s, () => {
+    const mot = s.product === 'motor', M = s.motor, H = s.health;
+    const ref = (mot ? M && M.quoteNo : H && H.quoteNo) || '';
+    if (s.paid) {
+      const amt = s.paid.amount || 0;
+      if (mot) {
+        if (STEP.inspect.when() && !STEP.inspect.done()) return { stage: 'Inspection pending', tone: 'warn', line: `Policy ${M.policyNo}. Third-party cover is on. Own-damage cover starts once four photos of the vehicle are approved.`, cta: 'continue', amt, paid: true, ref: M.policyNo, key: keyOf(M.policyNo) };
+        return { stage: 'Policy issued', tone: 'ok', line: `Policy ${M.policyNo}, cover from ${fd(motorCalc(M).start)}.`, cta: 'policy', amt, paid: true, ref: M.policyNo, key: keyOf(M.policyNo) };
+      }
+      if (H.policyNo) return { stage: 'Policy issued', tone: 'ok', line: `Policy ${H.policyNo}, cover from ${fd(H.start)}.`, cta: 'policy', amt, paid: true, ref: H.policyNo, key: keyOf(H.policyNo) };
+      const base = { tone: 'info', amt, paid: true, ref: H.proposalNo, key: keyOf(H.proposalNo), cta: 'proposal' };
+      if (vmSaved(H)) return Object.assign(base, { stage: 'Video check paused', tone: 'warn', cta: 'continue', line: `Proposal ${H.proposalNo}. Paid. Carry on the video medical check from where you stopped.` });
+      if (vmLater(H)) return Object.assign(base, { stage: 'Video check booked', tone: 'warn', line: `Proposal ${H.proposalNo}. Paid. Video medical check ${vmSlotText(H.vmer)}. The link comes 15 minutes before.` });
+      if (testPlan(H)) { const t = tbSummary(H.booking); return Object.assign(base, { stage: t ? 'Tests booked' : 'Tests to book', tone: 'warn', line: `Proposal ${H.proposalNo}. Paid. ${t || 'Medical tests are needed. You\'ll get a link to pick a time.'}` }); }
+      if (s.photoReview && !active(H).some(m => m.status === 'refer')) return Object.assign(base, { stage: 'Photo being checked', line: `Proposal ${H.proposalNo}. Paid. Our team looks at your photo within a working day, then we issue the policy.` });
+      return Object.assign(base, { stage: 'With our doctor', line: `Proposal ${H.proposalNo}. Paid. Our doctor reviews it within a working day, and we tell you the decision.` });
+    }
+    let pi = null; try { pi = priceInfo(); } catch (e) { pi = null; }
+    const st = STEP[s.cur], label = st && st.label ? st.label : 'the start';
+    return { stage: s.cur === 'kyc' && s.kyc ? 'KYC done' : LEAD_STAGE[s.cur] || 'In progress', tone: s.cur === 'review' ? 'warn' : 'info', line: `Stopped at ${label.toLowerCase()}, ${fdt(new Date(L.at))}.`, cta: 'continue', amt: pi ? pi.total : 0, from: !!(pi && pi.from), paid: false, ref };
+  });
+}
+// can the customer carry on in the journey itself?
+const leadOpen = L => { const i = leadInfo(L); return i.cta === 'continue'; };
+
+/* ---------- picking up again: a card on every page, and a list at the start of a new journey ---------- */
+function leadsResumable() { return leadsMine().filter(leadOpen); }
+function jxSavedHtml() {
+  if (CFG.channel !== 'web' || !S || S.product) return '';
+  const list = leadsResumable().slice(0, 3); if (!list.length) return '';
+  return `<div class="jx-saved"><span class="sec-h">Pick up where you left off</span>${list.map(L => { const i = leadInfo(L); return `<button type="button" class="jx-sv" data-lead="${L.id}"><span class="jx-sv-art">${leadArt(L.s)}</span><span class="jx-sv-bd"><b>${esc(leadTitle(L.s))}</b><small>${esc(leadSub(L.s))}</small><small>${esc(i.stage)} · ${esc(i.line)}</small></span>${i.amt ? `<span class="jx-sv-amt">${i.from ? '<small>from</small>' : ''}${inr(i.amt)}</span>` : ''}<span class="go">${ICO.right}</span></button>`; }).join('')}</div>`;
+}
+function leadsPaint() {
+  let b = document.getElementById('wPark');
+  const pg = (location.hash || '#home').slice(1), inAcct = /^(account|login|acc-|pol-|prop-|clm-|rec-)/.test(pg);
+  const list = leadsResumable(), L = list[0];
+  let gone = ''; try { gone = sessionStorage.getItem('nxsure-park-x') || ''; } catch (e) { /* storage unavailable */ }
+  if (!L || inAcct || (typeof JX !== 'undefined' && JX.isOpen()) || gone === L.id + ':' + L.at) { if (b) b.remove(); return; }
+  const i = leadInfo(L), more = list.length - 1;
+  if (!b) { b = document.createElement('div'); b.id = 'wPark'; b.className = 'w-park'; b.setAttribute('role', 'region'); b.setAttribute('aria-label', 'Carry on where you left off'); document.body.appendChild(b); b.addEventListener('click', parkClick); }
+  b.dataset.lead = L.id; b.dataset.at = L.at;
+  b.innerHTML = `<span class="w-park-art">${leadArt(L.s)}</span>
+    <span class="w-park-bd"><span class="a-pill ${i.tone}">${esc(i.stage)}</span><b>${L.s.paid ? `Your ${esc(leadTitle(L.s).toLowerCase())} needs one more step` : `Your ${esc(leadTitle(L.s).toLowerCase())} is saved`}</b><small>${esc([leadSub(L.s), i.amt && !L.s.paid ? (i.from ? 'from ' : '') + inr(i.amt) : ''].filter(Boolean).join(' · '))}</small><small>${esc(i.line)}${more > 0 ? ` <button type="button" class="w-link" data-pk="all">and ${more} more</button>` : ''}</small></span>
+    <button type="button" class="w-btn pri sm" data-pk="go">Continue${wic('arrow')}</button>
+    <button type="button" class="w-park-x" data-pk="x" aria-label="Hide this for now">×</button>`;
+}
+function parkClick(e) {
+  const a = e.target.closest('[data-pk]'), b = document.getElementById('wPark'); if (!a || !b) return;
+  if (a.dataset.pk === 'go') JX.resume(b.dataset.lead);
+  if (a.dataset.pk === 'all') { if (ACCT.session) location.hash = 'acc-proposals'; else JX.open({}); }
+  if (a.dataset.pk === 'x') { try { sessionStorage.setItem('nxsure-park-x', b.dataset.lead + ':' + b.dataset.at); } catch (err) { /* storage unavailable */ } b.remove(); }
+}
+
+/* ---------- KYC done on the website: a new customer is logged in with the number they just verified ---------- */
+CFG.knownMobile = () => ACCT.session ? ACCT.session.mobile : '';
+function leadsBoot() {
+  // a read-only view of where things stand, for automated checks
+  window.__jx = () => ({ cur: S && S.cur, product: S && S.product, reg: S && S.motor && S.motor.reg ? S.motor.reg.display : '', session: ACCT.session ? ACCT.session.mobile : '', user: ACCT.user ? ACCT.user.name : '', isNew: !!(ACCT.user && ACCT.user.isNew), leads: leadsAll().length });
+  HOOKS.shown.push(() => {
+    if (!S.startedAt && S.product) S.startedAt = new Date();
+    if (leadWorthy(S)) leadKeep(S, { quiet: true });
+    // the email given for the policy copy goes on the account too
+    const em = (S.motor && S.motor.email) || (S.health && S.health.email);
+    if (em && S.kyc && S.kyc.mobile) custEmail(S.kyc.mobile, em);
+  });
+  HOOKS.restart.push(() => { if (S && S.did && !S.paid) { const id = S.did; LEADS.list = leadsAll().filter(l => l.id !== id); leadsSave(); } });
+  HOOKS.kycDone.push((k, box) => {
+    if (CFG.channel !== 'web' || !k || !/^[6-9]\d{9}$/.test(k.mobile || '')) return;
+    if (ACCT.session) { leadKeep(S, { quiet: true }); return; }
+    const isNew = custPut(k, S.product);
+    acctLogin(k.mobile, { keep: true, stay: true, quiet: true, auto: true });
+    leadKeep(S, { quiet: true });
+    if (box && box.isConnected) box.insertAdjacentHTML('beforeend', `<div class="kyc-acct"><span class="kyc-acct-ic">${ICO.check}</span><span><b>You're logged in to My NxSure as ${esc(maskMobile(k.mobile))}</b><small>${isNew ? 'Your account is set up with these KYC details. ' : ''}If you stop at any point, this proposal is saved. Carry on from the website or from My NxSure.</small></span></div>`);
+    jlog(`Logged in to My NxSure as ${maskMobile(k.mobile)}`);
+    toast(`You're logged in as ${maskMobile(k.mobile)}. Your progress is saved.`);
+  });
+  const save = () => { if (S && leadWorthy(S)) leadKeep(S, { quiet: true }); };
+  addEventListener('pagehide', save);
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') save(); });
+  addEventListener('hashchange', () => setTimeout(leadsPaint, 0));
+  leadsPaint();
+}
+
 /* ================= My NxSure: log in with mobile and OTP; proposals, policies, claims and the action centre ================= */
 const ACCT = { session: null, user: null, policies: [], proposals: [], claims: [], requests: [], consents: [], prefs: null, bought: [], want: null, login: { phase: 'mobile', mobile: '', code: '', tries: 0, timer: 0 } };
 const dAgo = n => addDays(TODAY, -n), dIn = n => addDays(TODAY, n);
@@ -11109,7 +11422,10 @@ WIC.x = '<path d="M6 6l12 12M18 6L6 18"/>';
 
 /* ---------------- sample account, so there is something to show on first login ---------------- */
 function acctSeed(mobile) {
-  const k = (S && S.kyc) || (ACCT.bought.length ? ACCT.bought[ACCT.bought.length - 1].kyc : null);
+  const c = typeof custGet === 'function' ? custGet(mobile) : null;
+  if (c) { acctSeedNew(mobile, c); return; }
+  const last = typeof leadsAll === 'function' ? leadsAll().find(l => l.s.kyc && l.s.kyc.mobile === mobile) : null;
+  const k = (S && S.kyc) || (last ? last.s.kyc : null);
   const name = (k && k.name) || 'Priya Sharma', sur = name.split(' ').slice(-1)[0], fem = k ? k.gender === 'F' : true;
   const spouse = `${fem ? 'Rahul' : 'Neha'} ${sur}`, kid = `Aarav ${sur}`, dad = `Ramesh ${sur}`, mum = `Sunita ${sur}`;
   ACCT.user = { name, mobile, email: `${name.toLowerCase().replace(/[^a-z]+/g, '.')}@example.com`, dob: addYears(dAgo(140), -34), addr: (k && k.addr) || 'B-1204, Lakeview Residency, Powai', city: (k && k.city) || 'Mumbai', pin: (k && k.pin) || '400076',
@@ -11148,11 +11464,17 @@ function acctSeed(mobile) {
   ACCT.prefs = { sms: true, email: true, whatsapp: true, lang: 'English' };
 }
 
-/* ---------------- records from this visit's purchases ---------------- */
-function acctCapture() {
-  if (!S || !S.paid || S.acctDone) return;
-  S.acctDone = true; ACCT.bought.push(S);
-  if (ACCT.session) acctRender();
+// someone who became a customer by doing KYC here: their account starts with their KYC details and their own journeys
+function acctSeedNew(mobile, c) {
+  ACCT.user = { name: c.name, mobile, email: c.email || '', dob: fromIso(c.dob) || null, addr: c.addr, city: c.city, pin: c.pin, kyc: { via: c.via, id: c.id, ckyc: 'Issued with your first policy', at: new Date(c.at) }, nominee: null, isNew: true };
+  ACCT.policies = []; ACCT.proposals = []; ACCT.claims = []; ACCT.requests = [];
+  ACCT.consents = [
+    { k: 'ckyc', src: c.via === 'DigiLocker' ? 'DigiLocker' : 'Central KYC registry', why: 'To verify your identity and fetch your address', at: new Date(c.at), on: true },
+    { k: 'vahan', src: 'Vehicle register (VAHAN)', why: 'To fetch your vehicle details when you buy or renew', at: c.motor ? new Date(c.since) : null, on: !!c.motor },
+    { k: 'rec', src: 'Proposal recording', why: 'Video and sound of your proposal, kept as a record of your answers', at: new Date(c.at), on: true },
+    { k: 'offers', src: 'Offers on WhatsApp', why: 'News about new products and offers', at: null, on: false },
+  ];
+  ACCT.prefs = { sms: true, email: true, whatsapp: true, lang: 'English' };
 }
 function polFromS(s) {
   return withS(s, () => {
@@ -11176,7 +11498,7 @@ function propFromS(s, draft) {
       const ids = order().filter(id => id !== 'product' && id !== 'done' && STEP[id].label);
       const ci = ids.indexOf(s.cur);
       const pi = priceInfo();
-      return { key: 'draft', no: (mot ? M && M.quoteNo : H && H.quoteNo) || 'Not numbered yet', product: s.product, status: 'draft', title, created: s.startedAt || TODAY, amount: pi ? pi.total : null, from: pi ? pi.from : true,
+      return { key: 'd' + (s.did || 'now').toLowerCase(), lead: s.did, no: (mot ? M && M.quoteNo : H && H.quoteNo) || 'Quote saved', product: s.product, status: 'draft', title, created: s.startedAt || TODAY, amount: pi ? pi.total : null, from: pi ? pi.from : true,
         steps: ids.map((id, i) => ({ label: STEP[id].label, state: STEP[id].done() && i !== ci ? 'done' : i === ci ? 'now' : 'todo', note: STEP[id].value ? STEP[id].value() : '' })), stepNow: STEP[s.cur] ? STEP[s.cur].label : '', sref: s };
     }
     const p = healthCalc(H), pend = active(H).filter(m => ['pending', 'refer', 'exam'].includes(m.status));
@@ -11185,13 +11507,19 @@ function propFromS(s, draft) {
       booking: H.booking ? { who: listText(pend.filter(m => m.status === 'pending').map(m => mName(H, m))), date: H.booking.date instanceof Date ? H.booking.date : fromIso(H.booking.date), slot: H.booking.slot, fasting: true, tests: [...new Set(pend.flatMap(m => (m.booked || []).map(x => REQ[x].label)))], addr: H.booking.addr } : null, sref: s };
   });
 }
+// what this account bought or started on this device, newest first
+const myPaid = () => leadsMine().filter(l => l.s.paid).map(l => l.s);
 const A = {
-  policies() { return [...ACCT.bought.filter(s => s.motor && s.motor.policyNo || s.health && s.health.policyNo).map(polFromS).reverse(), ...ACCT.policies]; },
+  policies() { return [...myPaid().filter(s => s.motor && s.motor.policyNo || s.health && s.health.policyNo).map(polFromS), ...ACCT.policies]; },
   proposals() {
     const out = [];
-    if (S && S.product && !S.paid && S.seen.size > 2) out.push(propFromS(S, true));
-    ACCT.bought.filter(s => s.health && s.health.proposalNo).forEach(s => out.push(propFromS(s)));
-    ACCT.bought.filter(s => !(s.health && s.health.proposalNo)).forEach(s => { const pol = polFromS(s); out.push({ key: 'p' + pol.key, no: (s.motor ? s.motor.quoteNo : s.health.quoteNo) || pol.no, product: s.product, status: 'issued', title: pol.title + (pol.vehicle ? `, ${pol.vehicle.reg}` : ''), plan: pol.plan, created: s.paid.at, amount: pol.premium, policyKey: pol.key, sref: s }); });
+    leadsMine().forEach(L => {
+      const s = L.s, info = leadInfo(L);
+      if (!s.paid) { out.push(Object.assign(propFromS(s, true), { info, at: L.at })); return; }
+      if (s.health && s.health.proposalNo && !s.health.policyNo) { out.push(Object.assign(propFromS(s), { info, at: L.at, lead: L.id })); return; }
+      const pol = polFromS(s);
+      out.push({ key: 'p' + pol.key, no: (s.motor ? s.motor.quoteNo : s.health.quoteNo) || pol.no, product: s.product, status: info.cta === 'continue' ? 'inspect' : 'issued', title: pol.title + (pol.vehicle ? `, ${pol.vehicle.reg}` : ''), plan: pol.plan, created: s.paid.at, amount: pol.premium, policyKey: pol.key, sref: s, info, at: L.at, lead: L.id });
+    });
     return [...out, ...ACCT.proposals];
   },
   claims() {
@@ -11210,7 +11538,7 @@ function polStatus(p) {
   if (left <= 30) return [`Renews in ${left} day${left === 1 ? '' : 's'}`, 'warn'];
   return ['Active', 'ok'];
 }
-const propStatus = p => ({ draft: ['In progress', 'info'], tests: ['Tests booked', 'warn'], review: ['With our doctor', 'info'], issued: ['Policy issued', 'ok'] })[p.status];
+const propStatus = p => p.info ? [p.info.stage, p.info.tone] : ({ draft: ['In progress', 'info'], tests: ['Tests booked', 'warn'], review: ['With our doctor', 'info'], issued: ['Policy issued', 'ok'], inspect: ['Inspection pending', 'warn'] })[p.status];
 const pill = ([t, k]) => `<span class="a-pill ${k}">${esc(t)}</span>`;
 const polArt = p => p.product === 'health' ? LA.spotHealth() : p.cls === 'bike' ? LA.spotBike() : p.cls === 'gcv' || p.cls === 'taxi' ? LA.spotTempo() : LA.spotCar();
 const polSub = p => p.vehicle ? `${p.vehicle.reg} · ${p.vehicle.make} ${p.vehicle.model}` : listText(p.members.map(m => first(m.name)));
@@ -11247,10 +11575,12 @@ function acctLogin(mobile, o = {}) {
   ACCT.session = { mobile, at: new Date(), recovered: !!o.recovered, fromJx: !!o.fromJx };
   try { (o.keep ? localStorage : sessionStorage).setItem('nxsure-acct', JSON.stringify({ mobile, recovered: !!o.recovered })); } catch (e) { /* storage unavailable */ }
   acctSeed(mobile);
+  leadsClaim(mobile);
   if (o.recovered) ACCT.user.mobileStale = true;
   if (o.keep) DEV.set({ name: ACCT.user.name, mobile });
   ACCT.login = { phase: '', mobile: '', code: '', tries: 0, timer: 0 };
   paintHeadAcct();
+  leadsPaint();
   if (!o.quiet) toast(o.recovered ? `You're in, ${first(ACCT.user.name)}. Update your mobile number next.` : `Welcome back, ${first(ACCT.user.name)}`);
   if (o.stay) { const pg = $('.w-page[data-page="account"]:not([hidden])'); if (pg) acctRender(); return; }
   const want = ACCT.want && ACCT.want !== 'login' ? ACCT.want : 'account'; ACCT.want = null;
@@ -11259,7 +11589,7 @@ function acctLogin(mobile, o = {}) {
 function acctLogout() {
   ACCT.session = null; ACCT.user = null;
   try { sessionStorage.removeItem('nxsure-acct'); localStorage.removeItem('nxsure-acct'); } catch (e) { /* storage unavailable */ }
-  paintHeadAcct(); toast('You\'ve logged out'); location.hash = 'home';
+  paintHeadAcct(); leadsPaint(); toast('You\'ve logged out'); location.hash = 'home';
 }
 function paintHeadAcct() {
   const b = $('#wAcct'), m = $('#wMenuAcct');
@@ -11307,9 +11637,7 @@ function attention() {
   const out = [], pols = A.policies();
   if (ACCT.user.mobileStale) out.push(['phone', 'fp', 'Update your mobile number', 'You logged in with your policy number. Add the number you use now, so codes and claim updates reach you.', '<button type="button" class="w-btn pri sm" data-acc="act" data-k="contact">Update</button>']);
   A.proposals().forEach(p => {
-    if (p.status === 'draft') out.push(['doc', 'fv', `Finish your ${p.product === 'motor' ? 'motor' : 'health'} proposal`, `You stopped at ${p.stepNow.toLowerCase()}. Your answers are saved.`, `<button type="button" class="w-btn pri sm" data-acc="continue">Continue</button>`]);
     if (p.status === 'tests' && p.booking) out.push(['flask', 'fs', `Home health check-up for ${first(p.booking.who)} on ${fd(p.booking.date)}`, `${p.booking.slot}.${p.booking.fasting ? ' Nothing to eat or drink except water after 10 pm the night before.' : ''}`, `<a class="w-btn ghost sm" href="#prop-${p.key}">View</a><button type="button" class="w-btn ghost sm" data-acc="act" data-k="reschedule" data-p="${p.key}">Reschedule</button>`]);
-    if (p.status === 'review') out.push(['users', 'fv', `Your proposal ${p.no} is with our doctor`, 'We\'ll tell you as soon as there\'s a decision.', `<a class="w-btn ghost sm" href="#prop-${p.key}">View</a>`]);
   });
   pols.filter(p => daysTo(p.end) <= 30).forEach(p => out.push(['renew', 'fm', `${p.title} ${daysTo(p.end) < 0 ? 'has lapsed' : `ends in ${daysTo(p.end)} days`}`, `${polSub(p)}. Renew before ${fd(p.end)} to keep your no-claim bonus.`, `<button type="button" class="w-btn pri sm" data-acc="renew" data-p="${p.key}">Renew now</button>`]));
   A.claims().forEach(c => { const pol = A.pol(c.policyKey), st = claimSteps(c)[c.now + 1], need = (c.docs || []).filter(d => d.st === 'need').length; out.push(['wrench', 'fp', `Claim ${c.ref}: ${need ? `${need} document${need > 1 ? 's' : ''} needed` : st ? st.t.toLowerCase() + ' next' : 'in progress'}`, `${claimTitle(c, pol)}, reported ${fd(c.at)}.`, `<a class="w-btn ${need ? 'pri' : 'ghost'} sm" href="#clm-${c.ref}">${need ? 'Add documents' : 'Track'}</a>`]); });
@@ -11318,7 +11646,8 @@ function attention() {
 }
 function viewOverview() {
   const pols = A.policies(), props = A.proposals().filter(p => p.status !== 'issued'), cl = A.claims(), att = attention();
-  const acts = ['claim', 'track', 'renew', 'docs', 'ecard', 'contact', 'address', 'nominee', 'member', 'hypo', 'transfer', 'cancel', 'complaint'];
+  // someone with no policy yet only sees what they can use before their first one
+  const acts = pols.length ? ['claim', 'track', 'renew', 'docs', 'ecard', 'contact', 'address', 'nominee', 'member', 'hypo', 'transfer', 'cancel', 'complaint'] : ['link', 'contact', 'complaint'];
   return {
     title: 'Overview',
     html: `<div class="a-h"><div><h1>${greet()}, ${esc(first(ACCT.user.name))}</h1><p class="a-muted">Your policies, proposals and claims, all in one place.</p></div><button type="button" class="w-btn pri" data-journey="">Buy a new policy${wic('arrow')}</button></div>
@@ -11328,8 +11657,9 @@ function viewOverview() {
         <a href="#acc-claims"><b>${cl.length}</b><span>Open claims</span></a>
         <a href="#acc-renewals"><b>${pols.filter(p => daysTo(p.end) <= 60).length}</b><span>Renewals due soon</span></a>
       </div>
+      ${leadsSection(5)}
       ${att.length ? `<section class="a-card"><div class="a-ch"><h2>Needs your attention</h2><span class="a-pill warn">${att.length}</span></div><div class="a-attn">${att.map(([ic, t, h, p, btn]) => `<div>${LA.ic(ic, t)}<span><b>${esc(h)}</b><small>${esc(p)}</small></span><span class="b">${btn}</span></div>`).join('')}</div></section>` : ''}
-      <section><div class="a-ch"><h2>Your policies</h2><a class="w-link" href="#acc-policies">See all${wic('arrow')}</a></div><div class="a-pols">${pols.map(polCard).join('')}</div></section>
+      <section><div class="a-ch"><h2>Your policies</h2>${pols.length ? `<a class="w-link" href="#acc-policies">See all${wic('arrow')}</a>` : ''}</div>${pols.length ? `<div class="a-pols">${pols.map(polCard).join('')}</div>` : `<div class="a-card a-empty"><p class="a-muted">No policies yet. Once you pay, your policy shows here straight away.</p><button type="button" class="w-btn ghost sm" data-journey="">Get a quote${wic('arrow')}</button></div>`}</section>
       <section class="a-card"><div class="a-ch"><h2>Action centre</h2><span class="a-muted" style="font-size:14.5px">Most changes are done straight away</span></div><div class="a-acts">${acts.map(actTile).join('')}</div></section>
       <section class="a-card"><div class="a-ch"><h2>Recent activity</h2></div>${activity(6)}</section>`,
   };
@@ -11345,8 +11675,11 @@ function activity(n) {
   A.proposals().filter(p => p.status === 'tests' || p.status === 'review').forEach(p => ev.push([p.created, 'doc', `Proposal ${p.no} received`, `${p.title} · ${inr(p.amount)} paid`, `#prop-${p.key}`]));
   A.claims().forEach(c => ev.push([c.at, 'wrench', `Claim ${c.ref} registered`, c.what + (c.where ? `, ${c.where}` : ''), `#clm-${c.ref}`]));
   ACCT.requests.forEach(r => ev.push([r.at, 'edit', `${r.type}: ${r.status.toLowerCase()}`, r.note || r.ref, '#acc-requests']));
+  A.proposals().filter(p => p.status === 'draft' && p.sref).forEach(p => ev.push([new Date(p.at), 'doc', `${leadTitle(p.sref)} quote saved`, `${leadSub(p.sref)}. ${p.info.line}`, `#prop-${p.key}`]));
+  if (ACCT.user.isNew && ACCT.user.kyc && ACCT.user.kyc.at) ev.push([ACCT.user.kyc.at, 'id', 'KYC verified, account set up', `${ACCT.user.kyc.via}, ${ACCT.user.kyc.id}`, '#acc-profile']);
   REC.list.filter(r => r.status !== 'discarded').forEach(r => ev.push([r.startedAt, 'video', 'Proposal recorded', `${r.title || 'Proposal'} · ${mmss(r.dur || 0)}`, `#rec-${r.ref}`]));
   ev.sort((a, b) => b[0] - a[0]);
+  if (!ev.length) return '<p class="a-muted" style="font-size:15px">Nothing yet. Policies, proposals and claims show here as they happen.</p>';
   return `<ol class="a-feed">${ev.slice(0, n).map(([d, ic, t, s, h]) => `<li><span class="dot">${wic(ic)}</span><a href="${h}"><b>${esc(t)}</b><small>${esc(s)}</small></a><time>${fd(d)}</time></li>`).join('')}</ol>`;
 }
 
@@ -11417,7 +11750,23 @@ function polActs(p) {
 function viewProposals() {
   const props = A.proposals();
   return { title: 'Proposals', html: `<div class="a-h"><div><h1>Proposals</h1><p class="a-muted">Everything you've applied for, and where each one stands.</p></div><button type="button" class="w-btn ghost" data-journey="">Start a new one${wic('arrow')}</button></div>
-    <div class="a-list">${props.length ? props.map(p => { const st = propStatus(p); return `<a class="a-row" href="#prop-${p.key}"><span class="a-row-art">${p.product === 'motor' ? LA.spotCar() : LA.spotHealth()}</span><span class="bd">${pill(st)}<b>${esc(p.title)}</b><small>${esc(p.no)} · started ${fd(p.created)}${p.amount ? ` · ${p.status === 'draft' ? (p.from ? 'from ' : '') : ''}${inr(p.amount)}${p.status === 'draft' ? '' : ' paid'}` : ''}</small></span>${wic('arrow')}</a>`; }).join('') : '<p class="a-muted">No proposals yet.</p>'}</div>` };
+    <div class="a-list">${props.length ? props.map(leadRow).join('') : '<p class="a-muted">No proposals yet.</p>'}</div>` };
+}
+// one application: what it is, where it stands, and the one thing to do next
+function leadRow(p) {
+  const st = propStatus(p), i = p.info, paid = p.status !== 'draft';
+  const line = i ? i.line : p.status === 'tests' && p.booking ? `Paid. Home health check-up for ${first(p.booking.who)} on ${fd(p.booking.date)}, ${p.booking.slot}.` : p.status === 'review' ? 'Paid. Our doctor reviews it within a working day, and we tell you the decision.' : `${p.no} · started ${fd(p.created)}`;
+  const amt = p.amount ? `${!paid && p.from ? 'from ' : ''}${inr(p.amount)}${paid ? ' paid' : ''}` : '';
+  const cta = i && i.cta === 'continue' ? `<button type="button" class="w-btn pri sm" data-acc="continue" data-lead="${p.lead}">Continue${wic('arrow')}</button>`
+    : p.policyKey || (i && i.cta === 'policy') ? `<a class="w-btn ghost sm" href="#pol-${p.policyKey || i.key}">View policy</a>` : `<a class="w-btn ghost sm" href="#prop-${p.key}">View</a>`;
+  const sub = p.sref ? leadSub(p.sref) : '';
+  return `<div class="a-row a-lead"><a class="a-row-art" href="#prop-${p.key}" tabindex="-1" aria-hidden="true">${p.sref ? leadArt(p.sref) : p.product === 'motor' ? LA.spotCar() : LA.spotHealth()}</a><span class="bd">${pill(st)}<a href="#prop-${p.key}"><b>${esc(p.sref ? leadTitle(p.sref) : p.title)}${sub ? ` <span class="a-lead-sub">${esc(sub)}</span>` : ''}</b></a><small>${esc(line)}</small>${amt ? `<small class="a-lead-amt">${esc(amt)}${p.no && !/^Quote saved$/.test(p.no) && !(i && i.ref && line.includes(i.ref)) ? ` · ${esc(p.no)}` : ''}</small>` : ''}</span><span class="a-lead-go">${cta}${!paid ? `<button type="button" class="w-link a-lead-x" data-acc="droplead" data-lead="${p.lead}">Remove</button>` : ''}</span></div>`;
+}
+function leadsSection(n) {
+  const props = A.proposals();
+  if (!props.length) return '';
+  const open = props.filter(p => !(p.info && p.info.cta === 'policy')).length;
+  return `<section class="a-card a-leads"><div class="a-ch"><h2>Where your applications stand</h2>${open ? `<span class="a-pill info">${open} open</span>` : ''}${props.length > n ? `<a class="w-link" href="#acc-proposals">See all${wic('arrow')}</a>` : ''}</div><div class="a-list">${props.slice(0, n).map(leadRow).join('')}</div></section>`;
 }
 function propTimeline(p) {
   if (p.steps) return p.steps;
@@ -11434,13 +11783,13 @@ function viewProposal(key) {
   const p = A.prop(key);
   if (!p) return { title: 'Proposal', html: `<div class="a-card"><h2>We couldn't find that proposal</h2><a class="w-link" href="#acc-proposals">Back to proposals${wic('arrow')}</a></div>` };
   const st = propStatus(p), tl = propTimeline(p), recs = p.sref ? REC.allFor(p.sref).filter(r => r.status !== 'discarded') : [];
-  const next = p.status === 'draft' ? `<section class="a-card a-next">${LA.ic('doc', 'fv')}<span><b>Pick up where you left off</b><small>You stopped at ${esc(p.stepNow.toLowerCase())}. Your answers are saved for this visit.</small></span><button type="button" class="w-btn pri" data-acc="continue">Continue</button></section>`
+  const next = p.status === 'draft' || p.status === 'inspect' || (p.info && p.info.cta === 'continue') ? `<section class="a-card a-next">${LA.ic('doc', 'fv')}<span><b>${p.status === 'draft' ? 'Pick up where you left off' : esc(p.info.stage)}</b><small>${esc(p.info ? p.info.line : `You stopped at ${p.stepNow.toLowerCase()}.`)} ${p.status === 'draft' ? 'Your answers are saved on this device and in your account.' : ''}</small></span><button type="button" class="w-btn pri" data-acc="continue" data-lead="${p.lead}">Continue</button></section>`
     : p.status === 'tests' && p.booking ? `<section class="a-card a-next">${LA.ic('flask', 'fs')}<span><b>Home health check-up, ${fd(p.booking.date)}, ${esc(p.booking.slot)}</b><small>For ${esc(p.booking.who)}: ${esc(listText(p.booking.tests.map(x => x.toLowerCase())))}. At ${esc(p.booking.addr)}.${p.booking.fasting ? ' Nothing to eat or drink except water after 10 pm the night before.' : ''}</small></span><button type="button" class="w-btn ghost" data-acc="act" data-k="reschedule" data-p="${p.key}">Reschedule</button></section>`
     : p.status === 'issued' && p.policyKey ? `<section class="a-card a-next">${LA.ic('shield', 'fm')}<span><b>Your policy is issued</b><small>Everything about it is on the policy page.</small></span><a class="w-btn pri" href="#pol-${p.policyKey}">Open the policy</a></section>` : '';
   return {
     title: p.no,
     html: `<div class="w-crumb" style="margin:0"><a href="#account">Overview</a>/<a href="#acc-proposals">Proposals</a>/<span>${esc(p.no)}</span></div>
-      <div class="a-h"><div>${pill(st)}<h1 style="margin-top:10px">${esc(p.title)}</h1><p class="a-muted">${esc(p.no)} · started ${fd(p.created)}</p></div></div>
+      <div class="a-h"><div>${pill(st)}<h1 style="margin-top:10px">${esc(p.title)}</h1><p class="a-muted">${esc(p.no)} · started ${fd(p.created)}${p.info && p.status !== 'draft' && p.info.cta !== 'continue' ? `. ${esc(p.info.line)}` : ''}</p></div></div>
       ${next}
       <div class="a-two">
         <section class="a-card"><div class="a-ch"><h2>Where it stands</h2></div><ol class="a-steps">${tl.map(x => `<li class="${x.state}"><span class="dot">${x.state === 'done' ? wic('check') : ''}</span><span><b>${esc(x.label)}</b>${x.note ? `<small>${esc(x.note)}</small>` : ''}</span></li>`).join('')}</ol></section>
@@ -11514,13 +11863,13 @@ function viewProfile() {
   const veh = A.policies().filter(p => p.vehicle);
   return { title: 'Profile and privacy', html: `<div class="a-h"><div><h1>Profile and privacy</h1><p class="a-muted">Your details, how we contact you, and what you've agreed to share.</p></div></div>
     <div class="a-two">
-      <section class="a-card"><div class="a-ch"><h2>Your details</h2><button type="button" class="w-link" data-acc="act" data-k="contact">Edit</button></div><dl class="a-kv one">${[['Name', u.name], ['Date of birth', fd(u.dob)], ['Mobile', maskMobile(u.mobile)], ['Email', u.email], ['Address', `${u.addr}, ${u.city} ${u.pin}`]].map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl><button type="button" class="w-link" data-acc="act" data-k="address" style="margin-top:12px">Change address${wic('arrow')}</button></section>
+      <section class="a-card"><div class="a-ch"><h2>Your details</h2><button type="button" class="w-link" data-acc="act" data-k="contact">Edit</button></div><dl class="a-kv one">${[['Name', u.name], ['Date of birth', u.dob ? fd(u.dob) : ''], ['Mobile', maskMobile(u.mobile)], ['Email', u.email], ['Address', `${u.addr}, ${u.city} ${u.pin}`]].map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl><button type="button" class="w-link" data-acc="act" data-k="address" style="margin-top:12px">Change address${wic('arrow')}</button></section>
       <section class="a-card"><div class="a-ch"><h2>KYC</h2>${pill(['Verified', 'ok'])}</div><dl class="a-kv one">${[['Verified with', u.kyc.via], ['ID', u.kyc.id], ['CKYC number', u.kyc.ckyc], ['Verified on', fd(u.kyc.at)]].map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
         <div class="a-ch" style="margin-top:20px"><h2>Bank account for claims and refunds</h2><button type="button" class="w-link" data-acc="act" data-k="bank">${u.bank ? 'Change' : 'Add'}</button></div><p class="a-muted" style="font-size:15px">${u.bank ? `${esc(bankText(u.bank))}, ${esc(u.bank.name)}. Checked with ${esc(u.bank.via)} on ${fd(u.bank.at)}.` : 'Not added yet. Add it once, and claims and refunds go straight there.'}</p></section>
     </div>
     <div class="a-two">
-      <section class="a-card"><div class="a-ch"><h2>Family</h2><button type="button" class="w-link" data-acc="act" data-k="member">Add someone</button></div><ul class="a-simple">${fam.map(f => `<li><b>${esc(f.name)}</b><span>${esc(f.rel)}</span></li>`).join('')}</ul><p class="w-small" style="margin-top:10px">Default nominee: ${esc(u.nominee.name)} (${esc(u.nominee.rel)})</p></section>
-      <section class="a-card"><div class="a-ch"><h2>Vehicles</h2></div><ul class="a-simple">${veh.map(p => `<li><b>${esc(p.vehicle.reg)}</b><span>${esc(p.vehicle.make)} ${esc(p.vehicle.model)}</span></li>`).join('')}</ul></section>
+      <section class="a-card"><div class="a-ch"><h2>Family</h2><button type="button" class="w-link" data-acc="act" data-k="member">Add someone</button></div><ul class="a-simple">${fam.map(f => `<li><b>${esc(f.name)}</b><span>${esc(f.rel)}</span></li>`).join('')}</ul><p class="w-small" style="margin-top:10px">Default nominee: ${u.nominee ? `${esc(u.nominee.name)} (${esc(u.nominee.rel)})` : 'not set yet'}</p></section>
+      <section class="a-card"><div class="a-ch"><h2>Vehicles</h2></div>${veh.length ? `<ul class="a-simple">${veh.map(p => `<li><b>${esc(p.vehicle.reg)}</b><span>${esc(p.vehicle.make)} ${esc(p.vehicle.model)}</span></li>`).join('')}</ul>` : '<p class="a-muted" style="font-size:15px">No vehicles insured yet.</p>'}</section>
     </div>
     <section class="a-card"><div class="a-ch"><h2>How we contact you</h2></div><div class="a-prefs">${[['sms', 'SMS', 'Policy, payment and claim updates'], ['email', 'Email', 'Policy documents and receipts'], ['whatsapp', 'WhatsApp', 'Reminders and claim updates']].map(([k, t, s]) => `<label class="a-sw"><span><b>${t}</b><small>${s}</small></span><input type="checkbox" data-pref="${k}" ${P[k] ? 'checked' : ''}><i></i></label>`).join('')}
       <label class="w-f" style="max-width:260px"><span>Language for messages</span><select data-pref="lang">${['English', 'हिन्दी (Hindi)', 'मराठी (Marathi)', 'தமிழ் (Tamil)', 'తెలుగు (Telugu)', 'ಕನ್ನಡ (Kannada)', 'বাংলা (Bengali)'].map(l => `<option ${P.lang === l ? 'selected' : ''}>${l}</option>`).join('')}</select></label></div></section>
@@ -11746,7 +12095,8 @@ function acctClick(e) {
   if (a === 'act') { e.preventDefault(); actOpen(t.dataset.k, t.dataset.p, t.dataset.c); return; }
   if (a === 'doc') { acctDoc(t.dataset.k, t.dataset.p, !!t.dataset.prop); return; }
   if (a === 'renew') { renewPol(A.pol(t.dataset.p)); return; }
-  if (a === 'continue') { if (S && S.product) JX.open({ product: S.product }); return; }
+  if (a === 'continue') { if (t.dataset.lead && JX.resume(t.dataset.lead)) return; if (S && S.product) JX.open({ product: S.product }); return; }
+  if (a === 'droplead') { if (!t.dataset.sure) { t.dataset.sure = '1'; t.textContent = 'Tap again to remove'; setTimeout(() => { if (t.isConnected) { delete t.dataset.sure; t.textContent = 'Remove'; } }, 3500); return; } leadDrop(t.dataset.lead); toast('Removed'); acctRender(); return; }
   if (a === 'recdl') { const r = REC.get(t.dataset.r); if (r && r.blob) saveBlob(`NxSure-proposal-recording-${r.ref}.${/mp4/.test(r.mime) ? 'mp4' : 'webm'}`, r.blob); return; }
   if (a === 'mydata') { myData(); return; }
   if (a === 'consent') {
@@ -11760,8 +12110,7 @@ function acctClick(e) {
   document.addEventListener('click', acctClick);
   $('#wAct').addEventListener('click', e => { if (e.target.closest('#wAct [data-close]') || e.target === $('#wAct')) $('#wAct').hidden = true; });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') $('#wAct').hidden = true; });
-  HOOKS.shown.push(id => { if (!S.startedAt && S.product) S.startedAt = new Date(); if (id === 'done' || id === 'inspect') acctCapture(); });
-  HOOKS.closed.push(() => { acctCapture(); if ($('.w-page[data-page="account"]:not([hidden])') && ACCT.session) acctRender(); });
+  HOOKS.closed.push(() => { if ($('.w-page[data-page="account"]:not([hidden])') && ACCT.session) acctRender(); });
   REC.subs.push(() => { const pg = $('.w-page[data-page="account"]:not([hidden])'); if (!pg || !ACCT.session || JX.isOpen()) return; const v = pg.querySelector('.a-main'); if (!v) return; if (v.dataset.view === 'rec' && pg.querySelector('#aVid') && !pg.querySelector('#aVid').paused) return; acctRender(); });
   try { const s = JSON.parse(sessionStorage.getItem('nxsure-acct') || localStorage.getItem('nxsure-acct') || 'null'); if (s && /^[6-9]\d{9}$/.test(s.mobile)) { ACCT.session = { mobile: s.mobile, at: new Date() }; acctSeed(s.mobile); if (s.recovered) ACCT.user.mobileStale = true; } } catch (e) { /* storage unavailable */ }
   paintHeadAcct();
@@ -11938,8 +12287,8 @@ function needLogin(reason, then, extra) {
 function jxDoneExtra() {
   if (CFG.channel !== 'web' || !S || !S.paid) return '';
   const k = S.kyc, mine = ACCT.session && k && ACCT.session.mobile === k.mobile;
-  return `<div class="jx-acct mynx"><span class="bd"><b>${mine ? 'It\'s in My NxSure with your other policies' : 'Manage it in My NxSure'}</b><p>${mine ? 'Changes, renewals and claims are all there.' : k ? `You verified ${esc(maskMobile(k.mobile))} during KYC, so you can log in without another code. Make changes, renew, or make a claim, any time.` : 'Log in with your mobile number to make changes, renew, or make a claim.'}</p>
-    <span class="mynx-acts"><button type="button" class="btn-next" data-acc="fromjx" style="margin:0"><span>Log in to My NxSure</span>${ICO.right}</button><button type="button" class="btn-soft" data-acc="fromjx" data-to="acc-requests">Make a change</button><button type="button" class="btn-soft" data-acc="fromjx" data-to="clm-new">Make a claim</button></span></span>${appQr('mini', 'Get the app')}</div>`;
+  return `<div class="jx-acct mynx"><span class="bd"><b>${mine ? (ACCT.user && ACCT.user.isNew ? 'It\'s in your My NxSure account' : 'It\'s in My NxSure with your other policies') : 'Manage it in My NxSure'}</b><p>${mine ? `You're logged in as ${esc(maskMobile(k.mobile))}. Changes, renewals and claims are all there.` : k ? `You verified ${esc(maskMobile(k.mobile))} during KYC, so you can log in without another code. Make changes, renew, or make a claim, any time.` : 'Log in with your mobile number to make changes, renew, or make a claim.'}</p>
+    <span class="mynx-acts"><button type="button" class="btn-next" data-acc="fromjx" style="margin:0"><span>${mine ? 'Open My NxSure' : 'Log in to My NxSure'}</span>${ICO.right}</button><button type="button" class="btn-soft" data-acc="fromjx" data-to="acc-requests">Make a change</button><button type="button" class="btn-soft" data-acc="fromjx" data-to="clm-new">Make a claim</button></span></span>${appQr('mini', 'Get the app')}</div>`;
 }
 function acctFromJourney(to) {
   const mob = S && S.kyc && S.kyc.mobile;
@@ -13074,6 +13423,7 @@ function route() {
 const INSTALL_W = { p: null };
 (function bootSite() {
   renderStatic();
+  leadsBoot();
   // theme (footer)
   const paintT = d => { $('#wTheme').innerHTML = `${wic(d ? 'sun' : 'moon')}${d ? 'Light theme' : 'Dark theme'}`; $('#wTheme').setAttribute('aria-label', d ? 'Switch to light theme' : 'Switch to dark theme'); };
   THEME.listeners.push(paintT); paintT(THEME.dark());
