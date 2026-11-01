@@ -1575,6 +1575,110 @@ button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:
 @media (max-width:560px){.jx-sv{grid-template-columns:60px minmax(0,1fr) auto}.jx-sv .go{display:none}}
 .kyc-ids>*{min-width:0}
 .kyc-ids input{width:100%;min-width:0;box-sizing:border-box}
+.kyc-demo{width:auto}
+
+/* ================= business and property journeys ================= */
+.prod-sme-h{display:block;margin-top:24px}
+.prod-sme{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:10px;margin-top:10px}
+.prod-sme-t{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:center;text-align:left;padding:12px 14px;border:1.5px solid var(--line);border-radius:18px;background:var(--surface);color:var(--ink);cursor:pointer;transition:border-color .18s,transform .18s}
+.prod-sme-t:hover,.prod-sme-t[aria-pressed="true"]{border-color:var(--brand);transform:translateY(-1px)}
+.prod-sme-t .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand-ink)}
+.prod-sme-t .ic svg{width:22px;height:22px}
+.prod-sme-t b{display:block;font:600 14.5px/1.25 var(--display)}
+.prod-sme-t small{display:block;color:var(--ink-2);font-size:12.5px;line-height:1.35;margin-top:2px}
+.sm-who{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sm-tag{display:inline-block;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);font:650 11px/1.5 var(--text,inherit);letter-spacing:.02em;white-space:nowrap;vertical-align:1px}
+.sm-tags{display:inline-flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
+.sm-words{display:block;color:var(--ink-2);font-size:12.5px;min-height:1em;margin-top:3px}
+.sm-hit .facts{margin-top:4px}
+.sm-srcs{display:grid;gap:8px}
+.sm-srcs ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.sm-srcs li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start}
+.sm-srcs li b,.sm-fetch li b{display:block;font-weight:650;font-size:14.5px}
+.sm-srcs li small,.sm-fetch li small{display:block;color:var(--ink-2);font-size:13px}
+.sm-dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--surface-2);color:var(--ink-2)}
+.sm-dot svg{width:22px;height:22px}
+.sm-dot.ok{color:var(--mint)}
+.sm-dot.warn{color:var(--warn)}
+.sm-dot.bad{color:var(--bad)}
+.sm-srcs .sm-dot.ok,.sm-fetch .sm-dot.ok,.sm-shots .sm-dot.ok{background:var(--mint-2);color:#fff}
+.sm-srcs .sm-dot.ok svg,.sm-fetch .sm-dot.ok svg,.sm-shots .sm-dot.ok svg{width:13px;height:13px}
+.sm-fetch{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.sm-fetch li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;align-items:center;opacity:.6;transition:opacity .2s}
+.sm-fetch li.ok{opacity:1}
+.sm-fetch .spin{width:20px;height:20px}
+.sm-found{display:grid;gap:14px}
+.sm-found section{border:1px solid var(--line);border-radius:18px;padding:14px 16px;background:var(--surface);display:grid;gap:10px}
+.sm-fh{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.sm-sales{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.sm-sales b{display:block;font:650 24px/1.1 var(--display);letter-spacing:-.02em}
+.sm-sales small{color:var(--ink-2);font-size:13px}
+.sm-bars{display:flex;align-items:flex-end;gap:3px;height:40px;min-width:150px}
+.sm-bars i{display:block;width:10px;border-radius:3px 3px 0 0;background:var(--brand-2);opacity:.75}
+.sm-dirs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.sm-dirs li{padding:10px 12px;border-radius:14px;background:var(--surface-2)}
+.sm-dirs b{display:block;font-size:14.5px}
+.sm-dirs small{color:var(--ink-2);font-size:12.5px}
+.sm-places{display:grid;gap:10px}
+.sm-place{position:relative;display:grid;gap:3px;text-align:left;padding:14px 46px 14px 16px;border:1.5px solid var(--line);border-radius:18px;background:var(--surface);color:var(--ink);cursor:pointer}
+.sm-place b{font:600 15px/1.3 var(--display)}
+.sm-place small{color:var(--ink-2);font-size:13px}
+.sm-place .tick{position:absolute;top:14px;right:14px;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;transform:scale(0);transition:transform .2s}
+.sm-place .tick svg{width:14px;height:14px}
+.sm-place[aria-pressed="true"]{border-color:var(--brand);background:var(--brand-soft)}
+.sm-place[aria-pressed="true"] .tick{transform:scale(1)}
+.sm-hz{border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:grid;gap:10px;background:var(--surface-2)}
+.sm-hz ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.sm-hz li{display:grid;gap:4px;font-size:13px;color:var(--ink-2)}
+.sm-hz li b{color:var(--ink);font-size:14.5px}
+.sm-lv{justify-self:start;padding:3px 10px;border-radius:999px;font-weight:700;font-size:13px}
+.sm-lv.low{background:var(--mint-soft);color:var(--mint)}
+.sm-lv.moderate{background:var(--warn-soft);color:var(--warn)}
+.sm-lv.high{background:var(--bad-soft);color:var(--bad)}
+.sm-auto{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink-2)}
+.sm-auto:empty{display:none}
+.sm-auto svg{width:22px;height:22px;color:var(--mint);flex:none}
+.sm-val{display:grid;gap:4px}
+.sm-total{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 2px;border-top:1px solid var(--line)}
+.sm-total b{font:650 20px/1.2 var(--display)}
+.sm-total small{flex-basis:100%;color:var(--ink-2);font-size:13px}
+.sm-calc{display:grid;gap:8px;padding:14px 16px;border-radius:18px;background:var(--surface-2)}
+.sm-calc>div{display:flex;justify-content:space-between;gap:14px;font-size:14.5px}
+.sm-calc>div span{color:var(--ink-2)}
+.sm-calc>div b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.sm-calc>div.sum{border-top:1px solid var(--line);padding-top:8px}
+.sm-calc>div.sum span{color:var(--ink);font-weight:650}
+.sm-ip em{font-style:normal;font-size:11.5px;font-weight:800;padding:2px 7px;border-radius:999px;background:var(--mint-soft);color:var(--mint)}
+.chip input:checked+span em{background:rgba(255,255,255,.2);color:#fff}
+.sm-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.sm-staff{display:grid;gap:8px}
+.sm-sh,.sm-sr{display:grid;grid-template-columns:minmax(0,1.6fr) 80px minmax(0,1fr) auto;gap:10px;align-items:center}
+.sm-sh{font-size:12.5px;color:var(--ink-2);font-weight:600}
+.sm-sr b{font-size:14.5px;font-weight:600}
+.sm-sr input{min-width:0;width:100%}
+.sm-addrow select{max-width:340px}
+.sm-uw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;padding:16px 18px;border-radius:20px}
+.sm-uw.ok{background:var(--mint-soft)}
+.sm-uw.warn{background:var(--warn-soft)}
+.sm-uw.bad{background:var(--bad-soft)}
+.sm-uw-ic svg{width:34px;height:34px}
+.sm-uw.ok .sm-uw-ic{color:var(--mint)}.sm-uw.warn .sm-uw-ic{color:var(--warn)}.sm-uw.bad .sm-uw-ic{color:var(--bad)}
+.sm-uw b{display:block;font:600 16px/1.3 var(--display)}
+.sm-uw small{display:block;color:var(--ink-2);font-size:14px;margin-top:3px}
+.sm-why{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.sm-why li{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:10px;align-items:start;font-size:14.5px}
+.sm-shots{margin:0;padding:0 0 0 2px;list-style:none;display:grid;gap:8px}
+.sm-shots li{display:flex;gap:10px;align-items:center;font-size:14.5px}
+.sm-plans .tile-price{font:650 17px/1.2 var(--display);margin-top:4px;color:var(--brand-ink)}
+.sm-xs-ic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand-ink)}
+.sm-xs-ic svg{width:28px;height:28px}
+.xsell[data-sx]{grid-template-columns:56px minmax(0,1fr) auto}
+.sw.off{opacity:.5;cursor:default}
+@media (max-width:560px){.sm-who{grid-template-columns:1fr}.sm-sh,.sm-sr{grid-template-columns:72px minmax(0,1fr) auto;row-gap:6px}.sm-sh span:first-child{display:none}.sm-sr b{grid-column:1/-1}.xsell[data-sx]{grid-template-columns:40px minmax(0,1fr) auto;gap:12px;padding:14px}.sm-xs-ic{width:40px;height:40px;border-radius:12px}.sm-xs-ic svg{width:22px;height:22px}.sm-why li{grid-template-columns:24px minmax(0,1fr)}.sm-why li .sm-tag{grid-column:2;justify-self:start}}
+.sm-found .facts{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px 18px}
+.sm-found .facts dd{font-size:14.5px;font-weight:650;overflow-wrap:anywhere}
+.prod-sme{grid-template-columns:repeat(auto-fill,minmax(min(100%,165px),1fr))}
+.found .facts dd{overflow-wrap:anywhere}
 
 /* ================= NxSure Partners: ink sidebar, warm paper canvas, one typeface, one accent ================= */
 :root{
@@ -3793,10 +3897,16 @@ function order() {
   const ok = id => STEP[id] && (!STEP[id].when || STEP[id].when());
   if (CFG.channel === 'cust') return ['photo', 'pcheck', 'accept', 'inspect', 'done'].filter(ok);
   const pre = CFG.channel === 'agent' ? ['who', 'agentpic'] : [];
-  return [...pre, 'product', ...(S.product === 'motor' ? MOTOR_IDS : S.product === 'health' ? HEALTH_IDS : [])].filter(ok);
+  return [...pre, 'product', ...(S.product === 'motor' ? MOTOR_IDS : S.product === 'health' ? HEALTH_IDS : typeof isSme === 'function' && isSme(S.product) ? smeIds() : [])].filter(ok);
 }
 function priceInfo() {
   const B = typeof bundleSum === 'function' ? bundleSum() : { items: [], extras: 0, disc: 0 }, bx = rows => { if (!B.items.length) return rows; const out = rows.filter(r => !(r.cells && r.cells[0] === 'Total')); B.items.forEach(o => out.push([o.name.split(',')[0], inr(o.total)])); if (B.disc) out.push(['Bundle saving', '- ' + inr(B.disc)]); return out; };
+  if (typeof isSme === 'function' && isSme(S.product)) {
+    const b = S.biz, c = b && smeCalc(); if (!c) return null;
+    const single = S.product === 'marine' && (b.who === 'ind' || b.marine.kind === 'single');
+    if (c.range && !b.terms) return { total: c.total, from: true, sub: 'indicative, an underwriter confirms it', rows: null };
+    return { total: c.total, from: !b.planChosen && S.product !== 'dno', sub: `${single ? 'for this shipment' : 'for 1 year'}, with 18% GST`, rows: b.planChosen || b.terms ? c.rows.map(r => [r[0], inr(r[1])]).concat([['GST at 18%', inr(c.gst)], { cells: ['Total', inr(c.total)], bold: true }]) : null };
+  }
   if (S.product === 'motor' && S.motor && S.motor.v) {
     const M = S.motor;
     if (M.planChosen) { const r = motorCalc(M), t = r.total + B.extras; return { total: t, from: false, sub: B.items.length ? `for 1 year, with ${B.items.length} more cover${B.items.length > 1 ? 's' : ''}` : 'for 1 year, with 18% GST', rows: bx(motorBreakRows(M, r)).concat([{ cells: ['Total', inr(t)], bold: true }]) }; }
@@ -4136,7 +4246,7 @@ STEP.product = {
     body: `<div class="tiles prod-tiles">
       ${tile('data-p="motor"', `<span class="tile-art">${ART.motor()}</span><span class="tile-name">Motor</span><span class="tile-sub">Car, two-wheeler or commercial vehicle. Renew in a minute with last year's policy.</span>`, S.product === 'motor')}
       ${tile('data-p="health"', `<span class="tile-art">${ART.health()}</span><span class="tile-name">Health</span><span class="tile-sub">You, your family and your parents, with your cover decided right here.</span>`, S.product === 'health')}
-    </div>${typeof jxSavedHtml === 'function' ? jxSavedHtml() : ''}`,
+    </div>${typeof SME !== 'undefined' && CFG.channel !== 'agent' ? `<span class="sec-h prod-sme-h">For your business, and your home</span><div class="prod-sme">${Object.entries(SME).map(([k, x]) => `<button type="button" class="prod-sme-t" data-p="${k}" aria-pressed="${S.product === k}"><span class="ic">${PROD_ICO[k]}</span><span><b>${esc(x.short)}</b><small>${esc(PROD_SUB[k])}</small></span></button>`).join('')}</div>` : ''}${typeof jxSavedHtml === 'function' ? jxSavedHtml() : ''}`,
     next: null, back: CFG.channel === 'agent' ? undefined : false, hint: 'Say “motor” or “health”',
   }),
   wire(api) { api.body.addEventListener('click', e => { const l = e.target.closest('[data-lead]'); if (l && typeof JX !== 'undefined' && JX.resume) { JX.resume(l.dataset.lead); return; } const t = e.target.closest('[data-p]'); if (t) pickProduct(t.dataset.p); }); },
@@ -4147,6 +4257,7 @@ STEP.product = {
 function pickProduct(p) {
   if (S.product && S.product !== p) { S.seen = new Set(['product']); S.furthest = 'product'; S.kycUi = null; }
   S.product = p;
+  if (typeof isSme === 'function' && isSme(p) && (!S.biz || S.biz.p !== p)) S.biz = newBiz(p);
   if (p === 'motor' && !S.motor) S.motor = newMotor();
   if (p === 'health' && !S.health) S.health = newHealth();
   $$('[data-p]', S.api.q).forEach(x => x.setAttribute('aria-pressed', String(x.dataset.p === p)));
@@ -4155,6 +4266,14 @@ function pickProduct(p) {
 
 /* ================= KYC: PAN or Aadhaar with a code, DigiLocker with consent, or an uploaded ID ================= */
 const KYC_TITLE = 'Verify with PAN, Aadhaar, DigiLocker or an ID';
+const PROD_ICO = {
+  fire: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-4 0-6.5-2.7-6.5-6.3 0-3.2 2.2-5 3.6-7.7.4 1.8 1.3 2.9 2.5 3.4C11.4 7.6 12.6 5 15 3c-.2 3 3.5 5.6 3.5 11.2 0 4-2.5 6.8-6.5 6.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
+  lop: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 16l4-5 3 3 5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h3v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+  marine: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14h16l-2.5 5h-11zM7 14V9h10v5M12 5v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M3 21c1.5 0 1.5-1 3-1s1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  wc: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15a7 7 0 0 1 14 0M3.5 15h17v2.5h-17zM12 8V5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>',
+  dno: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="7" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 20v-2.5c0-2 1.6-3.5 5-3.5s5 1.5 5 3.5V20M13 14.3c.8-.2 1.8-.3 3-.3 3.4 0 5 1.5 5 3.5V20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+};
+const PROD_SUB = { fire: 'Your shop, factory, office or home', lop: 'Profit lost after a fire or flood', marine: 'Goods in transit, or a home move', wc: 'Injury to staff at work', dno: 'Claims against your directors' };
 // sample details for trying the demo: a valid-format PAN, an Aadhaar number that passes the checksum, and a mobile
 const DEMO_KYC = { pan: 'ABCPS1234F', aadhaar: '234123412346', mobile: '9845012345' };
 const KYC_NEEDS_MOB = t => t === 'pan' || t === 'aadhaar';
@@ -4166,6 +4285,7 @@ STEP.kyc = {
     const k = S.kyc, mot = S.product === 'motor';
     return {
       say: k ? (mot ? `I'll use the KYC you've already done. The policy has to be in the owner's name, so switch if the ${CLS[S.motor.v.cls].noun} isn't yours.` : `You're already verified, ${esc(first(k.name))}.`) : mot ? 'Now the owner\'s identity. Give me the PAN or Aadhaar and a mobile number, and I\'ll fetch the rest from the KYC record.' : 'Let\'s make sure it\'s you. Give me your PAN or Aadhaar and your mobile number, and I\'ll fetch the rest from your KYC record.',
+      ...(typeof isSme === 'function' && isSme(S.product) && S.biz && S.biz.who === 'biz' && !k ? { say: `Now you, as the person signing for ${esc(S.biz.src.gst.legal)}. ${S.biz.ent === 'prop' ? 'Your PAN is on the GST registration, so I\'ve filled it in.' : 'Your PAN or Aadhaar and mobile number, and I\'ll fetch the rest.'}` } : {}),
       title: k ? `Hi ${esc(first(k.name))}, here's what I have` : KYC_TITLE,
       body: '<div class="q-body" data-x="kyc"></div>',
       next: k ? 'Yes, continue' : 'Get OTP',
@@ -4189,7 +4309,7 @@ function kycDoneHtml(k) {
 }
 function kycWire(api) {
   const box = api.body.querySelector('[data-x=kyc]');
-  const U = S.kycUi = { phase: S.kyc ? 'done' : 'id', type: 'pan', id: '', mob: kycKnownMobile(), rec: null, timer: 0, note: '', dgOk: false, doc: { type: 'passport', front: null, back: null, thumb: '', ai: null, f: null, issues: [] } };
+  const U = S.kycUi = { phase: S.kyc ? 'done' : 'id', type: 'pan', id: S.biz && S.biz.who === 'biz' && S.biz.ent === 'prop' && S.biz.src ? S.biz.src.gst.pan : '', mob: kycKnownMobile(), rec: null, timer: 0, note: '', dgOk: false, doc: { type: 'passport', front: null, back: null, thumb: '', ai: null, f: null, issues: [] } };
   const title = t => { const h = api.q.querySelector('.q-title'); if (h) h.textContent = t; };
   function idForm() {
     const D = ID[U.type], dis = U.phase !== 'id' ? 'disabled' : '';
@@ -4553,6 +4673,7 @@ function doneManage(kind) {
 STEP.done = {
   label: null,
   view() {
+    if (typeof isSme === 'function' && isSme(S.product)) return smeDoneView();
     if (S.product === 'motor') {
       const M = S.motor, r = motorCalc(M);
       return {
@@ -4596,7 +4717,10 @@ STEP.done = {
   wire(api) {
     confetti();
     api.body.addEventListener('click', e => {
-      const a = e.target.closest('[data-a]'); if (!a) return;
+      const a = e.target.closest('[data-a]');
+      const sx = e.target.closest('[data-sx]'); if (sx) { smeCross(sx.dataset.sx); return; }
+      if (a && a.dataset.a === 'pdf' && typeof isSme === 'function' && isSme(S.product)) { saveFile(`NxSure-policy-${S.biz.policyNo.replace(/\//g, '-')}.pdf`, smePdf('policy')); return; }
+      if (!a) return;
       if (a.dataset.a === 'pdf') { if (S.product === 'motor') saveFile(`NxSure-policy-${S.motor.policyNo.replace(/\//g, '-')}.pdf`, motorPdf('policy')); else saveFile(S.health.proposalNo ? `NxSure-proposal-${S.health.proposalNo}.pdf` : `NxSure-policy-${S.health.policyNo.replace(/\//g, '-')}.pdf`, healthPdf(S.health.proposalNo ? 'ack' : 'policy')); }
       if (a.dataset.a === 'xsell') crossSell(S.product === 'motor' ? 'health' : 'motor');
     });
@@ -7901,6 +8025,1501 @@ document.addEventListener('click', e => {
   else if (S.api && S.cur) { const y = $('#stageScroll') ? $('#stageScroll').scrollTop : 0; show(S.cur, 0); if ($('#stageScroll')) $('#stageScroll').scrollTop = y; if (typeof toast === 'function') toast(off ? `Wellness benefits taken out. Premium now ${inr(healthCalc(H).total)}.` : `Wellness benefits added back. Premium now ${inr(healthCalc(H).total)}.`); }
 });
 
+/* ================= Business and property products: fire, loss of profit, marine cargo, workers' compensation, D&O =================
+   One journey shape for all five, like motor and health: identify the customer, fetch what public records and consented
+   integrations already know (GST, MCA, Udyam, EPFO and ESIC, e-way bills, ICEGATE, credit bureau, court records), ask only
+   what can't be fetched, underwrite digitally, then quote, KYC and pay. D&O, and anything outside the automatic limits,
+   goes to an underwriter before the price is final.
+   Registry and integration responses are simulated for the demo; rates and limits below are illustrative parameters
+   to be replaced with filed rates and the underwriting authority matrix. */
+
+const SME = {
+  fire: { name: 'Fire and property insurance', short: 'Fire and property', code: 'FR', who: ['ind', 'biz'], noun: 'property' },
+  lop: { name: 'Loss of profit insurance', short: 'Loss of profit', code: 'LP', who: ['biz'], noun: 'business' },
+  marine: { name: 'Marine cargo insurance', short: 'Marine cargo', code: 'MC', who: ['ind', 'biz'], noun: 'goods' },
+  wc: { name: "Workers' compensation insurance", short: "Workers' compensation", code: 'WC', who: ['ind', 'biz'], noun: 'staff' },
+  dno: { name: 'Directors and officers liability', short: 'Directors and officers', code: 'DO', who: ['biz'], noun: 'directors' },
+};
+const isSme = p => !!SME[p];
+
+CFG.sme = {
+  gst: 0.18,
+  // fire: ₹ per ₹1,000 of sum insured, by hazard class; 'severe' always goes to an underwriter
+  fireRate: { low: 0.40, moderate: 0.65, high: 1.10 },
+  homeRate: { building: 0.22, contents: 0.30, valuables: 0.60 },
+  homeContentsAuto: { pct: 0.20, max: 1000000 },
+  rebuild: { metro: 2400, other: 1900 },  // ₹ per sq ft to rebuild, by city
+  bharat: { sookshma: 5e7, laghu: 50e7 }, // total value at risk at one location
+  fireAdd: { burglary: 0.45, eea: 0.30, accidental: 0.12, rent: 0.10, money: 900, liability: 2500 },
+  fireLoad: { kutcha: 25, claim1: 15, noExt: 10, sprinkler: -10, hydrant: -5, filing: 10 },
+  minPrem: { fire: 500, lop: 1000, marine: 500, marineAnnual: 5000, wc: 1000, wcHome: 500, dno: 15000 },
+  lopIp: { 3: 0.55, 6: 0.75, 9: 0.90, 12: 1.00, 18: 1.20, 24: 1.35 },
+  lopAdd: { supplier: 0.10, utilities: 0.05, access: 0.05 },
+  // marine: % of value
+  marine: { inland: { allrisk: 0.040, standard: 0.028, basic: 0.018 }, intl: { allrisk: 0.100, standard: 0.070, basic: 0.045 }, home: { allrisk: 1.10, basic: 0.55 }, war: 0.030, srcc: 0.020, storage: 0.020 },
+  commodity: { general: 1.0, textile: 1.0, machinery: 0.9, electronics: 1.5, pharma: 1.2, perishable: 1.8, fragile: 1.6, furniture: 1.1, chemicals: 1.4 },
+  // workers' compensation: % of annual wages, by kind of work
+  wcRate: { office: 0.12, sales: 0.60, skilled: 0.90, unskilled: 1.30, driver: 1.50, security: 1.00, site: 3.00, help: 0.60, cook: 0.60, nanny: 0.50, gardener: 0.80 },
+  wcAdd: { medical: 300, disease: 0.10, contract: 0.15 },
+  wcLoad: { heights: 20, machinery: 15, chemicals: 20 },
+  // D&O: % of the limit, by revenue band, then factors
+  dnoRate: [[1e8, 0.0035], [1e9, 0.0050], [5e9, 0.0070], [Infinity, 0.0100]],
+  dnoSector: { fintech: 1.6, realty: 1.4, health: 1.2, chemicals: 1.2, it: 1.0, manufacturing: 0.9, trade: 1.0, services: 1.0 },
+  dnoAdd: { epl: 0.15, odl: 0.08, sidec: 0.35 },
+};
+
+/* ---------- what the customer is: identity numbers ---------- */
+const GST_STATES = { '01': ['Jammu and Kashmir', 'Srinagar', '190001'], '03': ['Punjab', 'Ludhiana', '141001'], '06': ['Haryana', 'Gurugram', '122002'], '07': ['Delhi', 'New Delhi', '110020'], '08': ['Rajasthan', 'Jaipur', '302001'], '09': ['Uttar Pradesh', 'Noida', '201301'], '10': ['Bihar', 'Patna', '800001'], '18': ['Assam', 'Guwahati', '781001'], '19': ['West Bengal', 'Kolkata', '700091'], '21': ['Odisha', 'Bhubaneswar', '751001'], '23': ['Madhya Pradesh', 'Indore', '452001'], '24': ['Gujarat', 'Ahmedabad', '380015'], '27': ['Maharashtra', 'Pune', '411019'], '29': ['Karnataka', 'Bengaluru', '560058'], '30': ['Goa', 'Panaji', '403001'], '32': ['Kerala', 'Kochi', '682030'], '33': ['Tamil Nadu', 'Chennai', '600032'], '36': ['Telangana', 'Hyderabad', '500032'], '37': ['Andhra Pradesh', 'Visakhapatnam', '530012'] };
+const B36 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+function gstinCheck(g) {
+  let sum = 0;
+  for (let i = 0; i < 14; i++) { const p = B36.indexOf(g[i]) * (i % 2 ? 2 : 1); sum += Math.floor(p / 36) + (p % 36); }
+  return B36[(36 - (sum % 36)) % 36];
+}
+const gstinMake = (st, pan, n = '1') => { const b = `${st}${pan}${n}Z`; return b + gstinCheck(b); };
+function gstinErr(g) {
+  if (!/^\d{2}[A-Z]{5}\d{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/.test(g)) return 'A GSTIN has 15 characters, like 29ABCPS1234F1Z5: the state code, your PAN, then three more.';
+  if (gstinCheck(g.slice(0, 14)) !== g[14]) return 'That GSTIN doesn\'t add up. Check the last character.';
+  if (!GST_STATES[g.slice(0, 2)]) return 'Check the first two digits. They\'re your state code.';
+  return '';
+}
+// the fourth letter of a PAN says what kind of taxpayer it is
+const PAN_KIND = { P: 'prop', F: 'firm', C: 'co', T: 'trust', H: 'huf', A: 'aop', B: 'aop', G: 'govt', L: 'govt', J: 'aop' };
+const ENT = { prop: 'Proprietorship', firm: 'Partnership firm', llp: 'Limited liability partnership', pvt: 'Private limited company', pub: 'Public limited company', trust: 'Trust or society', huf: 'Hindu undivided family', aop: 'Association of persons', govt: 'Government body' };
+const cinErr = c => /^[LU]\d{5}[A-Z]{2}\d{4}(PLC|PTC|FLC|FTC|GOI|SGC|NPL|GAP|ULL|ULT)\d{6}$/.test(c) ? '' : 'A company number (CIN) has 21 characters, like U29304MH2014PTC254311.';
+const udyamErr = u => /^UDYAM-[A-Z]{2}-\d{2}-\d{7}$/.test(u) ? '' : 'An Udyam number looks like UDYAM-KA-03-0012345.';
+const DEMO_BIZ = {
+  shop: { gstin: gstinMake('29', 'ABCPS1234F'), label: 'a clothes shop in Bengaluru' },
+  factory: { gstin: gstinMake('27', 'AAKCP4821M'), cin: 'U29304MH2014PTC254311', label: 'an auto parts maker in Pune' },
+};
+
+/* ---------- kinds of business: what they do, how they're occupied, what they ship, who they employ ---------- */
+const OCC = {
+  dwelling: { label: 'Home', haz: 'low', ip: 6 },
+  office: { label: 'Office', haz: 'low', ip: 6 },
+  shop: { label: 'Shop, everyday goods (clothes, groceries, stationery)', haz: 'low', ip: 6 },
+  shop_el: { label: 'Shop, electronics and appliances', haz: 'moderate', ip: 6 },
+  restaurant: { label: 'Restaurant or café', haz: 'moderate', ip: 6 },
+  warehouse: { label: 'Warehouse, non-hazardous goods', haz: 'moderate', ip: 9 },
+  cold: { label: 'Cold storage', haz: 'moderate', ip: 12 },
+  engg: { label: 'Factory, engineering and metal work', haz: 'moderate', ip: 12 },
+  wood: { label: 'Factory, furniture and woodwork', haz: 'high', ip: 12 },
+  textile_mill: { label: 'Factory, textile mill', haz: 'high', ip: 18 },
+  chem: { label: 'Factory, chemicals', haz: 'severe', ip: 18 },
+};
+const ARCH = [
+  { k: 'garments', trade: 'Garments', nature: ['Retail Business'], hsn: [['6204', 'Women\'s suits and dresses'], ['6203', 'Men\'s suits and trousers']], occ: 'shop', comm: 'textile', staff: [4, 12], turn: [0.6, 4], sector: 'trade', nic: '47711', mix: { sales: 0.6, unskilled: 0.3, office: 0.1 } },
+  { k: 'electronics', trade: 'Electronics', nature: ['Retail Business'], hsn: [['8517', 'Mobile phones'], ['8528', 'Televisions']], occ: 'shop_el', comm: 'electronics', staff: [3, 10], turn: [1, 8], sector: 'trade', nic: '47420', mix: { sales: 0.6, unskilled: 0.2, office: 0.2 } },
+  { k: 'pharma', trade: 'Pharma Distributors', nature: ['Wholesale Business', 'Warehouse / Depot'], hsn: [['3004', 'Medicines, packaged']], occ: 'warehouse', comm: 'pharma', staff: [6, 30], turn: [5, 40], sector: 'health', nic: '46497', mix: { office: 0.3, unskilled: 0.4, driver: 0.2, security: 0.1 } },
+  { k: 'autoparts', trade: 'Precision Components', nature: ['Factory / Manufacturing', 'Import', 'Export'], hsn: [['8708', 'Parts of motor vehicles'], ['8483', 'Transmission shafts and gears']], occ: 'engg', comm: 'machinery', staff: [30, 120], turn: [8, 90], sector: 'manufacturing', nic: '29304', imp: true, exp: true, mix: { office: 0.15, skilled: 0.45, unskilled: 0.3, driver: 0.05, security: 0.05 } },
+  { k: 'restaurant', trade: 'Foods', nature: ['Supplier of Services', 'Retail Business'], hsn: [['9963', 'Restaurant services']], occ: 'restaurant', comm: 'perishable', staff: [8, 25], turn: [1, 6], sector: 'services', nic: '56101', mix: { cook: 0.3, unskilled: 0.5, office: 0.2 } },
+  { k: 'furniture', trade: 'Furniture Works', nature: ['Factory / Manufacturing'], hsn: [['9403', 'Wooden furniture']], occ: 'wood', comm: 'furniture', staff: [10, 40], turn: [2, 15], sector: 'manufacturing', nic: '31001', mix: { skilled: 0.5, unskilled: 0.35, driver: 0.1, office: 0.05 } },
+  { k: 'it', trade: 'Technologies', nature: ['Supplier of Services', 'Office / Sale Office'], hsn: [['9983', 'IT and software services']], occ: 'office', comm: 'electronics', staff: [10, 150], turn: [2, 60], sector: 'it', nic: '62011', exp: true, mix: { office: 0.95, security: 0.05 } },
+  { k: 'chemicals', trade: 'Chemicals', nature: ['Factory / Manufacturing'], hsn: [['3824', 'Chemical preparations']], occ: 'chem', comm: 'chemicals', staff: [15, 60], turn: [5, 50], sector: 'chemicals', nic: '20119', imp: true, mix: { skilled: 0.4, unskilled: 0.4, office: 0.1, driver: 0.1 } },
+  { k: 'textile', trade: 'Textile Mills', nature: ['Factory / Manufacturing', 'Export'], hsn: [['5208', 'Woven cotton fabrics']], occ: 'textile_mill', comm: 'textile', staff: [40, 200], turn: [10, 120], sector: 'manufacturing', nic: '13121', exp: true, mix: { skilled: 0.4, unskilled: 0.45, office: 0.1, security: 0.05 } },
+  { k: 'cold', trade: 'Cold Storage', nature: ['Warehouse / Depot', 'Supplier of Services'], hsn: [['9967', 'Storage and warehousing services']], occ: 'cold', comm: 'perishable', staff: [8, 30], turn: [2, 20], sector: 'services', nic: '52101', mix: { unskilled: 0.6, office: 0.2, security: 0.1, driver: 0.1 } },
+];
+const WC_KIND = { office: 'Office and admin', sales: 'Shop floor and sales', skilled: 'Skilled workers on machines', unskilled: 'Helpers and loaders', driver: 'Drivers', security: 'Security guards', site: 'Site and construction workers', cook: 'Cooks and kitchen staff', help: 'Domestic help', nanny: 'Nanny or caregiver', gardener: 'Gardener' };
+const WC_HOME = ['help', 'cook', 'driver', 'nanny', 'gardener', 'security'];
+const COMMODITY = { general: 'General goods', textile: 'Textiles and garments', machinery: 'Machinery and parts', electronics: 'Electronics and phones', pharma: 'Medicines', perishable: 'Food and perishables', fragile: 'Glass and ceramics', furniture: 'Furniture', chemicals: 'Chemicals (non-hazardous)' };
+const NAMES1 = ['Shree', 'Sai', 'Om', 'Laxmi', 'Ganesh', 'Annapurna', 'Sri Krishna', 'Balaji', 'Vinayak', 'Sapthagiri', 'Kaveri', 'Pranav', 'Aditya', 'Vardhman', 'Sunrise', 'Bluestone'];
+const COUNTRIES = { imp: ['China', 'Germany', 'Japan', 'South Korea', 'Taiwan'], exp: ['United States', 'Germany', 'United Arab Emirates', 'United Kingdom', 'Bangladesh'] };
+const PORTS = ['Nhava Sheva (JNPT)', 'Chennai', 'Mundra', 'Bengaluru Air Cargo', 'Delhi Air Cargo'];
+
+function newBiz(p) {
+  return {
+    p, who: SME[p].who.length === 1 ? SME[p].who[0] : null, idType: 'gstin', idv: '', id: null, ent: null, src: null, consent: { returns: true, epfo: true, eway: true, icegate: true, bureau: true }, fetchedAt: null,
+    loc: null, plan: null, planChosen: false, addons: new Set(), quoteNo: null, uw: null, survey: null, submittedAt: null, terms: null,
+    fire: { occ: null, own: null, items: new Set(), construction: 'pucca', vals: {}, area: '', ext: null, prot: 'none', sec: new Set(), claims: null, basement: null, home: { type: 'flat', own: null, area: '', building: 0, contents: 0, contentsMore: false, valuables: 0 } },
+    lop: { md: null, mdIns: '', mdNo: '', mdExp: '', mdSi: '', withFire: false, gp: 0, gpTouched: false, ip: null },
+    marine: { kind: null, transits: new Set(), commodity: null, packing: 'cartons', used: false, annual: { inland: 0, import: 0, export: 0 }, perBottom: 0, modes: new Set(['road']), single: { kind: 'inland', value: '', from: '', to: '', mode: 'road', date: '', inco: 'FOB', invoice: '' }, move: { from: '', to: '', date: '', packers: true, mode: 'road', items: {} } },
+    wc: { rows: [], hazards: new Set(), contract: false, contractN: '', contractWage: '', claims: null, esicNote: '' },
+    dno: { us: null, deals: null, notices: null, noticeText: '', existing: null, retro: '', limit: 0, ext: new Set() },
+  };
+}
+const B = () => S.biz;
+const bizName = b => { b = b || B(); if (!b) return ''; if (b.who === 'ind') return S.kyc ? S.kyc.name : ''; const g = b.src && b.src.gst; return g ? (g.trade || g.legal) : ''; };
+
+/* ---------- simulated registry lookups, built from the identity numbers so they come back the same each time ---------- */
+const crore = n => n * 1e7;
+const roundTo = (n, s) => Math.round(n / s) * s;
+function smeLookup(b) {
+  const id = b.id, h = hash('biz' + (id.gstin || id.cin || id.pan || id.udyam));
+  const pan = id.pan || (id.gstin ? id.gstin.slice(2, 12) : 'AAKCP' + String(1000 + h % 9000) + 'M');
+  const st = id.gstin ? id.gstin.slice(0, 2) : id.cin ? ({ MH: '27', KA: '29', DL: '07', TN: '33', TG: '36', GJ: '24', WB: '19', HR: '06', UP: '09', RJ: '08', KL: '32' }[id.cin.slice(6, 8)] || '27') : id.udyam ? ({ MH: '27', KA: '29', DL: '07', TN: '33', TS: '36', GJ: '24', WB: '19', HR: '06', UP: '09', RJ: '08', KL: '32' }[id.udyam.slice(6, 8)] || '29') : '29';
+  const [state, city, pin0] = GST_STATES[st] || GST_STATES['29'];
+  let kind = PAN_KIND[pan[3]] || 'prop';
+  const isDemoShop = id.gstin === DEMO_BIZ.shop.gstin, isDemoFac = id.gstin === DEMO_BIZ.factory.gstin || id.cin === DEMO_BIZ.factory.cin;
+  let a = ARCH[h % ARCH.length];
+  if (isDemoShop) a = ARCH[0]; else if (isDemoFac) a = ARCH[3];
+  else if (kind === 'prop' && ['autoparts', 'textile', 'chemicals', 'it'].includes(a.k)) a = ARCH[[0, 1, 4, 5][h % 4]];
+  if (id.cin) kind = 'co';
+  const company = kind === 'co', listed = !!(id.cin && id.cin[0] === 'L');
+  const ent = kind === 'co' ? (id.cin && /PLC/.test(id.cin) ? 'pub' : 'pvt') : kind === 'firm' ? ((h >> 3) % 3 === 0 ? 'llp' : 'firm') : kind;
+  const owner = kycRecord('pan', pan[3] === 'P' ? pan : 'ABCPS' + pan.slice(5), null).name;
+  const nm = isDemoShop ? 'Sharma' : isDemoFac ? 'Pranav' : NAMES1[(h >> 5) % NAMES1.length];
+  const trade = isDemoShop ? 'Sharma Garments' : `${nm} ${a.trade}`;
+  const legal = kind === 'prop' ? owner : `${trade}${ent === 'pvt' ? ' Private Limited' : ent === 'pub' ? ' Limited' : ent === 'llp' ? ' LLP' : ''}`;
+  const since = isDemoShop ? 2016 : isDemoFac ? 2014 : YEAR - 2 - (h >> 7) % 14;
+  const turn = isDemoShop ? 2.4 : isDemoFac ? 46 : a.turn[0] + ((h >> 9) % 100) / 100 * (a.turn[1] - a.turn[0]);
+  const turnover = roundTo(crore(turn), 1e5);
+  const staff = isDemoShop ? 7 : isDemoFac ? 84 : a.staff[0] + (h >> 11) % (a.staff[1] - a.staff[0] + 1);
+  const area = AREAS[city] || ['Main Road'];
+  const addr = isDemoShop ? `No. 14, 2nd Cross, Commercial Street, ${area[0]}` : isDemoFac ? 'Plot 27, Sector 10, PCMC Industrial Area, Bhosari' : `${a.occ === 'shop' || a.occ === 'shop_el' || a.occ === 'restaurant' ? `Shop ${3 + h % 40}, ${area[(h >> 4) % area.length]} Main Road` : `Plot ${10 + h % 90}, Industrial Area, ${area[(h >> 4) % area.length]}`}`;
+  const pin = isDemoFac ? '411026' : pin0;
+  const places = [{ addr, city, pin, state, tag: 'Principal place of business', occ: a.occ }];
+  if (['autoparts', 'pharma', 'textile', 'garments'].includes(a.k) && kind !== 'prop' || isDemoShop) places.push({ addr: isDemoShop ? `Godown, No. 3, 5th Main, ${area[(h >> 6) % area.length]}` : `Warehouse ${1 + h % 9}, Logistics Park, ${area[(h >> 6) % area.length]}`, city, pin: String(Number(pin) + 3), state, tag: 'Additional place: godown', occ: 'warehouse' });
+  const aato = turnover <= crore(1.5) ? 'Up to ₹1.5 crore' : turnover <= crore(5) ? '₹1.5 crore to ₹5 crore' : turnover <= crore(25) ? '₹5 crore to ₹25 crore' : turnover <= crore(100) ? '₹25 crore to ₹100 crore' : '₹100 crore to ₹500 crore';
+  const months = Array.from({ length: 12 }, (_, i) => { const seas = 1 + 0.18 * Math.sin((i + (h % 12)) / 12 * 2 * Math.PI) + (a.k === 'garments' && (i === 9 || i === 10) ? 0.35 : 0); return roundTo(turnover / 12 * seas, 1000); });
+  const filed = isDemoFac || isDemoShop ? 12 : 12 - ((h >> 13) % 7 === 0 ? 3 : (h >> 13) % 3 === 0 ? 1 : 0);
+  const purchases = roundTo(turnover * (a.occ === 'office' ? 0.25 : a.occ.startsWith('shop') ? 0.68 : 0.58), 1e5);
+  const gst = { gstin: id.gstin || gstinMake(st, pan), legal, trade, pan, ent, constitution: ENT[ent], status: 'Active', since: new Date(since, (h >> 2) % 12, 1 + h % 27), places, nature: a.nature, hsn: a.hsn, aato, mobile: '9' + String(800000000 + h % 199999999).slice(0, 9), filed, months, turnover: months.reduce((x, y) => x + y, 0), purchases };
+  const mca = company || ent === 'llp' ? (() => {
+    const pat = roundTo(gst.turnover * (0.04 + ((h >> 15) % 7) / 100), 1e5), nw = roundTo(gst.turnover * (0.22 + ((h >> 17) % 20) / 100), 1e5);
+    const sur = (h >> 19) % 2 ? 'Kulkarni' : 'Deshpande', names = isDemoFac ? ['Pranav Kulkarni', 'Meera Kulkarni', 'Suresh Iyer'] : [`${FIRST.M[h % 8]} ${sur}`, `${FIRST.F[(h >> 3) % 8]} ${sur}`, `${FIRST.M[(h >> 6) % 8]} Rao`].slice(0, 2 + (h >> 21) % 2);
+    return { cin: id.cin || (isDemoFac ? DEMO_BIZ.factory.cin : '') || `U${a.nic}${({ '27': 'MH', '29': 'KA', '07': 'DL', '33': 'TN', '36': 'TG', '24': 'GJ', '19': 'WB', '06': 'HR', '09': 'UP' }[st] || 'MH')}${since}PTC${String(100000 + h % 899999)}`, listed, status: 'Active', inc: gst.since, fy: `${YEAR - 1}-${String(YEAR).slice(2)}`,
+      revenue: gst.turnover, pat, nw, fixed: roundTo(gst.turnover * (a.occ === 'office' ? 0.08 : 0.32), 1e5), inventory: roundTo(gst.turnover * (a.occ === 'office' ? 0 : 0.14), 1e5), borrow: roundTo(gst.turnover * 0.12, 1e5), standing: roundTo(gst.turnover * 0.19, 1e5),
+      directors: names.map((n, i) => ({ name: n, din: `0${String(7000000 + (h >> i) % 999999).slice(0, 7)}`, since: since + i })), subs: isDemoFac ? 1 : 0, charges: 1 + (h >> 23) % 2, filings: 'Up to date' };
+  })() : null;
+  const msme = turnover <= crore(10) ? 'Micro' : turnover <= crore(100) ? 'Small' : 'Medium';
+  const udyam = { no: id.udyam || `UDYAM-${({ '27': 'MH', '29': 'KA', '07': 'DL', '33': 'TN', '36': 'TS', '24': 'GJ', '19': 'WB', '06': 'HR', '09': 'UP' }[st] || 'KA')}-${String(1 + h % 30).padStart(2, '0')}-${String(1000000 + h % 8999999)}`, cat: msme, nic: a.nic, staff, pm: roundTo(gst.turnover * (a.occ === 'office' ? 0.06 : a.occ.startsWith('shop') ? 0.04 : 0.28), 1e5) };
+  const esicN = Math.round(staff * (a.occ === 'office' ? 0.15 : 0.55));
+  const wage = { office: 32000, sales: 16000, skilled: 24000, unskilled: 14500, driver: 19000, security: 15500, cook: 17000, site: 16000 };
+  const epfo = staff >= 20 || kind !== 'prop' ? { est: `${({ '27': 'PUPUN', '29': 'KNBNG', '07': 'DLCPM', '33': 'TNMAS', '36': 'APHYD' }[st] || 'KNBNG')}${String(100000 + h % 899999)}000`, staff, wages: roundTo(Object.entries(a.mix).reduce((s, [k, f]) => s + f * staff * (wage[k] || 18000), 0), 1000), lastEcr: addDays(TODAY, -(TODAY.getDate() + 5)) } : null;
+  const esic = { covered: esicN };
+  const ewayN = a.occ === 'office' ? 0 : Math.round(gst.turnover / (a.occ.startsWith('shop') ? 2.6e5 : 6.5e5));
+  const eway = ewayN ? { n: ewayN, value: roundTo(gst.turnover * (a.occ.startsWith('shop') ? 0.35 : 0.82), 1e5), max: roundTo(gst.turnover * (a.occ.startsWith('shop') ? 0.02 : 0.012), 1e4), road: 0.92, top: [state, (h >> 2) % 2 ? 'Karnataka' : 'Tamil Nadu'] } : null;
+  const tradeData = a.imp || a.exp ? { iec: pan, imp: a.imp ? { n: 6 + h % 30, value: roundTo(gst.turnover * 0.14, 1e5), from: COUNTRIES.imp.slice(h % 3, h % 3 + 2), port: PORTS[h % PORTS.length] } : null, exp: a.exp ? { n: 10 + h % 50, value: roundTo(gst.turnover * 0.22, 1e5), to: COUNTRIES.exp.slice(h % 3, h % 3 + 2), port: PORTS[(h >> 1) % 3] } : null } : null;
+  const bureau = { rank: isDemoShop ? 3 : isDemoFac ? 2 : 2 + (h >> 25) % 6, overdue: !isDemoShop && !isDemoFac && (h >> 27) % 9 === 0 };
+  const courts = { cases: isDemoFac ? 1 : (h >> 26) % 5 === 0 ? 1 : 0, ibc: false, kind: 'commercial recovery suit filed by the company' };
+  const news = { adverse: false };
+  const rating = company && gst.turnover > crore(25) ? { grade: ['BBB', 'BBB+', 'A-'][h % 3], outlook: 'Stable' } : null;
+  return { gst, mca, udyam, epfo, esic, eway, trade: tradeData, bureau, courts, news, rating, arch: a.k, sector: a.sector, occ: a.occ, comm: a.comm, mix: a.mix, wage, owner };
+}
+// the hazards at a pincode: earthquake, flood, cyclone, the nearest fire station and what the map shows around it
+function smeHazard(pin, occ) {
+  const h = hash('hz' + pin), d1 = pin[0], two = pin.slice(0, 2), three = pin.slice(0, 3);
+  const quake = ['1', '7'].includes(d1) || ['24', '11', '18', '19', '78', '79'].includes(two) || ['370'].includes(three) ? 'high' : ['40', '41', '60', '50', '70', '38', '30'].includes(two) ? 'moderate' : 'low';
+  const flood = ['400', '600', '682', '781', '800', '700', '751', '682'].includes(three) || ['78', '80', '84', '85'].includes(two) ? 'high' : h % 3 === 0 ? 'moderate' : 'low';
+  const cyclone = ['75', '76', '53', '52', '60', '61', '36', '39', '40', '68', '69', '70', '74'].includes(two) ? (['75', '53', '60'].includes(two) ? 'high' : 'moderate') : 'low';
+  const station = (1.2 + (h % 60) / 10).toFixed(1);
+  const map = occ === 'dwelling' ? 'Residential area, buildings of 4 to 12 floors' : ['shop', 'shop_el', 'restaurant'].includes(occ) ? 'Busy market street, shops on both sides' : occ === 'office' ? 'Commercial area, office buildings' : 'Industrial area, sheds with open yards';
+  return { quake, flood, cyclone, station, map };
+}
+const hzWord = l => ({ low: 'Low', moderate: 'Moderate', high: 'High' })[l];
+
+/* ---------- pricing ---------- */
+const perMille = (si, r) => si * r / 1000;
+function fireSi(b) {
+  const F = b.fire;
+  if (b.who === 'ind') { const H = F.home, auto = Math.min(H.building * CFG.sme.homeContentsAuto.pct, CFG.sme.homeContentsAuto.max); return { building: H.own === 'own' ? H.building : 0, contents: H.own === 'own' ? (H.contentsMore ? Math.max(auto, H.contents) : auto) : H.contents, valuables: H.valuables, auto }; }
+  const v = k => F.items.has(k) ? Number(F.vals[k] || 0) : 0;
+  return { building: F.own === 'own' ? v('building') : 0, machinery: v('machinery'), fff: v('fff'), stock: v('stock'), contents: v('contents') };
+}
+const siTotal = si => Object.entries(si).filter(([k]) => k !== 'auto').reduce((s, [, x]) => s + (Number(x) || 0), 0);
+function bharatBand(total) { const L = CFG.sme.bharat; return total <= L.sookshma ? { k: 'sookshma', name: 'Bharat Sookshma Udyam Suraksha' } : total <= L.laghu ? { k: 'laghu', name: 'Bharat Laghu Udyam Suraksha' } : { k: 'large', name: 'Standard Fire and Special Perils' }; }
+const PLANS = {
+  fire: [['essential', 'Essential', 'Fire, lightning, explosion, storm, flood, earthquake, riots and terrorism'], ['recommended', 'Recommended', 'Essential, plus burglary and electrical breakdown of machines and electronics'], ['complete', 'Complete', 'Recommended, plus accidental damage, money and liability to visitors']],
+  home: [['essential', 'Essential', 'Your home and what\'s in it, against fire, flood, earthquake, theft after an insured event, and more'], ['recommended', 'Recommended', 'Essential, plus burglary and theft'], ['complete', 'Complete', 'Recommended, plus accidental damage to fixtures and electrical breakdown of appliances']],
+  marine: [['basic', 'Basic', 'Fire, overturning, collision and loss of the whole consignment'], ['standard', 'Standard', 'Basic, plus damage from heavy weather and water, and theft of a whole package'], ['allrisk', 'All risks', 'Any accidental loss or damage in transit, including breakage and pilferage']],
+  wc: [['essential', 'Essential', 'Your liability for injury, death or occupational disease at work, as the law sets it'], ['recommended', 'Recommended', 'Essential, plus hospital and medical bills for the injured worker'], ['complete', 'Complete', 'Recommended, plus workers you engage through contractors']],
+};
+const PLAN_ADDS = {
+  fire: { essential: [], recommended: ['burglary', 'eea'], complete: ['burglary', 'eea', 'accidental', 'money', 'liability'] },
+  home: { essential: [], recommended: ['burglary'], complete: ['burglary', 'accidental', 'eea'] },
+  wc: { essential: [], recommended: ['medical'], complete: ['medical', 'contract'] },
+  marine: { basic: [], standard: [], allrisk: [] },
+};
+const ADD_INFO = {
+  burglary: ['Burglary and theft', 'Forced entry, and theft of stock and contents'], eea: ['Electrical and electronic breakdown', 'Short circuits and power surges damaging machines and electronics'], accidental: ['Accidental damage', 'Sudden damage not caused by a listed peril'],
+  rent: ['Loss of rent', 'Rent you lose, or pay for another place, while the property is repaired'], money: ['Money', 'Cash in the safe and in transit to the bank, up to ₹2 lakh'], liability: ['Liability to visitors', 'Injury to customers and visitors on your premises, up to ₹10 lakh'],
+  supplier: ['Supplier and customer premises', 'Profit lost when a key supplier or customer has a fire'], utilities: ['Power and water failure', 'Profit lost when the public supply fails after an insured event'], access: ['Blocked access', 'Profit lost when damage nearby stops people reaching you'],
+  war: ['War risk', 'For imports and exports by sea or air'], srcc: ['Strikes, riots and civil commotion', 'Damage by people taking part in strikes or riots'], storage: ['Storage on the way', 'Goods held at a warehouse in transit, up to 30 days'],
+  medical: ['Medical expenses', 'Hospital bills for an injured worker, up to ₹50,000 each'], disease: ['Occupational diseases', 'Diseases caused by the work, beyond the scheduled list'], contract: ['Contract workers', 'Workers supplied by contractors, where you are the principal employer'],
+  epl: ['Employment practices', 'Claims by employees about wrongful dismissal, harassment or discrimination'], odl: ['Outside directorships', 'Your directors\' roles on other companies\' boards, such as non-profits'], sidec: ['The company for securities claims', 'Claims by shareholders against the listed company itself'],
+};
+function smeCalc(s, o = {}) {
+  s = s || S; const b = s.biz; if (!b) return null;
+  const p = b.p, C = CFG.sme, plan = o.plan || b.plan || defaultPlan(b), adds = o.adds || b.addons, rows = [];
+  const loadPct = b.uw && b.uw.loadPct ? b.uw.loadPct : 0;
+  let net = 0, si = 0, info = {};
+  const add = (label, amt) => { amt = Math.round(amt); if (!amt) return; rows.push([label, amt]); net += amt; };
+  if (p === 'fire' || (p === 'lop' && b.lop.withFire)) {
+    const S2 = fireSi(b); si = siTotal(S2); if (!si) return null;
+    if (b.who === 'ind') {
+      const R = C.homeRate;
+      add('Building', perMille(S2.building, R.building)); add('Contents', perMille(S2.contents, R.contents)); add('Valuables', perMille(S2.valuables, R.valuables));
+      const hadd = new Set([...(PLAN_ADDS.home[plan] || []), ...adds]);
+      if (hadd.has('burglary')) add('Burglary and theft', perMille(S2.contents + S2.valuables, C.fireAdd.burglary));
+      if (hadd.has('accidental')) add('Accidental damage', net * C.fireAdd.accidental);
+      if (hadd.has('eea')) add('Electrical breakdown of appliances', perMille(S2.contents, C.fireAdd.eea));
+      info = { band: { k: 'home', name: 'Bharat Griha Raksha' } };
+    } else {
+      const occ = OCC[b.fire.occ] || OCC[b.src && b.src.occ] || OCC.shop, rate = C.fireRate[occ.haz] || C.fireRate.high, band = bharatBand(si);
+      add(`Fire and allied perils, ${siLabelL(si)} at ${rate.toFixed(2)} per thousand`, perMille(si, rate));
+      const base = net, L = C.fireLoad, ld = [];
+      if (b.fire.construction === 'kutcha') ld.push(['Partly kutcha construction', L.kutcha]);
+      if (b.fire.claims === '1') ld.push(['One claim in the last 3 years', L.claim1]);
+      if (b.fire.ext === 'no') ld.push(['No fire extinguishers', L.noExt]);
+      if (b.fire.prot === 'sprinkler') ld.push(['Sprinklers', L.sprinkler]); else if (b.fire.prot === 'hydrant') ld.push(['Hydrant system', L.hydrant]);
+      ld.forEach(([t, pc]) => add(`${t}, ${pc > 0 ? '+' : ''}${pc}%`, base * pc / 100));
+      const fadd = new Set([...(PLAN_ADDS.fire[plan] || []), ...adds]), A2 = C.fireAdd;
+      if (fadd.has('burglary')) add(ADD_INFO.burglary[0], perMille(S2.stock + S2.contents + S2.fff, A2.burglary));
+      if (fadd.has('eea')) add(ADD_INFO.eea[0], perMille(S2.machinery + S2.contents, A2.eea));
+      if (fadd.has('accidental')) add(ADD_INFO.accidental[0], base * A2.accidental);
+      if (fadd.has('rent') && S2.building) add(ADD_INFO.rent[0], base * A2.rent);
+      if (fadd.has('money')) add(ADD_INFO.money[0], A2.money);
+      if (fadd.has('liability')) add(ADD_INFO.liability[0], A2.liability);
+      info = { band, rate };
+    }
+  }
+  if (p === 'lop') {
+    const L = b.lop, gp = Number(L.gp) || 0; if (!gp || !L.ip) return null;
+    const occ = OCC[b.fire.occ] || OCC[b.src && b.src.occ] || OCC.shop, rate = (C.fireRate[occ.haz] || C.fireRate.high) * (C.lopIp[L.ip] || 1);
+    const before = net;
+    add(`Loss of profit, gross profit ${siLabelL(gp)}, ${L.ip} months at ${rate.toFixed(2)} per thousand`, perMille(gp, rate));
+    const lb = net - before;
+    ['supplier', 'utilities', 'access'].forEach(k => { if (adds.has(k)) add(ADD_INFO[k][0], lb * C.lopAdd[k]); });
+    info.gp = gp; si = (si || 0) + gp;
+  }
+  if (p === 'marine') {
+    const M = b.marine;
+    if (b.who === 'ind') {
+      const v = Object.values(M.move.items).reduce((x, y) => x + (Number(y) || 0), 0); if (!v) return null; si = v;
+      const pl = plan === 'allrisk' ? 'allrisk' : 'basic';
+      add(`${pl === 'allrisk' ? 'All risks' : 'Basic'} cover on ${inr(v)} of household goods`, v * C.marine.home[pl] / 100);
+      if (pl === 'allrisk' && !M.move.packers) add('Not packed by professional packers, +25%', net * 0.25);
+      if (adds.has('storage')) add(ADD_INFO.storage[0], v * C.marine.storage / 100);
+    } else {
+      const cf = C.commodity[M.commodity] || 1, pl = plan || 'allrisk', used = M.used ? 1.2 : 1;
+      const parts = M.kind === 'single' ? [[M.single.kind || 'inland', Number(M.single.value) || 0]] : [['inland', M.annual.inland], ['import', M.annual.import], ['export', M.annual.export]].filter(([k]) => M.transits.has(k));
+      parts.forEach(([k, v]) => { v = Number(v) || 0; if (!v) return; si += v; const r = (k === 'inland' ? C.marine.inland : C.marine.intl)[pl] * cf * used; add(`${{ inland: 'Within India', import: 'Imports', export: 'Exports' }[k]}, ${M.kind === 'single' ? '' : 'a year of '}${siLabelL(v)} at ${r.toFixed(3)}%`, v * r / 100); });
+      if (!si) return null;
+      const intl = parts.filter(([k, v]) => k !== 'inland' && Number(v)).reduce((x, [, v]) => x + Number(v), 0);
+      if (adds.has('war') && intl) add(ADD_INFO.war[0], intl * C.marine.war / 100);
+      if (adds.has('srcc')) add(ADD_INFO.srcc[0], si * C.marine.srcc / 100);
+      if (adds.has('storage')) add(ADD_INFO.storage[0], si * C.marine.storage / 100);
+    }
+  }
+  if (p === 'wc') {
+    const W = b.wc, rowsOk = W.rows.filter(r => Number(r.n) > 0 && Number(r.wage) > 0); if (!rowsOk.length) return null;
+    let wages = 0;
+    rowsOk.forEach(r => { const yr = Number(r.n) * Number(r.wage) * 12; wages += yr; add(`${WC_KIND[r.k]}: ${r.n} × ${inr(r.wage)} a month, at ${C.wcRate[r.k]}%`, yr * C.wcRate[r.k] / 100); });
+    si = wages;
+    const base = net, hz = [...W.hazards].filter(k => C.wcLoad[k]);
+    hz.forEach(k => add(`${{ heights: 'Work at heights', machinery: 'Heavy machinery', chemicals: 'Chemicals' }[k]}, +${C.wcLoad[k]}%`, base * C.wcLoad[k] / 100));
+    const wadd = new Set([...(PLAN_ADDS.wc[plan] || []), ...adds]), n = rowsOk.reduce((x, r) => x + Number(r.n), 0);
+    if (wadd.has('medical')) add(`${ADD_INFO.medical[0]}, ${n} people`, n * C.wcAdd.medical);
+    if (wadd.has('disease')) add(ADD_INFO.disease[0], base * C.wcAdd.disease);
+    if (wadd.has('contract') && W.contract && Number(W.contractN) && Number(W.contractWage)) { const cw = Number(W.contractN) * Number(W.contractWage) * 12; add(`Contract workers: ${W.contractN} × ${inr(W.contractWage)} a month`, cw * C.wcRate.unskilled / 100 * (1 + C.wcAdd.contract)); si += cw; }
+    info = { wages: si, n };
+  }
+  if (p === 'dno') {
+    const D = b.dno, src = b.src; if (!D.limit || !src) return null;
+    const rev = (src.mca && src.mca.revenue) || src.gst.turnover, r = band(C.dnoRate, rev) * (C.dnoSector[src.sector] || 1);
+    let f = 1; const fl = [];
+    if (src.mca && src.mca.listed) { f *= 1.8; fl.push('listed'); } if (D.us === 'yes') { f *= 1.6; fl.push('US or Canada exposure'); } if (D.deals === 'yes') { f *= 1.4; fl.push('fundraise, listing or deal planned'); }
+    if (D.notices === 'yes' || (src.courts && src.courts.cases)) { f *= 1.3; fl.push('notices or cases'); } if (src.mca && src.mca.nw < 0) { f *= 1.5; fl.push('negative net worth'); }
+    add(`Directors and officers, limit ${siLabelL(D.limit)}`, D.limit * r * f);
+    const base = net;
+    D.ext.forEach(k => { if (C.dnoAdd[k]) add(ADD_INFO[k][0], base * C.dnoAdd[k]); });
+    si = D.limit; info = { flags: fl };
+  }
+  if (loadPct) add(`Underwriting loading, ${loadPct}%`, net * loadPct / 100);
+  const minP = p === 'marine' ? (b.marine.kind === 'annual' ? C.minPrem.marineAnnual : C.minPrem.marine) : p === 'wc' && b.who === 'ind' ? C.minPrem.wcHome : C.minPrem[p] || 500;
+  if (net < minP) { rows.push(['Raised to the minimum premium', minP - net]); net = minP; }
+  net = Math.round(net);
+  const gst = Math.round(net * C.gst), total = net + gst;
+  const tr = b.terms && b.terms.premium && !o.plan ? b.terms : null;
+  if (tr) return { rows: [[`Premium agreed by the underwriter`, tr.net]], net: tr.net, gst: Math.round(tr.net * C.gst), total: tr.net + Math.round(tr.net * C.gst), si, plan, info, range: null };
+  const range = needsUw(b) ? [roundTo(total * 0.9, 100), roundTo(total * 1.15, 100)] : null;
+  return { rows, net, gst, total, si, plan, info, range };
+}
+const trimZ = s => s.includes('.') ? s.replace(/\.?0+$/, '') : s;
+const siLabelL = v => v >= 1e7 ? `₹${trimZ((v / 1e7).toFixed(2))} crore` : v >= 1e5 ? `₹${trimZ((v / 1e5).toFixed(2))} lakh` : inr(v);
+function defaultPlan(b) { return b.p === 'marine' ? 'allrisk' : b.p === 'lop' || b.p === 'dno' ? 'standard' : 'recommended'; }
+const planList = b => b.p === 'fire' ? (b.who === 'ind' ? PLANS.home : PLANS.fire) : b.p === 'marine' ? (b.who === 'ind' ? PLANS.marine.filter(x => x[0] !== 'standard') : PLANS.marine) : b.p === 'wc' ? PLANS.wc : null;
+const addList = b => {
+  if (b.p === 'fire') return b.who === 'ind' ? [] : ['rent', 'money', 'liability'].filter(k => k !== 'rent' || b.fire.own === 'own');
+  if (b.p === 'lop') return ['supplier', 'utilities', 'access'];
+  if (b.p === 'marine') return b.who === 'ind' ? ['storage'] : [...(b.marine.transits.has('import') || b.marine.transits.has('export') || (b.marine.kind === 'single' && b.marine.single.kind !== 'inland') ? ['war'] : []), 'srcc', 'storage'];
+  if (b.p === 'wc') return ['disease'];
+  if (b.p === 'dno') return ['epl', 'odl', ...(b.src && b.src.mca && b.src.mca.listed ? ['sidec'] : [])];
+  return [];
+};
+// an underwriter sets the final price: always for D&O, and for anything outside what's decided automatically
+const needsUw = b => !!b && (b.p === 'dno' || !!(b.uw && b.uw.status === 'refer'));
+
+/* ---------- digital underwriting: what the data says, and what happens next ---------- */
+function smeUw(s) {
+  s = s || S; const b = s.biz, src = b.src, p = b.p, R = []; let status = 'standard', load = 0;
+  const ok = (t, from) => R.push({ tone: 'ok', t, from }), warn = (t, from) => R.push({ tone: 'warn', t, from }), bad = (t, from) => R.push({ tone: 'bad', t, from });
+  const refer = (t, from) => { warn(t, from); if (status !== 'decline') status = 'refer'; };
+  if (b.who === 'biz' && src) {
+    const g = src.gst, age = yrs(g.since, TODAY);
+    if (g.status !== 'Active') { bad('The GST registration isn\'t active.', 'GST'); status = 'decline'; }
+    ok(`In business since ${g.since.getFullYear()}, ${Math.floor(age)} years`, 'GST');
+    if (g.filed >= 11) ok(`GST returns filed on time for ${g.filed} of the last 12 months`, 'GST returns');
+    else { warn(`GST returns filed on time for ${g.filed} of the last 12 months`, 'GST returns'); load += CFG.sme.fireLoad.filing; }
+    if (src.mca) { if (src.mca.nw > 0) ok(`Net worth ${siLabelL(src.mca.nw)} in ${src.mca.fy}`, 'MCA'); else refer('Net worth is negative', 'MCA'); }
+    const used = typeof smeSrcs === 'function' ? smeSrcs(b) : [];
+    if (src.bureau && used.includes('bureau') && b.consent.bureau) { if (src.bureau.rank <= 5 && !src.bureau.overdue) ok(`Commercial credit rank ${src.bureau.rank} of 10, no overdue loans`, 'Credit bureau'); else warn(`Commercial credit rank ${src.bureau.rank} of 10${src.bureau.overdue ? ', with an overdue loan' : ''}`, 'Credit bureau'); }
+    if (used.includes('courts')) { if (src.courts && src.courts.cases) warn(`${src.courts.cases} court case found: a ${src.courts.kind}`, 'Court records'); else ok('No court cases or insolvency proceedings found', 'Court records'); }
+    if (age < 1 && p === 'lop') refer('Less than a year of trading, so there\'s no history to set the gross profit', 'GST');
+  }
+  if (b.loc && (p === 'fire' || p === 'lop')) {
+    const z = b.loc.hz;
+    if (z.flood === 'high' || z.quake === 'high' || z.cyclone === 'high') warn(`At this pincode: ${[z.flood === 'high' && 'high flood risk', z.quake === 'high' && 'high earthquake risk', z.cyclone === 'high' && 'high cyclone risk'].filter(Boolean).join(', ')}. You're covered for it, and it's in the price.`, 'Hazard maps');
+    else ok('No high flood, earthquake or cyclone risk at this pincode', 'Hazard maps');
+  }
+  if (p === 'fire' || (p === 'lop' && b.lop.withFire)) {
+    if (b.who === 'ind') ok('A home, insured on what it costs to rebuild, so there\'s no under-insurance', 'Your answers');
+    else {
+      const occ = OCC[b.fire.occ] || OCC[b.src && b.src.occ] || OCC.shop, si = siTotal(fireSi(b));
+      if (occ.haz === 'severe') refer(`${occ.label} needs an underwriter to look at the process and storage`, 'Occupancy');
+      else ok(`${occ.label}: ${occ.haz} fire hazard`, 'Occupancy');
+      if (si > CFG.sme.bharat.laghu) refer(`${siLabelL(si)} at one location is above our automatic limit of ${siLabelL(CFG.sme.bharat.laghu)}`, 'Your values');
+      else if (si > CFG.sme.bharat.sookshma || occ.haz === 'high') { if (status === 'standard' || status === 'loading') status = 'survey'; warn(`${si > CFG.sme.bharat.sookshma ? `${siLabelL(si)} of property` : 'A high-hazard occupancy'} needs a quick video survey of the premises`, 'Underwriting rules'); }
+      if (b.fire.claims === '2') refer('Two or more claims in the last 3 years', 'Your answers');
+      if (b.fire.construction === 'kutcha' && occ.haz !== 'low') refer('Partly kutcha construction with a moderate or high hazard occupancy', 'Your answers');
+      if (b.fire.basement === 'yes') warn('Stock is kept in a basement, so flood cover there has a higher excess', 'Your answers');
+      if (b.fire.ext === 'yes') ok('Fire extinguishers on site', 'Your answers');
+    }
+  }
+  if (p === 'lop') {
+    const L = b.lop, est = lopEstimate(b);
+    if (est && L.gp && L.gp < est.gp * 0.75) warn(`The gross profit you chose is ${Math.round((1 - L.gp / est.gp) * 100)}% below what your returns show. A claim is reduced in proportion if it's too low.`, 'GST returns and accounts');
+    if (est && L.gp > est.gp * 1.6) refer('The gross profit is well above what the returns and accounts show', 'GST returns and accounts');
+    if (L.md === 'other') ok(`Property cover in place with ${L.mdIns || 'another insurer'}${L.mdExp ? ` till ${fd(fromIso(L.mdExp))}` : ''}`, 'Your answers');
+  }
+  if (p === 'marine' && b.who === 'biz') {
+    const M = b.marine;
+    if (M.commodity === 'chemicals') warn('Chemicals: packed and labelled to transport rules is a condition of cover', 'HSN codes');
+    const big = M.kind === 'single' ? Number(M.single.value) : Number(M.perBottom);
+    if (big > 5e7) refer(`A single consignment of ${siLabelL(big)} is above our automatic limit of ₹5 crore`, 'Your answers');
+    if (src && src.eway) ok(`${src.eway.n.toLocaleString('en-IN')} e-way bills in 12 months, so we know your routes and values`, 'E-way bills');
+    if (src && src.trade) ok(`Importer-exporter code active${src.trade.imp ? `, ${src.trade.imp.n} imports` : ''}${src.trade.exp ? `, ${src.trade.exp.n} exports` : ''} in 12 months`, 'ICEGATE');
+  }
+  if (p === 'marine' && b.who === 'ind') { ok(b.marine.move.packers ? 'Packed by professional packers' : 'Packed by you: breakage cover costs a little more', 'Your answers'); }
+  if (p === 'wc') {
+    const W = b.wc, n = W.rows.reduce((x, r) => x + (Number(r.n) || 0), 0);
+    if (n > 500) refer('More than 500 workers needs an underwriter', 'Your answers');
+    if (W.hazards.size && !W.hazards.has('none')) { warn(`Some work is at heights, with heavy machinery or with chemicals. That's in the price.`, 'Your answers'); }
+    if (W.claims === '2') { warn('Two or more work-injury claims in 3 years', 'Your answers'); load += 20; }
+    if (src && src.epfo) { const diff = Math.abs(n - (src.epfo.staff - src.esic.covered)) / Math.max(1, src.epfo.staff - src.esic.covered); if (diff > 0.25) warn(`You've listed ${n} workers. EPFO shows ${src.epfo.staff} on the payroll, with ${src.esic.covered} covered by ESIC. Wages are checked at the end of the year.`, 'EPFO and ESIC'); else ok(`Matches EPFO: ${src.epfo.staff} on the payroll, ${src.esic.covered} of them covered by ESIC`, 'EPFO and ESIC'); }
+  }
+  if (p === 'dno') {
+    const D = b.dno, m = src && src.mca;
+    if (m) { ok(`${m.directors.length} directors, filings ${m.filings.toLowerCase()} with the Registrar of Companies`, 'MCA'); if (m.listed) warn('Listed company: securities claims are the biggest risk', 'MCA'); }
+    if (src && src.rating) ok(`Credit rating ${src.rating.grade}, ${src.rating.outlook.toLowerCase()} outlook`, 'Rating agencies');
+    if (src && src.news && !src.news.adverse) ok('No adverse news about the company or its directors', 'News');
+    if (D.us === 'yes') warn('Subsidiaries, assets or sales in the US or Canada', 'Your answers');
+    if (D.deals === 'yes') warn('A fundraise, listing or merger planned in the next 12 months', 'Your answers');
+    if (D.notices === 'yes') warn('A notice, claim or investigation in the last 5 years', 'Your answers');
+    status = status === 'decline' ? 'decline' : 'refer';
+  }
+  if (status === 'standard' && load) status = 'loading';
+  return { status, loadPct: status === 'refer' || status === 'decline' ? 0 : load, reasons: R, at: new Date() };
+}
+// what the returns and accounts say gross profit is: turnover less purchases, and net profit plus standing charges
+function lopEstimate(b) {
+  const src = b.src; if (!src) return null;
+  const g = src.gst, a = g.turnover - g.purchases, m = src.mca, c = m ? m.pat + m.standing : null;
+  const gp = roundTo(Math.max(a, c || 0), 1e5);
+  return { turnover: g.turnover, purchases: g.purchases, viaGst: roundTo(a, 1e5), viaAcc: c ? roundTo(c, 1e5) : null, gp };
+}
+// what to suggest for each thing at the location, and where the number comes from
+function fireSuggest(b) {
+  const src = b.src, out = {}; if (!src) return out;
+  const city = b.loc ? b.loc.city : '', metro = ['Mumbai', 'Bengaluru', 'New Delhi', 'Delhi', 'Chennai', 'Hyderabad', 'Kolkata', 'Pune', 'Gurugram'].includes(city);
+  out.rate = metro ? CFG.sme.rebuild.metro : CFG.sme.rebuild.other;
+  out.machinery = src.mca ? [roundTo(src.mca.fixed * 0.8, 1e5), `About 80% of the fixed assets in your ${src.mca.fy} accounts`] : [src.udyam.pm, 'Investment in plant and machinery on your Udyam registration'];
+  out.stock = src.mca && src.mca.inventory ? [roundTo(src.mca.inventory * 1.2, 1e5), `Your ${src.mca.fy} inventory, plus 20% for peaks`] : [roundTo(src.gst.purchases / 12 * 2, 1e5), 'Two months of purchases, from your GST returns'];
+  out.fff = b.fire && b.fire.items.has('machinery') ? [roundTo(Math.max(5e5, (out.machinery[0] || 0) * 0.12), 1e5), 'About 12% of machinery, a typical share for furniture and fittings'] : [roundTo(Math.max(3e5, src.gst.turnover * 0.03), 1e5), 'About 3% of yearly sales, typical for shop and office interiors'];
+  out.contents = [roundTo(Math.max(2e5, src.gst.turnover * 0.01), 1e5), 'Computers, appliances and other contents, about 1% of turnover'];
+  return out;
+}
+
+/* ================= Business and property: the steps =================
+   Identify (GSTIN, CIN, Udyam or PAN) → fetch public records, then consented data with one code → the place → only the
+   questions the data can't answer → digital underwriting → plan → quote → KYC of the person signing → pay, or send to
+   an underwriter first (D&O, and anything outside the automatic limits). */
+const SICO = {
+  home: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
+  shop: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9l1.5-5h13L20 9M4 9h16M4 9v11h16V9M9 20v-6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
+  truck: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="7" cy="18" r="2" fill="currentColor"/><circle cx="17" cy="18" r="2" fill="currentColor"/></svg>',
+  users: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 20c.6-3.6 3-5.5 6-5.5s5.4 1.9 6 5.5M16 5.2a3 3 0 0 1 0 5.6M18 14.8c1.7.7 2.7 2.4 3 5.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+  ok: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="currentColor" opacity=".16"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  warn: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="currentColor" opacity=".16"/><path d="M12 7v6M12 16.5v.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>',
+  bad: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="currentColor" opacity=".16"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>',
+};
+// the steps for each product, in order; steps that don't apply drop out through their own 'when'
+function smeIds() {
+  const b = S.biz, p = S.product; if (!b) return [];
+  const ind = b.who === 'ind', head = ['bwho', ...(ind ? [] : ['bid', 'bfetch'])];
+  const tail = needsUw(b) ? ['kyc', 'dsubmit', 'bsent', 'dterms'] : ['kyc', 'breview'];
+  const mid = { fire: ['bloc', 'fhome', 'fwhat', 'fval', 'fprot'], lop: ['bloc', 'lmd', 'fwhat', 'fval', 'fprot', 'lgp', 'lip'], marine: ['mmove', 'mtype', 'mcargo', 'mship'], wc: ['wstaff'], dno: ['dco', 'dlimit'] }[p] || [];
+  return [...head, ...mid, 'buw', 'bsurvey', 'bplan', 'bquote', ...tail, 'done'];
+}
+const fireOn = () => S.biz && S.biz.who === 'biz' && (S.product === 'fire' || (S.product === 'lop' && S.biz.lop.withFire));
+const amtIn = (name, v, ph = '') => `<input type="text" name="${name}" value="${v ? Number(v).toLocaleString('en-IN') : ''}" inputmode="numeric" placeholder="${ph}" autocomplete="off" data-amt-in>`;
+const amtVal = x => Number(String(x || '').replace(/[^\d]/g, '')) || 0;
+const priceTxt = c => c.range ? `${inr(c.range[0])} to ${inr(c.range[1])}` : inr(c.total);
+const srcTag = t => `<span class="sm-tag">${esc(t)}</span>`;
+function smeLive(api) { const c = smeCalc(); const t = api.body.querySelector('[data-x=tot]'); if (t) t.textContent = c ? (c.range ? `${inr(c.range[0])} to ${inr(c.range[1])}` : inr(c.total)) : '—'; api.live(); }
+// amounts typed with commas: keep the commas as they type, and show the lakh or crore figure under the box
+function wireAmts(api, onChange) {
+  api.body.addEventListener('input', e => {
+    const t = e.target; if (!t.matches('[data-amt-in]')) return;
+    const v = amtVal(t.value); t.value = v ? v.toLocaleString('en-IN') : '';
+    const w = t.closest('.fld') && t.closest('.fld').querySelector('.sm-words'); if (w) w.textContent = v ? siLabelL(v) : '';
+    onChange(t.name, v, t);
+  });
+}
+
+/* ---------- who is it for ---------- */
+STEP.bwho = {
+  label: 'Who it covers',
+  when: () => !!(S.biz && SME[S.product].who.length > 1),
+  view() {
+    const p = S.product, b = B();
+    const T = {
+      fire: ['Is this for your home or your business?', 'Let\'s start with what you\'d like to protect.', [['ind', SICO.home, 'My home', 'A flat or a house, and what\'s in it. For owners and tenants.'], ['biz', SICO.shop, 'My business', 'A shop, office, warehouse or factory, with its stock and machines.']]],
+      marine: ['Moving home, or shipping for your business?', 'I\'ll cover your goods from the time they\'re loaded till they reach.', [['ind', SICO.home, 'Moving home', 'Your household goods, from packing to unpacking at the new place.'], ['biz', SICO.truck, 'My business\'s goods', 'What you send or receive, within India or across borders.']]],
+      wc: ['Who works for you?', 'You\'re liable when someone who works for you is hurt at work. Let\'s cover that.', [['ind', SICO.home, 'Staff at home', 'A driver, cook, help, nanny or gardener.'], ['biz', SICO.users, 'My business\'s employees', 'People on your payroll, and workers from contractors.']]],
+    }[p];
+    return { say: T[1], title: T[0], body: `<div class="tiles sm-who">${T[2].map(([k, ic, t, s2]) => tile(`data-who="${k}"`, `<span class="who-ic">${ic}</span><span class="tile-name">${t}</span><span class="tile-sub">${s2}</span>`, b.who === k)).join('')}</div>`, next: null, hint: 'Say “home” or “business”' };
+  },
+  wire(api) {
+    api.body.addEventListener('click', e => {
+      const t = e.target.closest('[data-who]'); if (!t) return;
+      const b = B(), k = t.dataset.who;
+      if (b.who && b.who !== k) { const nb = newBiz(b.p); nb.who = k; S.biz = nb; S.seen = new Set(['product', 'bwho']); S.furthest = 'bwho'; }
+      S.biz.who = k;
+      $$('[data-who]', api.body).forEach(x => x.setAttribute('aria-pressed', String(x === t)));
+      setTimeout(() => api.next(), REDUCED ? 0 : 300);
+    });
+  },
+  value: () => { const b = B(); return b && b.who ? (b.who === 'ind' ? { fire: 'Home', marine: 'Moving home', wc: 'Staff at home' }[S.product] : 'Business') : ''; },
+  done: () => !!(B() && B().who),
+  cmd(t) { const l = t.toLowerCase(); const k = /home|house|flat|moving|domestic|driver|cook|maid/.test(l) ? 'ind' : /business|shop|office|factory|company|employees/.test(l) ? 'biz' : null; if (!k) return null; press(`[data-who=${k}]`); return ''; },
+};
+
+/* ---------- which business: one number, then everything else is looked up ---------- */
+const BID_T = { gstin: ['GSTIN', 'GSTIN', '29ABCPS1234F1Z5'], cin: ['CIN', 'Company number (CIN)', 'U29304MH2014PTC254311'], udyam: ['Udyam', 'Udyam registration number', 'UDYAM-KA-03-0012345'], pan: ['PAN', 'Business PAN', 'AAKCP4821M'] };
+STEP.bid = {
+  label: 'Your business',
+  when: () => !!(S.biz && S.biz.who === 'biz'),
+  view() {
+    const b = B(), dno = S.product === 'dno', T = BID_T[b.idType];
+    const tabs = Object.entries(BID_T).filter(([k]) => !dno || k === 'gstin' || k === 'cin');
+    return {
+      say: dno ? 'Your company\'s CIN or GSTIN is all I need. I\'ll fetch the directors, accounts and filings from the public registers.' : 'Your GSTIN is all I need. I\'ll fetch your business details from the GST and company registers, so there\'s little to type.',
+      title: dno ? 'Your company number' : 'Your business\'s GSTIN',
+      body: `<div class="tabs" role="radiogroup" aria-label="Which number">${tabs.map(([k, t]) => `<label><input type="radio" name="bidt" value="${k}" ${b.idType === k ? 'checked' : ''}><span>${t[0]}</span></label>`).join('')}</div>
+        <label class="fld"><span data-x="lbl">${T[1]}</span><input type="text" name="bidv" class="big-in sm-id" value="${esc(b.idv)}" placeholder="${T[2]}" autocomplete="off" spellcheck="false" style="text-transform:uppercase"></label>
+        <p class="hint">${dno ? 'D&amp;O cover is for companies, LLPs, trusts and societies.' : 'No GSTIN? Use your company number, Udyam number or PAN instead.'} The registers are public, so this needs no consent.</p>
+        <p class="otp-demo kyc-demo" role="note"><span class="od-l">Demo, try</span>${dno ? '' : `<button type="button" data-demo="shop">${esc(DEMO_BIZ.shop.label)}</button>`}<button type="button" data-demo="factory">${esc(DEMO_BIZ.factory.label)}</button></p>
+        <div data-x="look"></div>`,
+      next: 'Find my business', hint: 'Say or type your GSTIN',
+    };
+  },
+  wire(api) {
+    const b = B(), box = api.body, inp = box.querySelector('[name=bidv]');
+    box.addEventListener('change', e => { if (e.target.name !== 'bidt') return; b.idType = e.target.value; b.idv = ''; inp.value = ''; inp.placeholder = BID_T[b.idType][2]; box.querySelector('[data-x=lbl]').textContent = BID_T[b.idType][1]; api.err(''); inp.focus(); });
+    box.addEventListener('input', e => { if (e.target.name === 'bidv') { b.idv = e.target.value.toUpperCase().replace(/\s+/g, ''); } });
+    box.addEventListener('keydown', e => { if (e.target.name === 'bidv' && e.key === 'Enter') api.next(); });
+    box.addEventListener('click', e => {
+      const d = e.target.closest('[data-demo]'); if (!d) return;
+      const D = DEMO_BIZ[d.dataset.demo], k = 'gstin';
+      b.idType = k; b.idv = D.gstin; $$('[name=bidt]', box).forEach(x => { x.checked = x.value === k; }); inp.value = D.gstin; inp.placeholder = BID_T[k][2]; box.querySelector('[data-x=lbl]').textContent = BID_T[k][1]; api.err('');
+      const nb = api.q.querySelector('.q-foot .btn-next'); if (nb) nb.focus();
+    });
+  },
+  async commit(api) {
+    const b = B(), v = (b.idv || '').toUpperCase().replace(/\s+/g, ''), t = b.idType;
+    const e = t === 'gstin' ? gstinErr(v) : t === 'cin' ? cinErr(v) : t === 'udyam' ? udyamErr(v) : (/^[A-Z]{5}\d{4}[A-Z]$/.test(v) ? '' : 'A PAN has 5 letters, 4 digits and a letter, like AAKCP4821M.');
+    if (e) return e;
+    const pan = t === 'gstin' ? v.slice(2, 12) : t === 'pan' ? v : null, kind = t === 'cin' ? 'co' : pan ? PAN_KIND[pan[3]] : null;
+    if (S.product === 'dno' && kind && !['co', 'firm', 'trust', 'aop'].includes(kind)) return 'This number belongs to a proprietor. D&O protects the directors of a company, an LLP or a trust, so it doesn\'t apply to a proprietorship. Fire, loss of profit, marine and workers\' compensation all do.';
+    const id = { [t]: v };
+    if (!b.id || JSON.stringify(b.id) !== JSON.stringify(id)) {
+      api.body.querySelector('[data-x=look]').innerHTML = '<div class="reading"><span class="spin"></span>Looking you up on the GST and company registers…</div>';
+      api.hideNext(true); await sleep(REDUCED ? 80 : 1100); api.hideNext(false);
+      if (S.cur !== 'bid') return 'STAY';
+      b.id = id; b.src = smeLookup(b); b.fetchedAt = null; b.ent = b.src.gst.ent; b.loc = null; b.uw = null;
+    }
+    return '';
+  },
+  value: () => { const b = B(); return b && b.src ? `${b.src.gst.legal}, ${b.src.gst.constitution.toLowerCase()}` : ''; },
+  done: () => !!(B() && B().src),
+  cmd(t) { const v = t.toUpperCase().replace(/[^A-Z0-9-]/g, ''); if (!/^\d{2}[A-Z]{5}\d{4}[A-Z]/.test(v) && !/^[LU]\d{5}/.test(v)) return null; const b = B(); b.idType = /^[LU]\d{5}/.test(v) ? 'cin' : 'gstin'; b.idv = v; const i = S.api.body.querySelector('[name=bidv]'); if (i) i.value = v; press('.btn-next'); return ''; },
+};
+
+/* ---------- the digital footprint: public records, then consented data with one code ---------- */
+const SRC_DEF = {
+  gst: ['GST registration', 'GSTN', 'Name, type of business, places of business and the goods you deal in'],
+  mca: ['Company records', 'Ministry of Corporate Affairs', 'Directors, accounts, charges and filings'],
+  udyam: ['Udyam registration', 'Ministry of MSME', 'MSME category, activity, employees and investment in machinery'],
+  courts: ['Court records', 'eCourts and NCLT', 'Cases and insolvency proceedings'],
+  news: ['News', 'Public news sources', 'Anything reported about the company or its directors'],
+  returns: ['GST returns', 'Through an account aggregator', 'Sales and purchases for the last 12 months'],
+  epfo: ['EPFO and ESIC', 'With your establishment code', 'People on the payroll, wages, and who\'s covered by ESIC'],
+  eway: ['E-way bills', 'GST e-way bill system', 'Goods moved in 12 months: values, routes and modes'],
+  icegate: ['Imports and exports', 'ICEGATE, with your importer-exporter code', 'Bills of entry and shipping bills for 12 months'],
+  bureau: ['Commercial credit report', 'Credit bureau, a soft check', 'Credit rank and any overdue loans. It doesn\'t affect your score.'],
+};
+const SRC_FOR = { fire: ['gst', 'mca', 'udyam', 'returns'], lop: ['gst', 'mca', 'udyam', 'courts', 'returns', 'bureau'], marine: ['gst', 'mca', 'udyam', 'returns', 'eway', 'icegate'], wc: ['gst', 'mca', 'udyam', 'epfo'], dno: ['gst', 'mca', 'udyam', 'courts', 'news', 'returns', 'epfo', 'bureau'] };
+const SRC_CONSENT = ['returns', 'epfo', 'eway', 'icegate', 'bureau'];
+const smeSrcs = b => SRC_FOR[b.p].filter(k => k !== 'mca' || b.src.mca);
+function bars(months) { const mx = Math.max(...months); return `<span class="sm-bars" aria-hidden="true">${months.map(v => `<i style="height:${Math.max(8, Math.round(v / mx * 100))}%"></i>`).join('')}</span>`; }
+// what was found, grouped the way the customer thinks about their business
+function smeFoundHtml(b) {
+  const s = b.src, on = k => smeSrcs(b).includes(k) && (!SRC_CONSENT.includes(k) || b.consent[k]), g = s.gst, sec = [];
+  sec.push(['Business', factList([['Legal name', g.legal], ['Trade name', g.trade], ['Type', g.constitution], ['GSTIN', `${g.gstin}, active since ${fd(g.since)}`], ['Nature of business', g.nature.join(', ')], ['Goods and services', g.hsn.map(x => `${x[1]} (HSN ${x[0]})`).join(', ')], ['MSME category', `${s.udyam.cat}, ${s.udyam.no}`], s.mca ? ['Company number', s.mca.cin] : null]), ['GST', 'Udyam', s.mca ? 'MCA' : null]]);
+  if (on('returns')) sec.push(['Sales', `<div class="sm-sales"><div><b>${siLabelL(g.turnover)}</b><small>Sales in the last 12 months</small></div>${bars(g.months)}</div>${factList([['Purchases', siLabelL(g.purchases)], ['Returns filed on time', `${g.filed} of 12 months`], s.mca ? ['Net profit, ' + s.mca.fy, siLabelL(s.mca.pat)] : null, s.mca ? ['Net worth', siLabelL(s.mca.nw)] : null, on('bureau') ? ['Credit rank', `${s.bureau.rank} of 10${s.bureau.overdue ? ', one overdue loan' : ', no overdue loans'}`] : null])}`, ['GST returns', s.mca ? 'MCA' : null, on('bureau') ? 'Credit bureau' : null]]);
+  if (on('epfo')) sec.push(['People', s.epfo ? factList([['On the payroll', `${s.epfo.staff}, last return ${fd(s.epfo.lastEcr)}`], ['Covered by ESIC', String(s.esic.covered)], ['Monthly wages', inr(s.epfo.wages)]]) : `<p class="hint">No EPFO registration found. ${s.udyam.staff} people are listed on your Udyam registration.</p>`, ['EPFO', 'ESIC', 'Udyam']]);
+  if (on('eway') || on('icegate')) sec.push(['Goods moved', factList([on('eway') && s.eway ? ['Within India', `${s.eway.n.toLocaleString('en-IN')} e-way bills, ${siLabelL(s.eway.value)}, mostly by road`] : on('eway') ? ['Within India', 'No e-way bills in 12 months'] : null, on('eway') && s.eway ? ['Largest consignment', siLabelL(s.eway.max)] : null, on('icegate') && s.trade && s.trade.imp ? ['Imports', `${s.trade.imp.n} bills of entry, ${siLabelL(s.trade.imp.value)}, from ${listText(s.trade.imp.from)}`] : null, on('icegate') && s.trade && s.trade.exp ? ['Exports', `${s.trade.exp.n} shipping bills, ${siLabelL(s.trade.exp.value)}, to ${listText(s.trade.exp.to)}`] : null, on('icegate') && !s.trade ? ['Imports and exports', 'No importer-exporter activity found'] : null]), [on('eway') ? 'E-way bills' : null, on('icegate') ? 'ICEGATE' : null]]);
+  if (s.mca && (b.p === 'dno' || b.p === 'lop')) sec.push(['Directors', `<ul class="sm-dirs">${s.mca.directors.map(d => `<li><b>${esc(d.name)}</b><small>DIN ${esc(d.din.replace(/^(\d{3})\d{3}/, '$1xxx'))}, since ${d.since}</small></li>`).join('')}</ul>${factList([['Subsidiaries', s.mca.subs ? String(s.mca.subs) : 'None'], ['Listed', s.mca.listed ? 'Yes' : 'No'], ['Charges registered', String(s.mca.charges)]])}`, ['MCA']]);
+  if (on('courts') || on('news')) sec.push(['Legal and reputation', factList([on('courts') ? ['Court cases', s.courts.cases ? `${s.courts.cases}: a ${s.courts.kind}` : 'None found'] : null, on('courts') ? ['Insolvency', s.courts.ibc ? 'Proceedings found' : 'None'] : null, on('news') ? ['News', s.news.adverse ? 'Adverse reports found' : 'Nothing adverse in 3 years'] : null, s.rating ? ['Credit rating', `${s.rating.grade}, ${s.rating.outlook.toLowerCase()}`] : null]), [on('courts') ? 'eCourts and NCLT' : null, on('news') ? 'News' : null, s.rating ? 'Rating agencies' : null]]);
+  return `<div class="sm-found">${sec.map(([h, body, tags]) => `<section><div class="sm-fh"><span class="sec-h">${h}</span><span class="sm-tags">${tags.filter(Boolean).map(srcTag).join('')}</span></div>${body}</section>`).join('')}</div>`;
+}
+STEP.bfetch = {
+  label: 'What we found',
+  when: () => !!(S.biz && S.biz.who === 'biz' && S.biz.src),
+  view() {
+    const b = B(), g = b.src.gst;
+    return {
+      say: b.fetchedAt ? 'Here\'s your business, from the records. Check it, and I\'ll use it to fill in the rest.' : `Found ${esc(g.trade)}. With your consent I can also fetch a few things that save you typing and get you a better price.`,
+      title: b.fetchedAt ? `Here's what I found about ${esc(g.trade)}` : 'What I\'ll look at', body: '<div class="q-body" data-x="bf"></div>', next: b.fetchedAt ? 'Looks right' : 'Continue', hint: 'Say “continue”',
+    };
+  },
+  wire(api) {
+    const b = B(), box = api.body.querySelector('[data-x=bf]'), U = b.fx = { phase: b.fetchedAt ? 'done' : 'ask', demo: '' };
+    const list = smeSrcs(b), cons = list.filter(k => SRC_CONSENT.includes(k)), pub = list.filter(k => !SRC_CONSENT.includes(k));
+    const anyCons = () => cons.some(k => b.consent[k]);
+    const title = t => { const h = api.q.querySelector('.q-title'); if (h) h.textContent = t; };
+    function render() {
+      const g = b.src.gst;
+      if (U.phase === 'done') { box.innerHTML = smeFoundHtml(b) + '<p class="hint">Anything wrong? You can change it on the next screens, and the records stay as they are.</p>'; api.setNext('Looks right'); return; }
+      if (U.phase === 'fetch') { box.innerHTML = `<ul class="sm-fetch">${list.filter(k => !SRC_CONSENT.includes(k) || b.consent[k]).map(k => `<li data-s="${k}"><span class="spin"></span><span><b>${SRC_DEF[k][0]}</b><small>${SRC_DEF[k][1]}</small></span></li>`).join('')}</ul>`; api.hideNext(true); return; }
+      const found = `<div class="found sm-hit"><span class="seal">${ICO.shield}<span>Found on the GST register</span></span>${factList([['Legal name', g.legal], ['Type', g.constitution], ['Status', `Active since ${fd(g.since)}`], ['Principal place', `${g.places[0].addr}, ${g.places[0].city}`]])}</div>`;
+      const pubHtml = `<div class="sm-srcs"><span class="sec-h">From public records, no consent needed</span><ul>${pub.map(k => `<li><span class="sm-dot ok">${ICO.check}</span><span><b>${SRC_DEF[k][0]}</b><small>${SRC_DEF[k][2]}</small></span></li>`).join('')}</ul></div>`;
+      const consHtml = cons.length ? `<div class="sm-srcs"><span class="sec-h">With your consent</span><div class="sw-list">${cons.map(k => sw('src', k, SRC_DEF[k][0], `${SRC_DEF[k][2]} · ${SRC_DEF[k][1]}`, '', b.consent[k])).join('')}</div>${U.phase === 'otp' ? '' : `<p class="hint">You give consent with a one-time code to the mobile on your GST registration, ${esc(maskMobile(g.mobile))}. We use this only to quote and issue this policy.</p>`}</div>` : '';
+      const otp = U.phase === 'otp' ? `<div class="fld"><span>Enter the 6-digit code sent to ${esc(maskMobile(g.mobile))}</span><div class="otp">${[0, 1, 2, 3, 4, 5].map(i => `<input type="text" inputmode="numeric" maxlength="1" data-o="${i}" aria-label="Code digit ${i + 1}" ${i === 0 ? 'autocomplete="one-time-code"' : ''}>`).join('')}</div></div>` : '';
+      box.innerHTML = found + pubHtml + consHtml + otp;
+      if (U.phase === 'otp') { api.hideNext(true); const o = box.querySelector('[data-o="0"]'); if (o) o.focus(); demoOtp(U.demo = U.demo || String(100000 + Math.floor(Math.random() * 900000)), () => fill(U.demo)); }
+      else api.setNext(anyCons() ? 'Send the code' : 'Fetch the public records');
+    }
+    function fill(d) { [...d].forEach((c, i) => { const x = box.querySelector(`[data-o="${i}"]`); if (x) x.value = c; }); check(); }
+    function check() { const v = $$('[data-o]', box).map(x => x.value).join(''); if (/^\d{6}$/.test(v)) fetchAll(); }
+    async function fetchAll() {
+      U.phase = 'fetch'; render(); title(`Fetching ${b.src.gst.trade}'s records`);
+      for (const li of $$('[data-s]', box)) { await sleep(REDUCED ? 30 : 420); if (S.cur !== 'bfetch') return; li.classList.add('ok'); li.querySelector('.spin').outerHTML = `<span class="sm-dot ok">${ICO.check}</span>`; }
+      await sleep(REDUCED ? 30 : 350); if (S.cur !== 'bfetch') return;
+      b.fetchedAt = new Date(); U.phase = 'done';
+      jlog(`Fetched ${list.filter(k => !SRC_CONSENT.includes(k) || b.consent[k]).length} records${anyCons() ? ' with consent' : ''}`);
+      title(`Here's what I found about ${b.src.gst.trade}`); const say = api.q.querySelector('.nyra-say'); if (say) say.textContent = 'Here\'s your business, from the records. Check it, and I\'ll use it to fill in the rest.'; render(); api.live(); renderRail();
+    }
+    box.addEventListener('change', e => { if (e.target.name === 'src') { b.consent[e.target.value] = e.target.checked; api.setNext(anyCons() ? 'Send the code' : 'Fetch the public records'); } });
+    box.addEventListener('input', e => { const o = e.target.dataset.o; if (o == null) return; const v = e.target.value.replace(/\D/g, ''); if (v.length > 1) { fill(v.slice(0, 6)); return; } e.target.value = v; if (v && +o < 5) box.querySelector(`[data-o="${+o + 1}"]`).focus(); check(); });
+    box.addEventListener('keydown', e => { const o = e.target.dataset.o; if (o != null && e.key === 'Backspace' && !e.target.value && +o > 0) box.querySelector(`[data-o="${+o - 1}"]`).focus(); });
+    U.render = render; U.fetchAll = fetchAll;
+    render();
+  },
+  commit() {
+    const b = B(), U = b.fx;
+    if (!U || U.phase === 'done') return b.fetchedAt ? '' : 'STAY';
+    if (U.phase === 'ask') { if (smeSrcs(b).some(k => SRC_CONSENT.includes(k) && b.consent[k])) { U.phase = 'otp'; U.render(); } else U.fetchAll(); }
+    return 'STAY';
+  },
+  value: () => { const b = B(); if (!b || !b.fetchedAt) return ''; const n = smeSrcs(b).filter(k => !SRC_CONSENT.includes(k) || b.consent[k]).length; return `${n} records checked`; },
+  done: () => !!(B() && B().fetchedAt),
+};
+
+/* ---------- the place: from the GST register, with the hazards at that pincode ---------- */
+function hazardHtml(L) {
+  const z = L.hz, lv = l => `<span class="sm-lv ${l}">${hzWord(l)}</span>`;
+  return `<div class="sm-hz"><span class="sec-h">At this pincode ${srcTag('Hazard maps')} ${srcTag('Map imagery')}</span><ul><li><span>Flood</span>${lv(z.flood)}</li><li><span>Earthquake</span>${lv(z.quake)}</li><li><span>Cyclone</span>${lv(z.cyclone)}</li><li><span>Nearest fire station</span><b>about ${z.station} km</b></li></ul><p class="hint">${esc(z.map)}.</p></div>`;
+}
+STEP.bloc = {
+  label: 'Location',
+  when: () => !!(S.biz && (S.product === 'fire' || S.product === 'lop')),
+  view() {
+    const b = B(), ind = b.who === 'ind';
+    if (ind) {
+      const L = b.loc || {}, H = b.fire.home;
+      return { say: 'Where\'s your home? I\'ll check the flood, earthquake and cyclone risk there.', title: 'Where is your home?',
+        body: `<div class="fld"><span>It's a</span><div class="chips">${chip('htype', 'flat', 'Flat in a building', H.type === 'flat')}${chip('htype', 'house', 'Independent house', H.type === 'house')}</div></div>
+          <div class="row2"><label class="fld"><span>Address</span><input type="text" name="haddr" value="${esc(L.addr || '')}" placeholder="Flat or house number, building, street" autocomplete="street-address"></label><label class="fld"><span>Pincode</span><input type="text" name="hpin" value="${esc(L.pin || '')}" inputmode="numeric" maxlength="6" placeholder="560034" autocomplete="postal-code"></label></div>
+          <div data-x="hz">${L.hz ? hazardHtml(L) : ''}</div>`, next: 'Continue', hint: 'Say your pincode' };
+    }
+    const places = b.src.gst.places, cur = b.loc;
+    return {
+      say: places.length > 1 ? `Your GST registration lists ${places.length} places. Which one is this cover for?` : 'This is the place on your GST registration. Is this the one to cover?',
+      title: 'Which place should I cover?',
+      body: `<div class="sm-places">${places.map((pl, i) => `<button type="button" class="sm-place" data-pl="${i}" aria-pressed="${!!(cur && cur.i === i)}"><span class="tick" aria-hidden="true">${ICO.check}</span><b>${esc(pl.addr)}</b><small>${esc(pl.city)} ${esc(pl.pin)} · ${esc(pl.tag)}</small></button>`).join('')}
+          <button type="button" class="sm-place" data-pl="new" aria-pressed="${!!(cur && cur.i === 'new')}"><span class="tick" aria-hidden="true">${ICO.check}</span><b>Somewhere else</b><small>A place not on your GST registration</small></button></div>
+        <div class="row2" data-x="newpl" ${cur && cur.i === 'new' ? '' : 'hidden'}><label class="fld"><span>Address</span><input type="text" name="baddr" value="${esc(cur && cur.i === 'new' ? cur.addr : '')}" placeholder="Plot, building, street, area"></label><label class="fld"><span>Pincode</span><input type="text" name="bpin" value="${esc(cur && cur.i === 'new' ? cur.pin : '')}" inputmode="numeric" maxlength="6" placeholder="411026"></label></div>
+        <div data-x="hz">${cur ? hazardHtml(cur) : ''}</div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const b = B(), box = api.body;
+    const paint = () => { box.querySelector('[data-x=hz]').innerHTML = b.loc && b.loc.hz ? hazardHtml(b.loc) : ''; };
+    const setPin = (addr, pin, extra) => {
+      if (!/^[1-9]\d{5}$/.test(pin)) { b.loc = b.loc && b.loc.i === extra.i ? Object.assign(b.loc, { addr, pin, hz: null }) : null; paint(); return; }
+      const occ = b.who === 'ind' ? 'dwelling' : (extra.occ || b.fire.occ || b.src.occ);
+      b.loc = Object.assign({ addr, pin, city: pinZone(pin).city || (extra.city || ''), state: extra.state || '' }, extra, { hz: smeHazard(pin, occ) });
+      paint(); api.live();
+    };
+    box.addEventListener('click', e => {
+      const t = e.target.closest('[data-pl]'); if (!t) return;
+      $$('[data-pl]', box).forEach(x => x.setAttribute('aria-pressed', String(x === t)));
+      const np = box.querySelector('[data-x=newpl]');
+      if (t.dataset.pl === 'new') { np.hidden = false; if (!b.fire.occ) b.fire.occ = b.src.occ; setPin(box.querySelector('[name=baddr]').value.trim(), box.querySelector('[name=bpin]').value.trim(), { i: 'new', tag: 'Not on GST registration' }); box.querySelector('[name=baddr]').focus(); return; }
+      np.hidden = true; const pl = b.src.gst.places[+t.dataset.pl];
+      setPin(pl.addr, pl.pin, { i: +t.dataset.pl, city: pl.city, state: pl.state, tag: pl.tag, occ: pl.occ });
+      if (!b.fire.occ || b.fire.occFromPlace) { b.fire.occ = pl.occ; b.fire.occFromPlace = true; }
+    });
+    box.addEventListener('input', e => {
+      const t = e.target;
+      if (['bpin', 'hpin'].includes(t.name)) t.value = t.value.replace(/\D/g, '').slice(0, 6);
+      if (t.name === 'baddr' || t.name === 'bpin') setPin(box.querySelector('[name=baddr]').value.trim(), box.querySelector('[name=bpin]').value.trim(), { i: 'new', tag: 'Not on GST registration' });
+      if (t.name === 'haddr' || t.name === 'hpin') setPin(box.querySelector('[name=haddr]').value.trim(), box.querySelector('[name=hpin]').value.trim(), { i: 'home' });
+    });
+    box.addEventListener('change', e => { if (e.target.name === 'htype') b.fire.home.type = e.target.value; });
+  },
+  commit() {
+    const b = B(), L = b.loc;
+    if (!L) return b.who === 'ind' ? 'Enter the address and the 6-digit pincode.' : 'Pick the place to cover.';
+    if (!L.hz) return 'Enter a valid 6-digit pincode.';
+    if (L.addr.length < 6) return 'Enter the full address of the place.';
+    return '';
+  },
+  value: () => { const L = B() && B().loc; return L && L.hz ? `${L.addr.split(',')[0]}, ${L.pin}` : ''; },
+  done: () => !!(B() && B().loc && B().loc.hz),
+};
+
+/* ---------- fire: a home ---------- */
+STEP.fhome = {
+  label: 'What to cover',
+  when: () => !!(S.biz && S.product === 'fire' && S.biz.who === 'ind'),
+  view() {
+    const b = B(), H = b.fire.home, r = pinZone(b.loc.pin).zone === 'A' ? CFG.sme.rebuild.metro : CFG.sme.rebuild.other;
+    H.rate = r;
+    return {
+      say: 'Your home is covered for what it costs to rebuild, not its market price. So there\'s no land value in it, and no under-insurance.',
+      title: 'What should I cover?',
+      body: `<div class="fld"><span>You</span><div class="chips">${chip('hown', 'own', 'Own it', H.own === 'own')}${chip('hown', 'rent', 'Rent it', H.own === 'rent')}</div></div>
+        <div data-x="own" ${H.own === 'own' ? '' : 'hidden'}>
+          <div class="row2"><label class="fld"><span>Carpet area, in sq ft</span><input type="text" name="harea" value="${esc(H.area)}" inputmode="numeric" maxlength="6" placeholder="1100"></label>
+          <label class="fld"><span>Cost to rebuild</span>${amtIn('hbuild', H.building, 'Fills in from the area')}<small class="sm-words">${H.building ? siLabelL(H.building) : ''}</small></label></div>
+          <p class="hint">At ${inr(r)} a sq ft, our rebuilding rate for ${esc(b.loc.city || 'your city')}. Change it if your home cost more to build.</p>
+          <div class="sm-auto" data-x="auto"></div>
+          ${sw('hmore', '1', 'Cover my contents for more', 'If your furniture, appliances and clothes are worth more than that', '', H.contentsMore)}
+        </div>
+        <label class="fld" data-x="cont" ${H.own === 'rent' || H.contentsMore ? '' : 'hidden'}><span>Value of your contents</span>${amtIn('hcont', H.contents, '5,00,000')}<small class="sm-words">${H.contents ? siLabelL(H.contents) : ''}</small></label>
+        ${sw('hval', '1', 'Jewellery, silver and art', 'Insured for an agreed value. Keep bills or a valuation.', '', !!H.valuables)}
+        <label class="fld" data-x="val" ${H.valuables ? '' : 'hidden'}><span>Value of jewellery, silver and art</span>${amtIn('hvalv', H.valuables, '3,00,000')}<small class="sm-words">${H.valuables ? siLabelL(H.valuables) : ''}</small></label>
+        <div class="live"><span>Your premium for 1 year, with GST</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const b = B(), H = b.fire.home, box = api.body;
+    const paint = () => {
+      box.querySelector('[data-x=own]').hidden = H.own !== 'own';
+      box.querySelector('[data-x=cont]').hidden = !(H.own === 'rent' || H.contentsMore);
+      box.querySelector('[data-x=val]').hidden = !H.valuables && !box.querySelector('[name=hval]').checked;
+      const auto = fireSi(b).auto, a = box.querySelector('[data-x=auto]');
+      a.innerHTML = H.own === 'own' && H.building ? `${SICO.ok}<span>Your contents are covered up to <b>${siLabelL(auto)}</b> without a list: 20% of the building, up to ₹10 lakh.</span>` : '';
+      smeLive(api);
+    };
+    box.addEventListener('change', e => {
+      const t = e.target;
+      if (t.name === 'hown') H.own = t.value;
+      if (t.name === 'hmore') H.contentsMore = t.checked;
+      if (t.name === 'hval') { if (!t.checked) H.valuables = 0; box.querySelector('[data-x=val]').hidden = !t.checked; }
+      paint();
+    });
+    box.addEventListener('input', e => { if (e.target.name === 'harea') { e.target.value = e.target.value.replace(/\D/g, ''); H.area = e.target.value; H.building = roundTo(Number(H.area) * H.rate, 10000); const bi = box.querySelector('[name=hbuild]'); bi.value = H.building ? H.building.toLocaleString('en-IN') : ''; bi.closest('.fld').querySelector('.sm-words').textContent = H.building ? siLabelL(H.building) : ''; paint(); } });
+    wireAmts(api, (n, v) => { if (n === 'hbuild') H.building = v; if (n === 'hcont') H.contents = v; if (n === 'hvalv') H.valuables = v; paint(); });
+    paint();
+  },
+  commit() {
+    const H = B().fire.home;
+    if (!H.own) return 'Tell me if you own or rent it.';
+    if (H.own === 'own' && (!H.building || H.building < 500000)) return 'Enter the carpet area, or the cost to rebuild. It should be at least ₹5 lakh.';
+    if ((H.own === 'rent' || H.contentsMore) && !H.contents) return 'Enter the value of your contents.';
+    if ($('[name=hval]', S.api.body) && $('[name=hval]', S.api.body).checked && !H.valuables) return 'Enter the value of the jewellery, silver and art, or switch it off.';
+    return '';
+  },
+  value: () => { const b = B(); if (!b || !b.fire.home.own) return ''; const s2 = fireSi(b); return `${b.fire.home.own === 'own' ? `Building ${siLabelL(s2.building)}, ` : ''}contents ${siLabelL(s2.contents)}${s2.valuables ? `, valuables ${siLabelL(s2.valuables)}` : ''}`; },
+  done: () => { const b = B(); if (!b) return false; const H = b.fire.home; return !!(H.own && (H.own === 'rent' ? H.contents : H.building)); },
+};
+
+/* ---------- fire: a business ---------- */
+const FIRE_ITEMS = [['building', 'The building', 'Walls, roof, floors and fixtures, if you own it'], ['machinery', 'Plant and machinery', 'Machines, tools, generators and equipment'], ['fff', 'Furniture, fixtures and fittings', 'Racks, counters, interiors and electrical fittings'], ['stock', 'Stock', 'Raw material, work in progress and finished goods'], ['contents', 'Other contents', 'Computers, appliances and office equipment']];
+STEP.fwhat = {
+  label: 'What to cover',
+  when: fireOn,
+  view() {
+    const b = B(), F = b.fire, g = b.src.gst;
+    if (!F.occ) F.occ = (b.loc && b.loc.occ) || b.src.occ;
+    if (!F.items.size) (['office'].includes(F.occ) ? ['fff', 'contents'] : F.occ.startsWith('shop') || F.occ === 'restaurant' ? ['fff', 'stock', 'contents'] : F.occ === 'warehouse' || F.occ === 'cold' ? ['fff', 'stock'] : ['machinery', 'fff', 'stock']).forEach(k => F.items.add(k));
+    return {
+      say: S.product === 'lop' ? 'Loss of profit needs the property itself insured first. A few quick questions about it.' : `I've read your business from the GST register. Tell me what to cover at ${esc((b.loc.addr || '').split(',')[0])}.`,
+      title: 'What should I cover here?',
+      body: `<label class="fld"><span>What the place is used for</span><select name="focc">${Object.entries(OCC).filter(([k]) => k !== 'dwelling').map(([k, o]) => `<option value="${k}" ${F.occ === k ? 'selected' : ''}>${esc(o.label)}</option>`).join('')}</select></label>
+        <p class="hint">From your GST registration: ${esc(g.nature.join(', ').toLowerCase())}, dealing in ${esc(g.hsn.map(x => x[1].toLowerCase()).join(' and '))}. ${srcTag('GST')}</p>
+        <div class="fld"><span>The premises</span><div class="chips">${chip('fown', 'own', 'We own it', F.own === 'own')}${chip('fown', 'rent', 'We rent it', F.own === 'rent')}</div></div>
+        <div class="fld"><span>What to insure</span><div class="sw-list">${FIRE_ITEMS.map(([k, t, s2]) => sw('fitem', k, t, s2, '', F.items.has(k))).join('')}</div></div>
+        <div class="fld"><span>The building is made of</span><div class="chips">${chip('fcon', 'pucca', 'Brick and concrete', F.construction === 'pucca')}${chip('fcon', 'kutcha', 'Partly tin, wood or thatch', F.construction === 'kutcha')}</div></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const F = B().fire, box = api.body;
+    const sync = () => { const bi = box.querySelector('[name=fitem][value=building]'); if (F.own === 'rent') { F.items.delete('building'); bi.checked = false; bi.disabled = true; bi.closest('.sw').classList.add('off'); } else { bi.disabled = false; bi.closest('.sw').classList.remove('off'); } };
+    box.addEventListener('change', e => {
+      const t = e.target;
+      if (t.name === 'focc') { F.occ = t.value; F.occFromPlace = false; }
+      if (t.name === 'fown') F.own = t.value;
+      if (t.name === 'fitem') { if (t.checked) F.items.add(t.value); else F.items.delete(t.value); }
+      if (t.name === 'fcon') F.construction = t.value;
+      sync(); api.live();
+    });
+    sync();
+  },
+  commit() { const F = B().fire; if (!F.own) return 'Tell me if you own or rent the premises.'; if (!F.items.size) return 'Pick at least one thing to insure.'; return ''; },
+  value: () => { const F = B() && B().fire; return F && F.own ? `${OCC[F.occ].label.split(',')[0]}, ${listText(FIRE_ITEMS.filter(x => F.items.has(x[0])).map(x => x[1].toLowerCase()))}` : ''; },
+  done: () => { const F = B() && B().fire; return !!(F && F.own && F.items.size); },
+};
+STEP.fval = {
+  label: 'Values',
+  when: fireOn,
+  view() {
+    const b = B(), F = b.fire, sg = fireSuggest(b);
+    F.rate = sg.rate;
+    FIRE_ITEMS.forEach(([k]) => { if (F.items.has(k) && !F.vals[k] && sg[k] && k !== 'building') F.vals[k] = sg[k][0]; });
+    const rows = FIRE_ITEMS.filter(([k]) => F.items.has(k)).map(([k, t]) => k === 'building'
+      ? `<div class="sm-val"><div class="row2"><label class="fld"><span>Built-up area of the building, in sq ft</span><input type="text" name="farea" value="${esc(F.area)}" inputmode="numeric" maxlength="7" placeholder="4,000"></label><label class="fld"><span>${t}: cost to rebuild</span>${amtIn('fv-building', F.vals.building)}<small class="sm-words">${F.vals.building ? siLabelL(F.vals.building) : ''}</small></label></div><p class="hint">At ${inr(sg.rate)} a sq ft, our rebuilding rate for ${esc(b.loc.city || 'your city')}.</p></div>`
+      : `<div class="sm-val"><label class="fld"><span>${t}</span>${amtIn('fv-' + k, F.vals[k])}<small class="sm-words">${F.vals[k] ? siLabelL(F.vals[k]) : ''}</small></label>${sg[k] ? `<p class="hint">Suggested ${siLabelL(sg[k][0])}: ${esc(sg[k][1].charAt(0).toLowerCase() + sg[k][1].slice(1))}. ${srcTag(/Udyam/.test(sg[k][1]) ? 'Udyam' : /GST/.test(sg[k][1]) ? 'GST returns' : /accounts|inventory/.test(sg[k][1]) ? 'MCA' : 'Estimate')}</p>` : ''}</div>`).join('');
+    return {
+      say: 'I\'ve suggested values from your records. Insure what it would cost to replace each one today, or a claim is reduced in proportion.',
+      title: 'What is each one worth?',
+      body: `${rows}<div class="sm-total"><span>Total at this place</span><b data-x="si">—</b><small data-x="band"></small></div><div class="live"><span>Your premium for 1 year, with GST, from</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const b = B(), F = b.fire, box = api.body;
+    const paint = () => { const si = siTotal(fireSi(b)), bd = bharatBand(si); box.querySelector('[data-x=si]').textContent = si ? siLabelL(si) : '—'; box.querySelector('[data-x=band]').textContent = si ? (bd.k === 'large' ? `Above ${siLabelL(CFG.sme.bharat.laghu)}: an underwriter sets the price for this.` : `${bd.name}, the standard policy for up to ${siLabelL(bd.k === 'sookshma' ? CFG.sme.bharat.sookshma : CFG.sme.bharat.laghu)} at one place.`) : ''; smeLive(api); };
+    box.addEventListener('input', e => {
+      if (e.target.name !== 'farea') return;
+      e.target.value = e.target.value.replace(/\D/g, ''); F.area = e.target.value; F.vals.building = roundTo(Number(F.area) * F.rate, 10000);
+      const bi = box.querySelector('[name="fv-building"]'); bi.value = F.vals.building ? F.vals.building.toLocaleString('en-IN') : ''; bi.closest('.fld').querySelector('.sm-words').textContent = F.vals.building ? siLabelL(F.vals.building) : ''; paint();
+    });
+    wireAmts(api, (n, v) => { if (n.startsWith('fv-')) F.vals[n.slice(3)] = v; paint(); });
+    paint();
+  },
+  commit() { const F = B().fire, miss = FIRE_ITEMS.find(([k]) => F.items.has(k) && !(Number(F.vals[k]) > 0)); return miss ? `Enter a value for ${miss[1].toLowerCase()}.` : ''; },
+  value: () => { const b = B(); if (!b || !fireOn() || !STEP.fval.done()) return ''; return `Total ${siLabelL(siTotal(fireSi(b)))}`; },
+  done: () => { const F = B() && B().fire; return !!(F && F.items.size && FIRE_ITEMS.every(([k]) => !F.items.has(k) || Number(F.vals[k]) > 0)); },
+};
+STEP.fprot = {
+  label: 'Safety and history',
+  when: fireOn,
+  view() {
+    const F = B().fire;
+    return {
+      say: 'Four quick ones about safety and past claims. They change the price, so answer as things are today.',
+      title: 'Safety, and any past claims',
+      body: `<div class="fld"><span>Fire extinguishers on the premises?</span><div class="chips">${chip('fext', 'yes', 'Yes, in date', F.ext === 'yes')}${chip('fext', 'no', 'No', F.ext === 'no')}</div></div>
+        <div class="fld"><span>Fixed fire protection</span><div class="chips">${chip('fprot', 'none', 'None', F.prot === 'none')}${chip('fprot', 'hydrant', 'Hydrant system', F.prot === 'hydrant')}${chip('fprot', 'sprinkler', 'Sprinklers', F.prot === 'sprinkler')}</div></div>
+        <div class="fld"><span>Security</span><div class="chips">${[['cctv', 'CCTV'], ['guard', 'Night guard'], ['alarm', 'Burglar alarm']].map(([k, t]) => chip('fsec', k, t, F.sec.has(k), 'checkbox')).join('')}</div></div>
+        <div class="fld"><span>Claims for this place in the last 3 years</span><div class="chips">${chip('fclm', '0', 'None', F.claims === '0')}${chip('fclm', '1', 'One', F.claims === '1')}${chip('fclm', '2', 'Two or more', F.claims === '2')}</div></div>
+        ${F.items.has('stock') ? `<div class="fld"><span>Is any stock kept in a basement?</span><div class="chips">${chip('fbas', 'no', 'No', F.basement === 'no')}${chip('fbas', 'yes', 'Yes', F.basement === 'yes')}</div></div>` : ''}
+        <div class="live"><span>Your premium for 1 year, with GST, from</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const F = B().fire;
+    api.body.addEventListener('change', e => { const t = e.target; if (t.name === 'fext') F.ext = t.value; if (t.name === 'fprot') F.prot = t.value; if (t.name === 'fsec') { if (t.checked) F.sec.add(t.value); else F.sec.delete(t.value); } if (t.name === 'fclm') F.claims = t.value; if (t.name === 'fbas') F.basement = t.value; smeLive(api); });
+    smeLive(api);
+  },
+  commit() { const F = B().fire; if (!F.ext) return 'Tell me if there are fire extinguishers.'; if (F.claims == null) return 'Tell me about claims in the last 3 years.'; if (F.items.has('stock') && !F.basement) return 'Tell me if stock is kept in a basement.'; return ''; },
+  value: () => { const F = B() && B().fire; return F && F.claims != null ? `${F.ext === 'yes' ? 'Extinguishers' : 'No extinguishers'}, ${F.claims === '0' ? 'no claims' : F.claims === '1' ? '1 claim' : '2 or more claims'}` : ''; },
+  done: () => { const F = B() && B().fire; return !!(F && F.ext && F.claims != null && (!F.items.has('stock') || F.basement)); },
+};
+
+/* ---------- loss of profit ---------- */
+STEP.lmd = {
+  label: 'Property cover',
+  when: () => !!(S.biz && S.product === 'lop'),
+  view() {
+    const L = B().lop;
+    return {
+      say: 'Loss of profit pays when an insured fire or flood stops your business. It needs the property at this place insured against the same events.',
+      title: 'Is the property here already insured?',
+      body: `<div class="tiles">${tile('data-md="new"', `<span class="tile-name">Insure it with this cover</span><span class="tile-sub">Property and loss of profit together, in one policy. A few more questions.</span>`, L.md === 'new')}${tile('data-md="other"', `<span class="tile-name">It's already insured</span><span class="tile-sub">With us or another insurer, against fire and allied perils.</span>`, L.md === 'other')}</div>
+        <div data-x="other" ${L.md === 'other' ? '' : 'hidden'}>
+          <div class="row2"><label class="fld"><span>Insurer</span><input type="text" name="lins" value="${esc(L.mdIns)}" placeholder="Insurer's name"></label><label class="fld"><span>Policy number</span><input type="text" name="lno" value="${esc(L.mdNo)}" autocomplete="off"></label></div>
+          <div class="row2"><label class="fld"><span>Ends on</span><input type="date" name="lexp" value="${esc(L.mdExp)}" min="${iso(addDays(TODAY, 1))}"></label><label class="fld"><span>Sum insured for the property</span>${amtIn('lsi', L.mdSi)}<small class="sm-words">${L.mdSi ? siLabelL(L.mdSi) : ''}</small></label></div>
+          <p class="hint">We confirm these with the insurer before the policy starts. A claim needs the property claim accepted first.</p></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const L = B().lop, box = api.body;
+    box.addEventListener('click', e => { const t = e.target.closest('[data-md]'); if (!t) return; L.md = t.dataset.md; L.withFire = L.md === 'new'; $$('[data-md]', box).forEach(x => x.setAttribute('aria-pressed', String(x === t))); box.querySelector('[data-x=other]').hidden = L.md !== 'other'; renderRail(); progress(); if (L.md === 'new') setTimeout(() => api.next(), REDUCED ? 0 : 300); });
+    box.addEventListener('input', e => { const t = e.target; if (t.name === 'lins') L.mdIns = t.value.trim(); if (t.name === 'lno') L.mdNo = t.value.trim(); if (t.name === 'lexp') L.mdExp = t.value; });
+    box.addEventListener('change', e => { if (e.target.name === 'lexp') L.mdExp = e.target.value; });
+    wireAmts(api, (n, v) => { if (n === 'lsi') L.mdSi = v; });
+  },
+  commit() {
+    const L = B().lop;
+    if (!L.md) return 'Pick one.';
+    if (L.md === 'other') { if (L.mdIns.length < 3) return 'Enter the insurer\'s name.'; if (L.mdNo.length < 4) return 'Enter the policy number.'; const d = fromIso(L.mdExp); if (!d || d <= TODAY) return 'Enter the date the property policy ends. It needs to be in force.'; if (!(L.mdSi > 0)) return 'Enter the property sum insured.'; }
+    return '';
+  },
+  value: () => { const L = B() && B().lop; return L && L.md ? (L.md === 'new' ? 'Insuring it with this cover' : `Insured with ${L.mdIns}`) : ''; },
+  done: () => { const L = B() && B().lop; return !!(L && L.md && (L.md === 'new' || (L.mdIns && L.mdNo && L.mdExp && L.mdSi))); },
+};
+STEP.lgp = {
+  label: 'Gross profit',
+  when: () => !!(S.biz && S.product === 'lop'),
+  view() {
+    const b = B(), L = b.lop, est = lopEstimate(b);
+    if (!L.gpTouched && est) L.gp = est.gp;
+    return {
+      say: 'I worked out your gross profit from your GST returns and accounts. This is what the policy pays back if the business stops.',
+      title: 'Your gross profit',
+      body: `${est ? `<div class="sm-calc"><div><span>Sales, last 12 months</span><b>${inr(est.turnover)}</b></div><div><span>Less purchases and other costs that stop when sales stop</span><b>- ${inr(est.purchases)}</b></div><div class="sum"><span>Gross profit, from GST returns</span><b>${inr(est.viaGst)}</b></div>${est.viaAcc ? `<div><span>Check: net profit plus standing charges, ${esc(b.src.mca.fy)} accounts</span><b>${inr(est.viaAcc)}</b></div>` : ''}<p class="hint">${srcTag('GST returns')} ${est.viaAcc ? srcTag('MCA') : ''} We take the higher of the two, so you're not under-insured.</p></div>` : ''}
+        <label class="fld"><span>Annual gross profit to insure</span>${amtIn('lgp', L.gp)}<small class="sm-words">${L.gp ? siLabelL(L.gp) : ''}</small></label>
+        <p class="hint">If your gross profit turns out higher than this, a claim is reduced in proportion. You declare the actual figure at the end of the year, and the premium is adjusted.</p>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) { const L = B().lop; wireAmts(api, (n, v) => { if (n === 'lgp') { L.gp = v; L.gpTouched = true; api.live(); } }); },
+  commit() { const L = B().lop; return L.gp > 100000 ? '' : 'Enter the gross profit to insure.'; },
+  value: () => { const L = B() && B().lop; return L && L.gp && S.seen.has('lgp') ? siLabelL(L.gp) : ''; },
+  done: () => !!(B() && B().lop.gp && S.seen.has('lgp')),
+};
+STEP.lip = {
+  label: 'Time to recover',
+  when: () => !!(S.biz && S.product === 'lop'),
+  view() {
+    const b = B(), L = b.lop, rec = (OCC[b.fire.occ] || OCC[b.src.occ] || OCC.shop).ip;
+    return {
+      say: `For ${esc((OCC[b.fire.occ] || OCC[b.src.occ]).label.toLowerCase())}, getting back to normal usually takes about ${rec} months: rebuilding, new machines and winning customers back.`,
+      title: 'How long would it take to get back to normal?',
+      body: `<div class="chips sm-ip">${[3, 6, 9, 12, 18, 24].map(m => chip('lip', m, `${m} months${m === rec ? ' <em>suggested</em>' : ''}`, Number(L.ip) === m)).join('')}</div>
+        <p class="hint">This is the indemnity period: how long after the damage we keep paying for lost gross profit. Too short, and the cover stops before you've recovered.</p>
+        <div class="live"><span>Your premium for 1 year, with GST, from</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) { const L = B().lop; api.body.addEventListener('change', e => { if (e.target.name === 'lip') { L.ip = Number(e.target.value); smeLive(api); } }); smeLive(api); },
+  commit() { return B().lop.ip ? '' : 'Pick how long it would take to recover.'; },
+  value: () => { const L = B() && B().lop; return L && L.ip ? `${L.ip} months` : ''; },
+  done: () => !!(B() && B().lop.ip),
+};
+
+/* ---------- marine: moving home ---------- */
+const MOVE_ITEMS = [['furniture', 'Furniture'], ['appliances', 'Appliances and electronics'], ['kitchen', 'Kitchen and utensils'], ['personal', 'Clothes and personal things'], ['other', 'Anything else']];
+STEP.mmove = {
+  label: 'Your move',
+  when: () => !!(S.biz && S.product === 'marine' && S.biz.who === 'ind'),
+  view() {
+    const V = B().marine.move, tot = Object.values(V.items).reduce((x, y) => x + (Number(y) || 0), 0);
+    return {
+      say: 'Tell me about the move. I\'ll cover your things from packing at the old place to unpacking at the new one.',
+      title: 'Your move',
+      body: `<div class="row2"><label class="fld"><span>From pincode</span><input type="text" name="mfrom" value="${esc(V.from)}" inputmode="numeric" maxlength="6" placeholder="560034"></label><label class="fld"><span>To pincode</span><input type="text" name="mto" value="${esc(V.to)}" inputmode="numeric" maxlength="6" placeholder="411019"></label></div>
+        <div class="row2"><label class="fld"><span>Moving on</span><input type="date" name="mdate" value="${esc(V.date)}" min="${iso(TODAY)}" max="${iso(addDays(TODAY, 90))}"></label><div class="fld"><span>By</span><div class="chips">${chip('mmode', 'road', 'Road', V.mode === 'road')}${chip('mmode', 'rail', 'Rail', V.mode === 'rail')}</div></div></div>
+        <div class="fld"><span>Packed by</span><div class="chips">${chip('mpack', 'pro', 'Professional packers', V.packers)}${chip('mpack', 'self', 'Ourselves', !V.packers)}</div></div>
+        <div class="fld"><span>What it's worth to replace</span><div class="sm-items">${MOVE_ITEMS.map(([k, t]) => `<label class="fld"><span>${t}</span>${amtIn('mi-' + k, V.items[k])}</label>`).join('')}</div></div>
+        <div class="sm-total"><span>Total value</span><b data-x="si">${tot ? inr(tot) : '—'}</b></div>
+        <div class="live"><span>Your premium for this move, with GST, from</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const V = B().marine.move, box = api.body;
+    const paint = () => { const tot = Object.values(V.items).reduce((x, y) => x + (Number(y) || 0), 0); box.querySelector('[data-x=si]').textContent = tot ? inr(tot) : '—'; smeLive(api); };
+    box.addEventListener('input', e => { const t = e.target; if (t.name === 'mfrom' || t.name === 'mto') { t.value = t.value.replace(/\D/g, '').slice(0, 6); V[t.name === 'mfrom' ? 'from' : 'to'] = t.value; } if (t.name === 'mdate') V.date = t.value; });
+    box.addEventListener('change', e => { const t = e.target; if (t.name === 'mdate') V.date = t.value; if (t.name === 'mmode') V.mode = t.value; if (t.name === 'mpack') { V.packers = t.value === 'pro'; paint(); } });
+    wireAmts(api, (n, v) => { if (n.startsWith('mi-')) V.items[n.slice(3)] = v; paint(); });
+    paint();
+  },
+  commit() {
+    const V = B().marine.move, tot = Object.values(V.items).reduce((x, y) => x + (Number(y) || 0), 0);
+    if (!/^[1-9]\d{5}$/.test(V.from) || !/^[1-9]\d{5}$/.test(V.to)) return 'Enter both pincodes.';
+    const d = fromIso(V.date); if (!d || d < TODAY) return 'Enter the moving date.';
+    if (tot < 50000) return 'Enter what your things are worth. The total should be at least ₹50,000.';
+    if (tot > 5e7) return 'For more than ₹5 crore of household goods, an underwriter needs to look. Talk to us.';
+    return '';
+  },
+  value: () => { const V = B() && B().marine.move; if (!V || !V.date) return ''; const tot = Object.values(V.items).reduce((x, y) => x + (Number(y) || 0), 0); return `${V.from} to ${V.to}, ${fd(fromIso(V.date))}, ${siLabelL(tot)}`; },
+  done: () => { const V = B() && B().marine.move; return !!(V && V.from && V.to && V.date && Object.values(V.items).some(x => Number(x) > 0)); },
+};
+
+/* ---------- marine: a business ---------- */
+const TRANSIT = [['inland', 'Within India', 'Road, rail or air, door to door'], ['import', 'Imports', 'From the overseas port till your warehouse'], ['export', 'Exports', 'From your warehouse till the buyer\'s port or door']];
+STEP.mtype = {
+  label: 'Shipments',
+  when: () => !!(S.biz && S.product === 'marine' && S.biz.who === 'biz'),
+  view() {
+    const b = B(), M = b.marine, s = b.src;
+    if (!M.transits.size) { if (s.eway) M.transits.add('inland'); if (s.trade && s.trade.imp) M.transits.add('import'); if (s.trade && s.trade.exp) M.transits.add('export'); if (!M.transits.size) M.transits.add('inland'); }
+    return {
+      say: s.eway || s.trade ? `From your e-way bills${s.trade ? ' and customs records' : ''}, you move goods ${listText(TRANSIT.filter(t => M.transits.has(t[0])).map(t => t[1].toLowerCase()))}. One shipment, or all of them for a year?` : 'One shipment, or all of them for a year?',
+      title: 'What should I cover?',
+      body: `<div class="tiles">${tile('data-mk="annual"', `<span class="tile-name">All shipments for a year</span><span class="tile-sub">An open policy. Every shipment is covered automatically, and you declare them each month.</span>`, M.kind === 'annual')}${tile('data-mk="single"', `<span class="tile-name">One shipment</span><span class="tile-sub">A single consignment, from the invoice.</span>`, M.kind === 'single')}</div>
+        <div class="fld" data-x="tr" ${M.kind === 'annual' ? '' : 'hidden'}><span>Which shipments</span><div class="sw-list">${TRANSIT.map(([k, t, s2]) => sw('mtr', k, t, s2 + (k === 'inland' && s.eway ? ` · ${s.eway.n.toLocaleString('en-IN')} e-way bills` : k === 'import' && s.trade && s.trade.imp ? ` · ${s.trade.imp.n} bills of entry` : k === 'export' && s.trade && s.trade.exp ? ` · ${s.trade.exp.n} shipping bills` : ''), '', M.transits.has(k))).join('')}</div></div>
+        <div class="fld" data-x="one" ${M.kind === 'single' ? '' : 'hidden'}><span>This shipment is</span><div class="chips">${TRANSIT.map(([k, t]) => chip('msk', k, t, M.single.kind === k)).join('')}</div></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const M = B().marine, box = api.body;
+    box.addEventListener('click', e => { const t = e.target.closest('[data-mk]'); if (!t) return; M.kind = t.dataset.mk; $$('[data-mk]', box).forEach(x => x.setAttribute('aria-pressed', String(x === t))); box.querySelector('[data-x=tr]').hidden = M.kind !== 'annual'; box.querySelector('[data-x=one]').hidden = M.kind !== 'single'; });
+    box.addEventListener('change', e => { const t = e.target; if (t.name === 'mtr') { if (t.checked) M.transits.add(t.value); else M.transits.delete(t.value); } if (t.name === 'msk') M.single.kind = t.value; });
+  },
+  commit() { const M = B().marine; if (!M.kind) return 'Pick one shipment or a year of shipments.'; if (M.kind === 'annual' && !M.transits.size) return 'Pick at least one kind of shipment.'; return ''; },
+  value: () => { const M = B() && B().marine; return M && M.kind ? (M.kind === 'annual' ? `A year: ${listText(TRANSIT.filter(t => M.transits.has(t[0])).map(t => t[1].toLowerCase()))}` : `One shipment, ${TRANSIT.find(t => t[0] === M.single.kind)[1].toLowerCase()}`) : ''; },
+  done: () => { const M = B() && B().marine; return !!(M && M.kind && (M.kind === 'single' || M.transits.size)); },
+};
+STEP.mcargo = {
+  label: 'Goods',
+  when: () => !!(S.biz && S.product === 'marine' && S.biz.who === 'biz'),
+  view() {
+    const b = B(), M = b.marine, g = b.src.gst;
+    if (!M.commodity) M.commodity = b.src.comm;
+    return {
+      say: 'I\'ve read what you ship from the HSN codes on your GST registration and e-way bills.',
+      title: 'What do you ship?',
+      body: `<label class="fld"><span>Goods</span><select name="mcom">${Object.entries(COMMODITY).map(([k, t]) => `<option value="${k}" ${M.commodity === k ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select></label>
+        <p class="hint">${esc(g.hsn.map(x => `${x[1]} (HSN ${x[0]})`).join(', '))}. ${srcTag('GST')} ${b.src.eway ? srcTag('E-way bills') : ''}</p>
+        <div class="fld"><span>Usually packed in</span><div class="chips">${[['cartons', 'Cartons'], ['crates', 'Wooden crates'], ['containers', 'Sealed containers'], ['bulk', 'Loose or in bulk']].map(([k, t]) => chip('mpk', k, t, M.packing === k)).join('')}</div></div>
+        <div class="fld"><span>The goods are</span><div class="chips">${chip('mused', 'new', 'New', !M.used)}${chip('mused', 'used', 'Used or second-hand', M.used)}</div></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) { const M = B().marine; api.body.addEventListener('change', e => { const t = e.target; if (t.name === 'mcom') M.commodity = t.value; if (t.name === 'mpk') M.packing = t.value; if (t.name === 'mused') M.used = t.value === 'used'; api.live(); }); },
+  commit() { return B().marine.commodity ? '' : 'Pick the goods.'; },
+  value: () => { const M = B() && B().marine; return M && M.commodity && S.seen.has('mcargo') ? `${COMMODITY[M.commodity]}, ${M.packing}${M.used ? ', used' : ''}` : ''; },
+  done: () => !!(B() && B().marine.commodity && S.seen.has('mcargo')),
+};
+STEP.mship = {
+  label: 'Values',
+  when: () => !!(S.biz && S.product === 'marine' && S.biz.who === 'biz'),
+  view() {
+    const b = B(), M = b.marine, s = b.src;
+    if (M.kind === 'annual') {
+      const pre = { inland: s.eway ? s.eway.value : 0, import: s.trade && s.trade.imp ? s.trade.imp.value : 0, export: s.trade && s.trade.exp ? s.trade.exp.value : 0 };
+      Object.keys(pre).forEach(k => { if (!M.annual[k] && pre[k]) M.annual[k] = roundTo(pre[k] * 1.1, 1e5); });
+      if (!M.perBottom) M.perBottom = roundTo(Math.max(s.eway ? s.eway.max * 1.25 : 0, 1e6), 1e5);
+      return {
+        say: 'Your values for the next 12 months. I\'ve started from the last 12, plus 10% for growth.',
+        title: 'How much will you ship in a year?',
+        body: `${TRANSIT.filter(t => M.transits.has(t[0])).map(([k, t]) => `<label class="fld"><span>${t}, next 12 months</span>${amtIn('ma-' + k, M.annual[k])}<small class="sm-words">${M.annual[k] ? siLabelL(M.annual[k]) : ''}</small>${pre[k] ? `<small class="hint">Last 12 months: ${siLabelL(pre[k])} ${srcTag(k === 'inland' ? 'E-way bills' : 'ICEGATE')}</small>` : ''}</label>`).join('')}
+          <label class="fld"><span>Largest single consignment</span>${amtIn('mpb', M.perBottom)}<small class="sm-words">${M.perBottom ? siLabelL(M.perBottom) : ''}</small>${s.eway ? `<small class="hint">Your largest e-way bill: ${siLabelL(s.eway.max)} ${srcTag('E-way bills')}</small>` : ''}</label>
+          <p class="hint">Goods are covered at invoice value plus 10%, the usual basis. You declare actual shipments each month, and the premium is adjusted at the end of the year.</p>
+          <div class="live"><span>Premium for the year, with GST, from</span><b data-x="tot">—</b></div>`,
+        next: 'Continue',
+      };
+    }
+    const O = M.single, intl = O.kind !== 'inland';
+    return {
+      say: 'Upload the invoice and I\'ll read the value, or type it in.',
+      title: 'About this shipment',
+      body: `<label class="doc-tile">${ART.doc('policy')}<span><b>${O.invoice ? esc(O.invoice) : 'Upload the invoice'}</b><small>${O.invoice ? 'Read: value and route filled in below' : 'Optional. A photo or PDF'}</small></span><input type="file" name="minv" accept="image/*,application/pdf" aria-label="Upload the invoice"></label>
+        <label class="fld"><span>Invoice value</span>${amtIn('msv', O.value)}<small class="sm-words">${O.value ? siLabelL(O.value) : ''}</small></label>
+        <div class="row2"><label class="fld"><span>${intl && O.kind === 'import' ? 'From (overseas port or city)' : 'From (pincode)'}</span><input type="text" name="msfrom" value="${esc(O.from)}"></label><label class="fld"><span>${intl && O.kind === 'export' ? 'To (overseas port or city)' : 'To (pincode)'}</span><input type="text" name="msto" value="${esc(O.to)}"></label></div>
+        <div class="row2"><label class="fld"><span>Dispatch date</span><input type="date" name="msdate" value="${esc(O.date)}" min="${iso(TODAY)}"></label><div class="fld"><span>By</span><div class="chips">${(intl ? [['sea', 'Sea'], ['air', 'Air']] : [['road', 'Road'], ['rail', 'Rail'], ['air', 'Air']]).map(([k, t]) => chip('msmode', k, t, O.mode === k)).join('')}</div></div></div>
+        ${intl ? `<div class="fld"><span>Sale terms (Incoterms)</span><div class="chips">${['EXW', 'FOB', 'CIF', 'DAP'].map(k => chip('msinco', k, k, O.inco === k)).join('')}</div><small class="hint" data-x="inco"></small></div>` : ''}
+        <div class="live"><span>Premium for this shipment, with GST, from</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const b = B(), M = b.marine, O = M.single, box = api.body;
+    const inco = () => { const x = box.querySelector('[data-x=inco]'); if (!x) return; const buyerIns = (O.kind === 'import' && ['EXW', 'FOB'].includes(O.inco)) || (O.kind === 'export' && ['CIF', 'DAP'].includes(O.inco)); x.textContent = buyerIns ? 'Under these terms, you carry the risk in transit, so this cover is for you.' : `Under these terms, the ${O.kind === 'import' ? 'seller' : 'buyer'} usually insures this leg. Check before you buy.`; };
+    box.addEventListener('change', async e => {
+      const t = e.target;
+      if (t.name === 'msmode') O.mode = t.value; if (t.name === 'msinco') { O.inco = t.value; inco(); } if (t.name === 'msdate') O.date = t.value;
+      if (t.name === 'minv' && t.files && t.files[0]) {
+        const f = t.files[0]; O.invoice = f.name; const tile2 = t.closest('.doc-tile'); tile2.querySelector('small').textContent = 'Reading…';
+        await sleep(REDUCED ? 60 : 900);
+        if (!O.value) { O.value = roundTo((b.src.eway ? b.src.eway.max * 0.6 : 8e5), 1000); const vi = box.querySelector('[name=msv]'); vi.value = O.value.toLocaleString('en-IN'); vi.closest('.fld').querySelector('.sm-words').textContent = siLabelL(O.value); }
+        if (!O.from && O.kind !== 'import') { O.from = b.loc ? b.loc.pin : b.src.gst.places[0].pin; box.querySelector('[name=msfrom]').value = O.from; }
+        tile2.querySelector('b').textContent = f.name; tile2.querySelector('small').textContent = 'Read: value and route filled in below'; smeLive(api);
+      }
+      api.live();
+    });
+    box.addEventListener('input', e => { const t = e.target; if (t.name === 'msfrom') O.from = t.value.trim(); if (t.name === 'msto') O.to = t.value.trim(); if (t.name === 'msdate') O.date = t.value; });
+    wireAmts(api, (n, v) => { if (n.startsWith('ma-')) M.annual[n.slice(3)] = v; if (n === 'mpb') M.perBottom = v; if (n === 'msv') O.value = v; smeLive(api); });
+    inco(); smeLive(api);
+  },
+  commit() {
+    const M = B().marine;
+    if (M.kind === 'annual') { const miss = TRANSIT.find(([k]) => M.transits.has(k) && !(M.annual[k] > 0)); if (miss) return `Enter the value for ${miss[1].toLowerCase()}.`; if (!(M.perBottom > 0)) return 'Enter the largest single consignment.'; return ''; }
+    const O = M.single; if (!(O.value > 0)) return 'Enter the invoice value.'; if (O.from.length < 3 || O.to.length < 3) return 'Enter where it\'s going from and to.'; if (!fromIso(O.date)) return 'Enter the dispatch date.'; return '';
+  },
+  value: () => { const M = B() && B().marine; if (!M || !STEP.mship.done()) return ''; return M.kind === 'annual' ? `${siLabelL(TRANSIT.filter(t => M.transits.has(t[0])).reduce((x, [k]) => x + (M.annual[k] || 0), 0))} a year` : `${siLabelL(M.single.value)}, ${M.single.from} to ${M.single.to}`; },
+  done: () => { const M = B() && B().marine; if (!M || !M.kind) return false; return M.kind === 'annual' ? TRANSIT.every(([k]) => !M.transits.has(k) || M.annual[k] > 0) && M.perBottom > 0 : !!(M.single.value && M.single.from && M.single.to && M.single.date); },
+};
+
+/* ---------- workers' compensation ---------- */
+STEP.wstaff = {
+  label: 'Your staff',
+  when: () => !!(S.biz && S.product === 'wc'),
+  view() {
+    const b = B(), W = b.wc, ind = b.who === 'ind', s = b.src;
+    if (!W.rows.length) {
+      if (ind) W.rows = [{ k: 'help', n: 1, wage: '' }];
+      else {
+        const base = s.epfo ? s.epfo.staff : s.udyam.staff, insured = Math.max(1, base - (s.esic ? s.esic.covered : 0));
+        W.rows = Object.entries(s.mix).map(([k, f]) => ({ k, n: Math.max(0, Math.round(insured * f)), wage: s.wage[k] || 18000 })).filter(r => r.n > 0);
+        W.esicNote = s.esic && s.esic.covered ? `${s.esic.covered} of your ${base} employees are covered by ESIC, which pays for injuries at work, so they're not counted here.` : '';
+      }
+    }
+    const kinds = ind ? WC_HOME : Object.keys(WC_KIND).filter(k => !['help', 'nanny', 'gardener', 'cook'].includes(k) || k === 'cook');
+    return {
+      say: ind ? 'Tell me who works at your home and what you pay them. If one of them is hurt at work, you\'re liable, and this pays.' : `I've split the people on your EPFO payroll by the kind of work your business does. Check the numbers and wages.`,
+      title: ind ? 'Who works at your home?' : 'Your employees',
+      body: `${W.esicNote ? `<p class="note">${esc(W.esicNote)} ${srcTag('EPFO')} ${srcTag('ESIC')}</p>` : ''}
+        <div class="sm-staff" data-x="rows"></div>
+        <div class="sm-addrow"><select name="wadd" aria-label="Add a kind of work"><option value="">Add another kind of work…</option>${kinds.map(k => `<option value="${k}">${esc(WC_KIND[k])}</option>`).join('')}</select></div>
+        ${ind ? '' : `<div class="fld"><span>Does any of the work involve</span><div class="chips">${[['heights', 'Heights over 10 feet'], ['machinery', 'Heavy machinery'], ['chemicals', 'Chemicals'], ['none', 'None of these']].map(([k, t]) => chip('whz', k, t, W.hazards.has(k), 'checkbox')).join('')}</div></div>
+        <div class="fld"><span>Do you use workers supplied by contractors?</span><div class="chips">${chip('wct', 'no', 'No', W.contract === false)}${chip('wct', 'yes', 'Yes', W.contract === true)}</div></div>
+        <div class="row2" data-x="ct" ${W.contract ? '' : 'hidden'}><label class="fld"><span>How many</span><input type="text" name="wctn" value="${esc(W.contractN)}" inputmode="numeric" maxlength="4"></label><label class="fld"><span>Monthly wage each</span>${amtIn('wctw', W.contractWage, '15,000')}</label></div>`}
+        <div class="fld"><span>Work-injury claims in the last 3 years</span><div class="chips">${chip('wclm', '0', 'None', W.claims === '0')}${chip('wclm', '1', 'One', W.claims === '1')}${chip('wclm', '2', 'Two or more', W.claims === '2')}</div></div>
+        <div class="live"><span>Your premium for 1 year, with GST, from</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const b = B(), W = b.wc, box = api.body;
+    const rows = () => {
+      box.querySelector('[data-x=rows]').innerHTML = `<div class="sm-sh"><span>Kind of work</span><span>People</span><span>Monthly wage each</span><span></span></div>` + W.rows.map((r, i) => `<div class="sm-sr"><b>${esc(WC_KIND[r.k])}</b><input type="text" name="wn" data-i="${i}" value="${esc(r.n)}" inputmode="numeric" maxlength="4" aria-label="${esc(WC_KIND[r.k])}: people"><input type="text" name="ww" data-i="${i}" value="${r.wage ? Number(r.wage).toLocaleString('en-IN') : ''}" inputmode="numeric" placeholder="15,000" aria-label="${esc(WC_KIND[r.k])}: monthly wage"><button type="button" class="link" data-del="${i}" aria-label="Remove ${esc(WC_KIND[r.k])}">Remove</button></div>`).join('');
+      smeLive(api);
+    };
+    box.addEventListener('input', e => {
+      const t = e.target, i = t.dataset.i;
+      if (t.name === 'wn') { t.value = t.value.replace(/\D/g, ''); W.rows[i].n = t.value; smeLive(api); }
+      if (t.name === 'ww') { const v = amtVal(t.value); t.value = v ? v.toLocaleString('en-IN') : ''; W.rows[i].wage = v; smeLive(api); }
+      if (t.name === 'wctn') { t.value = t.value.replace(/\D/g, ''); W.contractN = t.value; smeLive(api); }
+      if (t.name === 'wctw') { const v = amtVal(t.value); t.value = v ? v.toLocaleString('en-IN') : ''; W.contractWage = v; smeLive(api); }
+    });
+    box.addEventListener('change', e => {
+      const t = e.target;
+      if (t.name === 'wadd' && t.value) { if (!W.rows.some(r => r.k === t.value)) W.rows.push({ k: t.value, n: 1, wage: '' }); t.value = ''; rows(); }
+      if (t.name === 'whz') { if (t.value === 'none' && t.checked) { W.hazards = new Set(['none']); $$('[name=whz]', box).forEach(x => { x.checked = x.value === 'none'; }); } else { W.hazards.delete('none'); const n = box.querySelector('[name=whz][value=none]'); if (n) n.checked = false; if (t.checked) W.hazards.add(t.value); else W.hazards.delete(t.value); } smeLive(api); }
+      if (t.name === 'wct') { W.contract = t.value === 'yes'; box.querySelector('[data-x=ct]').hidden = !W.contract; }
+      if (t.name === 'wclm') W.claims = t.value;
+    });
+    box.addEventListener('click', e => { const d = e.target.closest('[data-del]'); if (!d) return; W.rows.splice(+d.dataset.del, 1); rows(); });
+    rows();
+  },
+  commit() {
+    const b = B(), W = b.wc, ok = W.rows.filter(r => Number(r.n) > 0);
+    if (!ok.length) return 'Add at least one person.';
+    const nw = ok.find(r => !(Number(r.wage) >= 1000)); if (nw) return `Enter the monthly wage for ${WC_KIND[nw.k].toLowerCase()}.`;
+    if (b.who === 'biz') { if (!W.hazards.size) return 'Tell me if any work involves heights, heavy machinery or chemicals.'; if (W.contract && !(Number(W.contractN) > 0 && W.contractWage > 0)) return 'Enter how many contract workers, and their monthly wage.'; }
+    if (W.claims == null) return 'Tell me about claims in the last 3 years.';
+    return '';
+  },
+  value: () => { const W = B() && B().wc; if (!W || W.claims == null) return ''; const n = W.rows.reduce((x, r) => x + (Number(r.n) || 0), 0); return `${n} ${n === 1 ? 'person' : 'people'}, ${inr(W.rows.reduce((x, r) => x + (Number(r.n) || 0) * (Number(r.wage) || 0), 0))} a month`; },
+  done: () => { const W = B() && B().wc; return !!(W && W.rows.some(r => Number(r.n) > 0 && Number(r.wage) > 0) && W.claims != null); },
+};
+
+/* ---------- D&O: the company, then the limit ---------- */
+STEP.dco = {
+  label: 'Your company',
+  when: () => !!(S.biz && S.product === 'dno'),
+  view() {
+    const b = B(), D = b.dno, m = b.src.mca, s = b.src;
+    const yn = (n, v) => `<div class="chips">${chip(n, 'no', 'No', v === 'no')}${chip(n, 'yes', 'Yes', v === 'yes')}</div>`;
+    return {
+      say: 'I have the directors, accounts and filings from the Registrar of Companies. Four things the records can\'t tell me.',
+      title: 'About your company',
+      body: `${m ? `<div class="found">${factList([['Company number', m.cin], ['Incorporated', fd(m.inc)], ['Directors', m.directors.map(d => d.name).join(', ')], ['Revenue, ' + m.fy, siLabelL(m.revenue)], ['Net worth', siLabelL(m.nw)], ['Employees', String(s.epfo ? s.epfo.staff : s.udyam.staff)], ['Subsidiaries', m.subs ? String(m.subs) : 'None']])}<span class="sm-tags">${srcTag('MCA')}${s.epfo ? srcTag('EPFO') : ''}</span></div>` : ''}
+        <div class="fld"><span>Any subsidiaries, assets or sales in the US or Canada?</span>${yn('dus', D.us)}</div>
+        <div class="fld"><span>Planning to raise funds, list, merge or acquire in the next 12 months?</span>${yn('ddeal', D.deals)}</div>
+        <div class="fld"><span>In the last 5 years, has the company or any director had a claim, a legal notice or a regulator's investigation about how they ran it?</span>${yn('dnot', D.notices)}</div>
+        <label class="fld" data-x="nt" ${D.notices === 'yes' ? '' : 'hidden'}><span>Tell us briefly what happened</span><textarea name="dnott" rows="3">${esc(D.noticeText)}</textarea></label>
+        ${s.courts && s.courts.cases ? `<p class="note">The court records show ${s.courts.cases} case: a ${esc(s.courts.kind)}. A recovery suit you filed isn't a claim against your directors, but our underwriter will see it. ${srcTag('eCourts')}</p>` : ''}
+        <div class="fld"><span>Do you have D&amp;O cover now?</span>${yn('dex', D.existing)}</div>
+        <label class="fld" data-x="ex" ${D.existing === 'yes' ? '' : 'hidden'}><span>Covered continuously since (the retroactive date)</span><input type="date" name="dretro" value="${esc(D.retro)}" max="${iso(TODAY)}"></label>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const D = B().dno, box = api.body;
+    box.addEventListener('change', e => { const t = e.target; if (t.name === 'dus') D.us = t.value; if (t.name === 'ddeal') D.deals = t.value; if (t.name === 'dnot') { D.notices = t.value; box.querySelector('[data-x=nt]').hidden = t.value !== 'yes'; } if (t.name === 'dex') { D.existing = t.value; box.querySelector('[data-x=ex]').hidden = t.value !== 'yes'; } if (t.name === 'dretro') D.retro = t.value; });
+    box.addEventListener('input', e => { if (e.target.name === 'dnott') D.noticeText = e.target.value; });
+  },
+  commit() { const D = B().dno; if (!D.us || !D.deals || !D.notices || !D.existing) return 'Answer all four questions.'; if (D.notices === 'yes' && D.noticeText.trim().length < 10) return 'Tell us briefly what happened.'; if (D.existing === 'yes' && !fromIso(D.retro)) return 'Enter the date you\'ve been covered since.'; return ''; },
+  value: () => { const D = B() && B().dno; return D && D.us ? [D.us === 'yes' && 'US exposure', D.deals === 'yes' && 'deal planned', D.notices === 'yes' && 'past notice', D.existing === 'yes' ? 'has D&O now' : 'first D&O'].filter(Boolean).join(', ') : ''; },
+  done: () => { const D = B() && B().dno; return !!(D && D.us && D.deals && D.notices && D.existing); },
+};
+const DNO_LIMITS = [1e7, 2e7, 5e7, 1e8, 2.5e8];
+STEP.dlimit = {
+  label: 'Limit',
+  when: () => !!(S.biz && S.product === 'dno'),
+  view() {
+    const b = B(), D = b.dno, m = b.src.mca, rev = (m && m.revenue) || b.src.gst.turnover;
+    const rec = m && m.listed ? 1e8 : rev < 2.5e8 ? 1e7 : rev < 1e9 ? 2e7 : rev < 5e9 ? 5e7 : 1e8;
+    if (!D.limit) D.limit = rec;
+    const ret = Math.max(1e5, D.limit * 0.01);
+    return {
+      say: `For a company with ${siLabelL(rev)} of revenue${m && m.listed ? ', listed' : ''}, ${siLabelL(rec)} is a sensible place to start. Defence costs alone can run into crores.`,
+      title: 'How much cover?',
+      body: `<div class="chips sm-ip">${DNO_LIMITS.map(v => chip('dlim', v, `${siLabelL(v)}${v === rec ? ' <em>suggested</em>' : ''}`, D.limit === v)).join('')}</div>
+        <p class="hint">The limit is for all claims in the year, including defence costs. Directors pay nothing themselves. For claims the company pays back, it bears the first <span data-x="ret">${siLabelL(ret)}</span>.</p>
+        <div class="fld"><span>Add to it</span><div class="sw-list">${addList(b).map(k => sw('dext', k, ADD_INFO[k][0], ADD_INFO[k][1], '', D.ext.has(k))).join('')}</div></div>
+        <div class="live"><span>Indicative premium for 1 year, with GST</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) { const D = B().dno, box = api.body; box.addEventListener('change', e => { const t = e.target; if (t.name === 'dlim') { D.limit = Number(t.value); box.querySelector('[data-x=ret]').textContent = siLabelL(Math.max(1e5, D.limit * 0.01)); } if (t.name === 'dext') { if (t.checked) D.ext.add(t.value); else D.ext.delete(t.value); } smeLive(api); }); smeLive(api); },
+  commit() { return B().dno.limit ? '' : 'Pick a limit.'; },
+  value: () => { const D = B() && B().dno; return D && D.limit && S.seen.has('dlimit') ? `${siLabelL(D.limit)}${D.ext.size ? ` with ${D.ext.size} extension${D.ext.size > 1 ? 's' : ''}` : ''}` : ''; },
+  done: () => !!(B() && B().dno.limit && S.seen.has('dlimit')),
+};
+
+/* ---------- digital underwriting: the decision, and why ---------- */
+const UW_HEAD = {
+  standard: ['ok', 'Accepted at standard rates', 'Everything checks out. Pick your plan next.'],
+  loading: ['warn', 'Accepted, with a small extra premium', 'One or two things add to the price. They\'re listed below.'],
+  survey: ['warn', 'Accepted, after a quick video survey', 'Show us the place with your phone: four photos, about five minutes. Then pick your plan.'],
+  refer: ['warn', 'An underwriter confirms the price', 'You\'ll see an indicative price now. An underwriter checks the details and sends the final terms, usually within a working day. You pay only once you accept them.'],
+  decline: ['bad', 'We can\'t cover this online', 'The reasons are below. Talk to us and we\'ll see what we can do.'],
+};
+STEP.buw = {
+  label: 'Assessment',
+  when: () => !!(S.biz && isSme(S.product)),
+  view() {
+    const b = B(); b.uw = smeUw(); const u = b.uw, H = UW_HEAD[u.status];
+    return {
+      say: S.product === 'dno' ? 'D&O is always looked at by an underwriter. Here\'s what they\'ll see, from the records and your answers.' : 'I\'ve checked your answers against the records. Here\'s the decision, and why.',
+      title: 'Your assessment',
+      body: `<div class="sm-uw ${H[0]}"><span class="sm-uw-ic">${SICO[H[0]]}</span><span><b>${H[1]}${u.loadPct ? `: ${u.loadPct}% extra` : ''}</b><small>${H[2]}</small></span></div>
+        <ul class="sm-why">${u.reasons.map(r => `<li class="${r.tone}"><span class="sm-dot ${r.tone}">${SICO[r.tone]}</span><span>${esc(r.t)}</span>${r.from ? srcTag(r.from) : ''}</li>`).join('')}</ul>`,
+      next: u.status === 'decline' ? null : u.status === 'survey' ? 'Start the survey' : u.status === 'refer' ? 'See the indicative price' : S.product === 'dno' ? 'See the indicative price' : 'Pick my plan',
+      hint: 'Say “continue”',
+    };
+  },
+  commit() { return B().uw && B().uw.status === 'decline' ? 'STAY' : ''; },
+  value: () => { const u = B() && B().uw; return u && S.seen.has('buw') ? UW_HEAD[u.status][1] + (u.loadPct ? `, ${u.loadPct}% extra` : '') : ''; },
+  done: () => !!(B() && B().uw && B().uw.status !== 'decline' && S.seen.has('buw')),
+};
+const SURVEY_SHOTS = [['front', 'The front of the building'], ['inside', 'Where stock and machines are kept'], ['panel', 'The main electrical panel'], ['ext', 'The fire extinguishers']];
+STEP.bsurvey = {
+  label: 'Video survey',
+  when: () => !!(S.biz && S.biz.uw && S.biz.uw.status === 'survey'),
+  view() {
+    const b = B(), V = b.survey;
+    return {
+      say: 'Walk around with your phone and take these four photos. I check them as they come in.',
+      title: 'A quick look at the place',
+      body: `<ol class="sm-shots">${SURVEY_SHOTS.map(([k, t]) => `<li><span class="sm-dot ${V && V.done ? 'ok' : ''}">${V && V.done ? ICO.check : ''}</span>${esc(t)}</li>`).join('')}</ol>
+        <label class="doc-tile">${ART.doc('rc')}<span><b>${V && V.done ? '4 photos checked' : 'Take or upload 4 photos'}</b><small>Select all four together</small></span><input type="file" accept="image/*" capture="environment" multiple aria-label="Upload the four photos"></label>
+        <div data-x="st">${V && V.done ? surveyHtml(V) : ''}</div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const b = B();
+    api.setNext('Continue', !!(b.survey && b.survey.done));
+    api.body.addEventListener('change', async e => {
+      const n = e.target.files ? e.target.files.length : 0; if (!n) return;
+      if (n < 4) { api.err(`I need 4 photos and got ${n}. Select all four together.`); return; }
+      api.err(''); api.body.querySelector('[data-x=st]').innerHTML = '<div class="reading"><span class="spin"></span>Checking the photos…</div>';
+      await sleep(REDUCED ? 100 : 1600); if (S.cur !== 'bsurvey') return;
+      b.survey = { done: true, at: new Date(), n, checks: [['Housekeeping', 'Tidy, with clear aisles and exits'], ['Fire extinguishers', b.fire.ext === 'yes' ? 'Two seen, pins and seals in place' : 'None seen. Keeping two in date is a condition of cover'], ['Electrical panel', 'Closed, no loose wiring seen'], ['Storage', 'Goods on racks, off the floor']] };
+      api.body.querySelector('[data-x=st]').innerHTML = surveyHtml(b.survey); $$('.sm-shots .sm-dot', api.body).forEach(d => { d.classList.add('ok'); d.innerHTML = ICO.check; });
+      jlog('Video survey photos checked'); api.setNext('Continue', true);
+    });
+  },
+  commit() { return B().survey && B().survey.done ? '' : 'Upload the four photos first.'; },
+  value: () => { const V = B() && B().survey; return V && V.done ? 'Approved' : ''; },
+  done: () => !!(B() && B().survey && B().survey.done),
+};
+const surveyHtml = V => `<div class="found"><span class="seal">${ICO.shield}<span>Survey approved</span></span><ul class="sm-why">${V.checks.map(([t, s2]) => `<li class="ok"><span class="sm-dot ok">${SICO.ok}</span><span><b>${esc(t)}</b>: ${esc(s2)}</span></li>`).join('')}</ul></div>`;
+
+/* ---------- plan, then quote ---------- */
+STEP.bplan = {
+  label: 'Cover',
+  when: () => !!(S.biz && isSme(S.product) && S.product !== 'dno'),
+  view() {
+    const b = B(), pl = planList(b), ads = addList(b);
+    if (!b.plan) b.plan = pl ? (pl.find(x => x[0] === defaultPlan(b)) || pl[pl.length - 1])[0] : 'standard';
+    const tiles = pl ? `<div class="tiles sm-plans">${pl.map(([k, t, d]) => { const c = smeCalc(S, { plan: k }); return `<button type="button" class="tile" data-bplan="${k}" aria-pressed="${b.plan === k}">${k === defaultPlan(b) ? '<span class="badge">Recommended</span>' : ''}<span class="tick" aria-hidden="true">${ICO.check}</span><span class="tile-name">${esc(t)}</span><span class="tile-sub">${esc(d)}</span><span class="tile-price">${c ? inr(c.total) : ''}</span></button>`; }).join('')}</div>` : '';
+    return {
+      say: pl ? 'Three ways to cover it. Your price is on each one, and it updates as you add things.' : 'Your cover is set. Add any of these.',
+      title: pl ? 'Pick your cover' : 'Fine-tune your cover',
+      body: `${tiles}${ads.length ? `<div class="fld"><span>${pl ? 'Add to any plan' : 'Extensions'}</span><div class="sw-list">${ads.map(k => sw('badd', k, ADD_INFO[k][0], ADD_INFO[k][1], '', b.addons.has(k))).join('')}</div></div>` : ''}
+        <div class="live"><span>Your premium${S.product === 'marine' && b.marine.kind !== 'annual' ? ' for this shipment' : ' for 1 year'}, with GST</span><b data-x="tot">—</b></div>`,
+      next: 'See my quote',
+    };
+  },
+  wire(api) {
+    const b = B(), box = api.body;
+    box.addEventListener('click', e => { const t = e.target.closest('[data-bplan]'); if (!t) return; b.plan = t.dataset.bplan; $$('[data-bplan]', box).forEach(x => x.setAttribute('aria-pressed', String(x === t))); smeLive(api); });
+    box.addEventListener('change', e => { const t = e.target; if (t.name === 'badd') { if (t.checked) b.addons.add(t.value); else b.addons.delete(t.value); smeLive(api); } });
+    smeLive(api);
+  },
+  commit() { B().planChosen = true; return ''; },
+  value: () => { const b = B(); if (!b || !b.planChosen) return ''; const pl = planList(b), nm = pl ? (pl.find(x => x[0] === b.plan) || [])[1] : 'Standard'; return `${nm}${b.addons.size ? `, ${b.addons.size} extra` : ''}`; },
+  done: () => !!(B() && B().planChosen),
+};
+function smeCovered(b) {
+  const p = b.p;
+  if (p === 'fire') return b.who === 'ind' ? ['Fire, lightning, explosion and aircraft damage', 'Storm, cyclone, flood and inundation', 'Earthquake, landslide and subsidence', 'Riots, strikes, malicious damage and terrorism', 'Theft within 7 days of any of these', 'Rent for another home while yours is repaired', 'Your contents, up to 20% of the building without a list'] : ['Fire, lightning, explosion and aircraft damage', 'Storm, cyclone, flood and inundation', 'Earthquake, landslide and subsidence', 'Riots, strikes, malicious damage and terrorism', 'Impact damage, bursting of tanks and sprinkler leakage', 'Removal of debris and professional fees after a loss'];
+  if (p === 'lop') return ['Gross profit lost while the business is disrupted by an insured event', 'Extra costs to keep trading, like renting another place', 'For as long as the indemnity period you chose', ...(b.lop.withFire ? ['The property itself, against fire and allied perils'] : [])];
+  if (p === 'marine') return b.who === 'ind' ? ['Your goods from packing to unpacking', 'Accident, overturning, fire and collision', b.plan === 'allrisk' ? 'Breakage and damage in handling' : 'Loss of the whole consignment'] : ['Goods in transit, from the warehouse to the destination', 'Loading and unloading', 'Accident, fire, overturning and collision', 'General average and salvage charges', ...(b.plan === 'allrisk' ? ['Any accidental loss or damage, including theft and breakage'] : [])];
+  if (p === 'wc') return ['Compensation the law requires for injury or death at work', 'Occupational diseases listed in the law', 'Commuting accidents, as the Code on Social Security now covers them', 'Legal costs with our consent'];
+  return ['Claims against directors and officers for wrongful acts in running the company', 'Defence costs, from the first notice', 'Regulatory investigations and inquiries', 'Claims by employees, shareholders, lenders and regulators'];
+}
+function smeExcluded(b) {
+  const p = b.p;
+  if (p === 'fire' || p === 'lop') return ['Wear and tear, and gradual deterioration', 'Theft not following an insured event, unless burglary is added', 'Electrical breakdown of machines, unless it\'s added', 'Loss when the place is left unoccupied for over 30 days'];
+  if (p === 'marine') return ['Bad packing, and the nature of the goods', 'Delay, even from an insured event', 'Wilful misconduct', 'Wear and tear and ordinary leakage'];
+  if (p === 'wc') return ['Injury when the worker is drunk or on drugs', 'Wilful disobedience of a safety rule', 'Employees covered by ESIC', 'Contract workers, unless added'];
+  return ['Fraud and dishonesty, once proven', 'Personal profit the director wasn\'t entitled to', 'Claims known before the policy started', 'Bodily injury and property damage'];
+}
+STEP.bquote = {
+  label: 'Quote',
+  when: () => !!(S.biz && isSme(S.product)),
+  view() {
+    const b = B(), c = smeCalc(); b.quoteNo = b.quoteNo || `NX-${SME[b.p].code}Q-${code(6)}`;
+    const uw = needsUw(b), period = smePeriod(b);
+    const rows = c.rows.map(r => [r[0], inr(r[1])]).concat([['GST at 18%', inr(c.gst)], { cells: ['Total', inr(c.total)], bold: true }]);
+    return {
+      say: uw ? 'This is an indicative price. The underwriter confirms it, and you pay only once you\'ve seen the final terms.' : 'Here\'s your price. No hidden charges.',
+      title: `${esc(SME[b.p].short)}${b.who === 'ind' ? '' : ` for ${esc(bizName(b))}`}`,
+      body: `<div class="price-hero"><b>${priceTxt(c)}</b><span>${c.range ? 'indicative, with GST' : period.single ? 'for this shipment, with GST' : 'for 1 year, with GST'}</span></div>
+        ${factList(smeFacts(b, c))}
+        <details class="more" ${uw ? '' : 'open'}><summary>Premium breakdown</summary><div><table class="brk"><tbody>${rows.map(x => { const cl = x.cells || x; return `<tr class="${x.bold ? 'sum' : ''}"><td>${esc(cl[0])}</td><td>${esc(cl[1])}</td></tr>`; }).join('')}</tbody></table></div></details>
+        <details class="more"><summary>What's covered, and what isn't</summary><div class="cols"><div><span class="sec-h">Covered</span><ul class="ticks">${smeCovered(b).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div><div><span class="sec-h">Not covered</span><ul class="crosses">${smeExcluded(b).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div></div></details>
+        <div class="acts"><button type="button" class="btn-soft" data-a="pdf">${ICO.down}Download quote</button><button type="button" class="link" data-a="edit">Change my cover</button></div>`,
+      next: uw ? 'Continue' : 'Buy now', hint: 'Say “buy now” or “download”',
+    };
+  },
+  wire(api) { api.body.addEventListener('click', e => { const a = e.target.closest('[data-a]'); if (!a) return; if (a.dataset.a === 'pdf') saveFile(`NxSure-quote-${B().quoteNo}.pdf`, smePdf('quote')); if (a.dataset.a === 'edit') go(S.product === 'dno' ? 'dlimit' : 'bplan'); }); },
+  value: () => { const b = B(); if (!b || !S.seen.has('bquote')) return ''; const c = smeCalc(); return c ? `${priceTxt(c)}, ${b.quoteNo || ''}` : ''; },
+  done: () => S.seen.has('bquote'),
+  cmd(t) { const l = t.toLowerCase(); if (/download|pdf/.test(l)) { press('[data-a=pdf]'); return ''; } if (/buy|yes|continue|go ahead/.test(l)) { press('.btn-next'); return ''; } return null; },
+};
+// when cover starts and ends
+function smePeriod(b) {
+  if (b.p === 'marine' && b.who === 'ind') { const d = fromIso(b.marine.move.date) || TODAY; return { start: d, end: addDays(d, 30), single: true, text: `${fd(d)}, till delivery at the new home, up to 30 days` }; }
+  if (b.p === 'marine' && b.marine.kind === 'single') { const d = fromIso(b.marine.single.date) || TODAY; return { start: d, end: addDays(d, 60), single: true, text: `From dispatch on ${fd(d)} till delivery, up to 60 days` }; }
+  const st = addDays(TODAY, 1); return { start: st, end: addDays(addYears(st, 1), -1), text: `${fd(st)} to ${fd(addDays(addYears(st, 1), -1))}` };
+}
+function smeFacts(b, c) {
+  const p = b.p, out = [['Policy period', smePeriod(b).text]];
+  if (p === 'fire') { const si = fireSi(b); if (b.who === 'ind') out.push(['Policy', 'Bharat Griha Raksha'], si.building ? ['Building', siLabelL(si.building)] : null, ['Contents', siLabelL(si.contents)], si.valuables ? ['Valuables', siLabelL(si.valuables)] : null); else out.push(['Policy', bharatBand(c.si).name], ['Sum insured', siLabelL(c.si)], ['Place', `${b.loc.addr}, ${b.loc.pin}`]); }
+  if (p === 'lop') out.push(['Gross profit insured', siLabelL(b.lop.gp)], ['Indemnity period', `${b.lop.ip} months`], b.lop.withFire ? ['Property insured', siLabelL(siTotal(fireSi(b)))] : ['Property cover', `${b.lop.mdIns}, ${b.lop.mdNo}`]);
+  if (p === 'marine') out.push(b.who === 'ind' ? ['Goods', siLabelL(c.si)] : ['Cover', `${(PLANS.marine.find(x => x[0] === (b.plan || 'allrisk')) || [])[1]}, ${b.marine.kind === 'annual' ? `${siLabelL(c.si)} a year` : siLabelL(c.si)}`], b.who === 'biz' && b.marine.kind === 'annual' ? ['Largest consignment', siLabelL(b.marine.perBottom)] : null, ['Basis of value', b.who === 'ind' ? 'Replacement value you declared' : 'Invoice value plus 10%']);
+  if (p === 'wc') out.push(['People covered', String(c.info.n)], ['Annual wages', siLabelL(c.info.wages)], ['Law', 'Code on Social Security, 2020']);
+  if (p === 'dno') out.push(['Limit', siLabelL(b.dno.limit)], ['Company retention', siLabelL(Math.max(1e5, b.dno.limit * 0.01))], ['Retroactive date', b.dno.existing === 'yes' && b.dno.retro ? fd(fromIso(b.dno.retro)) : 'Full prior acts, unknown claims only']);
+  return out.filter(Boolean);
+}
+
+/* ---------- review and pay, or send to the underwriter ---------- */
+function smeDecl(b) {
+  const p = b.p, out = ['The details in this proposal, including those fetched from public records and with my consent, are true and complete, and I haven\'t hidden anything that matters to this insurance.'];
+  if (p === 'fire' || (p === 'lop' && b.lop.withFire)) out.push(b.who === 'ind' ? 'The home is used only to live in, and is not left empty for more than 30 days at a time.' : 'The values insured are what it would cost to replace the property today. If they are lower, a claim is reduced in proportion.', 'I will keep the fire safety measures I declared in working order.');
+  if (p === 'lop') out.push('I will declare the actual gross profit for the year when asked, with my accountant\'s certificate, and the premium will be adjusted.');
+  if (p === 'marine') out.push(b.who === 'ind' ? 'The goods are my household goods, packed for transit, and the values are what it would cost to replace them.' : 'Goods will be packed suitably for the journey. For an open policy, I will declare every shipment each month, including those that arrive safely.');
+  if (p === 'wc') out.push('The wages and numbers are true. I will declare the actual wages at the end of the policy year, and the premium will be adjusted.', 'Employees covered by ESIC are not included.');
+  if (p === 'dno') out.push('No director or officer is aware of any act, error or circumstance that could give rise to a claim, other than those disclosed.', 'I will tell NxSure about any change to the answers given before the policy starts.');
+  return out;
+}
+function smeReviewHtml(b) {
+  const k = S.kyc, c = smeCalc();
+  return `<div class="rv-grid"><section class="rv"><h3>Insured</h3><p>${esc(b.who === 'ind' ? k.name : b.src.gst.legal)}</p><p class="muted">${esc(b.who === 'ind' ? `${k.addr}, ${k.city} ${k.pin}` : `GSTIN ${b.src.gst.gstin}`)}</p></section>
+    <section class="rv"><h3>Cover</h3><p>${esc(SME[b.p].short)}</p><p class="muted">${esc(smePeriod(b).text)}</p></section>
+    <section class="rv"><h3>${b.who === 'ind' ? 'Policyholder' : 'Signed by'}</h3><p>${esc(k.name)}</p><p class="muted">${esc(maskMobile(k.mobile))}</p></section></div>
+    ${factList(smeFacts(b, c).slice(1))}`;
+}
+STEP.breview = {
+  label: 'Review and pay',
+  when: () => !!(S.biz && isSme(S.product) && !needsUw(S.biz)),
+  view() {
+    const b = B(), c = smeCalc(), decl = smeDecl(b);
+    return {
+      say: `Last step, ${esc(first(S.kyc.name))}. Have a quick look, then you're covered.`, title: 'Review and pay',
+      body: `${smeReviewHtml(b)}<label class="fld"><span>Email for the policy copy (optional)</span><input type="email" name="email" value="${esc(b.email || S.kyc.email || '')}" placeholder="you@example.com"></label>
+        <div class="fld"><span>Declarations</span><ol class="decl">${decl.map(d => `<li>${esc(d)}</li>`).join('')}</ol></div>
+        <label class="agree"><input type="checkbox" name="agree" ${b.agreed ? 'checked' : ''}><span>I have read and accept all the declarations above${b.who === 'biz' ? `, on behalf of ${esc(b.src.gst.legal)}` : ''}.</span></label>
+        <div class="live"><span>${ICO.lock.replace('<svg', '<svg style="width:15px;height:15px;vertical-align:-2px"')} Secure payment, valid for 24 hours</span><b>${inr(c.total)}</b></div>`,
+      next: `Pay ${inr(c.total)}`, hint: 'Say “I accept” and then “pay”',
+    };
+  },
+  async commit(api) {
+    const b = B(), bx = api.body, em = bx.querySelector('[name=email]').value.trim();
+    if (em && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) return 'That email address doesn\'t look right. Leave it empty if you prefer.';
+    if (!bx.querySelector('[name=agree]').checked) return 'Please tick the box to accept the declarations.';
+    b.email = em; b.agreed = true; api.err('');
+    const c = smeCalc(), ref = 'NX-PL-' + code(6), got = await pay(c.total, ref, `${SME[b.p].short}${b.who === 'biz' ? `, ${bizName(b)}` : ''}`);
+    if (!got) return 'STAY';
+    smeIssue(got, c.total, ref); return '';
+  },
+  value: () => S.paid ? `Paid ${inr(S.paid.amount)}` : '',
+  done: () => !!S.paid,
+  cmd: t => reviewCmd(t),
+};
+function smeIssue(got, amount, ref) {
+  const b = B(), yy = String(YEAR).slice(2), cd = b.p === 'lop' && b.lop.withFire ? 'FL' : SME[b.p].code;
+  S.paid = { ...got, amount, ref };
+  b.policyNo = `NX/${cd}/${yy}/${digits(8)}`; b.period = smePeriod(b);
+  S.issued.push({ kind: b.p, no: b.policyNo });
+  if (typeof REC !== 'undefined') REC.stop('paid');
+}
+STEP.dsubmit = {
+  label: 'Send for review',
+  when: () => !!(S.biz && needsUw(S.biz)),
+  view() {
+    const b = B(), decl = smeDecl(b), c = smeCalc();
+    return {
+      say: 'Have a look, then I\'ll send it to the underwriter. Nothing to pay yet.', title: 'Send it to the underwriter',
+      body: `${smeReviewHtml(b)}<label class="fld"><span>Email for the terms (optional)</span><input type="email" name="email" value="${esc(b.email || S.kyc.email || '')}" placeholder="you@example.com"></label>
+        <div class="fld"><span>Declarations</span><ol class="decl">${decl.map(d => `<li>${esc(d)}</li>`).join('')}</ol></div>
+        <label class="agree"><input type="checkbox" name="agree" ${b.submittedAt ? 'checked' : ''}><span>I have read and accept all the declarations above${b.who === 'biz' ? `, on behalf of ${esc(b.src.gst.legal)}` : ''}.</span></label>
+        <div class="live"><span>${c.range ? 'Indicative premium' : 'Premium'}, with GST</span><b>${priceTxt(c)}</b></div>`,
+      next: 'Send to the underwriter',
+    };
+  },
+  commit(api) {
+    const b = B(), bx = api.body, em = bx.querySelector('[name=email]').value.trim();
+    if (em && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) return 'That email address doesn\'t look right. Leave it empty if you prefer.';
+    if (!bx.querySelector('[name=agree]').checked) return 'Please tick the box to accept the declarations.';
+    b.email = em;
+    if (!b.submittedAt) { b.submittedAt = new Date(); b.proposalNo = `NX-${SME[b.p].code}P-${digits(9)}`; jlog(`Sent to the underwriter, proposal ${b.proposalNo}`); }
+    return '';
+  },
+  value: () => { const b = B(); return b && b.submittedAt ? `Sent ${fdt(b.submittedAt)}, ${b.proposalNo}` : ''; },
+  done: () => !!(B() && B().submittedAt),
+};
+// what the underwriter sends back: simulated for the demo from the same data the customer saw
+function smeTerms(b) {
+  const c = smeCalc(S, { plan: b.plan || defaultPlan(b) }), h = hash('terms' + (b.proposalNo || '')), net = roundTo(c.net * (0.95 + (h % 15) / 100), 100);
+  const conds = [];
+  if (b.p === 'dno') { if (b.src.courts && b.src.courts.cases) conds.push('Prior and pending litigation: the recovery suit in the court records, and anything arising from it, is excluded.'); if (b.dno.us === 'yes') conds.push('Claims brought in the US or Canada have a retention of ₹25 lakh.'); conds.push(b.dno.existing === 'yes' && b.dno.retro ? `Retroactive date: ${fd(fromIso(b.dno.retro))}, continuing your existing cover.` : 'Retroactive date: full prior acts, for claims not known before the policy starts.'); conds.push(`Retention for claims the company pays back: ${siLabelL(Math.max(1e5, b.dno.limit * 0.01))}.`); }
+  else if (b.p === 'fire' || b.p === 'lop') { conds.push('A risk engineer visits within 30 days. Cover starts as soon as you pay.'); if (b.fire.claims === '2') conds.push('Each claim has an excess of 5% of the loss, at least ₹25,000.'); conds.push('Fire extinguishers are kept serviced and in date.'); }
+  else if (b.p === 'marine') conds.push('Each consignment above ₹5 crore is declared before dispatch.', 'Goods travel in sealed containers or covered vehicles.');
+  else conds.push('Wages are declared at the end of the year, and the premium is adjusted.');
+  return { at: new Date(), net, premium: net, conds, validTill: addDays(TODAY, 15), by: 'Underwriting team, NxSure' };
+}
+STEP.bsent = {
+  label: 'With our underwriter',
+  when: () => !!(S.biz && needsUw(S.biz)),
+  view() {
+    const b = B(), t = b.terms;
+    return {
+      say: t ? 'The underwriter has replied. Your terms are ready.' : `It's with our underwriter, ${esc(first(S.kyc.name))}. You can close this. I'll message you when the terms are ready.`,
+      title: t ? 'Your terms are ready' : 'With our underwriter',
+      body: `<div class="found"><span class="muted">Proposal number</span><span class="pol-no">${esc(b.proposalNo || '')}</span>
+          <ol class="timeline"><li><span class="dot ok">${ICO.check}</span><span>Records checked and details confirmed</span></li><li><span class="dot ok">${ICO.check}</span><span>Sent to the underwriter on ${fdt(b.submittedAt)}</span></li>
+          <li><span class="dot ${t ? 'ok' : ''}">${t ? ICO.check : ''}</span><span>${t ? `Terms sent on ${fdt(t.at)}` : `The underwriter reviews it, usually within a working day. The terms come by SMS to ${esc(maskMobile(S.kyc.mobile))}${b.email ? ` and by email` : ''}`}</span></li>
+          <li><span class="dot"></span><span>You accept the terms and pay. The policy is issued straight away</span></li></ol></div>
+        ${t ? '' : `<p class="hint">It's saved in My NxSure, so you can come back to it from any page.</p><p class="otp-demo kyc-demo" role="note"><span class="od-l">Demo</span><button type="button" data-a="uwdemo">See the underwriter's reply now</button></p>`}
+        <div class="acts"><button type="button" class="btn-soft" data-a="ack">${ICO.down}Download the proposal</button></div>`,
+      next: t ? 'See the terms' : null, back: false,
+    };
+  },
+  wire(api) {
+    api.body.addEventListener('click', async e => {
+      const a = e.target.closest('[data-a]'); if (!a) return;
+      if (a.dataset.a === 'ack') saveFile(`NxSure-proposal-${B().proposalNo}.pdf`, smePdf('ack'));
+      if (a.dataset.a === 'uwdemo') { a.disabled = true; a.textContent = 'Checking…'; await sleep(REDUCED ? 60 : 900); if (S.cur !== 'bsent') return; B().terms = smeTerms(B()); jlog('Underwriter\'s terms received'); show('bsent', 1); }
+    });
+  },
+  value: () => { const b = B(); return b && b.terms ? 'Terms ready' : b && b.submittedAt ? 'Under review' : ''; },
+  done: () => !!(B() && B().terms),
+};
+STEP.dterms = {
+  label: 'Accept and pay',
+  when: () => !!(S.biz && needsUw(S.biz)),
+  view() {
+    const b = B(), t = b.terms, c = smeCalc();
+    return {
+      say: 'Here are the underwriter\'s terms. Accept them and pay, and the policy is issued straight away.', title: 'Your terms',
+      body: `<div class="price-hero"><b>${inr(c.total)}</b><span>for 1 year, with GST</span></div>
+        ${factList(smeFacts(b, c))}
+        <div class="fld"><span>Conditions</span><ol class="decl">${t.conds.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div>
+        <p class="hint">These terms are valid till ${fd(t.validTill)}. ${esc(t.by)}.</p>
+        <label class="agree"><input type="checkbox" name="agree"><span>I accept these terms${b.who === 'biz' ? `, on behalf of ${esc(b.src.gst.legal)}` : ''}.</span></label>`,
+      next: `Accept and pay ${inr(c.total)}`, back: false,
+    };
+  },
+  async commit(api) {
+    if (!api.body.querySelector('[name=agree]').checked) return 'Please tick the box to accept the terms.';
+    const b = B(), c = smeCalc(), ref = 'NX-PL-' + code(6), got = await pay(c.total, ref, `${SME[b.p].short}${b.who === 'biz' ? `, ${bizName(b)}` : ''}`);
+    if (!got) return 'STAY';
+    smeIssue(got, c.total, ref); return '';
+  },
+  value: () => S.paid ? `Paid ${inr(S.paid.amount)}` : '',
+  done: () => !!S.paid,
+};
+
+/* ---------- after payment ---------- */
+function smeDoneView() {
+  const b = B(), c = smeCalc(), others = { fire: ['lop', 'wc'], lop: ['wc', 'marine'], marine: ['fire', 'wc'], wc: ['fire', 'lop'], dno: ['fire', 'wc'] }[b.p].filter(x => b.who === 'biz' || SME[x].who.includes('ind'));
+  return {
+    say: null, title: '', back: false, next: null, foot: false,
+    body: `<div class="done-hero"><span class="done-badge">${ICO.check}</span><h1 class="q-title" tabindex="-1">You're covered, ${esc(first(S.kyc.name))}</h1><p class="q-help" style="margin:0">${esc(SME[b.p].short)}${b.who === 'biz' ? ` for ${esc(bizName(b))}` : ''}, from ${fd(b.period.start)}.</p></div>
+      <div class="found"><span class="muted">Policy number</span><span class="pol-no">${esc(b.policyNo)}</span>${factList([...smeFacts(b, c), ['Premium paid', inr(S.paid.amount)], ['Payment', `${S.paid.method}, ${S.paid.txn}`]])}</div>
+      ${doneManage('policy')}
+      ${others.map(p => `<button type="button" class="xsell" data-sx="${p}"><span class="sm-xs-ic">${p === 'wc' ? SICO.users : p === 'marine' ? SICO.truck : SICO.shop}</span><span><b>${esc(SME[p].short)}</b><span class="muted">${b.who === 'biz' ? 'Your business details are already filled in.' : 'Your details are already filled in.'}</span></span><span class="go">${ICO.right}</span></button>`).join('')}`,
+  };
+}
+function smeCross(p) {
+  const old = B(), keep = { kyc: S.kyc, docOwner: S.docOwner, issued: S.issued };
+  S = fresh(keep); S.product = p; S.seen.add('product');
+  const nb = newBiz(p);
+  if (old && (old.who === 'biz' || SME[p].who.includes(old.who))) Object.assign(nb, { who: SME[p].who.includes(old.who) ? old.who : 'biz', idType: old.idType, idv: old.idv, id: old.id, ent: old.ent, src: old.src, consent: old.consent, fetchedAt: old.fetchedAt, loc: old.loc });
+  if (old && old.fire.occ) nb.fire.occ = old.fire.occ;
+  S.biz = nb;
+  ['bwho', 'bid', 'bfetch', 'bloc', 'kyc'].forEach(id => { try { const st = STEP[id]; if (st && (!st.when || st.when()) && st.done()) S.seen.add(id); } catch (e) { /* not for this product */ } });
+  shownPrice = null;
+  show(nextTarget('product'), 1);
+}
+
+/* ---------- documents ---------- */
+function smePdf(kind) {
+  const b = B(), k = S.kyc, c = smeCalc(), isPol = kind === 'policy', isAck = kind === 'ack';
+  const title = isPol ? `${SME[b.p].short} policy schedule` : isAck ? 'Proposal sent for review' : `${SME[b.p].short} quote`;
+  const d = pdfDoc(title, isPol ? `Policy ${b.policyNo} | Issued ${fd(TODAY)}` : isAck ? `Proposal ${b.proposalNo} | ${fd(TODAY)}` : `Quote ${b.quoteNo} | ${fd(TODAY)}`);
+  d.h2('Insured');
+  if (b.who === 'biz') d.kv([['Business', b.src.gst.legal], ['Trade name', b.src.gst.trade], ['GSTIN', b.src.gst.gstin], ['Type', b.src.gst.constitution], b.src.mca ? ['Company number', b.src.mca.cin] : ['MSME', `${b.src.udyam.cat}, ${b.src.udyam.no}`], k ? ['Signed by', `${k.name}, ${kycLabel(k)} ${k.idMasked}`] : null].filter(Boolean));
+  else if (k) d.kv([['Name', k.name], ['KYC', `${kycLabel(k)} ${k.idMasked}`], ['Address', `${k.addr}, ${k.city} ${k.pin}`], ['Mobile', maskMobile(k.mobile)]]);
+  d.h2('Cover');
+  d.kv(smeFacts(b, c).map(([x, y]) => [x, String(y)]));
+  if (b.loc && b.loc.hz && (b.p === 'fire' || b.p === 'lop')) { d.h2('The place'); d.kv([['Address', `${b.loc.addr}, ${b.loc.city || ''} ${b.loc.pin}`], ['Occupancy', b.who === 'ind' ? 'Home' : OCC[b.fire.occ].label], ['Flood, earthquake, cyclone', `${hzWord(b.loc.hz.flood)}, ${hzWord(b.loc.hz.quake)}, ${hzWord(b.loc.hz.cyclone)}`], ['Nearest fire station', `About ${b.loc.hz.station} km`]]); }
+  if (b.p === 'wc') { d.h2('People covered'); d.table([{ t: 'Kind of work', w: 0.5 }, { t: 'People', w: 0.2, right: true }, { t: 'Monthly wage', w: 0.3, right: true }], b.wc.rows.filter(r => Number(r.n) > 0).map(r => [WC_KIND[r.k], String(r.n), inr(r.wage)])); }
+  d.h2('Premium');
+  d.table([{ t: 'Item', w: 0.72 }, { t: 'Amount', w: 0.28, right: true }], c.rows.map(r => [r[0], inr(r[1])]).concat([['GST at 18%', inr(c.gst)], { cells: ['Total', inr(c.total)], bold: true }]));
+  d.band(isPol ? 'Premium paid' : c.range ? 'Indicative premium' : 'Total premium', c.range && !isPol ? `${inr(c.range[0])} to ${inr(c.range[1])}` : inr(isPol ? S.paid.amount : c.total), isPol ? `On ${fd(TODAY)} by ${S.paid.method}, transaction ${S.paid.txn}` : c.range ? 'An underwriter confirms the final premium' : 'Including GST');
+  if (isPol && b.terms) { d.h2('Conditions agreed with the underwriter'); d.bullets(b.terms.conds); }
+  d.h2("What's covered"); d.bullets(smeCovered(b));
+  d.h2('Not covered'); d.bullets(smeExcluded(b));
+  if (b.uw) { d.h2('How this was underwritten'); d.bullets(b.uw.reasons.map(r => `${r.t}${r.from ? ` (${r.from})` : ''}`)); }
+  if (b.who === 'biz' && b.fetchedAt) d.para(`Business details were fetched on ${fdt(b.fetchedAt)} from ${listText(smeSrcs(b).filter(x => !SRC_CONSENT.includes(x) || b.consent[x]).map(x => SRC_DEF[x][0]))}${smeSrcs(b).some(x => SRC_CONSENT.includes(x) && b.consent[x]) ? ', the last with consent' : ''}.`, { color: d.C.mute });
+  if (isPol || isAck) pdfDecl(d, smeDecl(b), isPol ? S.paid.at : b.submittedAt);
+  d.para(isPol ? 'Keep this schedule with the policy wording. For a claim, share the policy number.' : isAck ? 'You pay only once you accept the underwriter\'s terms.' : `This quote is valid till ${fd(addDays(TODAY, 15))} for the details above.`, { color: d.C.mute });
+  return d.finish(FOOT);
+}
+
 /* ================= voice =================
    In the video medical exam the microphone is on for the whole call: it's the call's own microphone, so it isn't
    asked for again. In the proposal itself, the mic is a tap-to-talk button for one answer at a time.
@@ -10051,6 +11670,9 @@ function registerWorker() {
   const go = () => navigator.serviceWorker.register('sw.js').catch(() => { /* offline support is optional */ });
   if (document.readyState === 'complete') go(); else addEventListener('load', go);
 }
+
+// a read-only view of where the journey is, for automated checks
+if (!window.__jx) window.__jx = () => ({ cur: S && S.cur, product: S && S.product });
 
 /* ================= NxSure Partners: roles and sample data ================= */
 const ROLES = {
