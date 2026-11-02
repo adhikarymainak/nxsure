@@ -1857,6 +1857,65 @@ button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:
 .sp-vals .fld>span .sm-tag{margin-left:6px}
 @media (max-width:640px){.sp-kinds{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.sp-kinds{grid-template-columns:1fr}.sp-kinds .tile{padding:12px 14px}.sp-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.sp-vals{grid-template-columns:1fr}.sp-bars{gap:5px;width:100%;justify-content:space-between}.sp-bars span{width:auto;flex:1}.sp-bars i{width:100%;max-width:26px}}
+/* where the risk is: the property's location */
+.geo-card{display:grid;gap:10px;padding:14px 16px;border-radius:18px;border:1px solid var(--line);background:var(--surface-2)}
+.geo-h{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center}
+.geo-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand)}
+.geo-ic svg{width:22px;height:22px}
+.geo-h b{display:block;font:600 15px/1.3 var(--display)}
+.geo-h small{display:block;color:var(--ink-2);font-size:13px;font-variant-numeric:tabular-nums}
+.geo-map{font-size:13.5px;white-space:nowrap}
+.geo-st{display:flex;gap:6px;align-items:center;font-size:13.5px;color:var(--ink-2)}
+.geo-st.ok{color:var(--mint);font-weight:600}.geo-st.ok svg{width:15px;height:15px}
+.geo-st.warn{color:var(--warn);font-weight:600}
+.geo-acts{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.geo-btn{padding:9px 14px;font-size:14px}
+.geo-paste{display:flex;gap:8px;flex-wrap:wrap}
+.geo-paste input{flex:1 1 220px;min-width:0}
+.geo-msg{margin:0}
+.tour-geo{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:rgba(255,255,255,.65);padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.08)}
+.tour-geo.on{color:#5BEBC6}.tour-geo.off{color:#FFD58A}
+@media (max-width:560px){.geo-h{grid-template-columns:auto minmax(0,1fr)}.geo-map{grid-column:2;justify-self:start}.tour-geo{display:none}}
+/* KYC: an individual, or an institution */
+.kyc-for{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.kf{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;padding:12px 14px;border-radius:18px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.kf input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.kf:has(input:focus-visible){outline:3px solid var(--brand-2);outline-offset:2px}
+.kf-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand)}
+.kf-ic svg{width:22px;height:22px}
+.kf b{display:block;font:600 15px/1.25 var(--display)}
+.kf small{display:block;color:var(--ink-2);font-size:12.5px}
+.kf.on{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+.kyc-ph{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;padding:12px 14px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.kyc-ph-l{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2)}
+.kyc-ph b{font:600 15.5px var(--display)}
+.org{display:grid;gap:14px}
+.org:empty{display:none}
+.org-find{display:grid;gap:12px}
+.org-tabs{flex-wrap:wrap}
+.org-go{display:flex;gap:10px;align-items:center}
+.org-up{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.org-up .doc-tile.has{border-style:solid;border-color:var(--mint)}
+.org-up .doc-tile svg{width:22px;height:22px;color:var(--brand)}
+.org-docs{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:13.5px}
+.org-docs li{display:flex;gap:8px;align-items:center}.org-docs svg{width:15px;height:15px;color:var(--mint);flex:none}
+.org-bo{display:grid;gap:10px}
+.org-bo .sec-h{display:block}
+.org-bol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.org-bol li{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.org-bol b{display:block;font-size:14.5px;font-weight:650}.org-bol small{color:var(--ink-2);font-size:12.5px}
+.org-boadd{display:flex;gap:8px;flex-wrap:wrap}.org-boadd input[name=boname]{flex:1 1 200px;min-width:0}.org-boadd input[name=bopct]{width:70px}
+.org-bo>.link,.org-rec>.link{justify-self:start}
+.org-auth{display:grid;gap:10px}
+.org-group{display:grid;gap:12px}
+.kyc-sig{margin:6px 0 -4px;display:block}
+@media (max-width:560px){.kyc-for{grid-template-columns:1fr}}
+.org-rec .facts{grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:10px 18px}
+.org-rec .facts dd{overflow-wrap:normal;word-break:normal}
+@media (max-width:560px){
+  .org-tabs,.kyc-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-radius:18px}
+  .org-tabs span,.kyc-tabs span{border-radius:14px;text-align:center;padding:8px 6px;font-size:13.5px}
+}
 
 /* ================= NxSure Partners: ink sidebar, warm paper canvas, one typeface, one accent ================= */
 :root{
@@ -3280,7 +3339,8 @@ function motorCalc(M, planOverride) {
   }
   if (!saod) tp = tpBase;
   if (com) ll = C.llDriver;
-  if (M.cpa) cpa = C.cpa[k];
+  // owner-driver accident cover is for a person: a vehicle owned by an institution doesn't have it
+  if (M.cpa && !(S && S.kycFor && S.kycFor.kind === 'org' && S.kycFor.prod === 'motor')) cpa = C.cpa[k];
   const odNet = od - vdDisc - ncbAmt;
   // 5% off the own-damage premium for sharing the bank statement, and 5% more for the credit report
   const aaAmt = M.aaDisc ? Math.round(Math.max(0, odNet) * 0.05) : 0, cbAmt = M.cbDisc ? Math.round(Math.max(0, odNet) * 0.05) : 0;
@@ -4010,7 +4070,7 @@ function kycRecord(type, id, dobGiven) {
   const h = hash(type + id), D = S.docOwner || {}, H = S.health, M = S.motor;
   const self = H && active(H).find(m => m.rel === 'self');
   const gender = self ? (self.gender || 'M') : (h % 3 === 0 ? 'F' : 'M');
-  const name = D.name || `${FIRST[gender][(h >>> 3) % 8]} ${SURN[type === 'pan' ? id[4] : 'ABCDGHIJKMNPRSTVY'[h % 17]] || 'Sharma'}`;
+  const name = (!(S.kycFor && S.kycFor.kind === 'org' && S.kycFor.prod === S.product) && D.name) || `${FIRST[gender][(h >>> 3) % 8]} ${SURN[type === 'pan' ? id[4] : 'ABCDGHIJKMNPRSTVY'[h % 17]] || 'Sharma'}`;
   let dob = dobGiven ? fromIso(dobGiven) : null;
   if (!dob) { const age = self && ageOk(self) ? Number(self.age) : 28 + (h >>> 5) % 26; dob = addDays(addYears(TODAY, -age), -(30 + (h >>> 9) % 300)); }
   let city = (H && pinZone(H.pin).city) || (M && M.v && M.v.rto.city) || null;
@@ -4713,7 +4773,7 @@ STEP.review = {
         body: `<div class="rv-grid">
             <section class="rv"><h3>Vehicle</h3><p>${esc(vName(v))} ${esc(v.variant)}</p><p class="muted">${esc(M.reg.display)}, ${esc(vClass(v))}${v.financier ? `, on loan with ${esc(v.financier)}` : ''}</p></section>
             <section class="rv"><h3>Cover</h3><p>${esc(planName(r))}</p><p class="muted">${r.plan === 'tp' ? '' : `IDV ${inr(r.idv)}, `}${fd(r.start)} to ${fd(r.end)}</p></section>
-            <section class="rv"><h3>Policyholder</h3><p>${esc(k.name)}</p><p class="muted">${esc(k.addr)}, ${esc(k.city)} ${esc(k.pin)}</p></section>
+            <section class="rv"><h3>Policyholder</h3><p>${esc(polHolder())}</p><p class="muted">${esc(polAddr())}${kycOrgRec() && kycOrgRec().type !== 'prop' ? `. Signed by ${esc(k.name)}` : ''}</p></section>
           </div>
           ${r.cpa ? `<div class="row2"><label class="fld"><span>Nominee for the accident cover</span><input type="text" name="nominee" value="${esc(nomName)}" placeholder="Full name"></label><label class="fld"><span>Relation to you</span><select name="nomRel">${NOM_RELS.map(x => `<option ${x === nomRel ? 'selected' : ''}>${x}</option>`).join('')}</select></label></div>` : ''}
           <label class="fld"><span>Email for your policy copy (optional)</span><input type="email" name="email" value="${esc(M.email || k.email || '')}" placeholder="you@example.com"></label>
@@ -4730,7 +4790,7 @@ STEP.review = {
       body: `<div class="rv-grid">
           <section class="rv"><h3>Plan</h3><p>NxSure Health ${TIERS[H.tier].name}, ${siLabel(H.si)}</p><p class="muted">${active(H).length < 2 ? 'Individual cover' : H.type === 'floater' ? 'One cover shared by the family' : 'Cover for each person'}, ${H.term} year${H.term > 1 ? 's' : ''}</p></section>
           <section class="rv"><h3>People covered</h3><p>${esc(listText(active(H).map(m => `${relLabel(H, m)} (${m.age})`)))}</p></section>
-          <section class="rv"><h3>Policyholder</h3><p>${esc(k.name)}</p><p class="muted">${esc(k.addr)}, ${esc(k.city)} ${esc(k.pin)}</p></section>
+          <section class="rv"><h3>Policyholder</h3><p>${esc(polHolder())}</p><p class="muted">${esc(polAddr())}${kycOrgRec() && kycOrgRec().type !== 'prop' ? `. Signed by ${esc(k.name)}` : ''}</p></section>
         </div>
         ${uwReviewHtml(H)}
         ${typeof perksHtml === 'function' ? perksHtml(S, { compact: true, title: 'Savings in this price' }) : ''}
@@ -4936,7 +4996,8 @@ function motorPdf(kind) {
   const d = pdfDoc(title, isPol ? `Policy ${M.policyNo} | Issued ${fd(TODAY)}` : `Quote ${M.quoteNo} | ${fd(TODAY)}`);
   if (isPol) {
     d.h2('Policyholder');
-    d.kv([['Name', k.name], ['KYC', `${kycLabel(k)} ${k.idMasked}, ${k.idType === 'doc' ? 'document checked by NxSure' : 'verified'}`], ['Address', `${k.addr}, ${k.city} ${k.pin}`], ['Mobile', k.mobile.replace(/^(\d{2})\d{6}(\d{2})$/, '$1xxxxxx$2')], r.cpa ? ['Nominee for accident cover', `${M.nominee} (${M.nomRel})`] : ['Email', M.email || k.email || 'Not given'], ['Hypothecation', v.financier || 'None'], ...pdfPhotoRow()]);
+    d.kv([['Name', polHolder()], ['KYC', `${kycOrgRec() && kycOrgRec().type !== 'prop' ? 'Institution KYC below. Signatory: ' : ''}${kycLabel(k)} ${k.idMasked}, ${k.idType === 'doc' ? 'document checked by NxSure' : 'verified'}`], ['Address', polAddr()], ['Mobile', k.mobile.replace(/^(\d{2})\d{6}(\d{2})$/, '$1xxxxxx$2')], r.cpa ? ['Nominee for accident cover', `${M.nominee} (${M.nomRel})`] : ['Email', M.email || k.email || 'Not given'], ['Hypothecation', v.financier || 'None'], ...pdfPhotoRow()]);
+    if (typeof orgPdf === 'function') orgPdf(d);
   }
   d.h2('Vehicle');
   d.kv([['Registration number', M.reg.display], ['Make and model', `${v.make} ${v.model}`], ['Variant', vSpec(v)], ['Class', vClass(v)], ['Registered on', `${fd(v.regDate)}, ${v.rto.label}`], ['Chassis and engine', `${v.chassis} / ${v.engine}`]]);
@@ -6448,7 +6509,7 @@ const ICO_SKIP = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke
 /* ================= right after KYC: three tiles, for the bank statement, the credit report, or neither ================= */
 STEP.data = {
   label: 'Discounts',
-  when: () => CFG.channel !== 'cust' && !!S.kyc && !!S.product,
+  when: () => CFG.channel !== 'cust' && !!S.kyc && !!S.product && !(typeof kycIsOrg === 'function' && kycIsOrg()),
   view() {
     const D = S.dataPick = S.dataPick || { aa: false, cb: false, none: false, set: false }, x = dataSave(S), mot = S.product === 'motor';
     return {
@@ -6523,7 +6584,7 @@ function aaSpark(mons, key = 'health') {
 }
 STEP.aa = {
   label: 'Bank statement',
-  when: () => CFG.channel !== 'cust' && !!S.kyc && !!(S.dataPick && S.dataPick.set && S.dataPick.aa),
+  when: () => CFG.channel !== 'cust' && !!S.kyc && !!(S.dataPick && S.dataPick.set && S.dataPick.aa) && !(typeof kycIsOrg === 'function' && kycIsOrg()),
   view() {
     const A = S.aa = S.aa || { phase: 'bank' };
     if (A.phase === 'offer') A.phase = 'bank';
@@ -7276,7 +7337,7 @@ function pdfBundle(d, s) {
 /* ---------- consent to use the credit report ---------- */
 STEP.bureau = {
   label: 'Credit report',
-  when: () => CFG.channel !== 'cust' && !!S.kyc && !!S.product && !!(S.dataPick && S.dataPick.set && S.dataPick.cb),
+  when: () => CFG.channel !== 'cust' && !!S.kyc && !!S.product && !!(S.dataPick && S.dataPick.set && S.dataPick.cb) && !(typeof kycIsOrg === 'function' && kycIsOrg()),
   view() {
     const B = S.bureau = S.bureau || { phase: 'ask' };
     return {
@@ -7468,7 +7529,7 @@ function ndPrep(s) {
 }
 STEP.needs = {
   label: 'Made for you',
-  when: () => CFG.channel !== 'cust' && !!S.kyc && !!S.product,
+  when: () => CFG.channel !== 'cust' && !!S.kyc && !!S.product && !(typeof kycIsOrg === 'function' && kycIsOrg()),
   view() {
     ndPrep(S);
     const any = aaDone(S) || bureauDone(S);
@@ -7534,7 +7595,7 @@ function hdHtml(H) {
 }
 STEP.hdecl = {
   label: 'Health declaration',
-  when: () => S.product === 'motor' && hasHealthExtra(S),
+  when: () => S.product === 'motor' && hasHealthExtra(S) && !(typeof kycIsOrg === 'function' && kycIsOrg()),
   view() {
     const H = S.health, flag = mobAsk(H), I = aaDone(S), many = active(H).length > 1;
     const condChips = (nm, cur) => `<div class="chips">${HD_CONDS.map(([k, l]) => chip(nm, k, esc(l), (cur || []).includes(k), 'checkbox')).join('')}</div>`;
@@ -8256,7 +8317,7 @@ function gstinCheck(g) {
 }
 const gstinMake = (st, pan, n = '1') => { const b = `${st}${pan}${n}Z`; return b + gstinCheck(b); };
 function gstinErr(g) {
-  if (!/^\d{2}[A-Z]{5}\d{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/.test(g)) return 'A GSTIN has 15 characters, like 29ABCPS1234F1Z5: the state code, your PAN, then three more.';
+  if (!/^\d{2}[A-Z]{5}\d{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/.test(g)) return 'A GSTIN has 15 characters, like 29ABCPS1234F1ZT: the state code, your PAN, then three more.';
   if (gstinCheck(g.slice(0, 14)) !== g[14]) return 'That GSTIN doesn\'t add up. Check the last character.';
   if (!GST_STATES[g.slice(0, 2)]) return 'Check the first two digits. They\'re your state code.';
   return '';
@@ -8327,10 +8388,10 @@ const roundTo = (n, s) => Math.round(n / s) * s;
 function smeLookup(b) {
   const id = b.id, h = hash('biz' + (id.gstin || id.cin || id.pan || id.udyam));
   const pan = id.pan || (id.gstin ? id.gstin.slice(2, 12) : 'AAKCP' + String(1000 + h % 9000) + 'M');
-  const st = id.gstin ? id.gstin.slice(0, 2) : id.cin ? ({ MH: '27', KA: '29', DL: '07', TN: '33', TG: '36', GJ: '24', WB: '19', HR: '06', UP: '09', RJ: '08', KL: '32' }[id.cin.slice(6, 8)] || '27') : id.udyam ? ({ MH: '27', KA: '29', DL: '07', TN: '33', TS: '36', GJ: '24', WB: '19', HR: '06', UP: '09', RJ: '08', KL: '32' }[id.udyam.slice(6, 8)] || '29') : '29';
+  const st = id.gstin ? id.gstin.slice(0, 2) : id.pan === 'AAKCP4821M' ? '27' : id.cin ? ({ MH: '27', KA: '29', DL: '07', TN: '33', TG: '36', GJ: '24', WB: '19', HR: '06', UP: '09', RJ: '08', KL: '32' }[id.cin.slice(6, 8)] || '27') : id.udyam ? ({ MH: '27', KA: '29', DL: '07', TN: '33', TS: '36', GJ: '24', WB: '19', HR: '06', UP: '09', RJ: '08', KL: '32' }[id.udyam.slice(6, 8)] || '29') : '29';
   const [state, city, pin0] = GST_STATES[st] || GST_STATES['29'];
   let kind = PAN_KIND[pan[3]] || 'prop';
-  const isDemoShop = id.gstin === DEMO_BIZ.shop.gstin, isDemoFac = id.gstin === DEMO_BIZ.factory.gstin || id.cin === DEMO_BIZ.factory.cin;
+  const isDemoShop = id.gstin === DEMO_BIZ.shop.gstin, isDemoFac = id.gstin === DEMO_BIZ.factory.gstin || id.cin === DEMO_BIZ.factory.cin || id.pan === 'AAKCP4821M';
   let a = ARCH[h % ARCH.length];
   if (isDemoShop) a = ARCH[0]; else if (isDemoFac) a = ARCH[3];
   else if (kind === 'prop' && ['autoparts', 'textile', 'chemicals', 'it'].includes(a.k)) a = ARCH[[0, 1, 4, 5][h % 4]];
@@ -8425,7 +8486,7 @@ function smeCalc(s, o = {}) {
   if (p === 'home') return homeCalc(s, o);
   if (p === 'shop') return shopCalc(s, o);
   const loadPct = b.uw && b.uw.loadPct ? b.uw.loadPct : 0;
-  let net = 0, si = 0, info = {};
+  let net = 0, si = 0, info = {}, fireBase = 0, lopBase = 0;
   const add = (label, amt) => { amt = Math.round(amt); if (!amt) return; rows.push([label, amt]); net += amt; };
   if (p === 'fire' || (p === 'lop' && b.lop.withFire)) {
     const S2 = fireSi(b); si = siTotal(S2); if (!si) return null;
@@ -8446,6 +8507,7 @@ function smeCalc(s, o = {}) {
       if (b.fire.ext === 'no') ld.push(['No fire extinguishers', L.noExt]);
       if (b.fire.prot === 'sprinkler') ld.push(['Sprinklers', L.sprinkler]); else if (b.fire.prot === 'hydrant') ld.push(['Hydrant system', L.hydrant]);
       ld.forEach(([t, pc]) => add(`${t}, ${pc > 0 ? '+' : ''}${pc}%`, base * pc / 100));
+      fireBase = base;
       const fadd = new Set([...(PLAN_ADDS.fire[plan] || []), ...adds]), A2 = C.fireAdd;
       if (fadd.has('burglary')) add(ADD_INFO.burglary[0], perMille(S2.stock + S2.contents + S2.fff, A2.burglary));
       if (fadd.has('eea')) add(ADD_INFO.eea[0], perMille(S2.machinery + S2.contents, A2.eea));
@@ -8461,10 +8523,11 @@ function smeCalc(s, o = {}) {
     const occ = OCC[b.fire.occ] || OCC[b.src && b.src.occ] || OCC.shop, rate = (C.fireRate[occ.haz] || C.fireRate.high) * (C.lopIp[L.ip] || 1);
     const before = net;
     add(`Loss of profit, gross profit ${siLabelL(gp)}, ${L.ip} months at ${rate.toFixed(2)} per thousand`, perMille(gp, rate));
-    const lb = net - before;
+    const lb = net - before; lopBase = lb;
     ['supplier', 'utilities', 'access'].forEach(k => { if (adds.has(k)) add(ADD_INFO[k][0], lb * C.lopAdd[k]); });
     info.gp = gp; si = (si || 0) + gp;
   }
+  if (b.who === 'biz' && (fireBase || lopBase) && typeof geoDiscRow === 'function') geoDiscRow(b, fireBase + lopBase, add, 'premises');
   if (p === 'marine') {
     const M = b.marine;
     if (b.who === 'ind') {
@@ -8557,6 +8620,7 @@ function smeUw(s) {
     const z = b.loc.hz;
     if (z.flood === 'high' || z.quake === 'high' || z.cyclone === 'high') warn(`At this pincode: ${[z.flood === 'high' && 'high flood risk', z.quake === 'high' && 'high earthquake risk', z.cyclone === 'high' && 'high cyclone risk'].filter(Boolean).join(', ')}. You're covered for it, and it's in the price.`, 'Hazard maps');
     else ok('No high flood, earthquake or cyclone risk at this pincode', 'Hazard maps');
+    if (b.who === 'biz' && typeof geoUw === 'function') { geoUw(b, ok, warn); if (b.ftour && b.ftour.done) tourNotes(b.ftour).filter(n => n.tone === 'warn').forEach(n => warn(`${n.text}`, 'Video tour')); }
   }
   if (p === 'fire' || (p === 'lop' && b.lop.withFire)) {
     if (b.who === 'ind') ok('A home, insured on what it costs to rebuild, so there\'s no under-insurance', 'Your answers');
@@ -8565,6 +8629,7 @@ function smeUw(s) {
       if (occ.haz === 'severe') refer(`${occ.label} needs an underwriter to look at the process and storage`, 'Occupancy');
       else ok(`${occ.label}: ${occ.haz} fire hazard`, 'Occupancy');
       if (si > CFG.sme.bharat.laghu) refer(`${siLabelL(si)} at one location is above our automatic limit of ${siLabelL(CFG.sme.bharat.laghu)}`, 'Your values');
+      else if ((si > CFG.sme.bharat.sookshma || occ.haz === 'high') && b.ftour && b.ftour.done) ok(`${si > CFG.sme.bharat.sookshma ? `${siLabelL(si)} of property` : 'A high-hazard occupancy'}: your video tour stands in for the survey`, 'Video tour');
       else if (si > CFG.sme.bharat.sookshma || occ.haz === 'high') { if (status === 'standard' || status === 'loading') status = 'survey'; warn(`${si > CFG.sme.bharat.sookshma ? `${siLabelL(si)} of property` : 'A high-hazard occupancy'} needs a quick video survey of the premises`, 'Underwriting rules'); }
       if (b.fire.claims === '2') refer('Two or more claims in the last 3 years', 'Your answers');
       if (b.fire.construction === 'kutcha' && occ.haz !== 'low') refer('Partly kutcha construction with a moderate or high hazard occupancy', 'Your answers');
@@ -8644,7 +8709,7 @@ function smeIds() {
   const b = S.biz, p = S.product; if (!b) return [];
   const ind = b.who === 'ind', head = ['bwho', ...(ind ? [] : ['bid', 'bfetch'])];
   const tail = needsUw(b) ? ['kyc', 'dsubmit', 'bsent', 'dterms'] : ['kyc', 'breview'];
-  const mid = { home: ['hmown', 'hmneed', 'hmuc', 'hmloc', 'hmucval', 'hmfind', 'hmbuild', 'hmtour', 'hmcont', 'hmcarry', 'hmsafe', 'hmwell'], shop: ['spkind', 'bloc', 'spshop', 'spsales', 'sptour', 'spcover', 'spsafe'], fire: ['bloc', 'fhome', 'fwhat', 'fval', 'fprot'], lop: ['bloc', 'lmd', 'fwhat', 'fval', 'fprot', 'lgp', 'lip'], marine: ['mmove', 'mtype', 'mcargo', 'mship'], wc: ['wstaff'], dno: ['dco', 'dlimit'] }[p] || [];
+  const mid = { home: ['hmown', 'hmneed', 'hmuc', 'hmloc', 'hmucval', 'hmfind', 'hmbuild', 'hmtour', 'hmcont', 'hmcarry', 'hmsafe', 'hmwell'], shop: ['spkind', 'bloc', 'spshop', 'spsales', 'sptour', 'spcover', 'spsafe'], fire: ['bloc', 'fhome', 'fwhat', 'fval', 'fprot', 'ftour'], lop: ['bloc', 'lmd', 'fwhat', 'fval', 'fprot', 'lgp', 'lip', 'ftour'], marine: ['mmove', 'mtype', 'mcargo', 'mship'], wc: ['wstaff'], dno: ['dco', 'dlimit'] }[p] || [];
   return [...head, ...mid, 'buw', 'bsurvey', 'bplan', 'bquote', ...tail, 'done'];
 }
 const fireOn = () => S.biz && S.biz.who === 'biz' && (S.product === 'fire' || (S.product === 'lop' && S.biz.lop.withFire));
@@ -8692,7 +8757,7 @@ STEP.bwho = {
 };
 
 /* ---------- which business: one number, then everything else is looked up ---------- */
-const BID_T = { gstin: ['GSTIN', 'GSTIN', '29ABCPS1234F1Z5'], cin: ['CIN', 'Company number (CIN)', 'U29304MH2014PTC254311'], udyam: ['Udyam', 'Udyam registration number', 'UDYAM-KA-03-0012345'], pan: ['PAN', 'Business PAN', 'AAKCP4821M'] };
+const BID_T = { gstin: ['GSTIN', 'GSTIN', '29ABCPS1234F1ZT'], cin: ['CIN', 'Company number (CIN)', 'U29304MH2014PTC254311'], udyam: ['Udyam', 'Udyam registration number', 'UDYAM-KA-03-0012345'], pan: ['PAN', 'Business PAN', 'AAKCP4821M'] };
 STEP.bid = {
   label: 'Your business',
   when: () => !!(S.biz && S.biz.who === 'biz'),
@@ -9521,6 +9586,7 @@ function smeFacts(b, c) {
   if (p === 'home') return out.concat(homeFacts(b, c));
   if (p === 'shop') return out.concat(shopFacts(b, c));
   if (p === 'fire') { const si = fireSi(b); if (b.who === 'ind') out.push(['Policy', 'Bharat Griha Raksha'], si.building ? ['Building', siLabelL(si.building)] : null, ['Contents', siLabelL(si.contents)], si.valuables ? ['Valuables', siLabelL(si.valuables)] : null); else out.push(['Policy', bharatBand(c.si).name], ['Sum insured', siLabelL(c.si)], ['Place', `${b.loc.addr}, ${b.loc.pin}`]); }
+  if ((p === 'fire' || p === 'lop') && b.who === 'biz' && typeof geoFact === 'function' && b.loc && geoFact(b)) out.push(['Risk location', geoFact(b)]);
   if (p === 'lop') out.push(['Gross profit insured', siLabelL(b.lop.gp)], ['Indemnity period', `${b.lop.ip} months`], b.lop.withFire ? ['Property insured', siLabelL(siTotal(fireSi(b)))] : ['Property cover', `${b.lop.mdIns}, ${b.lop.mdNo}`]);
   if (p === 'marine') out.push(b.who === 'ind' ? ['Goods', siLabelL(c.si)] : ['Cover', `${(PLANS.marine.find(x => x[0] === (b.plan || 'allrisk')) || [])[1]}, ${b.marine.kind === 'annual' ? `${siLabelL(c.si)} a year` : siLabelL(c.si)}`], b.who === 'biz' && b.marine.kind === 'annual' ? ['Largest consignment', siLabelL(b.marine.perBottom)] : null, ['Basis of value', b.who === 'ind' ? 'Replacement value you declared' : 'Invoice value plus 10%']);
   if (p === 'wc') out.push(['People covered', String(c.info.n)], ['Annual wages', siLabelL(c.info.wages)], ['Law', 'Code on Social Security, 2020']);
@@ -9542,7 +9608,7 @@ function smeDecl(b) {
 }
 function smeReviewHtml(b) {
   const k = S.kyc, c = smeCalc();
-  return `<div class="rv-grid"><section class="rv"><h3>Insured</h3><p>${esc(b.who === 'ind' ? k.name : b.src.gst.legal)}</p><p class="muted">${esc(b.p === 'home' ? `${b.loc.addr}, ${b.loc.pin}` : b.who === 'ind' ? `${k.addr}, ${k.city} ${k.pin}` : `GSTIN ${b.src.gst.gstin}`)}</p></section>
+  return `<div class="rv-grid"><section class="rv"><h3>Insured</h3><p>${esc(b.who === 'ind' ? polHolder() : b.src.gst.legal)}</p><p class="muted">${esc(b.p === 'home' ? `${b.loc.addr}, ${b.loc.pin}` : b.who === 'ind' ? `${k.addr}, ${k.city} ${k.pin}` : `GSTIN ${b.src.gst.gstin}`)}</p></section>
     <section class="rv"><h3>Cover</h3><p>${esc(SME[b.p].short)}</p><p class="muted">${esc(smePeriod(b).text)}</p></section>
     <section class="rv"><h3>${b.who === 'ind' ? 'Policyholder' : 'Signed by'}</h3><p>${esc(k.name)}</p><p class="muted">${esc(maskMobile(k.mobile))}</p></section></div>
     ${factList(smeFacts(b, c).slice(1))}`;
@@ -9700,7 +9766,8 @@ function smePdf(kind) {
   const d = pdfDoc(title, isPol ? `Policy ${b.policyNo} | Issued ${fd(TODAY)}` : isAck ? `Proposal ${b.proposalNo} | ${fd(TODAY)}` : `Quote ${b.quoteNo} | ${fd(TODAY)}`);
   d.h2('Insured');
   if (b.who === 'biz') d.kv([['Business', b.src.gst.legal], ['Trade name', b.src.gst.trade], ['GSTIN', b.src.gst.gstin], ['Type', b.src.gst.constitution], b.src.mca ? ['Company number', b.src.mca.cin] : ['MSME', `${b.src.udyam.cat}, ${b.src.udyam.no}`], k ? ['Signed by', `${k.name}, ${kycLabel(k)} ${k.idMasked}`] : null].filter(Boolean));
-  else if (k) d.kv([['Name', k.name], ['KYC', `${kycLabel(k)} ${k.idMasked}`], ['Address', `${k.addr}, ${k.city} ${k.pin}`], ['Mobile', maskMobile(k.mobile)]]);
+  else if (k) d.kv([['Name', polHolder()], ['KYC', `${kycOrgRec() && kycOrgRec().type !== 'prop' ? 'Institution KYC below. Signatory: ' : ''}${kycLabel(k)} ${k.idMasked}`], ['Address', polAddr()], ['Mobile', maskMobile(k.mobile)]]);
+  if (k && typeof orgPdf === 'function') orgPdf(d);
   d.h2('Cover');
   d.kv(smeFacts(b, c).map(([x, y]) => [x, String(y)]));
   if (b.p === 'home') homePdf(d, b, c);
@@ -9893,7 +9960,7 @@ const homeLow = b => { const H = b.home; return H.type !== 'flat' || H.floor ===
 function homeLoads(b) {
   const H = b.home, L = CFG.home.load, out = [], z = b.loc && b.loc.hz;
   if (H.claims === '1') out.push(['One claim in the last 3 years', L.claim1]);
-  if (z && z.flood === 'high' && homeLow(b)) out.push([H.type === 'flat' ? 'Ground floor in a high flood-risk pincode' : 'A house in a high flood-risk pincode', L.flood]);
+  if (z && z.flood === 'high' && homeLow(b) && !geoFloodLow(b)) out.push([H.type === 'flat' ? 'Ground floor in a high flood-risk pincode' : 'A house in a high flood-risk pincode', L.flood]);
   if (homeHasBuilding(H) && homeAge(b) > CFG.home.limits.oldSurvey) out.push([`Built in ${H.rec.prop.built}, over ${CFG.home.limits.oldSurvey} years ago`, L.old]);
   return out;
 }
@@ -9976,6 +10043,7 @@ function homeCalc(s, o = {}) {
   const base = net;
   homeLoads(b).forEach(([t, pc]) => add(`${t}, +${pc}%`, base * pc / 100));
   const wp = homeWellPct(b); if (wp) add(`Connected sensors, -${trimZ(wp.toFixed(1))}%`, -base * wp / 100);
+  geoDiscRow(b, base, add, 'home');
   const A = C.adds, theftSi = si.contents + si.valuables;
   let theft = 0;
   if (adds.has('hallrisk') && tourDone(H)) { theft = perMille(theftSi, H.cmode === 'items' ? A.arItems : A.arSum); add(`${ADD_INFO.hallrisk[0]}, ${H.cmode === 'items' ? 'items listed on your tour' : 'one sum insured'}`, theft); if (adds.has('hburglary')) { /* all risks includes burglary */ } }
@@ -9984,7 +10052,7 @@ function homeCalc(s, o = {}) {
   if (adds.has('hbreak') && si.contents) add(ADD_INFO.hbreak[0], perMille(si.contents, A.breakdown));
   if (adds.has('haccident') && si.building) add(ADD_INFO.haccident[0], base * A.accidental);
   if (adds.has('hliab')) add(ADD_INFO.hliab[0], A.liability);
-  if (adds.has('hpa')) add(`${ADD_INFO.hpa[0]}, you and your spouse`, A.pa);
+  if (adds.has('hpa') && !(typeof kycIsOrg === 'function' && kycIsOrg())) add(`${ADD_INFO.hpa[0]}, you and your spouse`, A.pa);
   if (adds.has('hrent') && wording === 'sfsp' && H.own === 'let') add(ADD_INFO.hrent[0], base * A.rent);
   if (adds.has('hemerg')) add(ADD_INFO.hemerg[0], A.emerg);
   if (si.carry) H.carry.filter(r => Number(r.v) > 0).forEach(r => add(`${CARRY_KIND[r.k]}${r.d ? `, ${r.d}` : ''}: ${inr(Number(r.v))}, anywhere in ${H.world ? 'the world' : 'India'}`, Number(r.v) * (C.allrisk[r.k] || 2) / 100 * (H.world ? 1 + C.worldwide : 1)));
@@ -10016,6 +10084,7 @@ function homeUcCalc(s, o) {
     const works = Number(U.cost) || 0, mat = Number(U.materials) || 0; if (!works) return null; si = works;
     add(`The works, ${siLabelL(works)}, for ${months} months`, perMille(works, C.works) * f);
     const z = b.loc && b.loc.hz; if (z && (z.flood === 'high' || z.quake === 'high')) add('High flood or earthquake risk at this pincode, +10%', net * 0.10);
+    geoDiscRow(b, net, add, 'site');
     if (adds.has('htheft') && mat) { const th = perMille(mat, C.theft) * f * (tourHas(H.tour, /in the open/i) ? 1.1 : 1); add(`${ADD_INFO.htheft[0]}, ${siLabelL(mat)} on site${tourHas(H.tour, /in the open/i) ? ', some stored in the open' : ''}`, th); }
     if (adds.has('hcollapse')) add(ADD_INFO.hcollapse[0], perMille(works, C.collapse) * f);
     if (adds.has('htpl')) add(`${ADD_INFO.htpl[0]}, ${siLabelL(C.tplLimit)}`, C.tpl * f);
@@ -10062,6 +10131,7 @@ function homeUw(s) {
       else warn('No site tour yet. An underwriter will ask for photos before a claim.', 'Site tour');
       if (H.site.watch === 'no' && H.site.store === 'no') warn('No watchman and no locked store: theft of materials has a higher excess', 'Your answers');
     }
+    geoUw(b, ok, warn);
     if (m >= CFG.home.uc.maxMonths) refer(`${m} months to completion is above our automatic limit`, 'Your answers'); else ok(`Cover for ${m} months, till ${fd(ucEnd(H))}`, 'Your answers');
     hz();
     if (H.claims === '2') refer('Two or more claims in the last 3 years', 'Your answers');
@@ -10083,6 +10153,7 @@ function homeUw(s) {
   }
   if (H.loan === 'yes' && H.lender && !(R && R.loan)) ok(`Home loan with ${H.lender}: the bank's interest is noted on the policy`, 'Your answers');
   hz();
+  geoUw(b, ok, warn);
   if (tourDone(H)) { ok(`House tour done: ${tourItems(H.tour).length} things spotted across ${H.tour.stops.filter(x => x.shown).length} stops, so nobody needs to visit`, 'House tour'); tourNotes(H.tour).filter(n => n.tone === 'warn').forEach(n => warn(`${n.text}. ${/damp/i.test(n.text) ? 'Damp and slow seepage aren\'t covered, so get it looked at; your safety check includes it.' : /smoke/i.test(n.text) ? 'A connected smoke alarm also gets you a discount.' : /extinguisher/i.test(n.text) ? 'A kitchen extinguisher is worth having.' : ''}`.trim(), 'House tour')); }
   else if (H.tour && H.tour.skipped) warn('No house tour, so contents are covered for named perils and burglary, not accidental damage', 'House tour');
   if (si.rebuild > lim.refer) refer(`${siLabelL(si.rebuild)} to rebuild is above our automatic limit of ${siLabelL(lim.refer)}`, 'Your values');
@@ -10307,12 +10378,14 @@ STEP.hmucval = {
           <label class="fld"><span>Building plan approval number <em class="opt">optional</em></span><input type="text" name="ucap" value="${esc(U.approval)}" placeholder="From the local authority" autocomplete="off" spellcheck="false" style="text-transform:uppercase"><small class="hint" data-x="ap">${U.apRec ? apText(U.apRec) : 'I\'ll check it on the local authority\'s portal.'}</small></label>`
         : `${P ? `<div class="note hm-note">${SICO.ok}<span>${esc(P.project)} by ${esc(P.builder)}, ${P.progress}% complete. ${srcTag('RERA')}</span></div>` : ''}
           <label class="fld"><span>Tower and flat number</span><input type="text" name="ucunit" value="${esc(U.unit)}" placeholder="Tower B, Flat 1104"></label>
-          <div class="row2"><label class="fld"><span>Possession date in your agreement</span><input type="date" name="ucend" value="${esc(U.end)}" min="${tom}"></label><label class="fld"><span>Paid to the builder so far</span>${amtIn('ucpaid', U.paid, '42,00,000')}<small class="sm-words">${U.paid ? siLabelL(U.paid) : ''}</small></label></div>`,
+          <div class="row2"><label class="fld"><span>Possession date in your agreement</span><input type="date" name="ucend" value="${esc(U.end)}" min="${tom}"></label><label class="fld"><span>Paid to the builder so far</span>${amtIn('ucpaid', U.paid, '42,00,000')}<small class="sm-words">${U.paid ? siLabelL(U.paid) : ''}</small></label></div>
+          <div data-x="geo">${geoCardHtml(b, { tour: false })}</div>`,
       next: 'Continue',
     };
   },
   wire(api) {
     const b = B(), H = b.home, U = H.uc, box = api.body;
+    if (U.who === 'builder') geoWire(api, b, () => { box.querySelector('[data-x=geo]').innerHTML = geoCardHtml(b, { tour: false }); });
     const foot = () => { let p = box.querySelector('[data-x=ucfoot]'); if (!p) { box.insertAdjacentHTML('beforeend', `<div class="sw-list">${sw('ucbuf', '1', `Add ${CFG.home.uc.buffer} months in case it runs late`, 'Most projects take a little longer. You can extend again from My NxSure.', '', U.buffer)}</div><p class="hint" data-x="ucfoot"></p><div class="live"><span>Your premium, with GST</span><b data-x="tot">—</b></div>`); p = box.querySelector('[data-x=ucfoot]'); } const e = ucEnd(H); p.textContent = e ? `Cover from ${fd(addDays(TODAY, 1))} to ${fd(e)}, ${ucMonths(H)} months.` : ''; smeLive(api); };
     box.addEventListener('change', e => {
       const t = e.target;
@@ -10485,25 +10558,27 @@ STEP.hmtour = {
       title: site ? 'A walk around the site' : 'Show me around your home',
       body: `${!site && !(T && T.done) ? `<div class="fld"><span>Bedrooms</span><div class="chips">${[1, 2, 3, 4, 5].map(n => chip('hbeds', String(n), n === 5 ? '5 or more' : String(n), Number(H.beds) === n)).join('')}</div></div>` : ''}
         <div data-x="tp">${T && T.done ? tourResultHtml(T, { total: !site }) + `<button type="button" class="link" data-a="redo">Do the tour again</button>` : tourPanelHtml(kind, { ref: (S.did || (S.biz.quoteNo = S.biz.quoteNo || `NX-HMQ-${code(6)}`)), mobile: H.mobile || kycKnownMobile(), why: site ? 'AI checks the boundary, how materials are stored and what\'s next door. Nobody needs to visit.' : 'AI spots the furniture, appliances and gadgets as you go, with rough values, and checks the locks, wiring and any damp. Nobody needs to visit.' })}</div>
-        ${site || (T && T.done) ? '' : '<button type="button" class="link hm-skip" data-a="skip">Skip the tour, I\'ll give a total instead</button>'}`,
+        <div data-x="geo">${geoCardHtml(b)}</div>
+        ${T && T.done ? '' : `<button type="button" class="link hm-skip" data-a="skip">${site ? 'Skip the walk-around' : 'Skip the tour, I\'ll give a total instead'}</button>`}`,
       next: 'Continue',
     };
   },
   wire(api) {
     const b = B(), H = b.home, site = H.own === 'build', kind = site ? 'site' : 'home';
     if (!(H.tour && (H.tour.done || H.tour.skipped))) api.hideNext(true);
-    const opts = () => ({ beds: H.beds, type: H.type, seed: hash((b.loc && b.loc.addr) || 'x') % 97, stage: H.uc.stage });
+    const opts = () => ({ beds: H.beds, type: H.type, seed: hash((b.loc && b.loc.addr) || 'x') % 97, stage: H.uc.stage, near: geoHold(b).addr });
     const got = t => {
-      H.tour = t; jlog(`${TOUR_KIND[kind].title} done${t.via === 'phone' ? ' on the phone' : t.via === 'video' ? ' from a video' : ''}`);
+      H.tour = t; geoFromTour(b, t); b.uw = null; jlog(`${TOUR_KIND[kind].title} done${t.via === 'phone' ? ' on the phone' : t.via === 'video' ? ' from a video' : ''}${t.geo ? ', location recorded' : ''}`);
       if (!site) { H.items = tourItems(t).map(i => ({ room: i.room, k: i.k, name: i.name, v: i.v, on: true })); H.cmode = 'items'; H.contents = roundTo(itemsTotal(H) + 49999, 50000); }
       show('hmtour', 1);
     };
     tourWire(api, kind, opts, got, 'hmtour');
+    geoWire(api, b, () => { api.body.querySelector('[data-x=geo]').innerHTML = geoCardHtml(b); api.live(); });
     api.body.addEventListener('change', e => { if (e.target.name === 'hbeds') H.beds = Number(e.target.value); });
     api.body.addEventListener('click', e => {
       const a = e.target.closest('[data-a]'); if (!a) return;
-      if (a.dataset.a === 'redo') { H.tour = null; show('hmtour', 1); }
-      if (a.dataset.a === 'skip') { H.tour = { skipped: true }; H.items = []; H.cmode = 'sum'; setTimeout(() => api.next(), 0); }
+      if (a.dataset.a === 'redo') { H.tour = null; b.geo.video = null; show('hmtour', 1); }
+      if (a.dataset.a === 'skip') { H.tour = { skipped: true }; geoFromTour(b, null); b.geo.videoErr = ''; if (!site) { H.items = []; H.cmode = 'sum'; } setTimeout(() => api.next(), 0); }
     });
   },
   commit() { const T = HM().tour; return T && (T.done || T.skipped) ? '' : 'Do the tour, or skip it.'; },
@@ -10918,7 +10993,7 @@ function homeExcluded(b) {
 }
 function homeFacts(b, c) {
   const H = b.home, p = homePath(b);
-  if (p === 'self' || p === 'builder') { const U = H.uc; return [['Policy', homeWordingName('uc')], [p === 'self' ? 'Site' : 'Flat', `${b.loc.addr}, ${b.loc.pin}`], p === 'self' ? ['The works', siLabelL(Number(U.cost))] : ['Paid so far', siLabelL(Number(U.paid))], p === 'self' && U.materials ? ['Materials on site', siLabelL(Number(U.materials))] : null, p === 'builder' && U.reraRec ? ['RERA', `${U.reraRec.no}, ${U.reraRec.project}`] : null, [p === 'self' ? 'Expected finish' : 'Possession', `${fd(fromIso(U.end))}${U.buffer ? `, plus ${CFG.home.uc.buffer} months` : ''}`]].filter(Boolean); }
+  if (p === 'self' || p === 'builder') { const U = H.uc; return [['Policy', homeWordingName('uc')], [p === 'self' ? 'Site' : 'Flat', `${b.loc.addr}, ${b.loc.pin}`], p === 'self' ? ['The works', siLabelL(Number(U.cost))] : ['Paid so far', siLabelL(Number(U.paid))], p === 'self' && U.materials ? ['Materials on site', siLabelL(Number(U.materials))] : null, p === 'builder' && U.reraRec ? ['RERA', `${U.reraRec.no}, ${U.reraRec.project}`] : null, [p === 'self' ? 'Expected finish' : 'Possession', `${fd(fromIso(U.end))}${U.buffer ? `, plus ${CFG.home.uc.buffer} months` : ''}`], geoFact(b) ? ['Risk location', geoFact(b)] : null].filter(Boolean); }
   const si = homeSi(b), sf = p === 'year' && H.wording === 'sfsp', owner = homeHasBuilding(H);
   return [['Policy', homeWordingName(p === 'away' ? 'away' : H.wording)], ['Home', `${b.loc.addr}, ${b.loc.pin}`],
     si.building ? [H.socIns ? 'Interiors and fixtures' : 'Building', `${siLabelL(si.building)}${sf ? (H.basis === 'mv' ? ', market value' : ', rebuild cost') : ', grows 10% a year'}`] : null,
@@ -10926,7 +11001,7 @@ function homeFacts(b, c) {
     si.valuables ? ['Jewellery, silver and art', `${siLabelL(si.valuables)}, agreed value`] : null,
     si.carry ? ['Things you carry', `${siLabelL(si.carry)}, anywhere in ${H.world ? 'the world' : 'India'}`] : null,
     H.care.size && p === 'year' ? ['Home care', [...H.care].map(k => CFG.home.care.packs[k].name).join(', ')] : null,
-    H.loan === 'yes' && H.lender && owner ? ['Bank\'s interest noted', H.lender] : null].filter(Boolean);
+    H.loan === 'yes' && H.lender && owner ? ['Bank\'s interest noted', H.lender] : null, geoFact(b) ? ['Risk location', geoFact(b)] : null].filter(Boolean);
 }
 function homeDecl(b) {
   const H = b.home, p = homePath(b), out = [];
@@ -10993,6 +11068,7 @@ const isPhoneish = () => !!(window.matchMedia && matchMedia('(pointer:coarse)').
 
 // the stops on a tour, what AI expects to spot at each, and the notes that matter for underwriting
 function tourStops(kind, o = {}) {
+  if (kind === 'premises') return premisesStops(o);
   if (kind === 'home') {
     const n = Math.max(1, Math.min(5, Number(o.beds) || 2)), house = o.type && o.type !== 'flat', h = o.seed || 1;
     const beds = Array.from({ length: n }, (_, i) => ({ k: 'bed' + (i + 1), name: i === 0 ? 'Main bedroom' : `Bedroom ${i + 1}`, tip: 'Pan slowly from the door: the bed, the wardrobe, and anything on the walls.',
@@ -11027,9 +11103,13 @@ function tourStops(kind, o = {}) {
   ];
 }
 // a full tour, as if every stop was shown: used for a recorded video and for the phone in the demo
-function tourFull(kind, o, via) {
+function tourFull(kind, o, via, geo) {
   const stops = tourStops(kind, o).map(s => ({ k: s.k, name: s.name, shown: true, items: s.items.map(([k, name, v]) => ({ k, name, v })), notes: s.notes }));
-  return { done: true, via, at: new Date(), kind, stops, secs: 180 + stops.length * 20 };
+  const t = { done: true, via, at: new Date(), kind, stops, secs: 180 + stops.length * 20 };
+  // done on the phone through the link: the phone's GPS comes with it. In the demo, a spot a few metres from the address
+  if (via === 'phone' && o.near) { const h = hash('ph' + o.near.lat.toFixed(4)), p = geoMove(o.near, 8 + h % 30, h % 360); t.geo = { lat: p.lat, lng: p.lng, acc: 5 + h % 10, src: 'phone', at: new Date() }; }
+  if (geo !== undefined) { if (geo && geo.lat != null) t.geo = geo; else t.geoErr = (geo && geo.err) || 'none'; }
+  return t;
 }
 const tourItems = t => t && t.stops ? t.stops.flatMap(s => s.items.map(it => Object.assign({ room: s.name }, it))) : [];
 const tourNotes = t => t && t.stops ? t.stops.flatMap(s => (s.notes || []).map(([tone, text]) => ({ tone, text, room: s.name }))) : [];
@@ -11039,9 +11119,9 @@ const tourHas = (t, re) => tourNotes(t).some(n => re.test(n.text));
 function tourRun(kind, o = {}) {
   return new Promise(resolve => {
     const K = TOUR_KIND[kind], stops = tourStops(kind, o), got = stops.map(s => ({ k: s.k, name: s.name, shown: false, items: [], notes: [] }));
-    let i = 0, stream = null, t0 = Date.now(), timers = [], clock = 0;
+    let i = 0, stream = null, t0 = Date.now(), timers = [], clock = 0, watch = null, fix = null, geoErr = '';
     const ov = el(`<div class="jsheet tour-sheet" role="dialog" aria-modal="true" aria-label="${esc(K.title)}"><div class="tour-card">
-      <div class="tour-top"><b>${esc(K.title)}</b><span class="tour-rec" aria-live="off"><i></i><span data-x="clock">0:00</span></span><button type="button" class="tour-x" data-t="x" aria-label="Stop the tour">×</button></div>
+      <div class="tour-top"><b>${esc(K.title)}</b><span class="tour-rec" aria-live="off"><i></i><span data-x="clock">0:00</span></span><span class="tour-geo" data-x="geo">Finding your location…</span><button type="button" class="tour-x" data-t="x" aria-label="Stop the tour">×</button></div>
       <div class="tour-cam"><video playsinline muted autoplay></video><div class="tour-hud"><span class="tour-room" data-x="room"></span><ul class="tour-spots" data-x="spots" aria-live="polite"></ul></div><p class="tour-off" hidden>The camera isn't available here. Upload a video of the walk-through instead.</p></div>
       <p class="tour-tip" data-x="tip"></p>
       <ol class="tour-steps" data-x="steps"></ol>
@@ -11049,7 +11129,11 @@ function tourRun(kind, o = {}) {
     </div></div>`);
     document.body.appendChild(ov);
     const $o = s => ov.querySelector(s), video = $o('video');
-    const stop = r => { timers.forEach(clearTimeout); clearInterval(clock); if (stream) stream.getTracks().forEach(t => t.stop()); ov.remove(); document.removeEventListener('keydown', key); resolve(r); };
+    const stop = r => { timers.forEach(clearTimeout); clearInterval(clock); if (watch != null && navigator.geolocation) navigator.geolocation.clearWatch(watch); if (stream) stream.getTracks().forEach(t => t.stop()); ov.remove(); document.removeEventListener('keydown', key); resolve(r); };
+    // the phone's location while the video is recorded: the most accurate fix is kept
+    const geoEl = () => $o('[data-x=geo]');
+    if (navigator.geolocation) watch = navigator.geolocation.watchPosition(p => { const a = Math.round(p.coords.accuracy || 30); if (!fix || a < fix.acc) fix = { lat: p.coords.latitude, lng: p.coords.longitude, acc: a, src: 'camera', at: new Date() }; const g = geoEl(); if (g) { g.textContent = `Location on, within ${a} m`; g.classList.add('on'); } }, e => { geoErr = e && e.code === 1 ? 'denied' : 'unavailable'; const g = geoEl(); if (g && !fix) { g.textContent = geoErr === 'denied' ? 'Location off' : 'No location yet'; g.classList.add('off'); } }, { enableHighAccuracy: true, maximumAge: 0, timeout: 15000 });
+    else geoErr = 'unavailable';
     const key = e => { if (e.key === 'Escape') stop(null); };
     document.addEventListener('keydown', key);
     (async () => {
@@ -11083,7 +11167,7 @@ function tourRun(kind, o = {}) {
     function finish() {
       const shown = got.filter(g => g.shown).length;
       if (shown < Math.ceil(stops.length * 0.6)) { $o('[data-x=tip]').textContent = `Show at least ${Math.ceil(stops.length * 0.6)} of the ${stops.length} stops, so nothing important is missed.`; return; }
-      stop({ done: true, via: 'camera', at: new Date(), kind, stops: got, secs: Math.round((Date.now() - t0) / 1000) });
+      stop(Object.assign({ done: true, via: 'camera', at: new Date(), kind, stops: got, secs: Math.round((Date.now() - t0) / 1000) }, fix ? { geo: fix } : { geoErr: geoErr || 'none' }));
     }
     enter();
   });
@@ -11117,9 +11201,10 @@ function tourWire(api, kind, o, done, stepId) {
   });
   box.addEventListener('change', async e => {
     if (e.target.name !== 'tvid' || !e.target.files || !e.target.files[0]) return;
-    box.querySelector('[data-x=tres]').innerHTML = '<div class="reading"><span class="spin"></span>Watching your video…</div>';
-    await sleep(REDUCED ? 100 : 1800); if (S.cur !== stepId) return;
-    done(tourFull(kind, o(), 'video'));
+    const f = e.target.files[0];
+    box.querySelector('[data-x=tres]').innerHTML = '<div class="reading"><span class="spin"></span>Watching your video, and reading where it was recorded…</div>';
+    const [g] = await Promise.all([typeof geoFromFile === 'function' ? geoFromFile(f) : null, sleep(REDUCED ? 100 : 1800)]); if (S.cur !== stepId) return;
+    done(tourFull(kind, o(), 'video', g ? { lat: g.lat, lng: g.lng, acc: 15, src: 'file', at: new Date(f.lastModified || Date.now()) } : { err: 'none' }));
   });
 }
 // what the tour found, for the step once it's done
@@ -11231,7 +11316,7 @@ function shopSi(b) {
 function shopLoads(b) {
   const SPx = b.shop, L = CFG.shop.load, out = [], z = b.loc && b.loc.hz;
   if (SPx.claims === '1') out.push(['One claim in the last 3 years', L.claim1]);
-  if (z && z.flood === 'high' && (SPx.floor === 'ground' || SPx.floor === 'basement')) out.push([`${SPx.floor === 'basement' ? 'A basement' : 'A ground-floor'} shop in a high flood-risk pincode`, L.flood]);
+  if (z && z.flood === 'high' && (SPx.floor === 'ground' || SPx.floor === 'basement') && !geoFloodLow(b)) out.push([`${SPx.floor === 'basement' ? 'A basement' : 'A ground-floor'} shop in a high flood-risk pincode`, L.flood]);
   if (SPx.ext === 'no') out.push(['No fire extinguisher', L.noExt]);
   return out;
 }
@@ -11280,6 +11365,7 @@ function shopCalc(s, o = {}) {
   const base = net;
   shopLoads(b).forEach(([t, pc]) => add(`${t}, +${pc}%`, base * pc / 100));
   if (shopDataLed(b)) add(`Sales from ${SPx.salesVia === 'aa' ? 'your bank account' : '6 months of QR payments'}, -${C.disc.data}%`, -base * C.disc.data / 100);
+  geoDiscRow(b, base, add, 'shop');
   if (adds.has('seeb') && si.elec) add(`${ADD_INFO.seeb[0]}, ${inr(si.elec)}`, perMille(si.elec, C.eeb));
   if (adds.has('sliab')) add(ADD_INFO.sliab[0], C.liability);
   if (adds.has('spa')) add(ADD_INFO.spa[0], C.pa);
@@ -11318,6 +11404,7 @@ function shopUw(s) {
     const racks = tourNotes(SPx.tour).find(n => /racks/i.test(n.text)); if (racks) ok(racks.text, 'Shop tour');
   } else if (si.prop > lim.survey) { warn(`${siLabelL(si.prop)} insured with no shop tour, so a quick video survey is needed`, 'Underwriting rules'); up('survey'); }
   else warn('No shop tour. We may ask for photos of the stock at a claim.', 'Shop tour');
+  geoUw(b, ok, warn);
   const z = b.loc && b.loc.hz;
   if (z) { if (z.flood === 'high' && SPx.floor === 'basement') refer('A basement shop in a high flood-risk pincode', 'Hazard maps'); else if (z.flood === 'high' || z.quake === 'high' || z.cyclone === 'high') warn(`At this pincode: ${[z.flood === 'high' && 'high flood risk', z.quake === 'high' && 'high earthquake risk', z.cyclone === 'high' && 'high cyclone risk'].filter(Boolean).join(', ')}. You're covered for it.`, 'Hazard maps'); else ok('No high flood, earthquake or cyclone risk at this pincode', 'Hazard maps'); }
   if (SPx.godown) { if (SPx.gStore === 'floor') warn('Stock stacked on the floor in the godown. Water damage to it has a 10% excess.', 'Your answers'); else ok(`Godown stock of ${siLabelL(si.gstock)}, ${SPx.gStore === 'racks' ? 'on racks or pallets' : 'partly on racks'}`, 'Your answers'); }
@@ -11525,6 +11612,7 @@ STEP.sptour = {
       say: 'Show me around the shop with your phone: the racks, the counter, and the godown. It replaces the surveyor, and fills in your stock for you.',
       title: 'Show me around your shop',
       body: `<div data-x="tp">${T && T.done ? tourResultHtml(T, { total: false }) + `<button type="button" class="link" data-a="redo">Do the tour again</button>` : tourPanelHtml('shop', { ref: b.quoteNo = b.quoteNo || `NX-SKQ-${code(6)}`, mobile: kycKnownMobile() || (SPx.aa.mobile || ''), why: `AI checks how the racks are stocked and kept${SPx.godown ? ', how the godown is stacked' : ''}, the shutter, the wiring and the fire extinguisher, and estimates the stock you can see. Nobody needs to visit.` })}</div>
+        <div data-x="geo">${geoCardHtml(b)}</div>
         ${T && T.done ? '' : '<button type="button" class="link hm-skip" data-a="skip">Skip the tour, I\'ll enter my values</button>'}`,
       next: 'Continue',
     };
@@ -11532,12 +11620,13 @@ STEP.sptour = {
   wire(api) {
     const b = B(), SPx = b.shop;
     if (!(SPx.tour && (SPx.tour.done || SPx.tour.skipped))) api.hideNext(true);
-    const opts = () => ({ shopKind: SPx.kind, stock: shopStockSuggest(b) * (SPx.godown ? 0.75 : 1), godown: !!SPx.godown, seed: hash((b.src && b.src.gst.gstin) || 'x') % 97 });
-    tourWire(api, 'shop', opts, t => { SPx.tour = t; SPx.touched = {}; jlog(`Shop tour done${t.via === 'phone' ? ' on the phone' : t.via === 'video' ? ' from a video' : ''}`); show('sptour', 1); }, 'sptour');
+    const opts = () => ({ shopKind: SPx.kind, stock: shopStockSuggest(b) * (SPx.godown ? 0.75 : 1), godown: !!SPx.godown, seed: hash((b.src && b.src.gst.gstin) || 'x') % 97, near: geoHold(b).addr });
+    geoWire(api, b, () => { api.body.querySelector('[data-x=geo]').innerHTML = geoCardHtml(b); api.live(); });
+    tourWire(api, 'shop', opts, t => { SPx.tour = t; SPx.touched = {}; geoFromTour(b, t); b.uw = null; jlog(`Shop tour done${t.via === 'phone' ? ' on the phone' : t.via === 'video' ? ' from a video' : ''}`); show('sptour', 1); }, 'sptour');
     api.body.addEventListener('click', e => {
       const a = e.target.closest('[data-a]'); if (!a) return;
-      if (a.dataset.a === 'redo') { SPx.tour = null; show('sptour', 1); }
-      if (a.dataset.a === 'skip') { SPx.tour = { skipped: true }; setTimeout(() => api.next(), 0); }
+      if (a.dataset.a === 'redo') { SPx.tour = null; b.geo.video = null; show('sptour', 1); }
+      if (a.dataset.a === 'skip') { SPx.tour = { skipped: true }; geoFromTour(b, null); b.geo.videoErr = ''; setTimeout(() => api.next(), 0); }
     });
   },
   commit() { const T = SP().tour; return T && (T.done || T.skipped) ? '' : 'Do the tour, or skip it.'; },
@@ -11652,7 +11741,7 @@ function shopExcluded(b) {
 }
 function shopFacts(b) {
   const SPx = b.shop, si = shopSi(b), K = shopK(b);
-  return [['Policy', 'Shopkeeper\'s insurance'], ['Shop', `${b.loc.addr}, ${b.loc.pin}`], ['Kind of shop', K.name], ['Stock', `${siLabelL(si.stock)}${si.gstock ? `, and ${siLabelL(si.gstock)} in the godown` : ''}`], ['Fittings and electronics', siLabelL(si.fff + si.elec)], si.sign ? ['Glass and signboard', inr(si.sign)] : null, si.building ? ['Building', siLabelL(si.building)] : null, ['Cash in the shop', `${inr(si.cash)}, ${SPx.cashPct}% of the sum insured`], SPx.transit ? ['Cash to the bank', `Up to ${inr(shopCashDay(b))} at a time`] : null, ['Sales', `${siLabelL(shopSales(b))} a month${shopDataLed(b) ? `, from ${SPx.salesVia === 'aa' ? 'your bank account' : 'QR payments'}` : ''}`]].filter(Boolean);
+  return [['Policy', 'Shopkeeper\'s insurance'], ['Shop', `${b.loc.addr}, ${b.loc.pin}`], ['Kind of shop', K.name], ['Stock', `${siLabelL(si.stock)}${si.gstock ? `, and ${siLabelL(si.gstock)} in the godown` : ''}`], ['Fittings and electronics', siLabelL(si.fff + si.elec)], si.sign ? ['Glass and signboard', inr(si.sign)] : null, si.building ? ['Building', siLabelL(si.building)] : null, ['Cash in the shop', `${inr(si.cash)}, ${SPx.cashPct}% of the sum insured`], SPx.transit ? ['Cash to the bank', `Up to ${inr(shopCashDay(b))} at a time`] : null, ['Sales', `${siLabelL(shopSales(b))} a month${shopDataLed(b) ? `, from ${SPx.salesVia === 'aa' ? 'your bank account' : 'QR payments'}` : ''}`], geoFact(b) ? ['Risk location', geoFact(b)] : null].filter(Boolean);
 }
 function shopDecl(b) {
   const SPx = b.shop;
@@ -11677,6 +11766,542 @@ function shopPdf(d, b) {
   if (SPx.tour && SPx.tour.done) { d.h2('From your shop tour'); d.bullets(tourNotes(SPx.tour).map(n => `${n.room}: ${n.text}`)); }
 }
 const shopSurveyChecks = b => [['Housekeeping', 'Tidy, with clear aisles and the exit unblocked'], ['Fire extinguisher', b.shop.ext === 'no' ? 'None seen. Keeping one in date is a condition of cover' : 'One seen, with its tag'], ['Electrical board', 'Closed, no loose wiring seen'], ['Storage', 'Goods on racks, off the floor']];
+
+/* ================= Where the risk is: the property's location =================
+   Every property product (home, shopkeeper's, fire and loss of profit) pins the risk to a latitude and longitude:
+   - from the property video: the phone's GPS while the tour is recorded, or the location stored in an uploaded video file
+     (the ©xyz or loci atom that phones write into MP4 and MOV files);
+   - without a video: the phone's location, taken at the property, or a map link the customer pastes;
+   - always, as the starting point and the check: the address, geocoded.
+   A video whose location matches the address gets a discount. One that doesn't is flagged, and the address stays the
+   risk location. Geocoding and the spot-level hazard reading are simulated for the demo; reading the location out of a
+   video file and the phone's GPS are real. The discount and the match distance in CFG.geo are illustrative. */
+
+CFG.geo = { videoDisc: 5, matchM: 300, addrAcc: 150, pinAcc: 2500 };
+// rough centres for the cities the demo uses, and the demo addresses' own spots
+const CITY_LL = { Bengaluru: [12.9716, 77.5946], Mumbai: [19.0760, 72.8777], Pune: [18.5204, 73.8567], 'New Delhi': [28.6139, 77.2090], Delhi: [28.6139, 77.2090], Chennai: [13.0827, 80.2707], Hyderabad: [17.3850, 78.4867], Kolkata: [22.5726, 88.3639], Ahmedabad: [23.0225, 72.5714], Gurugram: [28.4595, 77.0266], 'Noida and Ghaziabad': [28.5355, 77.3910], Mysuru: [12.2958, 76.6394] };
+const PIN_LL = { '560102': [12.9116, 77.6474], '411045': [18.5590, 73.7868], '411014': [18.5515, 73.9348], '570017': [12.3305, 76.6236], '411026': [18.6298, 73.8478], '560038': [12.9719, 77.6412], '560066': [12.9698, 77.7500], '560048': [12.9890, 77.7290], '600020': [13.0012, 80.2565], '560058': [12.9352, 77.6245], '560034': [12.9352, 77.6245], '411057': [18.5913, 73.7389], '411028': [18.5089, 73.9260] };
+const PIN_REGION = { 1: [28.6, 77.2], 2: [26.8, 80.9], 3: [26.9, 75.8], 4: [19.1, 73.0], 5: [15.5, 78.5], 6: [11.0, 78.5], 7: [22.5, 88.3], 8: [25.6, 85.1], 9: [27.0, 80.0] };
+const R_EARTH = 6371000;
+function geoDist(a, b) {
+  if (!a || !b) return Infinity;
+  const r = x => x * Math.PI / 180, dLat = r(b.lat - a.lat), dLng = r(b.lng - a.lng);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(dLng / 2) ** 2;
+  return 2 * R_EARTH * Math.asin(Math.sqrt(h));
+}
+const geoMove = (p, m, deg) => { const r = deg * Math.PI / 180; return { lat: p.lat + (m * Math.cos(r)) / 111320, lng: p.lng + (m * Math.sin(r)) / (111320 * Math.cos(p.lat * Math.PI / 180)) }; };
+const geoFmt = v => Math.abs(v).toFixed(5);
+const geoLabel = g => g ? `${geoFmt(g.lat)}° ${g.lat >= 0 ? 'N' : 'S'}, ${geoFmt(g.lng)}° ${g.lng >= 0 ? 'E' : 'W'}` : '';
+const geoMap = g => `https://www.google.com/maps?q=${g.lat.toFixed(6)},${g.lng.toFixed(6)}`;
+const geoM = m => m >= 10000 ? `${Math.round(m / 1000).toLocaleString('en-IN')} km` : m >= 1000 ? `${(m / 1000).toFixed(1).replace(/\.0$/, '')} km` : `${Math.max(1, Math.round(m / 5) * 5)} m`;
+const GEO_SRC = { address: 'from the address', camera: 'from your video, while it was recorded', phone: 'from your video, recorded on your phone', file: 'from the location stored in your video', device: 'from your phone, at the property', link: 'from the map link you shared', rera: 'from the project address on RERA' };
+
+// the address, geocoded: simulated, the same each time for the same address
+function geoAddr(addr, pin, city) {
+  const h = hash('geo' + String(addr || '').toLowerCase().replace(/\s+/g, ' ') + pin);
+  const known = PIN_LL[pin], c = known || CITY_LL[city] || CITY_LL[pinZone(pin).city] || PIN_REGION[String(pin || '5')[0]] || [20.59, 78.96];
+  const spread = known ? 600 : CITY_LL[city] || CITY_LL[pinZone(pin).city] ? 6000 : 20000;
+  const p = geoMove({ lat: c[0], lng: c[1] }, (h % 1000) / 1000 * spread, h % 360);
+  const street = String(addr || '').split(',').length >= 3;
+  return { lat: p.lat, lng: p.lng, acc: street ? CFG.geo.addrAcc : CFG.geo.pinAcc, src: 'address', at: new Date() };
+}
+// the location record for a property: kept on the business (S.biz) for every property product
+function geoHold(b) {
+  b = b || S.biz; if (!b) return null;
+  const G = b.geo = b.geo || { addr: null, key: '', video: null, videoErr: '', device: null, link: null };
+  const L = b.loc;
+  if (L && L.addr && /^[1-9]\d{5}$/.test(L.pin || '')) {
+    const key = `${L.addr}|${L.pin}`;
+    if (G.key !== key) { G.key = key; G.addr = geoAddr(L.addr, L.pin, L.city); G.addr.src = b.home && b.home.uc && b.home.uc.reraRec && b.home.uc.who === 'builder' ? 'rera' : 'address'; G.device = null; G.link = null; }
+  }
+  return G;
+}
+// within the match distance of the geocoded address, allowing for how rough the geocode is
+const geoNear = (G, p, m) => !!(G && G.addr && p && geoDist(p, G.addr) <= m + Math.min(G.addr.acc, 1000));
+// the point that stands for the risk, and how much it can be trusted
+function geoBest(b) {
+  const G = geoHold(b); if (!G || !G.addr) return null;
+  const M = CFG.geo.matchM;
+  if (G.video && geoNear(G, G.video, M)) return Object.assign({}, G.video, { verified: true });
+  if (G.device && geoNear(G, G.device, M)) return Object.assign({}, G.device, { verified: true });
+  if (G.link && geoNear(G, G.link, 2000)) return Object.assign({}, G.link, { verified: false });
+  return Object.assign({}, G.addr, { verified: false });
+}
+// the video discount: a video was made, and where it was recorded matches the address
+const geoVideoOk = b => { const G = b && b.geo; return !!(G && G.video && geoNear(G, G.video, CFG.geo.matchM)); };
+// a video was made, whatever its location
+const geoTourDone = b => { const t = b && (b.p === 'home' ? b.home && b.home.tour : b.p === 'shop' ? b.shop && b.shop.tour : b.ftour); return !!(t && t.done); };
+function geoDiscRow(b, base, add, noun) {
+  if (!geoVideoOk(b) || !base) return;
+  add(`Video of the ${noun || 'property'}, recorded at the address, -${CFG.geo.videoDisc}%`, -base * CFG.geo.videoDisc / 100);
+}
+// what's around the exact spot: simulated from the coordinates
+function geoSpot(g, hz) {
+  const h = hash('spot' + g.lat.toFixed(3) + g.lng.toFixed(3));
+  const kinds = ['a lake', 'a stormwater drain', 'a river', 'a canal'], m = 120 + h % 1800, elev = 2 + (h >>> 4) % 22;
+  const level = m < 300 && elev < 6 ? 'high' : m < 800 && elev < 10 ? 'moderate' : 'low';
+  return { water: kinds[(h >>> 2) % kinds.length], m, elev, flood: level, pinFlood: hz && hz.flood };
+}
+// the underwriting lines about where the risk is
+function geoUw(b, ok, warn) {
+  const G = geoHold(b); if (!G || !G.addr) return;
+  const best = geoBest(b), M = CFG.geo.matchM;
+  if (G.video) {
+    const d = geoDist(G.video, G.addr);
+    if (geoNear(G, G.video, M)) ok(`Video recorded at the property: ${geoLabel(G.video)}, about ${geoM(d)} from the address`, 'Video location');
+    else warn(`The video was recorded about ${geoM(d)} from the address, so the video discount doesn't apply. The address stays the risk location, and we check it before the policy is issued.`, 'Video location');
+  } else if (geoTourDone(b)) warn(`The video had no location in it${G.videoErr === 'denied' ? ', because location was switched off' : ''}, so the video discount doesn't apply`, 'Video location');
+  if (!G.video || !geoNear(G, G.video, M)) {
+    if (G.device && geoNear(G, G.device, M)) ok(`Location confirmed on your phone at the property: ${geoLabel(G.device)}`, 'Phone location');
+    else if (G.link && geoNear(G, G.link, 2000)) ok(`Risk location from your map link: ${geoLabel(G.link)}`, 'Map link');
+    else ok(`Risk location set from the address: ${geoLabel(G.addr)}, within about ${geoM(G.addr.acc)}`, 'Geocoding');
+  }
+  if (best && best.verified && b.loc && b.loc.hz) {
+    const sp = geoSpot(best, b.loc.hz);
+    const t = `At the exact spot: ${sp.water} about ${geoM(sp.m)} away, ${sp.elev} m above it`;
+    if (sp.flood === 'high') warn(`${t}. Flood risk here is high.`, 'Hazard maps');
+    else ok(`${t}${b.loc.hz.flood === 'high' && sp.flood === 'low' ? '. Lower flood risk than the rest of the pincode' : ''}`, 'Hazard maps');
+  }
+}
+// at the exact spot, a verified location can lower the flood loading set by the pincode
+const geoFloodLow = b => { const best = geoBest(b); if (!best || !best.verified || !b.loc || !b.loc.hz || b.loc.hz.flood !== 'high') return false; return geoSpot(best, b.loc.hz).flood === 'low'; };
+const geoFact = b => { const g = geoBest(b); return g ? `${geoLabel(g)}, ${GEO_SRC[g.src] || 'from the address'}` : ''; };
+
+/* ---------- reading the location out of a video file ---------- */
+async function geoFromFile(file) {
+  if (!file || !file.slice) return null;
+  const scan = async blob => { const buf = new Uint8Array(await blob.arrayBuffer()); return geoScan(buf); };
+  try {
+    const head = await scan(file.slice(0, Math.min(file.size, 6e6)));
+    if (head) return head;
+    if (file.size > 6e6) return await scan(file.slice(Math.max(0, file.size - 6e6)));
+  } catch (e) { /* unreadable file: no location */ }
+  return null;
+}
+function geoScan(buf) {
+  // ©xyz (QuickTime and most phones): a short string in ISO 6709 form, like +12.9116+077.6474+920.000/
+  for (let i = 0; i < buf.length - 24; i++) {
+    if (buf[i] === 0xA9 && buf[i + 1] === 0x78 && buf[i + 2] === 0x79 && buf[i + 3] === 0x7A) {
+      const s = String.fromCharCode(...buf.slice(i + 4, i + 64)).replace(/[^\x20-\x7E]/g, ' ');
+      const m = s.match(/([+-]\d{1,2}\.\d+)([+-]\d{1,3}\.\d+)/); if (m) return { lat: Number(m[1]), lng: Number(m[2]) };
+    }
+    // loci (3GPP): fixed-point longitude, latitude after the name
+    if (buf[i] === 0x6C && buf[i + 1] === 0x6F && buf[i + 2] === 0x63 && buf[i + 3] === 0x69) {
+      let j = i + 4 + 4 + 2; while (j < buf.length && buf[j] !== 0) j++; j += 2;
+      if (j + 8 < buf.length) { const v = k => ((buf[k] << 24) | (buf[k + 1] << 16) | (buf[k + 2] << 8) | buf[k + 3]) / 65536; const lng = v(j), lat = v(j + 4); if (Math.abs(lat) <= 90 && Math.abs(lng) <= 180 && (lat || lng)) return { lat, lng }; }
+    }
+  }
+  return null;
+}
+// the phone's own location: real, with the customer's permission
+function geoDevice(timeout = 12000) {
+  return new Promise(res => {
+    if (!navigator.geolocation) { res({ err: 'unavailable' }); return; }
+    navigator.geolocation.getCurrentPosition(p => res({ lat: p.coords.latitude, lng: p.coords.longitude, acc: Math.round(p.coords.accuracy || 30) }),
+      e => res({ err: e && e.code === 1 ? 'denied' : 'unavailable' }), { enableHighAccuracy: true, timeout, maximumAge: 0 });
+  });
+}
+// coordinates or a map link the customer pastes
+function geoParse(t) {
+  t = String(t || '');
+  const m = t.match(/@(-?\d{1,2}\.\d+),\s*(-?\d{1,3}\.\d+)/) || t.match(/[?&](?:q|query|ll)=(-?\d{1,2}\.\d+),\s*(-?\d{1,3}\.\d+)/) || t.match(/(-?\d{1,2}\.\d{3,})\s*[, ]\s*(-?\d{1,3}\.\d{3,})/);
+  if (!m) return null; const lat = Number(m[1]), lng = Number(m[2]);
+  return Math.abs(lat) <= 90 && Math.abs(lng) <= 180 ? { lat, lng } : null;
+}
+
+/* ---------- the location card, shown with the video and wherever there's no video ---------- */
+const PIN_ICO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+function geoCardHtml(b, o = {}) {
+  const G = geoHold(b); if (!G || !G.addr) return '';
+  const best = geoBest(b), M = CFG.geo.matchM, vid = G.video, far = vid && !geoNear(G, vid, M);
+  const status = vid ? (far ? `<span class="geo-st warn">Recorded ${geoM(geoDist(vid, G.addr))} from the address. No video discount.</span>` : `<span class="geo-st ok">${ICO.check}Matches the address. ${CFG.geo.videoDisc}% off for the video.</span>`)
+    : best.verified ? `<span class="geo-st ok">${ICO.check}Confirmed at the property</span>`
+    : o.tour === false ? '' : `<span class="geo-st">${geoTourDone(b) ? 'The video had no location in it.' : `Do the video here for ${CFG.geo.videoDisc}% off: its location confirms the property.`}</span>`;
+  const acts = o.acts === false || (vid && !far) ? '' : `<div class="geo-acts">${o.device === false ? '' : '<button type="button" class="btn-soft geo-btn" data-geo="device">Use my location, I\'m at the property</button>'}<button type="button" class="link" data-geo="link">Paste a map link instead</button></div>
+    <div class="geo-paste" data-x="gpaste" hidden><input type="text" name="geolink" placeholder="A Google Maps link, or coordinates like 12.9116, 77.6474" autocomplete="off" aria-label="A map link or the coordinates of the property"><button type="button" class="btn-soft" data-geo="linkok">Use it</button></div>`;
+  return `<section class="geo-card" aria-label="Where the risk is"><div class="geo-h"><span class="geo-ic">${PIN_ICO}</span><div><b>Where the risk is</b><small>${esc(geoLabel(best))} · ${esc(GEO_SRC[best.src] || 'from the address')}, within about ${geoM(best.acc || 30)}</small></div><a class="link geo-map" href="${geoMap(best)}" target="_blank" rel="noopener">See it on a map</a></div>
+    ${status}${acts}<p class="hint geo-msg" data-x="gmsg" hidden></p></section>`;
+}
+// wires the card's buttons; repaint() redraws the card after a change
+function geoWire(api, b, repaint) {
+  api.body.addEventListener('click', async e => {
+    const a = e.target.closest('[data-geo]'); if (!a) return;
+    const G = geoHold(b), msg = t => { const m = api.body.querySelector('[data-x=gmsg]'); if (m) { m.hidden = !t; m.textContent = t || ''; } };
+    if (a.dataset.geo === 'device') {
+      a.disabled = true; a.innerHTML = '<span class="spin"></span>Finding you…';
+      const p = await geoDevice(); if (!api.body.isConnected) return;
+      if (p.err) { a.disabled = false; a.textContent = 'Use my location, I\'m at the property'; msg(p.err === 'denied' ? 'Location is switched off for this site. Allow it in your browser, or paste a map link instead.' : 'Your phone couldn\'t find its location. Try again near a window, or paste a map link instead.'); return; }
+      const fix = Object.assign(p, { src: 'device', at: new Date() }), d = geoDist(fix, G.addr);
+      if (d <= CFG.geo.matchM + Math.min(G.addr.acc, 1000)) { G.device = fix; jlog(`Location confirmed at the property, ${geoLabel(fix)}`); repaint(); }
+      else { a.disabled = false; a.textContent = 'Use my location, I\'m at the property'; msg(`You're about ${geoM(d)} from the address, so I've kept the address as the location. Try again when you're at the property.`); }
+      return;
+    }
+    if (a.dataset.geo === 'link') { const p = api.body.querySelector('[data-x=gpaste]'); p.hidden = !p.hidden; if (!p.hidden) p.querySelector('input').focus(); return; }
+    if (a.dataset.geo === 'linkok') {
+      const v = geoParse(api.body.querySelector('[name=geolink]').value);
+      if (!v) { msg('I couldn\'t find coordinates in that. Share the place from Google Maps and paste the link, or type them like 12.9116, 77.6474.'); return; }
+      const d = geoDist(v, G.addr);
+      if (d > 2000) { msg(`That point is ${geoM(d)} from the address. Check the link, or the address on the earlier screen.`); return; }
+      G.link = Object.assign(v, { acc: 30, src: 'link', at: new Date() }); jlog(`Map link added, ${geoLabel(G.link)}`); repaint();
+    }
+  });
+}
+// a video's location, for the tour results: the phone's GPS while recording, or what's stored in the file
+function geoFromTour(b, t) {
+  const G = geoHold(b); if (!G) return;
+  if (t && t.geo) { G.video = Object.assign({}, t.geo); G.videoErr = ''; }
+  else { G.video = null; G.videoErr = (t && t.geoErr) || 'none'; }
+}
+
+/* ---------- a video tour of business premises, for fire and loss of profit ---------- */
+TOUR_KIND.premises = { title: 'Video tour', verb: 'Walk through the premises', mins: 'about 4 minutes' };
+const PREMISES_MAIN = { office: 'Office floor', shop: 'Shop floor', shop_el: 'Shop floor', restaurant: 'Kitchen and dining', warehouse: 'Storage area', cold: 'Cold rooms', engg: 'Production floor', wood: 'Workshop floor', textile_mill: 'Production floor', chem: 'Process area' };
+function premisesStops(o = {}) {
+  const occ = o.occ || 'shop', h = o.seed || 0, prot = o.prot || 'none', ext = o.ext;
+  return [
+    { k: 'out', name: 'Outside and the entrance', tip: 'From the road: the building, the entrance and the access for a fire engine.', items: [], notes: [['ok', 'RCC building, with a clear road for a fire engine'], ...(h % 4 === 0 ? [['warn', 'A transformer next to the boundary wall']] : [])] },
+    { k: 'main', name: PREMISES_MAIN[occ] || 'Inside', tip: 'Walk the main floor slowly, end to end.', items: [], notes: [['ok', 'Aisles and exits clear'], ...(occ === 'wood' ? [['warn', 'Sawdust collected in open bins']] : occ === 'engg' || occ === 'textile_mill' ? [['ok', 'Machines spaced out, with guards']] : occ === 'restaurant' ? [['ok', 'Kitchen hood and duct cleaned recently']] : [])] },
+    ...(occ === 'office' ? [] : [{ k: 'store', name: 'Stock and storage', tip: 'Show how the stock is kept, and how high it\'s stacked.', items: [], notes: [['ok', 'Goods on racks, off the floor'], h % 3 === 0 ? ['warn', 'Stacks within a metre of the ceiling lights'] : ['ok', 'Stacks well clear of lights and walls']] }]),
+    { k: 'panel', name: 'Electrical panel and wiring', tip: 'Open the main panel, and show the wiring overhead.', items: [], notes: [['ok', 'Panel closed, with circuit breakers'], h % 5 === 1 ? ['warn', 'Some loose wiring near the loading area'] : ['ok', 'No loose or temporary wiring seen']] },
+    { k: 'fire', name: 'Fire protection', tip: 'The extinguishers and their tags, and any hydrant or sprinkler.', items: [], notes: [ext === 'no' ? ['warn', 'No fire extinguishers seen'] : ['ok', 'ABC extinguishers in place, tags in date'], ...(prot === 'hydrant' ? [['ok', 'Hydrant points with hoses']] : prot === 'sprinkler' ? [['ok', 'Sprinkler heads across the storage area']] : [])] },
+    { k: 'next', name: 'Next door', tip: 'Turn around to show the neighbours on each side.', items: [], notes: [h % 3 === 1 ? ['warn', 'A paint and solvent store next door'] : ['ok', 'Similar units on both sides']] },
+  ];
+}
+STEP.ftour = {
+  label: 'Video tour',
+  when: () => !!(S.biz && S.biz.who === 'biz' && (S.product === 'fire' || S.product === 'lop') && S.biz.loc),
+  view() {
+    const b = B(), T = b.ftour;
+    return {
+      say: `A short video of the premises on your phone, with its location, stands in for the surveyor and gets you ${CFG.geo.videoDisc}% off.`,
+      title: 'A video tour of the premises',
+      body: `<div data-x="tp">${T && T.done ? tourResultHtml(T, { total: false }) + '<button type="button" class="link" data-a="redo">Do the video again</button>' : tourPanelHtml('premises', { ref: b.quoteNo = b.quoteNo || `NX-${SME[b.p].code}Q-${code(6)}`, mobile: kycKnownMobile() || (b.src && b.src.gst.mobile) || '', why: 'AI checks the building, how stock is kept, the wiring, the fire protection and the neighbours. Nobody needs to visit.' })}</div>
+        <div data-x="geo">${geoCardHtml(b)}</div>
+        ${T && T.done ? '' : '<button type="button" class="link hm-skip" data-a="skip">Skip the video</button>'}
+        <div class="live"><span>Your premium for 1 year, with GST</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const b = B();
+    if (!(b.ftour && (b.ftour.done || b.ftour.skipped))) api.hideNext(true);
+    const opts = () => ({ occ: b.fire.occ || (b.src && b.src.occ), prot: b.fire.prot, ext: b.fire.ext, seed: hash((b.src && b.src.gst.gstin) || 'x') % 97, near: geoHold(b).addr });
+    tourWire(api, 'premises', opts, t => { b.ftour = t; geoFromTour(b, t); b.uw = null; jlog(`Video tour of the premises done${t.via === 'phone' ? ' on the phone' : t.via === 'video' ? ' from a video' : ''}`); show('ftour', 1); }, 'ftour');
+    geoWire(api, b, () => { api.body.querySelector('[data-x=geo]').innerHTML = geoCardHtml(b); smeLive(api); });
+    api.body.addEventListener('click', e => {
+      const a = e.target.closest('[data-a]'); if (!a) return;
+      if (a.dataset.a === 'redo') { b.ftour = null; b.geo.video = null; show('ftour', 1); }
+      if (a.dataset.a === 'skip') { b.ftour = { skipped: true }; geoFromTour(b, null); b.geo.videoErr = ''; setTimeout(() => api.next(), 0); }
+    });
+    smeLive(api);
+  },
+  commit() { const T = B().ftour; return T && (T.done || T.skipped) ? '' : 'Do the video, or skip it.'; },
+  value: () => { const b = B(), T = b && b.ftour; return T ? (T.skipped ? 'Skipped' : `Done${geoVideoOk(b) ? ', location matched' : ''}`) : ''; },
+  done: () => { const T = B() && B().ftour; return !!(T && (T.done || T.skipped)); },
+};
+
+/* ================= KYC for an individual, or for an institution =================
+   The KYC step first asks who the policy is for. An individual goes through the KYC as before. An institution (a
+   company, LLP, partnership firm, trust, society, HUF or government body) is verified first, then the person signing for
+   it does their own KYC, and their authority to sign is checked.
+   Ways to verify an institution, as the IRDAI Master Guidelines on AML/CFT (2022) and the PML Rules allow:
+   - its CKYC record, found with its PAN or KYC identifier (CKYCR has held legal-entity records since 2021);
+   - the government registers: GSTIN, CIN or LLPIN, or Udyam, with the PAN checked against the name;
+   - Entity Locker (MeitY, 2025), shared with consent by the institution's authorised person;
+   - its documents, uploaded and read: incorporation or registration certificate, deed or articles, PAN, resolution.
+   Then its beneficial owners (more than 10% for companies, partnership firms and trusts; more than 15% for other
+   associations), and the signatory's authority (listed on the register, or a resolution or authority letter).
+   A proprietorship isn't separate from its owner: the proprietor does their own KYC, with proof of the business.
+   Health cover bought by an institution for its people is a group policy, so that route goes to the group team.
+   Every lookup and document read here is simulated for the demo. */
+
+const ORG_TYPES = {
+  co: { label: 'Company', sub: 'Private or public limited', reg: 'CIN', bo: 10, people: 'Directors', role: 'Director', docs: [['coi', 'Certificate of incorporation'], ['moa', 'Memorandum and articles of association'], ['pan', 'PAN card of the company'], ['res', 'Board resolution naming who signs']] },
+  llp: { label: 'LLP', sub: 'Limited liability partnership', reg: 'LLPIN', bo: 10, people: 'Designated partners', role: 'Designated partner', docs: [['coi', 'Certificate of incorporation'], ['deed', 'LLP agreement'], ['pan', 'PAN card of the LLP'], ['res', 'Authority letter from the partners']] },
+  firm: { label: 'Partnership firm', sub: 'Registered or not', reg: 'Registration number', bo: 10, people: 'Partners', role: 'Partner', docs: [['reg', 'Registration certificate'], ['deed', 'Partnership deed'], ['pan', 'PAN card of the firm'], ['res', 'Authority letter signed by the partners']] },
+  trust: { label: 'Trust', sub: 'Public or private', reg: 'Registration number', bo: 10, people: 'Trustees', role: 'Trustee', high: true, docs: [['reg', 'Registration certificate'], ['deed', 'Trust deed'], ['pan', 'PAN card of the trust'], ['res', 'Resolution of the trustees']] },
+  soc: { label: 'Society or association', sub: 'Club, society, association', reg: 'Registration number', bo: 15, people: 'Managing committee', role: 'Committee member', high: true, docs: [['reg', 'Registration certificate'], ['deed', 'Bye-laws'], ['pan', 'PAN card of the society'], ['res', 'Resolution of the managing committee']] },
+  huf: { label: 'HUF', sub: 'Hindu undivided family', reg: '', bo: null, people: 'Karta', role: 'Karta', docs: [['pan', 'PAN card of the HUF'], ['res', 'Declaration by the karta, with the names of the members']] },
+  govt: { label: 'Government body', sub: 'Department, PSU or local body', reg: '', bo: null, people: 'Officers', role: 'Officer', low: true, docs: [['res', 'Authority letter on the office letterhead'], ['pan', 'PAN or TAN of the office']] },
+  prop: { label: 'Proprietorship', sub: 'A business you own on your own', reg: '', bo: null, people: 'Proprietor', role: 'Proprietor', docs: [] },
+};
+const ORG_FROM_ENT = { prop: 'prop', firm: 'firm', llp: 'llp', pvt: 'co', pub: 'co', co: 'co', trust: 'trust', huf: 'huf', aop: 'soc', govt: 'govt' };
+const ORG_FROM_PAN = { C: 'co', F: 'firm', T: 'trust', A: 'soc', B: 'soc', J: 'soc', H: 'huf', G: 'govt', L: 'govt', P: 'prop' };
+const ORG_MODES = [['ckyc', 'CKYC record'], ['reg', 'GST or company number'], ['locker', 'Entity Locker'], ['docs', 'Upload documents']];
+const DEMO_ORG = { co: { pan: 'AAKCP4821M', label: 'a private limited company' }, firm: { pan: 'AADFS2201K', label: 'a partnership firm' } };
+const KYC_FOR_ICO = { ind: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c.8-4.2 4-6.5 8-6.5s7.2 2.3 8 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>', org: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5l8-3v19M12 8h8v13M7 8h2M7 12h2M7 16h2M15 12h2M15 16h2M2 21h20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' };
+
+const kycIsOrg = () => !!(S.kycFor && S.kycFor.prod === S.product && S.kycFor.kind === 'org');
+const kycOrgRec = () => (kycIsOrg() && S.kycFor.done && S.kycFor.rec) || null;
+// the name and address on the policy: the institution's, or the person's
+const polHolder = () => { const r = kycOrgRec(); if (!r) return S.kyc ? S.kyc.name : ''; return r.type === 'prop' ? `${S.kyc ? S.kyc.name : ''}${r.trade ? `, trading as ${r.trade}` : ''}` : r.name; };
+const polAddr = () => { const r = kycOrgRec(); return r && r.type !== 'prop' ? `${r.addr}, ${r.city} ${r.pin}` : S.kyc ? `${S.kyc.addr}, ${S.kyc.city} ${S.kyc.pin}` : ''; };
+function kycForInit() {
+  if (S.kycFor && S.kycFor.prod === S.product) return S.kycFor;
+  const b = S.biz, biz = typeof isSme === 'function' && isSme(S.product) && b && b.who === 'biz' && b.src;
+  const F = S.kycFor = { prod: S.product, kind: biz ? 'org' : 'ind', fixed: !!biz, type: biz ? ORG_FROM_ENT[b.ent] || 'co' : null, mode: 'ckyc', idv: biz ? b.src.gst.pan : '', phase: 'id', rec: null, bo: [], boOk: false, auth: null, done: false, docs: {}, lock: { mob: '', demo: '' }, group: null, msg: '' };
+  if (biz) { F.rec = null; if (F.type === 'prop') { F.rec = orgRec(b.src, { type: 'prop', via: 'gst' }); F.done = true; } }
+  return F;
+}
+
+/* ---------- the institution's record, from whichever source was used: simulated ---------- */
+function orgPeople(src, type) {
+  const g = src.gst, m = src.mca, h = hash('ppl' + g.pan), sur = ['Kulkarni', 'Mehta', 'Iyer', 'Reddy', 'Shah', 'Nair'][h % 6];
+  if ((type === 'co' || type === 'llp') && m) { const sh = m.directors.length === 2 ? [60, 40] : [52, 38, 10]; return m.directors.map((d, i) => ({ name: d.name, role: ORG_TYPES[type].role, id: `DIN ${d.din.replace(/^(\d{3})\d{3}/, '$1xxx')}`, pct: sh[i] || 0 })); }
+  if (type === 'firm' || type === 'llp') return [[`${FIRST.M[h % 8]} ${sur}`, 50], [`${FIRST.F[(h >>> 3) % 8]} ${sur}`, 30], [`${FIRST.M[(h >>> 6) % 8]} Desai`, 20]].map(([n, p]) => ({ name: n, role: 'Partner', pct: p }));
+  if (type === 'trust') return [{ name: `${FIRST.M[h % 8]} ${sur}`, role: 'Settlor', pct: 0 }, { name: `${FIRST.F[(h >>> 3) % 8]} ${sur}`, role: 'Trustee', pct: 0 }, { name: `${FIRST.M[(h >>> 6) % 8]} Rao`, role: 'Trustee', pct: 0 }];
+  if (type === 'soc') return [{ name: `${FIRST.M[h % 8]} ${sur}`, role: 'President', pct: 0 }, { name: `${FIRST.F[(h >>> 3) % 8]} Pillai`, role: 'Secretary', pct: 0 }];
+  if (type === 'huf') return [{ name: `${FIRST.M[h % 8]} ${sur}`, role: 'Karta', pct: 0 }];
+  return [];
+}
+function orgRec(src, o = {}) {
+  const g = src.gst, m = src.mca, p = g.places[0], type = o.type || ORG_FROM_ENT[g.ent] || 'co', h = hash('kin' + g.pan);
+  const name = type === 'trust' ? `${g.trade.split(' ')[0]} Education Trust` : type === 'soc' ? `${g.trade.split(' ')[0]} Welfare Society` : type === 'huf' ? `${g.legal} (HUF)` : g.legal;
+  return { type, name, trade: g.trade, pan: g.pan, gstin: g.gstin, cin: m ? m.cin : '', udyam: src.udyam.no, inc: m ? m.inc : g.since, addr: p.addr, city: p.city, pin: p.pin, state: p.state, listed: !!(m && m.listed),
+    people: orgPeople(src, type), kin: o.kin ? `${50 + h % 49}${String(h).padStart(10, '7').slice(-10)}${(h >>> 3) % 10}${(h >>> 5) % 10}`.slice(0, 14) : '', via: o.via || 'reg', docs: o.docs || [], at: new Date() };
+}
+const orgPanOk = v => /^[A-Z]{3}[CFTABJHGLP][A-Z]\d{4}[A-Z]$/.test(v);
+function orgIdKind(v) { return /^\d{2}[A-Z]{5}\d{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/.test(v) ? 'gstin' : /^[LU]\d{5}[A-Z]{2}\d{4}[A-Z]{3}\d{6}$/.test(v) ? 'cin' : /^[A-Z]{3}-\d{4}$/.test(v) ? 'llpin' : /^UDYAM-[A-Z]{2}-\d{2}-\d{7}$/.test(v) ? 'udyam' : orgPanOk(v) ? 'pan' : null; }
+function orgFetch(F, kind, v) {
+  const b = S.biz && S.biz.src && S.biz.src.gst.pan === (kind === 'pan' ? v : kind === 'gstin' ? v.slice(2, 12) : '') ? S.biz : null;
+  const src = b ? b.src : smeLookup({ id: kind === 'llpin' ? { pan: 'AAAF' + v.replace(/\D/g, '').slice(0, 1) + v.replace(/\D/g, '').slice(0, 4) + 'L' } : { [kind]: v } });
+  return src;
+}
+const orgBo = (F) => { const T = ORG_TYPES[F.rec.type]; if (!T.bo || F.rec.listed) return []; const list = F.rec.people.filter(x => x.pct > T.bo); if (F.rec.type === 'trust') return F.rec.people.map(x => Object.assign({}, x)); return list.length ? list.map(x => Object.assign({}, x)) : F.rec.people.slice(0, 1).map(x => Object.assign({}, x, { role: `${x.role}, senior managing official`, pct: 0 })); };
+// higher risk under the AML guidelines: trusts, societies and NGOs, and closely held family companies
+function orgRisk(F) {
+  const r = F.rec; if (!r) return '';
+  if (ORG_TYPES[r.type].low) return 'low';
+  if (ORG_TYPES[r.type].high) return 'high';
+  const sur = r.people.filter(x => x.pct > 10).map(x => x.name.split(' ').slice(-1)[0]);
+  return sur.length > 1 && new Set(sur).size < sur.length ? 'high' : 'standard';
+}
+const orgSigMatch = F => { if (!S.kyc || !F.rec) return null; const n = S.kyc.name.toLowerCase(); return F.rec.people.find(x => x.name.toLowerCase() === n) || null; };
+
+/* ---------- the panel ---------- */
+const ORG_SRC = { ckyc: 'CKYC', reg: 'Government registers', locker: 'Entity Locker', docs: 'Documents you uploaded', gst: 'GST' };
+function orgRecHtml(F) {
+  const r = F.rec, T = ORG_TYPES[r.type];
+  if (r.type === 'prop') return `<div class="found"><span class="seal">${ICO.shield}<span>Proof of the business: ${r.gstin ? 'GST registration' : 'Udyam registration'}</span></span>${factList([['Business', r.trade], r.gstin ? ['GSTIN', r.gstin] : ['Udyam', r.udyam], ['Address', `${r.addr}, ${r.city} ${r.pin}`, true]])}<p class="hint" style="margin:0">A proprietorship isn't separate from its owner, so the policy is in the proprietor's name, trading as ${esc(r.trade)}. The proprietor does their KYC below.</p></div>`;
+  const tags = [ORG_SRC[r.via], r.via !== 'reg' ? null : 'Income Tax PAN check', r.cin ? 'MCA' : null].filter(Boolean);
+  return `<div class="found org-rec"><div class="sm-fh"><span class="seal">${ICO.shield}<span>${r.via === 'ckyc' ? 'CKYC record found' : r.via === 'locker' ? 'Shared from Entity Locker' : r.via === 'docs' ? 'Read from the documents' : 'Found on the government registers'}</span></span><span class="sm-tags">${tags.map(srcTag).join('')}</span></div>
+    ${factList([['Name', r.name], ['Type', T.label], ['PAN', `${r.pan.slice(0, 5)}xxxx${r.pan.slice(-1)}, matches the name`], r.cin ? [r.type === 'llp' ? 'LLPIN' : 'CIN', r.cin] : null, r.gstin ? ['GSTIN', r.gstin] : null, r.kin ? ['CKYC identifier', `XXXXXXXXXX${r.kin.slice(-4)}`] : null, ['Since', fd(r.inc)], ['Registered office', `${r.addr}, ${r.city} ${r.pin}`, true]])}
+    ${r.docs.length ? `<ul class="org-docs">${r.docs.map(d => `<li>${ICO.check}<span>${esc(d)}</span></li>`).join('')}</ul>` : ''}
+    <button type="button" class="link" data-org="reset">Use a different institution</button></div>`;
+}
+function orgBoHtml(F) {
+  const T = ORG_TYPES[F.rec.type];
+  if (!T.bo) return `<p class="note hm-note">${SICO.ok}<span>${F.rec.type === 'govt' ? 'A government body has no beneficial owners to declare.' : 'For an HUF, the karta acts for the family. The karta does their KYC below.'}</span></p>`;
+  if (F.rec.listed) return `<p class="note hm-note">${SICO.ok}<span>A listed company doesn't need its beneficial owners named. Its shareholding is public.</span></p>`;
+  const risk = orgRisk(F);
+  return `<div class="org-bo"><span class="sec-h">Who owns or controls it</span>
+    <p class="hint">${F.rec.type === 'trust' ? 'The settlor, the trustees, and any beneficiary with 10% or more.' : `Everyone who owns more than ${T.bo}% of it, or controls it another way.`} From ${F.rec.cin ? 'the shareholding filed with the Registrar of Companies' : F.rec.type === 'firm' ? 'the partnership deed' : 'the records'}. Check it, and add anyone missing.</p>
+    <ul class="org-bol">${F.bo.map((x, i) => `<li><span class="sm-dot ok">${ICO.check}</span><span><b>${esc(x.name)}</b><small>${esc(x.role)}${x.pct ? `, ${x.pct}%` : ''}${x.added ? ', added by you' : ', PAN checked'}</small></span>${x.added ? `<button type="button" class="link" data-org="bodel" data-i="${i}">Remove</button>` : ''}</li>`).join('')}</ul>
+    <div class="org-boadd" data-x="boadd" hidden><input type="text" name="boname" placeholder="Full name" aria-label="Name of the owner"><input type="text" name="bopct" inputmode="numeric" maxlength="3" placeholder="%" aria-label="Their share, in per cent"><button type="button" class="btn-soft" data-org="boaddok">Add</button></div>
+    <button type="button" class="link" data-org="boadd">Add someone</button>
+    <label class="agree"><input type="checkbox" name="orgbo" ${F.boOk ? 'checked' : ''}><span>These are all the people who own or control ${esc(F.rec.name)}.</span></label>
+    ${risk === 'high' ? `<p class="note warn">${F.rec.type === 'trust' || F.rec.type === 'soc' ? 'Trusts, societies and associations' : 'Companies held closely by one family'} are higher risk under the AML guidelines. We keep the documents on file, and review the KYC every year.</p>` : ''}</div>`;
+}
+function orgAuthHtml(F) {
+  if (!S.kyc || !S.kyc.verified || !F.rec || F.rec.type === 'prop') return '';
+  const hit = orgSigMatch(F), A = F.auth;
+  if (hit) { F.auth = { ok: true, how: 'register', role: hit.role }; return `<p class="note hm-note">${SICO.ok}<span>${esc(S.kyc.name)} is listed as ${esc(hit.role.toLowerCase())} of ${esc(F.rec.name)}, so they can sign for it.</span></p>`; }
+  if (A && A.ok) return `<div class="found"><span class="seal">${ICO.shield}<span>Authority to sign checked</span></span><p class="hint" style="margin:0">${esc(A.doc)}${A.file ? `, ${esc(A.file)}` : ''}: names ${esc(S.kyc.name)} to sign insurance proposals for ${esc(F.rec.name)}.</p></div>`;
+  const doc = (ORG_TYPES[F.rec.type].docs.find(d => d[0] === 'res') || [, 'An authority letter'])[1];
+  return `<div class="org-auth"><span class="sec-h">Authority to sign</span><p class="hint">${esc(S.kyc.name)} isn't listed among the ${esc(ORG_TYPES[F.rec.type].people.toLowerCase())}. Upload the ${esc(doc.toLowerCase())}.</p>
+    <label class="doc-tile">${ART.doc('rc')}<span><b>Upload the ${esc(doc.toLowerCase())}</b><small>A photo or PDF, signed and on the letterhead</small></span><input type="file" name="orgauth" accept="image/*,application/pdf" aria-label="Upload the ${esc(doc.toLowerCase())}"></label>
+    <p class="otp-demo kyc-demo" role="note"><span class="od-l">Demo</span><button type="button" data-org="authdemo">Use a sample ${esc(doc.toLowerCase())}</button></p><div data-x="authread"></div></div>`;
+}
+function orgFindHtml(F) {
+  const T = F.type && ORG_TYPES[F.type], m = F.mode, busy = F.phase === 'busy';
+  if (!F.type) return '';
+  if (F.type === 'prop') {
+    return `<div class="org-find"><p class="hint">A proprietorship isn't separate from its owner. The proprietor does their own KYC, with one proof of the business.</p>
+      <label class="fld"><span>GSTIN or Udyam number of the business</span><input type="text" name="orgid" value="${esc(F.idv)}" placeholder="29ABCPS1234F1ZT" autocomplete="off" spellcheck="false" style="text-transform:uppercase"></label>
+      <div class="org-go"><button type="button" class="btn-soft" data-org="find" ${busy ? 'disabled' : ''}>${busy ? '<span class="spin"></span>Checking…' : 'Check the business'}</button></div></div>`;
+  }
+  const tabs = `<div class="tabs org-tabs" role="radiogroup" aria-label="How to verify the institution">${ORG_MODES.map(([k, l]) => `<label><input type="radio" name="orgmode" value="${k}" ${m === k ? 'checked' : ''} ${busy || F.phase === 'otp' ? 'disabled' : ''}><span>${l}</span></label>`).join('')}</div>`;
+  let body = '';
+  if (m === 'ckyc') body = `<label class="fld"><span>PAN of the ${esc(T.label.toLowerCase())}, or its CKYC identifier</span><input type="text" name="orgid" value="${esc(F.idv)}" placeholder="AAKCP4821M" autocomplete="off" spellcheck="false" style="text-transform:uppercase" ${busy ? 'disabled' : ''}></label><p class="hint">I'll search the Central KYC Registry. If it's there, there's nothing to upload.</p>`;
+  if (m === 'reg') body = `<label class="fld"><span>GSTIN${T.reg && T.reg !== 'Registration number' ? `, ${T.reg}` : ''}, Udyam number or PAN</span><input type="text" name="orgid" value="${esc(F.idv)}" placeholder="27AAKCP4821M1Z4" autocomplete="off" spellcheck="false" style="text-transform:uppercase" ${busy ? 'disabled' : ''}></label><p class="hint">I'll fetch it from the GST and company registers, and check the PAN against the name with the Income Tax department. These are public, so no consent is needed.</p>`;
+  if (m === 'locker') body = F.phase === 'otp' ? `<div class="fld"><span>Enter the 6-digit code sent to ${esc(maskMobile(F.lock.mob))}</span><div class="otp">${[0, 1, 2, 3, 4, 5].map(i => `<input type="text" inputmode="numeric" maxlength="1" data-oo="${i}" aria-label="Code digit ${i + 1}">`).join('')}</div></div>`
+    : `<div class="dg-box"><span class="sec-h">With consent, Entity Locker shares</span><ul class="dg-list"><li><b>Certificate of incorporation or registration</b><small>From the Ministry of Corporate Affairs</small></li><li><b>PAN</b><small>From the Income Tax department</small></li><li><b>GST registration certificate</b><small>From GSTN</small></li></ul></div>
+      <div class="row2"><label class="fld"><span>PAN of the ${esc(T.label.toLowerCase())}</span><input type="text" name="orgid" value="${esc(F.idv)}" placeholder="AAKCP4821M" autocomplete="off" spellcheck="false" style="text-transform:uppercase"></label><label class="fld"><span>Mobile of its Entity Locker admin</span><input type="text" name="orgmob" value="${esc(F.lock.mob)}" inputmode="numeric" maxlength="10" placeholder="98450 12345"></label></div>
+      <p class="hint">The person the ${esc(T.label.toLowerCase())} has authorised on Entity Locker approves it with an Aadhaar code.</p>`;
+  if (m === 'docs') body = `<label class="fld"><span>PAN of the ${esc(T.label.toLowerCase())}</span><input type="text" name="orgid" value="${esc(F.idv)}" placeholder="AAKCP4821M" autocomplete="off" spellcheck="false" style="text-transform:uppercase" ${busy ? 'disabled' : ''}></label>
+    <div class="org-up">${T.docs.filter(d => d[0] !== 'res').map(([k, l]) => `<label class="doc-tile ${F.docs[k] ? 'has' : ''}">${F.docs[k] ? ICO.check : ICO.up}<span><b>${esc(l)}</b><small>${F.docs[k] ? esc(F.docs[k]) : 'A photo or PDF'}</small></span><input type="file" name="orgdoc" data-k="${k}" accept="image/*,application/pdf" aria-label="Upload the ${esc(l.toLowerCase())}"></label>`).join('')}</div>
+    <p class="hint">I read each one, check they belong together, and check the PAN against the name.</p>`;
+  const act = m === 'locker' ? (F.phase === 'otp' ? '' : `<button type="button" class="btn-soft" data-org="lockgo">Send the code</button>`) : `<button type="button" class="btn-soft" data-org="find" ${busy ? 'disabled' : ''}>${busy ? `<span class="spin"></span>${m === 'ckyc' ? 'Searching CKYC…' : m === 'docs' ? 'Reading the documents…' : 'Looking it up…'}` : m === 'ckyc' ? 'Search CKYC' : m === 'docs' ? 'Read the documents' : 'Look it up'}</button>`;
+  const demo = F.fixed ? '' : `<p class="otp-demo kyc-demo" role="note"><span class="od-l">Demo, try</span>${Object.entries(DEMO_ORG).filter(([k]) => F.type === k || (F.type === 'llp' && k === 'firm')).map(([k, d]) => `<button type="button" data-org="demo" data-k="${k}">${esc(d.label)}</button>`).join('') || `<button type="button" data-org="demo" data-k="co">${esc(DEMO_ORG.co.label)}</button>`}${m === 'locker' && F.phase !== 'otp' ? `<button type="button" data-org="demomob">Use ${spaced(DEMO_KYC.mobile, 'mobile')}</button>` : ''}</p>`;
+  return `<div class="org-find">${tabs}${body}<div class="org-go">${act}</div>${demo}${F.msg ? `<p class="note warn">${esc(F.msg)}</p>` : ''}</div>`;
+}
+function orgHtml(F) {
+  if (S.product === 'health') {
+    const G = F.group;
+    return `<div class="org-group"><p class="note hm-note">${SICO.ok}<span>Health cover that a company, firm or trust buys for its people is a group health policy, priced for the group, with its own terms. This journey is for individuals and families.</span></p>
+      ${G ? `<div class="found"><span class="seal">${ICO.shield}<span>Sent to our group health team</span></span><p class="hint" style="margin:0">${esc(G.org)} · about ${esc(G.n)} people. They'll call ${esc(maskMobile(G.mob))} within a working day.</p></div>`
+      : `<div class="row2"><label class="fld"><span>GSTIN, CIN or PAN of the institution</span><input type="text" name="grpid" placeholder="27AAKCP4821M1Z4" autocomplete="off" style="text-transform:uppercase"></label><label class="fld"><span>People to cover</span><input type="text" name="grpn" inputmode="numeric" maxlength="5" placeholder="25"></label></div>
+        <label class="fld"><span>Your mobile number</span><input type="text" name="grpmob" inputmode="numeric" maxlength="10" placeholder="98450 12345" value="${esc(kycKnownMobile())}"></label>
+        <div class="org-go"><button type="button" class="btn-soft" data-org="group">Ask the group team to call</button></div>`}
+      <p class="hint">Buying for yourself or your family? Choose an individual above.</p></div>`;
+  }
+  const typeChips = F.fixed ? '' : `<div class="fld"><span>What kind of institution?</span><div class="chips">${Object.entries(ORG_TYPES).map(([k, t]) => chip('orgtype', k, esc(t.label), F.type === k)).join('')}</div></div>`;
+  if (!F.rec) return `${typeChips}${orgFindHtml(F)}`;
+  const rc = S.product === 'motor' && S.docOwner && S.docOwner.name && S.docOwner.name.toLowerCase() !== F.rec.name.toLowerCase() ? `<p class="note warn">The vehicle's papers are in the name of ${esc(S.docOwner.name)}. The policy has to be in the registered owner's name, so the RC must show ${esc(F.rec.name)}.</p>` : '';
+  return `${orgRecHtml(F)}${rc}${F.rec.type === 'prop' ? '' : orgBoHtml(F)}${F.done ? `<p class="kyc-sig sec-h">${F.rec.type === 'prop' ? 'The proprietor' : `The person signing for ${esc(F.rec.name)}`}</p>` : ''}`;
+}
+
+/* ---------- what each control does ---------- */
+// ctx: { box, err(msg), paint() redraws the panel, changed() after anything that moves the step on }
+function orgWire(ctx) {
+  const box = ctx.box, F = () => S.kycFor;
+  // still on this step after a wait (the portal redraws the whole card, so the element itself may be new)
+  const alive = f => S.kycFor === f && (S.cur === 'kyc' || S.cur === 'customer');
+  const liveBox = () => (ctx.live ? ctx.live() : box) || box;
+  const after = () => { ctx.paint(); ctx.changed && ctx.changed(); };
+  const finishRec = (src, via, extra = {}) => {
+    const f = F(); f.rec = orgRec(src, Object.assign({ type: f.type, via }, extra)); f.bo = orgBo(f); f.boOk = false; f.phase = 'id'; f.msg = '';
+    if (f.type === 'prop' || !ORG_TYPES[f.type].bo || f.rec.listed) { f.boOk = true; f.done = true; }
+    jlog(`${f.rec.name} verified with ${ORG_SRC[via]}`); after();
+  };
+  box.addEventListener('change', async e => {
+    const t = e.target, f = F();
+    if (t.name === 'kycfor') return;
+    if (t.name === 'orgtype') { f.type = t.value; f.rec = null; f.done = false; f.msg = ''; f.phase = 'id'; ctx.err(''); after(); return; }
+    if (t.name === 'orgmode') { f.mode = t.value; f.msg = ''; f.phase = 'id'; ctx.err(''); ctx.paint(); return; }
+    if (t.name === 'orgbo') { f.boOk = t.checked; f.done = t.checked; after(); return; }
+    if (t.name === 'orgdoc' && t.files && t.files[0]) { f.docs[t.dataset.k] = t.files[0].name; ctx.paint(); return; }
+    if (t.name === 'orgauth' && t.files && t.files[0]) {
+      const r = liveBox().querySelector('[data-x=authread]'); if (r) r.innerHTML = '<div class="reading"><span class="spin"></span>Reading it…</div>';
+      await sleep(REDUCED ? 80 : 1200); if (!alive(f)) return;
+      f.auth = { ok: true, how: 'letter', doc: (ORG_TYPES[f.rec.type].docs.find(d => d[0] === 'res') || [, 'Authority letter'])[1], file: t.files[0].name, at: new Date() }; jlog('Authority to sign checked'); after();
+    }
+  });
+  box.addEventListener('input', e => {
+    const t = e.target, f = F();
+    if (t.name === 'orgid') { t.value = t.value.toUpperCase().replace(/\s+/g, ''); f.idv = t.value; }
+    if (t.name === 'orgmob') { t.value = t.value.replace(/\D/g, '').slice(0, 10); f.lock.mob = t.value; }
+    if (t.name === 'bopct' || t.name === 'grpn' || t.name === 'grpmob') t.value = t.value.replace(/\D/g, '');
+    const o = t.dataset.oo;
+    if (o != null) { const v = t.value.replace(/\D/g, ''); if (v.length > 1) { fillOO(v.slice(0, 6)); return; } t.value = v; if (v && +o < 5) box.querySelector(`[data-oo="${+o + 1}"]`).focus(); checkOO(); }
+  });
+  const fillOO = d => { [...d].forEach((c, i) => { const x = liveBox().querySelector(`[data-oo="${i}"]`); if (x) x.value = c; }); checkOO(); };
+  const checkOO = async () => {
+    const v = $$('[data-oo]', liveBox()).map(x => x.value).join(''); if (!/^\d{6}$/.test(v)) return;
+    const f = F(); f.phase = 'busy'; const of = liveBox().querySelector('.org-find'); if (of) of.insertAdjacentHTML('beforeend', '<div class="reading"><span class="spin"></span>Fetching the documents from Entity Locker…</div>');
+    await sleep(REDUCED ? 80 : 1400); if (!alive(f)) return;
+    finishRec(orgFetch(f, 'pan', f.idv), 'locker', { docs: ['Certificate of incorporation, from MCA', 'PAN, from the Income Tax department', 'GST registration certificate, from GSTN'] });
+  };
+  box.addEventListener('click', async e => {
+    const a = e.target.closest('[data-org]'); if (!a) return;
+    const f = F(), k = a.dataset.org;
+    if (k === 'demo') { const D = DEMO_ORG[a.dataset.k]; f.type = f.type === 'llp' && a.dataset.k === 'firm' ? 'llp' : a.dataset.k; f.idv = f.mode === 'reg' ? (a.dataset.k === 'co' ? DEMO_BIZ.factory.gstin : gstinMake('29', D.pan)) : D.pan; if (f.mode === 'docs') { ORG_TYPES[f.type].docs.filter(d => d[0] !== 'res').forEach(([dk, dl]) => { f.docs[dk] = `${dl.toLowerCase().replace(/[^a-z]+/g, '-')}.pdf`; }); } ctx.err(''); ctx.paint(); return; }
+    if (k === 'demomob') { f.lock.mob = DEMO_KYC.mobile; ctx.paint(); return; }
+    if (k === 'reset') { f.rec = null; f.done = false; f.boOk = false; f.auth = null; f.phase = 'id'; if (!f.fixed) f.idv = ''; after(); return; }
+    if (k === 'boadd') { const x = box.querySelector('[data-x=boadd]'); x.hidden = !x.hidden; if (!x.hidden) x.querySelector('input').focus(); return; }
+    if (k === 'boaddok') { const n = box.querySelector('[name=boname]').value.trim(), p = Number(box.querySelector('[name=bopct]').value) || 0; if (n.length < 3) { ctx.err('Enter the full name of the owner.'); return; } ctx.err(''); f.bo.push({ name: n, role: ORG_TYPES[f.rec.type].role, pct: p, added: true }); f.boOk = false; f.done = false; after(); return; }
+    if (k === 'bodel') { f.bo.splice(+a.dataset.i, 1); f.boOk = false; f.done = false; after(); return; }
+    if (k === 'authdemo') { f.auth = { ok: true, how: 'letter', doc: (ORG_TYPES[f.rec.type].docs.find(d => d[0] === 'res') || [, 'Authority letter'])[1], file: 'board-resolution.pdf', at: new Date() }; jlog('Authority to sign checked'); after(); return; }
+    if (k === 'group') {
+      const id = (box.querySelector('[name=grpid]').value || '').toUpperCase().replace(/\s+/g, ''), n = box.querySelector('[name=grpn]').value, mob = box.querySelector('[name=grpmob]').value;
+      const kd = orgIdKind(id); if (!kd) { ctx.err('Enter the GSTIN, CIN or PAN of the institution.'); return; }
+      if (!(Number(n) >= 2)) { ctx.err('Enter how many people to cover.'); return; }
+      if (!/^[6-9]\d{9}$/.test(mob)) { ctx.err('Enter your 10-digit mobile number.'); return; }
+      ctx.err(''); const src = smeLookup({ id: { [kd === 'llpin' ? 'pan' : kd]: kd === 'llpin' ? 'AAAFL1234L' : id } });
+      f.group = { org: src.gst.legal, n, mob, at: new Date() }; jlog(`Group health request sent for ${src.gst.legal}`); ctx.paint(); return;
+    }
+    if (k === 'lockgo') {
+      if (!orgPanOk(f.idv)) { ctx.err('Enter the PAN of the institution: 10 characters, like AAKCP4821M.'); return; }
+      if (!/^[6-9]\d{9}$/.test(f.lock.mob)) { ctx.err('Enter the 10-digit mobile number of the Entity Locker admin.'); return; }
+      ctx.err(''); f.phase = 'otp'; ctx.paint(); const o = liveBox().querySelector('[data-oo="0"]'); if (o) o.focus();
+      demoOtp(f.lock.demo = f.lock.demo || String(100000 + Math.floor(Math.random() * 900000)), () => fillOO(f.lock.demo)); return;
+    }
+    if (k !== 'find') return;
+    const v = (f.idv || '').toUpperCase(), kind = orgIdKind(v);
+    if (f.type === 'prop') {
+      if (kind !== 'gstin' && kind !== 'udyam') { ctx.err('Enter the GSTIN or Udyam number of the business.'); return; }
+      ctx.err(''); f.phase = 'busy'; ctx.paint(); await sleep(REDUCED ? 80 : 900); if (!alive(f)) return;
+      finishRec(orgFetch(f, kind, v), 'gst'); return;
+    }
+    if (f.mode === 'ckyc') { if (!orgPanOk(v) && !/^\d{14}$/.test(v)) { ctx.err('Enter the PAN of the institution, like AAKCP4821M, or its 14-digit CKYC identifier.'); return; } }
+    else if (f.mode === 'reg') { if (!kind) { ctx.err('Enter a GSTIN, CIN, LLPIN, Udyam number or PAN.'); return; } if (kind === 'gstin') { const ge = gstinErr(v); if (ge) { ctx.err(ge); return; } } }
+    else if (f.mode === 'docs') { if (!orgPanOk(v)) { ctx.err('Enter the PAN of the institution, like AAKCP4821M.'); return; } const need = ORG_TYPES[f.type].docs.filter(d => d[0] !== 'res' && !f.docs[d[0]]); if (need.length) { ctx.err(`Upload the ${need[0][1].toLowerCase()}.`); return; } }
+    if (kind === 'pan' && ORG_FROM_PAN[v[3]] && ORG_FROM_PAN[v[3]] !== f.type && !(f.type === 'llp' && v[3] === 'F')) { ctx.err(`That PAN belongs to ${({ co: 'a company', firm: 'a firm or LLP', trust: 'a trust', soc: 'an association or society', huf: 'an HUF', govt: 'a government body', prop: 'an individual' })[ORG_FROM_PAN[v[3]]]}. Check the PAN, or the kind of institution.`); return; }
+    ctx.err(''); f.phase = 'busy'; ctx.paint();
+    await sleep(REDUCED ? 80 : f.mode === 'docs' ? 1500 : 1100); if (!alive(f)) return;
+    const src = orgFetch(f, /^\d{14}$/.test(v) ? 'pan' : kind || 'pan', /^\d{14}$/.test(v) ? 'AAKCP4821M' : v);
+    if (f.mode === 'ckyc' && hash('ck' + v) % 4 === 0 && v !== DEMO_ORG.co.pan && v !== DEMO_ORG.firm.pan) { f.phase = 'id'; f.msg = 'No CKYC record for this PAN yet. Choose another way above. We\'ll create the CKYC record after the policy is issued.'; ctx.paint(); return; }
+    finishRec(src, f.mode, f.mode === 'ckyc' ? { kin: true } : f.mode === 'docs' ? { docs: ORG_TYPES[f.type].docs.filter(d => d[0] !== 'res').map(d => `${d[1]}, read and matched`) } : {});
+  });
+}
+
+/* ---------- the KYC step, with the choice first ---------- */
+const _kycStep = { view: STEP.kyc.view, commit: STEP.kyc.commit, done: STEP.kyc.done, value: STEP.kyc.value };
+STEP.kyc.view = function () {
+  const v = _kycStep.view.call(this), F = kycForInit(), k = S.kyc;
+  const toggle = F.fixed ? `<div class="kyc-ph"><span class="kyc-ph-l">Policyholder</span><b>${esc(F.rec ? (F.rec.type === 'prop' ? `${F.rec.trade}, a proprietorship` : F.rec.name) : S.biz.src.gst.legal)}</b></div>`
+    : `<div class="kyc-for" role="radiogroup" aria-label="Who the policy is for">${[['ind', 'An individual', 'You, or the person who owns it'], ['org', 'An institution', 'A company, firm, trust or other body']].map(([x, t, s2]) => `<label class="kf ${F.kind === x ? 'on' : ''}"><input type="radio" name="kycfor" value="${x}" ${F.kind === x ? 'checked' : ''}><span class="kf-ic">${KYC_FOR_ICO[x]}</span><span><b>${t}</b><small>${s2}</small></span></label>`).join('')}</div>`;
+  if (F.kind === 'org' && !(F.done && F.rec)) {
+    v.say = S.product === 'health' ? 'Is this for you and your family, or is a company buying it for its people?' : F.fixed ? `First, ${esc(S.biz.src.gst.legal)} itself. The quickest way is its CKYC record, with the PAN from your GST registration.` : 'First the institution, then the person signing for it. Pick the quickest way to verify it.';
+    v.title = S.product === 'health' ? 'Who is this for?' : 'Verify the institution';
+  } else if (F.kind === 'org' && !k) { v.say = F.rec.type === 'prop' ? `${esc(F.rec.trade)} is checked on the ${F.rec.gstin ? 'GST' : 'Udyam'} register. Now your own KYC, as the proprietor.${F.fixed ? ' Your PAN is on the GST registration, so I\'ve filled it in.' : ''}` : `${esc(F.rec.name)} is verified. Now the person signing for it.`; v.title = F.rec.type === 'prop' ? 'The proprietor\'s KYC' : 'Now the person signing'; }
+  v.body = `${toggle}<div data-x="org" class="org"></div><div data-x="indwrap">${v.body}</div>`;
+  return v;
+};
+STEP.kyc.wire = function (api) {
+  const F = kycForInit(), orgBox = api.body.querySelector('[data-x=org]'), ind = api.body.querySelector('[data-x=indwrap]');
+  let wired = false, toggled = false;
+  const paint = () => {
+    const f = S.kycFor, showInd = f.kind === 'ind' || (f.kind === 'org' && f.done && S.product !== 'health');
+    orgBox.innerHTML = f.kind === 'org' ? `${orgHtml(f)}` : '';
+    $$('.kyc-for .kf', api.body).forEach(l => l.classList.toggle('on', l.querySelector('input').value === f.kind));
+    ind.hidden = !showInd;
+    if (showInd && !wired) { wired = true; kycWire(api); }
+    if (showInd) { const auth = api.body.querySelector('[data-x=auth]') || (() => { ind.insertAdjacentHTML('afterend', '<div data-x="auth"></div>'); return api.body.querySelector('[data-x=auth]'); })(); auth.innerHTML = f.kind === 'org' ? orgAuthHtml(f) : ''; }
+    else { const auth = api.body.querySelector('[data-x=auth]'); if (auth) auth.innerHTML = ''; }
+    if (!showInd) api.hideNext(true); else if (S.kycUi) S.kycUi.render();
+    // the heading follows where they are
+    const T = api.q.querySelector('.q-title'), Y = api.q.querySelector('.nyra-say'), k = S.kyc;
+    const head = f.kind === 'ind' ? [k ? `Hi ${first(k.name)}, here's what I have` : KYC_TITLE, k ? `You're verified, ${first(k.name)}.` : 'Let\'s make sure it\'s you. Give me your PAN or Aadhaar and your mobile number, and I\'ll fetch the rest from your KYC record.']
+      : S.product === 'health' ? ['Who is this for?', 'Is this for you and your family, or is a company buying it for its people?']
+      : !f.done ? ['Verify the institution', f.fixed ? `First, ${S.biz.src.gst.legal} itself. The quickest way is its CKYC record, with the PAN from your GST registration.` : 'First the institution, then the person signing for it. Pick the quickest way to verify it.']
+      : !k ? [f.rec.type === 'prop' ? 'The proprietor\'s KYC' : 'Now the person signing', f.rec.type === 'prop' ? `${f.rec.trade} is checked on the ${f.rec.gstin ? 'GST' : 'Udyam'} register. Now your own KYC, as the proprietor.` : `${f.rec.name} is verified. Now the person signing for it.`]
+      : [f.rec.type === 'prop' ? `Hi ${first(k.name)}, you're verified` : `${f.rec.trade || f.rec.name} and ${first(k.name)} are verified`, f.rec.type === 'prop' || (f.auth && f.auth.ok) ? 'All done. Check the details, then continue.' : `One more thing: ${first(k.name)}'s authority to sign.`];
+    if (f.kind === 'org' || toggled) { if (T) T.textContent = head[0]; if (Y) Y.textContent = head[1]; }
+    api.live();
+  };
+  F.repaint = paint;
+  api.body.addEventListener('change', e => {
+    if (e.target.name !== 'kycfor') return;
+    const f = S.kycFor; f.kind = e.target.value; toggled = true; api.err('');
+    if (f.kind === 'org' && S.product === 'motor' && S.motor) jlog('Policy in the name of an institution: no owner-driver accident cover');
+    paint();
+  });
+  orgWire({ box: api.body, err: m => api.err(m), paint, changed: () => {} });
+  paint();
+};
+STEP.kyc.commit = async function (api) {
+  const F = kycForInit();
+  if (F.kind === 'org' && S.product === 'health') return 'This journey is for individuals and families. Choose an individual, or send the details to our group team.';
+  if (F.kind === 'org' && !F.done) return F.rec ? 'Tick the box to confirm who owns or controls it.' : 'Verify the institution first.';
+  const r = await _kycStep.commit.call(this, api); if (r) return r;
+  if (F.kind === 'org' && F.rec.type !== 'prop') { orgAuthHtml(F); if (!(F.auth && F.auth.ok)) { if (F.repaint) F.repaint(); return `Upload the document that gives ${S.kyc.name} the authority to sign for ${F.rec.name}.`; } }
+  return '';
+};
+STEP.kyc.done = function () { const F = S.kycFor; if (F && F.prod === S.product && F.kind === 'org') return !!(S.product !== 'health' && F.done && S.kyc && S.kyc.verified && (F.rec.type === 'prop' || (F.auth && F.auth.ok))); return _kycStep.done.call(this); };
+STEP.kyc.value = function () { const F = S.kycFor; if (F && F.prod === S.product && F.kind === 'org' && F.rec && S.kyc) return F.rec.type === 'prop' ? `${S.kyc.name}, trading as ${F.rec.trade}` : `${F.rec.name}, signed by ${S.kyc.name}`; return _kycStep.value.call(this); };
+// redraw the panel when the signatory's KYC completes, so the authority check shows
+HOOKS.kycDone.push(() => { const F = S.kycFor; if (F && F.kind === 'org' && F.repaint) setTimeout(F.repaint, 0); });
+
+// the institution's KYC on the documents
+function orgPdf(d) {
+  const F = S.kycFor, r = kycOrgRec(); if (!r) return;
+  if (r.type === 'prop') { d.h2('Proprietorship'); d.kv([['Business', r.trade], r.gstin ? ['GSTIN', r.gstin] : ['Udyam', r.udyam], ['Proprietor', S.kyc ? `${S.kyc.name}, ${kycLabel(S.kyc)} ${S.kyc.idMasked}` : '']]); return; }
+  d.h2('Institution KYC');
+  d.kv([['Name', r.name], ['Type', ORG_TYPES[r.type].label], ['PAN', `${r.pan.slice(0, 5)}xxxx${r.pan.slice(-1)}`], r.cin ? [r.type === 'llp' ? 'LLPIN' : 'CIN', r.cin] : null, r.gstin ? ['GSTIN', r.gstin] : null, ['CKYC identifier', r.kin ? `XXXXXXXXXX${r.kin.slice(-4)}` : 'To be created and shared within 10 days'], ['Verified with', ORG_SRC[r.via]], ['Registered office', `${r.addr}, ${r.city} ${r.pin}`],
+    ['Signed by', S.kyc ? `${S.kyc.name}, ${kycLabel(S.kyc)} ${S.kyc.idMasked}` : ''], ['Authority', F.auth && F.auth.how === 'register' ? `Listed as ${F.auth.role.toLowerCase()}` : F.auth ? F.auth.doc : '']].filter(Boolean));
+  if (F.bo && F.bo.length) d.bullets(F.bo.map(x => `Beneficial owner: ${x.name}, ${x.role.toLowerCase()}${x.pct ? `, ${x.pct}%` : ''}`));
+}
 
 /* ================= voice =================
    In the video medical exam the microphone is on for the whole call: it's the call's own microphone, so it isn't
@@ -14398,6 +15023,7 @@ function pfSteps() {
     if (id === 'hdecl') return mot && hasHealthExtra(S);
     if (id === 'xsetup') return typeof xsItems === 'function' && xsItems(S).length > 0;
     if (id === 'pay') return !pfRem();
+    if ((id === 'data' || id === 'offers') && typeof kycIsOrg === 'function' && kycIsOrg()) return false;
     if (id === 'health' || id === 'assess') return !mot && (!pfRem() || true);
     return true;
   });
@@ -15252,6 +15878,10 @@ function pfCode(api, k, from, msg, onOk) {
 /* ---------------- KYC: PAN, Aadhaar, DigiLocker or an uploaded ID ---------------- */
 PFV.customer = () => {
   const k = S.kyc, mot = S.product === 'motor', M = S.motor, rem = pfRem();
+  // the policy is for an individual, or for an institution verified first, with the person signing for it
+  const F = kycForInit(), org = F.kind === 'org', orgReady = org && S.product !== 'health' && F.done;
+  const orgOk = !org || (orgReady && !!k && (F.rec.type === 'prop' || !!(orgAuthHtml(F) !== null && F.auth && F.auth.ok)));
+  const forSeg = `<div class="p-f"><span>The policy is for</span>${pfSeg('kycfor', [['ind', 'An individual'], ['org', 'An institution: a company, firm or trust']], F.kind)}</div>`;
   const U = S.pfKyc = S.pfKyc || { type: 'pan', id: '', phase: k ? 'done' : 'id', dgOk: false, doc: { type: 'passport', front: null, back: null, thumb: '', ai: null, f: null, issues: [] } };
   const mobile = () => U.type === 'doc' ? U.doc.f && U.doc.f.mobile : U.rec && U.rec.mobile;
   let kyc;
@@ -15291,6 +15921,8 @@ PFV.customer = () => {
     const codeHtml = U.phase === 'code' ? pfCodeHtml('kyc', `Ask ${esc(pfFirst())} for the code ${U.type === 'digilocker' ? 'DigiLocker sent' : 'sent'} to ${esc(maskMobile(mobile()))}`, what, mobile()) : U.phase === 'busy' ? `<div class="pf-busy"><span class="spin"></span>${U.type === 'digilocker' ? 'Fetching documents from DigiLocker…' : U.type === 'doc' ? 'Confirming the mobile number…' : 'Fetching the KYC record…'}</div>` : '';
     kyc = `${locked || U.phase === 'reading' ? '' : tabs}${body}${codeHtml}`;
   }
+  if (org && !orgReady) kyc = '';
+  const orgTop = org ? `<div class="org pf-org">${orgHtml(F)}</div>` : '', orgAuth = org && orgReady && k ? `<div class="org pf-org">${orgAuthHtml(F)}</div>` : '';
   const nom = k && mot && motorCalc(M).cpa ? pfCard('Nominee for the accident cover', `<div class="pf-row">${fld('Full name', `<input name="nominee" value="${esc(M.nominee || '')}" autocomplete="off">`)}${fld('Relation', `<select name="nomRel">${NOM_RELS.map(x => `<option ${x === (M.nomRel || 'Spouse') ? 'selected' : ''}>${x}</option>`).join('')}</select>`)}</div>`) : '';
   const custView = () => {
     const mob = mobile();
@@ -15299,10 +15931,12 @@ PFV.customer = () => {
     return { title: 'Share your KYC', intro: `${esc(P.user.who)} from NxSure is preparing your insurance proposal. Approve sharing your name, date of birth and address from ${esc(ID[U.type].source)}.`, list: [[ID[U.type].label, ID[U.type].mask(U.idn)]], cta: 'Approve with a code', msg: `is your code to share your KYC with ${CFG.insurer}.`, mobile: mob };
   };
   return {
-    html: pfCard('KYC', kyc, k ? ppill('Verified', 'ok') : U.phase === 'code' && (rem || pfLinkOf('kyc')) && pfLinkOf('kyc') ? ppill('With the customer', 'info') : '') + nom + (k ? pfCard('Contact', fld('Email for the policy copy (optional)', `<input type="email" name="email" value="${esc((mot ? M.email : S.health.email) || k.email || '')}" placeholder="name@example.com">`)) : ''),
-    next: 'Continue', dis: !k,
+    html: pfCard('KYC', forSeg + orgTop + kyc + orgAuth, k && orgOk ? ppill('Verified', 'ok') : U.phase === 'code' && (rem || pfLinkOf('kyc')) && pfLinkOf('kyc') ? ppill('With the customer', 'info') : '') + nom + (k ? pfCard('Contact', fld('Email for the policy copy (optional)', `<input type="email" name="email" value="${esc((mot ? M.email : S.health.email) || k.email || '')}" placeholder="name@example.com">`)) : ''),
+    next: 'Continue', dis: !k || !orgOk,
     wire(api) {
       const b = api.main;
+      orgWire({ box: b, live: () => api.main, err: m => api.err(m), paint: () => api.repaint(), changed: () => pfLive() });
+      b.addEventListener('change', e => { if (e.target.name !== 'kycfor') return; F.kind = e.target.value; api.err(''); if (F.kind === 'org') pfMark('KYC for an institution'); api.repaint(); pfLive(); });
       const finish = async () => {
         U.phase = 'busy'; api.repaint(); await sleep(REDUCED ? 60 : U.type === 'digilocker' ? 1500 : 900); if (S.pf.step !== 'customer') return;
         if (U.type === 'doc') S.kyc = kycFromDoc(U.doc.type, U.doc.f, U.doc.thumb);
@@ -15349,8 +15983,11 @@ PFV.customer = () => {
       });
     },
     commit() {
+      if (org && S.product === 'health') return 'Health cover for a company\'s people is a group policy. Choose an individual, or send it to the group team.';
+      if (org && !F.done) return F.rec ? 'Confirm who owns or controls the institution.' : 'Verify the institution first.';
       if (!S.kyc) return U.phase === 'code' ? (pfLinkOf('kyc') ? `Waiting for ${pfFirst()} to approve on their phone.` : 'Enter the code from the customer\'s phone first.') : 'Verify the customer\'s KYC first.';
       if (mot && motorCalc(M).cpa && !/^[A-Za-z][A-Za-z .']{2,}$/.test(M.nominee || '')) return 'Enter the nominee\'s full name for the accident cover.';
+      if (org && F.rec.type !== 'prop' && !(F.auth && F.auth.ok)) return `Upload the document that gives ${S.kyc.name} the authority to sign for ${F.rec.name}.`;
       return '';
     },
   };
