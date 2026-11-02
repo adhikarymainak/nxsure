@@ -1679,6 +1679,60 @@ button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:
 .sm-found .facts dd{font-size:14.5px;font-weight:650;overflow-wrap:anywhere}
 .prod-sme{grid-template-columns:repeat(auto-fill,minmax(min(100%,165px),1fr))}
 .found .facts dd{overflow-wrap:anywhere}
+/* home insurance */
+.hm-who{grid-template-columns:repeat(3,minmax(0,1fr))}
+.opt{font-style:normal;font-weight:500;color:var(--ink-3,var(--ink-2));font-size:12.5px;margin-left:4px}
+.hm-hz{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+.hm-hz li{display:grid;gap:4px;font-size:13px;color:var(--ink-2)}
+.hm-hz li b{color:var(--ink);font-size:14.5px}
+.hm-items{display:grid;gap:10px;margin:2px 0 8px}
+.hm-ir{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) auto;gap:8px 10px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2)}
+.hm-ir>b{grid-column:1/-1;font-size:14.5px;font-weight:650}
+.hm-ir input{min-width:0;width:100%}
+.hm-huid{grid-column:1/-1;display:grid;grid-template-columns:auto 110px minmax(0,1fr);gap:10px;align-items:center;font-size:13px;color:var(--ink-2)}
+.hm-huid>span:first-child{font-weight:650;color:var(--ink)}
+.hm-huid input{text-transform:uppercase;letter-spacing:.08em;padding:8px 10px;min-height:0;font-size:14px}
+.hm-hu{font-size:12.5px;color:var(--ink-2);display:inline-flex;gap:6px;align-items:center}
+.hm-hu.ok{color:var(--mint);font-weight:600}.hm-hu.ok svg{width:14px;height:14px}
+.hm-hu.bad{color:var(--bad,#C2410C)}
+.hm-note{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--mint-soft);color:var(--ink)}
+.hm-note>svg{width:22px;height:22px;color:var(--mint);flex:none}
+.hm-note>span{flex:1 1 220px}
+.hm-ext{margin-top:8px}
+.hm-wording .tile-price small{font:500 13px var(--body,inherit);color:var(--ink-2)}
+.hm-well{display:grid;gap:10px}
+.hm-devs{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.hm-devs li{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.hm-devs li b{display:block;font-size:14.5px;font-weight:650}.hm-devs li small{color:var(--ink-2);font-size:12.5px}
+.hm-devs em{font-style:normal;font-weight:700;color:var(--mint);font-size:13.5px}
+.hm-score{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;padding:16px 18px;border-radius:18px;background:var(--brand-soft)}
+.hm-score:empty{display:none}
+.hm-sc-n{display:grid;justify-items:center;line-height:1}
+.hm-sc-n b{font:700 34px var(--display);color:var(--brand-ink)}.hm-sc-n span{font-size:12px;color:var(--ink-2);margin-top:4px}
+.hm-score>div:last-child{display:grid;gap:6px}
+.hm-score>div:last-child>b{font-size:15px}
+.hm-score small{color:var(--ink-2);font-size:13px}
+.hm-bar{display:block;height:8px;border-radius:99px;background:var(--surface);overflow:hidden}
+.hm-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--brand-2),var(--mint))}
+.wl-logo.hm-ghome{background:linear-gradient(135deg,#4285F4,#34A853)}
+.wl-logo.hm-alexa{background:#00A8E1;font-size:20px}
+.wl-logo.hm-smartthings{background:#15BFFF}
+.wl-logo.hm-mihome{background:#FF6900;font-size:15px}
+@media (max-width:640px){
+  .prod-tiles .tile:nth-child(3):last-child{grid-column:1/-1;grid-template-columns:120px minmax(0,1fr);align-items:center;column-gap:12px;text-align:left}
+  .prod-tiles .tile:nth-child(3):last-child .tile-art{grid-row:1/3}
+}
+@media (max-width:560px){
+  .hm-who{grid-template-columns:1fr}
+  .hm-ir{grid-template-columns:minmax(0,1fr) 110px;}
+  .hm-ir>button{grid-column:2;justify-self:end}
+  .hm-ir input[name=vd],.hm-ir input[name=cd]{grid-column:1/-1}
+  .hm-huid{grid-template-columns:auto 100px;}
+  .hm-huid>span:last-child{grid-column:1/-1}
+}
+.hm-plan{display:grid;gap:10px}
+.hm-plan>.sec-h{display:block;margin:6px 0 6px}
+.hm-plan .tile-price small,.hm-wording .tile-price small{font:500 13px var(--body,inherit);color:var(--ink-2)}
 
 /* ================= NxSure Partners: ink sidebar, warm paper canvas, one typeface, one accent ================= */
 :root{
@@ -3903,9 +3957,8 @@ function priceInfo() {
   const B = typeof bundleSum === 'function' ? bundleSum() : { items: [], extras: 0, disc: 0 }, bx = rows => { if (!B.items.length) return rows; const out = rows.filter(r => !(r.cells && r.cells[0] === 'Total')); B.items.forEach(o => out.push([o.name.split(',')[0], inr(o.total)])); if (B.disc) out.push(['Bundle saving', '- ' + inr(B.disc)]); return out; };
   if (typeof isSme === 'function' && isSme(S.product)) {
     const b = S.biz, c = b && smeCalc(); if (!c) return null;
-    const single = S.product === 'marine' && (b.who === 'ind' || b.marine.kind === 'single');
     if (c.range && !b.terms) return { total: c.total, from: true, sub: 'indicative, an underwriter confirms it', rows: null };
-    return { total: c.total, from: !b.planChosen && S.product !== 'dno', sub: `${single ? 'for this shipment' : 'for 1 year'}, with 18% GST`, rows: b.planChosen || b.terms ? c.rows.map(r => [r[0], inr(r[1])]).concat([['GST at 18%', inr(c.gst)], { cells: ['Total', inr(c.total)], bold: true }]) : null };
+    return { total: c.total, from: !b.planChosen && S.product !== 'dno', sub: `${smePer(b)}, with 18% GST`, rows: b.planChosen || b.terms ? c.rows.map(r => [r[0], sinr(r[1])]).concat([['GST at 18%', inr(c.gst)], { cells: ['Total', inr(c.total)], bold: true }]) : null };
   }
   if (S.product === 'motor' && S.motor && S.motor.v) {
     const M = S.motor;
@@ -4246,13 +4299,14 @@ STEP.product = {
     body: `<div class="tiles prod-tiles">
       ${tile('data-p="motor"', `<span class="tile-art">${ART.motor()}</span><span class="tile-name">Motor</span><span class="tile-sub">Car, two-wheeler or commercial vehicle. Renew in a minute with last year's policy.</span>`, S.product === 'motor')}
       ${tile('data-p="health"', `<span class="tile-art">${ART.health()}</span><span class="tile-name">Health</span><span class="tile-sub">You, your family and your parents, with your cover decided right here.</span>`, S.product === 'health')}
-    </div>${typeof SME !== 'undefined' && CFG.channel !== 'agent' ? `<span class="sec-h prod-sme-h">For your business, and your home</span><div class="prod-sme">${Object.entries(SME).map(([k, x]) => `<button type="button" class="prod-sme-t" data-p="${k}" aria-pressed="${S.product === k}"><span class="ic">${PROD_ICO[k]}</span><span><b>${esc(x.short)}</b><small>${esc(PROD_SUB[k])}</small></span></button>`).join('')}</div>` : ''}${typeof jxSavedHtml === 'function' ? jxSavedHtml() : ''}`,
+      ${typeof SME !== 'undefined' && SME.home && ART.home && CFG.channel !== 'agent' ? tile('data-p="home"', `<span class="tile-art">${ART.home()}</span><span class="tile-name">Home</span><span class="tile-sub">Your flat or house, what's in it, and what you carry, with home wellness.</span>`, S.product === 'home') : ''}
+    </div>${typeof SME !== 'undefined' && CFG.channel !== 'agent' ? `<span class="sec-h prod-sme-h">For your business</span><div class="prod-sme">${Object.entries(SME).filter(([k]) => k !== 'home').map(([k, x]) => `<button type="button" class="prod-sme-t" data-p="${k}" aria-pressed="${S.product === k}"><span class="ic">${PROD_ICO[k]}</span><span><b>${esc(x.short)}</b><small>${esc(PROD_SUB[k])}</small></span></button>`).join('')}</div>` : ''}${typeof jxSavedHtml === 'function' ? jxSavedHtml() : ''}`,
     next: null, back: CFG.channel === 'agent' ? undefined : false, hint: 'Say “motor” or “health”',
   }),
   wire(api) { api.body.addEventListener('click', e => { const l = e.target.closest('[data-lead]'); if (l && typeof JX !== 'undefined' && JX.resume) { JX.resume(l.dataset.lead); return; } const t = e.target.closest('[data-p]'); if (t) pickProduct(t.dataset.p); }); },
   value: () => S.product === 'motor' ? 'Motor' : S.product === 'health' ? 'Health' : '',
   done: () => !!S.product,
-  cmd(t) { const l = t.toLowerCase(); if (/health|medic|family|parent|mediclaim/.test(l)) { pickProduct('health'); return ''; } if (/motor|car|bike|scooter|vehicle|truck|taxi|two.?wheeler|lorry/.test(l)) { pickProduct('motor'); return ''; } return null; },
+  cmd(t) { const l = t.toLowerCase(); if (/\bhome\b|house|flat|apartment/.test(l) && typeof SME !== 'undefined' && SME.home) { pickProduct('home'); return ''; } if (/health|medic|family|parent|mediclaim/.test(l)) { pickProduct('health'); return ''; } if (/motor|car|bike|scooter|vehicle|truck|taxi|two.?wheeler|lorry/.test(l)) { pickProduct('motor'); return ''; } return null; },
 };
 function pickProduct(p) {
   if (S.product && S.product !== p) { S.seen = new Set(['product']); S.furthest = 'product'; S.kycUi = null; }
@@ -8135,6 +8189,7 @@ function newBiz(p) {
     marine: { kind: null, transits: new Set(), commodity: null, packing: 'cartons', used: false, annual: { inland: 0, import: 0, export: 0 }, perBottom: 0, modes: new Set(['road']), single: { kind: 'inland', value: '', from: '', to: '', mode: 'road', date: '', inco: 'FOB', invoice: '' }, move: { from: '', to: '', date: '', packers: true, mode: 'road', items: {} } },
     wc: { rows: [], hazards: new Set(), contract: false, contractN: '', contractWage: '', claims: null, esicNote: '' },
     dno: { us: null, deals: null, notices: null, noticeText: '', existing: null, retro: '', limit: 0, ext: new Set() },
+    home: p === 'home' && typeof newHome === 'function' ? newHome() : null,
   };
 }
 const B = () => S.biz;
@@ -8142,6 +8197,7 @@ const bizName = b => { b = b || B(); if (!b) return ''; if (b.who === 'ind') ret
 
 /* ---------- simulated registry lookups, built from the identity numbers so they come back the same each time ---------- */
 const crore = n => n * 1e7;
+const sinr = v => v < 0 ? `- ${inr(-v)}` : inr(v);
 const roundTo = (n, s) => Math.round(n / s) * s;
 function smeLookup(b) {
   const id = b.id, h = hash('biz' + (id.gstin || id.cin || id.pan || id.udyam));
@@ -8155,31 +8211,31 @@ function smeLookup(b) {
   else if (kind === 'prop' && ['autoparts', 'textile', 'chemicals', 'it'].includes(a.k)) a = ARCH[[0, 1, 4, 5][h % 4]];
   if (id.cin) kind = 'co';
   const company = kind === 'co', listed = !!(id.cin && id.cin[0] === 'L');
-  const ent = kind === 'co' ? (id.cin && /PLC/.test(id.cin) ? 'pub' : 'pvt') : kind === 'firm' ? ((h >> 3) % 3 === 0 ? 'llp' : 'firm') : kind;
+  const ent = kind === 'co' ? (id.cin && /PLC/.test(id.cin) ? 'pub' : 'pvt') : kind === 'firm' ? ((h >>> 3) % 3 === 0 ? 'llp' : 'firm') : kind;
   const owner = kycRecord('pan', pan[3] === 'P' ? pan : 'ABCPS' + pan.slice(5), null).name;
-  const nm = isDemoShop ? 'Sharma' : isDemoFac ? 'Pranav' : NAMES1[(h >> 5) % NAMES1.length];
+  const nm = isDemoShop ? 'Sharma' : isDemoFac ? 'Pranav' : NAMES1[(h >>> 5) % NAMES1.length];
   const trade = isDemoShop ? 'Sharma Garments' : `${nm} ${a.trade}`;
   const legal = kind === 'prop' ? owner : `${trade}${ent === 'pvt' ? ' Private Limited' : ent === 'pub' ? ' Limited' : ent === 'llp' ? ' LLP' : ''}`;
-  const since = isDemoShop ? 2016 : isDemoFac ? 2014 : YEAR - 2 - (h >> 7) % 14;
-  const turn = isDemoShop ? 2.4 : isDemoFac ? 46 : a.turn[0] + ((h >> 9) % 100) / 100 * (a.turn[1] - a.turn[0]);
+  const since = isDemoShop ? 2016 : isDemoFac ? 2014 : YEAR - 2 - (h >>> 7) % 14;
+  const turn = isDemoShop ? 2.4 : isDemoFac ? 46 : a.turn[0] + ((h >>> 9) % 100) / 100 * (a.turn[1] - a.turn[0]);
   const turnover = roundTo(crore(turn), 1e5);
-  const staff = isDemoShop ? 7 : isDemoFac ? 84 : a.staff[0] + (h >> 11) % (a.staff[1] - a.staff[0] + 1);
+  const staff = isDemoShop ? 7 : isDemoFac ? 84 : a.staff[0] + (h >>> 11) % (a.staff[1] - a.staff[0] + 1);
   const area = AREAS[city] || ['Main Road'];
-  const addr = isDemoShop ? `No. 14, 2nd Cross, Commercial Street, ${area[0]}` : isDemoFac ? 'Plot 27, Sector 10, PCMC Industrial Area, Bhosari' : `${a.occ === 'shop' || a.occ === 'shop_el' || a.occ === 'restaurant' ? `Shop ${3 + h % 40}, ${area[(h >> 4) % area.length]} Main Road` : `Plot ${10 + h % 90}, Industrial Area, ${area[(h >> 4) % area.length]}`}`;
+  const addr = isDemoShop ? `No. 14, 2nd Cross, Commercial Street, ${area[0]}` : isDemoFac ? 'Plot 27, Sector 10, PCMC Industrial Area, Bhosari' : `${a.occ === 'shop' || a.occ === 'shop_el' || a.occ === 'restaurant' ? `Shop ${3 + h % 40}, ${area[(h >>> 4) % area.length]} Main Road` : `Plot ${10 + h % 90}, Industrial Area, ${area[(h >>> 4) % area.length]}`}`;
   const pin = isDemoFac ? '411026' : pin0;
   const places = [{ addr, city, pin, state, tag: 'Principal place of business', occ: a.occ }];
-  if (['autoparts', 'pharma', 'textile', 'garments'].includes(a.k) && kind !== 'prop' || isDemoShop) places.push({ addr: isDemoShop ? `Godown, No. 3, 5th Main, ${area[(h >> 6) % area.length]}` : `Warehouse ${1 + h % 9}, Logistics Park, ${area[(h >> 6) % area.length]}`, city, pin: String(Number(pin) + 3), state, tag: 'Additional place: godown', occ: 'warehouse' });
+  if (['autoparts', 'pharma', 'textile', 'garments'].includes(a.k) && kind !== 'prop' || isDemoShop) places.push({ addr: isDemoShop ? `Godown, No. 3, 5th Main, ${area[(h >>> 6) % area.length]}` : `Warehouse ${1 + h % 9}, Logistics Park, ${area[(h >>> 6) % area.length]}`, city, pin: String(Number(pin) + 3), state, tag: 'Additional place: godown', occ: 'warehouse' });
   const aato = turnover <= crore(1.5) ? 'Up to ₹1.5 crore' : turnover <= crore(5) ? '₹1.5 crore to ₹5 crore' : turnover <= crore(25) ? '₹5 crore to ₹25 crore' : turnover <= crore(100) ? '₹25 crore to ₹100 crore' : '₹100 crore to ₹500 crore';
   const months = Array.from({ length: 12 }, (_, i) => { const seas = 1 + 0.18 * Math.sin((i + (h % 12)) / 12 * 2 * Math.PI) + (a.k === 'garments' && (i === 9 || i === 10) ? 0.35 : 0); return roundTo(turnover / 12 * seas, 1000); });
-  const filed = isDemoFac || isDemoShop ? 12 : 12 - ((h >> 13) % 7 === 0 ? 3 : (h >> 13) % 3 === 0 ? 1 : 0);
+  const filed = isDemoFac || isDemoShop ? 12 : 12 - ((h >>> 13) % 7 === 0 ? 3 : (h >>> 13) % 3 === 0 ? 1 : 0);
   const purchases = roundTo(turnover * (a.occ === 'office' ? 0.25 : a.occ.startsWith('shop') ? 0.68 : 0.58), 1e5);
-  const gst = { gstin: id.gstin || gstinMake(st, pan), legal, trade, pan, ent, constitution: ENT[ent], status: 'Active', since: new Date(since, (h >> 2) % 12, 1 + h % 27), places, nature: a.nature, hsn: a.hsn, aato, mobile: '9' + String(800000000 + h % 199999999).slice(0, 9), filed, months, turnover: months.reduce((x, y) => x + y, 0), purchases };
+  const gst = { gstin: id.gstin || gstinMake(st, pan), legal, trade, pan, ent, constitution: ENT[ent], status: 'Active', since: new Date(since, (h >>> 2) % 12, 1 + h % 27), places, nature: a.nature, hsn: a.hsn, aato, mobile: '9' + String(800000000 + h % 199999999).slice(0, 9), filed, months, turnover: months.reduce((x, y) => x + y, 0), purchases };
   const mca = company || ent === 'llp' ? (() => {
-    const pat = roundTo(gst.turnover * (0.04 + ((h >> 15) % 7) / 100), 1e5), nw = roundTo(gst.turnover * (0.22 + ((h >> 17) % 20) / 100), 1e5);
-    const sur = (h >> 19) % 2 ? 'Kulkarni' : 'Deshpande', names = isDemoFac ? ['Pranav Kulkarni', 'Meera Kulkarni', 'Suresh Iyer'] : [`${FIRST.M[h % 8]} ${sur}`, `${FIRST.F[(h >> 3) % 8]} ${sur}`, `${FIRST.M[(h >> 6) % 8]} Rao`].slice(0, 2 + (h >> 21) % 2);
+    const pat = roundTo(gst.turnover * (0.04 + ((h >>> 15) % 7) / 100), 1e5), nw = roundTo(gst.turnover * (0.22 + ((h >>> 17) % 20) / 100), 1e5);
+    const sur = (h >>> 19) % 2 ? 'Kulkarni' : 'Deshpande', names = isDemoFac ? ['Pranav Kulkarni', 'Meera Kulkarni', 'Suresh Iyer'] : [`${FIRST.M[h % 8]} ${sur}`, `${FIRST.F[(h >>> 3) % 8]} ${sur}`, `${FIRST.M[(h >>> 6) % 8]} Rao`].slice(0, 2 + (h >>> 21) % 2);
     return { cin: id.cin || (isDemoFac ? DEMO_BIZ.factory.cin : '') || `U${a.nic}${({ '27': 'MH', '29': 'KA', '07': 'DL', '33': 'TN', '36': 'TG', '24': 'GJ', '19': 'WB', '06': 'HR', '09': 'UP' }[st] || 'MH')}${since}PTC${String(100000 + h % 899999)}`, listed, status: 'Active', inc: gst.since, fy: `${YEAR - 1}-${String(YEAR).slice(2)}`,
       revenue: gst.turnover, pat, nw, fixed: roundTo(gst.turnover * (a.occ === 'office' ? 0.08 : 0.32), 1e5), inventory: roundTo(gst.turnover * (a.occ === 'office' ? 0 : 0.14), 1e5), borrow: roundTo(gst.turnover * 0.12, 1e5), standing: roundTo(gst.turnover * 0.19, 1e5),
-      directors: names.map((n, i) => ({ name: n, din: `0${String(7000000 + (h >> i) % 999999).slice(0, 7)}`, since: since + i })), subs: isDemoFac ? 1 : 0, charges: 1 + (h >> 23) % 2, filings: 'Up to date' };
+      directors: names.map((n, i) => ({ name: n, din: `0${String(7000000 + (h >>> i) % 999999).slice(0, 7)}`, since: since + i })), subs: isDemoFac ? 1 : 0, charges: 1 + (h >>> 23) % 2, filings: 'Up to date' };
   })() : null;
   const msme = turnover <= crore(10) ? 'Micro' : turnover <= crore(100) ? 'Small' : 'Medium';
   const udyam = { no: id.udyam || `UDYAM-${({ '27': 'MH', '29': 'KA', '07': 'DL', '33': 'TN', '36': 'TS', '24': 'GJ', '19': 'WB', '06': 'HR', '09': 'UP' }[st] || 'KA')}-${String(1 + h % 30).padStart(2, '0')}-${String(1000000 + h % 8999999)}`, cat: msme, nic: a.nic, staff, pm: roundTo(gst.turnover * (a.occ === 'office' ? 0.06 : a.occ.startsWith('shop') ? 0.04 : 0.28), 1e5) };
@@ -8188,10 +8244,10 @@ function smeLookup(b) {
   const epfo = staff >= 20 || kind !== 'prop' ? { est: `${({ '27': 'PUPUN', '29': 'KNBNG', '07': 'DLCPM', '33': 'TNMAS', '36': 'APHYD' }[st] || 'KNBNG')}${String(100000 + h % 899999)}000`, staff, wages: roundTo(Object.entries(a.mix).reduce((s, [k, f]) => s + f * staff * (wage[k] || 18000), 0), 1000), lastEcr: addDays(TODAY, -(TODAY.getDate() + 5)) } : null;
   const esic = { covered: esicN };
   const ewayN = a.occ === 'office' ? 0 : Math.round(gst.turnover / (a.occ.startsWith('shop') ? 2.6e5 : 6.5e5));
-  const eway = ewayN ? { n: ewayN, value: roundTo(gst.turnover * (a.occ.startsWith('shop') ? 0.35 : 0.82), 1e5), max: roundTo(gst.turnover * (a.occ.startsWith('shop') ? 0.02 : 0.012), 1e4), road: 0.92, top: [state, (h >> 2) % 2 ? 'Karnataka' : 'Tamil Nadu'] } : null;
-  const tradeData = a.imp || a.exp ? { iec: pan, imp: a.imp ? { n: 6 + h % 30, value: roundTo(gst.turnover * 0.14, 1e5), from: COUNTRIES.imp.slice(h % 3, h % 3 + 2), port: PORTS[h % PORTS.length] } : null, exp: a.exp ? { n: 10 + h % 50, value: roundTo(gst.turnover * 0.22, 1e5), to: COUNTRIES.exp.slice(h % 3, h % 3 + 2), port: PORTS[(h >> 1) % 3] } : null } : null;
-  const bureau = { rank: isDemoShop ? 3 : isDemoFac ? 2 : 2 + (h >> 25) % 6, overdue: !isDemoShop && !isDemoFac && (h >> 27) % 9 === 0 };
-  const courts = { cases: isDemoFac ? 1 : (h >> 26) % 5 === 0 ? 1 : 0, ibc: false, kind: 'commercial recovery suit filed by the company' };
+  const eway = ewayN ? { n: ewayN, value: roundTo(gst.turnover * (a.occ.startsWith('shop') ? 0.35 : 0.82), 1e5), max: roundTo(gst.turnover * (a.occ.startsWith('shop') ? 0.02 : 0.012), 1e4), road: 0.92, top: [state, (h >>> 2) % 2 ? 'Karnataka' : 'Tamil Nadu'] } : null;
+  const tradeData = a.imp || a.exp ? { iec: pan, imp: a.imp ? { n: 6 + h % 30, value: roundTo(gst.turnover * 0.14, 1e5), from: COUNTRIES.imp.slice(h % 3, h % 3 + 2), port: PORTS[h % PORTS.length] } : null, exp: a.exp ? { n: 10 + h % 50, value: roundTo(gst.turnover * 0.22, 1e5), to: COUNTRIES.exp.slice(h % 3, h % 3 + 2), port: PORTS[(h >>> 1) % 3] } : null } : null;
+  const bureau = { rank: isDemoShop ? 3 : isDemoFac ? 2 : 2 + (h >>> 25) % 6, overdue: !isDemoShop && !isDemoFac && (h >>> 27) % 9 === 0 };
+  const courts = { cases: isDemoFac ? 1 : (h >>> 26) % 5 === 0 ? 1 : 0, ibc: false, kind: 'commercial recovery suit filed by the company' };
   const news = { adverse: false };
   const rating = company && gst.turnover > crore(25) ? { grade: ['BBB', 'BBB+', 'A-'][h % 3], outlook: 'Stable' } : null;
   return { gst, mca, udyam, epfo, esic, eway, trade: tradeData, bureau, courts, news, rating, arch: a.k, sector: a.sector, occ: a.occ, comm: a.comm, mix: a.mix, wage, owner };
@@ -8241,6 +8297,7 @@ const ADD_INFO = {
 function smeCalc(s, o = {}) {
   s = s || S; const b = s.biz; if (!b) return null;
   const p = b.p, C = CFG.sme, plan = o.plan || b.plan || defaultPlan(b), adds = o.adds || b.addons, rows = [];
+  if (p === 'home') return homeCalc(s, o);
   const loadPct = b.uw && b.uw.loadPct ? b.uw.loadPct : 0;
   let net = 0, si = 0, info = {};
   const add = (label, amt) => { amt = Math.round(amt); if (!amt) return; rows.push([label, amt]); net += amt; };
@@ -8338,8 +8395,9 @@ function smeCalc(s, o = {}) {
 const trimZ = s => s.includes('.') ? s.replace(/\.?0+$/, '') : s;
 const siLabelL = v => v >= 1e7 ? `₹${trimZ((v / 1e7).toFixed(2))} crore` : v >= 1e5 ? `₹${trimZ((v / 1e5).toFixed(2))} lakh` : inr(v);
 function defaultPlan(b) { return b.p === 'marine' ? 'allrisk' : b.p === 'lop' || b.p === 'dno' ? 'standard' : 'recommended'; }
-const planList = b => b.p === 'fire' ? (b.who === 'ind' ? PLANS.home : PLANS.fire) : b.p === 'marine' ? (b.who === 'ind' ? PLANS.marine.filter(x => x[0] !== 'standard') : PLANS.marine) : b.p === 'wc' ? PLANS.wc : null;
+const planList = b => b.p === 'home' ? PLANS.homeIns : b.p === 'fire' ? (b.who === 'ind' ? PLANS.home : PLANS.fire) : b.p === 'marine' ? (b.who === 'ind' ? PLANS.marine.filter(x => x[0] !== 'standard') : PLANS.marine) : b.p === 'wc' ? PLANS.wc : null;
 const addList = b => {
+  if (b.p === 'home') return homeAddList(b);
   if (b.p === 'fire') return b.who === 'ind' ? [] : ['rent', 'money', 'liability'].filter(k => k !== 'rent' || b.fire.own === 'own');
   if (b.p === 'lop') return ['supplier', 'utilities', 'access'];
   if (b.p === 'marine') return b.who === 'ind' ? ['storage'] : [...(b.marine.transits.has('import') || b.marine.transits.has('export') || (b.marine.kind === 'single' && b.marine.single.kind !== 'inland') ? ['war'] : []), 'srcc', 'storage'];
@@ -8352,7 +8410,8 @@ const needsUw = b => !!b && (b.p === 'dno' || !!(b.uw && b.uw.status === 'refer'
 
 /* ---------- digital underwriting: what the data says, and what happens next ---------- */
 function smeUw(s) {
-  s = s || S; const b = s.biz, src = b.src, p = b.p, R = []; let status = 'standard', load = 0;
+  s = s || S; if (s.biz.p === 'home') return homeUw(s);
+  const b = s.biz, src = b.src, p = b.p, R = []; let status = 'standard', load = 0;
   const ok = (t, from) => R.push({ tone: 'ok', t, from }), warn = (t, from) => R.push({ tone: 'warn', t, from }), bad = (t, from) => R.push({ tone: 'bad', t, from });
   const refer = (t, from) => { warn(t, from); if (status !== 'decline') status = 'refer'; };
   if (b.who === 'biz' && src) {
@@ -8458,7 +8517,7 @@ function smeIds() {
   const b = S.biz, p = S.product; if (!b) return [];
   const ind = b.who === 'ind', head = ['bwho', ...(ind ? [] : ['bid', 'bfetch'])];
   const tail = needsUw(b) ? ['kyc', 'dsubmit', 'bsent', 'dterms'] : ['kyc', 'breview'];
-  const mid = { fire: ['bloc', 'fhome', 'fwhat', 'fval', 'fprot'], lop: ['bloc', 'lmd', 'fwhat', 'fval', 'fprot', 'lgp', 'lip'], marine: ['mmove', 'mtype', 'mcargo', 'mship'], wc: ['wstaff'], dno: ['dco', 'dlimit'] }[p] || [];
+  const mid = { home: ['hmown', 'hmloc', 'hmfind', 'hmbuild', 'hmcont', 'hmcarry', 'hmsafe', 'hmwell'], fire: ['bloc', 'fhome', 'fwhat', 'fval', 'fprot'], lop: ['bloc', 'lmd', 'fwhat', 'fval', 'fprot', 'lgp', 'lip'], marine: ['mmove', 'mtype', 'mcargo', 'mship'], wc: ['wstaff'], dno: ['dco', 'dlimit'] }[p] || [];
   return [...head, ...mid, 'buw', 'bsurvey', 'bplan', 'bquote', ...tail, 'done'];
 }
 const fireOn = () => S.biz && S.biz.who === 'biz' && (S.product === 'fire' || (S.product === 'lop' && S.biz.lop.withFire));
@@ -9225,11 +9284,11 @@ STEP.bsurvey = {
   label: 'Video survey',
   when: () => !!(S.biz && S.biz.uw && S.biz.uw.status === 'survey'),
   view() {
-    const b = B(), V = b.survey;
+    const b = B(), V = b.survey, SH = b.p === 'home' ? HOME_SHOTS : SURVEY_SHOTS;
     return {
       say: 'Walk around with your phone and take these four photos. I check them as they come in.',
-      title: 'A quick look at the place',
-      body: `<ol class="sm-shots">${SURVEY_SHOTS.map(([k, t]) => `<li><span class="sm-dot ${V && V.done ? 'ok' : ''}">${V && V.done ? ICO.check : ''}</span>${esc(t)}</li>`).join('')}</ol>
+      title: b.p === 'home' ? 'A quick look at your home' : 'A quick look at the place',
+      body: `<ol class="sm-shots">${SH.map(([k, t]) => `<li><span class="sm-dot ${V && V.done ? 'ok' : ''}">${V && V.done ? ICO.check : ''}</span>${esc(t)}</li>`).join('')}</ol>
         <label class="doc-tile">${ART.doc('rc')}<span><b>${V && V.done ? '4 photos checked' : 'Take or upload 4 photos'}</b><small>Select all four together</small></span><input type="file" accept="image/*" capture="environment" multiple aria-label="Upload the four photos"></label>
         <div data-x="st">${V && V.done ? surveyHtml(V) : ''}</div>`,
       next: 'Continue',
@@ -9243,7 +9302,7 @@ STEP.bsurvey = {
       if (n < 4) { api.err(`I need 4 photos and got ${n}. Select all four together.`); return; }
       api.err(''); api.body.querySelector('[data-x=st]').innerHTML = '<div class="reading"><span class="spin"></span>Checking the photos…</div>';
       await sleep(REDUCED ? 100 : 1600); if (S.cur !== 'bsurvey') return;
-      b.survey = { done: true, at: new Date(), n, checks: [['Housekeeping', 'Tidy, with clear aisles and exits'], ['Fire extinguishers', b.fire.ext === 'yes' ? 'Two seen, pins and seals in place' : 'None seen. Keeping two in date is a condition of cover'], ['Electrical panel', 'Closed, no loose wiring seen'], ['Storage', 'Goods on racks, off the floor']] };
+      b.survey = { done: true, at: new Date(), n, checks: b.p === 'home' ? homeSurveyChecks(b) : [['Housekeeping', 'Tidy, with clear aisles and exits'], ['Fire extinguishers', b.fire.ext === 'yes' ? 'Two seen, pins and seals in place' : 'None seen. Keeping two in date is a condition of cover'], ['Electrical panel', 'Closed, no loose wiring seen'], ['Storage', 'Goods on racks, off the floor']] };
       api.body.querySelector('[data-x=st]').innerHTML = surveyHtml(b.survey); $$('.sm-shots .sm-dot', api.body).forEach(d => { d.classList.add('ok'); d.innerHTML = ICO.check; });
       jlog('Video survey photos checked'); api.setNext('Continue', true);
     });
@@ -9282,6 +9341,7 @@ STEP.bplan = {
 };
 function smeCovered(b) {
   const p = b.p;
+  if (p === 'home') return homeCovered(b);
   if (p === 'fire') return b.who === 'ind' ? ['Fire, lightning, explosion and aircraft damage', 'Storm, cyclone, flood and inundation', 'Earthquake, landslide and subsidence', 'Riots, strikes, malicious damage and terrorism', 'Theft within 7 days of any of these', 'Rent for another home while yours is repaired', 'Your contents, up to 20% of the building without a list'] : ['Fire, lightning, explosion and aircraft damage', 'Storm, cyclone, flood and inundation', 'Earthquake, landslide and subsidence', 'Riots, strikes, malicious damage and terrorism', 'Impact damage, bursting of tanks and sprinkler leakage', 'Removal of debris and professional fees after a loss'];
   if (p === 'lop') return ['Gross profit lost while the business is disrupted by an insured event', 'Extra costs to keep trading, like renting another place', 'For as long as the indemnity period you chose', ...(b.lop.withFire ? ['The property itself, against fire and allied perils'] : [])];
   if (p === 'marine') return b.who === 'ind' ? ['Your goods from packing to unpacking', 'Accident, overturning, fire and collision', b.plan === 'allrisk' ? 'Breakage and damage in handling' : 'Loss of the whole consignment'] : ['Goods in transit, from the warehouse to the destination', 'Loading and unloading', 'Accident, fire, overturning and collision', 'General average and salvage charges', ...(b.plan === 'allrisk' ? ['Any accidental loss or damage, including theft and breakage'] : [])];
@@ -9290,6 +9350,7 @@ function smeCovered(b) {
 }
 function smeExcluded(b) {
   const p = b.p;
+  if (p === 'home') return homeExcluded(b);
   if (p === 'fire' || p === 'lop') return ['Wear and tear, and gradual deterioration', 'Theft not following an insured event, unless burglary is added', 'Electrical breakdown of machines, unless it\'s added', 'Loss when the place is left unoccupied for over 30 days'];
   if (p === 'marine') return ['Bad packing, and the nature of the goods', 'Delay, even from an insured event', 'Wilful misconduct', 'Wear and tear and ordinary leakage'];
   if (p === 'wc') return ['Injury when the worker is drunk or on drugs', 'Wilful disobedience of a safety rule', 'Employees covered by ESIC', 'Contract workers, unless added'];
@@ -9301,11 +9362,11 @@ STEP.bquote = {
   view() {
     const b = B(), c = smeCalc(); b.quoteNo = b.quoteNo || `NX-${SME[b.p].code}Q-${code(6)}`;
     const uw = needsUw(b), period = smePeriod(b);
-    const rows = c.rows.map(r => [r[0], inr(r[1])]).concat([['GST at 18%', inr(c.gst)], { cells: ['Total', inr(c.total)], bold: true }]);
+    const rows = c.rows.map(r => [r[0], sinr(r[1])]).concat([['GST at 18%', inr(c.gst)], { cells: ['Total', inr(c.total)], bold: true }]);
     return {
       say: uw ? 'This is an indicative price. The underwriter confirms it, and you pay only once you\'ve seen the final terms.' : 'Here\'s your price. No hidden charges.',
-      title: `${esc(SME[b.p].short)}${b.who === 'ind' ? '' : ` for ${esc(bizName(b))}`}`,
-      body: `<div class="price-hero"><b>${priceTxt(c)}</b><span>${c.range ? 'indicative, with GST' : period.single ? 'for this shipment, with GST' : 'for 1 year, with GST'}</span></div>
+      title: b.p === 'home' ? `Home insurance for ${esc(b.loc.addr.split(',')[0])}` : `${esc(SME[b.p].short)}${b.who === 'ind' ? '' : ` for ${esc(bizName(b))}`}`,
+      body: `<div class="price-hero"><b>${priceTxt(c)}</b><span>${c.range ? 'indicative, with GST' : `${smePer(b)}, with GST`}</span></div>
         ${factList(smeFacts(b, c))}
         <details class="more" ${uw ? '' : 'open'}><summary>Premium breakdown</summary><div><table class="brk"><tbody>${rows.map(x => { const cl = x.cells || x; return `<tr class="${x.bold ? 'sum' : ''}"><td>${esc(cl[0])}</td><td>${esc(cl[1])}</td></tr>`; }).join('')}</tbody></table></div></details>
         <details class="more"><summary>What's covered, and what isn't</summary><div class="cols"><div><span class="sec-h">Covered</span><ul class="ticks">${smeCovered(b).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div><div><span class="sec-h">Not covered</span><ul class="crosses">${smeExcluded(b).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div></div></details>
@@ -9319,13 +9380,16 @@ STEP.bquote = {
   cmd(t) { const l = t.toLowerCase(); if (/download|pdf/.test(l)) { press('[data-a=pdf]'); return ''; } if (/buy|yes|continue|go ahead/.test(l)) { press('.btn-next'); return ''; } return null; },
 };
 // when cover starts and ends
+const smePer = b => b.p === 'home' ? (homeTermOf(b) > 1 ? `for ${homeTermOf(b)} years` : 'for 1 year') : smePeriod(b).single ? 'for this shipment' : 'for 1 year';
 function smePeriod(b) {
+  if (b.p === 'home') { const st = addDays(TODAY, 1), n = homeTermOf(b), en = addDays(addYears(st, n), -1); return { start: st, end: en, text: `${fd(st)} to ${fd(en)}${n > 1 ? `, ${n} years` : ''}` }; }
   if (b.p === 'marine' && b.who === 'ind') { const d = fromIso(b.marine.move.date) || TODAY; return { start: d, end: addDays(d, 30), single: true, text: `${fd(d)}, till delivery at the new home, up to 30 days` }; }
   if (b.p === 'marine' && b.marine.kind === 'single') { const d = fromIso(b.marine.single.date) || TODAY; return { start: d, end: addDays(d, 60), single: true, text: `From dispatch on ${fd(d)} till delivery, up to 60 days` }; }
   const st = addDays(TODAY, 1); return { start: st, end: addDays(addYears(st, 1), -1), text: `${fd(st)} to ${fd(addDays(addYears(st, 1), -1))}` };
 }
 function smeFacts(b, c) {
   const p = b.p, out = [['Policy period', smePeriod(b).text]];
+  if (p === 'home') return out.concat(homeFacts(b, c));
   if (p === 'fire') { const si = fireSi(b); if (b.who === 'ind') out.push(['Policy', 'Bharat Griha Raksha'], si.building ? ['Building', siLabelL(si.building)] : null, ['Contents', siLabelL(si.contents)], si.valuables ? ['Valuables', siLabelL(si.valuables)] : null); else out.push(['Policy', bharatBand(c.si).name], ['Sum insured', siLabelL(c.si)], ['Place', `${b.loc.addr}, ${b.loc.pin}`]); }
   if (p === 'lop') out.push(['Gross profit insured', siLabelL(b.lop.gp)], ['Indemnity period', `${b.lop.ip} months`], b.lop.withFire ? ['Property insured', siLabelL(siTotal(fireSi(b)))] : ['Property cover', `${b.lop.mdIns}, ${b.lop.mdNo}`]);
   if (p === 'marine') out.push(b.who === 'ind' ? ['Goods', siLabelL(c.si)] : ['Cover', `${(PLANS.marine.find(x => x[0] === (b.plan || 'allrisk')) || [])[1]}, ${b.marine.kind === 'annual' ? `${siLabelL(c.si)} a year` : siLabelL(c.si)}`], b.who === 'biz' && b.marine.kind === 'annual' ? ['Largest consignment', siLabelL(b.marine.perBottom)] : null, ['Basis of value', b.who === 'ind' ? 'Replacement value you declared' : 'Invoice value plus 10%']);
@@ -9337,6 +9401,7 @@ function smeFacts(b, c) {
 /* ---------- review and pay, or send to the underwriter ---------- */
 function smeDecl(b) {
   const p = b.p, out = ['The details in this proposal, including those fetched from public records and with my consent, are true and complete, and I haven\'t hidden anything that matters to this insurance.'];
+  if (p === 'home') out.push(...homeDecl(b));
   if (p === 'fire' || (p === 'lop' && b.lop.withFire)) out.push(b.who === 'ind' ? 'The home is used only to live in, and is not left empty for more than 30 days at a time.' : 'The values insured are what it would cost to replace the property today. If they are lower, a claim is reduced in proportion.', 'I will keep the fire safety measures I declared in working order.');
   if (p === 'lop') out.push('I will declare the actual gross profit for the year when asked, with my accountant\'s certificate, and the premium will be adjusted.');
   if (p === 'marine') out.push(b.who === 'ind' ? 'The goods are my household goods, packed for transit, and the values are what it would cost to replace them.' : 'Goods will be packed suitably for the journey. For an open policy, I will declare every shipment each month, including those that arrive safely.');
@@ -9346,7 +9411,7 @@ function smeDecl(b) {
 }
 function smeReviewHtml(b) {
   const k = S.kyc, c = smeCalc();
-  return `<div class="rv-grid"><section class="rv"><h3>Insured</h3><p>${esc(b.who === 'ind' ? k.name : b.src.gst.legal)}</p><p class="muted">${esc(b.who === 'ind' ? `${k.addr}, ${k.city} ${k.pin}` : `GSTIN ${b.src.gst.gstin}`)}</p></section>
+  return `<div class="rv-grid"><section class="rv"><h3>Insured</h3><p>${esc(b.who === 'ind' ? k.name : b.src.gst.legal)}</p><p class="muted">${esc(b.p === 'home' ? `${b.loc.addr}, ${b.loc.pin}` : b.who === 'ind' ? `${k.addr}, ${k.city} ${k.pin}` : `GSTIN ${b.src.gst.gstin}`)}</p></section>
     <section class="rv"><h3>Cover</h3><p>${esc(SME[b.p].short)}</p><p class="muted">${esc(smePeriod(b).text)}</p></section>
     <section class="rv"><h3>${b.who === 'ind' ? 'Policyholder' : 'Signed by'}</h3><p>${esc(k.name)}</p><p class="muted">${esc(maskMobile(k.mobile))}</p></section></div>
     ${factList(smeFacts(b, c).slice(1))}`;
@@ -9414,7 +9479,8 @@ STEP.dsubmit = {
 function smeTerms(b) {
   const c = smeCalc(S, { plan: b.plan || defaultPlan(b) }), h = hash('terms' + (b.proposalNo || '')), net = roundTo(c.net * (0.95 + (h % 15) / 100), 100);
   const conds = [];
-  if (b.p === 'dno') { if (b.src.courts && b.src.courts.cases) conds.push('Prior and pending litigation: the recovery suit in the court records, and anything arising from it, is excluded.'); if (b.dno.us === 'yes') conds.push('Claims brought in the US or Canada have a retention of ₹25 lakh.'); conds.push(b.dno.existing === 'yes' && b.dno.retro ? `Retroactive date: ${fd(fromIso(b.dno.retro))}, continuing your existing cover.` : 'Retroactive date: full prior acts, for claims not known before the policy starts.'); conds.push(`Retention for claims the company pays back: ${siLabelL(Math.max(1e5, b.dno.limit * 0.01))}.`); }
+  if (b.p === 'home') conds.push(...homeTerms(b));
+  else if (b.p === 'dno') { if (b.src.courts && b.src.courts.cases) conds.push('Prior and pending litigation: the recovery suit in the court records, and anything arising from it, is excluded.'); if (b.dno.us === 'yes') conds.push('Claims brought in the US or Canada have a retention of ₹25 lakh.'); conds.push(b.dno.existing === 'yes' && b.dno.retro ? `Retroactive date: ${fd(fromIso(b.dno.retro))}, continuing your existing cover.` : 'Retroactive date: full prior acts, for claims not known before the policy starts.'); conds.push(`Retention for claims the company pays back: ${siLabelL(Math.max(1e5, b.dno.limit * 0.01))}.`); }
   else if (b.p === 'fire' || b.p === 'lop') { conds.push('A risk engineer visits within 30 days. Cover starts as soon as you pay.'); if (b.fire.claims === '2') conds.push('Each claim has an excess of 5% of the loss, at least ₹25,000.'); conds.push('Fire extinguishers are kept serviced and in date.'); }
   else if (b.p === 'marine') conds.push('Each consignment above ₹5 crore is declared before dispatch.', 'Goods travel in sealed containers or covered vehicles.');
   else conds.push('Wages are declared at the end of the year, and the premium is adjusted.');
@@ -9454,7 +9520,7 @@ STEP.dterms = {
     const b = B(), t = b.terms, c = smeCalc();
     return {
       say: 'Here are the underwriter\'s terms. Accept them and pay, and the policy is issued straight away.', title: 'Your terms',
-      body: `<div class="price-hero"><b>${inr(c.total)}</b><span>for 1 year, with GST</span></div>
+      body: `<div class="price-hero"><b>${inr(c.total)}</b><span>${smePer(b)}, with GST</span></div>
         ${factList(smeFacts(b, c))}
         <div class="fld"><span>Conditions</span><ol class="decl">${t.conds.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div>
         <p class="hint">These terms are valid till ${fd(t.validTill)}. ${esc(t.by)}.</p>
@@ -9474,13 +9540,13 @@ STEP.dterms = {
 
 /* ---------- after payment ---------- */
 function smeDoneView() {
-  const b = B(), c = smeCalc(), others = { fire: ['lop', 'wc'], lop: ['wc', 'marine'], marine: ['fire', 'wc'], wc: ['fire', 'lop'], dno: ['fire', 'wc'] }[b.p].filter(x => b.who === 'biz' || SME[x].who.includes('ind'));
+  const b = B(), c = smeCalc(), others = { home: ['wc', 'marine'], fire: ['lop', 'wc'], lop: ['wc', 'marine'], marine: ['home', 'fire', 'wc'], wc: ['home', 'fire', 'lop'], dno: ['fire', 'wc'] }[b.p].filter(x => SME[x].who.includes(b.who)).slice(0, 2);
   return {
     say: null, title: '', back: false, next: null, foot: false,
     body: `<div class="done-hero"><span class="done-badge">${ICO.check}</span><h1 class="q-title" tabindex="-1">You're covered, ${esc(first(S.kyc.name))}</h1><p class="q-help" style="margin:0">${esc(SME[b.p].short)}${b.who === 'biz' ? ` for ${esc(bizName(b))}` : ''}, from ${fd(b.period.start)}.</p></div>
       <div class="found"><span class="muted">Policy number</span><span class="pol-no">${esc(b.policyNo)}</span>${factList([...smeFacts(b, c), ['Premium paid', inr(S.paid.amount)], ['Payment', `${S.paid.method}, ${S.paid.txn}`]])}</div>
       ${doneManage('policy')}
-      ${others.map(p => `<button type="button" class="xsell" data-sx="${p}"><span class="sm-xs-ic">${p === 'wc' ? SICO.users : p === 'marine' ? SICO.truck : SICO.shop}</span><span><b>${esc(SME[p].short)}</b><span class="muted">${b.who === 'biz' ? 'Your business details are already filled in.' : 'Your details are already filled in.'}</span></span><span class="go">${ICO.right}</span></button>`).join('')}`,
+      ${others.map(p => `<button type="button" class="xsell" data-sx="${p}"><span class="sm-xs-ic">${p === 'wc' ? SICO.users : p === 'marine' ? SICO.truck : p === 'home' ? SICO.home : SICO.shop}</span><span><b>${esc(b.who === 'ind' ? ({ wc: 'Your staff at home', marine: 'Moving home' }[p] || SME[p].short) : SME[p].short)}</b><span class="muted">${b.who === 'biz' ? 'Your business details are already filled in.' : 'Your details are already filled in.'}</span></span><span class="go">${ICO.right}</span></button>`).join('')}`,
   };
 }
 function smeCross(p) {
@@ -9505,20 +9571,845 @@ function smePdf(kind) {
   else if (k) d.kv([['Name', k.name], ['KYC', `${kycLabel(k)} ${k.idMasked}`], ['Address', `${k.addr}, ${k.city} ${k.pin}`], ['Mobile', maskMobile(k.mobile)]]);
   d.h2('Cover');
   d.kv(smeFacts(b, c).map(([x, y]) => [x, String(y)]));
+  if (b.p === 'home') homePdf(d, b, c);
   if (b.loc && b.loc.hz && (b.p === 'fire' || b.p === 'lop')) { d.h2('The place'); d.kv([['Address', `${b.loc.addr}, ${b.loc.city || ''} ${b.loc.pin}`], ['Occupancy', b.who === 'ind' ? 'Home' : OCC[b.fire.occ].label], ['Flood, earthquake, cyclone', `${hzWord(b.loc.hz.flood)}, ${hzWord(b.loc.hz.quake)}, ${hzWord(b.loc.hz.cyclone)}`], ['Nearest fire station', `About ${b.loc.hz.station} km`]]); }
   if (b.p === 'wc') { d.h2('People covered'); d.table([{ t: 'Kind of work', w: 0.5 }, { t: 'People', w: 0.2, right: true }, { t: 'Monthly wage', w: 0.3, right: true }], b.wc.rows.filter(r => Number(r.n) > 0).map(r => [WC_KIND[r.k], String(r.n), inr(r.wage)])); }
   d.h2('Premium');
-  d.table([{ t: 'Item', w: 0.72 }, { t: 'Amount', w: 0.28, right: true }], c.rows.map(r => [r[0], inr(r[1])]).concat([['GST at 18%', inr(c.gst)], { cells: ['Total', inr(c.total)], bold: true }]));
+  d.table([{ t: 'Item', w: 0.72 }, { t: 'Amount', w: 0.28, right: true }], c.rows.map(r => [r[0], sinr(r[1])]).concat([['GST at 18%', inr(c.gst)], { cells: ['Total', inr(c.total)], bold: true }]));
   d.band(isPol ? 'Premium paid' : c.range ? 'Indicative premium' : 'Total premium', c.range && !isPol ? `${inr(c.range[0])} to ${inr(c.range[1])}` : inr(isPol ? S.paid.amount : c.total), isPol ? `On ${fd(TODAY)} by ${S.paid.method}, transaction ${S.paid.txn}` : c.range ? 'An underwriter confirms the final premium' : 'Including GST');
   if (isPol && b.terms) { d.h2('Conditions agreed with the underwriter'); d.bullets(b.terms.conds); }
   d.h2("What's covered"); d.bullets(smeCovered(b));
   d.h2('Not covered'); d.bullets(smeExcluded(b));
   if (b.uw) { d.h2('How this was underwritten'); d.bullets(b.uw.reasons.map(r => `${r.t}${r.from ? ` (${r.from})` : ''}`)); }
+  if (b.p === 'home' && b.home.fetchedAt) d.para(`Home details were fetched on ${fdt(b.home.fetchedAt)} from the property record, ${b.home.rec.rera ? 'the RERA register, ' : ''}map imagery and hazard maps${b.home.consent.loan ? ', and, with consent, the credit report' : ''}.`, { color: d.C.mute });
   if (b.who === 'biz' && b.fetchedAt) d.para(`Business details were fetched on ${fdt(b.fetchedAt)} from ${listText(smeSrcs(b).filter(x => !SRC_CONSENT.includes(x) || b.consent[x]).map(x => SRC_DEF[x][0]))}${smeSrcs(b).some(x => SRC_CONSENT.includes(x) && b.consent[x]) ? ', the last with consent' : ''}.`, { color: d.C.mute });
   if (isPol || isAck) pdfDecl(d, smeDecl(b), isPol ? S.paid.at : b.submittedAt);
   d.para(isPol ? 'Keep this schedule with the policy wording. For a claim, share the policy number.' : isAck ? 'You pay only once you accept the underwriter\'s terms.' : `This quote is valid till ${fd(addDays(TODAY, 15))} for the details above.`, { color: d.C.mute });
   return d.finish(FOOT);
 }
+
+/* ================= Home insurance for an individual: the building, what's in it, valuables, and things carried outside =================
+   The same shape as the other journeys: whose home and where → what the property records, RERA and the maps already know →
+   only what can't be fetched → digital underwriting → the policy (Bharat Griha Raksha, or Standard Fire and Special Perils)
+   and plan → quote → KYC → pay. Home wellness adds connected sensors and preventive services.
+   Record lookups are simulated for the demo. Rates, discounts, estimates and automatic limits in CFG.home are illustrative
+   parameters, to be replaced with filed rates and the underwriting authority matrix. The Bharat Griha Raksha rules used
+   (rebuild-cost basis with no under-insurance, contents at 20% of the building up to ₹10 lakh without a list, valuables
+   without a valuation certificate up to ₹5 lakh and ₹1 lakh a piece, sum insured growing 10% a year, terms up to 10 years,
+   ₹5 lakh personal accident cover for the insured and spouse) follow the IRDAI guidelines for the standard product. */
+
+SME.home = { name: 'Home insurance', short: 'Home insurance', code: 'HM', who: ['ind'], noun: 'home' };
+SME.fire.who = ['biz'];
+PROD_SUB.fire = 'Your shop, factory, office or warehouse';
+PROD_SUB.home = 'Your flat or house, what\'s in it, and what you carry';
+PROD_ICO.home = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+
+CFG.home = {
+  // ₹ per sq ft to rebuild, by city zone and finish; interiors only, as a share of it, when the society insures the structure
+  rebuild: { metro: { standard: 2400, premium: 3200, luxury: 4500 }, other: { standard: 1900, premium: 2600, luxury: 3600 } },
+  interiors: 0.35,
+  carpet: { flat: 0.78, house: 0.85, villa: 0.85 },        // carpet area as a share of the built-up area on the record
+  contentsAuto: { pct: 0.20, max: 1000000 },              // Bharat Griha Raksha: 20% of the building, up to ₹10 lakh
+  valNoCert: { total: 500000, item: 100000 },             // Bharat Griha Raksha: no valuation certificate up to these
+  contentsEst: { 1: 300000, 2: 500000, 3: 800000, 4: 1200000 },
+  // ₹ per ₹1,000 of sum insured a year
+  bgr: { building: 0.22, contents: 0.30, valuables: 0.60 },
+  sfsp: { building: 0.20, contents: 0.28, valuables: 0.55, quake: 0.05, terror: 0.03, mvDep: 0.015, mvFloor: 0.5, excess: 10000 },
+  adds: { burglary: 1.0, breakdown: 0.8, accidental: 0.12, liability: 600, pa: 250, rent: 0.10 },
+  // all risks: % of the item's value a year; abroad costs more
+  allrisk: { phone: 3.0, laptop: 2.5, tablet: 2.5, camera: 2.0, watch: 1.5, jewel: 1.2, bicycle: 3.0, hearing: 2.0, music: 2.0, other: 2.0 },
+  worldwide: 0.30, allriskExcess: 1000,
+  load: { claim1: 15, flood: 10, old: 10 },
+  term: { 1: 0, 3: 0.075, 5: 0.125 },
+  well: { pct: { smoke: 2.5, leak: 2.5, door: 2.0 }, max: 7, callouts: 2 },
+  limits: { survey: 5e7, refer: 25e7, valRefer: 25e5, oldSurvey: 40, oldRefer: 60, minBuild: 500000 },
+  minPrem: 500,
+};
+const HICO = {
+  key: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="14" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 11l8-8M16 6l2 2M14 8l2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+  box: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l9-4 9 4v9l-9 4-9-4z M3 8l9 4 9-4M12 12v9" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
+};
+const VAL_KIND = { gold: 'Gold jewellery', diamond: 'Diamond jewellery', silver: 'Silver', watch: 'Watches', art: 'Art and antiques' };
+const CARRY_KIND = { phone: 'Phone', laptop: 'Laptop', tablet: 'Tablet', camera: 'Camera', watch: 'Watch', jewel: 'Jewellery you wear', bicycle: 'Bicycle', hearing: 'Hearing aid', music: 'Musical instrument', other: 'Something else' };
+const HOME_EXTRAS = [['wall', 'Compound wall and gate'], ['porch', 'Garage or car porch'], ['solar', 'Solar panels'], ['tank', 'Water tank and sump']];
+const LENDERS = ['State Bank of India', 'Canara Bank', 'Bank of Baroda', 'Union Bank of India', 'Punjab National Bank', 'Axis Bank'];
+const DEMO_HOME = {
+  flat: { label: 'a flat in Bengaluru', type: 'flat', addr: 'Flat 704, Lake View Apartments, HSR Layout', pin: '560102' },
+  house: { label: 'a house in Pune', type: 'house', addr: 'Plot 12, Sahyadri Housing Society, Baner', pin: '411045' },
+};
+const FINISH = [['standard', 'Standard'], ['premium', 'Premium'], ['luxury', 'Luxury']];
+
+function newHome() {
+  return { own: null, type: null, pinPre: '', pid: '', mobile: '', consent: { loan: true }, rec: null, fetchedAt: null, floor: null,
+    area: '', areaFrom: '', finish: 'standard', socIns: false, extras: {}, building: 0, buildTouched: false,
+    contents: 0, contentsMore: false, bhk: null, valOn: false, vals: [], cert: null,
+    carryOn: null, carry: [], world: false,
+    sec: new Set(), empty: null, work: null, claims: null, loan: null, lender: '',
+    well: { prov: null, provName: '', devices: [], at: null },
+    wording: 'bgr', basis: 'rv', perils: new Set(['quake', 'terror']), term: 1 };
+}
+const HM = () => S.biz && S.biz.home;
+const isHome = () => S.product === 'home' && !!S.biz;
+const homeOwner = b => (b || B()).home.own !== 'rent';
+const homeDemoOf = L => { if (!L) return null; const a = (L.addr || '').toLowerCase(); return L.pin === DEMO_HOME.flat.pin && a.includes('lake view') ? 'flat' : L.pin === DEMO_HOME.house.pin && a.includes('sahyadri') ? 'house' : null; };
+// the floor, read from a flat number like 704 or B-1203
+function floorOf(addr) { const m = String(addr || '').match(/\b(?:flat|apartment|apt|unit|door)\s*(?:no\.?\s*)?(?:[a-z]\s*-?\s*)?(\d{3,4})\b/i); if (!m) return null; return Number(m[1].slice(0, m[1].length - 2)); }
+const floorBand = n => n == null ? null : n <= 0 ? 'g' : n <= 3 ? 'low' : 'high';
+
+/* ---------- what the records say about a home: simulated, the same each time for the same address ---------- */
+function homeLookup(b) {
+  const H = b.home, L = b.loc, demo = homeDemoOf(L), h = hash('home' + (H.pid || '') + L.addr.toLowerCase().replace(/\s+/g, ' ') + L.pin);
+  const flat = H.type === 'flat', villa = H.type === 'villa', city = pinZone(L.pin).city || L.city || '';
+  const built = demo === 'flat' ? 2018 : demo === 'house' ? 1996 : flat ? 1994 + h % 30 : 1980 + h % 44;
+  const builtUp = demo === 'flat' ? 1410 : demo === 'house' ? 2650 : roundTo(flat ? 900 + h % 1400 : villa ? 2600 + h % 2400 : 1600 + h % 2600, 10);
+  const floors = flat ? (demo === 'flat' ? 14 : 4 + (h >>> 4) % 19) : villa ? 3 : 2 + (h >>> 4) % 2;
+  const owner = demo === 'flat' ? 'Priya Sharma' : demo === 'house' ? 'Arjun Kulkarni' : `${FIRST[(h >>> 2) % 3 ? 'M' : 'F'][(h >>> 5) % 8]} ${SURN['ABCDGHIJKMNPRSTVY'[h % 17]] || 'Sharma'}`;
+  const pid = H.pid || (city === 'Bengaluru' ? `${100 + h % 199}-${String(h % 9999).padStart(4, '0')}-${String((h >>> 8) % 999).padStart(3, '0')}` : `PT-${String(10000000 + h % 89999999)}`);
+  const st = { Bengaluru: 'KA', Pune: 'MH', Mumbai: 'MH', Chennai: 'TN', Hyderabad: 'TS', Delhi: 'DL', Gurugram: 'HR', Kolkata: 'WB', Ahmedabad: 'GJ' }[city] || 'KA';
+  const proj = (L.addr.split(',')[1] || '').trim() || 'Residential project';
+  const rera = (flat || villa) && built >= 2017 ? { no: `${st}-RERA-${built - 2}-${String(10000 + h % 89999)}`, project: proj, builder: `${NAMES1[(h >>> 3) % NAMES1.length]} Developers`, done: new Date(built, (h >>> 6) % 12, 1), floors, units: 40 + (h >>> 7) % 300, fireNoc: floors > 5 } : null;
+  const fl = flat ? floorOf(L.addr) : null;
+  return {
+    prop: { pid, owner, use: 'Residential', builtUp, site: flat ? null : roundTo(builtUp * (villa ? 0.9 : 0.75), 10), built, tax: `${YEAR}-${String(YEAR + 1).slice(2)}` },
+    rera,
+    map: { floors, roof: !flat && built < 1990 ? 'RCC roof, partly tiled' : 'RCC flat roof', water: demo === 'flat' ? 'A lake about 400 m away' : h % 5 === 0 ? 'A stormwater drain about 150 m away' : 'No river, lake or drain within 1 km', construction: !flat && built < 1990 ? 'Load-bearing brick walls, RCC roof' : 'RCC frame' },
+    floor: fl,
+    loan: demo === 'house' ? null : demo === 'flat' || (h >>> 9) % 3 !== 0 ? { lender: LENDERS[demo === 'flat' ? 1 : (h >>> 11) % LENDERS.length], since: Math.max(built, YEAR - 1 - (h >>> 13) % 12), acct: 'XXXX' + String(1000 + h % 8999) } : null,
+  };
+}
+// a hallmark number checked on the BIS register: simulated
+function huidCheck(v) {
+  v = String(v || '').toUpperCase(); if (!/^[A-Z0-9]{6}$/.test(v)) return null;
+  const h = hash('huid' + v); return { ok: h % 11 !== 0, purity: ['22K916', '22K916', '18K750', '22K916'][h % 4], year: YEAR - 1 - h % 6 };
+}
+
+/* ---------- sums insured ---------- */
+function homeRate(b) { const H = b.home, z = b.loc && pinZone(b.loc.pin).zone === 'A' ? 'metro' : 'other', r = CFG.home.rebuild[z][H.finish || 'standard']; return H.socIns ? Math.round(r * CFG.home.interiors / 10) * 10 : r; }
+const homeExtrasSum = H => H.type === 'flat' ? 0 : Object.values(H.extras || {}).reduce((x, v) => x + (Number(v) || 0), 0);
+const homeAuto = H => H.own === 'rent' ? 0 : Math.min((Number(H.building) || 0) * CFG.home.contentsAuto.pct, CFG.home.contentsAuto.max);
+const homeAge = b => b.home.rec ? YEAR - b.home.rec.prop.built : 0;
+const mvFactor = b => Math.max(CFG.home.sfsp.mvFloor, 1 - CFG.home.sfsp.mvDep * homeAge(b));
+const valTotal = H => H.valOn ? H.vals.reduce((x, r) => x + (Number(r.v) || 0), 0) : 0;
+const carryTotal = H => H.carryOn ? H.carry.reduce((x, r) => x + (Number(r.v) || 0), 0) : 0;
+function homeSi(b, wording) {
+  const H = b.home, owner = H.own !== 'rent', w = wording || H.wording;
+  const rebuild = owner ? Number(H.building) || 0 : 0;
+  const building = w === 'sfsp' && H.basis === 'mv' ? roundTo(rebuild * mvFactor(b), 10000) : rebuild;
+  const auto = homeAuto(H);
+  const contents = owner ? (H.contentsMore ? Math.max(auto, Number(H.contents) || 0) : auto) : Number(H.contents) || 0;
+  return { building, rebuild, contents, valuables: valTotal(H), carry: carryTotal(H), auto };
+}
+const homeLow = b => { const H = b.home; return H.type !== 'flat' || H.floor === 'g'; };
+// what adds to the price, worked out from the answers, so the price on screen already includes it
+function homeLoads(b) {
+  const H = b.home, L = CFG.home.load, out = [], z = b.loc && b.loc.hz;
+  if (H.claims === '1') out.push(['One claim in the last 3 years', L.claim1]);
+  if (z && z.flood === 'high' && homeLow(b)) out.push([H.type === 'flat' ? 'Ground floor in a high flood-risk pincode' : 'A house in a high flood-risk pincode', L.flood]);
+  if (H.own !== 'rent' && homeAge(b) > CFG.home.limits.oldSurvey) out.push([`Built in ${H.rec.prop.built}, over ${CFG.home.limits.oldSurvey} years ago`, L.old]);
+  return out;
+}
+const homeDevTypes = H => new Set((H.well.devices || []).map(d => d.t));
+function homeWellPct(b) { const W = CFG.home.well, t = homeDevTypes(b.home); return Math.min(W.max, [...t].reduce((x, k) => x + (W.pct[k] || 0), 0)); }
+function homeScore(b) {
+  const H = b.home, t = homeDevTypes(H); let s = 40;
+  if (H.sec.has('guard')) s += 10; if (H.sec.has('cctv')) s += 8; if (H.sec.has('grill')) s += 8; if (H.sec.has('lock')) s += 6;
+  if (t.has('smoke')) s += 12; if (t.has('leak')) s += 10; if (t.has('door')) s += 6;
+  return Math.min(100, s);
+}
+
+/* ---------- plans and add-ons ---------- */
+PLANS.homeIns = [['essential', 'Essential', 'Your home and what\'s in it, against fire, flood, earthquake, storms, riots and more'], ['recommended', 'Recommended', 'Essential, plus burglary and theft, and breakdown of appliances'], ['complete', 'Complete', 'Recommended, plus accidental damage, liability to others, personal accident cover and a home safety kit']];
+PLAN_ADDS.homeIns = { essential: [], recommended: ['hburglary', 'hbreak'], complete: ['hburglary', 'hbreak', 'haccident', 'hliab', 'hpa', 'hkit'] };
+Object.assign(ADD_INFO, {
+  hburglary: ['Burglary and theft', 'Break-ins and theft of contents and valuables, without a fire or flood first'],
+  hbreak: ['Breakdown of appliances', 'Electrical or mechanical breakdown of appliances up to 10 years old'],
+  haccident: ['Accidental damage', 'Sudden damage to fixtures and fittings, like a cracked basin or broken glass'],
+  hliab: ['Liability to others', 'Injury to visitors, or damage to a neighbour\'s home, up to ₹10 lakh'],
+  hpa: ['Personal accident', '₹5 lakh each for you and your spouse, for death caused by an insured event at home'],
+  hrent: ['Loss of rent', 'Rent you lose while the home is repaired after an insured event'],
+  hkit: ['Home safety kit', 'A smoke alarm, two water leak sensors and a door sensor, set up in one visit'],
+  quake: ['Earthquake', 'Earthquake, and fire and shock damage from it'], terror: ['Terrorism', 'Damage from an act of terrorism'],
+});
+const homeAddList = b => { const H = b.home, inPlan = new Set(PLAN_ADDS.homeIns[b.plan || 'recommended'] || []); return ['hburglary', 'hbreak', 'haccident', 'hliab', 'hpa', ...(H.wording === 'sfsp' && H.own === 'let' ? ['hrent'] : [])].filter(k => !inPlan.has(k)); };
+const homeTermOf = (b, o = {}) => ((o.wording || b.home.wording) === 'bgr' ? Number(o.term || b.home.term) || 1 : 1);
+
+/* ---------- pricing ---------- */
+function homeCalc(s, o = {}) {
+  const b = s.biz, H = b.home, C = CFG.home, plan = o.plan || b.plan || 'recommended', wording = o.wording || H.wording || 'bgr', term = homeTermOf(b, o), rows = [];
+  const si = homeSi(b, wording); if (!si.building && !si.contents && !si.valuables && !si.carry) return null;
+  const adds = new Set([...(PLAN_ADDS.homeIns[plan] || []), ...(o.adds || b.addons)]);
+  let net = 0;
+  const add = (label, amt) => { amt = Math.round(amt); if (!amt) return; rows.push([label, amt]); net += amt; };
+  const R = C[wording];
+  if (si.building) add(`${H.socIns ? 'Interiors and fixtures' : 'Building'}, ${siLabelL(si.building)}${wording === 'sfsp' && H.basis === 'mv' ? ' at market value' : ''}`, perMille(si.building, R.building));
+  if (si.contents) add(`Contents, ${siLabelL(si.contents)}`, perMille(si.contents, R.contents));
+  if (si.valuables) add(`Jewellery, silver and art, ${siLabelL(si.valuables)}`, perMille(si.valuables, R.valuables));
+  const fireSum = si.building + si.contents + si.valuables;
+  if (wording === 'sfsp') { if (H.perils.has('quake')) add(ADD_INFO.quake[0], perMille(fireSum, R.quake)); if (H.perils.has('terror')) add(ADD_INFO.terror[0], perMille(fireSum, R.terror)); }
+  const base = net;
+  homeLoads(b).forEach(([t, pc]) => add(`${t}, +${pc}%`, base * pc / 100));
+  const wp = homeWellPct(b); if (wp) add(`Connected sensors, -${trimZ(wp.toFixed(1))}%`, -base * wp / 100);
+  const A = C.adds;
+  if (adds.has('hburglary')) add(ADD_INFO.hburglary[0], perMille(si.contents + si.valuables, A.burglary));
+  if (adds.has('hbreak') && si.contents) add(ADD_INFO.hbreak[0], perMille(si.contents, A.breakdown));
+  if (adds.has('haccident')) add(ADD_INFO.haccident[0], base * A.accidental);
+  if (adds.has('hliab')) add(ADD_INFO.hliab[0], A.liability);
+  if (adds.has('hpa')) add(`${ADD_INFO.hpa[0]}, you and your spouse`, A.pa);
+  if (adds.has('hrent') && wording === 'sfsp' && H.own === 'let') add(ADD_INFO.hrent[0], base * A.rent);
+  if (si.carry) H.carry.filter(r => Number(r.v) > 0).forEach(r => add(`${CARRY_KIND[r.k]}${r.d ? `, ${r.d}` : ''}: ${inr(Number(r.v))}, anywhere in ${H.world ? 'the world' : 'India'}`, Number(r.v) * (C.allrisk[r.k] || 2) / 100 * (H.world ? 1 + C.worldwide : 1)));
+  if (net < C.minPrem) { rows.push(['Raised to the minimum premium', C.minPrem - net]); net = C.minPrem; }
+  if (term > 1) { const yr = net; add(`${term} years of cover`, yr * (term - 1)); const d = C.term[term] || 0; if (d) add(`Long-term discount, ${trimZ((d * 100).toFixed(1))}%`, -yr * term * d); }
+  net = Math.round(net);
+  const tr = b.terms && b.terms.premium && !o.plan && !o.wording ? b.terms : null;
+  if (tr) { const g = Math.round(tr.net * CFG.sme.gst); return { rows: [['Premium agreed by the underwriter', tr.net]], net: tr.net, gst: g, total: tr.net + g, si: fireSum + si.carry, plan, info: { wording, term }, range: null }; }
+  const gst = Math.round(net * CFG.sme.gst), total = net + gst;
+  const range = needsUw(b) ? [roundTo(total * 0.9, 100), roundTo(total * 1.15, 100)] : null;
+  return { rows, net, gst, total, si: fireSum + si.carry, plan, info: { wording, term }, range };
+}
+const homeWordingName = w => w === 'sfsp' ? 'Standard Fire and Special Perils' : 'Bharat Griha Raksha';
+
+/* ---------- digital underwriting for a home ---------- */
+function homeUw(s) {
+  const b = s.biz, H = b.home, R = H.rec, lim = CFG.home.limits, si = homeSi(b), out = [];
+  let status = 'standard';
+  const rank = { standard: 0, loading: 1, survey: 2, refer: 3, decline: 4 };
+  const up = st => { if (rank[st] > rank[status]) status = st; };
+  const ok = (t, from) => out.push({ tone: 'ok', t, from }), warn = (t, from) => out.push({ tone: 'warn', t, from });
+  const refer = (t, from) => { warn(t, from); up('refer'); }, survey = (t, from) => { warn(t, from); up('survey'); };
+  if (H.own === 'rent') ok('You rent, so this covers your contents and valuables, not the building', 'Your answers');
+  if (R) {
+    ok(`${R.prop.use} use on the property record, built in ${R.prop.built}`, 'Property record');
+    if (S.kyc && S.kyc.name && S.kyc.name.toLowerCase() !== R.prop.owner.toLowerCase()) warn(`The property record names ${R.prop.owner} as the owner. As a co-owner or family member you can insure it; their name goes on the policy too.`, 'Property record');
+    else ok(`Owner on the record: ${R.prop.owner}`, 'Property record');
+    if (R.rera) ok(`RERA-registered project, completed in ${R.rera.done.getFullYear()}${R.rera.fireNoc ? ', with a fire NOC on file' : ''}`, 'RERA');
+    const age = homeAge(b);
+    if (age > lim.oldRefer) refer(`Built ${age} years ago. An engineer checks the structure before we cover it.`, 'Property record');
+    else if (age > lim.oldSurvey) survey(`Built ${age} years ago, so a quick video survey of the structure is needed`, 'Property record');
+    else ok(`${R.map.construction}, ${age} ${age === 1 ? 'year' : 'years'} old`, 'Map imagery');
+    if (R.loan) ok(`Home loan with ${R.loan.lender}: the bank's interest is noted on the policy`, 'Credit report');
+  }
+  if (H.loan === 'yes' && H.lender && !(R && R.loan)) ok(`Home loan with ${H.lender}: the bank's interest is noted on the policy`, 'Your answers');
+  if (b.loc && b.loc.hz) {
+    const z = b.loc.hz;
+    if (z.flood === 'high' && homeLow(b)) warn(`${H.type === 'flat' ? 'A ground-floor flat' : 'A house'} in a high flood-risk pincode. You're covered for floods, and it's in the price.`, 'Hazard maps');
+    else if (z.flood === 'high' || z.quake === 'high' || z.cyclone === 'high') warn(`At this pincode: ${[z.flood === 'high' && 'high flood risk', z.quake === 'high' && 'high earthquake risk', z.cyclone === 'high' && 'high cyclone risk'].filter(Boolean).join(', ')}. You're covered for it.`, 'Hazard maps');
+    else ok('No high flood, earthquake or cyclone risk at this pincode', 'Hazard maps');
+  }
+  if (si.rebuild > lim.refer) refer(`${siLabelL(si.rebuild)} to rebuild is above our automatic limit of ${siLabelL(lim.refer)}`, 'Your values');
+  else if (si.rebuild > lim.survey) survey(`${siLabelL(si.rebuild)} to rebuild needs a quick video survey of the home`, 'Underwriting rules');
+  else if (si.rebuild) ok(`Insured for ${siLabelL(si.rebuild)}, what it costs to rebuild`, 'Your values');
+  if (si.valuables > lim.valRefer) refer(`Valuables of ${siLabelL(si.valuables)} need an underwriter, and a locker or safe`, 'Your answers');
+  else if (si.valuables) ok(H.cert ? `Valuables of ${siLabelL(si.valuables)}, backed by a valuation certificate` : `Valuables of ${siLabelL(si.valuables)}, no piece over ₹1 lakh, so no certificate needed`, H.cert ? 'Valuation certificate' : 'Your answers');
+  const hm = H.valOn ? H.vals.filter(r => r.hu && r.hu.ok).length : 0;
+  if (hm) ok(`${hm} hallmarked ${hm === 1 ? 'piece' : 'pieces'} verified`, 'BIS hallmark register');
+  if (si.carry) ok(`${H.carry.filter(r => Number(r.v) > 0).length} things you carry, covered anywhere in ${H.world ? 'the world' : 'India'}`, 'Your answers');
+  if (H.claims === '2') refer('Two or more claims in the last 3 years', 'Your answers');
+  else if (H.claims === '0') ok('No claims in the last 3 years', 'Your answers');
+  if (H.work === 'shop') refer('A shop, clinic or workshop at home needs an underwriter to look at it', 'Your answers');
+  else if (H.work === 'office') ok('A home office is fine. Its equipment is covered as contents.', 'Your answers');
+  if (H.empty === 'yes') warn('Burglary isn\'t covered while the home is empty for more than 30 days in a row', 'Your answers');
+  const sec = [H.sec.has('guard') && 'a guard at the gate', H.sec.has('cctv') && 'CCTV', H.sec.has('grill') && 'grills or a safety door', H.sec.has('lock') && 'a smart lock'].filter(Boolean);
+  if (sec.length) ok(`Security: ${listText(sec)}`, 'Your answers');
+  const wp = homeWellPct(b); if (wp) ok(`${H.well.devices.length} sensors connected through ${H.well.provName}: ${trimZ(wp.toFixed(1))}% off`, H.well.provName);
+  const load = homeLoads(b).reduce((x, [, p]) => x + p, 0);
+  if (load) up('loading');
+  return { status, loadPct: status === 'refer' || status === 'decline' ? 0 : load, reasons: out, at: new Date() };
+}
+const HOME_SHOTS = [['front', 'The front of the home, or the building entrance'], ['door', 'The main door and its locks'], ['panel', 'The main electrical board'], ['walls', 'Any walls or ceilings with cracks or damp']];
+const homeSurveyChecks = b => [['Structure', 'No major cracks seen. Minor damp in one corner, to be fixed before the monsoon'], ['Main door', b.home.sec.has('grill') ? 'A safety door with a deadbolt' : 'A solid door with a deadbolt'], ['Electrical board', 'Circuit breakers and an earth-leakage breaker in place'], ['Wiring', 'No loose or exposed wiring seen']];
+
+/* ---------- the steps ---------- */
+STEP.hmown = {
+  label: 'Your home',
+  when: isHome,
+  view() {
+    const H = HM();
+    const T = [['own', SICO.home, 'I own it and live in it', 'The building, what\'s in it, and your valuables.'], ['let', HICO.key, 'I own it and rent it out', 'The building, and anything of yours in it. Loss of rent is included.'], ['rent', HICO.box, 'I rent it', 'What\'s in it: furniture, appliances, clothes and valuables.']];
+    return { say: 'Let\'s cover your home. First, is it yours, or do you rent it?', title: 'Do you own your home, or rent it?', body: `<div class="tiles sm-who hm-who">${T.map(([k, ic, t, s2]) => tile(`data-hown="${k}"`, `<span class="who-ic">${ic}</span><span class="tile-name">${t}</span><span class="tile-sub">${s2}</span>`, H.own === k)).join('')}</div>`, next: null, hint: 'Say “I own it” or “I rent”' };
+  },
+  wire(api) {
+    api.body.addEventListener('click', e => {
+      const t = e.target.closest('[data-hown]'); if (!t) return;
+      const H = HM(), k = t.dataset.hown;
+      if (H.own && (H.own === 'rent') !== (k === 'rent')) { H.rec = null; H.fetchedAt = null; S.biz.uw = null; }
+      H.own = k; $$('[data-hown]', api.body).forEach(x => x.setAttribute('aria-pressed', String(x === t)));
+      setTimeout(() => api.next(), REDUCED ? 0 : 300);
+    });
+  },
+  value: () => { const H = HM(); return H ? ({ own: 'Owner, lives in it', let: 'Owner, rented out', rent: 'Tenant' })[H.own] || '' : ''; },
+  done: () => !!(HM() && HM().own),
+  cmd(t) { const l = t.toLowerCase(); const k = /rent(ing)? it|tenant|i rent|rented/.test(l) && !/rent it out|let/.test(l) ? 'rent' : /rent it out|let it|landlord/.test(l) ? 'let' : /own|mine|live/.test(l) ? 'own' : null; if (!k) return null; press(`[data-hown=${k}]`); return ''; },
+};
+
+STEP.hmloc = {
+  label: 'Where it is',
+  when: isHome,
+  view() {
+    const b = B(), H = b.home, L = b.loc || {}, owner = H.own !== 'rent';
+    return {
+      say: owner ? 'Where is it? With the address I can find it in the property records and on the map, so there\'s little to type.' : 'Where do you live? I\'ll check the flood, earthquake and cyclone risk there.',
+      title: 'Where is your home?',
+      body: `<div class="fld"><span>It's</span><div class="chips">${chip('htype', 'flat', 'A flat', H.type === 'flat')}${chip('htype', 'house', 'An independent house', H.type === 'house')}${chip('htype', 'villa', 'A villa or row house', H.type === 'villa')}</div></div>
+        <div class="row2"><label class="fld"><span>Address</span><input type="text" name="haddr" value="${esc(L.addr || '')}" placeholder="Flat or house number, building, street, area" autocomplete="street-address"></label><label class="fld"><span>Pincode</span><input type="text" name="hpin" value="${esc(L.pin || H.pinPre || '')}" inputmode="numeric" maxlength="6" placeholder="560034" autocomplete="postal-code"></label></div>
+        <div class="fld" data-x="fl" ${H.type === 'flat' ? '' : 'hidden'}><span>Which floor is it on?</span><div class="chips">${chip('hfl', 'g', 'Ground floor', H.floor === 'g')}${chip('hfl', 'low', '1st to 3rd', H.floor === 'low')}${chip('hfl', 'high', '4th or above', H.floor === 'high')}</div><small class="hint" data-x="flh"></small></div>
+        ${owner ? `<label class="fld"><span>Property tax ID or e-Khata number <em class="opt">optional</em></span><input type="text" name="hpid" value="${esc(H.pid)}" placeholder="If you have it handy" autocomplete="off" spellcheck="false"></label>` : ''}
+        <p class="otp-demo kyc-demo" role="note"><span class="od-l">Demo, try</span><button type="button" data-hdemo="flat">${esc(DEMO_HOME.flat.label)}</button><button type="button" data-hdemo="house">${esc(DEMO_HOME.house.label)}</button></p>
+        <div data-x="hz">${L.hz ? hazardHtml(L) : ''}</div>`,
+      next: 'Continue', hint: 'Say your pincode',
+    };
+  },
+  wire(api) {
+    const b = B(), H = b.home, box = api.body;
+    const paint = () => { box.querySelector('[data-x=hz]').innerHTML = b.loc && b.loc.hz ? hazardHtml(b.loc) : ''; };
+    const guess = () => {
+      const a = box.querySelector('[name=haddr]').value, n = floorOf(a), h = box.querySelector('[data-x=flh]');
+      if (H.type === 'flat' && n != null && !H.floorSet) { H.floor = floorBand(n); $$('[name=hfl]', box).forEach(x => { x.checked = x.value === H.floor; }); }
+      if (h) h.textContent = H.type === 'flat' && n != null ? `From your flat number: floor ${n}.` : '';
+    };
+    const setLoc = () => {
+      const addr = box.querySelector('[name=haddr]').value.trim(), pin = box.querySelector('[name=hpin]').value.trim();
+      if (b.loc && (b.loc.addr !== addr || b.loc.pin !== pin)) { H.rec = null; H.fetchedAt = null; }
+      if (!/^[1-9]\d{5}$/.test(pin)) { b.loc = { addr, pin, hz: null }; paint(); return; }
+      const z = pinZone(pin);
+      b.loc = { i: 'home', addr, pin, city: z.city || '', hz: smeHazard(pin, 'dwelling') }; paint(); api.live();
+    };
+    box.addEventListener('input', e => { const t = e.target; if (t.name === 'hpin') t.value = t.value.replace(/\D/g, '').slice(0, 6); if (t.name === 'haddr' || t.name === 'hpin') { setLoc(); guess(); } if (t.name === 'hpid') { H.pid = t.value.trim(); H.rec = null; H.fetchedAt = null; } });
+    box.addEventListener('change', e => { const t = e.target; if (t.name === 'htype') { if (H.type !== t.value) { H.rec = null; H.fetchedAt = null; } H.type = t.value; box.querySelector('[data-x=fl]').hidden = H.type !== 'flat'; guess(); } if (t.name === 'hfl') { H.floor = t.value; H.floorSet = true; } });
+    box.addEventListener('click', e => {
+      const d = e.target.closest('[data-hdemo]'); if (!d) return;
+      const D = DEMO_HOME[d.dataset.hdemo];
+      H.type = D.type; $$('[name=htype]', box).forEach(x => { x.checked = x.value === D.type; }); box.querySelector('[data-x=fl]').hidden = D.type !== 'flat';
+      box.querySelector('[name=haddr]').value = D.addr; box.querySelector('[name=hpin]').value = D.pin; H.floorSet = false; setLoc(); guess(); api.err('');
+      const nb = api.q.querySelector('.q-foot .btn-next'); if (nb) nb.focus();
+    });
+    if (b.loc && b.loc.pin) guess();
+    else if (H.pinPre) setLoc();
+  },
+  commit() {
+    const b = B(), H = b.home, L = b.loc;
+    if (!H.type) return 'Tell me if it\'s a flat, a house or a villa.';
+    if (!L || !L.addr || L.addr.length < 6) return 'Enter the full address of your home.';
+    if (!L.hz) return 'Enter a valid 6-digit pincode.';
+    if (H.type === 'flat' && !H.floor) return 'Tell me which floor the flat is on.';
+    return '';
+  },
+  value: () => { const L = B() && B().loc; return L && L.hz && HM().type ? `${L.addr.split(',')[0]}, ${L.pin}` : ''; },
+  done: () => !!(B() && B().loc && B().loc.hz && HM().type && (HM().type !== 'flat' || HM().floor)),
+};
+
+/* ---------- the home's digital footprint: property record, RERA and maps, then the home loan with consent ---------- */
+const HSRC = {
+  prop: ['Property record', 'Municipal property tax register', 'Owner, use, built-up area and the year it was built'],
+  rera: ['RERA registration', 'State RERA register', 'The project, the builder, the floors and when it was completed'],
+  map: ['Map imagery and hazard maps', 'Satellite imagery, and flood, earthquake and cyclone maps', 'Building height and roof, water nearby, and natural hazards'],
+  loan: ['Home loan', 'Your credit report, a soft check', 'Your lender, so their interest is noted on the policy. It doesn\'t affect your score.'],
+};
+const homeSrcs = b => ['prop', ...(b.home.type !== 'house' ? ['rera'] : []), 'map', 'loan'];
+function homeFoundHtml(b) {
+  const H = b.home, R = H.rec, z = b.loc.hz, lv = l => `<span class="sm-lv ${l}">${hzWord(l)}</span>`, sec = [];
+  sec.push(['Your home', factList([['Owner', R.prop.owner], ['Property ID', R.prop.pid], ['Use', R.prop.use], ['Built-up area', `${R.prop.builtUp.toLocaleString('en-IN')} sq ft`], R.prop.site ? ['Plot area', `${R.prop.site.toLocaleString('en-IN')} sq ft`] : null, ['Built in', String(R.prop.built)], ['Property tax', `Paid for ${R.prop.tax}`]]), ['Property record']]);
+  sec.push(['The building', factList([R.rera ? ['Project', `${R.rera.project}, by ${R.rera.builder}`] : null, R.rera ? ['RERA number', R.rera.no] : null, R.rera ? ['Completed', `${fd(R.rera.done)}${R.rera.fireNoc ? ', fire NOC on file' : ''}`] : null, ['Floors', String(R.map.floors)], ['Construction', R.map.construction], ['Roof', R.map.roof], R.floor != null ? ['Your flat', `On floor ${R.floor}, from the flat number`] : null]), [R.rera ? 'RERA' : null, 'Map imagery']]);
+  sec.push(['Around it', `<ul class="hm-hz"><li><span>Flood</span>${lv(z.flood)}</li><li><span>Earthquake</span>${lv(z.quake)}</li><li><span>Cyclone</span>${lv(z.cyclone)}</li><li><span>Fire station</span><b>about ${z.station} km</b></li></ul><p class="hint">${esc(R.map.water)}.</p>`, ['Hazard maps', 'Map imagery']]);
+  if (H.consent.loan) sec.push(['Home loan', R.loan ? factList([['Lender', R.loan.lender], ['Since', String(R.loan.since)], ['Loan account', R.loan.acct]]) + '<p class="hint">Lenders ask for their interest to be noted on the policy. I\'ll do that.</p>' : '<p class="hint">No home loan found on your credit report.</p>', ['Credit report']]);
+  return `<div class="sm-found">${sec.map(([h, body, tags]) => `<section><div class="sm-fh"><span class="sec-h">${h}</span><span class="sm-tags">${tags.filter(Boolean).map(srcTag).join('')}</span></div>${body}</section>`).join('')}</div>`;
+}
+STEP.hmfind = {
+  label: 'What the records say',
+  when: () => isHome() && HM().own !== 'rent',
+  view() {
+    const b = B(), H = b.home;
+    return { say: H.fetchedAt ? 'Here\'s your home, from the records. Check it, and I\'ll use it to fill in the rest.' : 'I\'ll look your home up in the public records. With your consent, I\'ll also check for a home loan, so the bank\'s interest is on the policy.',
+      title: H.fetchedAt ? 'Here\'s what I found' : 'What I\'ll look at', body: '<div class="q-body" data-x="hf"></div>', next: H.fetchedAt ? 'Looks right' : 'Continue', hint: 'Say “continue”' };
+  },
+  wire(api) {
+    const b = B(), H = b.home, box = api.body.querySelector('[data-x=hf]'), U = H.fx = { phase: H.fetchedAt ? 'done' : 'ask', demo: '' };
+    const list = homeSrcs(b), pub = list.filter(k => k !== 'loan');
+    const title = t => { const h = api.q.querySelector('.q-title'); if (h) h.textContent = t; };
+    function render() {
+      if (U.phase === 'done') { box.innerHTML = homeFoundHtml(b) + '<p class="hint">Anything wrong? You can change it on the next screens. The records stay as they are.</p>'; api.setNext('Looks right'); return; }
+      if (U.phase === 'fetch') { box.innerHTML = `<ul class="sm-fetch">${list.filter(k => k !== 'loan' || H.consent.loan).map(k => `<li data-s="${k}"><span class="spin"></span><span><b>${HSRC[k][0]}</b><small>${HSRC[k][1]}</small></span></li>`).join('')}</ul>`; api.hideNext(true); return; }
+      const mob = H.mobile || kycKnownMobile();
+      box.innerHTML = `<div class="sm-srcs"><span class="sec-h">From public records, no consent needed</span><ul>${pub.map(k => `<li><span class="sm-dot ok">${ICO.check}</span><span><b>${HSRC[k][0]}</b><small>${HSRC[k][2]}</small></span></li>`).join('')}</ul></div>
+        <div class="sm-srcs"><span class="sec-h">With your consent</span><div class="sw-list">${sw('hsrc', 'loan', HSRC.loan[0], `${HSRC.loan[2]} · ${HSRC.loan[1]}`, '', H.consent.loan)}</div>
+        <label class="fld" data-x="mob" ${H.consent.loan ? '' : 'hidden'}><span>Your mobile number, for the consent code</span><input type="text" name="hmob" value="${esc(mob)}" inputmode="numeric" maxlength="10" placeholder="98450 12345" autocomplete="tel-national" ${U.phase === 'otp' ? 'readonly' : ''}></label>
+        ${U.phase === 'otp' ? '' : `<p class="otp-demo kyc-demo" role="note" data-x="mdemo" ${H.consent.loan ? '' : 'hidden'}><span class="od-l">Demo</span><button type="button" data-hmob="${DEMO_KYC.mobile}">Use ${spaced(DEMO_KYC.mobile, 'mobile')}</button></p><p class="hint">We use this only to quote and issue this policy.</p>`}</div>
+        ${U.phase === 'otp' ? `<div class="fld"><span>Enter the 6-digit code sent to ${esc(maskMobile(H.mobile))}</span><div class="otp">${[0, 1, 2, 3, 4, 5].map(i => `<input type="text" inputmode="numeric" maxlength="1" data-o="${i}" aria-label="Code digit ${i + 1}" ${i === 0 ? 'autocomplete="one-time-code"' : ''}>`).join('')}</div></div>` : ''}`;
+      if (U.phase === 'otp') { api.hideNext(true); const o = box.querySelector('[data-o="0"]'); if (o) o.focus(); demoOtp(U.demo = U.demo || String(100000 + Math.floor(Math.random() * 900000)), () => fill(U.demo)); }
+      else api.setNext(H.consent.loan ? 'Send the code' : 'Find my home');
+    }
+    function fill(d) { [...d].forEach((c, i) => { const x = box.querySelector(`[data-o="${i}"]`); if (x) x.value = c; }); check(); }
+    function check() { const v = $$('[data-o]', box).map(x => x.value).join(''); if (/^\d{6}$/.test(v)) fetchAll(); }
+    async function fetchAll() {
+      U.phase = 'fetch'; render(); title('Looking up your home');
+      for (const li of $$('[data-s]', box)) { await sleep(REDUCED ? 30 : 420); if (S.cur !== 'hmfind') return; li.classList.add('ok'); li.querySelector('.spin').outerHTML = `<span class="sm-dot ok">${ICO.check}</span>`; }
+      await sleep(REDUCED ? 30 : 350); if (S.cur !== 'hmfind') return;
+      const R = H.rec = homeLookup(b); H.fetchedAt = new Date(); U.phase = 'done';
+      if (!H.consent.loan) R.loan = null;
+      if (!H.area || H.areaFrom === 'record') { H.area = String(roundTo(R.prop.builtUp * (CFG.home.carpet[H.type] || 0.8), 10)); H.areaFrom = 'record'; }
+      if (H.type === 'flat' && R.floor != null && !H.floorSet) H.floor = floorBand(R.floor);
+      if (!H.buildTouched) H.building = 0;
+      if (!S.kyc) S.docOwner = Object.assign({}, S.docOwner || {}, { name: R.prop.owner }, H.mobile ? { mobile: H.mobile } : {}, H.own === 'own' ? { addr: b.loc.addr, pin: b.loc.pin } : {});
+      if (R.loan) { H.loan = 'yes'; H.lender = R.loan.lender; }
+      jlog(`Found the home in ${list.filter(k => k !== 'loan' || H.consent.loan).length} records${H.consent.loan ? ', with consent' : ''}`);
+      title('Here\'s what I found'); const say = api.q.querySelector('.nyra-say'); if (say) say.textContent = 'Here\'s your home, from the records. Check it, and I\'ll use it to fill in the rest.'; render(); api.live(); renderRail();
+    }
+    box.addEventListener('change', e => { if (e.target.name === 'hsrc') { H.consent.loan = e.target.checked; box.querySelector('[data-x=mob]').hidden = !H.consent.loan; const md = box.querySelector('[data-x=mdemo]'); if (md) md.hidden = !H.consent.loan; api.setNext(H.consent.loan ? 'Send the code' : 'Find my home'); } });
+    box.addEventListener('input', e => {
+      if (e.target.name === 'hmob') { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10); return; }
+      const o = e.target.dataset.o; if (o == null) return; const v = e.target.value.replace(/\D/g, ''); if (v.length > 1) { fill(v.slice(0, 6)); return; } e.target.value = v; if (v && +o < 5) box.querySelector(`[data-o="${+o + 1}"]`).focus(); check();
+    });
+    box.addEventListener('keydown', e => { const o = e.target.dataset.o; if (o != null && e.key === 'Backspace' && !e.target.value && +o > 0) box.querySelector(`[data-o="${+o - 1}"]`).focus(); });
+    box.addEventListener('click', e => { const m = e.target.closest('[data-hmob]'); if (m) { const i = box.querySelector('[name=hmob]'); i.value = m.dataset.hmob; api.err(''); } });
+    U.render = render; U.fetchAll = fetchAll;
+    render();
+  },
+  commit(api) {
+    const b = B(), H = b.home, U = H.fx;
+    if (!U || U.phase === 'done') return H.fetchedAt ? '' : 'STAY';
+    if (U.phase === 'ask') {
+      if (H.consent.loan) {
+        const m = (api.body.querySelector('[name=hmob]') || {}).value || '';
+        if (!/^[6-9]\d{9}$/.test(m)) return 'Enter your 10-digit mobile number for the consent code, or switch the home loan check off.';
+        H.mobile = m; U.phase = 'otp'; U.render();
+      } else U.fetchAll();
+    }
+    return 'STAY';
+  },
+  value: () => { const H = HM(); return H && H.fetchedAt ? `Found, built ${H.rec.prop.built}` : ''; },
+  done: () => !!(HM() && HM().fetchedAt),
+};
+
+/* ---------- the building: what it costs to rebuild ---------- */
+function homeBuildAuto(b) { const H = b.home; return roundTo((Number(H.area) || 0) * homeRate(b) + homeExtrasSum(H), 10000); }
+STEP.hmbuild = {
+  label: 'Rebuild cost',
+  when: () => isHome() && HM().own !== 'rent',
+  view() {
+    const b = B(), H = b.home, R = H.rec, flat = H.type === 'flat', city = (b.loc && b.loc.city) || 'your city';
+    if (!H.buildTouched && !H.building) H.building = homeBuildAuto(b);
+    return {
+      say: 'Your home is insured for what it would cost to rebuild, not its market price. So land isn\'t in it, and the premium is lower.',
+      title: 'What would it cost to rebuild?',
+      body: `${flat ? sw('hsoc', '1', 'My housing society insures the building', 'Then I cover your flat\'s interiors, fixtures and fittings: flooring, kitchen, bathrooms, wiring and doors', '', H.socIns) : ''}
+        <div class="row2"><label class="fld"><span>Carpet area, in sq ft</span><input type="text" name="harea" value="${esc(H.area)}" inputmode="numeric" maxlength="6" placeholder="1100"><small class="hint">${R ? `${R.prop.builtUp.toLocaleString('en-IN')} sq ft built-up on the property record. Carpet area is usually about ${Math.round((CFG.home.carpet[H.type] || 0.8) * 100)}% of that.` : 'The area inside the walls.'}</small></label>
+        <div class="fld"><span>Finish</span><div class="chips">${FINISH.map(([k, t]) => chip('hfin', k, t, H.finish === k)).join('')}</div><small class="hint" data-x="rate"></small></div></div>
+        ${flat ? '' : `<div class="fld"><span>Other structures on the plot</span><div class="sw-list">${HOME_EXTRAS.map(([k, t]) => sw('hext', k, t, '', '', H.extras[k] != null)).join('')}</div><div data-x="extv"></div></div>`}
+        <label class="fld"><span>${flat && H.socIns ? 'Interiors and fixtures, to replace' : 'Cost to rebuild'}</span>${amtIn('hbuild', H.building, 'Fills in from the area')}<small class="sm-words">${H.building ? siLabelL(H.building) : ''}</small></label>
+        <div class="sm-auto" data-x="auto"></div>
+        <div class="live"><span>Your premium for 1 year, with GST, from</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const b = B(), H = b.home, box = api.body;
+    const setB = v => { H.building = v; const bi = box.querySelector('[name=hbuild]'); bi.value = v ? v.toLocaleString('en-IN') : ''; bi.closest('.fld').querySelector('.sm-words').textContent = v ? siLabelL(v) : ''; };
+    const recalc = () => { if (!H.buildTouched) setB(homeBuildAuto(b)); paint(); };
+    const paint = () => {
+      const r = homeRate(b); box.querySelector('[data-x=rate]').textContent = `${inr(r)} a sq ft ${H.socIns ? 'for interiors and fixtures' : 'to rebuild'} in ${b.loc.city || 'your city'}, our rate for this finish.`;
+      const ev = box.querySelector('[data-x=extv]'); if (ev) ev.innerHTML = HOME_EXTRAS.filter(([k]) => H.extras[k] != null).map(([k, t]) => `<label class="fld hm-ext"><span>${esc(t)}, to rebuild</span>${amtIn('hextv-' + k, H.extras[k], 'Value')}</label>`).join('');
+      const auto = homeAuto(H), a = box.querySelector('[data-x=auto]');
+      a.innerHTML = H.building ? `${SICO.ok}<span>With Bharat Griha Raksha, your contents are covered up to <b>${siLabelL(auto)}</b> without a list, and the sum insured grows 10% a year at no extra cost.</span>` : '';
+      smeLive(api);
+    };
+    box.addEventListener('input', e => {
+      const t = e.target;
+      if (t.name === 'harea') { t.value = t.value.replace(/\D/g, ''); H.area = t.value; H.areaFrom = 'you'; recalc(); }
+    });
+    box.addEventListener('change', e => {
+      const t = e.target;
+      if (t.name === 'hsoc') { H.socIns = t.checked; H.buildTouched = false; recalc(); const l = box.querySelector('[name=hbuild]').closest('.fld').querySelector('span'); l.textContent = H.socIns ? 'Interiors and fixtures, to replace' : 'Cost to rebuild'; }
+      if (t.name === 'hfin') { H.finish = t.value; recalc(); }
+      if (t.name === 'hext') { if (t.checked) H.extras[t.value] = H.extras[t.value] || 0; else delete H.extras[t.value]; recalc(); }
+    });
+    wireAmts(api, (n, v) => { if (n === 'hbuild') { H.building = v; H.buildTouched = true; paint(); } if (n.startsWith('hextv-')) { H.extras[n.slice(6)] = v; recalc(); } });
+    paint();
+  },
+  commit() {
+    const H = HM(), min = H.socIns ? 100000 : CFG.home.limits.minBuild;
+    if (!(Number(H.area) > 100) && !H.buildTouched) return 'Enter the carpet area of your home.';
+    const miss = HOME_EXTRAS.find(([k]) => H.extras[k] != null && !(Number(H.extras[k]) > 0)); if (miss) return `Enter what the ${miss[1].toLowerCase()} would cost to rebuild, or switch it off.`;
+    if (!(H.building >= min)) return `The cost to rebuild should be at least ${siLabelL(min)}.`;
+    return '';
+  },
+  value: () => { const H = HM(); return H && H.building && S.seen.has('hmbuild') ? `${H.socIns ? 'Interiors' : 'Building'} ${siLabelL(H.building)}` : ''; },
+  done: () => !!(HM() && HM().building >= (HM().socIns ? 100000 : CFG.home.limits.minBuild) && S.seen.has('hmbuild')),
+};
+
+/* ---------- what's inside: contents, then jewellery, silver and art ---------- */
+function valRule(H) { const v = H.vals.filter(r => Number(r.v) > 0), tot = valTotal(H), mx = Math.max(0, ...v.map(r => Number(r.v))); return { tot, mx, need: tot > CFG.home.valNoCert.total || mx > CFG.home.valNoCert.item }; }
+STEP.hmcont = {
+  label: 'What\'s inside',
+  when: isHome,
+  view() {
+    const b = B(), H = b.home, owner = H.own !== 'rent';
+    if (H.valOn && !H.vals.length) H.vals = [{ k: 'gold', d: '', v: 0, huid: '' }];
+    return {
+      say: owner ? 'Your furniture, appliances and clothes are covered without a list. Tell me if they\'re worth more, and about any jewellery, silver or art.' : 'Everything in your home is yours to cover: furniture, appliances, clothes and valuables. A rough total is fine.',
+      title: 'What\'s inside your home?',
+      body: `${owner ? `<div class="sm-auto" data-x="auto"></div>${sw('hmore', '1', 'Cover my contents for more', 'If your furniture, appliances, clothes and kitchen things are worth more than that', '', H.contentsMore)}` : ''}
+        <div data-x="cont" ${!owner || H.contentsMore ? '' : 'hidden'}>
+          <label class="fld"><span>What it would cost to replace everything</span>${amtIn('hcont', H.contents, '5,00,000')}<small class="sm-words">${H.contents ? siLabelL(H.contents) : ''}</small></label>
+          <div class="fld"><span>Not sure? Start from your home's size</span><div class="chips">${[1, 2, 3, 4].map(n => chip('hbhk', String(n), n === 4 ? '4 or more bedrooms' : `${n} bedroom${n > 1 ? 's' : ''}`, String(H.bhk) === String(n))).join('')}</div><small class="hint">A starting figure. Change it to what you'd spend to replace it all.</small></div>
+        </div>
+        ${sw('hval', '1', 'Jewellery, silver and art', 'Insured for a value we agree now, so there\'s no argument at claim time', '', H.valOn)}
+        <div data-x="vals" ${H.valOn ? '' : 'hidden'}>
+          <div class="hm-items" data-x="vrows"></div>
+          <div class="sm-addrow"><select name="vadd" aria-label="Add a piece"><option value="">Add another piece…</option>${Object.entries(VAL_KIND).map(([k, t]) => `<option value="${k}">${esc(t)}</option>`).join('')}</select></div>
+          <div data-x="vcert"></div>
+        </div>
+        <div class="live"><span>Your premium for 1 year, with GST, from</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const b = B(), H = b.home, box = api.body, owner = H.own !== 'rent';
+    const paintAuto = () => { const a = box.querySelector('[data-x=auto]'); if (a) a.innerHTML = `${SICO.ok}<span>Your contents are covered up to <b>${siLabelL(homeAuto(H))}</b> without a list: 20% of the building, up to ₹10 lakh.</span>`; };
+    const hu = r => r.hu ? (r.hu.ok ? `<span class="hm-hu ok">${ICO.check}Verified: ${esc(r.hu.purity)}, hallmarked ${r.hu.year}</span>` : '<span class="hm-hu bad">Not found on the BIS register. Check the 6 characters.</span>') : '<span class="hm-hu">The 6-character code stamped on the piece. Optional.</span>';
+    const rows = () => {
+      box.querySelector('[data-x=vrows]').innerHTML = H.vals.map((r, i) => `<div class="hm-ir"><b>${esc(VAL_KIND[r.k])}</b><input type="text" name="vd" data-i="${i}" value="${esc(r.d)}" placeholder="What it is, like a necklace set" aria-label="${esc(VAL_KIND[r.k])}: what it is"><input type="text" name="vv" data-i="${i}" value="${r.v ? Number(r.v).toLocaleString('en-IN') : ''}" inputmode="numeric" placeholder="Value" aria-label="${esc(VAL_KIND[r.k])}: value"><button type="button" class="link" data-vdel="${i}" aria-label="Remove ${esc(VAL_KIND[r.k])}">Remove</button>${r.k === 'gold' || r.k === 'diamond' ? `<label class="hm-huid"><span>HUID</span><input type="text" name="vh" data-i="${i}" value="${esc(r.huid || '')}" maxlength="6" autocomplete="off" spellcheck="false" aria-label="Hallmark number (HUID)"><span data-x="hu${i}">${hu(r)}</span></label>` : ''}</div>`).join('');
+      cert();
+    };
+    const cert = () => {
+      const c = box.querySelector('[data-x=vcert]'), v = valRule(H);
+      if (!H.valOn || !v.tot) { c.innerHTML = ''; smeLive(api); return; }
+      if (!v.need) { c.innerHTML = `<p class="note hm-note">${SICO.ok}<span>${siLabelL(v.tot)} in all, and no piece over ₹1 lakh, so no valuation certificate is needed.</span></p>`; smeLive(api); return; }
+      if (H.cert && H.cert.total >= v.tot * 0.95) { c.innerHTML = `<div class="found"><span class="seal">${ICO.shield}<span>Valuation certificate read</span></span>${factList([['Valued by', H.cert.by], ['Dated', fd(H.cert.date)], ['Total', siLabelL(H.cert.total)]])}</div>`; smeLive(api); return; }
+      c.innerHTML = `<p class="hint">Above ₹5 lakh in all, or for any piece over ₹1 lakh, a valuation certificate from a registered valuer or the jeweller's bill is needed.</p><label class="doc-tile">${ART.doc('rc')}<span><b>Upload the valuation certificate</b><small>A photo or PDF. I'll read the values from it.</small></span><input type="file" name="vcert" accept="image/*,application/pdf" aria-label="Upload the valuation certificate"></label><div data-x="vread"></div>`;
+      smeLive(api);
+    };
+    box.addEventListener('input', e => {
+      const t = e.target, i = t.dataset.i;
+      if (t.name === 'vd') H.vals[i].d = t.value;
+      if (t.name === 'vv') { const v = amtVal(t.value); t.value = v ? v.toLocaleString('en-IN') : ''; H.vals[i].v = v; cert(); }
+      if (t.name === 'vh') { t.value = t.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6); H.vals[i].huid = t.value; H.vals[i].hu = t.value.length === 6 ? huidCheck(t.value) : null; box.querySelector(`[data-x=hu${i}]`).innerHTML = hu(H.vals[i]); }
+    });
+    box.addEventListener('change', async e => {
+      const t = e.target;
+      if (t.name === 'hmore') { H.contentsMore = t.checked; box.querySelector('[data-x=cont]').hidden = !t.checked; smeLive(api); }
+      if (t.name === 'hbhk') { H.bhk = t.value; const v = CFG.home.contentsEst[t.value]; H.contents = v; const ci = box.querySelector('[name=hcont]'); ci.value = v.toLocaleString('en-IN'); ci.closest('.fld').querySelector('.sm-words').textContent = siLabelL(v); smeLive(api); }
+      if (t.name === 'hval') { H.valOn = t.checked; if (t.checked && !H.vals.length) { H.vals = [{ k: 'gold', d: '', v: 0, huid: '' }]; rows(); } box.querySelector('[data-x=vals]').hidden = !t.checked; cert(); }
+      if (t.name === 'vadd' && t.value) { H.vals.push({ k: t.value, d: '', v: 0, huid: '' }); t.value = ''; rows(); }
+      if (t.name === 'vcert' && t.files && t.files[0]) {
+        box.querySelector('[data-x=vread]').innerHTML = '<div class="reading"><span class="spin"></span>Reading the certificate…</div>';
+        await sleep(REDUCED ? 80 : 1400); if (S.cur !== 'hmcont') return;
+        H.cert = { by: 'A registered valuer', date: addDays(TODAY, -(20 + hash(t.files[0].name) % 200)), total: valTotal(H), file: t.files[0].name };
+        jlog('Valuation certificate read'); cert();
+      }
+    });
+    box.addEventListener('click', e => { const d = e.target.closest('[data-vdel]'); if (!d) return; H.vals.splice(+d.dataset.vdel, 1); if (!H.vals.length) { H.valOn = false; box.querySelector('[name=hval]').checked = false; box.querySelector('[data-x=vals]').hidden = true; } rows(); });
+    wireAmts(api, (n, v) => { if (n === 'hcont') { H.contents = v; H.bhk = null; $$('[name=hbhk]', box).forEach(x => { x.checked = false; }); smeLive(api); } });
+    if (owner) paintAuto();
+    rows();
+  },
+  commit() {
+    const H = HM(), owner = H.own !== 'rent';
+    if ((!owner || H.contentsMore) && !(H.contents >= 50000)) return owner ? 'Enter what your contents are worth, or switch “cover my contents for more” off.' : 'Enter what everything in your home is worth. Pick your home\'s size for a starting figure.';
+    if (owner && H.contentsMore && H.contents <= homeAuto(H)) return `That's within the ${siLabelL(homeAuto(H))} already covered. Enter a higher figure, or switch it off.`;
+    if (H.valOn) {
+      const bad = H.vals.find(r => !(Number(r.v) >= 1000)); if (bad) return `Enter the value of the ${VAL_KIND[bad.k].toLowerCase()}, or remove it.`;
+      if (H.vals.some(r => r.hu && !r.hu.ok)) return 'One hallmark number isn\'t on the BIS register. Check it, or leave it empty.';
+      const v = valRule(H); if (v.need && !(H.cert && H.cert.total >= v.tot * 0.95)) return 'Upload the valuation certificate for your jewellery, silver and art.';
+    }
+    return '';
+  },
+  value: () => { const b = B(), H = b && b.home; if (!H || !S.seen.has('hmcont')) return ''; const si = homeSi(b); return `Contents ${siLabelL(si.contents)}${si.valuables ? `, valuables ${siLabelL(si.valuables)}` : ''}`; },
+  done: () => { const H = HM(); return !!(H && S.seen.has('hmcont') && (H.own !== 'rent' ? true : H.contents >= 50000)); },
+};
+
+/* ---------- all risks: what goes out with you ---------- */
+STEP.hmcarry = {
+  label: 'Things you carry',
+  when: isHome,
+  view() {
+    const H = HM();
+    return {
+      say: 'Your phone, laptop and the jewellery you wear go out with you. All risks cover protects them anywhere, against theft, loss and accidental damage.',
+      title: 'Cover things you carry outside the home?',
+      body: `<div class="chips">${chip('hcar', 'no', 'No, just the home', H.carryOn === false)}${chip('hcar', 'yes', 'Yes, add them', H.carryOn === true)}</div>
+        <div data-x="carry" ${H.carryOn ? '' : 'hidden'}>
+          <div data-x="jew"></div>
+          <div class="hm-items" data-x="crows"></div>
+          <div class="sm-addrow"><select name="cadd" aria-label="Add something you carry"><option value="">Add something…</option>${Object.entries(CARRY_KIND).map(([k, t]) => `<option value="${k}">${esc(t)}</option>`).join('')}</select></div>
+          <div class="sw-list">${sw('hworld', '1', 'Anywhere in the world', 'For when you travel abroad', '', H.world)}</div>
+          <p class="hint">Each claim has an excess of ${inr(CFG.home.allriskExcess)}. Keep the bills, or a photo of each item with its serial number.</p>
+        </div>
+        <div class="live"><span>Your premium for 1 year, with GST, from</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const H = HM(), box = api.body;
+    const jew = () => { const j = box.querySelector('[data-x=jew]'), gold = H.valOn ? H.vals.filter(r => (r.k === 'gold' || r.k === 'diamond') && Number(r.v) > 0).reduce((x, r) => x + Number(r.v), 0) : 0; j.innerHTML = gold && !H.carry.some(r => r.k === 'jewel') ? `<div class="note hm-note">${SICO.ok}<span>Your jewellery (${siLabelL(gold)}) is insured at home. Add it here to cover it when you wear it out.</span><button type="button" class="btn-soft" data-jew="${gold}">Add my jewellery</button></div>` : ''; };
+    const rows = () => {
+      box.querySelector('[data-x=crows]').innerHTML = H.carry.map((r, i) => `<div class="hm-ir"><b>${esc(CARRY_KIND[r.k])}</b><input type="text" name="cd" data-i="${i}" value="${esc(r.d)}" placeholder="${r.k === 'phone' ? 'Make and model' : 'What it is'}" aria-label="${esc(CARRY_KIND[r.k])}: what it is"><input type="text" name="cv" data-i="${i}" value="${r.v ? Number(r.v).toLocaleString('en-IN') : ''}" inputmode="numeric" placeholder="Value" aria-label="${esc(CARRY_KIND[r.k])}: value"><button type="button" class="link" data-cdel="${i}" aria-label="Remove ${esc(CARRY_KIND[r.k])}">Remove</button></div>`).join('');
+      jew(); smeLive(api);
+    };
+    box.addEventListener('change', e => {
+      const t = e.target;
+      if (t.name === 'hcar') { H.carryOn = t.value === 'yes'; if (H.carryOn && !H.carry.length) H.carry = [{ k: 'phone', d: '', v: 0 }]; box.querySelector('[data-x=carry]').hidden = !H.carryOn; rows(); }
+      if (t.name === 'cadd' && t.value) { H.carry.push({ k: t.value, d: '', v: 0 }); t.value = ''; rows(); }
+      if (t.name === 'hworld') { H.world = t.checked; smeLive(api); }
+    });
+    box.addEventListener('input', e => { const t = e.target, i = t.dataset.i; if (t.name === 'cd') H.carry[i].d = t.value; if (t.name === 'cv') { const v = amtVal(t.value); t.value = v ? v.toLocaleString('en-IN') : ''; H.carry[i].v = v; smeLive(api); } });
+    box.addEventListener('click', e => {
+      const d = e.target.closest('[data-cdel]'); if (d) { H.carry.splice(+d.dataset.cdel, 1); rows(); return; }
+      const j = e.target.closest('[data-jew]'); if (j) { H.carry.push({ k: 'jewel', d: 'Jewellery insured at home', v: Number(j.dataset.jew) }); rows(); }
+    });
+    rows();
+  },
+  commit() {
+    const H = HM();
+    if (H.carryOn == null) return 'Tell me if you\'d like to cover things you carry.';
+    if (H.carryOn) { if (!H.carry.length) return 'Add at least one thing, or choose “no”.'; const bad = H.carry.find(r => !(Number(r.v) >= 1000)); if (bad) return `Enter the value of the ${CARRY_KIND[bad.k].toLowerCase()}, or remove it.`; }
+    return '';
+  },
+  value: () => { const H = HM(); if (!H || H.carryOn == null) return ''; return H.carryOn ? `${H.carry.length} ${H.carry.length === 1 ? 'thing' : 'things'}, ${siLabelL(carryTotal(H))}` : 'None'; },
+  done: () => { const H = HM(); return !!(H && H.carryOn != null && (!H.carryOn || (H.carry.length && H.carry.every(r => Number(r.v) >= 1000)))); },
+};
+
+/* ---------- the few questions the records can't answer ---------- */
+STEP.hmsafe = {
+  label: 'Safety and claims',
+  when: isHome,
+  view() {
+    const b = B(), H = b.home, R = H.rec, owner = H.own !== 'rent', askLoan = owner && !(R && R.loan);
+    return {
+      say: 'A few quick ones the records can\'t tell me. Answer as things are today.',
+      title: 'Safety, and any past claims',
+      body: `${askLoan ? `<div class="fld"><span>Is there a home loan on it?</span><div class="chips">${chip('hloan', 'no', 'No', H.loan === 'no')}${chip('hloan', 'yes', 'Yes', H.loan === 'yes')}</div></div>
+        <label class="fld" data-x="lender" ${H.loan === 'yes' ? '' : 'hidden'}><span>Lender</span><select name="hlender"><option value="">Choose your bank…</option>${[...LENDERS, 'Another lender'].map(l => `<option ${H.lender === l ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select></label>` : ''}
+        <div class="fld"><span>Security</span><div class="chips">${[['guard', 'A gated community with a guard'], ['cctv', 'CCTV'], ['grill', 'Grills or a safety door'], ['lock', 'A smart lock'], ['none', 'None of these']].map(([k, t]) => chip('hsec', k, t, H.sec.has(k), 'checkbox')).join('')}</div></div>
+        <div class="fld"><span>Is it ever left empty for more than 30 days at a time?</span><div class="chips">${chip('hempty', 'no', 'No', H.empty === 'no')}${chip('hempty', 'yes', 'Yes', H.empty === 'yes')}</div></div>
+        <div class="fld"><span>Is any work done from home?</span><div class="chips">${chip('hwork', 'no', 'No', H.work === 'no')}${chip('hwork', 'office', 'A home office', H.work === 'office')}${chip('hwork', 'shop', 'A shop, clinic or workshop', H.work === 'shop')}</div></div>
+        <div class="fld"><span>Claims for this home in the last 3 years</span><div class="chips">${chip('hclm', '0', 'None', H.claims === '0')}${chip('hclm', '1', 'One', H.claims === '1')}${chip('hclm', '2', 'Two or more', H.claims === '2')}</div></div>
+        <div class="live"><span>Your premium for 1 year, with GST, from</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const H = HM(), box = api.body;
+    box.addEventListener('change', e => {
+      const t = e.target;
+      if (t.name === 'hloan') { H.loan = t.value; box.querySelector('[data-x=lender]').hidden = t.value !== 'yes'; }
+      if (t.name === 'hlender') H.lender = t.value;
+      if (t.name === 'hsec') { if (t.value === 'none' && t.checked) { H.sec = new Set(['none']); $$('[name=hsec]', box).forEach(x => { x.checked = x.value === 'none'; }); } else { H.sec.delete('none'); const n = box.querySelector('[name=hsec][value=none]'); if (n) n.checked = false; if (t.checked) H.sec.add(t.value); else H.sec.delete(t.value); } }
+      if (t.name === 'hempty') H.empty = t.value;
+      if (t.name === 'hwork') H.work = t.value;
+      if (t.name === 'hclm') H.claims = t.value;
+      smeLive(api);
+    });
+    smeLive(api);
+  },
+  commit() {
+    const b = B(), H = b.home, R = H.rec;
+    if (H.own !== 'rent' && !(R && R.loan)) { if (!H.loan) return 'Tell me if there\'s a home loan on it.'; if (H.loan === 'yes' && !H.lender) return 'Choose the lender, so their interest is noted on the policy.'; }
+    if (!H.sec.size) return 'Tell me about security, or pick “none of these”.';
+    if (!H.empty) return 'Tell me if the home is ever left empty for over 30 days.';
+    if (!H.work) return 'Tell me if any work is done from home.';
+    if (H.claims == null) return 'Tell me about claims in the last 3 years.';
+    return '';
+  },
+  value: () => { const H = HM(); return H && H.claims != null ? `${H.claims === '0' ? 'No claims' : H.claims === '1' ? 'One claim' : 'Two or more claims'}${H.sec.size && !H.sec.has('none') ? `, ${H.sec.size} safety ${H.sec.size === 1 ? 'feature' : 'features'}` : ''}` : ''; },
+  done: () => { const H = HM(); return !!(H && H.claims != null && H.sec.size && H.empty && H.work); },
+};
+
+/* ---------- home wellness: connected sensors, and help that stops small things becoming claims ---------- */
+const HPROV = [['ghome', 'Google Home', 'Nest and compatible devices', 'G'], ['alexa', 'Amazon Alexa', 'Alexa-connected devices', 'a'], ['smartthings', 'SmartThings', 'Samsung and compatible devices', 'S'], ['mihome', 'Xiaomi Home', 'Mi and compatible devices', 'mi']];
+const HDEV = { smoke: ['Smoke alarm', 'Kitchen'], leak: ['Water leak sensor', 'Bathroom'], door: ['Door sensor', 'Main door'] };
+const HPROV_DEV = { ghome: ['smoke', 'door'], alexa: ['smoke', 'leak', 'door'], smartthings: ['leak', 'door'], mihome: ['smoke', 'leak'] };
+Object.assign(WB_ART, {
+  hcheck: '<path d="M14 42l30-24 30 24v30H14z" class="c"/><rect x="36" y="50" width="16" height="22" rx="2" class="a"/><path d="M10 44l34-28 34 28" class="sa" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="92" cy="30" r="14" class="b"/><path d="M85 30l5 5 9-10" class="w" fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>',
+  halert: '<path d="M30 38a14 14 0 0 1 27-6 11 11 0 0 1 20 8 9 9 0 0 1-2 18H34a10 10 0 0 1-4-20z" class="c"/><path d="M40 64l-4 8M54 64l-4 8M68 64l-4 8" class="sa" stroke-width="3.5" stroke-linecap="round"/><path d="M90 12l-8 16h8l-6 14" class="b" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>',
+  hfix: '<rect x="18" y="20" width="44" height="50" rx="8" class="c"/><path d="M30 34h20M30 44h20M30 54h12" class="sa" stroke-width="3" stroke-linecap="round"/><path d="M76 18a12 12 0 0 0-11 16L52 47l7 7 13-13a12 12 0 0 0 16-11l-7 4-6-3-1-7z" class="a"/><circle cx="96" cy="58" r="10" class="b"/><path d="M96 52v7l4 3" class="w" fill="none" stroke-width="2.6" stroke-linecap="round"/>',
+  hcare: '<rect x="14" y="16" width="64" height="24" rx="6" class="c"/><path d="M22 32h48" class="sa" stroke-width="3" stroke-linecap="round"/><path d="M28 48c0 6-6 6-6 12M46 48c0 6-6 6-6 12M64 48c0 6-6 6-6 12" class="a" fill="none" stroke-width="3.2" stroke-linecap="round"/><path d="M96 14l2.8 6.4 6.4 2.8-6.4 2.8-2.8 6.4-2.8-6.4-6.4-2.8 6.4-2.8z" class="b"/>',
+  hwatch: '<rect x="36" y="14" width="36" height="58" rx="8" class="c"/><circle cx="54" cy="36" r="10" class="a"/><path d="M54 30v6l4 3" class="w" fill="none" stroke-width="2.6" stroke-linecap="round"/><path d="M44 56h20" class="sa" stroke-width="3" stroke-linecap="round"/><path d="M84 26a16 16 0 0 1 0 22M92 20a26 26 0 0 1 0 34" class="b" fill="none" stroke-width="3.5" stroke-linecap="round"/>',
+});
+function homeWellList(b) {
+  const H = b.home, pin = b.loc ? b.loc.pin : 'your pincode', any = H.well.devices.length || b.plan === 'complete';
+  return [
+    ['hcheck', 'Home safety check', 'Every year, an electrician checks your main board, earthing and gas line on a video call, with a seepage check before the monsoon.'],
+    ['halert', `Weather alerts for ${pin}`, 'Heavy rain, flood and cyclone warnings for your pincode, with what to do: move valuables up, switch off the mains.'],
+    ['hfix', 'Help when something breaks', `A plumber, electrician or locksmith, day or night. ${CFG.home.well.callouts} call-outs a year are free; you pay for parts and the work.`],
+    ['hcare', 'Appliance care', 'Servicing for ACs and water purifiers, and pest control, at agreed prices from vetted partners.'],
+    ...(any ? [['hwatch', 'Alarm response', 'If a smoke or leak alarm goes off and you don\'t respond, we call you, then your emergency contact.']] : []),
+  ];
+}
+const homeWellHtml = (b, o = {}) => `<section class="wb ${o.compact ? 'compact' : ''}" aria-label="Home wellness"><div class="wb-h"><span class="wb-ic">${ICO.check}</span><div><b>${esc(o.title || 'With every plan')}</b><small>${esc(o.sub || 'Used from the NxSure app, all year. Not only when something goes wrong.')}</small></div></div><div class="wb-grid">${homeWellList(b).map(([k, t, d]) => `<article class="wb-c">${wbArt(k)}<b>${esc(t)}</b><small>${esc(d)}</small></article>`).join('')}</div></section>`;
+function homeConnect(prov) {
+  return new Promise(resolve => {
+    const P = HPROV.find(x => x[0] === prov);
+    const ov = el(`<div class="jsheet wl-sheet" role="dialog" aria-modal="true" aria-label="Connect ${esc(P[1])}"><div class="jsheet-card">
+      <div class="wl-oauth"><span class="wl-logo hm-${prov} big">${P[3]}</span><span class="wl-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="wl-logo nx big">${LOGO}</span></div>
+      <h3>Allow NxSure to see your home's safety sensors on ${esc(P[1])}</h3>
+      <ul class="ticks"><li>Smoke and gas alarms</li><li>Water leak sensors</li><li>Door and window sensors</li><li>When an alarm goes off</li></ul>
+      <p class="hint">Read-only. NxSure can't switch anything on or off, and you can disconnect any time from My NxSure. It's used for your discount and for alarm response, never to turn down a claim.</p>
+      <div class="nds-f"><button type="button" class="link" data-a="x">Cancel</button><button type="button" class="btn-next" data-a="ok" style="margin:0"><span>Allow</span>${ICO.right}</button></div>
+    </div></div>`);
+    document.body.appendChild(ov);
+    const done = r => { ov.remove(); document.removeEventListener('keydown', key); resolve(r); };
+    const key = e => { if (e.key === 'Escape') done(null); };
+    document.addEventListener('keydown', key);
+    ov.addEventListener('click', async e => {
+      if (e.target === ov) { done(null); return; }
+      const a = e.target.closest('[data-a]'); if (!a) return;
+      if (a.dataset.a === 'x') { done(null); return; }
+      a.disabled = true; a.innerHTML = '<span class="spin"></span>Finding your sensors';
+      await sleep(REDUCED ? 60 : 1300);
+      done({ prov, provName: P[1], at: new Date(), devices: HPROV_DEV[prov].map(t => ({ t, name: HDEV[t][0], room: HDEV[t][1], ok: true })) });
+    });
+    setTimeout(() => { const btn = ov.querySelector('[data-a=ok]'); if (btn) btn.focus(); }, 40);
+  });
+}
+STEP.hmwell = {
+  label: 'Home wellness',
+  when: isHome,
+  view() {
+    const b = B();
+    return {
+      say: 'Most home claims start small: a leak, a spark, a door left open. Here\'s how we help stop them, and what it saves you.',
+      title: 'Home wellness',
+      body: `<div class="hm-well"><span class="sec-h">Connected sensors, up to ${CFG.home.well.max}% off</span><div data-x="sens"></div></div>
+        <div class="hm-score" data-x="score"></div>
+        ${homeWellHtml(b)}
+        <div class="live"><span>Your premium for 1 year, with GST, from</span><b data-x="tot">—</b></div>`,
+      next: 'Continue',
+    };
+  },
+  wire(api) {
+    const b = B(), H = b.home, box = api.body, W = CFG.home.well;
+    const paint = () => {
+      const s = box.querySelector('[data-x=sens]'), d = H.well.devices;
+      s.innerHTML = d.length ? `<ul class="hm-devs">${d.map(x => `<li><span class="sm-dot ok">${ICO.check}</span><span><b>${esc(x.name)}</b><small>${esc(x.room)} · online</small></span><em>${trimZ(String(W.pct[x.t]))}% off</em></li>`).join('')}</ul><p class="hint">Connected through ${esc(H.well.provName)}. ${trimZ(homeWellPct(b).toFixed(1))}% off your home's fire premium, for as long as they stay connected. <button type="button" class="link" data-a="disc">Disconnect</button></p>`
+        : `<p class="hint">Have smoke alarms or leak sensors on a smart home app? Connect them: ${W.pct.smoke}% off for a smoke alarm, ${W.pct.leak}% for a leak sensor and ${W.pct.door}% for a door sensor.</p><div class="wl-provs">${HPROV.map(([k, n, sub, ini]) => `<button type="button" class="wl-prov" data-hprov="${k}"><span class="wl-logo hm-${k}">${ini}</span><span><b>${esc(n)}</b><small>${esc(sub)}</small></span></button>`).join('')}</div><p class="note hm-note">${SICO.ok}<span>No sensors? The Complete plan includes a home safety kit: a smoke alarm, two water leak sensors and a door sensor, set up in one visit. The discount starts once they're connected.</span></p>`;
+      const sc = homeScore(b);
+      box.querySelector('[data-x=score]').innerHTML = `<div class="hm-sc-n"><b>${sc}</b><span>of 100</span></div><div><b>Your home safety score</b><span class="hm-bar" aria-hidden="true"><i style="width:${sc}%"></i></span><small>From your security and connected sensors. It goes up as you add them, and we use it to price your renewal.</small></div>`;
+      smeLive(api);
+    };
+    box.addEventListener('click', async e => {
+      const p = e.target.closest('[data-hprov]');
+      if (p) { const r = await homeConnect(p.dataset.hprov); if (!r || S.cur !== 'hmwell') return; H.well = Object.assign(H.well, r); jlog(`Connected ${r.devices.length} home sensors through ${r.provName}`); paint(); renderRail(); return; }
+      const a = e.target.closest('[data-a=disc]'); if (a) { H.well = { prov: null, provName: '', devices: [], at: null }; paint(); }
+    });
+    paint();
+  },
+  value: () => { const H = HM(); if (!H || !S.seen.has('hmwell')) return ''; return H.well.devices.length ? `${H.well.devices.length} sensors connected` : 'Benefits included'; },
+  done: () => S.seen.has('hmwell'),
+};
+
+/* ---------- the policy and the plan ---------- */
+const _smePlan = { view: STEP.bplan.view, wire: STEP.bplan.wire };
+STEP.bplan.view = function (dir) {
+  if (S.product !== 'home') return _smePlan.view.call(this, dir);
+  const b = B(), H = b.home; if (!b.plan) b.plan = 'recommended';
+  return {
+    say: 'Two ways to insure a home, and three plans. Your price is on each one, and it updates as you go.',
+    title: 'Pick your cover',
+    body: '<div data-x="hplan" class="hm-plan"></div><div class="live"><span data-x="per">Your premium, with GST</span><b data-x="tot">—</b></div>',
+    next: 'See my quote',
+  };
+};
+function homePlanHtml(b) {
+  const H = b.home, owner = H.own !== 'rent', mv = owner && homeAge(b) ? roundTo(H.building * mvFactor(b), 10000) : 0;
+  const wt = [['bgr', 'Bharat Griha Raksha', 'The standard home policy. Insured on what it costs to rebuild, with no under-insurance. Earthquake and terrorism included, and the sum insured grows 10% a year.'], ['sfsp', 'Standard Fire and Special Perils', 'You choose the basis and the perils. On market value it costs less for an older home, but if the value is too low, a claim is reduced in proportion.']];
+  const per = n => n > 1 ? ` for ${n} years` : ' a year';
+  const pr = o => { const c = homeCalc(S, o); return c ? `${inr(c.total)}<small>${per(homeTermOf(b, o))}</small>` : ''; };
+  return `<span class="sec-h">The policy</span>
+    <div class="tiles sm-plans hm-wording">${wt.map(([k, t, d]) => `<button type="button" class="tile" data-hw="${k}" aria-pressed="${H.wording === k}">${k === 'bgr' ? '<span class="badge">Recommended</span>' : ''}<span class="tick" aria-hidden="true">${ICO.check}</span><span class="tile-name">${esc(t)}</span><span class="tile-sub">${esc(d)}</span><span class="tile-price">${pr({ wording: k })}</span></button>`).join('')}</div>
+    ${H.wording === 'sfsp' ? `${owner ? `<div class="fld"><span>Insure the building on</span><div class="chips">${chip('hbasis', 'rv', `What it costs to rebuild, ${siLabelL(H.building)}`, H.basis === 'rv')}${mv && mv < H.building ? chip('hbasis', 'mv', `Market value, after ${homeAge(b)} years of wear, ${siLabelL(mv)}`, H.basis === 'mv') : ''}</div></div>` : ''}
+      <div class="fld"><span>Perils to add</span><div class="sw-list">${['quake', 'terror'].map(k => sw('hperil', k, ADD_INFO[k][0], ADD_INFO[k][1], '', H.perils.has(k))).join('')}</div></div>
+      <p class="hint">Contents are insured for the ${siLabelL(homeSi(b, 'sfsp').contents)} you declared. Each claim for storm, flood or earthquake has an excess of ${inr(CFG.home.sfsp.excess)}.</p>` : ''}
+    <span class="sec-h">The plan</span>
+    <div class="tiles sm-plans">${PLANS.homeIns.map(([k, t, d]) => `<button type="button" class="tile" data-bplan="${k}" aria-pressed="${b.plan === k}">${k === 'recommended' ? '<span class="badge">Recommended</span>' : ''}<span class="tick" aria-hidden="true">${ICO.check}</span><span class="tile-name">${esc(t)}</span><span class="tile-sub">${esc(d)}</span><span class="tile-price">${pr({ plan: k })}</span></button>`).join('')}</div>
+    ${H.wording === 'bgr' ? `<div class="fld"><span>How long</span><div class="chips">${[1, 3, 5].map(n => chip('hterm', String(n), `${n} year${n > 1 ? 's' : ''}${CFG.home.term[n] ? `, save ${trimZ((CFG.home.term[n] * 100).toFixed(1))}%` : ''}`, Number(H.term) === n)).join('')}</div><small class="hint">${H.own === 'rent' ? 'The price is fixed for the whole term.' : 'On a longer policy the building\'s sum insured still grows 10% a year, and the price is fixed for the whole term.'}</small></div>` : ''}
+    ${homeAddList(b).length ? `<div class="fld"><span>Add to your plan</span><div class="sw-list">${homeAddList(b).map(k => sw('badd', k, ADD_INFO[k][0], ADD_INFO[k][1], '', b.addons.has(k))).join('')}</div></div>` : ''}`;
+}
+STEP.bplan.wire = function (api) {
+  if (S.product !== 'home') return _smePlan.wire.call(this, api);
+  const b = B(), H = b.home, box = api.body, host = box.querySelector('[data-x=hplan]');
+  const paint = () => {
+    host.innerHTML = homePlanHtml(b);
+    const t = homeTermOf(b); box.querySelector('[data-x=per]').textContent = `Your premium for ${t > 1 ? `${t} years` : '1 year'}, with GST`;
+    [...b.addons].forEach(k => { if ((PLAN_ADDS.homeIns[b.plan] || []).includes(k)) b.addons.delete(k); });
+    smeLive(api);
+  };
+  box.addEventListener('click', e => {
+    const w = e.target.closest('[data-hw]'); if (w) { H.wording = w.dataset.hw; if (H.wording === 'sfsp') H.term = 1; paint(); return; }
+    const p = e.target.closest('[data-bplan]'); if (p) { b.plan = p.dataset.bplan; paint(); }
+  });
+  box.addEventListener('change', e => {
+    const t = e.target;
+    if (t.name === 'hbasis') { H.basis = t.value; paint(); }
+    if (t.name === 'hperil') { if (t.checked) H.perils.add(t.value); else H.perils.delete(t.value); paint(); }
+    if (t.name === 'hterm') { H.term = Number(t.value); paint(); }
+    if (t.name === 'badd') { if (t.checked) b.addons.add(t.value); else b.addons.delete(t.value); smeLive(api); }
+  });
+  paint();
+};
+
+/* ---------- what the quote, policy and documents say ---------- */
+function homeCovered(b) {
+  const H = b.home, sf = H.wording === 'sfsp', adds = new Set([...(PLAN_ADDS.homeIns[b.plan || 'recommended'] || []), ...b.addons]), out = ['Fire, lightning, explosion and aircraft damage', 'Storm, cyclone, flood and inundation', sf ? 'Landslide and subsidence' : 'Earthquake, landslide and subsidence', sf ? 'Riots, strikes and malicious damage' : 'Riots, strikes, malicious damage and terrorism', 'Bursting of water tanks and pipes, and impact damage', 'Theft within 7 days of any of these'];
+  if (sf && H.perils.has('quake')) out.push('Earthquake, as added'); if (sf && H.perils.has('terror')) out.push('Terrorism, as added');
+  if (!sf && H.own !== 'rent') out.push('Rent for another home, and loss of rent, while yours is repaired', 'Debris removal and architects\' fees after a loss');
+  if (H.own !== 'rent' && !sf) out.push('Your contents, up to 20% of the building without a list');
+  if (H.valOn) out.push('Jewellery, silver and art, at the value agreed now');
+  if (adds.has('hburglary')) out.push('Burglary and theft, without a fire or flood first');
+  if (adds.has('hbreak')) out.push('Breakdown of appliances up to 10 years old');
+  if (adds.has('haccident')) out.push('Accidental damage to fixtures and fittings');
+  if (adds.has('hliab')) out.push('Liability to visitors and neighbours, up to ₹10 lakh');
+  if (adds.has('hpa')) out.push('₹5 lakh each for you and your spouse, for death caused by an insured event');
+  if (adds.has('hrent') && sf) out.push('Loss of rent while the home is repaired');
+  if (H.carryOn && carryTotal(H)) out.push(`Things you carry: theft, loss and accidental damage, anywhere in ${H.world ? 'the world' : 'India'}`);
+  return out;
+}
+function homeExcluded(b) {
+  const H = b.home, sf = H.wording === 'sfsp', adds = new Set([...(PLAN_ADDS.homeIns[b.plan || 'recommended'] || []), ...b.addons]);
+  return ['Wear and tear, damp and slow seepage', adds.has('hburglary') ? 'Burglary while the home is empty for more than 30 days in a row' : 'Theft that doesn\'t follow an insured event, unless burglary is added', 'Cash, bullion, unset stones and vehicles', 'Additions or alterations of more than 10% of the carpet area, unless you tell us', ...(sf ? [H.perils.has('quake') ? `An excess of ${inr(CFG.home.sfsp.excess)} on each storm, flood or earthquake claim` : 'Earthquake, unless added', 'Under-insurance: if the sum insured is too low, a claim is reduced in proportion'] : [])];
+}
+function homeFacts(b, c) {
+  const H = b.home, si = homeSi(b), sf = H.wording === 'sfsp', owner = H.own !== 'rent';
+  return [['Policy', homeWordingName(H.wording)], ['Home', `${b.loc.addr}, ${b.loc.pin}`],
+    si.building ? [H.socIns ? 'Interiors and fixtures' : 'Building', `${siLabelL(si.building)}${sf ? (H.basis === 'mv' ? ', market value' : ', rebuild cost') : ', grows 10% a year'}`] : null,
+    ['Contents', `${siLabelL(si.contents)}${!sf && owner && !H.contentsMore ? ', no list needed' : ''}`],
+    si.valuables ? ['Jewellery, silver and art', `${siLabelL(si.valuables)}, agreed value`] : null,
+    si.carry ? ['Things you carry', `${siLabelL(si.carry)}, anywhere in ${H.world ? 'the world' : 'India'}`] : null,
+    H.loan === 'yes' && H.lender ? ['Bank\'s interest noted', H.lender] : null].filter(Boolean);
+}
+function homeDecl(b) {
+  const H = b.home, sf = H.wording === 'sfsp', out = [];
+  out.push(`The home is used to live in${H.work === 'office' ? ', with a home office' : ''}. I'll tell NxSure if it's going to be left empty for more than 30 days at a time.`);
+  if (H.own !== 'rent') out.push(sf && H.basis === 'mv' ? 'The building is insured on its market value. If the sum insured is less than that value, a claim is reduced in proportion.' : 'The building\'s sum insured is what it would cost to rebuild today, not its market price.');
+  out.push('The values of my contents are what it would cost to replace them.');
+  if (H.valOn) out.push(`The values of my jewellery, silver and art are true${H.cert ? ', as in the valuation certificate I uploaded' : ''}.`);
+  if (H.well.devices.length) out.push('I\'ll keep the connected sensors switched on. If they stay offline for more than 30 days, the discount stops at renewal.');
+  return out;
+}
+function homeTerms(b) {
+  const H = b.home, conds = ['A surveyor visits within 15 days. Cover starts as soon as you pay.'];
+  if (H.claims === '2') conds.push('Each claim has an excess of 5% of the loss, at least ₹10,000.');
+  if (valTotal(H) > CFG.home.limits.valRefer) conds.push('Jewellery is kept in a locked safe or a bank locker when it isn\'t being worn.');
+  if (H.work === 'shop') conds.push('The shop, clinic or workshop area is covered for the building only. Its stock and equipment need a business policy.');
+  if (homeAge(b) > CFG.home.limits.oldRefer) conds.push('Repairs the engineer lists are done within 90 days.');
+  return conds;
+}
+function homePdf(d, b, c) {
+  const H = b.home, R = H.rec, z = b.loc.hz;
+  d.h2('The home');
+  d.kv([['Address', `${b.loc.addr}, ${b.loc.city || ''} ${b.loc.pin}`], ['Type', `${{ flat: 'Flat', house: 'Independent house', villa: 'Villa or row house' }[H.type]}${H.type === 'flat' && H.floor ? `, ${{ g: 'ground floor', low: '1st to 3rd floor', high: '4th floor or above' }[H.floor]}` : ''}`], ['You', { own: 'Own it and live in it', let: 'Own it and rent it out', rent: 'Rent it' }[H.own]], R ? ['Built', `${R.prop.built}, ${R.map.construction}`] : null, R ? ['Property ID', R.prop.pid] : null, H.area && H.own !== 'rent' ? ['Carpet area', `${Number(H.area).toLocaleString('en-IN')} sq ft`] : null, ['Flood, earthquake, cyclone', `${hzWord(z.flood)}, ${hzWord(z.quake)}, ${hzWord(z.cyclone)}`]].filter(Boolean));
+  if (H.valOn && H.vals.length) { d.h2('Jewellery, silver and art'); d.table([{ t: 'Piece', w: 0.5 }, { t: 'Hallmark', w: 0.22 }, { t: 'Agreed value', w: 0.28, right: true }], H.vals.map(r => [`${VAL_KIND[r.k]}${r.d ? `, ${r.d}` : ''}`, r.hu && r.hu.ok ? `${r.huid}, verified` : '-', inr(Number(r.v) || 0)])); }
+  if (H.carryOn && H.carry.length) { d.h2('Things you carry'); d.table([{ t: 'Item', w: 0.7 }, { t: 'Value', w: 0.3, right: true }], H.carry.map(r => [`${CARRY_KIND[r.k]}${r.d ? `, ${r.d}` : ''}`, inr(Number(r.v) || 0)])); }
+  d.h2('Home wellness'); d.bullets(homeWellList(b).map(([, t, s2]) => `${t}: ${s2}`).concat(H.well.devices.length ? [`Connected through ${H.well.provName}: ${H.well.devices.map(x => `${x.name.toLowerCase()} (${x.room.toLowerCase()})`).join(', ')}`] : []));
+}
+
+/* ---------- the picture on the product tile ---------- */
+ART.home = function () {
+  const i = 'a' + (++ARTN);
+  return `<svg viewBox="0 0 260 140" aria-hidden="true"><defs><linearGradient id="${i}h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9B85FF"/><stop offset="1" stop-color="#4A2FE0"/></linearGradient><linearGradient id="${i}r" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5BEBC6"/><stop offset="1" stop-color="#109E7D"/></linearGradient><radialGradient id="${i}s"><stop offset="0" stop-color="#16142B" stop-opacity=".22"/><stop offset="1" stop-color="#16142B" stop-opacity="0"/></radialGradient></defs>
+    <ellipse cx="128" cy="130" rx="86" ry="7" fill="url(#${i}s)"/><circle cx="208" cy="30" r="12" fill="#FFB547" opacity=".6"/><circle cx="40" cy="44" r="18" fill="#3FE0B5" opacity=".18"/>
+    <path d="M62 128V70l66-46 66 46v58z" fill="url(#${i}h)"/><path d="M50 74l78-56 78 56" fill="none" stroke="url(#${i}r)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="80" y="82" width="30" height="24" rx="4" fill="#FFE29A"/><path d="M95 82v24M80 94h30" stroke="#4A2FE0" stroke-width="2.5"/><rect x="138" y="88" width="28" height="40" rx="4" fill="#E9EEFF"/><circle cx="160" cy="109" r="2.4" fill="#4A2FE0"/>
+    <path d="M214 76c-12-4-20-10-20-10v-16l20-7 20 7v16s-8 6-20 10z" fill="url(#${i}r)"/><path d="M206 60l6 6 10-11" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+};
 
 /* ================= voice =================
    In the video medical exam the microphone is on for the whole call: it's the call's own microphone, so it isn't
