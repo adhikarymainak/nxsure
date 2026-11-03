@@ -1928,7 +1928,7 @@ button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:
   --p-ok:#1E7A55;--p-ok-soft:#E5F1EA;--p-warn:#8F540A;--p-warn-soft:#F8EEDC;--p-bad:#B4232F;--p-bad-soft:#FAE8E9;--p-info:#1F5FA8;--p-info-soft:#E7EFF9;
   --p-pri:#17151F;--p-pri-ink:#FFFFFF;--p-pri-h:#4B32D6;
   --p-sh-lg:0 24px 60px -24px rgba(23,21,31,.35),0 8px 20px -10px rgba(23,21,31,.12);
-  --viz-bar:#4B32D6;--viz-1:#2a78d6;--viz-2:#eb6834;--viz-3:#1baf7a;--viz-grid:#ECE9E3;--viz-tg:#17151F;
+  --viz-bar:#4B32D6;--viz-1:#2a78d6;--viz-2:#eb6834;--viz-3:#1baf7a;--viz-4:#eda100;--viz-grid:#ECE9E3;--viz-tg:#17151F;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --p-canvas:#0E0D14;--p-card:#16141E;--p-sub:#1F1C29;--p-hover:#1B1924;--p-line:#27242F;--p-line2:#393542;
@@ -1937,7 +1937,7 @@ button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:
   --p-brand:#7C68F2;--p-brand-ink:#B1A5FF;--p-brand-soft:#221C44;
   --p-ok:#4CC38A;--p-ok-soft:#11281D;--p-warn:#E2A23E;--p-warn-soft:#2B200F;--p-bad:#F07A83;--p-bad-soft:#331519;--p-info:#74A9F0;--p-info-soft:#13223A;
   --p-pri:#EEECF3;--p-pri-ink:#15132A;--p-pri-h:#FFFFFF;
-  --viz-bar:#8F7BFF;--viz-1:#3987e5;--viz-2:#d95926;--viz-3:#199e70;--viz-grid:#25222D;--viz-tg:#EEECF3;}}
+  --viz-bar:#8F7BFF;--viz-1:#3987e5;--viz-2:#d95926;--viz-3:#199e70;--viz-4:#c98500;--viz-grid:#25222D;--viz-tg:#EEECF3;}}
 :root[data-theme="dark"]{
   --p-canvas:#0E0D14;--p-card:#16141E;--p-sub:#1F1C29;--p-hover:#1B1924;--p-line:#27242F;--p-line2:#393542;
   --p-ink:#EEECF3;--p-ink2:#BAB5C6;--p-ink3:#8F8A9C;--p-faint:#6A6577;
@@ -1945,7 +1945,7 @@ button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:
   --p-brand:#7C68F2;--p-brand-ink:#B1A5FF;--p-brand-soft:#221C44;
   --p-ok:#4CC38A;--p-ok-soft:#11281D;--p-warn:#E2A23E;--p-warn-soft:#2B200F;--p-bad:#F07A83;--p-bad-soft:#331519;--p-info:#74A9F0;--p-info-soft:#13223A;
   --p-pri:#EEECF3;--p-pri-ink:#15132A;--p-pri-h:#FFFFFF;
-  --viz-bar:#8F7BFF;--viz-1:#3987e5;--viz-2:#d95926;--viz-3:#199e70;--viz-grid:#25222D;--viz-tg:#EEECF3;}
+  --viz-bar:#8F7BFF;--viz-1:#3987e5;--viz-2:#d95926;--viz-3:#199e70;--viz-4:#c98500;--viz-grid:#25222D;--viz-tg:#EEECF3;}
 html{background:var(--p-canvas)}
 body{margin:0;background:var(--p-canvas);color:var(--p-ink);font:14px/1.55 var(--p-font);-webkit-font-smoothing:antialiased;min-height:100vh}
 #papp,.p-layer{font-variant-numeric:tabular-nums}
@@ -2243,7 +2243,7 @@ button.kpi:hover{background:var(--p-hover)}
 .lg-tg{width:14px;height:0;border-top:1.5px dashed var(--viz-tg)}
 .split-bar{display:flex;gap:2px;height:18px;border-radius:4px;overflow:hidden}
 .split-bar span{display:block;height:100%}
-.split .s1{background:var(--viz-1)}.split .s2{background:var(--viz-2)}.split .s3{background:var(--viz-3)}
+.split .s1{background:var(--viz-1)}.split .s2{background:var(--viz-2)}.split .s3{background:var(--viz-3)}.s4{background:var(--viz-4)}.split .s4{background:var(--viz-4)}
 .split-lg{list-style:none;margin:16px 0 0;padding:0;display:grid}
 .split-lg li{display:grid;grid-template-columns:10px 1fr auto 48px;gap:12px;align-items:center;font-size:13.5px;padding:9px 0;border-top:1px solid var(--p-line)}
 .split-lg li:first-child{border-top:0}
@@ -2835,6 +2835,20 @@ body:not(.jx-open) .recwin:not(.docked){left:49px!important;right:auto!important
 .pf .wb-c{border-radius:10px;box-shadow:none}
 /* Back and Continue stay in view at the bottom of the screen, on every size */
 @media (min-width:861px){.pf-foot{position:sticky;bottom:0;z-index:5;background:var(--p-canvas);padding:12px 0 calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--p-line)}}
+/* New policy: covers for shops and businesses */
+.new-biz{display:grid;gap:0}
+.new-h{font:600 16px var(--p-font);margin:8px 0 4px;color:var(--p-ink)}
+.new-sub{margin:0 0 16px;font-size:13px}
+.newgrid .newc.wide{grid-column:1/-1;grid-template-columns:auto auto minmax(0,1fr);align-items:center;column-gap:14px}
+.newgrid .newc.wide b{white-space:nowrap}
+@media (max-width:760px){.newgrid .newc.wide{grid-template-columns:auto minmax(0,1fr)}.newgrid .newc.wide span:not(.nc-ic){grid-column:1/-1}}
+.pf-meta a.pf-geo{color:var(--p-brand-ink);text-decoration:underline;text-decoration-color:var(--p-line2);text-underline-offset:3px;font-variant-numeric:tabular-nums}
+.pf-meta a.pf-geo:hover{text-decoration-color:currentColor}
+.pf-ph{display:grid;gap:2px;padding:12px 14px;border-radius:10px;background:var(--p-sub);margin-bottom:4px}
+.pf-ph span{font-size:12px;font-weight:600;color:var(--p-ink3)}
+.pf-ph b{font-size:14.5px}
+.pf-ph small{color:var(--p-ink3);font-size:12.5px}
+.pf-say{margin:-4px 0 14px;color:var(--p-ink2);font-size:14px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -4847,6 +4861,8 @@ STEP.review = {
   cmd: t => reviewCmd(t),
 };
 function finishPayment(got, amount, ref) {
+    // business and property covers: the policy is issued the same way as on the website
+    if (typeof isSme === 'function' && isSme(S.product)) { smeIssue(got, amount, ref); return; }
     S.paid = { ...got, amount, ref };
     if (S.product === 'motor') { const M = S.motor; M.policyNo = `NX/${{ car: 'PC', bike: 'TW', gcv: 'GC', taxi: 'PV' }[M.v.cls]}/${String(YEAR).slice(2)}/${digits(8)}`; S.issued.push({ kind: 'motor', no: M.policyNo }); }
     else {
@@ -6753,7 +6769,7 @@ function wireCustOtp(b, api) {
       const ctl = otpInputs(body.querySelector('.otp'), v => { if (v === codeV) { S.custOk = { at: new Date(), mobile: mob }; $$('.sim-sms').forEach(x => x.remove()); paint(); api.err(''); if (typeof REC !== 'undefined' && REC.cur) REC.cur.marks.push({ t: Math.round((performance.now() - REC.cur.t0) / 100) / 10, label: 'Customer accepted the proposal with a one-time code' }); } else { api.err('That code isn\'t right. Check the message and try again.'); ctl.clear(); } });
       body.querySelector('[data-a=co-again]').addEventListener('click', () => { S.custOk = null; paint(); body.querySelector('[data-a=co-send]').click(); });
       setTimeout(() => { const i = body.querySelector('.otp input'); if (i) i.focus(); }, 50);
-      simSms('NxSure', `${codeV} is your code to accept your NxSure proposal${S.paid ? '' : ` for ${inr(S.product === 'motor' ? motorCalc(S.motor).total : healthCalc(S.health).total)}`}. Share it only with your agent, ${CFG.agent.name}, if they're with you.`, () => ctl.fill(codeV));
+      simSms('NxSure', `${codeV} is your code to accept your NxSure proposal${S.paid ? '' : ` for ${inr(mainTotal(S))}`}. Share it only with your agent, ${CFG.agent.name}, if they're with you.`, () => ctl.fill(codeV));
     });
   };
   paint();
@@ -6914,10 +6930,26 @@ function toldHtml() {
   const H = S.health;
   return `<ul class="told">${active(H).map(m => { const c = [...m.conds].map(k => CONDS.find(x => x.k === k).label).concat([...m.flags].map(k => FLAGS.find(x => x.k === k).label)); return `<li><b>${esc(mName(H, m))}</b>, ${m.age}${m.height ? `, ${m.height} cm, ${m.weight} kg` : ''}<br><span>${esc(c.length ? c.join(', ') : 'No conditions declared')}</span></li>`; }).join('')}</ul>`;
 }
+// a business or property proposal: the same review the website shows, with the underwriter's terms if there are any
+function acceptSmeView() {
+  const b = B(), c = smeCalc(), k = S.kyc, T = b.terms;
+  return {
+    say: `Hi ${esc(first(k.name))}, ${esc(CFG.agent.name)} prepared this with you. Check it, accept it and pay to get covered.`,
+    title: 'Your proposal',
+    body: `${smeReviewHtml(b)}
+      ${T ? `<div class="fld"><span>The underwriter's terms</span><ol class="decl">${T.conds.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div>` : ''}
+      <p class="hint">Something not right? Call ${esc(CFG.agent.name)} on ${esc(maskMobile(CFG.agent.mobile))} before you accept.</p>
+      <div class="fld"><span>Declarations</span><ol class="decl">${smeDecl(b).map(d => `<li>${esc(d)}</li>`).join('')}</ol></div>
+      <label class="agree"><input type="checkbox" name="agree"><span>I've checked my details and accept all the declarations above${b.who === 'biz' ? `, on behalf of ${esc(b.src.gst.legal)}` : ''}.</span></label>
+      <div class="live"><span>${c.range && !T ? 'Indicative premium' : 'Premium'}, with GST</span><b>${inr(c.total)}</b></div>${custOtpHtml(true)}`,
+    next: `Accept and pay ${inr(c.total)}`, back: false,
+  };
+}
 STEP.accept = {
   label: 'Accept and pay',
   when: () => CFG.channel === 'cust',
   view() {
+    if (typeof isSme === 'function' && isSme(S.product)) return acceptSmeView();
     const v = STEP.review.view0(), k = S.kyc;
     const amt = S.product === 'motor' ? motorCalc(S.motor).total : healthCalc(S.health).total;
     v.say = `Hi ${esc(first(k.name))}, ${esc(CFG.agent.name)} prepared this with you. Check it, accept it and pay to get covered.`;
@@ -6928,8 +6960,17 @@ STEP.accept = {
     v.back = false;
     return v;
   },
-  wire(api) { STEP.review.wire(api); wireCustOtp(api.body, api); },
-  async commit(api) { if (!S.custOk) return 'Enter the code we sent to your mobile to accept the proposal.'; return STEP.review.commit(api); },
+  wire(api) { if (!(typeof isSme === 'function' && isSme(S.product))) STEP.review.wire(api); wireCustOtp(api.body, api); },
+  async commit(api) {
+    if (!S.custOk) return 'Enter the code we sent to your mobile to accept the proposal.';
+    if (typeof isSme === 'function' && isSme(S.product)) {
+      const b = B(), ag = api.body.querySelector('[name=agree]'); if (ag && !ag.checked) return 'Tick the box to accept the declarations first.';
+      b.agreed = true; const c = smeCalc(), ref = 'NX-PL-' + code(6), got = await pay(c.total, ref, `${SME[b.p].short}${b.who === 'biz' ? `, ${bizName(b)}` : ''}`);
+      if (!got) return 'STAY';
+      smeIssue(got, c.total, ref); return '';
+    }
+    return STEP.review.commit(api);
+  },
   value: () => S.paid ? `Paid ${inr(S.paid.amount)}` : '',
   done: () => !!S.paid,
   cmd: t => reviewCmd(t),
@@ -7316,7 +7357,7 @@ function bundleSum(s) {
   const extras = items.reduce((a, o) => a + o.total, 0) - disc;
   return { items, disc, extras };
 }
-function mainTotal(s) { s = s || S; try { return s.product === 'motor' ? motorCalc(s.motor).total : healthCalc(s.health).total; } catch (e) { return 0; } }
+function mainTotal(s) { s = s || S; try { if (typeof isSme === 'function' && isSme(s.product)) { const c = smeCalc(s); return c ? c.total : 0; } return s.product === 'motor' ? motorCalc(s.motor).total : healthCalc(s.health).total; } catch (e) { return 0; } }
 function issueExtras(s) {
   s = s || S;
   const { items } = bundleSum(s), pre = { topup: 'HT', health: 'HL', motor: 'PC', home: 'HM', contents: 'HC', pa: 'PA', travel: 'TR', pet: 'PT', cyber: 'CY', pi: 'PI', dno: 'DO', shop: 'SH' };
@@ -9738,7 +9779,7 @@ STEP.dterms = {
 
 /* ---------- after payment ---------- */
 function smeDoneView() {
-  const b = B(), c = smeCalc(), others = { home: b.home && b.home.own === 'build' ? ['marine'] : ['wc', 'marine'], shop: ['wc', 'marine'], fire: ['lop', 'wc'], lop: ['wc', 'marine'], marine: ['home', 'fire', 'wc'], wc: ['home', 'fire', 'lop'], dno: ['fire', 'wc'] }[b.p].filter(x => SME[x].who.includes(b.who)).slice(0, 2);
+  const b = B(), c = smeCalc(), others = { home: b.home && b.home.own === 'build' ? ['marine'] : ['wc', 'marine'], shop: ['wc', 'marine'], fire: ['lop', 'wc'], lop: ['wc', 'marine'], marine: ['home', 'fire', 'wc'], wc: ['home', 'fire', 'lop'], dno: ['fire', 'wc'] }[b.p].filter(x => SME[x].who.includes(b.who) && CFG.channel !== 'cust').slice(0, 2);
   return {
     say: null, title: '', back: false, next: null, foot: false,
     body: `<div class="done-hero"><span class="done-badge">${ICO.check}</span><h1 class="q-title" tabindex="-1">You're covered, ${esc(first(S.kyc.name))}</h1><p class="q-help" style="margin:0">${esc(SME[b.p].short)}${b.who === 'biz' ? ` for ${esc(bizName(b))}` : ''}, from ${fd(b.period.start)}.</p></div>
@@ -14501,13 +14542,25 @@ function makeBook(seed, n, opts = {}) {
       out.policies.push(p);
     }
   }
+  // home, shop and business policies: drawn from their own seed, so the rest of the book stays the same
+  if (!opts.noProp) {
+    const r2 = seeded(seed * 13 + 5), kinds = ['home', 'home', 'shop', 'home', 'fire', 'shop'];
+    kinds.forEach((t, i) => {
+      const c = out.customers[(i * 4 + 2) % out.customers.length], end = addDays(TODAY, between(-6, 340, r2)), start = addDays(addYears(end, -1), 1);
+      const p = { no: polNo({ home: 'HM', shop: 'SK', fire: 'FR' }[t], r2), cid: c.id, customer: c.name, type: t, start, end, status: daysTo2(end) < 0 ? 'lapsed' : 'active' };
+      if (t === 'home') { const flat = r2() < 0.7, si = pick([500000, 800000, 1000000, 1500000], r2); p.premium = between(2400, 8800, r2); p.what = `${flat ? 'Flat' : 'House'} in ${c.area}, contents ${siLabel(si)}`; }
+      if (t === 'shop') { p.premium = between(3600, 14500, r2); p.what = `${pick(['Kirana store', 'Medical store', 'Mobiles shop', 'Clothes shop', 'Hardware shop'], r2)} in ${pick(AREAS_MUM, r2)}`; }
+      if (t === 'fire') { p.premium = between(18000, 64000, r2); p.what = `${pick(['Warehouse', 'Garment unit', 'Printing press'], r2)} in ${pick(['Bhiwandi', 'Vasai', 'Turbhe MIDC'], r2)}`; }
+      out.policies.push(p);
+    });
+  }
   const st = ['Draft', 'With the customer', 'Awaiting payment', 'Tests booked', 'Issued', 'Issued', 'Verification call due', 'With the customer'];
   st.forEach((s, i) => {
     const c = out.customers[(i * 3 + 1) % out.customers.length], t = i % 3 === 2 ? 'health' : i % 3 === 1 ? 'bike' : 'car';
     out.proposals.push({ id: (t === 'health' ? 'NX-PH-' : 'NX-PM-') + (204381700 + i * 37), customer: c.name, cid: c.id, mobile: c.mobile, type: t, what: t === 'health' ? 'Health Plus, ₹10 lakh, family' : t === 'bike' ? `${plate(r)}, ${pick(BIKES, r).slice(0, 2).join(' ')}` : `${plate(r)}, ${pick(CARS, r).slice(0, 2).join(' ')}`, premium: t === 'health' ? between(14000, 36000, r) : t === 'bike' ? between(1500, 3800, r) : between(9000, 28000, r), status: s, at: new Date(Date.now() - between(1, 96, r) * 3600e3), mode: s === 'With the customer' ? 'Customer not present, link sent' : 'With the customer', recorded: s !== 'Verification call due' });
   });
   const src = opts.leadSources || ['From your RM', 'Your link', 'Referral', 'Walk-in', 'Renewal lapsed'];
-  for (let i = 0; i < 10; i++) out.leads.push({ id: 'LD-' + (3200 + i), name: person(r), mobile: mob(r), source: pick(src, r), product: pick(['Car', 'Two-wheeler', 'Health, family', 'Health, parents', 'Commercial vehicle'], r), stage: pick(['New', 'New', 'Contacted', 'Quoted', 'Quoted', 'Won', 'Lost'], r), expected: between(2000, 32000, r), at: addDays(TODAY, -between(0, 20, r)), next: pick(['Call today', 'Send quote', 'Follow up tomorrow', 'Visit on Saturday', '-'], r), score: between(30, 95, r) });
+  for (let i = 0; i < 10; i++) out.leads.push({ id: 'LD-' + (3200 + i), name: person(r), mobile: mob(r), source: pick(src, r), product: opts.noProp ? pick(['Car', 'Two-wheeler', 'Health, family', 'Health, parents', 'Commercial vehicle'], r) : pick(['Car', 'Two-wheeler', 'Health, family', 'Health, parents', 'Home', 'Shop', 'Commercial vehicle'], r), stage: pick(['New', 'New', 'Contacted', 'Quoted', 'Quoted', 'Won', 'Lost'], r), expected: between(2000, 32000, r), at: addDays(TODAY, -between(0, 20, r)), next: pick(['Call today', 'Send quote', 'Follow up tomorrow', 'Visit on Saturday', '-'], r), score: between(30, 95, r) });
   const rq = [['Change address', 'Aadhaar e-KYC', 'Done'], ['Remove loan', 'VAHAN record', 'Done'], ['Add a family member', 'DigiLocker (birth certificate)', 'Under review'], ['Correct name', 'Document upload', 'Under review'], ['Transfer to a new owner', 'Waiting for the buyer\'s KYC', 'Waiting'], ['Change nominee', 'No document needed', 'Done']];
   rq.forEach((x, i) => { const p = out.policies[(i * 5 + 2) % out.policies.length]; out.requests.push({ id: 'NX-SR-' + (120800 + i * 13), type: x[0], policy: p.no, customer: p.customer, verify: x[1], status: x[2], at: addDays(TODAY, -between(0, 14, r)) }); });
   const cl = [['Accident', 'Surveyor allocated'], ['Cashless hospitalisation', 'Approved for treatment'], ['Damaged while parked', 'Survey report due'], ['Reimbursement', 'Documents needed']];
@@ -14555,16 +14608,16 @@ function makeBranches() {
   return ['Andheri West', 'Bandra Linking Road', 'Santacruz East', 'Khar West', 'Vile Parle', 'Powai Hiranandani', 'Goregaon East', 'Malad West', 'Kurla', 'Chembur'].map((b, i) => ({ id: 'MB-' + (110 + i), name: `Meridian Bank, ${b}`, manager: person(r), tier: pick(['Platinum', 'Gold', 'Silver', 'New branch'], r), leads: between(0, 14, r), mtd: between(0, 640000, r), target: between(300000, 700000, r), last: addDays(TODAY, -between(1, 34, r)), receipts: between(0, 5, r) }));
 }
 function makeCampaigns(role) {
-  const all = { agent: [['Renew before the rains', 'Motor renewals due in 60 days, with roadside assistance', 'WhatsApp', 46, 11], ['Parents\' health cover', 'Customers with a health policy for themselves but not their parents', 'Call list', 28, 4]],
+  const all = { agent: [['Renew before the rains', 'Motor renewals due in 60 days, with roadside assistance', 'WhatsApp', 46, 11], ['Parents\' health cover', 'Customers with a health policy for themselves but not their parents', 'Call list', 28, 4], ['Home cover with a video tour', 'Customers with motor or health but no home cover. A video tour recorded at the address takes 5% off', 'WhatsApp', 34, 3]],
     arm: [['Monsoon motor add-ons', 'Engine protect and roadside assistance on renewals', 'All agents', 640, 92], ['Family floater upgrade', 'Health customers with cover under ₹10 lakh', 'Top 10 agents', 310, 38], ['Win back lapsed motor', 'Policies lapsed in the last 90 days', 'All agents', 220, 29]],
     drm: [['Insure at delivery', 'Every delivery quoted before the car leaves the showroom', '9 dealers', 1130, 668], ['Service-visit renewals', 'Renewal quote shown at the service desk', '6 dealers', 520, 241]],
-    brm: [['Home loan customers, health', 'New home loan customers without health cover', '10 branches', 380, 41], ['Car loan, motor at disbursal', 'Car loans disbursed this month', '6 branches', 96, 58]],
+    brm: [['Home loan customers, health', 'New home loan customers without health cover', '10 branches', 380, 41], ['Car loan, motor at disbursal', 'Car loans disbursed this month', '6 branches', 96, 58], ['Home loan, home cover', 'Home insurance at disbursal, with the address and builder from the loan file', '10 branches', 210, 0], ['Current accounts, shop cover', 'Shopkeepers with a current account, from the GSTIN on the account', '6 branches', 150, 0]],
     mgr: [['Insure at delivery', 'Dealer channel', 'Dealers', 1130, 668], ['Monsoon motor add-ons', 'Agency channel', 'Agents', 640, 92], ['Home loan customers, health', 'Banca channel', 'Branches', 380, 41]] };
   return (all[role] || all.agent).map(([n, d, who, reach, won], i) => ({ id: 'CMP-' + (40 + i), name: n, desc: d, who, reach, won, status: i === 0 ? 'Live' : i === 1 ? 'Live' : 'Scheduled', ends: addDays(TODAY, 10 + i * 9) }));
 }
-const ANNOUNCE = [['Health claims: decisions in 1 hour', 'Cashless requests from network hospitals are decided within an hour of the hospital\'s request. Tell customers to show the e-card at the insurance desk.', 2], ['New: verify changes with DigiLocker', 'Address, name and new-member changes can now be checked with DigiLocker, so most happen straight away.', 6], ['Recording is mandatory from 1 November', 'Every assisted sale is recorded from the first step to payment, or confirmed on a recorded call.', 9]];
-const LEARN = [['Selling health insurance the right way', 'Waiting periods, pre-existing conditions and how to ask health questions', 42, 100], ['Motor add-ons explained', 'Zero depreciation, engine protect, return to invoice and when each makes sense', 28, 60], ['Consent, recording and mis-selling', 'What the customer must see and accept, and why the recording matters', 25, 100], ['KYC and the AML basics', 'PAN, Aadhaar, CKYC and when to stop a sale', 20, 0], ['Handling claims with your customer', 'What to tell customers on day one, and how to follow up', 30, 0]];
-const LIB = [['Motor', 'Private car policy wording', 'PDF'], ['Motor', 'Two-wheeler policy wording', 'PDF'], ['Motor', 'Add-on cover wordings', 'PDF'], ['Health', 'NxSure Health plans compared', 'PDF'], ['Health', 'Health policy wording and prospectus', 'PDF'], ['Health', 'Network hospitals list', 'Link'], ['Forms', 'Claim form, motor', 'PDF'], ['Forms', 'Claim form, health reimbursement', 'PDF'], ['Sales', 'One-pager: insure at delivery (dealers)', 'PDF'], ['Sales', 'One-pager: parents\' health cover', 'PDF']];
+const ANNOUNCE = [['New: home, shop and business covers', 'Sell home insurance, shopkeeper\'s insurance and business covers from New policy. A video tour of the property, recorded at the address, takes 5% off.', 0], ['New: policies for companies, firms and trusts', 'KYC for an institution by its CKYC record, GST or company registers, Entity Locker or documents. The person signing does their own KYC.', 1], ['Health claims: decisions in 1 hour', 'Cashless requests from network hospitals are decided within an hour of the hospital\'s request. Tell customers to show the e-card at the insurance desk.', 2], ['New: verify changes with DigiLocker', 'Address, name and new-member changes can now be checked with DigiLocker, so most happen straight away.', 6], ['Recording is mandatory from 1 November', 'Every assisted sale is recorded from the first step to payment, or confirmed on a recorded call.', 9]];
+const LEARN = [['Home and shop insurance, and the video tour', 'What the tour checks, how the location is matched with the address, and when it goes to an underwriter', 18, 0], ['KYC for companies, firms and trusts', 'CKYC, GST and company registers, Entity Locker, beneficial owners and the authority to sign', 15, 0], ['Selling health insurance the right way', 'Waiting periods, pre-existing conditions and how to ask health questions', 42, 100], ['Motor add-ons explained', 'Zero depreciation, engine protect, return to invoice and when each makes sense', 28, 60], ['Consent, recording and mis-selling', 'What the customer must see and accept, and why the recording matters', 25, 100], ['KYC and the AML basics', 'PAN, Aadhaar, CKYC and when to stop a sale', 20, 0], ['Handling claims with your customer', 'What to tell customers on day one, and how to follow up', 30, 0]];
+const LIB = [['Motor', 'Private car policy wording', 'PDF'], ['Motor', 'Two-wheeler policy wording', 'PDF'], ['Motor', 'Add-on cover wordings', 'PDF'], ['Health', 'NxSure Health plans compared', 'PDF'], ['Health', 'Health policy wording and prospectus', 'PDF'], ['Health', 'Network hospitals list', 'Link'], ['Home', 'Home insurance policy wording', 'PDF'], ['Business', 'Shopkeeper\'s policy wording', 'PDF'], ['Business', 'Bharat Sookshma and Laghu Udyam Suraksha wordings', 'PDF'], ['Business', 'Marine cargo, workers\' compensation and D&O wordings', 'PDF'], ['Forms', 'Claim form, motor', 'PDF'], ['Forms', 'Claim form, health reimbursement', 'PDF'], ['Sales', 'One-pager: insure at delivery (dealers)', 'PDF'], ['Sales', 'One-pager: parents\' health cover', 'PDF'], ['Sales', 'One-pager: home cover with a video tour', 'PDF']];
 const TICKETS = [['TK-30412', 'Commission for October not showing for 2 policies', 'Open', 'Commissions team', 1], ['TK-30388', 'Customer\'s policy PDF has the old address', 'Resolved', 'Operations', 4], ['TK-30351', 'Payment link expired before the customer paid', 'Resolved', 'Payments', 9]];
 
 /* ================= NxSure Partners: icons and building blocks ================= */
@@ -14584,6 +14637,8 @@ const PI = {
   book: '<path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 2h13v-4"/>',
   folder: '<path d="M3 6h7l2 2h9v11H3z"/>',
   chat: '<path d="M4 5h16v10H10l-5 4v-4H4z"/><path d="M8 9h8M8 12h5"/>',
+  flame: '<path d="M12 21c-3.9 0-6.5-2.6-6.5-6.2 0-3.7 3-5.6 3.8-9.3 2.4 1.5 3.4 3.6 3.4 5.6 1-.7 1.6-1.8 1.8-3 1.9 1.7 4 4.2 4 6.7 0 3.6-2.6 6.2-6.5 6.2z"/><path d="M12 21c-1.6 0-2.7-1.1-2.7-2.6 0-1.6 1.4-2.6 2.7-4.4 1.3 1.8 2.7 2.8 2.7 4.4 0 1.5-1.1 2.6-2.7 2.6z"/>',
+  truck: '<path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>',
   car: '<path d="M5 16v-4l2-5h10l2 5v4M3.5 16h17M7 12h10"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/>',
   store: '<path d="M4 9l1.5-5h13L20 9M4 9h16v11H4zM10 20v-5h4v5"/>',
   bank: '<path d="M3 9l9-5 9 5M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 20h18"/>',
@@ -14625,12 +14680,16 @@ const PI = {
   more: '<circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/>',
   grid: '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',
 };
+// what a policy or proposal covers, as a word and an icon
+const PTYPE = { car: ['Car', 'car'], bike: ['Two-wheeler', 'car'], health: ['Health', 'hospital'], home: ['Home', 'home'], shop: ['Shop', 'store'], fire: ['Fire and property', 'flame'], lop: ['Loss of profit', 'chart'], marine: ['Marine cargo', 'truck'], wc: ['Workers\' compensation', 'users'], dno: ['Directors and officers', 'brief'] };
+const ptLabel = t => (PTYPE[t] || PTYPE.car)[0], ptIco = t => (PTYPE[t] || PTYPE.car)[1];
+const isPropT = t => !!PTYPE[t] && !['car', 'bike', 'health'].includes(t);
 const pi = (n, cls = '') => `<svg class="pi ${cls}" viewBox="0 0 24 24" aria-hidden="true">${PI[n] || ''}</svg>`;
 let MARKN = 0;
 const mark = (cls = '') => `<span class="p-logo ${cls}">${LOGO.replace(/lgN/g, 'lgP' + (++MARKN))}</span>`;
 const av = (name, sz = '') => `<span class="p-av ${sz}">${esc(String(name).split(' ').filter(Boolean).slice(0, 2).map(x => x[0]).join('').toUpperCase())}</span>`;
 const ppill = (t, k = 'mute') => `<span class="pp ${k}">${esc(t)}</span>`;
-const STATUS_K = { 'Draft': 'mute', 'With the customer': 'info', 'Link sent': 'info', 'Awaiting payment': 'warn', 'Tests booked': 'warn', 'Issued': 'ok', 'Verification call due': 'bad', 'Photo check due': 'warn', 'Done': 'ok', 'Under review': 'info', 'Waiting': 'warn', 'New': 'brand', 'Contacted': 'info', 'Quoted': 'warn', 'Won': 'ok', 'Lost': 'mute', 'To insure': 'warn', 'Quote sent': 'info', 'Insured': 'ok', 'Chose another insurer': 'mute', 'Live': 'ok', 'Scheduled': 'info', 'Open': 'warn', 'Resolved': 'ok', 'Valid': 'ok', 'Renewal due': 'bad', 'Active': 'ok', 'Inactive 30 days': 'bad', 'active': 'ok', 'lapsed': 'bad' };
+const STATUS_K = { 'Draft': 'mute', 'With the underwriter': 'info', 'Terms ready': 'warn', 'With the customer': 'info', 'Link sent': 'info', 'Awaiting payment': 'warn', 'Tests booked': 'warn', 'Issued': 'ok', 'Verification call due': 'bad', 'Photo check due': 'warn', 'Done': 'ok', 'Under review': 'info', 'Waiting': 'warn', 'New': 'brand', 'Contacted': 'info', 'Quoted': 'warn', 'Won': 'ok', 'Lost': 'mute', 'To insure': 'warn', 'Quote sent': 'info', 'Insured': 'ok', 'Chose another insurer': 'mute', 'Live': 'ok', 'Scheduled': 'info', 'Open': 'warn', 'Resolved': 'ok', 'Valid': 'ok', 'Renewal due': 'bad', 'Active': 'ok', 'Inactive 30 days': 'bad', 'active': 'ok', 'lapsed': 'bad' };
 const spill = t => ppill(t, STATUS_K[t] || 'mute');
 const fdS = d => d ? d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : '';
 const ago = d => { const m = Math.round((Date.now() - d) / 60000); return m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} d ago`; };
@@ -14662,7 +14721,7 @@ function barChart(data, o = {}) {
     ${data.map((d, i) => { const x = pad.l + i * bw + bw * 0.22, w = bw * 0.56, top = y(d.v), h = Math.max(0, H - pad.b - top), r = Math.min(4, w / 2, h); return `<g class="bar${d.hi ? ' hi' : ''}" data-tip="${esc(d.l)}: ${esc(o.fmt ? o.fmt(d.v) : d.v)}${d.t ? ` of ${esc(o.fmt ? o.fmt(d.t) : d.t)} target` : ''}"><rect class="hit" x="${pad.l + i * bw}" y="${pad.t}" width="${bw}" height="${H - pad.t - pad.b}"/>${h > 0 ? `<path class="m" d="M${x} ${H - pad.b}V${top + r}q0-${r} ${r}-${r}h${w - 2 * r}q${r} 0 ${r} ${r}V${H - pad.b}z"/>` : ''}${d.t ? `<line class="tg" x1="${x - 3}" x2="${x + w + 3}" y1="${y(d.t)}" y2="${y(d.t)}"/>` : ''}<text class="ax" x="${x + w / 2}" y="${H - 9}" text-anchor="middle">${esc(d.l)}</text></g>`; }).join('')}
     <line class="base" x1="${pad.l}" x2="${W - pad.r}" y1="${H - pad.b}" y2="${H - pad.b}"/></svg>${o.legend ? `<div class="viz-lg">${o.legend}</div>` : ''}</div>`;
 }
-/* a share split across up to three named parts, labelled directly */
+/* a share split across up to four named parts, labelled directly */
 function splitBar(parts, fmt) {
   const tot = parts.reduce((s, p) => s + p.v, 0) || 1;
   return `<div class="split" data-viz><div class="split-bar">${parts.map((p, i) => `<span class="s${i + 1}" style="width:${p.v / tot * 100}%" data-tip="${esc(p.l)}: ${esc(fmt(p.v))}, ${Math.round(p.v / tot * 100)}%"></span>`).join('')}</div><ul class="split-lg">${parts.map((p, i) => `<li><i class="s${i + 1}"></i>${esc(p.l)}<b>${esc(fmt(p.v))}</b><span>${Math.round(p.v / tot * 100)}%</span></li>`).join('')}</ul></div>`;
@@ -14733,7 +14792,7 @@ const TEAM = () => [['Neha Kulkarni', 'Agency RM', 'Mumbai West', 18, 4380000, 5
 function loadRole(role) {
   P.role = role; P.user = ROLES[role]; P.f = {}; P.done = new Set();
   const seeds = { agent: 11, dealer: 21, arm: 31, drm: 41, brm: 51, mgr: 61 };
-  const book = makeBook(seeds[role], role === 'dealer' ? 30 : 26, role === 'brm' ? { leadSources: ['Branch referral', 'Branch referral', 'Loan disbursal', 'Net banking', 'Relationship manager'] } : role === 'dealer' ? { leadSources: ['Showroom walk-in', 'Service visit', 'Test drive', 'Website'] } : {});
+  const book = makeBook(seeds[role], role === 'dealer' ? 30 : 26, role === 'brm' ? { leadSources: ['Branch referral', 'Branch referral', 'Loan disbursal', 'Net banking', 'Relationship manager'] } : role === 'dealer' ? { leadSources: ['Showroom walk-in', 'Service visit', 'Test drive', 'Website'], noProp: true } : {});
   if (role === 'dealer') { book.policies.forEach(p => { if (p.type !== 'car') { p.type = 'car'; const v = CARS[hash(p.no) % 2 ? 0 : 5]; p.vehicle = `${v[0]} ${v[1]}`; p.reg = plate(); p.premium = between(9000, 26000); p.ncb = pick([0, 20, 25, 35]); p.what = `${p.reg}, ${p.vehicle}`; p.no = p.no.replace(/\/(TW|HL)\//, '/PC/'); } }); }
   const months = Array.from({ length: 6 }, (_, i) => addMonths(new Date(TODAY.getFullYear(), TODAY.getMonth(), 1), i - 5)).map(d => d.toLocaleDateString('en-IN', { month: 'short' }));
   const r = seeded(seeds[role] * 7);
@@ -14759,8 +14818,8 @@ function actionItems() {
   const out = [], B = book(), role = P.role;
   const add = (id, type, t, s, due, go, k = 'info') => out.push({ id, type, t, s, due, go, k });
   if (['agent', 'dealer', 'brm'].includes(role)) {
-    B.proposals.forEach(p => { if (p.status === 'With the customer') add('pa' + p.id, 'Proposal', `Remind ${p.customer} to accept and pay`, `${p.what}, ${inr(p.premium)}. Sent ${ago(p.at)}.`, 'Today', `proposal:${p.id}`); if (p.status === 'Awaiting payment') add('pp' + p.id, 'Payment', `${p.customer} accepted but hasn't paid`, `${inr(p.premium)}. The payment link expires in 24 hours.`, 'Today', `proposal:${p.id}`, 'warn'); if (p.status === 'Verification call due') add('pv' + p.id, 'Verification call', `Book a recorded call with ${p.customer}`, 'This sale wasn\'t recorded on video, so the answers must be confirmed on a recorded call.', 'Overdue', `proposal:${p.id}`, 'bad'); });
-    renewalsDue(10).forEach(p => add('rn' + p.no, 'Renewal', `${p.customer}'s ${p.type === 'health' ? 'health' : p.type === 'bike' ? 'two-wheeler' : 'car'} policy ${daysTo2(p.end) < 0 ? 'has lapsed' : 'renews ' + whenText(p.end).toLowerCase()}`, `${p.what}. Last premium ${inr(p.premium)}.`, daysTo2(p.end) < 0 ? 'Overdue' : fdS(p.end), `renewal:${p.no}`, daysTo2(p.end) < 3 ? 'bad' : 'warn'));
+    B.proposals.forEach(p => { if (p.status === 'Terms ready') add('pt' + p.id, 'Proposal', `Go over the underwriter's terms with ${p.customer}`, `${p.what}, ${inr(p.premium)}. The terms are valid for 15 days.`, 'Today', `proposal:${p.id}`, 'warn'); if (p.status === 'With the customer') add('pa' + p.id, 'Proposal', `Remind ${p.customer} to accept and pay`, `${p.what}, ${inr(p.premium)}. Sent ${ago(p.at)}.`, 'Today', `proposal:${p.id}`); if (p.status === 'Awaiting payment') add('pp' + p.id, 'Payment', `${p.customer} accepted but hasn't paid`, `${inr(p.premium)}. The payment link expires in 24 hours.`, 'Today', `proposal:${p.id}`, 'warn'); if (p.status === 'Verification call due') add('pv' + p.id, 'Verification call', `Book a recorded call with ${p.customer}`, 'This sale wasn\'t recorded on video, so the answers must be confirmed on a recorded call.', 'Overdue', `proposal:${p.id}`, 'bad'); });
+    renewalsDue(10).forEach(p => add('rn' + p.no, 'Renewal', `${p.customer}'s ${ptLabel(p.type).toLowerCase()} policy ${daysTo2(p.end) < 0 ? 'has lapsed' : 'renews ' + whenText(p.end).toLowerCase()}`, `${p.what}. Last premium ${inr(p.premium)}.`, daysTo2(p.end) < 0 ? 'Overdue' : fdS(p.end), `renewal:${p.no}`, daysTo2(p.end) < 3 ? 'bad' : 'warn'));
     B.leads.filter(l => l.stage === 'New').slice(0, 3).forEach(l => add('ld' + l.id, 'Lead', `Call ${l.name}`, `${l.product}, from ${l.source.toLowerCase()}.`, 'Today', `lead:${l.id}`));
     B.claims.filter(c => /Documents/.test(c.stage)).forEach(c => add('cl' + c.id, 'Claim', `Help ${c.customer} send claim documents`, `${c.what}, ${c.id}.`, 'Today', 'claims', 'warn'));
   }
@@ -14795,7 +14854,7 @@ V.home = () => {
       <div class="kpis">${kpi({ ic: 'rupee', label: 'Premium this month', value: fmtK(d.mtd), sub: `of ${fmtK(d.target)} target · ${pct}%`, prog: pct, status: pct >= 90 ? ['On track', 'ok'] : ['At risk', 'warn'], go: 'earnings' })}${kpi({ ic: 'doc', tint: 'info', label: 'Proposals open', value: c.props, sub: `${B.proposals.filter(p => p.status === 'With the customer').length} with customers, ${B.proposals.filter(p => p.status === 'Awaiting payment').length} awaiting payment`, go: 'proposals' })}${kpi({ ic: 'renew', tint: 'warn', label: 'Renewals in 30 days', value: ren.length, sub: `${fmtK(ren.reduce((s, p) => s + p.premium, 0))} premium to keep`, go: 'renewals' })}${kpi({ ic: 'wallet', tint: 'ok', label: 'Earnings this month', value: inr(earn), sub: 'Credited on the 7th of next month', go: 'earnings' })}</div>
       <div class="grid2">${pcard('Your pipeline', funnel([['Draft', B.proposals.filter(p => p.status === 'Draft')], ['With the customer', B.proposals.filter(p => p.status === 'With the customer')], ['Awaiting payment or tests', B.proposals.filter(p => ['Awaiting payment', 'Tests booked', 'Verification call due'].includes(p.status))], ['Issued this month', B.proposals.filter(p => p.status === 'Issued')]]), `<button type="button" class="pc-link" data-nav="proposals">All proposals${pi('chevR')}</button>`)}
         ${pcard('Renewals this week', listRen(renewalsDue(8).slice(0, 5)), `<button type="button" class="pc-link" data-nav="renewals">All renewals${pi('chevR')}</button>`)}</div>
-      <div class="grid2">${chart}${pcard('Your licence and learning', `${kv([['Licence', `${spill('Valid')} till 14 Mar 2028`], ['Certification', '4 of 5 modules done'], ['Next module', 'KYC and the AML basics, 20 min']])}<div class="pc-acts">${pbtn('Continue learning', 'data-nav="learning"', 'ghost', 'grad')}</div><h3 class="pc-sub">From NxSure</h3>${announceList(2)}`)}</div>` };
+      <div class="grid2">${chart}${pcard('Your licence and learning', `${kv([['Licence', `${spill('Valid')} till 14 Mar 2028`], ['Certification', `${LEARN.filter(l => l[3] === 100).length} of ${LEARN.length} modules done`], ['Next module', (n => n ? `${n[0]}, ${n[2]} min` : 'All done')(LEARN.find(l => l[3] < 100))]])}<div class="pc-acts">${pbtn('Continue learning', 'data-nav="learning"', 'ghost', 'grad')}</div><h3 class="pc-sub">From NxSure</h3>${announceList(2)}`)}</div>` };
   }
   if (role === 'dealer') {
     const D = d.deliveries, ins = D.filter(x => x.status === 'Insured').length, mtdSold = d.dealers[0].sold, mtdIns = d.dealers[0].insured, att = Math.round(mtdIns / mtdSold * 100), ws = d.workshop.filter(w => w.stage !== 'Final bill paid');
@@ -14835,7 +14894,7 @@ V.home = () => {
 };
 function funnel(stages, small) { const mx = Math.max(1, ...stages.map(s => s[1].length)); return `<div class="fun">${stages.map(([t, a]) => `<div><span class="fun-l">${esc(t)}</span><span class="fun-b"><i style="width:${Math.max(4, a.length / mx * 100)}%"></i></span><b>${a.length}</b>${small ? '' : `<small>${inrK(a.reduce((s, p) => s + (p.premium || 0), 0))}</small>`}</div>`).join('')}</div>`; }
 function listRen(list) { return list.length ? `<ul class="plist">${list.map(p => `<li data-row="renewal:${esc(p.no)}" tabindex="0">${av(p.customer, 'sm')}<span><b>${esc(p.customer)}</b><small>${esc(p.what)} · ${inr(p.premium)}</small></span>${ppill(daysTo2(p.end) < 0 ? 'Lapsed' : whenText(p.end), daysTo2(p.end) < 3 ? 'bad' : 'warn')}</li>`).join('')}</ul>` : '<p class="p-muted">Nothing due this week.</p>'; }
-function announceList(n) { return `<ul class="plist ann">${ANNOUNCE.slice(0, n).map(([t, s, d]) => `<li><span class="ann-ic">${pi('bell')}</span><span><b>${esc(t)}</b><small>${esc(s)}</small></span><time>${d} d</time></li>`).join('')}</ul>`; }
+function announceList(n) { return `<ul class="plist ann">${ANNOUNCE.slice(0, n).map(([t, s, d]) => `<li><span class="ann-ic">${pi('bell')}</span><span><b>${esc(t)}</b><small>${esc(s)}</small></span><time>${d ? `${d} d` : 'Today'}</time></li>`).join('')}</ul>`; }
 function delivList(list) { return list.length ? `<ul class="plist">${list.map(d => `<li data-row="delivery:${d.id}" tabindex="0"><span class="car-ic">${pi('car')}</span><span><b>${esc(d.customer)}</b><small>${esc(d.make)} ${esc(d.model)} ${esc(d.variant)} · ${esc(d.colour)}</small></span>${ppill(`Delivery ${whenText(d.delivery).toLowerCase()}`, daysTo2(d.delivery) <= 0 ? 'bad' : 'warn')}</li>`).join('')}</ul>` : '<p class="p-muted">Every delivery this week is insured.</p>'; }
 const WS_ST = ['Claim registered', 'Surveyor allocated', 'Estimate shared', 'Approved', 'Repair in progress', 'Ready for delivery', 'Final bill paid'];
 function wsBoardMini(ws) { return `<div class="wsmini">${WS_ST.slice(0, 6).map(s => `<div><b>${ws.filter(w => w.stage === s).length}</b><small>${esc(s)}</small></div>`).join('')}</div>`; }
@@ -14859,9 +14918,12 @@ V.new = () => {
       ${dealer ? `<button type="button" class="newc hero" data-nav="deliveries"><span class="nc-ic">${pi('car')}</span><b>A new vehicle at delivery</b><span>From the booking in your DMS. Chassis and engine numbers, no registration needed. One year own damage and three years third party.</span><em>${counts().deliv} to insure this week</em></button>` : ''}
       <button type="button" class="newc" data-start="motor"><span class="nc-ic">${pi('car')}</span><b>Motor</b><span>Car, two-wheeler or commercial vehicle, from the number plate. Renewals, break-ins and used vehicles.</span></button>
       <button type="button" class="newc" data-start="health"><span class="nc-ic">${pi('hospital')}</span><b>Health</b><span>For the family or for parents. Health questions one at a time, and decisions on the spot.</span></button>
-      <button type="button" class="newc" data-start="link"><span class="nc-ic">${pi('link')}</span><b>Send the customer a link</b><span>They buy on their own phone. The sale stays tagged to you, and you see how far they get.</span></button>
+      ${dealer ? '' : `<button type="button" class="newc" data-start="home"><span class="nc-ic">${pi('home')}</span><b>Home</b><span>A flat or house, lived in, rented out or being built. A video tour of the home takes ${CFG.geo.videoDisc}% off.</span></button>`}
+      <button type="button" class="newc ${dealer ? '' : 'wide'}" data-start="link"><span class="nc-ic">${pi('link')}</span><b>Send the customer a link</b><span>They buy on their own phone. The sale stays tagged to you, and you see how far they get.</span></button>
     </div>
-    ${pcard('How an assisted sale works', `<ol class="steps4"><li><b>Is the customer with you?</b><span>If yes, you take a photo of yourself and the sale is recorded on video from the first step. If not, you fill in what they tell you.</span></li><li><b>Quote, KYC and health questions</b><span>The same journey as our website, one question at a time.</span></li><li><b>The customer accepts</b><span>With a one-time code on their phone if they're with you, or from a link if they're not.</span></li><li><b>Payment and the policy</b><span>The policy is issued as soon as they pay. You never collect cash.</span></li></ol>`)}` };
+    ${dealer ? '' : `<section class="new-biz"><h2 class="new-h">For shops and businesses</h2><p class="p-muted new-sub">Start with the GSTIN, company number, Udyam number or PAN. The public records fill in most of it, and the business is verified with its own KYC.</p>
+    <div class="newgrid nb">${[['shop', 'Shop', 'Kirana, medical, mobiles, clothes, hardware, bakery and more. Stock, fittings, cash and theft, with a video tour of the shop.'], ['fire', 'Fire and property', 'Offices, warehouses and factories: building, machines and stock, under Bharat Sookshma or Laghu Udyam.'], ['lop', 'Loss of profit', 'Lost profit while the business recovers from a fire or flood, for the months it takes.'], ['marine', 'Marine cargo', 'Goods in transit, within India or across borders, for one shipment or the whole year.'], ['wc', 'Workers\' compensation', 'For employees and contract workers hurt at work, under the Code on Social Security.'], ['dno', 'Directors and officers', 'Personal liability of directors and officers. An underwriter prices it from the records.']].map(([k, t, d]) => `<button type="button" class="newc" data-start="${k}"><span class="nc-ic">${pi(PF_PICO[k])}</span><b>${t}</b><span>${d}</span></button>`).join('')}</div></section>`}
+    ${pcard('How an assisted sale works', `<ol class="steps4"><li><b>Is the customer with you?</b><span>If yes, you take a photo of yourself and the sale is recorded on video from the first step. If not, you fill in what they tell you.</span></li><li><b>Quote, KYC and the questions</b><span>The same journey as our website, one question at a time: health questions, or the records and a video tour of the property.</span></li><li><b>The customer accepts</b><span>With a one-time code on their phone if they're with you, or from a link if they're not.</span></li><li><b>Payment and the policy</b><span>The policy is issued as soon as they pay. You never collect cash.</span></li></ol>`)}` };
 };
 
 V.proposals = () => {
@@ -14869,7 +14931,7 @@ V.proposals = () => {
   const list = B.proposals.filter(p => f === 'all' || p.status === f).sort((a, b) => b.at - a.at);
   return { title: 'Proposals', html: `${phead(P.role === 'arm' ? 'Team proposals' : 'Proposals', 'Every proposal, from first quote to policy', pbtn('New policy', 'data-nav="new"', 'pri', 'plus'))}
     ${chips('props', [['all', 'All', B.proposals.length], ...st.map(s => [s, s, B.proposals.filter(p => p.status === s).length])], f)}
-    ${pcard('', ptable([{ t: 'Customer', r: p => `<span class="who">${av(p.customer, 'sm')}<span><b>${esc(p.customer)}</b><small>${esc(p.id)}</small></span></span>` }, { t: 'Cover', r: p => `${esc(p.type === 'health' ? 'Health' : p.type === 'bike' ? 'Two-wheeler' : 'Car')}<small class="sub">${esc(p.what)}</small>` }, { t: 'Premium', cls: 'r', r: p => `<b>${inr(p.premium)}</b>` }, { t: 'Status', r: p => spill(p.status) }, { t: 'Recorded', r: p => p.recorded ? `<span class="txt-ok">${pi('check')}Video</span>` : '<span class="txt-bad">Call due</span>' }, { t: 'Updated', r: p => ago(p.at) }], list, { row: p => 'proposal:' + p.id, empty: 'No proposals here' }), '', 'flush')}` };
+    ${pcard('', ptable([{ t: 'Customer', r: p => `<span class="who">${av(p.customer, 'sm')}<span><b>${esc(p.customer)}</b><small>${esc(p.id)}</small></span></span>` }, { t: 'Cover', r: p => `${esc(ptLabel(p.type))}<small class="sub">${esc(p.what)}</small>` }, { t: 'Premium', cls: 'r', r: p => `<b>${inr(p.premium)}</b>` }, { t: 'Status', r: p => spill(p.status) }, { t: 'Recorded', r: p => isPropT(p.type) ? '<span class="p-muted">Not needed</span>' : p.recorded ? `<span class="txt-ok">${pi('check')}Video</span>` : '<span class="txt-bad">Call due</span>' }, { t: 'Updated', r: p => ago(p.at) }], list, { row: p => 'proposal:' + p.id, empty: 'No proposals here' }), '', 'flush')}` };
 };
 
 V.customers = () => {
@@ -14879,8 +14941,8 @@ V.customers = () => {
   return { title: 'Customers', html: `${phead('Customers and policies', `${B.customers.length} customers, ${B.policies.length} policies`)}
     ${ptabs('custTab', [['customers', 'Customers', B.customers.length], ['policies', 'Policies', B.policies.length]], tab)}
     <div class="p-tools"><label class="p-search">${pi('search')}<input data-q placeholder="Search by name, mobile, policy or vehicle number" value="${esc(P.f.q || '')}"></label></div>
-    ${pcard('', tab === 'customers' ? ptable([{ t: 'Customer', r: c => `<span class="who">${av(c.name, 'sm')}<span><b>${esc(c.name)}</b><small>${esc(maskMobile(c.mobile))} · ${esc(c.area)}</small></span></span>` }, { t: 'Policies', r: c => B.policies.filter(p => p.cid === c.id).map(p => ppill(p.type === 'health' ? 'Health' : p.type === 'bike' ? 'Two-wheeler' : 'Car', p.status === 'active' ? 'info' : 'bad')).join(' ') }, { t: 'Next renewal', r: c => { const n = B.policies.filter(p => p.cid === c.id).sort((a, b) => a.end - b.end)[0]; return n ? `${fdS(n.end)}<small class="sub">${whenText(n.end)}</small>` : ''; } }, { t: 'KYC', r: c => c.kyc ? '<span class="txt-ok">' + pi('check') + 'Done</span>' : ppill('Not done', 'warn') }, { t: 'Customer since', r: c => c.since.getFullYear() }], custs, { row: c => 'customer:' + c.id })
-      : ptable([{ t: 'Policy', r: p => `<b class="mono">${esc(p.no)}</b><small class="sub">${esc(p.customer)}</small>` }, { t: 'Cover', r: p => `${esc(p.type === 'health' ? 'Health' : p.type === 'bike' ? 'Two-wheeler' : 'Car')}<small class="sub">${esc(p.what)}</small>` }, { t: 'Premium', cls: 'r', r: p => inr(p.premium) }, { t: 'Ends', r: p => `${fdS(p.end)} ${p.end.getFullYear()}` }, { t: 'Status', r: p => spill(p.status) }], pols, { row: p => 'policy:' + p.no }), '', 'flush')}` };
+    ${pcard('', tab === 'customers' ? ptable([{ t: 'Customer', r: c => `<span class="who">${av(c.name, 'sm')}<span><b>${esc(c.name)}</b><small>${esc(maskMobile(c.mobile))} · ${esc(c.area)}</small></span></span>` }, { t: 'Policies', r: c => B.policies.filter(p => p.cid === c.id).map(p => ppill(ptLabel(p.type), p.status === 'active' ? 'info' : 'bad')).join(' ') }, { t: 'Next renewal', r: c => { const n = B.policies.filter(p => p.cid === c.id).sort((a, b) => a.end - b.end)[0]; return n ? `${fdS(n.end)}<small class="sub">${whenText(n.end)}</small>` : ''; } }, { t: 'KYC', r: c => c.kyc ? '<span class="txt-ok">' + pi('check') + 'Done</span>' : ppill('Not done', 'warn') }, { t: 'Customer since', r: c => c.since.getFullYear() }], custs, { row: c => 'customer:' + c.id })
+      : ptable([{ t: 'Policy', r: p => `<b class="mono">${esc(p.no)}</b><small class="sub">${esc(p.customer)}</small>` }, { t: 'Cover', r: p => `${esc(ptLabel(p.type))}<small class="sub">${esc(p.what)}</small>` }, { t: 'Premium', cls: 'r', r: p => inr(p.premium) }, { t: 'Ends', r: p => `${fdS(p.end)} ${p.end.getFullYear()}` }, { t: 'Status', r: p => spill(p.status) }], pols, { row: p => 'policy:' + p.no }), '', 'flush')}` };
 };
 
 V.leads = () => {
@@ -14898,7 +14960,7 @@ V.renewals = () => {
   return { title: 'Renewals', html: `${phead(dealer ? 'Service renewals' : P.role === 'drm' ? 'Renewal retention' : 'Renewals', dealer ? 'Customers who bought their car here. Quote the renewal when they come in for a service.' : `${list.length} policies, ${inrK(tot)} premium to keep`, pbtn('Send all reminders', 'data-act="remindall"', 'ghost', 'wa'))}
     ${P.role === 'drm' ? pcard('Renewals kept, by dealer', barChart(P.d.dealers.map(d => ({ l: d.name.split(' ')[0], v: d.retained })), { fmt: v => v + '%', label: 'Share of renewals kept at each dealer' })) : ''}
     ${chips('ren', [['over', 'Lapsed', all.filter(p => daysTo2(p.end) < 0).length], ['7', 'Next 7 days', all.filter(p => daysTo2(p.end) >= 0 && daysTo2(p.end) <= 7).length], ['30', 'Next 30 days', all.filter(p => daysTo2(p.end) >= 0 && daysTo2(p.end) <= 30).length], ['60', 'Next 60 days', all.length]], f)}
-    ${pcard('', ptable([{ t: 'Customer', r: p => `<span class="who">${av(p.customer, 'sm')}<span><b>${esc(p.customer)}</b><small class="mono">${esc(p.no)}</small></span></span>` }, { t: 'Cover', r: p => `${esc(p.type === 'health' ? 'Health' : p.type === 'bike' ? 'Two-wheeler' : 'Car')}<small class="sub">${esc(p.what)}</small>` }, { t: 'Renews', r: p => `${fdS(p.end)}<small class="sub ${daysTo2(p.end) < 3 ? 'txt-bad' : ''}">${daysTo2(p.end) < 0 ? 'Lapsed' : whenText(p.end)}</small>` }, { t: 'Last premium', cls: 'r', r: p => inr(p.premium) }, { t: 'Bonus', r: p => p.ncb != null ? `${p.ncb}%` : '' }, { t: '', cls: 'r', r: p => p.sent ? ppill('Link sent', 'info') : pbtn('Send renewal link', `data-act="renlink" data-id="${esc(p.no)}"`, 'ghost sm', 'wa') }], list, { row: p => 'renewal:' + p.no, empty: 'Nothing due in this window' }), '', 'flush')}` };
+    ${pcard('', ptable([{ t: 'Customer', r: p => `<span class="who">${av(p.customer, 'sm')}<span><b>${esc(p.customer)}</b><small class="mono">${esc(p.no)}</small></span></span>` }, { t: 'Cover', r: p => `${esc(ptLabel(p.type))}<small class="sub">${esc(p.what)}</small>` }, { t: 'Renews', r: p => `${fdS(p.end)}<small class="sub ${daysTo2(p.end) < 3 ? 'txt-bad' : ''}">${daysTo2(p.end) < 0 ? 'Lapsed' : whenText(p.end)}</small>` }, { t: 'Last premium', cls: 'r', r: p => inr(p.premium) }, { t: 'Bonus', r: p => p.ncb != null ? `${p.ncb}%` : '' }, { t: '', cls: 'r', r: p => p.sent ? ppill('Link sent', 'info') : pbtn('Send renewal link', `data-act="renlink" data-id="${esc(p.no)}"`, 'ghost sm', 'wa') }], list, { row: p => 'renewal:' + p.no, empty: 'Nothing due in this window' }), '', 'flush')}` };
 };
 
 V.servicing = () => {
@@ -14984,7 +15046,7 @@ V.plan = () => ({ title: 'Plan my day', html: `${phead('Plan my day', `${todayLi
 V.campaigns = () => ({ title: 'Campaigns', html: `${phead('Campaigns', 'Lists to work and messages to send, with results as they come in', P.role === 'agent' ? '' : pbtn('New campaign', 'data-act="newcamp"', 'pri', 'plus'))}
   ${pcard('', ptable([{ t: 'Campaign', r: c => `<b>${esc(c.name)}</b><small class="sub">${esc(c.desc)}</small>` }, { t: 'For', r: c => esc(c.who) }, { t: 'Reached', cls: 'r', r: c => c.reach }, { t: 'Converted', cls: 'r', r: c => `${c.won}<small class="sub">${Math.round(c.won / c.reach * 100)}%</small>` }, { t: 'Status', r: c => spill(c.status) }, { t: 'Ends', r: c => fdS(c.ends) }], P.d.campaigns), '', 'flush')}` });
 V.dashboards = () => {
-  const d = P.d, B = book(), mix = [['Car', B.policies.filter(p => p.type === 'car')], ['Two-wheeler', B.policies.filter(p => p.type === 'bike')], ['Health', B.policies.filter(p => p.type === 'health')]].map(([l, a]) => ({ l, v: a.reduce((s, p) => s + p.premium, 0) }));
+  const d = P.d, B = book(), mix = [['Car', B.policies.filter(p => p.type === 'car')], ['Two-wheeler', B.policies.filter(p => p.type === 'bike')], ['Health', B.policies.filter(p => p.type === 'health')], ['Home and business', B.policies.filter(p => isPropT(p.type))]].filter(([, a]) => a.length).map(([l, a]) => ({ l, v: a.reduce((s, p) => s + p.premium, 0) }));
   return { title: 'Dashboards', html: `${phead('Dashboards', 'Premium, mix and conversion. Download any view as CSV.', pbtn('Download CSV', 'data-act="csv:series"', 'ghost', 'download'))}
     <div class="grid2">${pcard('Premium by month', barChart(d.series, { fmt: inrK, label: 'Premium by month against target', legend: '<span><i class="lg-bar"></i>Premium</span><span><i class="lg-tg"></i>Target</span>' }))}${pcard('Book by product', splitBar(mix, inrK))}</div>
     <div class="grid2">${pcard('Proposal to policy', funnel([['Quotes', Array(64)], ['Proposals', Array(31)], ['Accepted by the customer', Array(24)], ['Paid and issued', Array(21)]], true))}${pcard('Recording', kv([['Sales recorded on video', '86%'], ['Confirmed on a recorded call', '11%'], ['Call still due', `${B.proposals.filter(p => p.status === 'Verification call due').length} proposals`]]) + '<p class="p-muted small" style="margin-top:10px">Every assisted sale is recorded from the first step to payment, or confirmed on a recorded call.</p>')}</div>` };
@@ -15016,6 +15078,7 @@ const pfFirst = () => { const n = (S.kyc && S.kyc.name) || (S.sent && S.sent.nam
 const pfRem = () => S.mode === 'remote';
 function pfSteps() {
   if (!S || !S.product) return [];
+  if (pfIsProp()) return pfPropSteps();
   const mot = S.product === 'motor';
   return PF_STEPS[S.product].filter(([id]) => {
     // health: the photo is taken here only when the proposal goes straight through; otherwise Nyra takes it on the video exam
@@ -15043,7 +15106,9 @@ const FL = {
     else {
       S = fresh(); shownPrice = null;
       S.product = o.product || 'motor';
-      if (S.product === 'motor') S.motor = newMotor(); else { S.health = newHealth(); S.health.si = 1000000; S.health.tier = 'plus'; }
+      if (S.product === 'motor') S.motor = newMotor();
+      else if (isSme(S.product)) { S.biz = newBiz(S.product); S.seen.add('product'); }
+      else { S.health = newHealth(); S.health.si = 1000000; S.health.tier = 'plus'; }
       S.pf = { step: 'start', done: new Set(), reg: o.reg || '' };
     }
     S.cur = S.pf.step;
@@ -15057,7 +15122,7 @@ const FL = {
   },
   next() {
     // the next step in the full order that still applies: answers on this step can add or remove steps
-    const all = PF_STEPS[S.product].map(x => x[0]), on = new Set(pfSteps().map(x => x[0])), i = all.indexOf(S.pf.step);
+    const all = pfIsProp() ? pfPropAll() : PF_STEPS[S.product].map(x => x[0]), on = new Set(pfSteps().map(x => x[0])), i = all.indexOf(S.pf.step);
     S.pf.done.add(S.pf.step);
     const nx = all.slice(i + 1).find(x => on.has(x));
     FL.go(nx || (pfRem() ? 'sent' : 'done'));
@@ -15069,7 +15134,7 @@ const FL = {
     if (FACE.hold) faceHold(false);
     if (REC.cur && !JX.isOpen()) REC.stop(S.paid ? 'paid' : 'closed');
     S.recAsked = false;
-    if (S.product && !S.paid && !S.sent && S.pf.step !== 'start') upsertJ(S, 'Draft');
+    if (S.product && !S.paid && !S.sent && S.pf.step !== 'start') upsertJ(S, pfIsProp() && S.biz.submittedAt ? (S.biz.terms ? 'Terms ready' : 'With the underwriter') : 'Draft');
   },
 };
 let pfPainting = false, pfDown = false, pfPend = false;
@@ -15097,17 +15162,18 @@ function pfPaint() {
 /* ---------------- the frame: header, steps, summary ---------------- */
 V.flow = () => {
   if (!S || !S.pf) return { title: 'New policy', html: `${phead('New policy', '')}<p class="p-muted">Start a new policy from <a href="#new">New policy</a>.</p>`, wire() {} };
-  const id = S.pf.step, steps = pfSteps(), i = steps.findIndex(x => x[0] === id), mot = S.product === 'motor';
-  const ref = mot ? (S.motor.quoteNo || '') : (S.health.quoteNo || '');
-  const head = `<div class="pf-head"><div><span class="pf-kick">${mot ? 'New motor policy' : 'New health policy'}${ref ? ` · <span class="mono">${esc(ref)}</span>` : ''}</span><h1>${esc(S.kyc ? S.kyc.name : S.sent ? S.sent.name : 'New customer')}</h1>
+  const id = S.pf.step, steps = pfSteps(), i = steps.findIndex(x => x[0] === id), mot = S.product === 'motor', prop = pfIsProp();
+  const ref = prop ? (S.biz.proposalNo || S.biz.quoteNo || '') : mot ? (S.motor.quoteNo || '') : (S.health.quoteNo || '');
+  const who = prop && S.biz.who === 'biz' && S.biz.src ? (S.biz.src.gst.trade || S.biz.src.gst.legal) : S.kyc ? S.kyc.name : S.sent ? S.sent.name : 'New customer';
+  const head = `<div class="pf-head"><div><span class="pf-kick">New ${PF_PKICK[S.product] || 'policy'}${ref ? ` · <span class="mono">${esc(ref)}</span>` : ''}</span><h1>${esc(who)}</h1>
     <p>${S.mode === 'assisted' ? 'With the customer' : S.mode === 'remote' ? 'Customer not present: they finish on a link' : 'Setting up'}${REC.cur && REC.cur.s === S ? ` · <span class="pf-rec"><i></i><span data-rect>Recording ${mmss((performance.now() - REC.cur.t0) / 1000)}</span></span>` : S.verifyCall ? ' · <span class="txt-bad">Not recorded: a verification call is due</span>' : ''}</p></div>
     <div class="ph-a">${S.paid || id === 'sent' ? pbtn('Proposals', 'data-nav="proposals"', 'ghost', 'doc') : pbtn('Save and exit', 'data-pf="exit"', 'ghost', 'logout')}</div></div>`;
   const rail = id === 'done' || id === 'sent' ? '' : `<ol class="pf-steps">${steps.map(([s, t], j) => `<li class="${j < i ? 'done' : j === i ? 'now' : ''}">${j < i ? `<button type="button" data-pfgo="${s}">${pi('check')}<span>${esc(t)}</span></button>` : `<span><b>${j + 1}</b><span>${esc(t)}</span></span>`}</li>`).join('')}</ol>`;
-  const v = PFV[id] ? PFV[id]() : { html: '' };
+  const v = PFV[id] ? PFV[id]() : prop && STEP[id] ? pfEngView(id) : { html: '' };
   return {
-    title: mot ? 'New motor policy' : 'New health policy',
+    title: `New ${PF_PKICK[S.product] || 'policy'}`,
     html: `<div class="pf" data-step="${id}">${head}${rail}<div class="pf-grid"><div class="pf-main"><div data-pfmain>${v.html}</div><p class="p-err pf-err" data-pferr hidden></p>
-      ${v.foot === false ? '' : `<div class="pf-foot">${i > 0 && !S.paid && !S.sent ? pbtn('Back', 'data-pf="back"', 'ghost', 'chevL') : '<span></span>'}${v.next === null ? '' : `<button type="button" class="pb pri" data-pf="next" ${v.dis ? 'disabled' : ''}>${esc(v.next || 'Continue')}${pi('chevR')}</button>`}</div>`}</div>
+      ${v.foot === false ? '' : `<div class="pf-foot">${i > 0 && !S.paid && !S.sent && v.back !== false ? pbtn('Back', 'data-pf="back"', 'ghost', 'chevL') : '<span></span>'}${v.next === null ? '' : `<button type="button" class="pb pri" data-pf="next" ${v.dis ? 'disabled' : ''} ${v.hide ? 'hidden' : ''}>${esc(v.next || 'Continue')}${pi('chevR')}</button>`}</div>`}</div>
       <div class="pf-sidecol"><div class="rec-slot pf-recslot" data-recslot="side"></div><aside class="pf-side" data-pfside>${pfSide()}</aside></div></div></div>`,
     wire(host) {
       document.body.classList.add('pf-on');
@@ -15120,13 +15186,16 @@ V.flow = () => {
         const b = e.target.closest('[data-pf]'); if (!b) return;
         if (b.dataset.pf === 'back') FL.back();
         if (b.dataset.pf === 'exit') { FL.leave(); location.hash = 'proposals'; }
-        if (b.dataset.pf === 'next') {
-          if (b.disabled || pfBusy) return;
-          pfBusy = true; const lbl = b.innerHTML; b.disabled = true;
-          try { const r = v.commit ? await v.commit(api) : ''; if (r === 'STAY') return; if (r) { err(r); return; } err(''); FL.next(); }
-          finally { pfBusy = false; if (b.isConnected) { b.disabled = false; b.innerHTML = lbl; } }
-        }
+        if (b.dataset.pf === 'next') run(b);
       });
+      // Continue, or a step moving on by itself (a tile picked on one of the website's steps)
+      const run = async (b, force) => {
+        if (!b || (b.disabled && !force) || pfBusy) return;
+        pfBusy = true; const lbl = b.innerHTML, was = b.disabled; b.disabled = true;
+        try { const r = v.commit ? await v.commit(api) : ''; if (r === 'STAY') return; if (r) { err(r); return; } err(''); FL.next(); }
+        finally { pfBusy = false; if (b.isConnected) { b.disabled = force ? was : false; b.innerHTML = lbl; } }
+      };
+      api.advance = () => run(live('[data-pf=next]') || root.querySelector('[data-pf=next]'), true);
       clearInterval(pfTick); pfTick = setInterval(() => { const t = $('[data-rect]'); if (!t || !REC.cur) return; t.textContent = `Recording ${mmss((performance.now() - REC.cur.t0) / 1000)}`; }, 1000);
       if (v.wire) v.wire(api);
       if (typeof recDock === 'function') recDock();
@@ -15136,6 +15205,7 @@ V.flow = () => {
 let pfBusy = false, pfTick = 0;
 function pfSide() {
   if (!S || !S.pf) return '';
+  if (pfIsProp()) return pfPropSide();
   const p = priceInfo(), mot = S.product === 'motor', k = S.kyc;
   const vmL = !mot && vmLater(S.health), vmN = !mot && hNstp(S.health);
   const ph = S.photo ? (S.photo.match ? (photoAllOk(S) ? 'All faces matched' : 'To take again') : S.photo.by === 'vmer' ? 'Taken on the video exam' : 'Taken') : (mot && !hasHealthExtra(S)) ? 'Not needed' : vmL ? `On the video exam, ${vmSlotText(S.health.vmer)}` : vmN ? 'On the video exam' : pfRem() ? 'Taken by the customer on the link' : 'Not yet';
@@ -15151,14 +15221,14 @@ const PFV = {};
 
 /* setup: is the customer here, recording, the agent's photo */
 PFV.start = () => {
-  const as = S.mode === 'assisted', rec = REC.cur && REC.cur.s === S, mot = S.product === 'motor';
+  const as = S.mode === 'assisted', rec = REC.cur && REC.cur.s === S, mot = S.product === 'motor' || pfIsProp(), prop = pfIsProp();
   const recHtml = pfCard('Recording', `<p class="p-muted">From now until payment, the camera and microphone record the sale${as ? '. Show the customer this' : ''}. Every step is marked in the recording, and the policy document carries a QR code for it.</p>
     ${rec ? `<div class="pd-ok">${pi('check')}<span><b>Recording</b><small>Reference ${esc(REC.cur.ref)}. It pauses if no one is in the frame.</small></span></div>` : S.verifyCall ? `<div class="pd-note">${pi('info')}<span>Not recorded. A recorded verification call with the customer is due before the policy is issued.</span></div><div class="pf-acts">${pbtn('Try the camera again', 'data-pa="rec"', 'ghost sm', 'camera')}</div>` : `<div class="pf-acts">${pbtn('Start recording', 'data-pa="rec"', 'pri', 'camera')}${pbtn('The camera isn\'t working', 'data-pa="norec"', 'ghost')}</div>`}`, rec ? ppill('On', 'ok') : '');
   const pic = S.agentPic;
   const picHtml = as ? pfCard('Your photo', `<p class="p-muted">For the proposal record, stamped with the time and place.</p><div data-x="apic">${pic ? `<figure class="pf-apic"><img src="${pic.url}" alt="Photo of ${esc(P.user.who)}"><figcaption>${pi('check')}<span>${esc(P.user.who)}, ${esc(P.user.code)}<small>${esc(fdt(pic.at))}${pic.geo ? ` · ${pic.geo.lat.toFixed(4)}, ${pic.geo.lng.toFixed(4)}` : ''}</small></span></figcaption></figure><div class="pf-acts">${pbtn('Take it again', 'data-pa="repic"', 'ghost sm')}</div>` : `<div class="pf-cam"><video muted playsinline autoplay></video></div><div class="pf-acts">${pbtn('Take photo', 'data-pa="snap"', 'ghost', 'camera')}</div>`}</div>`, pic ? ppill('Done', 'ok') : '') : '';
   return {
-    html: pfCard('Is the customer with you?', `<div class="pf-opts">${pfOpt('mode', 'assisted', 'users', 'I\'m with the customer', mot ? 'They answer here with you, accept with a code on their phone and pay.' : 'They answer here with you, give their photo, accept with a code on their phone and pay.', as)}${pfOpt('mode', 'remote', 'mobile', 'The customer isn\'t with me', 'You fill in what they tell you. They check, take their own photo, accept and pay from a link.', S.mode === 'remote')}</div>
-      <button type="button" class="pf-alt" data-start="link">${pi('link')}<span>Or send them a link to buy it all themselves</span></button>`) + (S.mode && !mot ? recHtml + picHtml : S.mode && mot ? pfCard('No camera for motor', `<p class="p-muted">Car insurance isn't recorded. If ${as ? 'the customer adds' : 'they add'} health cover, the camera starts at the health questions.</p>`) : ''),
+    html: pfCard('Is the customer with you?', `<div class="pf-opts">${pfOpt('mode', 'assisted', 'users', 'I\'m with the customer', mot ? 'They answer here with you, accept with a code on their phone and pay.' : 'They answer here with you, give their photo, accept with a code on their phone and pay.', as)}${pfOpt('mode', 'remote', 'mobile', 'The customer isn\'t with me', prop ? 'You fill in what they tell you. They check it, accept and pay from a link.' : 'You fill in what they tell you. They check, take their own photo, accept and pay from a link.', S.mode === 'remote')}</div>
+      <button type="button" class="pf-alt" data-start="link">${pi('link')}<span>Or send them a link to buy it all themselves</span></button>`) + (S.mode && !mot ? recHtml + picHtml : S.mode && prop ? pfCard('No recording for this cover', `<p class="p-muted">${S.product === 'home' || S.product === 'shop' || S.product === 'fire' || S.product === 'lop' ? `This sale isn't recorded. Later on, ${as ? 'you or the customer' : 'the customer'} can take a short video tour of the ${S.product === 'home' ? 'home' : 'place'}. Where it's recorded is matched with the address, and a match takes ${CFG.geo.videoDisc}% off the premium.` : 'This sale isn\'t recorded. The customer accepts the proposal with a one-time code on their phone.'}</p>`) : S.mode && mot ? pfCard('No camera for motor', `<p class="p-muted">Car insurance isn't recorded. If ${as ? 'the customer adds' : 'they add'} health cover, the camera starts at the health questions.</p>`) : ''),
     next: 'Continue',
     wire(api) {
       api.main.addEventListener('change', e => { if (e.target.name === 'mode') { S.mode = e.target.value; pfMark(S.mode === 'assisted' ? 'Agent is with the customer' : 'Customer is not with the agent'); api.repaint(); } });
@@ -15185,8 +15255,8 @@ PFV.start = () => {
     },
     commit() {
       if (!S.mode) return 'Choose whether the customer is with you.';
-      if (S.product !== 'motor' && !(REC.cur && REC.cur.s === S) && !S.verifyCall) return 'Start the recording, or tell us the camera isn\'t working.';
-      if (S.product !== 'motor' && S.mode === 'assisted' && !S.agentPic) return 'Take a photo of yourself first.';
+      if (S.product === 'health' && !(REC.cur && REC.cur.s === S) && !S.verifyCall) return 'Start the recording, or tell us the camera isn\'t working.';
+      if (S.product === 'health' && S.mode === 'assisted' && !S.agentPic) return 'Take a photo of yourself first.';
       return '';
     },
   };
@@ -15643,9 +15713,12 @@ PFV.assess = () => {
 
 /* both: review, declarations and the customer's consent (or sending it to them) */
 PFV.review = () => {
-  const mot = S.product === 'motor', k = S.kyc, rem = pfRem();
+  const mot = S.product === 'motor', k = S.kyc, rem = pfRem(), prop = pfIsProp();
   let sum, extra = '';
-  if (mot) { const M = S.motor, r = motorCalc(M), v = M.v; sum = kv([['Vehicle', `${esc(vName(v))} ${esc(v.variant || '')}<small class="sub">${esc(M.reg.display)}, ${esc(vClass(v))}</small>`], ['Cover', `${esc(planName(r))}<small class="sub">${r.plan === 'tp' ? '' : `IDV ${inr(r.idv)}, `}${fd(r.start)} to ${fd(r.end)}</small>`], ['Add-ons', esc(r.addons.map(a => a.label).join(', ') || 'None')], ['Policyholder', `${esc(k.name)}<small class="sub">${esc(k.addr)}, ${esc(k.city)} ${esc(k.pin)}</small>`], r.cpa ? ['Nominee', `${esc(M.nominee)} (${esc(M.nomRel || 'Spouse')})`] : ['', '']]); }
+  if (prop) {
+    const b = S.biz, T = b.terms; sum = pfPropSum(b, smeCalc());
+    if (T) extra += pfCard('The underwriter\'s terms', `<ol class="pf-decl">${T.conds.map(x => `<li>${esc(x)}</li>`).join('')}</ol><p class="p-muted small">Valid till ${fd(T.validTill)}. ${esc(T.by)}. ${esc(pfFirst())} accepts these with the declarations.</p>`, ppill('Final', 'ok'));
+  } else if (mot) { const M = S.motor, r = motorCalc(M), v = M.v; sum = kv([['Vehicle', `${esc(vName(v))} ${esc(v.variant || '')}<small class="sub">${esc(M.reg.display)}, ${esc(vClass(v))}</small>`], ['Cover', `${esc(planName(r))}<small class="sub">${r.plan === 'tp' ? '' : `IDV ${inr(r.idv)}, `}${fd(r.start)} to ${fd(r.end)}</small>`], ['Add-ons', esc(r.addons.map(a => a.label).join(', ') || 'None')], ['Policyholder', `${esc(k.name)}<small class="sub">${esc(k.addr)}, ${esc(k.city)} ${esc(k.pin)}</small>`], r.cpa ? ['Nominee', `${esc(M.nominee)} (${esc(M.nomRel || 'Spouse')})`] : ['', '']]); }
   else {
     const H = S.health, others = active(H).filter(m => m.rel !== 'self');
     sum = kv([['Plan', `NxSure Health ${TIERS[H.tier].name}, ${siLabel(H.si)}<small class="sub">${active(H).length < 2 ? 'Individual' : H.type === 'floater' ? 'One cover for the family' : 'Cover for each person'}, ${H.term} year${H.term > 1 ? 's' : ''}</small>`], ['People', active(H).map(m => `${esc(relLabel(H, m) === 'You' ? k.name : relLabel(H, m))}, ${m.age} ${pfPill(m)}`).join('<br>')], ['Policyholder', `${esc(k.name)}<small class="sub">${esc(k.addr)}, ${esc(k.city)} ${esc(k.pin)}</small>`]]);
@@ -15654,12 +15727,12 @@ PFV.review = () => {
     extra += pfCard('Names and nominee', `${others.map(m => fld(`${esc(relLabel(H, m))}'s full name`, `<input name="mn-${m.id}" value="${esc(m.name || '')}" autocomplete="off">`)).join('')}
       <div class="pf-row">${fld('Nominee', `<select name="nomPick">${others.map(m => `<option value="${m.id}" ${H.nomPick === m.id ? 'selected' : ''}>${esc(relLabel(H, m))}</option>`).join('')}<option value="other" ${H.nomPick === 'other' || !others.length ? 'selected' : ''}>Someone else</option></select>`)}${fld('Nominee\'s full name, if someone else', `<input name="nominee" value="${esc(H.nominee || '')}" autocomplete="off">`)}${fld('Relation', `<select name="nomRel">${NOM_RELS.map(x => `<option ${x === H.nomRel ? 'selected' : ''}>${x}</option>`).join('')}</select>`)}</div>`);
   }
-  const bs = bundleSum(S), decl = mot ? motorDecl(S.motor, motorCalc(S.motor)) : healthDecl(S.health), tot = mainTotal(S) + bs.extras;
+  const bs = bundleSum(S), decl = prop ? smeDecl(S.biz) : mot ? motorDecl(S.motor, motorCalc(S.motor)) : healthDecl(S.health), tot = mainTotal(S) + bs.extras;
   const consent = rem ? pfCard('Send it to the customer', `<p class="p-muted">${esc(pfFirst())} gets a link to check the proposal${(S.product === 'health' ? !hNstp(S.health) : hasHealthExtra(S)) && !S.photo ? ', take their full-length photo' : ''}, accept the declarations with a one-time code and pay.${S.product === 'health' && vmLater(S.health) ? ` The video medical exam is ${esc(vmSlotText(S.health.vmer))}, and Nyra takes the photo on the call.` : ''} The policy is issued as soon as they pay${S.product === 'health' && hNstp(S.health) ? ' and the assessment is complete' : ''}.</p>`)
     : pfCard('The customer\'s consent', S.custOk ? `<div class="pd-ok">${pi('check')}<span><b>Accepted with a one-time code</b><small>Sent to ${esc(maskMobile(S.custOk.mobile))}, ${esc(fdt(S.custOk.at))}</small></span></div>`
       : `<label class="pf-agree"><input type="checkbox" name="agree" ${S.pfAgree ? 'checked' : ''}><span>${esc(pfFirst())} has read and accepts all the declarations above.</span></label><div data-x="cotp"></div><div class="pf-acts">${pbtn('Send the code to the customer', 'data-pa="cosend"', 'ghost', 'send')}</div>`, S.custOk ? ppill('Accepted', 'ok') : '');
   return {
-    html: pfCard('Summary', sum) + extra + (bs.items.length ? pfCard('Other covers in this proposal', `<dl class="pf-rows">${bs.items.map(o => `<div><dt>${esc(o.name)}</dt><dd>${inr(o.total)}</dd></div>`).join('')}${bs.disc ? `<div class="neg"><dt>Bundle saving</dt><dd>- ${inr(bs.disc)}</dd></div>` : ''}<div class="tot"><dt>Total with the ${mot ? 'vehicle' : 'health'} cover</dt><dd>${inr(tot)}</dd></div></dl>`) : '')
+    html: pfCard('Summary', sum) + extra + (bs.items.length ? pfCard('Other covers in this proposal', `<dl class="pf-rows">${bs.items.map(o => `<div><dt>${esc(o.name)}</dt><dd>${inr(o.total)}</dd></div>`).join('')}${bs.disc ? `<div class="neg"><dt>Bundle saving</dt><dd>- ${inr(bs.disc)}</dd></div>` : ''}<div class="tot"><dt>Total with the ${mot ? 'vehicle' : prop ? 'main' : 'health'} cover</dt><dd>${inr(tot)}</dd></div></dl>`) : '')
       + pfCard('Declarations', `<ol class="pf-decl">${decl.map(d => `<li>${esc(d)}</li>`).join('')}</ol>`) + consent,
     next: rem ? 'Send the proposal to the customer' : 'Continue to payment',
     wire(api) {
@@ -15680,7 +15753,8 @@ PFV.review = () => {
     },
     async commit(api) {
       const b = api.main, val = n => { const x = b.querySelector(`[name="${n}"]`); return x ? x.value.trim() : ''; }, okName = s2 => /^[A-Za-z][A-Za-z .']{2,}$/.test(s2) && s2.includes(' ');
-      if (!mot) {
+      if (prop) { S.biz.agreed = true; }
+      else if (!mot) {
         const H = S.health;
         for (const m of active(H).filter(x => x.rel !== 'self')) { const n = val('mn-' + m.id); if (!okName(n)) return `Enter the full name of the ${relLabel(H, m).toLowerCase()}.`; m.name = n.replace(/\s+/g, ' '); }
         const self = active(H).find(m => m.rel === 'self'); if (self) self.name = k.name;
@@ -15705,10 +15779,10 @@ PFV.review = () => {
 PFV.pay = () => {
   const tot = mainTotal(S) + bundleSum(S).extras, ph = !!S.photo;
   const S2 = S.pfPay = S.pfPay || { how: 'link', phase: 'pick' };
-  const pay = S2.phase === 'wait' ? `<div class="pf-busy"><span class="spin"></span>${S2.how === 'link' ? `Waiting for ${esc(pfFirst())} to pay on their phone…` : 'Waiting for the UPI payment…'}</div>${S2.how === 'qr' ? `<div class="pf-qr">${qrSvg(`upi://pay?pa=nxsure@hdfcbank&pn=NxSure%20General%20Insurance&am=${tot}&tn=${encodeURIComponent((S.motor && S.motor.quoteNo) || (S.health && S.health.quoteNo) || 'NxSure')}`, '#15132A', 'UPI QR code')}<small>${esc(pfFirst())} scans this with any UPI app</small></div>` : ''}`
+  const pay = S2.phase === 'wait' ? `<div class="pf-busy"><span class="spin"></span>${S2.how === 'link' ? `Waiting for ${esc(pfFirst())} to pay on their phone…` : 'Waiting for the UPI payment…'}</div>${S2.how === 'qr' ? `<div class="pf-qr">${qrSvg(`upi://pay?pa=nxsure@hdfcbank&pn=NxSure%20General%20Insurance&am=${tot}&tn=${encodeURIComponent((S.motor && S.motor.quoteNo) || (S.health && S.health.quoteNo) || (S.biz && (S.biz.proposalNo || S.biz.quoteNo)) || 'NxSure')}`, '#15132A', 'UPI QR code')}<small>${esc(pfFirst())} scans this with any UPI app</small></div>` : ''}`
     : `<div class="pf-opts">${pfOpt('payhow', 'link', 'mobile', `${pfFirst()} pays on their phone`, 'A payment link by SMS and WhatsApp: UPI, card or net banking.', S2.how === 'link')}${pfOpt('payhow', 'qr', 'qr', 'Pay here with UPI', 'Show a UPI QR on this screen for them to scan.', S2.how === 'qr')}</div><p class="p-muted small">You never collect cash. The policy is issued as soon as the payment comes in.</p>`;
   return {
-    html: (ph ? pfCard('Final checks', '<div class="pf-pc" data-x="pc"></div>') : pfCard('Final checks', `<div class="pd-ok">${pi('shield')}<span><b>KYC verified, consent recorded</b><small>No photo is needed for this proposal</small></span></div>`))
+    html: (ph ? pfCard('Final checks', '<div class="pf-pc" data-x="pc"></div>') : pfCard('Final checks', `<div class="pd-ok">${pi('shield')}<span><b>KYC verified, consent recorded</b><small>${pfIsProp() && S.biz.terms ? 'The underwriter\'s terms accepted. ' : ''}No photo is needed for this proposal</small></span></div>`))
       + pfCard('Payment', pay, `<span class="pf-note2">${inr(tot)}</span>`),
     next: S2.phase === 'wait' ? null : `Collect ${inr(tot)}`,
     wire(api) {
@@ -15750,6 +15824,7 @@ PFV.sent = () => {
 
 /* done: the policy, the rest of the bundle, the inspection, the recording */
 PFV.done = () => {
+  if (pfIsProp()) return pfPropDone();
   const mot = S.product === 'motor', k = S.kyc, rec = REC.forS(S);
   let main;
   if (mot) { const M = S.motor, r = motorCalc(M); main = `<div class="pd-ok big">${pi('shield')}<span><b>Insured. Policy ${esc(M.policyNo)}</b><small>${esc(k.name)} · ${esc(M.reg.display)} · ${fd(r.start)} to ${fd(r.end)}</small></span></div>${kv([['Cover', esc(planName(r))], ['Premium', inr(r.total)], ['Paid', `${esc(S.paid.method)}, ${esc(S.paid.txn)}`]])}`; }
@@ -15793,7 +15868,7 @@ function pfSendModal(kind) {
     let done = false; const fin = r => { if (done) return; done = true; clearInterval(watch); resolve(r); };
     const watch = setInterval(() => { if (!d.isConnected) fin(null); }, 300);
     const v = n => d.querySelector(`[name=${n}]`).value.trim(), err = d.querySelector('[data-err]');
-    const msg = () => { d.querySelector('[data-msg]').innerHTML = `<small>Message preview</small><p>Hi ${esc(first(v('nm')) || 'there')}, ${esc(P.user.who)} from NxSure here. ${kind === 'proposal' ? `Your ${S.product} insurance proposal is ready. Check it, accept it and pay` : 'Here\'s your link to get an NxSure quote and buy it'}: <u>secure link</u></p><small>It opens after a one-time code to this mobile, and expires in 7 days.</small>`; };
+    const msg = () => { d.querySelector('[data-msg]').innerHTML = `<small>Message preview</small><p>Hi ${esc(first(v('nm')) || 'there')}, ${esc(P.user.who)} from NxSure here. ${kind === 'proposal' ? `Your ${pfProdNoun(S.product)} proposal is ready. Check it, accept it and pay` : 'Here\'s your link to get an NxSure quote and buy it'}: <u>secure link</u></p><small>It opens after a one-time code to this mobile, and expires in 7 days.</small>`; };
     msg();
     d.addEventListener('input', e => { if (e.target.name === 'mob') e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10); msg(); err.hidden = true; });
     d.addEventListener('change', e => { if (e.target.name === 'via') d.querySelector('[data-em]').hidden = e.target.value !== 'Email'; });
@@ -15881,8 +15956,9 @@ PFV.customer = () => {
   // the policy is for an individual, or for an institution verified first, with the person signing for it
   const F = kycForInit(), org = F.kind === 'org', orgReady = org && S.product !== 'health' && F.done;
   const orgOk = !org || (orgReady && !!k && (F.rec.type === 'prop' || !!(orgAuthHtml(F) !== null && F.auth && F.auth.ok)));
-  const forSeg = `<div class="p-f"><span>The policy is for</span>${pfSeg('kycfor', [['ind', 'An individual'], ['org', 'An institution: a company, firm or trust']], F.kind)}</div>`;
-  const U = S.pfKyc = S.pfKyc || { type: 'pan', id: '', phase: k ? 'done' : 'id', dgOk: false, doc: { type: 'passport', front: null, back: null, thumb: '', ai: null, f: null, issues: [] } };
+  const forSeg = F.fixed ? `<div class="pf-ph"><span>Policyholder</span><b>${esc(F.rec ? (F.rec.type === 'prop' ? `${F.rec.trade}, a proprietorship` : F.rec.name) : S.biz.src.gst.legal)}</b><small>From the GST registration. ${F.rec && F.rec.type === 'prop' ? 'The proprietor verifies their own KYC.' : 'The business is verified first, then the person signing for it.'}</small></div>`
+    : `<div class="p-f"><span>The policy is for</span>${pfSeg('kycfor', [['ind', 'An individual'], ['org', 'An institution: a company, firm or trust']], F.kind)}</div>`;
+  const U = S.pfKyc = S.pfKyc || { type: 'pan', id: pfIsProp() && S.biz.who === 'biz' && S.biz.ent === 'prop' && S.biz.src ? S.biz.src.gst.pan : '', phase: k ? 'done' : 'id', dgOk: false, doc: { type: 'passport', front: null, back: null, thumb: '', ai: null, f: null, issues: [] } };
   const mobile = () => U.type === 'doc' ? U.doc.f && U.doc.f.mobile : U.rec && U.rec.mobile;
   let kyc;
   if (k) {
@@ -15931,7 +16007,7 @@ PFV.customer = () => {
     return { title: 'Share your KYC', intro: `${esc(P.user.who)} from NxSure is preparing your insurance proposal. Approve sharing your name, date of birth and address from ${esc(ID[U.type].source)}.`, list: [[ID[U.type].label, ID[U.type].mask(U.idn)]], cta: 'Approve with a code', msg: `is your code to share your KYC with ${CFG.insurer}.`, mobile: mob };
   };
   return {
-    html: pfCard('KYC', forSeg + orgTop + kyc + orgAuth, k && orgOk ? ppill('Verified', 'ok') : U.phase === 'code' && (rem || pfLinkOf('kyc')) && pfLinkOf('kyc') ? ppill('With the customer', 'info') : '') + nom + (k ? pfCard('Contact', fld('Email for the policy copy (optional)', `<input type="email" name="email" value="${esc((mot ? M.email : S.health.email) || k.email || '')}" placeholder="name@example.com">`)) : ''),
+    html: pfCard('KYC', forSeg + orgTop + kyc + orgAuth, k && orgOk ? ppill('Verified', 'ok') : U.phase === 'code' && (rem || pfLinkOf('kyc')) && pfLinkOf('kyc') ? ppill('With the customer', 'info') : '') + nom + (k ? pfCard('Contact', fld('Email for the policy copy (optional)', `<input type="email" name="email" value="${esc((mot ? M.email : pfIsProp() ? S.biz.email : S.health.email) || k.email || '')}" placeholder="name@example.com">`)) : ''),
     next: 'Continue', dis: !k || !orgOk,
     wire(api) {
       const b = api.main;
@@ -15958,7 +16034,7 @@ PFV.customer = () => {
         if (t.name === 'dtype') { U.doc.type = t.value; U.doc.front = U.doc.back = null; U.doc.thumb = ''; api.repaint(); }
         if (t.dataset.side && t.files && t.files[0]) { const f = t.files[0]; if (!/^image\//.test(f.type)) { api.err('Upload a photo of the document, as a JPG or PNG.'); return; } api.err(''); U.doc[t.dataset.side] = f; if (t.dataset.side === 'front') U.doc.thumb = await docThumb(f); api.repaint(); }
         if (U.phase === 'form' && ['kn', 'kd', 'kg', 'kno', 'ka', 'kp', 'km'].includes(t.name)) readForm();
-        if (t.name === 'nominee') M.nominee = t.value.trim(); if (t.name === 'nomRel') M.nomRel = t.value; if (t.name === 'email') { if (mot) M.email = t.value.trim(); else S.health.email = t.value.trim(); }
+        if (t.name === 'nominee') M.nominee = t.value.trim(); if (t.name === 'nomRel') M.nomRel = t.value; if (t.name === 'email') { if (mot) M.email = t.value.trim(); else if (pfIsProp()) S.biz.email = t.value.trim(); else S.health.email = t.value.trim(); }
       });
       b.addEventListener('input', e => { if (e.target.name === 'idn') U.id = e.target.value; if (['kp', 'km'].includes(e.target.name)) e.target.value = e.target.value.replace(/\D/g, ''); if (U.phase === 'form') readForm(); });
       b.addEventListener('click', async e => {
@@ -16089,6 +16165,191 @@ PFV.offers = () => {
   };
 };
 
+/* ================= NxSure Partners: home, shop and business covers =================
+   The website's own steps for these run here, inside the stepped form: public records, the place and where it is on
+   the map, the video tour, the digital assessment, the plan and the quote. KYC, the customer's consent, the
+   underwriter and payment are the portal's. */
+const PF_PKICK = { motor: 'motor policy', health: 'health policy', home: 'home insurance', shop: 'shopkeeper\'s policy', fire: 'fire and property policy', lop: 'loss of profit policy', marine: 'marine cargo policy', wc: 'workers\' compensation policy', dno: 'directors and officers policy' };
+// what the customer is told the proposal is for, in a message
+const pfProdNoun = p => ({ motor: 'motor insurance', health: 'health insurance', home: 'home insurance', shop: 'shopkeeper\'s insurance' })[p] || (SME[p] ? SME[p].name.replace(/^./, c => c.toLowerCase()) : 'insurance');
+const pfIsProp = s => { s = s || S; return !!(s && s.product && typeof isSme === 'function' && isSme(s.product) && s.biz); };
+const pfInFlow = () => pfIsProp() && typeof P !== 'undefined' && P.view === 'flow' && !!S.pf && !(typeof JX !== 'undefined' && JX.isOpen());
+
+/* ---------------- which steps, in what order ---------------- */
+// the website's steps for this cover, without the ones the portal does itself
+const PF_ENG_SKIP = new Set(['kyc', 'breview', 'dsubmit', 'bsent', 'dterms', 'done']);
+const pfEngOk = id => { try { return !!STEP[id] && (!STEP[id].when || !!STEP[id].when()); } catch (e) { return false; } };
+const pfEngDone = id => { try { return !!(STEP[id] && STEP[id].done && STEP[id].done()); } catch (e) { return false; } };
+function pfPropAll() { const uw = needsUw(S.biz); return ['start', ...smeIds().filter(id => !PF_ENG_SKIP.has(id)), 'customer', ...(uw ? ['uwsend', 'uwwait'] : []), 'review', 'pay']; }
+const pfEngLabel = id => ({ hmtour: 'Video tour', sptour: 'Video tour', ftour: 'Video tour', bsurvey: 'Photo survey', bfetch: 'Records', bid: 'Business' })[id] || String(STEP[id].label || id).replace(/^Your (\w)/, (m, c) => c.toUpperCase());
+function pfPropSteps() {
+  const b = S.biz, uw = needsUw(b), fixed = { start: 'Setup', customer: b.who === 'biz' ? 'Business KYC' : 'Customer and KYC', uwsend: 'Send to the underwriter', uwwait: 'With the underwriter', review: uw ? 'Terms and consent' : 'Review and consent', pay: 'Checks and payment' };
+  return pfPropAll().filter(id => (id === 'pay' ? !pfRem() : fixed[id] ? true : pfEngOk(id))).map(id => [id, fixed[id] || pfEngLabel(id)]);
+}
+
+/* ---------------- one of the website's steps, shown in the portal ---------------- */
+let pfEngApi = null;
+function pfEngView(id) {
+  const st = STEP[id];
+  S.cur = id; S.seen.add(id);
+  try { const ids = order(); if (ids.indexOf(id) > ids.indexOf(S.furthest)) S.furthest = id; } catch (e) { /* the order isn't settled yet */ }
+  const v = st.view(1) || {};
+  return {
+    html: `<section class="pf-card pf-eng pf-theme" data-eng="${id}">${v.top || ''}${v.title ? `<div class="pf-ch"><h2 class="q-title" tabindex="-1">${v.title}</h2></div>` : ''}${v.say ? `<p class="pf-say">${v.say}</p>` : ''}${v.help ? `<p class="q-help">${v.help}</p>` : ''}<div class="q-body">${v.body || ''}</div></section>`,
+    next: id === 'bquote' ? 'Continue' : (v.next || 'Continue'), hide: v.next === null, back: v.back, foot: v.foot,
+    wire(api) {
+      const root = api.main.querySelector(`[data-eng="${id}"]`); if (!root) return;
+      const nb = () => $('.pf [data-pf=next]');
+      const map = s2 => s2 === '.q-foot .btn-next' || s2 === '.btn-next' ? null : s2;
+      const E = pfEngApi = {
+        q: { querySelector: s2 => (map(s2) ? root.querySelector(s2) : nb()), querySelectorAll: s2 => root.querySelectorAll(s2), classList: root.classList },
+        body: root.querySelector('.q-body'),
+        err: m => api.err(m),
+        setNext(label, on = true) { const b = nb(); if (!b) return; if (label != null && b.firstChild && b.firstChild.nodeType === 3) b.firstChild.nodeValue = label; b.disabled = !on; b.hidden = false; },
+        hideNext(h = true) { const b = nb(); if (b) b.hidden = h; },
+        live() { pfLive(); },
+        next: () => api.advance(),
+      };
+      S.api = E;
+      if (st.wire) st.wire(E);
+      pfLive();
+    },
+    async commit() {
+      const r = st.commit ? await st.commit(pfEngApi) : '';
+      if (!r && st.label) { let val = ''; try { val = st.value ? String(st.value() || '').replace(/<[^>]+>/g, '') : ''; } catch (e) { /* no value to show */ } jlog(`${st.label}${val ? ': ' + val : ''}`, id); pfMark(`${pfEngLabel(id)}${val ? ': ' + val : ''}`); }
+      return r;
+    },
+  };
+}
+// the website's steps move with show() and go(): inside the portal, those move the stepped form instead
+const pfShow0 = show, pfGo0 = go, pfRail0 = renderRail;
+show = function (id, dir) {
+  if (!pfInFlow()) return pfShow0(id, dir);
+  if (HOOKS.leave) { const f = HOOKS.leave; HOOKS.leave = null; f(); }
+  if (id === S.pf.step || !pfSteps().some(x => x[0] === id)) pfPaint(); else FL.go(id);
+};
+go = function (id) { if (!pfInFlow()) return pfGo0(id); if (pfSteps().some(x => x[0] === id)) FL.go(id); };
+renderRail = function (...a) { pfRail0(...a); if (pfInFlow()) pfLive(); };
+
+/* ---------------- the summary beside the form ---------------- */
+const PF_GEO_SRC = { address: 'From the address', camera: 'From the video, as it was recorded', phone: 'From the video on the customer\'s phone', file: 'Stored in the uploaded video', device: 'From a phone at the property', link: 'From a map link', rera: 'From the project\'s RERA address' };
+const pfHasPlace = b => ['home', 'shop', 'fire', 'lop'].includes(b.p) && !(b.p === 'fire' && b.who === 'ind' && !b.loc);
+function pfTourOf(b) { return b.p === 'home' ? b.home && b.home.tour : b.p === 'shop' ? b.shop && b.shop.tour : b.ftour; }
+function pfTourOn(b) { if (b.p === 'home') return pfEngOk('hmtour'); if (b.p === 'shop') return true; return (b.p === 'fire' || b.p === 'lop') && b.who === 'biz'; }
+function pfPropMeta() {
+  const b = S.biz, k = S.kyc, rows = [];
+  rows.push([b.who === 'biz' ? 'Signed by' : 'Customer', k ? `${esc(k.name)}<small>${esc(maskMobile(k.mobile))} · ${esc(kycLabel(k))}${k.idType === 'doc' ? ', document check due' : ' verified'}</small>` : 'KYC not done yet']);
+  if (b.who === 'biz') rows.push(['Business', b.src ? `${esc(b.src.gst.trade || b.src.gst.legal)}<small>GSTIN ${esc(b.src.gst.gstin)}</small>` : 'Not identified yet']);
+  if (pfHasPlace(b)) {
+    const g = b.loc && typeof geoBest === 'function' ? geoBest(b) : null;
+    rows.push(['Risk location', g ? `<a href="${geoMap(g)}" target="_blank" rel="noopener" class="pf-geo">${esc(geoLabel(g))}</a><small>${esc(PF_GEO_SRC[g.src] || 'From the address')}${g.verified ? ', checked against the address' : ''}</small>` : 'Taken from the address when it\'s in']);
+  }
+  if (pfTourOn(b)) {
+    const T = pfTourOf(b);
+    rows.push(['Video tour', T && T.done ? (geoVideoOk(b) ? `Done at the address<small>${CFG.geo.videoDisc}% off the premium</small>` : (b.geo && b.geo.video) ? 'Done<small>Recorded away from the address, so no discount</small>' : 'Done<small>No location in the video</small>') : T && T.skipped ? 'Skipped' : 'Not yet']);
+  }
+  const u = b.uw; rows.push(['Assessment', u && S.seen.has('buw') ? `${esc(UW_HEAD[u.status][1])}${u.loadPct ? `<small>${u.loadPct}% extra</small>` : ''}` : '—']);
+  if (b.submittedAt) rows.push(['Underwriter', b.terms ? `Terms ready<small>Valid till ${fd(b.terms.validTill)}</small>` : `Reviewing<small>${esc(b.proposalNo)}</small>`]);
+  return rows;
+}
+function pfPropSide() {
+  const p = priceInfo();
+  return `<div class="pf-sum ${p ? '' : 'empty'}"><small>${p && p.from ? 'Premium, from' : 'Premium'}</small><b>${p ? inr(p.total) : '—'}</b><span>${p ? esc(p.sub) : 'Appears once the cover is set up'}</span></div>
+    ${p && p.rows ? `<dl class="pf-rows">${p.rows.map(x => { const c = x.cells || x; return `<div class="${x.bold ? 'tot' : String(c[1]).startsWith('-') ? 'neg' : ''}"><dt>${esc(String(c[0]))}</dt><dd>${esc(c[1])}</dd></div>`; }).join('')}</dl>` : ''}
+    <dl class="pf-meta">${pfPropMeta().map(([a, b2]) => `<div><dt>${a}</dt><dd>${b2}</dd></div>`).join('')}</dl>
+    ${p && S.biz.quoteNo && S.seen.has('bquote') && !S.paid ? pbtn('Download quote', 'data-act="pfquote"', 'ghost sm', 'download') : ''}`;
+}
+
+/* ---------------- what's on the proposal ---------------- */
+// the website's facts, with the risk location told from the agent's side
+function pfFacts(b, c) {
+  const g = b.loc && typeof geoBest === 'function' ? geoBest(b) : null;
+  return smeFacts(b, c).map(([a, v]) => [a, a === 'Risk location' && g ? `${geoLabel(g)}, ${lc1(PF_GEO_SRC[g.src] || 'From the address')}` : v]);
+}
+function pfPropSum(b, c) {
+  const k = S.kyc, place = b.loc && b.loc.addr ? `${b.loc.addr}, ${b.loc.pin}` : '';
+  return kv([['Cover', `${esc(SME[b.p].short)}<small class="sub">${esc(smePeriod(b).text)}</small>`],
+    ['Insured', `${esc(b.who === 'biz' ? b.src.gst.legal : polHolder())}<small class="sub">${esc(b.who === 'biz' ? `GSTIN ${b.src.gst.gstin}` : k ? `${k.addr}, ${k.city} ${k.pin}` : place)}</small>`],
+    [b.who === 'biz' ? 'Signed by' : 'Policyholder', k ? `${esc(k.name)}<small class="sub">${esc(maskMobile(k.mobile))}</small>` : '—']]
+    .concat(pfFacts(b, c).slice(1).map(([a, v]) => [esc(a), esc(v)])));
+}
+
+/* ---------------- the underwriter: send, wait for the terms ---------------- */
+PFV.uwsend = () => {
+  const b = S.biz, c = smeCalc(), sent = !!b.submittedAt, why = (b.uw && b.uw.reasons || []).filter(r => r.tone !== 'ok');
+  return {
+    html: pfCard('Summary', pfPropSum(b, c), `<span class="pf-note2">${esc(priceTxt(c))}, indicative</span>`)
+      + pfCard('Why an underwriter looks at it', `<p class="p-muted">${b.p === 'dno' ? 'Directors and officers cover is always priced by an underwriter, from the company\'s records and these answers.' : 'Part of this is outside what can be accepted automatically.'} Nothing is paid until ${esc(pfFirst())} accepts the final terms. A reply usually comes within a working day.</p>${why.length ? `<ul class="pf-ticks">${why.map(r => `<li>${esc(r.t)}</li>`).join('')}</ul>` : ''}`)
+      + pfCard('Declarations', `<ol class="pf-decl">${smeDecl(b).map(d => `<li>${esc(d)}</li>`).join('')}</ol>${sent ? `<div class="pd-ok">${pi('check')}<span><b>Sent to the underwriter</b><small>Proposal ${esc(b.proposalNo)}, ${esc(fdt(b.submittedAt))}</small></span></div>` : `<label class="pf-agree"><input type="checkbox" name="uwagree" ${S.pfUwAgree ? 'checked' : ''}><span>${esc(pfFirst())} has confirmed these details and accepts the declarations${b.who === 'biz' ? `, for ${esc(b.src.gst.legal)}` : ''}.</span></label>`}`),
+    next: sent ? 'Continue' : 'Send to the underwriter',
+    wire(api) { api.main.addEventListener('change', e => { if (e.target.name === 'uwagree') S.pfUwAgree = e.target.checked; }); },
+    commit() {
+      if (b.submittedAt) return '';
+      if (!S.pfUwAgree) return `Tick the box once ${pfFirst()} has confirmed the details and the declarations.`;
+      b.submittedAt = new Date(); b.proposalNo = `NX-${SME[b.p].code}P-${digits(9)}`;
+      jlog(`Sent to the underwriter, proposal ${b.proposalNo}`); pfMark(`Sent to the underwriter, proposal ${b.proposalNo}`); upsertJ(S, 'With the underwriter');
+      return '';
+    },
+  };
+};
+PFV.uwwait = () => {
+  const b = S.biz, t = b.terms, c = smeCalc();
+  const tl = [['Records checked and details confirmed', '', true], [`Sent to the underwriter, ${fdt(b.submittedAt)}`, `Proposal ${b.proposalNo}`, true], [t ? `Terms back, ${fdt(t.at)}` : 'The underwriter reviews it', t ? `${inr(c.total)} with GST, valid till ${fd(t.validTill)}` : `Usually within a working day. ${pfFirst()} gets an SMS too.`, !!t], [`${pfFirst()} accepts the terms and pays`, '', false]];
+  return {
+    html: pfCard(t ? 'The underwriter has replied' : 'With the underwriter', `<ol class="ptl">${tl.map(([x, s2, d], i, a) => `<li class="${d ? 'done' : a.findIndex(y => !y[2]) === i ? 'now' : ''}"><span class="d">${d ? pi('check') : ''}</span><span><b>${esc(x)}</b>${s2 ? `<small>${esc(s2)}</small>` : ''}</span></li>`).join('')}</ol>
+      ${t ? `<h3 class="pc-sub">Conditions</h3><ol class="pf-decl">${t.conds.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : `<p class="p-muted small">You can leave this and come back to it from Proposals.</p><p class="otp-demo kyc-demo pf-demo" role="note"><span class="od-l">Demo</span><button type="button" data-pa="uwdemo">See the underwriter's reply now</button></p>`}
+      <div class="pf-acts">${pbtn('Download the proposal', 'data-pa="ack"', 'ghost sm', 'download')}</div>`, ppill(t ? 'Terms ready' : 'Under review', t ? 'ok' : 'info')),
+    next: 'See the terms', dis: !t,
+    wire(api) {
+      api.main.addEventListener('click', async e => {
+        const a = e.target.closest('[data-pa]'); if (!a) return;
+        if (a.dataset.pa === 'ack') saveFile(`NxSure-proposal-${b.proposalNo}.pdf`, smePdf('ack'));
+        if (a.dataset.pa === 'uwdemo') { a.disabled = true; a.textContent = 'Checking…'; await sleep(REDUCED ? 60 : 900); if (S.pf.step !== 'uwwait') return; b.terms = smeTerms(b); jlog('Underwriter\'s terms received'); pfMark('Underwriter\'s terms received'); upsertJ(S, 'Terms ready'); api.repaint(); pfLive(); }
+      });
+    },
+    commit() { return b.terms ? '' : 'Wait for the underwriter\'s terms.'; },
+  };
+};
+
+/* ---------------- issued: the policy, and the next cover with the details already in ---------------- */
+function pfPropDone() {
+  const b = S.biz, c = smeCalc(), k = S.kyc;
+  const others = ({ home: b.home && b.home.own === 'build' ? ['marine'] : ['wc', 'marine'], shop: ['wc', 'marine'], fire: ['lop', 'wc'], lop: ['wc', 'marine'], marine: ['home', 'fire', 'wc'], wc: ['home', 'fire', 'lop'], dno: ['fire', 'wc'] }[b.p] || []).filter(x => SME[x] && SME[x].who.includes(b.who)).slice(0, 2);
+  const oname = x => b.who === 'ind' ? ({ wc: 'Their staff at home', marine: 'Moving home', home: 'Home insurance', fire: 'Fire and property' }[x] || SME[x].short) : SME[x].short;
+  const main = `<div class="pd-ok big">${pi('shield')}<span><b>Insured. Policy ${esc(b.policyNo)}</b><small>${esc(b.who === 'biz' ? bizName(b) : k.name)} · ${esc(SME[b.p].short)} · from ${fd(b.period.start)}</small></span></div>
+    ${kv(pfFacts(b, c).map(([a, v]) => [esc(a), esc(v)]).concat([['Premium', inr(S.paid.amount)], ['Paid', `${esc(S.paid.method)}, ${esc(S.paid.txn)}`]]))}`;
+  return {
+    html: pfCard('Policy issued', main, ppill('Issued', 'ok'))
+      + `<div class="pf-two">${pfCard('The NxSure app', `<div class="mylink"><span class="qr">${qrSvg(CFG.appUrl, '#15132A', 'QR code to get the NxSure app')}</span><span><b>Get ${esc(first(k.name))} on the app</b><p class="p-muted small">They scan this with their phone camera and log in with their mobile number.</p></span></div>`)}
+        ${others.length ? pfCard('Next for them', others.map(x => `<div class="pf-xsell"><span class="pf-oi">${pi(PF_PICO[x] || 'shield')}</span><span><b>${esc(oname(x))}</b><small>${b.who === 'biz' ? 'The business details and KYC are already in.' : 'Their details and KYC are already in.'}</small></span>${pbtn('Start', `data-px="${x}"`, 'ghost sm', 'chevR')}</div>`).join('')) : ''}</div>`,
+    next: null, foot: false,
+    wire(api) {
+      document.body.classList.remove('rec-on');
+      api.main.insertAdjacentHTML('beforeend', `<div class="pf-acts pf-end">${pbtn('Download policy', 'data-pa="pdf"', 'pri', 'download')}${pbtn('Go to proposals', 'data-nav="proposals"', 'ghost', 'doc')}${pbtn('New policy', 'data-nav="new"', 'ghost', 'plus')}</div>`);
+      api.main.addEventListener('click', e => {
+        const x = e.target.closest('[data-px]'); if (x) { pfPropCross(x.dataset.px); return; }
+        const a = e.target.closest('[data-pa=pdf]'); if (a) saveFile(`NxSure-policy-${b.policyNo.replace(/\//g, '-')}.pdf`, smePdf('policy'));
+      });
+    },
+  };
+}
+// the next cover for the same customer or business: KYC and the business records carry over
+function pfPropCross(p) {
+  const old = S.biz, keep = { kyc: S.kyc, docOwner: S.docOwner, issued: S.issued }, mode = S.mode, F = S.kycFor;
+  S = fresh(keep); S.product = p; S.seen.add('product'); S.mode = mode; shownPrice = null;
+  const nb = newBiz(p);
+  if (old && (old.who === 'biz' || SME[p].who.includes(old.who))) Object.assign(nb, { who: SME[p].who.includes(old.who) ? old.who : 'biz', idType: old.idType, idv: old.idv, id: old.id, ent: old.ent, src: old.src, consent: old.consent, fetchedAt: old.fetchedAt, loc: old.loc });
+  if (old && old.fire && old.fire.occ) nb.fire.occ = old.fire.occ;
+  S.biz = nb;
+  if (F && F.kind === 'org' && nb.who === 'biz' && old.who === 'biz') S.kycFor = Object.assign({}, F, { prod: p });
+  ['bwho', 'bid', 'bfetch', 'bloc'].forEach(id => { if (pfEngOk(id) && pfEngDone(id)) S.seen.add(id); });
+  const ids = pfPropSteps().map(x => x[0]), at = ids.find(id => id !== 'start' && STEP[id] && !PF_ENG_SKIP.has(id) && !pfEngDone(id)) || ids[1];
+  S.pf = { step: at, done: new Set(ids.slice(0, ids.indexOf(at))) }; S.cur = at;
+  pfMark(`Started ${SME[p].short} for the same customer`);
+  pfPaint(); window.scrollTo({ top: 0, behavior: REDUCED ? 'auto' : 'smooth' });
+}
+const PF_PICO = { motor: 'car', health: 'hospital', home: 'home', shop: 'store', fire: 'flame', lop: 'chart', marine: 'truck', wc: 'users', dno: 'brief' };
+
 /* ================= NxSure Partners: sign-in, the shell, drawers, actions and the buying journey ================= */
 function withS(s, fn) { const k = S; S = s; try { return fn(); } finally { S = k; } }
 const LOGIN = { step: 'who', kind: null, id: '', code: '', tries: 0 };
@@ -16117,6 +16378,8 @@ function paintLogin() {
   const root = $('#papp'); root.className = 'p-login'; root.innerHTML = loginHtml();
   const L = LOGIN, err = root.querySelector('[data-err]'), say = m => { if (err) { err.hidden = !m; err.textContent = m || ''; } };
   root.onclick = e => {
+    // only while the sign-in screen is up: the same element holds the portal afterwards
+    if (!root.classList.contains('p-login')) return;
     const k = e.target.closest('[data-kind]'); if (k) { L.kind = k.dataset.kind; L.step = 'id'; L.id = ''; paintLogin(); return; }
     const dm = e.target.closest('[data-demo]'); if (dm) { signIn(dm.dataset.demo); return; }
     const b = e.target.closest('[data-lg]'); if (!b) return;
@@ -16210,36 +16473,38 @@ function openRow(go) {
 const PROP_STEPS = ['Quote and answers', 'Recorded', 'Accepted by the customer', 'Paid', 'Policy issued'];
 function propDrawer(p) {
   if (!p) return;
-  const at = { 'Draft': 0, 'With the customer': 2, 'Link sent': 1, 'Awaiting payment': 3, 'Tests booked': 4, 'Photo check due': 4, 'Verification call due': 5, 'Issued': 5 }[p.status] || 0;
-  const tl = PROP_STEPS.map((s, i) => `<li class="${i < at ? 'done' : i === at ? 'now' : ''}"><span class="d">${i < at ? pi('check') : ''}</span><span><b>${esc(i === 1 && !p.recorded ? 'Verification call' : s)}</b>${i === 1 ? `<small>${p.recorded ? 'Video and sound, from the first step to payment' : 'Not recorded on video, so a recorded call is due'}</small>` : i === 2 ? `<small>${esc(p.mode || '')}</small>` : ''}</span></li>`).join('');
+  const at = { 'Draft': 0, 'With the underwriter': 1, 'Terms ready': 2, 'With the customer': 2, 'Link sent': 1, 'Awaiting payment': 3, 'Tests booked': 4, 'Photo check due': 4, 'Verification call due': 5, 'Issued': 5 }[p.status] || 0, pr = isPropT(p.type);
+  const tl = PROP_STEPS.map((s, i) => `<li class="${i < at ? 'done' : i === at ? 'now' : ''}"><span class="d">${i < at ? pi('check') : ''}</span><span><b>${esc(i === 1 && pr ? (p.status === 'With the underwriter' || p.status === 'Terms ready' ? 'Underwriter' : 'Records, location and assessment') : i === 1 && !p.recorded ? 'Verification call' : s)}</b>${i === 1 ? `<small>${pr ? (p.status === 'With the underwriter' ? 'Reviewing it, usually within a working day' : p.status === 'Terms ready' ? 'Terms back, for the customer to accept' : 'Checked against public records, with the video tour where there is one') : p.recorded ? 'Video and sound, from the first step to payment' : 'Not recorded on video, so a recorded call is due'}</small>` : i === 2 ? `<small>${esc(p.mode || '')}</small>` : ''}</span></li>`).join('');
   const foot = p.status === 'Draft' ? (p.sref && !p.sref.paid ? pbtn('Continue the proposal', `data-act="resume" data-id="${p.id}"`, 'pri', 'chevR') : pbtn('Send the customer a link', `data-act="remind" data-id="${p.id}"`, 'pri', 'wa'))
+    : (p.status === 'With the underwriter' || p.status === 'Terms ready') && p.sref && !p.sref.paid ? pbtn(p.status === 'Terms ready' ? 'Go over the terms' : 'Open the proposal', `data-act="resume" data-id="${p.id}"`, 'pri', 'chevR')
     : p.status === 'With the customer' || p.status === 'Link sent' ? (p.sref ? pbtn('See what the customer sees', `data-act="custview" data-id="${p.id}"`, 'ghost', 'mobile') : '') + pbtn('Send a reminder', `data-act="remind" data-id="${p.id}"`, 'pri', 'wa')
     : p.status === 'Awaiting payment' ? pbtn('Resend the payment link', `data-act="remind" data-id="${p.id}"`, 'pri', 'link')
     : p.status === 'Verification call due' ? pbtn('Book the recorded call', `data-act="vcall" data-id="${p.id}"`, 'pri', 'phone')
     : pbtn('Download policy summary', `data-act="polpdf" data-id="${p.id}"`, 'ghost', 'download') + pbtn('Show the customer the app', 'data-act="appqr"', 'pri', 'qr');
-  drawer(`Proposal ${p.id}`, `${esc(p.customer)} · ${spill(p.status)}`, `${kv([['Customer', `${esc(p.customer)}<small class="sub">${esc(maskMobile(p.mobile || '9800000000'))}</small>`], ['Cover', `${esc(p.type === 'health' ? 'Health' : p.type === 'bike' ? 'Two-wheeler' : 'Car')}<small class="sub">${esc(p.what)}</small>`], ['Premium', `<b>${inr(p.premium)}</b>`], ['Sold by', esc(p.agent || P.user.who)], ['Last update', ago(p.at)]])}<h3 class="pd-sub">Where it is</h3><ol class="ptl">${tl}</ol>`, foot);
+  drawer(`Proposal ${p.id}`, `${esc(p.customer)} · ${spill(p.status)}`, `${kv([['Customer', `${esc(p.customer)}<small class="sub">${esc(maskMobile(p.mobile || '9800000000'))}</small>`], ['Cover', `${esc(ptLabel(p.type))}<small class="sub">${esc(p.what)}</small>`], ['Premium', `<b>${inr(p.premium)}</b>`], ['Sold by', esc(p.agent || P.user.who)], ['Last update', ago(p.at)]])}<h3 class="pd-sub">Where it is</h3><ol class="ptl">${tl}</ol>`, foot);
 }
 function custDrawer(c) {
   if (!c) return; const B = book(), pols = B.policies.filter(p => p.cid === c.id), props = B.proposals.filter(p => p.cid === c.id), reqs = B.requests.filter(r => r.customer === c.name);
   drawer(c.name, `Customer since ${c.since.getFullYear()} · ${esc(c.area)}`, `<div class="c360">${av(c.name, 'lg')}<span><b>${esc(c.name)}</b><small>${esc(maskMobile(c.mobile))} · KYC ${c.kyc ? 'done' : 'not done'}</small></span></div>
-    <h3 class="pd-sub">Policies</h3><ul class="plist">${pols.map(p => `<li data-row="policy:${esc(p.no)}" tabindex="0"><span class="car-ic">${pi(p.type === 'health' ? 'hospital' : 'car')}</span><span><b>${esc(p.what)}</b><small class="mono">${esc(p.no)} · ends ${fdS(p.end)} ${p.end.getFullYear()}</small></span>${spill(p.status)}</li>`).join('')}</ul>
+    <h3 class="pd-sub">Policies</h3><ul class="plist">${pols.map(p => `<li data-row="policy:${esc(p.no)}" tabindex="0"><span class="car-ic">${pi(ptIco(p.type))}</span><span><b>${esc(p.what)}</b><small class="mono">${esc(p.no)} · ends ${fdS(p.end)} ${p.end.getFullYear()}</small></span>${spill(p.status)}</li>`).join('')}</ul>
     ${props.length ? `<h3 class="pd-sub">Proposals</h3><ul class="plist">${props.map(p => `<li data-row="proposal:${p.id}" tabindex="0"><span class="car-ic">${pi('doc')}</span><span><b>${esc(p.what)}</b><small>${inr(p.premium)}</small></span>${spill(p.status)}</li>`).join('')}</ul>` : ''}
     ${reqs.length ? `<h3 class="pd-sub">Requests</h3><ul class="plist">${reqs.map(r => `<li><span class="car-ic">${pi('edit')}</span><span><b>${esc(r.type)}</b><small>${esc(r.verify)}</small></span>${spill(r.status)}</li>`).join('')}</ul>` : ''}
-    <h3 class="pd-sub">Worth offering</h3><ul class="ticks small">${!pols.some(p => p.type === 'health') ? '<li>No health cover with us. A family floater is the obvious next policy.</li>' : '<li>Health cover for their parents, if they don\'t have it.</li>'}${pols.some(p => p.type === 'car' && p.ncb >= 35) ? '<li>No-claim bonus protect, to keep a high bonus after one claim.</li>' : ''}</ul>`,
+    <h3 class="pd-sub">Worth offering</h3><ul class="ticks small">${!pols.some(p => p.type === 'health') ? '<li>No health cover with us. A family floater is the obvious next policy.</li>' : '<li>Health cover for their parents, if they don\'t have it.</li>'}${pols.some(p => p.type === 'car' && p.ncb >= 35) ? '<li>No-claim bonus protect, to keep a high bonus after one claim.</li>' : ''}${!pols.some(p => p.type === 'home') ? `<li>Home insurance. A short video tour of the home, recorded at the address, takes ${CFG.geo.videoDisc}% off.</li>` : ''}</ul>`,
     pbtn('WhatsApp', `data-act="wa" data-id="${c.id}"`, 'ghost', 'wa') + pbtn('New policy', 'data-start="motor"', 'pri', 'plus'));
 }
 function polDrawer(p, ren) {
   if (!p) return;
   drawer(ren ? `Renewal, ${p.customer}` : p.no, `${esc(p.what)} · ${spill(p.status)}`, `${kv([['Policy', `<span class="mono">${esc(p.no)}</span>`], ['Customer', esc(p.customer)], ['Cover', esc(p.what)], ['Period', `${fdS(p.start)} ${p.start.getFullYear()} to ${fdS(p.end)} ${p.end.getFullYear()}`], ['Premium', inr(p.premium)], ['No-claim bonus', p.ncb != null ? `${p.ncb}%, rising at renewal if there's no claim` : '']])}
-    ${ren ? `<div class="pd-note">${pi('info')}<span>${daysTo2(p.end) < 0 ? `Lapsed ${-daysTo2(p.end)} days ago. ${p.type !== 'health' ? 'A lapsed motor policy needs a self-inspection, and the no-claim bonus is lost after 90 days.' : 'Renew within the grace period to keep the waiting periods already served.'}` : `Renews ${whenText(p.end).toLowerCase()}. The renewal link has the price ready, with the bonus applied.`}</span></div>` : ''}`,
-    pbtn('Send renewal link', `data-act="renlink" data-id="${esc(p.no)}"`, 'ghost', 'wa') + (p.type !== 'health' ? pbtn('Renew now', `data-act="renew" data-id="${esc(p.no)}"`, 'pri', 'renew') : pbtn('Renew now', `data-start="health"`, 'pri', 'renew')));
+    ${ren ? `<div class="pd-note">${pi('info')}<span>${daysTo2(p.end) < 0 ? `Lapsed ${-daysTo2(p.end)} days ago. ${isPropT(p.type) ? 'Renew it to put the cover back in place. The details from last year are carried over.' : p.type !== 'health' ? 'A lapsed motor policy needs a self-inspection, and the no-claim bonus is lost after 90 days.' : 'Renew within the grace period to keep the waiting periods already served.'}` : `Renews ${whenText(p.end).toLowerCase()}. The renewal link has the price ready, with the bonus applied.`}</span></div>` : ''}`,
+    pbtn('Send renewal link', `data-act="renlink" data-id="${esc(p.no)}"`, 'ghost', 'wa') + (isPropT(p.type) ? pbtn('Renew now', `data-start="${p.type}"`, 'pri', 'renew') : p.type !== 'health' ? pbtn('Renew now', `data-act="renew" data-id="${esc(p.no)}"`, 'pri', 'renew') : pbtn('Renew now', `data-start="health"`, 'pri', 'renew')));
 }
+const leadProd = t => /Health/.test(t) ? 'health' : /Home/.test(t) ? 'home' : /Shop/.test(t) ? 'shop' : /Fire|factory|warehouse/i.test(t) ? 'fire' : /Marine|cargo/i.test(t) ? 'marine' : /Workers/.test(t) ? 'wc' : 'motor';
 function leadDrawer(l) {
   if (!l) return;
   const arm = P.role === 'arm', sug = P.d.agents.filter(a => a.mtd > 0).sort((a, b) => (b.area === l.area) - (a.area === l.area) || b.retention - a.retention).slice(0, 3);
   drawer(l.name, `${esc(l.product)} · ${spill(l.stage)}`, `${kv([['Mobile', esc(maskMobile(l.mobile))], ['Source', esc(l.source)], ['Product', esc(l.product)], ['Expected premium', inr(l.expected)], ['Likely to buy', `<span class="score ${l.score >= 70 ? 'hi' : l.score >= 50 ? 'md' : ''}">${l.score}</span> out of 100`], ['Came in', fdS(l.at)], ['Assigned to', l.agent ? esc(l.agent) : '']])}
     ${arm ? `<h3 class="pd-sub">Best agents for this lead</h3><ul class="plist">${sug.map(a => `<li>${av(a.name, 'sm')}<span><b>${esc(a.name)}</b><small>${esc(a.area)} · keeps ${a.retention}% of renewals</small></span>${pbtn('Assign', `data-act="assignto" data-id="${l.id}" data-ag="${esc(a.name)}"`, 'ghost sm')}</li>`).join('')}</ul>` : ''}`,
-    arm ? '' : pbtn('Mark lost', `data-act="leadlost" data-id="${l.id}"`, 'ghost') + pbtn('Send a link', `data-act="leadlink" data-id="${l.id}"`, 'ghost', 'wa') + pbtn('Start a quote', `data-start="${/Health/.test(l.product) ? 'health' : 'motor'}"`, 'pri', 'plus'));
+    arm ? '' : pbtn('Mark lost', `data-act="leadlost" data-id="${l.id}"`, 'ghost') + pbtn('Send a link', `data-act="leadlink" data-id="${l.id}"`, 'ghost', 'wa') + pbtn('Start a quote', `data-start="${leadProd(l.product)}"`, 'pri', 'plus'));
 }
 function agentDrawer(a) {
   if (!a) return;
@@ -16324,15 +16589,15 @@ async function doAct(a, t) {
   if (a === 'copylink') { try { await navigator.clipboard.writeText(myLink()); toast('Link copied'); } catch (e) { toast('Copy isn\'t allowed here'); } return; }
   if (a === 'sharelink' || a.startsWith('libshare')) { toast('Opened WhatsApp with the message ready to send'); return; }
   if (a === 'nudge') { const ag = P.d.agents.find(x => x.id === id); toast(`WhatsApp message ready for ${ag ? ag.name : 'the agent'}`); return; }
-  if (a === 'renlink') { const p = B.policies.find(x => x.no === id); if (p) { p.sent = true; simSms(`To ${p.customer}`, `Hi ${first(p.customer)}, your NxSure ${p.type === 'health' ? 'health' : 'motor'} policy renews on ${fd(p.end)}. Your price is ready, with your bonus applied: nxsure.in/r/${code(6)}. ${P.user.who}`); } closeLayers(); re(); return; }
+  if (a === 'renlink') { const p = B.policies.find(x => x.no === id); if (p) { p.sent = true; simSms(`To ${p.customer}`, `Hi ${first(p.customer)}, your NxSure ${p.type === 'health' ? 'health' : isPropT(p.type) ? ptLabel(p.type).toLowerCase() : 'motor'} policy renews on ${fd(p.end)}. Your price is ready, with your bonus applied: nxsure.in/r/${code(6)}. ${P.user.who}`); } closeLayers(); re(); return; }
   if (a === 'remindall') { renewalsDue(30).forEach(p => { p.sent = true; }); toast(`Renewal links sent to ${renewalsDue(30).length} customers`); re(); return; }
   if (a === 'renew') { const p = B.policies.find(x => x.no === id); closeLayers(); FL.open({ product: 'motor', reg: p && p.reg }); return; }
-  if (a === 'pfquote') { if (S.product === 'motor') saveFile(`NxSure-quote-${S.motor.quoteNo || 'motor'}.pdf`, motorPdf('quote')); else saveFile(`NxSure-quote-${S.health.quoteNo || 'health'}.pdf`, healthPdf('quote')); return; }
+  if (a === 'pfquote') { if (pfIsProp()) { saveFile(`NxSure-quote-${S.biz.quoteNo || S.product}.pdf`, smePdf('quote')); return; } if (S.product === 'motor') saveFile(`NxSure-quote-${S.motor.quoteNo || 'motor'}.pdf`, motorPdf('quote')); else saveFile(`NxSure-quote-${S.health.quoteNo || 'health'}.pdf`, healthPdf('quote')); return; }
   if (a === 'remind') { const p = B.proposals.find(x => x.id === id); simSms(`To ${p.customer}`, `Hi ${first(p.customer)}, your NxSure proposal for ${inr(p.premium)} is waiting. Check it, accept it and pay here: nxsure.in/p/${code(6)}. ${P.user.who}`); p.at = new Date(); closeLayers(); toast('Reminder sent'); re(); return; }
   if (a === 'vcall') { const p = B.proposals.find(x => x.id === id); p.status = 'Issued'; p.recorded = true; p.mode = 'Confirmed on a recorded call'; closeLayers(); toast(`Recorded call booked with ${p.customer} for tomorrow, 11:00`); re(); return; }
   if (a === 'resume') { const p = B.proposals.find(x => x.id === id); if (p && p.sref) { closeLayers(); FL.open({ resume: p.sref }); } return; }
   if (a === 'custview') { const p = B.proposals.find(x => x.id === id); if (p && p.sref) { closeLayers(); FL.open({ resume: p.sref }); JX.cust(true); } return; }
-  if (a === 'polpdf') { const p = B.proposals.find(x => x.id === id); if (p && p.sref && p.sref.paid) { saveFile(`NxSure-policy-${p.id}.pdf`, withS(p.sref, () => p.sref.product === 'motor' ? motorPdf('policy') : healthPdf('policy'))); return; } saveFile(`NxSure-summary-${p.id}.pdf`, pdfQuick('Policy summary', `${p.id} | ${fd(TODAY)}`, [{ h: 'Customer', kv: [['Name', p.customer], ['Cover', p.what], ['Premium', inr(p.premium)]] }, { p: 'The full policy schedule and wording are sent to the customer by email and WhatsApp.', mute: true }])); return; }
+  if (a === 'polpdf') { const p = B.proposals.find(x => x.id === id); if (p && p.sref && p.sref.paid) { saveFile(`NxSure-policy-${p.id}.pdf`, withS(p.sref, () => pfIsProp(p.sref) ? smePdf('policy') : p.sref.product === 'motor' ? motorPdf('policy') : healthPdf('policy'))); return; } saveFile(`NxSure-summary-${p.id}.pdf`, pdfQuick('Policy summary', `${p.id} | ${fd(TODAY)}`, [{ h: 'Customer', kv: [['Name', p.customer], ['Cover', p.what], ['Premium', inr(p.premium)]] }, { p: 'The full policy schedule and wording are sent to the customer by email and WhatsApp.', mute: true }])); return; }
   if (a === 'wa') { toast('Opened WhatsApp with the customer\'s number'); return; }
   if (a === 'leadlost') { const l = B.leads.find(x => x.id === id); l.stage = 'Lost'; closeLayers(); re(); return; }
   if (a === 'leadlink') { const l = B.leads.find(x => x.id === id); l.stage = 'Contacted'; simSms(`To ${l.name}`, `Hi ${first(l.name)}, here's your NxSure quote link: nxsure.in/q/${code(6)}. ${P.user.who}`); closeLayers(); re(); return; }
@@ -16430,6 +16695,13 @@ const JX = {
 function jInfo(s, r) {
   return withS(s, () => {
     const mot = s.product === 'motor', M = s.motor, H = s.health;
+    if (pfIsProp(s)) {
+      const b = s.biz; let premium = 0; try { const c = smeCalc(s); premium = c ? c.total : 0; } catch (e) { /* not priced yet */ }
+      const nm = (r && r.name) || (s.sent && s.sent.name) || (s.handoff && s.handoff.name) || (s.kyc && s.kyc.name) || 'New customer';
+      const biz = b.who === 'biz' && b.src ? (b.src.gst.trade || b.src.gst.legal) : '';
+      const place = b.loc && b.loc.addr ? b.loc.addr.split(',').slice(-2).join(',').trim() : '';
+      return { customer: nm, mobile: (r && r.to) || (s.kyc && s.kyc.mobile) || '', type: s.product, what: `${SME[s.product].short}${biz ? `, ${biz}` : place ? `, ${place}` : ''}`, premium, recorded: true, mode: s.mode === 'remote' ? 'Customer not present, link sent' : 'With the customer', id: b.policyNo || b.proposalNo || b.quoteNo || ('NX-P' + SME[s.product].code + '-' + digits(9)) };
+    }
     let premium = 0, what = '', type = mot ? (M && M.v && M.v.cls === 'bike' ? 'bike' : 'car') : 'health';
     try { if (mot && M && M.v) { premium = motorCalc(M).total; what = `${M.reg ? M.reg.display : ''}, ${M.v.make} ${M.v.model}`; } else if (H && H.tier && H.si) { const p = healthCalc(H); premium = p ? p.total : 0; what = `Health ${TIERS[H.tier].name}, ${siLabel(H.si)}`; } } catch (e) { /* not priced yet */ }
     const name = (r && r.name) || (s.sent && s.sent.name) || (s.handoff && s.handoff.name) || (s.kyc && s.kyc.name) || 'New customer';
