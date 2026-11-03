@@ -2100,7 +2100,7 @@ button.kpi:hover{background:var(--p-hover)}
 .p-prog{width:90px;display:inline-block;vertical-align:middle;margin-right:8px}
 .pct{color:var(--p-ink3);font-weight:600}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.pc{background:var(--p-card);border:1px solid var(--p-line);border-radius:14px;padding:20px 22px;min-width:0}
+.pc{background:var(--p-card);border:1px solid var(--p-line);border-radius:14px;padding:20px 22px;min-width:0;align-content:start}
 .pc.flush{padding:0;overflow:hidden}
 .pc-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:14px}
 .pc-h h2{font:600 15px var(--p-font);margin:0}
@@ -2849,6 +2849,343 @@ body:not(.jx-open) .recwin:not(.docked){left:49px!important;right:auto!important
 .pf-ph b{font-size:14.5px}
 .pf-ph small{color:var(--p-ink3);font-size:12.5px}
 .pf-say{margin:-4px 0 14px;color:var(--p-ink2);font-size:14px;line-height:1.5}
+
+/* ================= list tools: search, segments, menus ================= */
+.p-tool{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.p-tool .p-search{flex:1 1 260px;max-width:none;min-width:200px}
+.p-seg{display:inline-flex;flex-wrap:wrap;padding:3px;gap:2px;border-radius:10px;background:var(--p-sub);border:1px solid var(--p-line);max-width:100%}
+.p-seg button{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border:0;border-radius:7px;background:none;font:600 12.5px var(--p-font);color:var(--p-ink3);cursor:pointer;white-space:nowrap}
+.p-seg button:hover{color:var(--p-ink)}
+.p-seg button[aria-checked="true"]{background:var(--p-card);color:var(--p-ink);box-shadow:0 1px 2px rgba(23,21,31,.12),0 0 0 1px var(--p-line)}
+.p-seg em{font-style:normal;font-size:11px;color:var(--p-faint);font-weight:600}
+.p-seg .pi{width:15px;height:15px}
+.p-sel{position:relative;display:inline-flex}
+#papp .p-sel select{appearance:none;-webkit-appearance:none;width:auto;padding:9px 32px 9px 12px;font:600 12.5px var(--p-font);color:var(--p-ink);cursor:pointer;background:var(--p-card)}
+.p-sel::after{content:"";position:absolute;right:13px;top:50%;width:6px;height:6px;border-right:1.6px solid var(--p-ink3);border-bottom:1.6px solid var(--p-ink3);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.p-ib.sm{width:32px;height:32px;border:1px solid var(--p-line2);border-radius:8px;background:var(--p-card)}
+.p-ib.sm .pi{width:16px;height:16px}
+.pb .pi.tail{margin:0 -2px 0 2px;width:15px;height:15px}
+.pt-foot{display:flex;justify-content:space-between;gap:12px;padding:12px 18px;border-top:1px solid var(--p-line);background:var(--p-sub);font-size:13px;color:var(--p-ink2)}
+.pt tr.late td{background:color-mix(in srgb,var(--p-bad-soft) 55%,transparent)}
+.pt tr.late td:first-child{box-shadow:inset 3px 0 0 var(--p-bad)}
+.nx-a{font-size:13px;color:var(--p-ink2)}
+
+/* the band at the top of a page, and the tiles under it */
+.p-band{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center;padding:20px 24px;border-radius:14px;background:var(--p-today);border:1px solid var(--p-today-line);color:var(--p-side-ink)}
+.pbd-t b{display:block;font:600 20px/1.25 var(--p-font);color:#fff;letter-spacing:-.01em}
+.pbd-t span{display:block;color:var(--p-side-mute);font-size:13.5px;margin-top:3px}
+.p-band dl{display:flex;gap:28px;margin:0}
+.p-band dl div{display:grid;gap:2px;text-align:right}
+.p-band dd{margin:0;font:600 18px var(--p-font);color:#fff}
+.p-band dt{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--p-side-mute)}
+.p-bks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.p-bk{display:grid;gap:2px;text-align:left;padding:14px 16px;border-radius:12px;border:1px solid var(--p-line);background:var(--p-card);color:var(--p-ink);font:inherit;cursor:pointer;position:relative;overflow:hidden}
+.p-bk::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--p-line2)}
+.p-bk.bad::before{background:var(--p-bad)}.p-bk.warn::before{background:var(--p-warn)}.p-bk.info::before{background:var(--p-info)}.p-bk.mute::before{background:var(--p-faint)}
+.p-bk b{font:600 22px/1.2 var(--p-font)}
+.p-bk.bad b{color:var(--p-bad)}.p-bk.warn b{color:var(--p-warn)}.p-bk.info b{color:var(--p-info)}
+.p-bk span{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--p-ink3)}
+.p-bk small{font-size:12.5px;color:var(--p-ink2);font-weight:600}
+.p-bk:hover{border-color:var(--p-line2)}
+.p-bk[aria-pressed="true"]{border-color:var(--p-ink);box-shadow:inset 0 0 0 1px var(--p-ink)}
+.p-alert{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 16px;border-radius:12px;border:1px solid}
+.p-alert>.pi{width:20px;height:20px}
+.p-alert b{display:block;font-size:14px}
+.p-alert span{display:block;font-size:12.5px;color:var(--p-ink2);margin-top:1px}
+.p-alert.bad{background:var(--p-bad-soft);border-color:color-mix(in srgb,var(--p-bad) 30%,transparent)}.p-alert.bad>.pi,.p-alert.bad b{color:var(--p-bad)}
+.p-alert.warn{background:var(--p-warn-soft);border-color:color-mix(in srgb,var(--p-warn) 30%,transparent)}.p-alert.warn>.pi,.p-alert.warn b{color:var(--p-warn)}
+.pa-a{display:flex;gap:8px;flex-wrap:wrap}
+.p-ring{position:relative;width:44px;height:44px;flex:none;display:grid;place-items:center}
+.p-ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.p-ring circle{fill:none;stroke-width:4}
+.p-ring .bg{stroke:var(--p-sub)}.p-ring .fg{stroke:var(--p-brand);stroke-linecap:round}
+.p-ring b{font-size:10.5px;font-weight:700}
+
+/* drop-off funnel */
+.fn{display:grid;gap:12px}
+.fn-h{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-size:13px}
+.fn-h b{font-weight:600}
+.fn-h span{display:inline-flex;gap:8px;align-items:center;font-weight:600}
+.fn-h small{color:var(--p-ink3);font-weight:500}
+.fn-b{display:block;height:8px;border-radius:4px;background:var(--p-sub);margin-top:6px;overflow:hidden}
+.fn-b i{display:block;height:100%;border-radius:4px;background:var(--viz-bar)}
+
+/* ================= leads ================= */
+.lb{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(196px,1fr);gap:10px;overflow-x:auto;padding-bottom:6px}
+.lb-col{display:grid;grid-template-columns:minmax(0,1fr);min-width:0;gap:8px;align-content:start;background:var(--p-sub);border:1px solid var(--p-line);border-radius:14px;padding:12px}
+.lb-col header{display:flex;justify-content:space-between;align-items:baseline;padding:2px 4px 6px}
+.lb-col header b{font-size:13px}.lb-col header span{font-size:12px;color:var(--p-ink3)}
+.lb-c{display:grid;gap:4px;text-align:left;padding:12px;border-radius:10px;border:1px solid var(--p-line);background:var(--p-card);color:var(--p-ink);font:inherit;cursor:pointer}
+.lb-c:hover{border-color:var(--p-line2);box-shadow:0 4px 14px -8px rgba(23,21,31,.25)}
+.lb-t{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.lb-t b{font-size:13.5px}
+.lb-c small{color:var(--p-ink3);font-size:12px}
+.lb-m{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 6px;align-items:center;margin-top:2px}
+.lb-m b{font-size:13.5px}
+.lb-n{display:flex;gap:3px;align-items:center;color:var(--p-ink2)!important}
+.lb-n .pi{width:13px;height:13px}
+.lb-o{font-weight:600}
+.lb-e{margin:4px;color:var(--p-faint);font-size:12.5px}
+
+/* ================= renewals ================= */
+.rn-list{display:grid}
+.rn{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:16px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--p-line);cursor:pointer}
+.rn:last-child{border-bottom:0}
+.rn:hover{background:var(--p-hover)}
+.rn-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--p-info-soft);color:var(--p-info);flex:none}
+.rn-ic.health{background:var(--p-ok-soft);color:var(--p-ok)}.rn-ic.prop{background:var(--p-warn-soft);color:var(--p-warn)}.rn-ic.bike{background:var(--p-brand-soft);color:var(--p-brand-ink)}
+.rn-m{display:grid;gap:2px;min-width:0}
+.rn-t{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.rn-t b{font-size:14px}
+.rn-m>span{font-size:13px;color:var(--p-ink2)}
+.rn-m>small{font-size:12.5px;color:var(--p-ink3)}
+.rn-m>small b{color:var(--p-ink)}
+.rn-d{display:grid;text-align:right;white-space:nowrap}
+.rn-d b{font-size:13.5px}.rn-d small{font-size:12px;color:var(--p-ink3)}
+.rn-a{display:flex;gap:6px;align-items:center;justify-content:flex-end;min-width:200px}
+.rn-r{display:inline-flex;gap:3px;align-items:center;font-size:12px;font-weight:600;color:var(--p-ink3);margin-right:2px}
+.rn-r .pi{width:14px;height:14px}
+
+/* ================= earnings ================= */
+.e-top{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px}
+.e-sum{border-radius:14px;padding:22px 24px;background:var(--p-today);border:1px solid var(--p-today-line);color:var(--p-side-ink);display:grid;gap:4px;align-content:start}
+.e-sum>small{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--p-side-mute)}
+.e-sum>b{font:600 36px/1.15 var(--p-font);color:#fff;letter-spacing:-.02em}
+.e-sum>span{color:var(--p-side-mute);font-size:13px}
+.e-sum dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 0;padding-top:16px;border-top:1px solid var(--p-side-line)}
+.e-sum dt{font-size:11.5px;color:var(--p-side-mute)}
+.e-sum dd{margin:2px 0 0;font:600 17px var(--p-font);color:#fff}
+.e-sum p{display:flex;gap:6px;align-items:center;margin:14px 0 0;font-size:12.5px;color:var(--p-side-ink)}
+.e-sum p .pi{width:15px;height:15px;color:#7FE0B0}
+.e-g{display:grid;justify-items:center;position:relative;margin:-4px 0 6px}
+.gauge{width:190px;height:auto}
+.gauge path{fill:none;stroke-width:12;stroke-linecap:round}
+.gauge .bg{stroke:var(--p-sub)}.gauge .fg{stroke:var(--p-brand)}.gauge .fg.ok{stroke:var(--p-ok)}.gauge .fg.warn{stroke:var(--p-warn)}
+.e-g b{position:absolute;top:58px;font:600 26px var(--p-font)}
+.e-g small{color:var(--p-ink3);font-size:12.5px;margin-top:2px}
+
+/* ================= servicing ================= */
+.sv-r{display:flex;gap:10px;align-items:center}
+.sv-r b{display:block;font-size:13px}.sv-r small{display:block;color:var(--p-ink3);font-size:12px}
+.sv-ic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--p-sub);color:var(--p-ink2);flex:none}
+.sv-ic .pi{width:16px;height:16px}
+.sv-w{display:inline-grid;place-items:center;min-width:24px;height:22px;padding:0 5px;border-radius:6px;background:var(--p-sub);color:var(--p-ink2);font:700 10.5px var(--p-font);margin-right:7px;letter-spacing:.03em}
+.sv-w.me{background:var(--p-brand-soft);color:var(--p-brand-ink)}.sv-w.cu{background:var(--p-info-soft);color:var(--p-info)}
+.sv-sla{display:inline-flex;gap:4px;align-items:center;font-size:12.5px;font-weight:600;white-space:nowrap}
+.sv-sla .pi{width:14px;height:14px}
+.sv-sla.late{color:var(--p-bad)}.sv-sla.soon{color:var(--p-warn)}.sv-sla.ok{color:var(--p-ok)}.sv-sla.done{color:var(--p-ink3)}
+.p-mw{position:relative;display:inline-flex}
+.p-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:30;min-width:290px;padding:6px;border-radius:12px;border:1px solid var(--p-line);background:var(--p-card);box-shadow:var(--p-sh-lg);display:grid}
+.p-menu button{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:10px 12px;border:0;border-radius:8px;background:none;color:var(--p-ink);font:inherit;cursor:pointer}
+.p-menu button:hover{background:var(--p-sub)}
+.p-menu b{display:block;font-size:13.5px}.p-menu small{display:block;color:var(--p-ink3);font-size:12px}
+.p-menu .pi{margin-top:2px;color:var(--p-ink2)}
+.trk{list-style:none;margin:0;padding:0;display:flex;gap:0;overflow-x:auto}
+.trk li{flex:1 0 96px;display:grid;justify-items:center;text-align:center;gap:6px;position:relative;padding:0 4px}
+.trk li::before{content:"";position:absolute;top:11px;left:-50%;right:50%;height:2px;background:var(--p-line)}
+.trk li:first-child::before{display:none}
+.trk li.done::before,.trk li.now::before{background:var(--p-ink)}
+.trk .d{position:relative;z-index:1;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--p-line2);background:var(--p-card)}
+.trk li.done .d{background:var(--p-ink);border-color:var(--p-ink);color:var(--p-card)}
+.trk li.now .d{border-color:var(--p-brand);box-shadow:0 0 0 4px var(--p-brand-soft)}
+.trk .d .pi{width:13px;height:13px}
+.trk b{font-size:11.5px;font-weight:600;color:var(--p-ink3);line-height:1.3}
+.trk li.done b,.trk li.now b{color:var(--p-ink)}
+.sv-log{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.sv-log li{display:grid;gap:1px;padding-left:14px;border-left:2px solid var(--p-line)}
+.sv-log b{font-size:13px}.sv-log small{color:var(--p-ink3);font-size:12px}
+
+/* claim intimation */
+.cw-back{display:inline-flex;gap:4px;align-items:center;justify-self:start;border:0;background:none;color:var(--p-ink2);font:600 13px var(--p-font);cursor:pointer;padding:0;margin-bottom:-8px}
+.cw-back:hover{color:var(--p-ink)}
+.cw-back .pi{width:16px;height:16px}
+.cw-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--p-line);border-radius:12px;background:var(--p-card);overflow:hidden}
+.cw-steps li{border-left:1px solid var(--p-line);min-width:0}
+.cw-steps li:first-child{border-left:0}
+.cw-steps li>*{display:flex;gap:9px;align-items:center;width:100%;padding:13px 16px;border:0;background:none;font:600 13px var(--p-font);color:var(--p-ink3);text-align:left}
+.cw-steps button{cursor:pointer;color:var(--p-ink)}
+.cw-steps button:hover{background:var(--p-hover)}
+.cw-steps li>*>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cw-steps b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--p-line2);font-size:11.5px;flex:none}
+.cw-steps li.now>*{background:var(--p-brand-soft);color:var(--p-brand-ink)}
+.cw-steps li.now b{border-color:var(--p-brand-ink);background:var(--p-brand-ink);color:var(--p-card)}
+.cw-steps li.done .pi{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--p-ok);color:#fff;flex:none}
+.cw-q{max-width:none!important;margin:10px 0 4px}
+.cw-q input{font-size:15px!important}
+.cw-hits{display:grid;gap:6px;margin-top:10px}
+.cw-hits button{display:flex;gap:12px;align-items:center;text-align:left;padding:10px 12px;border-radius:10px;border:1px solid var(--p-line);background:var(--p-card);color:var(--p-ink);font:inherit;cursor:pointer}
+.cw-hits button:hover{border-color:var(--p-ink)}
+.cw-hits span{flex:1;min-width:0}.cw-hits b{display:block}.cw-hits small{color:var(--p-ink3);font-size:12px}
+.cw-recent{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:14px}
+.cw-recent>span{font-size:12px;color:var(--p-ink3);margin-right:4px}
+.cw-chip{padding:6px 11px;border-radius:999px;border:1px solid var(--p-line);background:var(--p-sub);font:600 12px var(--p-font);color:var(--p-ink2);cursor:pointer}
+.cw-chip:hover{border-color:var(--p-ink);color:var(--p-ink)}
+.cw-who{display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:12px;border:1px solid var(--p-line);background:var(--p-sub)}
+.cw-who>span:nth-child(2){flex:1;min-width:0}
+.cw-who b{display:block;font-size:15px}.cw-who small{color:var(--p-ink3);font-size:12.5px}
+.cw-pol{display:flex;gap:8px;align-items:center;font-size:12.5px}
+.cw-h{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--p-ink3);margin:22px 0 10px}
+.cw-pols,.cw-types{display:grid;gap:10px}
+.cw-types{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.cw-p,.cw-t{display:grid;text-align:left;border:1px solid var(--p-line);border-radius:12px;background:var(--p-card);color:var(--p-ink);font:inherit;cursor:pointer;padding:14px}
+.cw-p{grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center}
+.cw-p b{display:block}.cw-p small{display:block;color:var(--p-ink3);font-size:12px}
+.cw-pm{display:grid;justify-items:end;gap:2px}
+.cw-t{gap:4px;align-content:start}
+.cw-t b{font-size:13.5px}.cw-t small{color:var(--p-ink3);font-size:12px}
+.cw-ti{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:var(--p-sub);color:var(--p-ink2);margin-bottom:4px}
+.cw-p:hover,.cw-t:hover{border-color:var(--p-line2)}
+.cw-p[aria-pressed="true"],.cw-t[aria-pressed="true"]{border-color:var(--p-ink);box-shadow:inset 0 0 0 1px var(--p-ink)}
+.cw-t[aria-pressed="true"] .cw-ti{background:var(--p-ink);color:var(--p-card)}
+.cw-f{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.cw-f .wide{grid-column:1/-1}
+.cw-net{display:grid;gap:6px}
+.cw-net label{display:flex;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--p-line);border-radius:10px;cursor:pointer}
+.cw-net label>span:not(.pp){flex:1}.cw-net .pp{flex:none}.cw-net b{display:block;font-size:13.5px}.cw-net small{color:var(--p-ink3);font-size:12px}
+.cw-net label:has(input:checked){border-color:var(--p-ink);box-shadow:inset 0 0 0 1px var(--p-ink)}
+.cw-docs{list-style:none;margin:0;padding:0;display:grid;border:1px solid var(--p-line);border-radius:12px;overflow:hidden}
+.cw-docs li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border-top:1px solid var(--p-line)}
+.cw-docs li:first-child{border-top:0}
+.cw-docs b{display:block;font-size:13.5px}.cw-docs b em{font-style:normal;font-weight:500;color:var(--p-ink3);font-size:12px}
+.cw-docs small{color:var(--p-ink3);font-size:12px}
+.cw-dk{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--p-sub);color:var(--p-ink3)}
+.cw-dk .pi{width:15px;height:15px}
+.cw-docs li.ok .cw-dk{background:var(--p-ok-soft);color:var(--p-ok)}
+.cw-da{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.cw-da label.pb{cursor:pointer}
+.cw-cf{display:contents;cursor:pointer}
+.cw-cf input{width:18px;height:18px;margin:6px}
+.cw-sum2{display:flex;gap:10px;align-items:center;margin-top:12px;font-size:12.5px;color:var(--p-ink2);flex-wrap:wrap}
+.cw-rev{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;margin:18px 0}
+.cw-next{display:grid;gap:10px;align-content:start;padding:16px;border-radius:12px;background:var(--p-sub)}
+.cw-next .cw-h{margin:0}
+.cw-foot{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:18px;padding-top:16px;border-top:1px solid var(--p-line);flex-wrap:wrap}
+.cw-done{display:flex;gap:14px;align-items:center;margin-bottom:18px}
+.cw-done b{display:block;font:600 19px var(--p-font)}.cw-done small{color:var(--p-ink3)}
+.cw-ok{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--p-ok-soft);color:var(--p-ok)}
+.cw-done+.trk{margin-bottom:16px}
+
+/* ================= campaigns ================= */
+.cg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.cg{display:grid;gap:14px;align-content:start;padding:18px 20px;border-radius:14px;border:1px solid var(--p-line);background:var(--p-card)}
+.cg header{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:start}
+.cg header b{display:block;font-size:15px}.cg header small{display:block;color:var(--p-ink3);font-size:12.5px;margin-top:2px}
+.cg-ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--p-info-soft);color:var(--p-info)}
+.cg-ic.health{background:var(--p-ok-soft);color:var(--p-ok)}.cg-ic.home,.cg-ic.biz{background:var(--p-warn-soft);color:var(--p-warn)}
+.cg-m{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--p-ink2)}
+.cg-m span{display:inline-flex;gap:5px;align-items:center}.cg-m .pi{width:15px;height:15px;color:var(--p-ink3)}
+.cg-p{display:grid;gap:6px;font-size:12.5px;color:var(--p-ink3)}
+.cg-p b{color:var(--p-ink)}
+.cg-s{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0;padding-top:12px;border-top:1px solid var(--p-line)}
+.cg-s dt{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--p-ink3);font-weight:600}
+.cg-s dd{margin:2px 0 0;font:600 17px var(--p-font)}.cg-s dd small{font-size:12px;color:var(--p-ok);font-weight:600}
+.cg footer{display:flex;gap:8px;flex-wrap:wrap}
+.cg-msg{padding:14px 16px;border-radius:4px 14px 14px 14px;background:var(--p-ok-soft);color:var(--p-ink);max-width:460px}
+.cg-msg small{display:block;font-size:11.5px;color:var(--p-ok);font-weight:600;margin-bottom:4px}
+.cg-msg p{margin:0;font-size:13.5px}
+.cg-a{display:inline-flex;gap:6px;align-items:center}
+.cg-cv{display:flex;gap:10px;align-items:center;min-width:140px}.cg-cv .p-prog{flex:1}
+
+/* ================= learning ================= */
+.lr-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:20px;align-items:start}
+.lr-col{display:grid;gap:20px;min-width:0}
+.lr-todo,.lr-cont,.lr-cert,.lr-sess{list-style:none;margin:0;padding:0;display:grid}
+.lr-todo li,.lr-cont li,.lr-cert li,.lr-sess li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--p-line)}
+.lr-todo li:first-child,.lr-cont li:first-child,.lr-cert li:first-child,.lr-sess li:first-child{border-top:0;padding-top:2px}
+.lr-todo b,.lr-cont b,.lr-cert b,.lr-sess b{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13.5px}
+.lr-todo small,.lr-cont small,.lr-cert small,.lr-sess small{display:block;color:var(--p-ink3);font-size:12.5px;margin-top:1px}
+.lr-cert li .p-prog{width:80px}
+.lr-ck{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--p-sub);color:var(--p-ink3)}
+.lr-ck.ok{background:var(--p-ok-soft);color:var(--p-ok)}.lr-ck .pi{width:15px;height:15px}
+.lr-d{width:42px;height:46px;border-radius:10px;border:1px solid var(--p-line);display:grid;place-items:center;align-content:center;line-height:1.05}
+.lr-d b{font-size:16px!important}.lr-d small{font-size:10.5px!important;text-transform:uppercase;letter-spacing:.06em;margin:0!important}
+.qc{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center}
+.qc b{display:block;font-size:14px}.qc small{display:block;color:var(--p-ink3);font-size:12.5px}
+.qc-ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--p-brand-soft);color:var(--p-brand-ink)}
+.qc-ic.ok{background:var(--p-ok-soft);color:var(--p-ok)}.qc-ic.no{background:var(--p-bad-soft);color:var(--p-bad)}
+.lr-parts{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.lr-parts li{display:flex;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--p-line);border-radius:10px}
+.lr-parts .d{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--p-sub);font-size:12px;font-weight:700;flex:none}
+.lr-parts li.done .d{background:var(--p-ok);color:#fff}.lr-parts li.now{border-color:var(--p-ink)}
+.lr-parts b{display:block;font-size:13.5px}.lr-parts small{color:var(--p-ink3);font-size:12px}
+.qd{width:min(560px,calc(100vw - 32px));max-height:calc(100vh - 40px);overflow:auto;border-radius:18px;background:var(--p-card);box-shadow:var(--p-sh-lg);display:grid}
+.p-layer.center .qd{transform:translateY(8px);opacity:0;transition:.2s}.p-layer.center.in .qd{transform:none;opacity:1}
+.qd-h{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:18px 20px;background:var(--p-today);color:#fff}
+.qd-h small{color:var(--p-side-mute);font-size:12.5px}
+.qd-h h2{margin:2px 0 0;font:600 19px var(--p-font);color:#fff}
+.qd-pts{padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.12);font:600 12px var(--p-font)}
+.qd-h .p-x{background:transparent;border-color:rgba(255,255,255,.25);color:#fff}
+.qd-b{padding:18px 20px;display:grid;gap:12px}
+.qd-tags{display:flex;gap:10px;align-items:center;font-size:12.5px;color:var(--p-ink3)}
+.qd-tags span{display:inline-flex;gap:4px;align-items:center}.qd-tags .pi{width:14px;height:14px;color:var(--p-warn)}
+.qd-q{margin:0;font:600 16.5px/1.45 var(--p-font)}
+.qd-o{display:grid;gap:8px}
+.qd-o button{display:flex;gap:12px;align-items:center;text-align:left;padding:12px 14px;border-radius:12px;border:1px solid var(--p-line);background:var(--p-card);color:var(--p-ink);font:inherit;font-size:14px;cursor:pointer}
+.qd-o button:hover:not(:disabled){border-color:var(--p-ink)}
+.qd-o i{font-style:normal;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--p-line2);font-size:12px;font-weight:700;color:var(--p-ink2);flex:none}
+.qd-o button.ok{border-color:var(--p-ok);background:var(--p-ok-soft)}.qd-o button.ok i{background:var(--p-ok);border-color:var(--p-ok);color:#fff}
+.qd-o button.no{border-color:var(--p-bad);background:var(--p-bad-soft)}.qd-o button.no i{background:var(--p-bad);border-color:var(--p-bad);color:#fff}
+.qd-o button:disabled{cursor:default}
+.qd-why{padding:12px 14px;border-radius:12px;background:var(--p-sub)}
+.qd-why b{font-size:13.5px}.qd-why p{margin:4px 0 0;font-size:13.5px;color:var(--p-ink2)}
+.qd-f{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 20px;border-top:1px solid var(--p-line);background:var(--p-sub)}
+.qd-f small{color:var(--p-ink3);font-size:12px}
+
+@media (max-width:1180px){.p-bks{grid-template-columns:repeat(3,minmax(0,1fr))}.e-top{grid-template-columns:1fr}}
+@media (max-width:980px){.lr-grid,.cw-rev{grid-template-columns:1fr}
+  .cw-steps{display:flex}.cw-steps li{flex:none}.cw-steps li.now{flex:1}
+  .cw-steps li:not(.now)>*>span{display:none}.cw-steps li:not(.now)>*{padding:13px 14px}}
+@media (max-width:760px){
+  .p-band{grid-template-columns:1fr}.p-band dl{gap:18px;flex-wrap:wrap}.p-band dl div{text-align:left}
+  .p-bks{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .p-tool .p-search{flex-basis:100%}
+  .p-seg{overflow-x:auto;flex-wrap:nowrap}
+  .rn{grid-template-columns:auto minmax(0,1fr);gap:10px 12px;padding:14px 16px}
+  .rn-d{grid-column:2;text-align:left;display:flex;gap:6px;align-items:baseline}
+  .rn-a{grid-column:1/-1;justify-content:flex-start;min-width:0}
+  .e-sum dl{grid-template-columns:1fr 1fr}
+  .cw-f{grid-template-columns:1fr}
+  .cw-p{grid-template-columns:auto minmax(0,1fr)}.cw-pm{grid-column:2;justify-items:start}
+  .cw-docs li{grid-template-columns:auto minmax(0,1fr)}.cw-da{grid-column:2;justify-content:flex-start}
+  .cw-who{flex-wrap:wrap}.cw-who>span:nth-child(2){flex:1 1 calc(100% - 60px)}.cw-pol,.cw-who>.pb{flex-basis:100%;padding-left:52px}.cw-who>.pb{flex-basis:auto;margin-left:52px;padding-left:12px}
+  .p-alert{grid-template-columns:auto minmax(0,1fr)}.pa-a{grid-column:1/-1}
+  .cg-grid{grid-template-columns:1fr}
+  .lr-todo li,.lr-cont li,.lr-sess li{grid-template-columns:auto minmax(0,1fr)}.lr-todo li>.pb,.lr-todo li>.pp,.lr-cont li>.pb,.lr-sess li>.pb,.lr-sess li>.pp{grid-column:2;justify-self:start}
+  .p-menu{right:auto;left:0}
+}
+
+.trk.v{display:grid;gap:0;overflow:visible}
+.trk.v li{display:grid;grid-template-columns:22px 1fr;justify-items:start;align-items:center;text-align:left;gap:10px;padding:0 0 14px}
+.trk.v li:last-child{padding-bottom:0}
+.trk.v li::before{top:auto;bottom:-2px;left:10px;right:auto;width:2px;height:calc(100% - 22px);transform:translateY(0)}
+.trk.v li:first-child::before{display:block}
+.trk.v li:last-child::before{display:none}
+.trk.v li::before{background:var(--p-line)}
+.trk.v li.done::before{background:var(--p-ink)}
+.trk.v b{font-size:12.5px}
+.cw-nx{display:grid;gap:8px;margin:0;padding:12px 0 0;border-top:1px solid var(--p-line)}
+.cw-nx div{display:grid;grid-template-columns:96px 1fr;gap:10px;font-size:12.5px}
+.cw-nx dt{color:var(--p-ink3)}.cw-nx dd{margin:0;color:var(--p-ink)}
+.e-rates{display:flex;gap:8px;align-items:flex-start;margin:14px 0 0;padding:10px 12px;border-radius:10px;background:var(--p-sub);font-size:12.5px;color:var(--p-ink2);line-height:1.5}
+.e-rates .pi{width:15px;height:15px;flex:none;margin-top:2px;color:var(--p-ink3)}.e-rates b{color:var(--p-ink);font-weight:600}
+.lr-pc{display:flex;align-items:center;gap:8px;min-width:96px}.lr-pc .p-prog{flex:1}.lr-pc small{font-size:11.5px;color:var(--p-ink3)}
+.e-hold{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}.e-hold li{border-bottom:0}
+.pc.flush.e-latest .pc-h{padding:18px 22px 6px}
+@media (max-width:980px){.e-hold{grid-template-columns:1fr}}
+
+/* phone tables: the first column across the top, the rest in two labelled columns */
+@media (max-width:640px){
+  .pt tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 14px;align-items:start}
+  .pt td{min-width:0}
+  .pt td:first-child{grid-column:1/-1}
+  .pt td:not(:first-child)[data-l]:not([data-l=""])::before{content:attr(data-l);display:block;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--p-ink3);margin-bottom:2px}
+  .pt td[data-l=""]{grid-column:1/-1}
+  .pt td[data-l=""]:has(> :only-child){justify-self:start}
+  .pt tr[data-row]:hover td,.pt tr.late td{background:none}
+  .pt tr[data-row]:hover{background:var(--p-hover)}
+  .pt tr.late{background:color-mix(in srgb,var(--p-bad-soft) 55%,transparent);box-shadow:inset 3px 0 0 var(--p-bad)}
+  .pt tr.late td:first-child{box-shadow:none}
+}
 </style>
 </head>
 <body>
@@ -14560,7 +14897,7 @@ function makeBook(seed, n, opts = {}) {
     out.proposals.push({ id: (t === 'health' ? 'NX-PH-' : 'NX-PM-') + (204381700 + i * 37), customer: c.name, cid: c.id, mobile: c.mobile, type: t, what: t === 'health' ? 'Health Plus, ₹10 lakh, family' : t === 'bike' ? `${plate(r)}, ${pick(BIKES, r).slice(0, 2).join(' ')}` : `${plate(r)}, ${pick(CARS, r).slice(0, 2).join(' ')}`, premium: t === 'health' ? between(14000, 36000, r) : t === 'bike' ? between(1500, 3800, r) : between(9000, 28000, r), status: s, at: new Date(Date.now() - between(1, 96, r) * 3600e3), mode: s === 'With the customer' ? 'Customer not present, link sent' : 'With the customer', recorded: s !== 'Verification call due' });
   });
   const src = opts.leadSources || ['From your RM', 'Your link', 'Referral', 'Walk-in', 'Renewal lapsed'];
-  for (let i = 0; i < 10; i++) out.leads.push({ id: 'LD-' + (3200 + i), name: person(r), mobile: mob(r), source: pick(src, r), product: opts.noProp ? pick(['Car', 'Two-wheeler', 'Health, family', 'Health, parents', 'Commercial vehicle'], r) : pick(['Car', 'Two-wheeler', 'Health, family', 'Health, parents', 'Home', 'Shop', 'Commercial vehicle'], r), stage: pick(['New', 'New', 'Contacted', 'Quoted', 'Quoted', 'Won', 'Lost'], r), expected: between(2000, 32000, r), at: addDays(TODAY, -between(0, 20, r)), next: pick(['Call today', 'Send quote', 'Follow up tomorrow', 'Visit on Saturday', '-'], r), score: between(30, 95, r) });
+  for (let i = 0; i < 10; i++) out.leads.push({ id: 'LD-' + (3200 + i), name: person(r), mobile: mob(r), source: pick(src, r), product: opts.noProp ? pick(['Car', 'Two-wheeler', 'Health, family', 'Health, parents', 'Commercial vehicle'], r) : pick(['Car', 'Two-wheeler', 'Health, family', 'Health, parents', 'Home', 'Shop', 'Commercial vehicle'], r), stage: (pick(['New', 'New', 'Contacted', 'Quoted', 'Quoted', 'Won', 'Lost'], r), ['New', 'Contacted', 'Quoted', 'New', 'Won', 'Quoted', 'Lost', 'Contacted', 'New', 'Lost'][i]), expected: between(2000, 32000, r), at: addDays(TODAY, -between(0, 20, r)), next: pick(['Call today', 'Send quote', 'Follow up tomorrow', 'Visit on Saturday', '-'], r), score: between(30, 95, r) });
   const rq = [['Change address', 'Aadhaar e-KYC', 'Done'], ['Remove loan', 'VAHAN record', 'Done'], ['Add a family member', 'DigiLocker (birth certificate)', 'Under review'], ['Correct name', 'Document upload', 'Under review'], ['Transfer to a new owner', 'Waiting for the buyer\'s KYC', 'Waiting'], ['Change nominee', 'No document needed', 'Done']];
   rq.forEach((x, i) => { const p = out.policies[(i * 5 + 2) % out.policies.length]; out.requests.push({ id: 'NX-SR-' + (120800 + i * 13), type: x[0], policy: p.no, customer: p.customer, verify: x[1], status: x[2], at: addDays(TODAY, -between(0, 14, r)) }); });
   const cl = [['Accident', 'Surveyor allocated'], ['Cashless hospitalisation', 'Approved for treatment'], ['Damaged while parked', 'Survey report due'], ['Reimbursement', 'Documents needed']];
@@ -14698,7 +15035,7 @@ const whenText = d => { const n = daysTo2(d); return n === 0 ? 'Today' : n === 1
 function kpi({ ic, tint = 'brand', label, value, sub, prog, status, go }) {
   return `<${go ? `button type="button" data-nav="${go}"` : 'div'} class="kpi">
     <div class="kpi-h"><span class="kpi-ic ${tint}">${pi(ic)}</span><span class="kpi-l">${esc(label)}</span>${status ? ppill(status[0], status[1]) : ''}</div>
-    <b class="kpi-v">${value}</b>${prog != null ? `<span class="kpi-bar"><i class="${prog >= 100 ? 'ok' : prog >= 70 ? 'brand' : 'warn'}" style="width:${Math.min(100, prog)}%"></i></span>` : ''}${sub ? `<small class="kpi-s">${sub}</small>` : ''}</${go ? 'button' : 'div'}>`;
+    <b class="kpi-v">${value}</b>${prog != null ? `<span class="kpi-bar"><i class="${prog >= 100 ? 'ok' : status ? (status[1] === 'ok' ? 'brand' : 'warn') : prog >= 70 ? 'brand' : 'warn'}" style="width:${Math.min(100, prog)}%"></i></span>` : ''}${sub ? `<small class="kpi-s">${sub}</small>` : ''}</${go ? 'button' : 'div'}>`;
 }
 function ptable(cols, rows, o = {}) {
   if (!rows.length) return `<div class="p-empty">${pi('search')}<b>${esc(o.empty || 'Nothing here')}</b>${o.emptySub ? `<small>${esc(o.emptySub)}</small>` : ''}</div>`;
@@ -14713,7 +15050,7 @@ const prog = (v, max, k) => { const p = max ? Math.round(v / max * 100) : 0; ret
 
 /* single-series bars with a hover tooltip */
 function barChart(data, o = {}) {
-  const W = 640, H = o.h || 220, pad = { l: 60, r: 8, t: 14, b: 28 }, max = Math.max(1, ...data.map(d => Math.max(d.v, d.t || 0))) * 1.12;
+  const W = 640, H = o.h || 220, pad = { l: 60, r: 8, t: 14, b: 28 }, raw = Math.max(1, ...data.map(d => Math.max(d.v, d.t || 0))) * 1.05 / 4, mag = 10 ** Math.floor(Math.log10(raw)), max = [1, 2, 2.5, 5, 10].find(m => m * mag >= raw) * mag * 4;
   const n = data.length, bw = (W - pad.l - pad.r) / n, y = v => H - pad.b - (v / max) * (H - pad.t - pad.b);
   const ticks = [0, 0.25, 0.5, 0.75, 1].map(f => Math.round(max * f));
   return `<div class="viz" data-viz><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label || 'Bar chart')}">
@@ -14767,18 +15104,18 @@ async function saveBlobP(filename, blob) {
 /* ================= NxSure Partners: what each role sees ================= */
 const P = { role: null, user: null, view: 'home', f: {}, d: {}, done: new Set() };
 const NAV = {
-  agent: [['Workspace', [['home', 'home', 'Home'], ['actions', 'bell', 'Action Center', 'act'], ['new', 'plus', 'New policy'], ['proposals', 'doc', 'Proposals', 'props'], ['customers', 'users', 'Customers and policies'], ['leads', 'target', 'Leads', 'leads'], ['renewals', 'renew', 'Renewals', 'ren'], ['servicing', 'edit', 'Servicing'], ['claims', 'wrench', 'Claims']]],
+  agent: [['Workspace', [['home', 'home', 'Home'], ['actions', 'bell', 'Action Center', 'act'], ['new', 'plus', 'New policy'], ['leads', 'target', 'Leads', 'leads'], ['customers', 'users', 'Customers and policies'], ['renewals', 'renew', 'Renewals', 'ren'], ['servicing', 'edit', 'Servicing and claims', 'svc']]],
     ['My business', [['earnings', 'wallet', 'Earnings'], ['campaigns', 'flag', 'Campaigns'], ['learning', 'grad', 'Learning and certification'], ['library', 'folder', 'Product library'], ['help', 'chat', 'Help and tickets'], ['profile', 'user', 'Profile, licence and my link']]]],
-  dealer: [['Showroom', [['home', 'home', 'Home'], ['actions', 'bell', 'Action Center', 'act'], ['deliveries', 'car', 'Deliveries to insure', 'deliv'], ['new', 'plus', 'New policy'], ['proposals', 'doc', 'Proposals', 'props'], ['renewals', 'renew', 'Service renewals', 'ren'], ['customers', 'users', 'Customers and policies']]],
+  dealer: [['Showroom', [['home', 'home', 'Home'], ['actions', 'bell', 'Action Center', 'act'], ['deliveries', 'car', 'Deliveries to insure', 'deliv'], ['new', 'plus', 'New policy'], ['leads', 'target', 'Leads and quotes', 'leads'], ['renewals', 'renew', 'Service renewals', 'ren'], ['customers', 'users', 'Customers and policies']]],
     ['Workshop', [['workshop', 'wrench', 'Claims in the workshop', 'ws'], ['servicing', 'edit', 'Ownership transfers and changes']]],
     ['Business', [['earnings', 'wallet', 'Payouts'], ['library', 'folder', 'Product library'], ['help', 'chat', 'Help and tickets'], ['profile', 'store', 'Dealer profile and staff']]]],
-  arm: [['Workspace', [['home', 'home', 'Home'], ['actions', 'bell', 'Action Center', 'act'], ['plan', 'route', 'Plan my day'], ['new', 'plus', 'New policy'], ['proposals', 'doc', 'Team proposals', 'props']]],
+  arm: [['Workspace', [['home', 'home', 'Home'], ['actions', 'bell', 'Action Center', 'act'], ['plan', 'route', 'Plan my day'], ['new', 'plus', 'New policy']]],
     ['My agents', [['agents', 'users', 'Agents'], ['onboarding', 'grad', 'Onboarding', 'onb'], ['leads', 'target', 'Lead routing', 'leads'], ['renewals', 'renew', 'Agency renewals', 'ren'], ['campaigns', 'flag', 'Campaigns']]],
     ['Insights', [['dashboards', 'chart', 'Dashboards'], ['library', 'folder', 'Product library'], ['help', 'chat', 'Help and tickets']]]],
   drm: [['Workspace', [['home', 'home', 'Home'], ['actions', 'bell', 'Action Center', 'act'], ['plan', 'route', 'Plan my day']]],
     ['My dealers', [['dealers', 'store', 'Dealers'], ['workshop', 'wrench', 'Workshop claims', 'ws'], ['renewals', 'renew', 'Renewal retention', 'ren'], ['earnings', 'wallet', 'Dealer payouts'], ['campaigns', 'flag', 'Campaigns']]],
     ['Insights', [['dashboards', 'chart', 'Dashboards'], ['library', 'folder', 'Product library'], ['help', 'chat', 'Help and tickets']]]],
-  brm: [['Workspace', [['home', 'home', 'Home'], ['actions', 'bell', 'Action Center', 'act'], ['plan', 'route', 'Plan my day'], ['new', 'plus', 'New policy'], ['proposals', 'doc', 'Proposals', 'props']]],
+  brm: [['Workspace', [['home', 'home', 'Home'], ['actions', 'bell', 'Action Center', 'act'], ['plan', 'route', 'Plan my day'], ['new', 'plus', 'New policy']]],
     ['Bank', [['branches', 'bank', 'Branches'], ['leads', 'target', 'Bank leads', 'leads'], ['renewals', 'renew', 'Renewals', 'ren'], ['receipting', 'wallet', 'Receipting', 'rcp'], ['campaigns', 'flag', 'Campaigns']]],
     ['Insights', [['dashboards', 'chart', 'Dashboards'], ['library', 'folder', 'Product library'], ['help', 'chat', 'Help and tickets']]]],
   mgr: [['Overview', [['home', 'home', 'Home'], ['approvals', 'check', 'Approvals', 'appr'], ['team', 'users', 'Team'], ['dashboards', 'chart', 'Dashboards']]],
@@ -14810,8 +15147,8 @@ function loadRole(role) {
     : P.d.agents.slice(1, 5).map((a, i) => ({ t: ['10:00', '12:00', '15:00', '17:00'][i], where: `${a.name}, ${a.area}`, why: [a.mtd ? 'Joint call with a family health lead' : 'No sale in 30 days: coaching', 'Licence renewal paperwork', 'Renewal list for next month', 'New POSP: first joint sale'][i] }));
 }
 const book = () => P.d.book;
-const renewalsDue = (days = 60) => book().policies.filter(p => { const n = daysTo2(p.end); return n >= -15 && n <= days; }).sort((a, b) => a.end - b.end);
-const counts = () => ({ act: actionItems().filter(a => !P.done.has(a.id)).length, props: book().proposals.filter(p => !['Issued', 'Draft'].includes(p.status)).length, leads: book().leads.filter(l => l.stage === 'New').length, ren: renewalsDue(30).length, deliv: P.d.deliveries.filter(d => d.status === 'To insure').length, ws: P.d.workshop.filter(w => w.stage !== 'Final bill paid').length, onb: P.d.onboarding.length, rcp: P.d.receipts.filter(x => x.status !== 'Matched').length, appr: P.d.approvals.filter(a => a.st === 'Pending').length });
+const renewalsDue = (days = 60) => { renSeed(); return book().policies.filter(p => { const n = daysTo2(p.end); return !p.renewed && n >= -15 && n <= days; }).sort((a, b) => a.end - b.end); };
+const counts = () => ({ act: actionItems().filter(a => !P.done.has(a.id)).length, props: book().proposals.filter(p => !['Issued', 'Draft'].includes(p.status)).length, leads: book().leads.filter(l => l.stage === 'New').length + book().proposals.filter(p => ['Terms ready', 'Verification call due'].includes(p.status)).length, svc: svcList().filter(x => x.status !== 'Done' && x.with === 'You').length, ren: renewalsDue(30).length, deliv: P.d.deliveries.filter(d => d.status === 'To insure').length, ws: P.d.workshop.filter(w => w.stage !== 'Final bill paid').length, onb: P.d.onboarding.length, rcp: P.d.receipts.filter(x => x.status !== 'Matched').length, appr: P.d.approvals.filter(a => a.st === 'Pending').length });
 
 /* ---------------- the action centre ---------------- */
 function actionItems() {
@@ -14849,10 +15186,10 @@ V.home = () => {
   const head = phead(`${greet2()}, ${esc(first(u.who))}`, `${todayLine()} · ${esc(u.title)}`, role === 'dealer' ? pbtn('Register a workshop claim', 'data-act="wsnew"', 'ghost', 'wrench') + pbtn('Insure a delivery', 'data-nav="deliveries"', 'pri', 'car') : role === 'mgr' ? pbtn('Approvals', 'data-nav="approvals"', 'pri', 'check') : role === 'drm' ? pbtn('Plan my day', 'data-nav="plan"', 'pri', 'route') : pbtn('My link and QR', 'data-act="mylink"', 'ghost', 'qr') + pbtn('New policy', 'data-nav="new"', 'pri', 'plus'));
   const chart = pcard('Premium by month', barChart(d.series, { fmt: fmtK, label: 'Premium by month against target' , legend: '<span><i class="lg-bar"></i>Premium</span><span><i class="lg-tg"></i>Target</span>' }), `<span class="pc-note">${esc(u.org)}</span>`);
   if (role === 'agent') {
-    const ren = renewalsDue(30), earn = d.earn[5].v;
+    const ren = renewalsDue(30), earn = earnNow();
     return { title: 'Home', html: `${head}${actStrip()}
-      <div class="kpis">${kpi({ ic: 'rupee', label: 'Premium this month', value: fmtK(d.mtd), sub: `of ${fmtK(d.target)} target · ${pct}%`, prog: pct, status: pct >= 90 ? ['On track', 'ok'] : ['At risk', 'warn'], go: 'earnings' })}${kpi({ ic: 'doc', tint: 'info', label: 'Proposals open', value: c.props, sub: `${B.proposals.filter(p => p.status === 'With the customer').length} with customers, ${B.proposals.filter(p => p.status === 'Awaiting payment').length} awaiting payment`, go: 'proposals' })}${kpi({ ic: 'renew', tint: 'warn', label: 'Renewals in 30 days', value: ren.length, sub: `${fmtK(ren.reduce((s, p) => s + p.premium, 0))} premium to keep`, go: 'renewals' })}${kpi({ ic: 'wallet', tint: 'ok', label: 'Earnings this month', value: inr(earn), sub: 'Credited on the 7th of next month', go: 'earnings' })}</div>
-      <div class="grid2">${pcard('Your pipeline', funnel([['Draft', B.proposals.filter(p => p.status === 'Draft')], ['With the customer', B.proposals.filter(p => p.status === 'With the customer')], ['Awaiting payment or tests', B.proposals.filter(p => ['Awaiting payment', 'Tests booked', 'Verification call due'].includes(p.status))], ['Issued this month', B.proposals.filter(p => p.status === 'Issued')]]), `<button type="button" class="pc-link" data-nav="proposals">All proposals${pi('chevR')}</button>`)}
+      <div class="kpis">${kpi({ ic: 'rupee', label: 'Premium this month', value: fmtK(d.mtd), sub: `of ${fmtK(d.target)} target · ${pct}%`, prog: pct, status: paceStat(d.mtd, d.target), go: 'earnings' })}${kpi({ ic: 'doc', tint: 'info', label: 'Proposals open', value: c.props, sub: `${B.proposals.filter(p => p.status === 'With the customer').length} with customers, ${B.proposals.filter(p => p.status === 'Awaiting payment').length} awaiting payment`, go: 'leads' })}${kpi({ ic: 'renew', tint: 'warn', label: 'Renewals in 30 days', value: ren.length, sub: `${fmtK(ren.reduce((s, p) => s + p.premium, 0))} premium to keep`, go: 'renewals' })}${kpi({ ic: 'wallet', tint: 'ok', label: 'Earnings this month', value: inr(earn), sub: 'Credited on the 7th of next month', go: 'earnings' })}</div>
+      <div class="grid2">${pcard('Your pipeline', funnel([['Draft', B.proposals.filter(p => p.status === 'Draft')], ['With the customer', B.proposals.filter(p => p.status === 'With the customer')], ['Awaiting payment or tests', B.proposals.filter(p => ['Awaiting payment', 'Tests booked', 'Verification call due'].includes(p.status))], ['Issued this month', B.proposals.filter(p => p.status === 'Issued')]]), `<button type="button" class="pc-link" data-nav="leads" data-lst="Proposal">Proposals in Leads${pi('chevR')}</button>`)}
         ${pcard('Renewals this week', listRen(renewalsDue(8).slice(0, 5)), `<button type="button" class="pc-link" data-nav="renewals">All renewals${pi('chevR')}</button>`)}</div>
       <div class="grid2">${chart}${pcard('Your licence and learning', `${kv([['Licence', `${spill('Valid')} till 14 Mar 2028`], ['Certification', `${LEARN.filter(l => l[3] === 100).length} of ${LEARN.length} modules done`], ['Next module', (n => n ? `${n[0]}, ${n[2]} min` : 'All done')(LEARN.find(l => l[3] < 100))]])}<div class="pc-acts">${pbtn('Continue learning', 'data-nav="learning"', 'ghost', 'grad')}</div><h3 class="pc-sub">From NxSure</h3>${announceList(2)}`)}</div>` };
   }
@@ -14861,12 +15198,12 @@ V.home = () => {
     return { title: 'Home', html: `${head}${actStrip()}
       <div class="kpis">${kpi({ ic: 'car', label: 'Deliveries this week', value: D.length, sub: `${c.deliv} still to insure · ${ins} insured`, go: 'deliveries' })}${kpi({ ic: 'shield', tint: 'ok', label: 'Insured with NxSure this month', value: `${att}%`, sub: `${mtdIns} of ${mtdSold} vehicles delivered`, prog: att / 0.8, status: att >= 70 ? ['On track', 'ok'] : ['Below 70%', 'warn'] })}${kpi({ ic: 'wrench', tint: 'warn', label: 'Cars in the workshop on a claim', value: ws.length, sub: `${ws.filter(w => w.stage === 'Approved' || w.stage === 'Repair in progress').length} approved, ${ws.filter(w => /Surveyor|Estimate/.test(w.stage)).length} waiting on survey`, go: 'workshop' })}${kpi({ ic: 'renew', tint: 'info', label: 'Service renewals in 30 days', value: c.ren, sub: 'Quote them at the service desk', go: 'renewals' })}</div>
       <div class="grid2">${pcard('Deliveries to insure', delivList(D.filter(x => x.status === 'To insure').slice(0, 4)), `<button type="button" class="pc-link" data-nav="deliveries">All deliveries${pi('chevR')}</button>`)}${pcard('Workshop', wsBoardMini(ws), `<button type="button" class="pc-link" data-nav="workshop">Open the workshop${pi('chevR')}</button>`)}</div>
-      <div class="grid2">${chart}${pcard('Payouts', `${kv([['This month so far', inr(d.earn[5].v)], ['Last month', `${inr(d.earn[4].v)}, paid on 7 ${d.earn[4].l}`], ['Based on', 'New-vehicle policies, renewals at the service desk and used cars']])}<div class="pc-acts">${pbtn('Payout statement', 'data-nav="earnings"', 'ghost', 'wallet')}</div>`)}</div>` };
+      <div class="grid2">${chart}${pcard('Payouts', `${kv([['This month so far', inr(earnNow())], ['Last month', `${inr(d.earn[4].v)}, paid on 7 ${d.earn[4].l}`], ['Based on', 'New-vehicle policies, renewals at the service desk and used cars']])}<div class="pc-acts">${pbtn('Payout statement', 'data-nav="earnings"', 'ghost', 'wallet')}</div>`)}</div>` };
   }
   if (role === 'arm') {
     const A = d.agents, active = A.filter(a => a.mtd > 0).length, attn = A.filter(a => !a.mtd || a.cert === 'Renewal due');
     return { title: 'Home', html: `${head}${actStrip()}
-      <div class="kpis">${kpi({ ic: 'rupee', label: 'Team premium this month', value: fmtK(d.mtd), sub: `of ${fmtK(d.target)} · ${pct}%`, prog: pct, status: pct >= 90 ? ['On track', 'ok'] : ['At risk', 'warn'] })}${kpi({ ic: 'users', tint: 'info', label: 'Agents who sold this month', value: `${active} of ${A.length}`, sub: `${A.filter(a => a.type === 'POSP').length} POSPs, ${A.filter(a => a.type === 'Agent').length} agents`, go: 'agents' })}${kpi({ ic: 'alert', tint: 'bad', label: 'Agents needing attention', value: attn.length, sub: 'No sale in 30 days, or licence due', go: 'agents' })}${kpi({ ic: 'grad', tint: 'ok', label: 'Joining', value: d.onboarding.length, sub: `${d.onboarding.filter(o => o.stage === 'Exam passed').length} ready for a licence`, go: 'onboarding' })}</div>
+      <div class="kpis">${kpi({ ic: 'rupee', label: 'Team premium this month', value: fmtK(d.mtd), sub: `of ${fmtK(d.target)} · ${pct}%`, prog: pct, status: paceStat(d.mtd, d.target) })}${kpi({ ic: 'users', tint: 'info', label: 'Agents who sold this month', value: `${active} of ${A.length}`, sub: `${A.filter(a => a.type === 'POSP').length} POSPs, ${A.filter(a => a.type === 'Agent').length} agents`, go: 'agents' })}${kpi({ ic: 'alert', tint: 'bad', label: 'Agents needing attention', value: attn.length, sub: 'No sale in 30 days, or licence due', go: 'agents' })}${kpi({ ic: 'grad', tint: 'ok', label: 'Joining', value: d.onboarding.length, sub: `${d.onboarding.filter(o => o.stage === 'Exam passed').length} ready for a licence`, go: 'onboarding' })}</div>
       <div class="grid2">${pcard('Needs your attention', ptable([{ t: 'Agent', r: a => `<span class="who">${av(a.name, 'sm')}<span><b>${esc(a.name)}</b><small>${esc(a.id)} · ${esc(a.area)}</small></span></span>` }, { t: 'Why', r: a => a.cert === 'Renewal due' ? ppill(`Licence ${whenText(a.licence).toLowerCase()}`, 'bad') : ppill('No sale in 30 days', 'warn') }, { t: '', cls: 'r', r: a => pbtn('Nudge', `data-act="nudge" data-id="${a.id}"`, 'ghost sm', 'wa') }], attn.slice(0, 5), { row: a => 'agent:' + a.id }))}
         ${pcard('Top agents this month', ptable([{ t: '#', r: (a, i) => `<b class="rank">${i + 1}</b>` }, { t: 'Agent', r: a => `<span class="who">${av(a.name, 'sm')}<b>${esc(a.name)}</b></span>` }, { t: 'Premium', cls: 'r', r: a => `<b>${inrK(a.mtd)}</b>` }, { t: 'Policies', cls: 'r', r: a => a.pols }], A.slice().sort((x, y) => y.mtd - x.mtd).slice(0, 5), { row: a => 'agent:' + a.id }))}</div>
       <div class="grid2">${chart}${pcard('Joining pipeline', funnel(['Applied', 'KYC checked', 'Training', 'Exam booked', 'Exam passed', 'Licence issued'].map(s => [s, d.onboarding.filter(o => o.stage === s)]), true), `<button type="button" class="pc-link" data-nav="onboarding">Onboarding${pi('chevR')}</button>`)}</div>` };
@@ -14881,7 +15218,7 @@ V.home = () => {
   if (role === 'brm') {
     const Br = d.branches;
     return { title: 'Home', html: `${head}${actStrip()}
-      <div class="kpis">${kpi({ ic: 'rupee', label: 'Premium this month', value: fmtK(d.mtd), sub: `of ${fmtK(d.target)} · ${pct}%`, prog: pct, status: pct >= 90 ? ['On track', 'ok'] : ['At risk', 'warn'] })}${kpi({ ic: 'target', tint: 'info', label: 'Branch leads open', value: Br.reduce((s, b) => s + b.leads, 0), sub: `${c.leads} new from referrals`, go: 'leads' })}${kpi({ ic: 'renew', tint: 'warn', label: 'Renewals in 30 days', value: c.ren, sub: 'Bank customers', go: 'renewals' })}${kpi({ ic: 'wallet', tint: 'bad', label: 'Receipts to match', value: c.rcp, sub: 'Premium collected through the bank', go: 'receipting' })}</div>
+      <div class="kpis">${kpi({ ic: 'rupee', label: 'Premium this month', value: fmtK(d.mtd), sub: `of ${fmtK(d.target)} · ${pct}%`, prog: pct, status: paceStat(d.mtd, d.target) })}${kpi({ ic: 'target', tint: 'info', label: 'Branch leads open', value: Br.reduce((s, b) => s + b.leads, 0), sub: `${c.leads} new from referrals`, go: 'leads' })}${kpi({ ic: 'renew', tint: 'warn', label: 'Renewals in 30 days', value: c.ren, sub: 'Bank customers', go: 'renewals' })}${kpi({ ic: 'wallet', tint: 'bad', label: 'Receipts to match', value: c.rcp, sub: 'Premium collected through the bank', go: 'receipting' })}</div>
       <div class="grid2">${pcard('Branches this month', barChart(Br.slice(0, 8).map(b => ({ l: b.name.replace('Meridian Bank, ', '').split(' ')[0], v: b.mtd, t: b.target })), { fmt: inrK, label: 'Premium by branch against target', legend: '<span><i class="lg-bar"></i>Premium</span><span><i class="lg-tg"></i>Target</span>' }))}${pcard('Today\'s branch visits', visitsList(), `<button type="button" class="pc-link" data-nav="plan">Plan my day${pi('chevR')}</button>`)}</div>
       <div class="grid2">${chart}${pcard('From NxSure', announceList(3))}</div>` };
   }
@@ -14926,14 +15263,6 @@ V.new = () => {
     ${pcard('How an assisted sale works', `<ol class="steps4"><li><b>Is the customer with you?</b><span>If yes, you take a photo of yourself and the sale is recorded on video from the first step. If not, you fill in what they tell you.</span></li><li><b>Quote, KYC and the questions</b><span>The same journey as our website, one question at a time: health questions, or the records and a video tour of the property.</span></li><li><b>The customer accepts</b><span>With a one-time code on their phone if they're with you, or from a link if they're not.</span></li><li><b>Payment and the policy</b><span>The policy is issued as soon as they pay. You never collect cash.</span></li></ol>`)}` };
 };
 
-V.proposals = () => {
-  const B = book(), f = P.f.props || 'all', st = ['Draft', 'With the customer', 'Awaiting payment', 'Tests booked', 'Verification call due', 'Issued'];
-  const list = B.proposals.filter(p => f === 'all' || p.status === f).sort((a, b) => b.at - a.at);
-  return { title: 'Proposals', html: `${phead(P.role === 'arm' ? 'Team proposals' : 'Proposals', 'Every proposal, from first quote to policy', pbtn('New policy', 'data-nav="new"', 'pri', 'plus'))}
-    ${chips('props', [['all', 'All', B.proposals.length], ...st.map(s => [s, s, B.proposals.filter(p => p.status === s).length])], f)}
-    ${pcard('', ptable([{ t: 'Customer', r: p => `<span class="who">${av(p.customer, 'sm')}<span><b>${esc(p.customer)}</b><small>${esc(p.id)}</small></span></span>` }, { t: 'Cover', r: p => `${esc(ptLabel(p.type))}<small class="sub">${esc(p.what)}</small>` }, { t: 'Premium', cls: 'r', r: p => `<b>${inr(p.premium)}</b>` }, { t: 'Status', r: p => spill(p.status) }, { t: 'Recorded', r: p => isPropT(p.type) ? '<span class="p-muted">Not needed</span>' : p.recorded ? `<span class="txt-ok">${pi('check')}Video</span>` : '<span class="txt-bad">Call due</span>' }, { t: 'Updated', r: p => ago(p.at) }], list, { row: p => 'proposal:' + p.id, empty: 'No proposals here' }), '', 'flush')}` };
-};
-
 V.customers = () => {
   const B = book(), tab = P.f.custTab || 'customers', q = (P.f.q || '').toLowerCase();
   const custs = B.customers.filter(c => !q || c.name.toLowerCase().includes(q) || c.mobile.includes(q));
@@ -14944,53 +15273,6 @@ V.customers = () => {
     ${pcard('', tab === 'customers' ? ptable([{ t: 'Customer', r: c => `<span class="who">${av(c.name, 'sm')}<span><b>${esc(c.name)}</b><small>${esc(maskMobile(c.mobile))} · ${esc(c.area)}</small></span></span>` }, { t: 'Policies', r: c => B.policies.filter(p => p.cid === c.id).map(p => ppill(ptLabel(p.type), p.status === 'active' ? 'info' : 'bad')).join(' ') }, { t: 'Next renewal', r: c => { const n = B.policies.filter(p => p.cid === c.id).sort((a, b) => a.end - b.end)[0]; return n ? `${fdS(n.end)}<small class="sub">${whenText(n.end)}</small>` : ''; } }, { t: 'KYC', r: c => c.kyc ? '<span class="txt-ok">' + pi('check') + 'Done</span>' : ppill('Not done', 'warn') }, { t: 'Customer since', r: c => c.since.getFullYear() }], custs, { row: c => 'customer:' + c.id })
       : ptable([{ t: 'Policy', r: p => `<b class="mono">${esc(p.no)}</b><small class="sub">${esc(p.customer)}</small>` }, { t: 'Cover', r: p => `${esc(ptLabel(p.type))}<small class="sub">${esc(p.what)}</small>` }, { t: 'Premium', cls: 'r', r: p => inr(p.premium) }, { t: 'Ends', r: p => `${fdS(p.end)} ${p.end.getFullYear()}` }, { t: 'Status', r: p => spill(p.status) }], pols, { row: p => 'policy:' + p.no }), '', 'flush')}` };
 };
-
-V.leads = () => {
-  const B = book(), f = P.f.leads || 'all', st = ['New', 'Contacted', 'Quoted', 'Won', 'Lost'], arm = P.role === 'arm';
-  const list = B.leads.filter(l => f === 'all' || l.stage === f);
-  return { title: 'Leads', html: `${phead(arm ? 'Lead routing' : P.role === 'brm' ? 'Bank leads' : 'Leads', arm ? 'Leads from the website, campaigns and partners. Give each one to the agent most likely to close it.' : 'Every lead, with where it came from and what to do next', pbtn('Add a lead', 'data-act="newlead"', 'pri', 'plus'))}
-    ${chips('leads', [['all', 'All', B.leads.length], ...st.map(s => [s, s, B.leads.filter(l => l.stage === s).length])], f)}
-    ${pcard('', ptable([{ t: 'Lead', r: l => `<span class="who">${av(l.name, 'sm')}<span><b>${esc(l.name)}</b><small>${esc(l.id)} · ${esc(maskMobile(l.mobile))}</small></span></span>` }, { t: 'Source', r: l => esc(l.source) }, { t: 'Product', r: l => esc(l.product) }, { t: 'Stage', r: l => spill(l.stage) }, { t: 'Likely to buy', r: l => `<span class="score ${l.score >= 70 ? 'hi' : l.score >= 50 ? 'md' : ''}">${l.score}</span>` }, { t: 'Expected', cls: 'r', r: l => inr(l.expected) }, arm ? { t: 'Agent', r: l => l.agent ? esc(l.agent) : pbtn('Assign', `data-act="assign" data-id="${l.id}"`, 'ghost sm') } : { t: 'Next', r: l => esc(l.next) }], list, { row: l => 'lead:' + l.id }), '', 'flush')}` };
-};
-
-V.renewals = () => {
-  const f = P.f.ren || '30', all = renewalsDue(60), dealer = P.role === 'dealer';
-  const list = all.filter(p => f === 'over' ? daysTo2(p.end) < 0 : f === '7' ? daysTo2(p.end) >= 0 && daysTo2(p.end) <= 7 : f === '30' ? daysTo2(p.end) >= 0 && daysTo2(p.end) <= 30 : true);
-  const tot = list.reduce((s, p) => s + p.premium, 0);
-  return { title: 'Renewals', html: `${phead(dealer ? 'Service renewals' : P.role === 'drm' ? 'Renewal retention' : 'Renewals', dealer ? 'Customers who bought their car here. Quote the renewal when they come in for a service.' : `${list.length} policies, ${inrK(tot)} premium to keep`, pbtn('Send all reminders', 'data-act="remindall"', 'ghost', 'wa'))}
-    ${P.role === 'drm' ? pcard('Renewals kept, by dealer', barChart(P.d.dealers.map(d => ({ l: d.name.split(' ')[0], v: d.retained })), { fmt: v => v + '%', label: 'Share of renewals kept at each dealer' })) : ''}
-    ${chips('ren', [['over', 'Lapsed', all.filter(p => daysTo2(p.end) < 0).length], ['7', 'Next 7 days', all.filter(p => daysTo2(p.end) >= 0 && daysTo2(p.end) <= 7).length], ['30', 'Next 30 days', all.filter(p => daysTo2(p.end) >= 0 && daysTo2(p.end) <= 30).length], ['60', 'Next 60 days', all.length]], f)}
-    ${pcard('', ptable([{ t: 'Customer', r: p => `<span class="who">${av(p.customer, 'sm')}<span><b>${esc(p.customer)}</b><small class="mono">${esc(p.no)}</small></span></span>` }, { t: 'Cover', r: p => `${esc(ptLabel(p.type))}<small class="sub">${esc(p.what)}</small>` }, { t: 'Renews', r: p => `${fdS(p.end)}<small class="sub ${daysTo2(p.end) < 3 ? 'txt-bad' : ''}">${daysTo2(p.end) < 0 ? 'Lapsed' : whenText(p.end)}</small>` }, { t: 'Last premium', cls: 'r', r: p => inr(p.premium) }, { t: 'Bonus', r: p => p.ncb != null ? `${p.ncb}%` : '' }, { t: '', cls: 'r', r: p => p.sent ? ppill('Link sent', 'info') : pbtn('Send renewal link', `data-act="renlink" data-id="${esc(p.no)}"`, 'ghost sm', 'wa') }], list, { row: p => 'renewal:' + p.no, empty: 'Nothing due in this window' }), '', 'flush')}` };
-};
-
-V.servicing = () => {
-  const B = book();
-  return { title: 'Servicing', html: `${phead(P.role === 'dealer' ? 'Ownership transfers and changes' : 'Servicing', 'Changes to your customers\' policies. Most are checked with Aadhaar, DigiLocker or VAHAN and done the same day.', pbtn('New request', 'data-act="newreq"', 'pri', 'plus'))}
-    <div class="kpis">${kpi({ ic: 'clock', tint: 'warn', label: 'Open', value: B.requests.filter(r => r.status !== 'Done').length, sub: 'Under review or with the customer' })}${kpi({ ic: 'check', tint: 'ok', label: 'Done in the last 14 days', value: B.requests.filter(r => r.status === 'Done').length, sub: 'Most verified electronically' })}${kpi({ ic: 'shield', tint: 'info', label: 'Checked without paperwork', value: `${Math.round(B.requests.filter(r => !/upload/i.test(r.verify)).length / B.requests.length * 100)}%`, sub: 'Aadhaar, DigiLocker, CKYC or VAHAN' })}</div>
-    ${pcard('', ptable([{ t: 'Request', r: r => `<b>${esc(r.type)}</b><small class="sub mono">${esc(r.id)}</small>` }, { t: 'Customer', r: r => `${esc(r.customer)}<small class="sub mono">${esc(r.policy)}</small>` }, { t: 'Checked with', r: r => esc(r.verify) }, { t: 'Status', r: r => spill(r.status) }, { t: 'Raised', r: r => fdS(r.at) }], B.requests.slice().sort((a, b) => b.at - a.at)), '', 'flush')}` };
-};
-
-V.claims = () => {
-  const B = book();
-  return { title: 'Claims', html: `${phead('Claims', 'Your customers\' claims, and where each one stands', pbtn('Help a customer claim', 'data-act="newclaim"', 'pri', 'plus'))}
-    ${pcard('', ptable([{ t: 'Claim', r: c => `<b class="mono">${esc(c.id)}</b><small class="sub">${esc(c.what)}</small>` }, { t: 'Customer', r: c => `${esc(c.customer)}<small class="sub mono">${esc(c.policy)}</small>` }, { t: 'Where it is', r: c => ppill(c.stage, /Documents/.test(c.stage) ? 'warn' : 'info') }, { t: 'Amount', cls: 'r', r: c => inr(c.amount) }, { t: 'Reported', r: c => fdS(c.at) }, { t: '', cls: 'r', r: c => /Documents/.test(c.stage) ? pbtn('Send upload link', `data-act="clmlink" data-id="${c.id}"`, 'ghost sm', 'wa') : '' }], B.claims), '', 'flush')}
-    ${pcard('What to tell a customer on day one', `<ul class="ticks"><li><b>Motor:</b> report it in the app or here, add photos, and pick a network garage for cashless repair. A surveyor is assigned within 24 hours.</li><li><b>Health, cashless:</b> show the e-card at the hospital's insurance desk. We decide within 1 hour of the hospital's request.</li><li><b>Health, reimbursement:</b> keep the discharge summary, the final bill and receipts. The hospital can also send them through ABHA.</li></ul>`)}` };
-};
-
-V.earnings = () => {
-  const d = P.d, dealer = P.role === 'dealer', drm = P.role === 'drm';
-  if (drm) return { title: 'Dealer payouts', html: `${phead('Dealer payouts', 'Payouts for each dealer, worked out from the policies issued at their showroom and service desk', pbtn('Download CSV', 'data-act="csv:payouts"', 'ghost', 'download'))}
-    ${pcard('', ptable([{ t: 'Dealer', r: x => `<b>${esc(x.name)}</b><small class="sub">${esc(x.brand)} · ${esc(x.city)}</small>` }, { t: 'Policies this month', cls: 'r', r: x => x.insured }, { t: 'Payout', cls: 'r', r: x => `<b>${inr(x.payout)}</b>` }, { t: 'Status', r: (x, i) => spill(i < 3 ? 'Done' : i < 6 ? 'Under review' : 'Waiting') }], d.dealers), '', 'flush')}` };
-  const rows = book().policies.slice(0, 12).map((p, i) => ({ p, amt: Math.round(p.premium * (p.type === 'health' ? 0.15 : 0.12) / 10) * 10, st: i < 8 ? 'Credited' : 'Accrued' }));
-  return { title: dealer ? 'Payouts' : 'Earnings', html: `${phead(dealer ? 'Payouts' : 'Earnings', 'Worked out from the rates in your agreement. Credited to your bank on the 7th of each month.', pbtn('Download statement', 'data-act="csv:earn"', 'ghost', 'download'))}
-    <div class="kpis">${kpi({ ic: 'wallet', label: 'This month so far', value: inr(d.earn[5].v), sub: 'Credited on the 7th of next month' })}${kpi({ ic: 'check', tint: 'ok', label: 'Last month', value: inr(d.earn[4].v), sub: `Paid to your bank ••4821` })}${kpi({ ic: 'chart', tint: 'info', label: 'Last 6 months', value: inr(d.earn.reduce((s, x) => s + x.v, 0)), sub: 'Before TDS' })}</div>
-    <div class="grid2">${pcard('By month', barChart(d.earn, { fmt: v => inrK(v), label: 'Earnings by month' }))}${pcard('This month', ptable([{ t: 'Policy', r: x => `<b class="mono">${esc(x.p.no)}</b><small class="sub">${esc(x.p.customer)}</small>` }, { t: 'Premium', cls: 'r', r: x => inr(x.p.premium) }, { t: 'Earned', cls: 'r', r: x => `<b>${inr(x.amt)}</b>` }, { t: '', r: x => ppill(x.st, x.st === 'Credited' ? 'ok' : 'info') }], rows))}</div>` };
-};
-
-V.learning = () => ({ title: 'Learning', html: `${phead('Learning and certification', 'Keep your certification current and learn what customers ask about most')}
-  <div class="kpis">${kpi({ ic: 'shield', tint: 'ok', label: 'Licence', value: 'Valid', sub: 'Till 14 Mar 2028' })}${kpi({ ic: 'grad', label: 'Modules done', value: `${LEARN.filter(l => l[3] === 100).length} of ${LEARN.length}`, prog: LEARN.reduce((s, l) => s + l[3], 0) / LEARN.length })}${kpi({ ic: 'star', tint: 'warn', label: 'Quiz streak', value: '6 days', sub: 'Answer today\'s question to keep it going' })}</div>
-  <div class="grid2">${pcard('Modules', `<ul class="plist">${LEARN.map(([t, s, m, p]) => `<li><span class="ann-ic">${pi('grad')}</span><span><b>${esc(t)}</b><small>${esc(s)} · ${m} min</small>${prog(p, 100)}</span>${p === 100 ? ppill('Done', 'ok') : pbtn(p ? 'Continue' : 'Start', 'data-act="learn"', 'ghost sm')}</li>`).join('')}</ul>`)}
-  ${pcard('Question of the day', `<div class="quiz" data-quiz><p><b>A customer bought health cover 4 months ago. They need a planned cataract surgery. What should you tell them?</b></p>${[['a', 'It\'s covered, because the 30-day waiting period is over'], ['b', 'Cataract usually has a specific waiting period, often 2 years. Check the policy before they plan the surgery'], ['c', 'It\'s never covered']].map(([k, t]) => `<button type="button" class="quiz-o" data-ans="${k}">${esc(t)}</button>`).join('')}<p class="quiz-r" hidden></p></div>`)}</div>` });
 
 V.library = () => ({ title: 'Product library', html: `${phead('Product library', 'Summaries to share with customers, and how-tos for you')}
   ${pcard('', ptable([{ t: 'Document', r: x => `<span class="who"><span class="car-ic">${pi('doc')}</span><span><b>${esc(x[1])}</b><small>${esc(x[0])}</small></span></span>` }, { t: '', cls: 'r', r: (x, i) => pbtn('Download', `data-act="lib:${i}"`, 'ghost sm', 'download') + pbtn('Share', `data-act="libshare:${i}"`, 'ghost sm', 'wa') }], LIBDOCS), '', 'flush')}` });
@@ -15043,8 +15325,6 @@ V.onboarding = () => {
 V.dealers = () => ({ title: 'Dealers', html: `${phead('Dealers', `${P.d.dealers.length} dealers in Mumbai and Thane`, pbtn('Download CSV', 'data-act="csv:dealers"', 'ghost', 'download'))}${pcard('', dealerTable(P.d.dealers), '', 'flush')}` });
 V.plan = () => ({ title: 'Plan my day', html: `${phead('Plan my day', `${todayLine()} · ${P.d.visits.length} visits`, pbtn('Add a visit', 'data-act="addvisit"', 'pri', 'plus'))}
   <div class="grid2">${pcard('Today', visitsList())}${pcard('Suggested for this week', `<ul class="plist">${(P.role === 'brm' ? P.d.branches.filter(b => daysTo2(b.last) < -20).map(b => [b.name, `Not visited since ${fdS(b.last)}. ${b.leads} open leads.`]) : P.role === 'drm' ? P.d.dealers.filter(d => d.attach < 55 || daysTo2(d.last) < -18).map(d => [d.name, `Insured with us ${d.attach}%. Last visit ${fdS(d.last)}.`]) : P.d.agents.filter(a => !a.mtd).map(a => [a.name, `No sale since ${fdS(a.last)}. Coaching visit.`])).slice(0, 5).map(([t, s]) => `<li><span class="ann-ic">${pi('map')}</span><span><b>${esc(t)}</b><small>${esc(s)}</small></span>${pbtn('Add', 'data-act="addvisit"', 'ghost sm')}</li>`).join('')}</ul>`)}</div>` });
-V.campaigns = () => ({ title: 'Campaigns', html: `${phead('Campaigns', 'Lists to work and messages to send, with results as they come in', P.role === 'agent' ? '' : pbtn('New campaign', 'data-act="newcamp"', 'pri', 'plus'))}
-  ${pcard('', ptable([{ t: 'Campaign', r: c => `<b>${esc(c.name)}</b><small class="sub">${esc(c.desc)}</small>` }, { t: 'For', r: c => esc(c.who) }, { t: 'Reached', cls: 'r', r: c => c.reach }, { t: 'Converted', cls: 'r', r: c => `${c.won}<small class="sub">${Math.round(c.won / c.reach * 100)}%</small>` }, { t: 'Status', r: c => spill(c.status) }, { t: 'Ends', r: c => fdS(c.ends) }], P.d.campaigns), '', 'flush')}` });
 V.dashboards = () => {
   const d = P.d, B = book(), mix = [['Car', B.policies.filter(p => p.type === 'car')], ['Two-wheeler', B.policies.filter(p => p.type === 'bike')], ['Health', B.policies.filter(p => p.type === 'health')], ['Home and business', B.policies.filter(p => isPropT(p.type))]].filter(([, a]) => a.length).map(([l, a]) => ({ l, v: a.reduce((s, p) => s + p.premium, 0) }));
   return { title: 'Dashboards', html: `${phead('Dashboards', 'Premium, mix and conversion. Download any view as CSV.', pbtn('Download CSV', 'data-act="csv:series"', 'ghost', 'download'))}
@@ -15064,6 +15344,672 @@ V['ch-agency'] = chView('Agency', 'Agency');
 V['ch-dealer'] = chView('Dealer', 'Dealers', () => pcard('Dealers', dealerTable(P.d.dealers)));
 V['ch-banca'] = chView('Banca', 'Banca');
 V.more = () => ({ title: 'More', html: `${phead('More', '')}<div class="moregrid">${NAV[P.role].flatMap(g => g[1]).map(([k, ic, t]) => `<button type="button" class="newc" data-nav="${k}"><span class="nc-ic">${pi(ic)}</span><b>${esc(t)}</b></button>`).join('')}</div>` });
+
+// on track means ahead of where the month should be by today, not just near the target
+function paceStat(done, target) { const dim = new Date(TODAY.getFullYear(), TODAY.getMonth() + 1, 0).getDate(), due = target * TODAY.getDate() / dim; return done >= target ? ['Target met', 'ok'] : done >= due * 0.95 ? ['On track', 'ok'] : ['Behind the pace', 'warn']; }
+
+/* ================= NxSure Partners: leads, renewals and earnings =================
+   Every list here has the same tools in one row: a search, the stage or status as a segment, product and the rest as
+   menus, and a sort. What's picked is kept in P.f and the page redraws. */
+
+/* ---------------- the tools ---------------- */
+const pfq = (k, ph) => `<label class="p-search">${pi('search')}<input data-fq="${k}" placeholder="${esc(ph)}" value="${esc(P.f[k] || '')}" autocomplete="off" aria-label="${esc(ph)}"></label>`;
+const pseg = (k, items, on) => `<div class="p-seg" role="radiogroup">${items.map(([v, t, n]) => `<button type="button" role="radio" data-seg="${k}" data-v="${esc(v)}" aria-checked="${String(on) === String(v)}">${t}${n != null ? `<em>${n}</em>` : ''}</button>`).join('')}</div>`;
+const psel = (k, items, on, label) => `<label class="p-sel"><select data-fs="${k}" aria-label="${esc(label || k)}">${items.map(([v, t]) => `<option value="${esc(v)}" ${String(on) === String(v) ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select></label>`;
+const ptool = (...parts) => `<div class="p-tool">${parts.filter(Boolean).join('')}</div>`;
+// the band at the top of a page: what's due, and the money in it
+const pband = (title, sub, stats) => `<div class="p-band"><div class="pbd-t"><b>${title}</b><span>${sub}</span></div><dl>${stats.map(([v, l]) => `<div><dd>${v}</dd><dt>${l}</dt></div>`).join('')}</dl></div>`;
+// tiles that filter the list below them
+const pbk = (k, items, on) => `<div class="p-bks">${items.map(([v, t, n, s, tone]) => `<button type="button" class="p-bk ${tone || ''}" data-seg="${k}" data-v="${esc(v)}" aria-pressed="${String(on) === String(v)}"><b>${n}</b><span>${esc(t)}</span><small>${s}</small></button>`).join('')}</div>`;
+const pring = pct => { const r = 18, c = 2 * Math.PI * r; return `<span class="p-ring"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="${r}" class="bg"/><circle cx="22" cy="22" r="${r}" class="fg" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${(c * (1 - Math.min(100, pct) / 100)).toFixed(1)}"/></svg><b>${Math.round(pct)}%</b></span>`; };
+const palert = (tone, ic, title, sub, acts = '') => `<div class="p-alert ${tone}">${pi(ic)}<div><b>${title}</b><span>${sub}</span></div>${acts ? `<div class="pa-a">${acts}</div>` : ''}</div>`;
+// drop-off at each stage, as single-colour bars
+function pfunnel(steps) {
+  const top = steps[0][1] || 1;
+  return `<div class="fn">${steps.map(([l, n], i) => { const pct = Math.round(n / top * 100), prev = i ? steps[i - 1][1] : 0, drop = i && prev ? Math.round((1 - n / prev) * 100) : null; return `<div class="fn-r"><div class="fn-h"><b>${esc(l)}</b><span>${n.toLocaleString('en-IN')}<small> · ${pct}%</small>${drop != null ? ppill(`${drop}% drop`, drop >= 50 ? 'bad' : drop >= 25 ? 'warn' : 'mute') : ''}</span></div><span class="fn-b"><i style="width:${Math.max(pct, 1)}%"></i></span></div>`; }).join('')}</div>`;
+}
+const upd = d => { const ms = Date.now() - d; return ms >= 0 && ms < 864e5 ? ago(d) : fdS(d); };
+const sumOf = (a, f) => a.reduce((s, x) => s + (f(x) || 0), 0);
+const famOf = t => ['car', 'bike', 'motor'].includes(t) ? 'motor' : t === 'health' ? 'health' : t === 'home' ? 'home' : 'biz';
+const famOfText = s => /Health/i.test(s) ? 'health' : /Home/i.test(s) ? 'home' : /Shop|Fire|Marine|Workers|Business|Loss|Directors/i.test(s) ? 'biz' : 'motor';
+const FAMS = [['all', 'All products'], ['motor', 'Motor'], ['health', 'Health'], ['home', 'Home'], ['biz', 'Shop and business']];
+const FAMN = { motor: 'Motor', health: 'Health', home: 'Home', biz: 'Shop and business' };
+
+document.addEventListener('click', e => {
+  const s = e.target.closest('[data-seg]'); if (s && s.closest('#papp')) { P.f[s.dataset.seg] = s.dataset.v; render(); return; }
+  const b = e.target.closest('[data-hx]'); if (b && (b.closest('#papp') || b.closest('[data-layer]'))) { e.preventDefault(); hubAct(b.dataset.hx, b.dataset.id, b); }
+});
+document.addEventListener('change', e => { const s = e.target.closest('[data-fs]'); if (s && s.closest('#papp')) { P.f[s.dataset.fs] = s.value; render(); } });
+document.addEventListener('input', e => {
+  const t = e.target.closest('[data-fq]'); if (!t || !t.closest('#papp')) return;
+  const k = t.dataset.fq, pos = t.selectionStart; P.f[k] = t.value; render();
+  const i = $(`[data-fq="${k}"]`); if (i) { i.focus(); try { i.setSelectionRange(pos, pos); } catch (er) { /* not a text box */ } }
+});
+// a whole page redraws on a filter: hub actions that change data redraw the same way
+const reH = () => { if (P.view === 'flow') return; render(); };
+
+/* ---------------- the data each role starts with ---------------- */
+const hubLoad0 = loadRole;
+loadRole = function (role) { hubLoad0(role); earnSeed(); renSeed(); cmpSeed(); };
+
+/* ================= leads: one pipeline, from the first call to the policy ================= */
+const PROP_NEXT = { 'Draft': 'Continue the proposal', 'Link sent': 'See if they\'ve started', 'With the customer': 'Remind them to accept and pay', 'Awaiting payment': 'Resend the payment link', 'Tests booked': 'Medical tests are booked', 'Photo check due': 'NxSure is checking the photo', 'Verification call due': 'Book the recorded call', 'With the underwriter': 'Wait for the terms', 'Terms ready': 'Go over the terms with them', 'Issued': 'Policy issued' };
+const PROP_SCORE = { 'Draft': 55, 'Link sent': 50, 'With the customer': 72, 'Awaiting payment': 86, 'Tests booked': 80, 'Photo check due': 92, 'Verification call due': 88, 'With the underwriter': 70, 'Terms ready': 78, 'Issued': 100 };
+const teamAgent = id => { const A = (P.d.agents || []).filter(a => a.mtd > 0); return A.length ? A[hash(String(id)) % A.length].name : ''; };
+function pipeRows() {
+  const B = book(), arm = P.role === 'arm', srcs = [...new Set(B.leads.map(l => l.source))];
+  const leads = B.leads.map(l => ({ k: 'lead', id: l.id, name: l.name, mobile: l.mobile, source: l.source, prod: l.product, what: '', fam: famOfText(l.product), stage: l.stage, sub: '', prem: l.expected, score: l.stage === 'Lost' ? 0 : l.stage === 'Won' ? 100 : l.score, at: l.at, next: l.stage === 'Won' ? 'Policy issued' : l.stage === 'Lost' ? 'Closed' : (!l.next || l.next === '-') ? 'Call today' : l.next, owner: l.agent || (arm ? '' : 'You'), go: 'lead:' + l.id, l }));
+  const props = B.proposals.map(p => ({ k: 'prop', id: p.id, name: p.customer, mobile: p.mobile || '', source: p.sref ? 'Sold in the portal' : srcs[hash(p.id) % srcs.length], prod: ptLabel(p.type), what: p.what || '', fam: famOf(p.type), stage: p.status === 'Issued' ? 'Won' : 'Proposal', sub: p.status === 'Issued' ? '' : p.status, prem: p.premium, score: PROP_SCORE[p.status] || 60, at: p.at, next: PROP_NEXT[p.status] || '', owner: p.agent && p.agent !== P.user.who ? p.agent : arm ? teamAgent(p.id) : 'You', go: 'proposal:' + p.id, p }));
+  return leads.concat(props);
+}
+function pipeAct(r) {
+  if (r.k === 'lead') {
+    if (P.role === 'arm') return r.l.agent || ['Won', 'Lost'].includes(r.stage) ? '' : pbtn('Assign', `data-act="assign" data-id="${r.id}"`, 'ghost sm');
+    return ['New', 'Contacted', 'Quoted'].includes(r.stage) ? pbtn('Quote', `data-start="${leadProd(r.prod)}"`, 'ghost sm', 'plus') : '';
+  }
+  const p = r.p, live = p.sref && !p.sref.paid;
+  if (p.status === 'Draft' && live) return pbtn('Continue', `data-act="resume" data-id="${p.id}"`, 'ghost sm', 'chevR');
+  if (['With the underwriter', 'Terms ready'].includes(p.status) && live) return pbtn('Open', `data-act="resume" data-id="${p.id}"`, 'ghost sm', 'chevR');
+  if (['With the customer', 'Awaiting payment', 'Link sent'].includes(p.status)) return pbtn('Remind', `data-act="remind" data-id="${p.id}"`, 'ghost sm', 'wa');
+  if (p.status === 'Verification call due') return pbtn('Book the call', `data-act="vcall" data-id="${p.id}"`, 'ghost sm', 'phone');
+  return '';
+}
+const scoreB = n => `<span class="score ${n >= 70 ? 'hi' : n >= 50 ? 'md' : ''}">${n}</span>`;
+const stageCell = r => `${spill(r.stage === 'Proposal' ? 'Proposal' : r.stage)}${r.sub ? `<small class="sub">${esc(r.sub)}</small>` : ''}`;
+STATUS_K.Proposal = 'info';
+const lbCard = r => `<button type="button" class="lb-c" data-row="${esc(r.go)}"><span class="lb-t"><b>${esc(r.name)}</b>${r.stage === 'Won' || r.stage === 'Lost' ? '' : scoreB(r.score)}</span><small>${esc(r.prod)}${r.what ? ` · ${esc(r.what)}` : ''}</small><span class="lb-m"><b>${inr(r.prem)}</b>${r.sub ? spill(r.sub) : ''}</span>${r.next && r.stage !== 'Lost' ? `<small class="lb-n">${pi('chevR')}${esc(r.next)}</small>` : ''}${P.role === 'arm' ? `<small class="lb-o">${r.owner ? esc(r.owner) : 'Not assigned'}</small>` : ''}</button>`;
+
+V.leads = () => {
+  const arm = P.role === 'arm', f = P.f, all = pipeRows();
+  const st = f.lst || 'open', q = (f.lq || '').trim().toLowerCase(), fam = f.lfam || 'all', src = f.lsrc || 'all', sort = f.lsort || 'score', view = f.lview || 'list';
+  const isOpen = r => !['Won', 'Lost'].includes(r.stage), inSt = s => r => s === 'all' ? true : s === 'open' ? isOpen(r) : r.stage === s;
+  const base = all.filter(r => (!q || [r.name, r.id, r.mobile, r.prod, r.what, r.source, r.owner].join(' ').toLowerCase().includes(q)) && (fam === 'all' || r.fam === fam) && (src === 'all' || r.source === src));
+  const by = { score: (a, b) => b.score - a.score || b.prem - a.prem, latest: (a, b) => b.at - a.at, prem: (a, b) => b.prem - a.prem }[sort] || ((a, b) => 0);
+  const list = base.filter(inSt(st)).sort(by);
+  const open = all.filter(isOpen), props = all.filter(r => r.stage === 'Proposal'), won = all.filter(r => r.stage === 'Won'), lost = all.filter(r => r.stage === 'Lost');
+  const conv = won.length + lost.length ? Math.round(won.length / (won.length + lost.length) * 100) : 0;
+  const srcs = [...new Set(all.map(r => r.source))].sort();
+  const title = arm ? 'Lead routing' : P.role === 'brm' ? 'Bank leads' : P.role === 'dealer' ? 'Leads and quotes' : 'Leads';
+  const sub = arm ? 'Every lead and proposal in the agency, and who is working it' : 'Every lead and proposal, from the first call to the policy';
+  const cols = [
+    { t: 'Lead', r: r => `<span class="who">${av(r.name, 'sm')}<span><b>${esc(r.name)}</b><small>${esc(r.id)}${r.mobile ? ` · ${esc(maskMobile(r.mobile))}` : ''}</small></span></span>` },
+    { t: 'Product', r: r => `${esc(r.prod)}${r.what ? `<small class="sub">${esc(r.what)}</small>` : ''}` },
+    { t: 'Source', r: r => esc(r.source) },
+    { t: 'Stage', r: stageCell },
+    { t: 'Premium', cls: 'r', r: r => `<b>${inr(r.prem)}</b>${r.k === 'lead' && isOpen(r) ? '<small class="sub">expected</small>' : ''}` },
+    { t: 'Likely to buy', r: r => isOpen(r) ? scoreB(r.score) : '' },
+    arm ? { t: 'Agent', r: r => r.owner ? esc(r.owner) : '<span class="p-muted">Not assigned</span>' } : { t: 'Updated', r: r => upd(r.at) },
+    { t: 'Next', r: r => r.stage === 'Lost' ? '<span class="p-muted">Closed</span>' : `<span class="nx-a">${esc(r.next)}</span>` },
+    { t: '', cls: 'r', r: pipeAct },
+  ];
+  const board = ['New', 'Contacted', 'Quoted', 'Proposal', 'Won'].concat(st === 'Lost' ? ['Lost'] : []).map(s => { const rs = base.filter(r => r.stage === s).sort(by); return `<section class="lb-col"><header><b>${s === 'Proposal' ? 'Proposals' : s}</b><span>${rs.length} · ${inrK(sumOf(rs, r => r.prem))}</span></header>${rs.map(lbCard).join('') || '<p class="lb-e">Nothing here</p>'}</section>`; }).join('');
+  return { title, html: `${phead(title, sub, pbtn('Export', 'data-hx="leadcsv"', 'ghost', 'download') + pbtn('Add a lead', 'data-act="newlead"', 'ghost', 'plus') + (arm ? '' : pbtn('New policy', 'data-nav="new"', 'pri', 'plus')))}
+    <div class="kpis">${kpi({ ic: 'target', label: 'Open', value: open.length, sub: `${all.filter(r => r.stage === 'New').length} new · ${inrK(sumOf(open, r => r.prem))} expected` })}${kpi({ ic: 'doc', tint: 'info', label: 'Proposals out', value: props.length, sub: `${props.filter(r => ['With the customer', 'Awaiting payment'].includes(r.sub)).length} waiting on customers · ${inrK(sumOf(props, r => r.prem))}` })}${kpi({ ic: 'check', tint: 'ok', label: 'Won', value: won.length, sub: `${inrK(sumOf(won, r => r.prem))} premium` })}${kpi({ ic: 'chart', tint: 'warn', label: 'Converted', value: `${conv}%`, sub: 'Won, out of every lead closed' })}</div>
+    ${ptool(pfq('lq', 'Search name, mobile, lead or proposal number'), psel('lfam', FAMS, fam, 'Product'), psel('lsrc', [['all', 'All sources'], ...srcs.map(s => [s, s])], src, 'Source'), psel('lsort', [['score', 'Most likely to buy'], ['latest', 'Latest first'], ['prem', 'Highest premium']], sort, 'Sort'), pseg('lview', [['list', `${pi('menu')}List`], ['board', `${pi('grid')}Board`]], view))}
+    ${view === 'board' ? `<div class="lb">${board}</div>` : `${pseg('lst', [['open', 'Open', base.filter(isOpen).length], ['New', 'New', base.filter(inSt('New')).length], ['Contacted', 'Contacted', base.filter(inSt('Contacted')).length], ['Quoted', 'Quoted', base.filter(inSt('Quoted')).length], ['Proposal', 'Proposals', base.filter(inSt('Proposal')).length], ['Won', 'Won', base.filter(inSt('Won')).length], ['Lost', 'Lost', base.filter(inSt('Lost')).length], ['all', 'All', base.length]], st)}
+    ${pcard('', ptable(cols, list, { row: r => r.go, empty: 'No leads match', emptySub: 'Clear the search or pick another stage.' }), '', 'flush')}`}` };
+};
+
+/* ================= renewals: what's due, by when, and who has been reminded ================= */
+function renSeed() {
+  const B = P.d && P.d.book; if (!B || B.renSeeded) return; B.renSeeded = true;
+  B.policies.forEach(p => {
+    const n = daysTo2(p.end), h = hash(p.no);
+    if (n >= -30 && n <= 45 && h % 3 === 0) { const at = n < 0 ? addDays(p.end, -(h % 6)) : addDays(TODAY, -(h % 14)); p.renewed = { at: at > TODAY ? TODAY : at, prem: Math.round(p.premium * (1 + (h % 9) / 100) / 10) * 10 }; }
+    if (!p.renewed && n >= -15 && n <= 30) { p.rem = h % 4; if (p.rem) { p.sent = true; p.remAt = addDays(TODAY, -(h % 5)); } }
+  });
+}
+const renFam = p => ['car', 'bike'].includes(p.type) ? p.type : p.type === 'health' ? 'health' : 'prop';
+const renBucket = p => { const n = daysTo2(p.end); return n < 0 ? 'lapsed' : n <= 7 ? '7' : n <= 30 ? '30' : '60'; };
+const renChip = p => { const n = daysTo2(p.end); return n < 0 ? ppill(`Lapsed ${-n} d ago`, 'bad') : n === 0 ? ppill('Renews today', 'bad') : ppill(`${n} d left`, n <= 7 ? 'warn' : n <= 30 ? 'info' : 'mute'); };
+function renBtn(p) {
+  const f = renFam(p);
+  return f === 'car' || f === 'bike' ? pbtn('Renew', `data-act="renew" data-id="${esc(p.no)}"`, 'pri sm', 'renew') : pbtn('Renew', `data-start="${p.type}"`, 'pri sm', 'renew');
+}
+function renRow(p, done) {
+  const c = book().customers.find(x => x.id === p.cid) || {};
+  return `<div class="rn" data-row="renewal:${esc(p.no)}" tabindex="0">
+    <span class="rn-ic ${renFam(p)}">${pi(ptIco(p.type))}</span>
+    <div class="rn-m"><div class="rn-t"><b class="mono">${esc(p.no)}</b>${done ? ppill(`Renewed ${fdS(p.renewed.at)}`, 'ok') : renChip(p)}</div><span>${esc(p.customer)}${c.mobile ? ` · ${esc(maskMobile(c.mobile))}` : ''}</span><small>${esc(ptLabel(p.type))} · ${esc(p.what)} · ${done ? `new premium <b>${inr(p.renewed.prem)}</b>` : `last premium <b>${inr(p.premium)}</b>`}${p.ncb ? ` · bonus ${p.ncb}%` : ''}</small></div>
+    <div class="rn-d"><b>${fdS(p.end)} ${p.end.getFullYear()}</b><small>${done ? 'Was due' : daysTo2(p.end) < 0 ? 'Ended' : 'Renews'}</small></div>
+    <div class="rn-a">${done ? '' : `${p.rem ? `<span class="rn-r" title="Reminders sent">${pi('send')}${p.rem}</span>` : ''}<button type="button" class="p-ib sm" data-hx="renwa" data-id="${esc(p.no)}" aria-label="Send ${esc(first(p.customer))} a renewal reminder on WhatsApp" title="WhatsApp reminder">${pi('wa')}</button><button type="button" class="p-ib sm" data-hx="rencall" data-id="${esc(p.no)}" aria-label="Call ${esc(first(p.customer))}" title="Call">${pi('phone')}</button>${renBtn(p)}`}</div></div>`;
+}
+V.renewals = () => {
+  renSeed();
+  const B = book(), dealer = P.role === 'dealer', drm = P.role === 'drm', f = P.f, tab = f.rtab || 'due';
+  const due = B.policies.filter(p => !p.renewed && daysTo2(p.end) >= -30 && daysTo2(p.end) <= 60), done = B.policies.filter(p => p.renewed);
+  const bk = f.rbk || 'all', fam = f.rfam || 'all', st = f.rst || 'all', sort = f.rsort || 'due', q = (f.rq || '').trim().toLowerCase();
+  const match = p => (!q || [p.customer, p.no, p.reg || '', p.what].join(' ').toLowerCase().includes(q)) && (fam === 'all' || renFam(p) === fam);
+  const stOk = p => st === 'all' || (st === 'new' ? !p.rem : st === 'sent' ? p.rem >= 1 && p.rem < 3 : p.rem >= 3);
+  const by = { due: (a, b) => a.end - b.end, prem: (a, b) => b.premium - a.premium, ncb: (a, b) => (b.ncb || 0) - (a.ncb || 0) }[sort];
+  const pool = (tab === 'due' ? due : done).filter(match), list = pool.filter(p => tab !== 'due' || ((bk === 'all' || renBucket(p) === bk) && stOk(p))).sort(by);
+  const inB = k => due.filter(p => renBucket(p) === k), prem = a => sumOf(a, p => p.premium);
+  const won = done.filter(p => daysTo2(p.renewed.at) >= -30), lost = B.policies.filter(p => !p.renewed && daysTo2(p.end) >= -30 && daysTo2(p.end) < 0);
+  const kept = won.length + lost.length ? Math.round(won.length / (won.length + lost.length) * 100) : 0;
+  const title = dealer ? 'Service renewals' : drm ? 'Renewal retention' : 'Renewals';
+  const sub = dealer ? 'Customers who bought their car here. Quote the renewal when they come in for a service.' : 'Every policy due in the next 60 days, and the ones that lapsed in the last 30';
+  const famSeg = [['all', 'All'], ['car', 'Car'], ['bike', 'Two-wheeler'], ['health', 'Health'], ['prop', 'Home and business']].filter(([k]) => k === 'all' || (tab === 'due' ? due : done).some(p => renFam(p) === k));
+  return { title, html: `${phead(title, sub, pbtn('Download list', 'data-hx="rencsv"', 'ghost', 'download') + (tab === 'due' ? pbtn(`Remind all ${list.length} shown`, 'data-hx="renall"', 'ghost', 'wa') : ''))}
+    ${drm ? pcard('Renewals kept, by dealer', barChart(P.d.dealers.map(d => ({ l: d.name.split(' ')[0], v: d.retained })), { fmt: v => v + '%', label: 'Share of renewals kept at each dealer', h: 190 })) : ''}
+    ${pband(`${due.length} renewals due`, `${inrK(prem(due))} premium to keep`, [[inrK(prem(inB('lapsed'))), 'Lapsed, to win back'], [`${done.length} · ${inrK(sumOf(done, p => p.renewed.prem))}`, 'Renewed'], [won.length + lost.length ? `${kept}%` : '–', 'Kept, last 30 days']])}
+    ${ptabs('rtab', [['due', 'Due', due.length], ['done', 'Renewed', done.length]], tab)}
+    ${tab === 'due' ? pbk('rbk', [['all', 'All due', due.length, inrK(prem(due)), ''], ['lapsed', 'Lapsed', inB('lapsed').length, inrK(prem(inB('lapsed'))), 'bad'], ['7', 'In 7 days', inB('7').length, inrK(prem(inB('7'))), 'warn'], ['30', 'In 8 to 30 days', inB('30').length, inrK(prem(inB('30'))), 'info'], ['60', 'In 31 to 60 days', inB('60').length, inrK(prem(inB('60'))), 'mute']], bk) : ''}
+    ${ptool(pfq('rq', 'Search customer, policy or vehicle number'), pseg('rfam', famSeg, fam), tab === 'due' ? psel('rst', [['all', 'Any reminders'], ['new', 'Not reminded yet'], ['sent', 'Reminded once or twice'], ['many', 'Reminded 3 times or more']], st, 'Reminders') : '', psel('rsort', [['due', 'Due date first'], ['prem', 'Highest premium'], ['ncb', 'Highest bonus']], sort, 'Sort'))}
+    <section class="pc flush rn-list">${list.length ? list.map(p => renRow(p, tab === 'done')).join('') : `<div class="p-empty">${pi('search')}<b>Nothing matches</b><small>Clear the search or pick another bucket.</small></div>`}</section>` };
+};
+
+/* ================= earnings: what's earned, what's held, and when it's paid ================= */
+const ERATE = { motor: 12, health: 15, home: 15, biz: 12.5 };
+const EPOL = { car: 'PC', bike: 'TW', health: 'HL', home: 'HM', shop: 'SK', fire: 'FR' };
+const mKey = d => d.getFullYear() * 12 + d.getMonth(), monthName = d => d.toLocaleDateString('en-IN', { month: 'long' });
+function earnSeed() {
+  const B = P.d && P.d.book; if (!B) return [];
+  if (B.earn) return B.earn;
+  const r = seeded(hash(P.role + 'earnings')), rows = [], now = TODAY, dealer = P.role === 'dealer', own = ['agent', 'dealer'].includes(P.role);
+  const kinds = dealer ? ['car', 'car', 'car', 'car'] : ['car', 'car', 'bike', 'health', 'health', 'home', 'shop'];
+  const S = P.d.series || [], dim = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+  // what each month comes to: this month a little ahead of the pace for today's date, the two before as on the premium chart
+  const aim = m => !own ? 0 : m === 0 ? Math.round(P.d.target * now.getDate() / dim * 1.06) : (S[S.length - 1 - m] || {}).v || 0;
+  for (let m = 0; m < 3; m++) {
+    const m0 = new Date(now.getFullYear(), now.getMonth() - m, 1), last = m === 0 ? now.getDate() : new Date(now.getFullYear(), now.getMonth() - m + 1, 0).getDate();
+    const goal = aim(m), n = goal ? (dealer ? 90 : 45) : between(14, 18, r); let got = 0;
+    for (let i = 0; i < n; i++) {
+      if (goal && i >= (m === 0 ? 5 : 8) && got >= goal * 0.97) break;
+      const c = pick(B.customers, r), t = pick(kinds, r), fam = famOf(t);
+      const prem = t === 'car' ? between(8500, 34000, r) : t === 'bike' ? between(1400, 4200, r) : t === 'health' ? between(9000, 42000, r) : t === 'home' ? between(2400, 8800, r) : between(3600, 14500, r);
+      const at = new Date(m0.getFullYear(), m0.getMonth(), between(1, Math.max(1, last), r), between(9, 19, r));
+      rows.push({ id: 'E' + rows.length, at, no: polNo(EPOL[t], r), customer: c.name, type: t, fam, prem, rate: ERATE[fam], amt: Math.round(prem * ERATE[fam] / 100), kind: r() < 0.4 ? 'Renewal' : 'New', st: m === 0 ? 'Accrued' : 'Credited' });
+      got += prem;
+    }
+  }
+  const cur = rows.filter(x => mKey(x.at) === mKey(now)), prev = rows.filter(x => mKey(x.at) === mKey(now) - 1);
+  if (cur[1]) Object.assign(cur[1], { st: 'On hold', hold: 'The customer\'s KYC document is still being checked' });
+  if (cur[3]) Object.assign(cur[3], { st: 'On hold', hold: 'The payment hasn\'t reached NxSure yet' });
+  if (prev[2]) rows.push(Object.assign({}, prev[2], { id: 'E' + rows.length, at: new Date(Math.min(+addDays(prev[2].at, 9), +now)), amt: -prev[2].amt, st: 'Reversed', hold: 'The customer cancelled in the free-look period' }));
+  B.earn = rows.sort((a, b) => b.at - a.at);
+  // the premium chart, the target and the home page use the premium in the statement
+  if (own) { [0, 1, 2].forEach(m => { const x = S[S.length - 1 - m]; if (x) x.v = sumOf(rows.filter(y => mKey(y.at) === mKey(now) - m && y.amt > 0), y => y.prem); }); if (S.length) P.d.mtd = S[S.length - 1].v; }
+  // and the earnings chart uses what the statement pays
+  [0, 1, 2].forEach(m => { const i = P.d.earn.length - 1 - m; if (P.d.earn[i]) P.d.earn[i].v = sumOf(rows.filter(x => mKey(x.at) === mKey(now) - m), x => x.amt); });
+  return B.earn;
+}
+// policies sold in this session are added as they're issued
+function earnRows() {
+  const live = book().proposals.filter(p => p.sref && p.status === 'Issued').map(p => { const fam = famOf(p.type); return { id: 'L' + p.id, at: p.at, no: p.id, customer: p.customer, type: p.type, fam, prem: p.premium, rate: ERATE[fam], amt: Math.round(p.premium * ERATE[fam] / 100), kind: 'New', st: 'Accrued' }; });
+  return live.concat(earnSeed());
+}
+const earnNow = () => sumOf(earnRows().filter(x => mKey(x.at) === mKey(TODAY)), x => x.amt);
+// a half-circle gauge: how far into the month's target
+function pgauge(pct, tone) {
+  const p = Math.max(0, Math.min(100, pct)), a = Math.PI * (1 - p / 100), x = 60 + 50 * Math.cos(a), y = 60 - 50 * Math.sin(a);
+  return `<svg class="gauge" viewBox="0 0 120 68" role="img" aria-label="${Math.round(pct)}% of the target"><path class="bg" d="M10 60 A50 50 0 0 1 110 60"/>${p > 0 ? `<path class="fg ${tone != null ? tone : p >= 90 ? 'ok' : p >= 60 ? '' : 'warn'}" d="M10 60 A50 50 0 0 1 ${x.toFixed(2)} ${y.toFixed(2)}"/>` : ''}</svg>`;
+}
+const EST_K = { Accrued: 'info', Credited: 'ok', 'On hold': 'warn', Reversed: 'bad' };
+V.earnings = () => {
+  const d = P.d, dealer = P.role === 'dealer', drm = P.role === 'drm';
+  if (drm) {
+    const q = (P.f.dq || '').trim().toLowerCase(), st = P.f.dst || 'all', rows = d.dealers.map((x, i) => Object.assign({}, x, { st: i < 3 ? 'Paid' : i < 6 ? 'Under review' : 'Waiting for invoices' })).filter(x => (!q || [x.name, x.brand, x.city].join(' ').toLowerCase().includes(q)) && (st === 'all' || x.st === st));
+    return { title: 'Dealer payouts', html: `${phead('Dealer payouts', 'Payouts for each dealer, worked out from the policies issued at their showroom and service desk', pbtn('Download CSV', 'data-act="csv:payouts"', 'ghost', 'download'))}
+      <div class="kpis">${kpi({ ic: 'wallet', label: 'Payouts this month', value: inrK(sumOf(d.dealers, x => x.payout)), sub: `${d.dealers.length} dealers` })}${kpi({ ic: 'check', tint: 'ok', label: 'Paid', value: 3, sub: 'Credited to the dealers\' accounts' })}${kpi({ ic: 'clock', tint: 'info', label: 'Under review', value: 3, sub: 'Checked against the policies issued' })}${kpi({ ic: 'alert', tint: 'warn', label: 'Waiting for invoices', value: d.dealers.length - 6, sub: 'Paid once the GST invoice is in' })}</div>
+      ${ptool(pfq('dq', 'Search dealer, brand or city'), pseg('dst', [['all', 'All'], ['Paid', 'Paid'], ['Under review', 'Under review'], ['Waiting for invoices', 'Waiting for invoices']], st))}
+      ${pcard('', ptable([{ t: 'Dealer', r: x => `<b>${esc(x.name)}</b><small class="sub">${esc(x.brand)} · ${esc(x.city)}</small>` }, { t: 'Policies this month', cls: 'r', r: x => x.insured }, { t: 'Payout', cls: 'r', r: x => `<b>${inr(x.payout)}</b>` }, { t: 'Status', r: x => ppill(x.st, x.st === 'Paid' ? 'ok' : x.st === 'Under review' ? 'info' : 'warn') }], rows, { row: x => 'dealer:' + x.id, empty: 'No dealers match' }), '', 'flush')}` };
+  }
+  const rows = earnRows(), tab = P.f.etab || 'over', now = TODAY, cur = rows.filter(x => mKey(x.at) === mKey(now));
+  const earned = sumOf(cur, x => x.amt), acc = sumOf(cur.filter(x => x.st === 'Accrued'), x => x.amt), held = cur.filter(x => x.st === 'On hold'), heldAll = rows.filter(x => x.st === 'On hold');
+  const dim = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate(), day = now.getDate();
+  const nextPay = new Date(now.getFullYear(), now.getMonth() + 1, 7), lastPay = new Date(now.getFullYear(), now.getMonth(), 7), lastAmt = d.earn[d.earn.length - 2] ? d.earn[d.earn.length - 2].v : 0;
+  const pct = Math.round(d.mtd / d.target * 100), left = Math.max(0, d.target - d.mtd), daysLeft = dim - day;
+  const head = phead(dealer ? 'Payouts' : 'Earnings', `Worked out from the rates in your ${dealer ? 'dealer ' : ''}agreement. Credited to your bank on the 7th of each month.`, pbtn('Download statement', 'data-hx="earncsv"', 'ghost', 'download'));
+  const tabs = ptabs('etab', [['over', 'Overview'], ['stmt', 'Statement', rows.length], ['pay', 'Payouts']], tab);
+  if (tab === 'stmt') {
+    const q = (P.f.eq || '').trim().toLowerCase(), st = P.f.est || 'all', fam = P.f.efam || 'all', mon = P.f.emon || 'all';
+    const months = [...new Set(rows.map(x => mKey(x.at)))].sort((a, b) => b - a);
+    const list = rows.filter(x => (!q || [x.no, x.customer].join(' ').toLowerCase().includes(q)) && (st === 'all' || x.st === st) && (fam === 'all' || x.fam === fam) && (mon === 'all' || String(mKey(x.at)) === mon));
+    return { title: dealer ? 'Payouts' : 'Earnings', html: `${head}${tabs}
+      ${ptool(pfq('eq', 'Search policy number or customer'), pseg('est', [['all', 'All'], ['Accrued', 'Accrued'], ['Credited', 'Credited'], ['On hold', 'On hold'], ['Reversed', 'Reversed']], st), psel('efam', FAMS, fam, 'Product'), psel('emon', [['all', 'Last 3 months'], ...months.map(k => [String(k), monthName(new Date(Math.floor(k / 12), k % 12, 1))])], mon, 'Month'))}
+      ${pcard('', ptable([{ t: 'Date', r: x => fdS(x.at) }, { t: 'Policy', r: x => `<b class="mono">${esc(x.no)}</b><small class="sub">${esc(x.customer)}</small>` }, { t: 'Product', r: x => `${esc(ptLabel(x.type))}<small class="sub">${esc(x.kind)}</small>` }, { t: 'Premium', cls: 'r', r: x => inr(x.prem) }, { t: 'Rate', cls: 'r', r: x => `${x.rate}%` }, { t: 'Earned', cls: 'r', r: x => `<b class="${x.amt < 0 ? 'txt-bad' : ''}">${x.amt < 0 ? '- ' : ''}${inr(Math.abs(x.amt))}</b>` }, { t: 'Status', r: x => `${ppill(x.st, EST_K[x.st])}${x.hold ? `<small class="sub">${esc(x.hold)}</small>` : ''}` }], list, { empty: 'Nothing matches', emptySub: 'Clear the search or pick another status.' }) + (list.length ? `<div class="pt-foot"><span>${list.length} entries</span><b>${inr(sumOf(list, x => x.amt))}</b></div>` : ''), '', 'flush')}` };
+  }
+  if (tab === 'pay') {
+    const pays = d.earn.map((m, i) => { const mo = new Date(now.getFullYear(), now.getMonth() - (d.earn.length - 1 - i), 1), paid = new Date(mo.getFullYear(), mo.getMonth() + 1, 7), gross = m.v, tds = Math.round(gross * 0.02); return { mo, gross, tds, net: gross - tds, paid, up: i === d.earn.length - 1, ref: 'NXP' + String(hash(P.user.code + i) % 1e9).padStart(9, '0') }; }).reverse();
+    return { title: dealer ? 'Payouts' : 'Earnings', html: `${head}${tabs}
+      <div class="kpis">${kpi({ ic: 'wallet', label: 'Next payout', value: inr(Math.max(0, acc - Math.round(acc * 0.02))), sub: `On ${fd(nextPay)}, after TDS` })}${kpi({ ic: 'check', tint: 'ok', label: 'Last payout', value: inr(lastAmt - Math.round(lastAmt * 0.02)), sub: `Paid ${fd(lastPay)}` })}${kpi({ ic: 'bank', tint: 'info', label: 'Paid into', value: 'HDFC Bank', sub: 'Account ••4821, checked with ₹1' })}${kpi({ ic: 'doc', tint: 'warn', label: 'TDS this year', value: inr(sumOf(pays.filter(p => !p.up), p => p.tds)), sub: 'Under section 194D, at 2%' })}</div>
+      ${pcard('', ptable([{ t: 'Month', r: p => `<b>${monthName(p.mo)} ${p.mo.getFullYear()}</b>` }, { t: 'Earned', cls: 'r', r: p => inr(p.gross) }, { t: 'TDS at 2%', cls: 'r', r: p => `- ${inr(p.tds)}` }, { t: 'Paid to you', cls: 'r', r: p => `<b>${inr(p.net)}</b>` }, { t: 'Date', r: p => fd(p.paid) }, { t: 'Status', r: p => p.up ? ppill('Due', 'info') : ppill('Paid', 'ok') }, { t: 'Reference', r: p => p.up ? '' : `<span class="mono">${esc(p.ref)}</span>` }], pays), '', 'flush')}` };
+  }
+  const famV = ['motor', 'health', 'home', 'biz'].map(k => ({ l: FAMN[k], v: sumOf(rows.filter(x => mKey(x.at) >= mKey(now) - 2 && x.fam === k && x.amt > 0), x => x.amt) })).filter(x => x.v > 0);
+  const nNew = sumOf(cur.filter(x => x.kind === 'New' && x.amt > 0), x => x.amt), nRen = sumOf(cur.filter(x => x.kind === 'Renewal' && x.amt > 0), x => x.amt);
+  return { title: dealer ? 'Payouts' : 'Earnings', html: `${head}${tabs}
+    <div class="e-top">
+      <section class="e-sum"><small>Earned in ${monthName(now)} so far</small><b>${inr(earned)}</b><span>${cur.filter(x => x.amt > 0).length} policies · ${inrK(sumOf(cur.filter(x => x.amt > 0), x => x.prem))} premium</span>
+        <dl><div><dt>Credited on ${fd(nextPay)}</dt><dd>${inr(acc)}</dd></div><div><dt>On hold</dt><dd>${inr(sumOf(held, x => x.amt))}</dd></div>${d.earn.length > 1 ? `<div><dt>All of ${monthName(new Date(now.getFullYear(), now.getMonth() - 1, 1))}</dt><dd>${inr(d.earn[d.earn.length - 2].v)}</dd></div>` : ''}</dl>
+        <p>${pi('check')}Last payout ${inr(lastAmt - Math.round(lastAmt * 0.02))} on ${fd(lastPay)}, to HDFC Bank ••4821</p></section>
+      <section class="pc e-tgt"><div class="pc-h"><h2>${dealer ? 'Premium at the showroom' : 'Premium this month'}</h2>${ppill(...paceStat(d.mtd, d.target))}</div>
+        <div class="e-g">${pgauge(pct, pct >= 100 ? 'ok' : paceStat(d.mtd, d.target)[1] === 'ok' ? '' : 'warn')}<b>${pct}%</b><small>of the ${inrK(d.target)} target</small></div>
+        ${kv([['Done so far', inrK(d.mtd)], ['Still to go', `${inrK(left)} in ${daysLeft} days`], ['A day, to get there', daysLeft ? inrK(Math.round(left / daysLeft)) : '—']])}</section>
+    </div>
+    <div class="grid2">${pcard('By month', barChart(d.earn.map((x, i) => ({ l: x.l, v: x.v, hi: i === d.earn.length - 1 })), { fmt: inrK, label: 'Earnings by month', h: 210 }) + `<h3 class="pc-sub">${monthName(now)} so far</h3>${kv([['From new policies', inr(nNew)], ['From renewals', inr(nRen)]])}`, `<span class="pc-note">This month so far is highlighted</span>`)}
+      ${pcard('Where it comes from', `${splitBar(famV, inrK)}<p class="e-rates">${pi('info')}<span>Your rates: ${Object.entries(ERATE).filter(([k]) => !dealer || k === 'motor').map(([k, v]) => `${FAMN[k]} <b>${v}%</b>`).join(' · ')} of the premium, before GST</span></p>`, '<span class="pc-note">Last 3 months</span>')}</div>
+    ${pcard('On hold', heldAll.length ? `<ul class="plist e-hold">${heldAll.map(x => `<li><span class="ann-ic">${pi('clock')}</span><span><b>${esc(x.customer)} · ${inr(x.amt)}</b><small>${esc(x.hold)}. ${esc(x.no)}</small></span>${pbtn(/KYC/.test(x.hold) ? 'Ask for the document' : 'Resend the link', `data-hx="earnfix" data-id="${x.id}"`, 'ghost sm')}</li>`).join('')}</ul>` : '<p class="p-muted">Nothing on hold.</p>', ppill(String(heldAll.length), heldAll.length ? 'warn' : 'mute'))}
+    ${pcard('Latest', ptable([{ t: 'Date', r: x => fdS(x.at) }, { t: 'Policy', r: x => `<b class="mono">${esc(x.no)}</b><small class="sub">${esc(x.customer)}</small>` }, { t: 'Product', r: x => `${esc(ptLabel(x.type))}<small class="sub">${esc(x.kind)}</small>` }, { t: 'Premium', cls: 'r', r: x => inr(x.prem) }, { t: 'Earned', cls: 'r', r: x => `<b class="${x.amt < 0 ? 'txt-bad' : ''}">${x.amt < 0 ? '- ' : ''}${inr(Math.abs(x.amt))}</b>` }, { t: 'Status', r: x => ppill(x.st, EST_K[x.st]) }], rows.slice(0, 6)), `<button type="button" class="pc-link" data-seg="etab" data-v="stmt">Full statement${pi('chevR')}</button>`, 'flush e-latest')}` };
+};
+
+/* ---------------- actions on these pages ---------------- */
+const HX = {};
+function hubAct(a, id, t) { const k = a.split(':')[0], f = HX[k]; if (f) f(id, t, a.slice(k.length + 1)); }
+HX.leadcsv = () => { const rows = pipeRows(); csvSave('nxsure-leads.csv', [['Number', 'Name', 'Mobile', 'Product', 'Source', 'Stage', 'Status', 'Premium', 'Likely to buy', 'Next', 'Owner'], ...rows.map(r => [r.id, r.name, r.mobile, r.prod + (r.what ? ', ' + r.what : ''), r.source, r.stage, r.sub, r.prem, r.score, r.next, r.owner])]); };
+HX.renwa = id => { const p = book().policies.find(x => x.no === id); if (!p) return; p.rem = (p.rem || 0) + 1; p.sent = true; p.remAt = new Date(); simSms(`To ${p.customer}`, `Hi ${first(p.customer)}, your NxSure ${ptLabel(p.type).toLowerCase()} policy ${daysTo2(p.end) < 0 ? 'ended' : 'renews'} on ${fd(p.end)}. Your price is ready${p.ncb ? `, with your ${p.ncb}% bonus` : ''}: nxsure.in/r/${code(6)}. ${P.user.who}`); toast(`Reminder sent to ${first(p.customer)} on WhatsApp`); reH(); };
+HX.rencall = id => { const p = book().policies.find(x => x.no === id); if (p) toast(`Calling ${p.customer}. The call is logged against ${p.no}.`); };
+HX.renall = () => { const shown = $$('.rn-list .rn').map(x => x.dataset.row.slice(8)), B = book(); shown.forEach(no => { const p = B.policies.find(x => x.no === no); if (p) { p.rem = (p.rem || 0) + 1; p.sent = true; } }); toast(`Reminders sent to ${shown.length} customers on WhatsApp`); reH(); };
+HX.rencsv = () => { const B = book(); csvSave('nxsure-renewals.csv', [['Policy', 'Customer', 'Product', 'What', 'Renews', 'Last premium', 'Bonus', 'Reminders', 'Renewed'], ...B.policies.filter(p => p.renewed || (daysTo2(p.end) >= -30 && daysTo2(p.end) <= 60)).map(p => [p.no, p.customer, ptLabel(p.type), p.what, iso(p.end), p.premium, p.ncb == null ? '' : p.ncb, p.rem || 0, p.renewed ? iso(p.renewed.at) : ''])]); };
+HX.earncsv = () => csvSave('nxsure-earnings-statement.csv', [['Date', 'Policy', 'Customer', 'Product', 'New or renewal', 'Premium', 'Rate %', 'Earned', 'Status', 'Note'], ...earnRows().map(x => [iso(x.at), x.no, x.customer, ptLabel(x.type), x.kind, x.prem, x.rate, x.amt, x.st, x.hold || ''])]);
+HX.earnfix = id => { const x = earnRows().find(y => y.id === id); if (!x) return; simSms(`To ${x.customer}`, /KYC/.test(x.hold) ? `Hi ${first(x.customer)}, please upload a clear photo of your ID for policy ${x.no}: nxsure.in/k/${code(6)}. ${P.user.who}` : `Hi ${first(x.customer)}, your payment for policy ${x.no} hasn't come through. Pay here: nxsure.in/p/${code(6)}. ${P.user.who}`); toast('Sent to the customer on WhatsApp'); };
+
+/* ================= NxSure Partners: servicing and claims =================
+   One hub for everything raised after a policy is issued: changes, claims, policy copies, cancellations and
+   complaints, each with who it's waiting on and the time it's due. Claims are intimated in five short steps. */
+
+/* ---------------- the claims each kind of policy can have ---------------- */
+const CLM = {
+  motor: [
+    { k: 'od', t: 'Own damage, accident', ic: 'car', mode: 'Cashless at a network garage', slaT: 'Surveyor within a day', sla: 24, with: 'Surveyor', next: 'Inspect the vehicle at the garage', stages: ['Intimated', 'Surveyor assigned', 'Survey done', 'Repair approved', 'Vehicle delivered', 'Settled'], f: ['when', 'where', 'how', 'garage', 'driver'], docs: [['auto', 'Policy and RC checked with VAHAN'], ['doc', 'Claim form signed by the customer'], ['doc', 'Driving licence of the driver'], ['doc', 'Photos of the damage'], ['opt', 'Repair estimate from the garage']] },
+    { k: 'theft', t: 'Theft of the vehicle', ic: 'key', mode: 'Paid to the bank account', slaT: 'FIR checked within 3 days', sla: 72, with: 'Claims investigation', next: 'Check the FIR with the police station', stages: ['Intimated', 'FIR checked', 'Investigation', 'Police untraced report', 'Settled'], f: ['when', 'where', 'how', 'fir'], docs: [['auto', 'RC checked with VAHAN'], ['doc', 'FIR copy'], ['doc', 'Letter to the RTO about the theft'], ['confirm', 'Both keys are with the customer']] },
+    { k: 'glass', t: 'Windshield or glass', ic: 'shield', mode: 'Cashless at a network garage', slaT: 'Approved within a day', sla: 24, with: 'Claims team', next: 'Check the photos and approve the repair', stages: ['Intimated', 'Photos checked', 'Repair approved', 'Settled'], f: ['when', 'where', 'garage'], docs: [['auto', 'Policy checked'], ['doc', 'Photos of the glass']] },
+    { k: 'flood', t: 'Flood or natural calamity', ic: 'alert', mode: 'Cashless at a network garage', slaT: 'Towing and survey within a day', sla: 24, with: 'Surveyor', next: 'Arrange towing and inspect the vehicle', stages: ['Intimated', 'Towed to the garage', 'Survey done', 'Repair approved', 'Settled'], f: ['when', 'where', 'how', 'garage'], docs: [['doc', 'Photos and a video of the vehicle'], ['confirm', 'The customer has been told not to start the engine']] },
+    { k: 'tp', t: 'Third-party claim against the customer', ic: 'users', mode: 'Handled by our legal team', slaT: 'Legal review within 3 days', sla: 72, with: 'Legal team', next: 'Review the FIR and any notice', stages: ['Intimated', 'FIR checked', 'Legal review', 'Defended or settled'], f: ['when', 'where', 'how', 'fir', 'driver'], docs: [['doc', 'FIR copy'], ['doc', 'Driving licence of the driver'], ['opt', 'Court notice, if one has come']] },
+  ],
+  health: [
+    { k: 'cpl', t: 'Cashless, planned admission', ic: 'hospital', mode: 'Cashless at a network hospital', slaT: 'Decision within an hour of the hospital\'s request', sla: 24, with: 'Hospital', next: 'Send the pre-authorisation request', stages: ['Intimated', 'Pre-authorisation requested', 'Pre-authorisation approved', 'Admitted', 'Final bill', 'Settled'], f: ['member', 'hospital', 'admit', 'ailment', 'estimate'], docs: [['auto', 'Health card and KYC on file'], ['doc', 'Doctor\'s advice for admission'], ['opt', 'Earlier reports for this illness']] },
+    { k: 'cem', t: 'Cashless, emergency admission', ic: 'alert', mode: 'Cashless at a network hospital', slaT: 'Decision within an hour of the hospital\'s request', sla: 4, with: 'Hospital', next: 'Send the emergency pre-authorisation request', stages: ['Intimated', 'Pre-authorisation requested', 'Pre-authorisation approved', 'Final bill', 'Settled'], f: ['member', 'hospital', 'admit', 'ailment'], docs: [['auto', 'Health card and KYC on file']] },
+    { k: 'rb', t: 'Reimbursement', ic: 'rupee', mode: 'Paid to the bank account', slaT: 'Decision within 7 days of the last document', sla: 168, with: 'Claims team', next: 'Check the documents and assess the claim', stages: ['Intimated', 'Documents checked', 'Under assessment', 'Approved', 'Paid'], f: ['member', 'hospital', 'admit', 'ailment', 'amount'], docs: [['auto', 'Bank account checked with a ₹1 credit'], ['doc', 'Claim form signed by the customer'], ['doc', 'Discharge summary'], ['doc', 'Final bill with the break-up, and receipts'], ['doc', 'Reports and prescriptions']] },
+    { k: 'pp', t: 'Before and after a hospital stay', ic: 'doc', mode: 'Paid to the bank account', slaT: 'Decision within 7 days of the last document', sla: 168, with: 'Claims team', next: 'Check the bills against the main claim', stages: ['Intimated', 'Documents checked', 'Under assessment', 'Paid'], f: ['member', 'ailment', 'amount'], docs: [['doc', 'Bills and prescriptions'], ['doc', 'Discharge summary of the main claim']] },
+  ],
+  home: [
+    { k: 'hburg', t: 'Burglary or theft', ic: 'key', mode: 'Paid to the bank account', slaT: 'Survey within 2 days', sla: 48, with: 'Surveyor', next: 'Visit the home and list the loss', stages: ['Intimated', 'Survey done', 'Assessment', 'Paid'], f: ['when', 'how', 'fir', 'loss'], docs: [['doc', 'FIR copy'], ['doc', 'List of what was taken, with bills where there are any']] },
+    { k: 'hfire', t: 'Fire or short circuit', ic: 'flame', mode: 'Paid to the bank account', slaT: 'Survey within 2 days', sla: 48, with: 'Surveyor', next: 'Visit the home and assess the damage', stages: ['Intimated', 'Survey done', 'Assessment', 'Paid'], f: ['when', 'how', 'loss'], docs: [['doc', 'Photos of the damage'], ['opt', 'Fire brigade report, if they came']] },
+    { k: 'hwater', t: 'Water damage or flood', ic: 'alert', mode: 'Paid to the bank account', slaT: 'Survey within 2 days', sla: 48, with: 'Surveyor', next: 'Visit the home and assess the damage', stages: ['Intimated', 'Survey done', 'Assessment', 'Paid'], f: ['when', 'how', 'loss'], docs: [['doc', 'Photos and a video of the damage']] },
+  ],
+  biz: [
+    { k: 'bfire', t: 'Fire or explosion', ic: 'flame', mode: 'Paid to the bank account', slaT: 'Survey within 2 days', sla: 48, with: 'Surveyor', next: 'Visit the premises and assess the loss', stages: ['Intimated', 'Survey done', 'Assessment', 'Paid'], f: ['when', 'how', 'loss'], docs: [['doc', 'Photos of the damage'], ['doc', 'Stock register for the last 3 months'], ['opt', 'Fire brigade report']] },
+    { k: 'bburg', t: 'Burglary', ic: 'key', mode: 'Paid to the bank account', slaT: 'Survey within 2 days', sla: 48, with: 'Surveyor', next: 'Visit the premises and list the loss', stages: ['Intimated', 'Survey done', 'Assessment', 'Paid'], f: ['when', 'how', 'fir', 'loss'], docs: [['doc', 'FIR copy'], ['doc', 'Stock register and purchase bills']] },
+    { k: 'bcash', t: 'Cash stolen or lost', ic: 'rupee', mode: 'Paid to the bank account', slaT: 'Assessed within 2 days', sla: 48, with: 'Claims team', next: 'Check the cash book and the FIR', stages: ['Intimated', 'Documents checked', 'Assessment', 'Paid'], f: ['when', 'how', 'fir', 'loss'], docs: [['doc', 'FIR copy'], ['doc', 'Cash book for the day']] },
+  ],
+};
+const clmFor = type => CLM[famOf(type)] || CLM.biz;
+const clmType = k => Object.values(CLM).flat().find(t => t.k === k);
+const NETG = [['Western Auto Works', 'Andheri East', '2.1 km'], ['Prime Car Care', 'Jogeshwari', '3.4 km'], ['Sai Motors service centre', 'Thane', '11.8 km']];
+const NETH = [['Sunrise Hospital', 'Andheri East', '1.8 km'], ['Lakeview Multispeciality', 'Powai', '4.2 km'], ['CityCare Hospital', 'Goregaon', '6.5 km']];
+
+/* ---------------- what's in the hub ---------------- */
+const SV_KIND = { change: ['Change', 'edit'], claim: ['Claim', 'shield'], copy: ['Policy copy', 'doc'], cancel: ['Cancellation', 'x'], complaint: ['Complaint', 'flag'] };
+const SV_AB = { You: 'You', Customer: 'CU', Operations: 'OP', Underwriting: 'UW', 'Claims team': 'CL', Surveyor: 'SV', Hospital: 'HO', Finance: 'FN', 'Grievance cell': 'GC', 'Claims investigation': 'CI', 'Legal team': 'LG' };
+const SV_REQ = { 'Change address': 'Match the new address with the Aadhaar record', 'Remove a loan': 'Check the bank\'s NOC and remove the loan', 'Add a family member': 'Decide on adding the member and the premium', 'Correct name': 'Match the name with the PAN record', 'Transfer to a new owner': 'Send the buyer\'s KYC', 'Change nominee': 'Update the nominee' };
+const svAt = (id, d) => new Date(+d + (9 + hash(String(id)) % 9) * 36e5);
+// changes and claims already in the book, shown with who has them and when they're due
+function svFromReq(r) {
+  const at = svAt(r.id, r.at), done = r.status === 'Done', who = r.type === 'Add a family member' ? 'Underwriting' : r.status === 'Waiting' ? 'Customer' : 'Operations';
+  return { id: r.id, kind: 'change', type: r.type, customer: r.customer, policy: r.policy, action: done ? 'Done' : SV_REQ[r.type] || 'Update the policy', with: done ? '' : who, raised: at, due: new Date(+at + (who === 'Customer' ? 96 : 48) * 36e5), status: done ? 'Done' : r.status === 'Waiting' ? 'Open' : 'In progress', done: done ? new Date(+at + 20 * 36e5) : null, verify: r.verify };
+}
+function svFromClaim(c) {
+  const at = svAt(c.id, c.at), t = clmType(/Cashless/.test(c.what) ? 'cpl' : /Reimbursement/.test(c.what) ? 'rb' : 'od');
+  const M = { 'Surveyor allocated': ['Surveyor', 'Inspect the vehicle and upload the survey report', 1, 48], 'Approved for treatment': ['Hospital', 'Send the final bill at discharge', 2, 120], 'Survey report due': ['Surveyor', 'Upload the survey report', 2, 48], 'Documents needed': ['Customer', 'Upload the discharge summary and the bills', 1, 96] }[c.stage] || ['Claims team', 'Assess the claim', 1, 72];
+  return { id: c.id, kind: 'claim', type: c.what, ctype: t.k, customer: c.customer, policy: c.policy, action: M[1], with: M[0], raised: at, due: new Date(+at + M[3] * 36e5), status: 'Open', stage: M[2], stages: t.stages, amount: c.amount };
+}
+function svSeed(B) {
+  const ps = B.policies.filter(p => p.status === 'active'), P0 = i => ps[(i * 7 + 3) % ps.length], h = n => new Date(Date.now() - n * 36e5);
+  const mk = (i, o) => { const p = P0(i); return Object.assign({ customer: p.customer, policy: p.no, ptype: p.type }, o); };
+  return [
+    mk(0, { id: 'NX-SR-121007', kind: 'change', type: 'Correct name', action: 'Confirm the spelling with the customer\'s PAN', with: 'You', raised: h(18), due: h(-6), status: 'Open', verify: 'PAN record' }),
+    mk(1, { id: 'NX-CN-7712', kind: 'cancel', type: 'Cancel: vehicle sold', action: 'Call the customer before it\'s cancelled', with: 'You', raised: h(20), due: h(-4), status: 'Open' }),
+    mk(2, { id: 'NX-GR-10432', kind: 'complaint', type: 'Complaint: premium debited twice', action: 'Refund the duplicate debit', with: 'Finance', raised: h(110), due: h(38), status: 'Escalated' }),
+    mk(3, { id: 'NX-GR-10481', kind: 'complaint', type: 'Complaint: survey taking too long', action: 'Call the customer and share the survey date', with: 'You', raised: h(40), due: h(-32), status: 'Open' }),
+    mk(4, { id: 'NX-PC-3305', kind: 'copy', type: 'Policy copy', action: 'Done', with: '', raised: h(30), due: h(28), status: 'Done', done: h(29.8), verify: 'Sent to the registered mobile on WhatsApp' }),
+    mk(5, { id: 'NX-CN-7699', kind: 'cancel', type: 'Cancel: duplicate policy', action: 'Refund the premium', with: 'Finance', raised: h(60), due: h(-12), status: 'In progress' }),
+  ];
+}
+function svcList() {
+  const B = book(); if (!B.svx) B.svx = svSeed(B);
+  return B.svx.concat(B.requests.map(svFromReq), B.claims.map(svFromClaim));
+}
+const svDur = ms => { const hrs = Math.floor(ms / 36e5), dd = Math.floor(hrs / 24); return dd ? `${dd} d ${hrs % 24} h` : hrs ? `${hrs} h` : `${Math.max(1, Math.round(ms / 6e4))} min`; };
+const svWhen = d => `${fdS(d)}, ${d.toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' })}`;
+function svSla(it) {
+  if (it.status === 'Done') return { k: 'done', t: `Done ${fdS(it.done || it.raised)}` };
+  const ms = it.due - Date.now();
+  return ms < 0 ? { k: 'late', t: `Past by ${svDur(-ms)}` } : { k: ms < 864e5 ? 'soon' : 'ok', t: `Due ${svWhen(it.due)}` };
+}
+const svWithCell = it => it.with ? `<span class="sv-w ${it.with === 'You' ? 'me' : it.with === 'Customer' ? 'cu' : ''}">${esc(SV_AB[it.with] || it.with.slice(0, 2).toUpperCase())}</span>${esc(it.with)}` : '<span class="p-muted">—</span>';
+function svBtn(it) {
+  if (it.status === 'Done') return '';
+  if (it.with === 'You') return pbtn('Act now', `data-hx="svopen" data-id="${esc(it.id)}"`, 'pri sm');
+  if (it.with === 'Customer') return pbtn('Remind', `data-hx="svrem" data-id="${esc(it.id)}"`, 'ghost sm', 'wa');
+  return pbtn('Nudge', `data-hx="svnudge" data-id="${esc(it.id)}"`, 'ghost sm', 'bell');
+}
+const ptrack = (stages, at, v) => `<ol class="trk${v ? ' v' : ''}">${stages.map((s, i) => `<li class="${i < at ? 'done' : i === at ? 'now' : ''}"><span class="d">${i < at ? pi('check') : ''}</span><b>${esc(s)}</b></li>`).join('')}</ol>`;
+
+V.claims = () => { P.f.svk = 'claim'; return V.servicing(); };
+V.servicing = () => {
+  if (P.f.cw) return cwView();
+  const all = svcList(), f = P.f, kind = f.svk || 'all', st = f.sst || 'open', wf = f.swith || 'all', sla = f.ssla || 'all', sort = f.ssort || 'sla', q = (f.sq || '').trim().toLowerCase();
+  const open = all.filter(x => x.status !== 'Done'), late = open.filter(x => svSla(x).k === 'late'), done30 = all.filter(x => x.status === 'Done' && Date.now() - (x.done || x.raised) < 30 * 864e5);
+  const ofKind = x => kind === 'all' || x.kind === kind;
+  const list = all.filter(x => ofKind(x) && (st === 'all' || (st === 'open' ? x.status !== 'Done' : x.status === 'Done')) && (wf === 'all' || (wf === 'you' ? x.with === 'You' : wf === 'cust' ? x.with === 'Customer' : x.with && !['You', 'Customer'].includes(x.with))) && (sla === 'all' || svSla(x).k === sla) && (!q || [x.id, x.type, x.customer, x.policy, x.action].join(' ').toLowerCase().includes(q)))
+    .sort(sort === 'new' ? (a, b) => b.raised - a.raised : (a, b) => (a.status === 'Done') - (b.status === 'Done') || a.due - b.due);
+  const title = P.role === 'dealer' ? 'Ownership transfers and changes' : 'Servicing and claims';
+  const menu = `<span class="p-mw">${pbtn(`New request${pi('chevD', 'tail')}`, 'data-hx="svmenu" aria-haspopup="menu"', 'pri', 'plus')}<span class="p-menu" role="menu" hidden>${[['svnew:claim', 'shield', 'Intimate a claim', 'Motor, health, home or business'], ['svnew:change', 'edit', 'Change details', 'Address, nominee, loan, name or a member'], ['svnew:copy', 'doc', 'Send a policy copy', 'To the registered mobile or email'], ['svnew:cancel', 'x', 'Cancel a policy', 'With the refund and a call to keep it']].map(([a, ic, t, s]) => `<button type="button" role="menuitem" data-hx="${a}">${pi(ic)}<span><b>${t}</b><small>${s}</small></span></button>`).join('')}</span></span>`;
+  const cols = [
+    { t: 'Request', r: x => `<span class="sv-r"><span class="sv-ic">${pi(SV_KIND[x.kind][1])}</span><span><b class="mono">${esc(x.id)}</b><small>${esc(x.type)}</small></span></span>` },
+    { t: 'Customer and policy', r: x => `${esc(x.customer)}<small class="sub mono">${esc(x.policy)}</small>` },
+    { t: 'Waiting for', r: x => `${esc(x.action)}<small class="sub">Raised ${upd(x.raised)}</small>` },
+    { t: 'With', r: svWithCell },
+    { t: 'Due', r: x => { const s = svSla(x); return `<span class="sv-sla ${s.k}">${s.k === 'late' ? pi('alert') : s.k === 'done' ? pi('check') : ''}${esc(s.t)}</span>`; } },
+    { t: 'Status', r: x => ppill(x.status, x.status === 'Done' ? 'ok' : x.status === 'Escalated' ? 'bad' : x.status === 'In progress' ? 'info' : 'warn') },
+    { t: '', cls: 'r', r: svBtn },
+  ];
+  return { title, html: `${phead(title, 'Everything raised for your customers after the policy is issued, with who has it and when it\'s due', menu)}
+    <div class="kpis">${kpi({ ic: 'clock', label: 'Open', value: open.length, sub: 'Across every kind of request' })}${kpi({ ic: 'user', tint: 'brand', label: 'Waiting on you', value: open.filter(x => x.with === 'You').length, sub: 'Do these first' })}${kpi({ ic: 'alert', tint: 'warn', label: 'Past the due time', value: late.length, sub: 'Nudge whoever has them' })}${kpi({ ic: 'check', tint: 'ok', label: 'Done in 30 days', value: done30.length, sub: 'Most checked without paperwork' })}</div>
+    ${late.length ? palert('bad', 'alert', `${late.length} request${late.length > 1 ? 's are' : ' is'} past the due time`, late.slice(0, 3).map(x => `${x.id} with ${x.with}`).join(' · ') + (late.length > 3 ? ` and ${late.length - 3} more` : ''), pbtn('Show them', 'data-hx="svlate"', 'ghost sm') + pbtn('Nudge everyone', 'data-hx="svnudgeall"', 'pri sm', 'bell')) : ''}
+    ${ptabs('svk', [['all', 'All', open.length], ...Object.entries(SV_KIND).map(([k, v]) => [k, k === 'copy' ? 'Policy copies' : k === 'cancel' ? 'Cancellations' : v[0] + 's', open.filter(x => x.kind === k).length])], kind)}
+    ${ptool(pfq('sq', 'Search request, customer or policy'), pseg('sst', [['open', 'Open'], ['done', 'Done'], ['all', 'All']], st), psel('swith', [['all', 'With anyone'], ['you', 'Waiting on you'], ['cust', 'Waiting on the customer'], ['nx', 'With NxSure teams']], wf, 'With'), psel('ssla', [['all', 'Any due time'], ['late', 'Past the due time'], ['soon', 'Due in 24 hours'], ['ok', 'Due later']], sla, 'Due'), psel('ssort', [['sla', 'Due first'], ['new', 'Newest first']], sort, 'Sort'))}
+    ${pcard('', ptable(cols, list, { row: x => 'svc:' + x.id, rowCls: x => svSla(x).k === 'late' ? 'late' : '', empty: 'Nothing here', emptySub: 'Clear the search or pick another filter.' }), '', 'flush')}
+    ${kind === 'claim' ? pcard('What to tell a customer on day one', `<ul class="ticks"><li><b>Motor:</b> don't move the vehicle more than needed, take photos, and pick a network garage for cashless repair. A surveyor is assigned within a day.</li><li><b>Health, cashless:</b> show the e-card at the hospital's insurance desk. NxSure decides within an hour of the hospital's request.</li><li><b>Health, reimbursement:</b> keep the discharge summary, the final bill and the receipts.</li><li><b>Theft or burglary:</b> file an FIR first, then intimate the claim with its number.</li></ul>`) : ''}` };
+};
+function svDrawer(it) {
+  if (!it) return;
+  const s = svSla(it), log = [[it.raised, 'You', 'Raised']].concat(it.log || []).concat(it.status === 'Done' ? [[it.done || it.raised, it.kind === 'copy' ? 'System' : 'Operations', 'Done']] : it.with && it.with !== 'You' ? [[it.raised, 'System', `With ${it.with.toLowerCase() === 'customer' ? 'the customer' : it.with}`]] : []);
+  const foot = it.status === 'Done' ? pbtn('Close', 'data-close', 'ghost') : it.with === 'You' ? (it.kind === 'cancel' ? pbtn('They\'re keeping it', `data-hx="svkeep" data-id="${esc(it.id)}"`, 'ghost') : '') + pbtn('Mark it done', `data-hx="svdone" data-id="${esc(it.id)}"`, 'pri', 'check') : it.with === 'Customer' ? pbtn('Send a reminder', `data-hx="svrem" data-id="${esc(it.id)}"`, 'pri', 'wa') : pbtn(`Nudge ${it.with === 'Surveyor' || it.with === 'Hospital' ? 'the ' + it.with.toLowerCase() : it.with}`, `data-hx="svnudge" data-id="${esc(it.id)}"`, 'pri', 'bell');
+  drawer(it.id, `${esc(it.type)} · ${ppill(it.status, it.status === 'Done' ? 'ok' : it.status === 'Escalated' ? 'bad' : 'warn')}`, `${kv([['Customer', esc(it.customer)], ['Policy', `<span class="mono">${esc(it.policy)}</span>`], ['Waiting for', esc(it.action)], ['With', it.with ? esc(it.with) : ''], ['Due', `<span class="sv-sla ${s.k}">${esc(s.t)}</span>`], ['Checked with', it.verify ? esc(it.verify) : ''], ['Amount', it.amount ? inr(it.amount) : '']])}
+    ${it.stages ? `<h3 class="pd-sub">Where the claim is</h3>${ptrack(it.stages, it.stage || 0)}` : ''}
+    <h3 class="pd-sub">What's happened</h3><ul class="sv-log">${log.map(([d, w, t]) => `<li><b>${esc(t)}</b><small>${esc(w)} · ${esc(svWhen(d))}</small></li>`).join('')}</ul>`, foot);
+}
+const svOrig = openRow;
+openRow = function (go) { const [k, ...rest] = String(go).split(':'); if (k === 'svc') return svDrawer(svcList().find(x => x.id === rest.join(':'))); return svOrig(go); };
+
+/* ---------------- intimating a claim: customer, policy, what happened, documents, review ---------------- */
+const CW_STEPS = ['Customer', 'Policy', 'What happened', 'Documents', 'Review and intimate'];
+function cwStart(o = {}) { P.f.cw = Object.assign({ step: 1, q: '', cust: null, pol: null, type: null, d: {}, docs: {}, ok: false, err: '' }, o); if (P.view !== 'servicing') location.hash = 'servicing'; else render(); window.scrollTo({ top: 0 }); }
+const cwPol = W => book().policies.find(p => p.no === W.pol), cwCus = W => book().customers.find(c => c.id === W.cust);
+const cwHead = W => { const c = cwCus(W), p = cwPol(W), n = book().policies.filter(x => x.cid === c.id && x.status === 'active').length; return `<div class="cw-who">${av(c.name)}<span><b>${esc(c.name)}</b><small>${esc(maskMobile(c.mobile))} · ${esc(c.area)} · ${n} active polic${n === 1 ? 'y' : 'ies'}</small></span>${p ? `<span class="cw-pol">${ppill(ptLabel(p.type), 'brand')}<span class="mono">${esc(p.no)}</span></span>` : pbtn('Change customer', 'data-hx="cwgo" data-id="1"', 'ghost sm')}</div>`; };
+function cwFields(W, T, p) {
+  const v = k => esc(W.d[k] || ''), today = iso(TODAY), mem = ['The policyholder', 'Spouse', 'Child', 'Parent'].slice(0, Math.max(1, p.members || 1));
+  const F = {
+    when: fld('When it happened', `<input type="date" data-cwd="when" max="${today}" value="${v('when') || today}">`),
+    where: fld('Where', `<input data-cwd="where" value="${v('where')}" placeholder="Road or area, and the pincode" autocomplete="off">`),
+    how: fld('What happened, in the customer\'s words', `<textarea data-cwd="how" rows="3" placeholder="For example: hit from behind at a signal, rear bumper and boot damaged">${v('how')}</textarea>`),
+    driver: fld('Who was driving', `<input data-cwd="driver" value="${v('driver') || esc(p.customer)}" autocomplete="off">`),
+    fir: fld('FIR number', `<input data-cwd="fir" value="${v('fir')}" placeholder="As on the FIR copy" autocomplete="off">`),
+    member: fld('Who is it for', `<select data-cwd="member">${mem.map(m => `<option ${W.d.member === m ? 'selected' : ''}>${m}</option>`).join('')}</select>`),
+    admit: fld(T.k === 'cpl' ? 'Planned admission date' : 'Admission date', `<input type="date" data-cwd="admit" value="${v('admit') || today}">`),
+    ailment: fld('Illness or injury', `<input data-cwd="ailment" value="${v('ailment')}" placeholder="As the doctor has written it" autocomplete="off">`),
+    estimate: fld('Estimated cost, from the hospital', `<input data-cwd="estimate" value="${v('estimate')}" inputmode="numeric" placeholder="₹">`),
+    amount: fld('Amount being claimed', `<input data-cwd="amount" value="${v('amount')}" inputmode="numeric" placeholder="₹">`),
+    loss: fld('Rough value of the loss', `<input data-cwd="loss" value="${v('loss')}" inputmode="numeric" placeholder="₹">`),
+    garage: `<div class="p-f"><span>Network garage, for cashless repair</span><div class="cw-net">${NETG.map(([n, a, km]) => `<label><input type="radio" name="cwg" data-cwd="garage" value="${esc(n)}, ${esc(a)}" ${W.d.garage === `${n}, ${a}` ? 'checked' : ''}><span><b>${esc(n)}</b><small>${esc(a)} · ${km} from the customer</small></span>${ppill('Cashless', 'ok')}</label>`).join('')}<label><input type="radio" name="cwg" data-cwd="garage" value="Another garage" ${W.d.garage === 'Another garage' ? 'checked' : ''}><span><b>Another garage</b><small>Repaired first, then paid back to the customer</small></span></label></div></div>`,
+    hospital: `<div class="p-f"><span>${/^c/.test(T.k) ? 'Network hospital' : 'Hospital'}</span><div class="cw-net">${NETH.map(([n, a, km]) => `<label><input type="radio" name="cwh" data-cwd="hospital" value="${esc(n)}, ${esc(a)}" ${W.d.hospital === `${n}, ${a}` ? 'checked' : ''}><span><b>${esc(n)}</b><small>${esc(a)} · ${km} from the customer</small></span>${ppill('Network', 'ok')}</label>`).join('')}${/^c/.test(T.k) ? '' : `<label><input type="radio" name="cwh" data-cwd="hospital" value="Another hospital" ${W.d.hospital === 'Another hospital' ? 'checked' : ''}><span><b>Another hospital</b><small>Not in the network</small></span></label>`}</div></div>`,
+  };
+  const wide = ['how', 'garage', 'hospital'];
+  return `<div class="cw-f">${T.f.map(k => `<div class="${wide.includes(k) ? 'wide' : ''}">${F[k]}</div>`).join('')}</div>`;
+}
+const CW_NEED = { when: 'when it happened', how: 'what happened', garage: 'a garage', hospital: 'the hospital', ailment: 'the illness or injury', fir: 'the FIR number', estimate: 'the estimated cost', amount: 'the amount', loss: 'the value of the loss', member: 'who it\'s for', admit: 'the admission date' };
+function cwCheck(W, T) { const miss = T.f.filter(k => CW_NEED[k] && !String(W.d[k] || (k === 'when' || k === 'admit' ? iso(TODAY) : k === 'member' ? 'x' : '')).trim()); return miss.length ? `Add ${listText(miss.map(k => CW_NEED[k]))}.` : ''; }
+function cwView() {
+  const W = P.f.cw, B = book(), s = W.step;
+  const steps = `<ol class="cw-steps">${CW_STEPS.map((t, i) => `<li class="${s === 'done' || i + 1 < s ? 'done' : i + 1 === s ? 'now' : ''}">${s !== 'done' && i + 1 < s ? `<button type="button" data-hx="cwgo" data-id="${i + 1}">${pi('check')}<span>${t}</span></button>` : `<span>${s === 'done' ? pi('check') : `<b>${i + 1}</b>`}<span>${t}</span></span>`}</li>`).join('')}</ol>`;
+  const nav = (back, next, dis) => `<p class="p-err" data-cwerr ${W.err ? '' : 'hidden'}>${esc(W.err || '')}</p><div class="cw-foot">${back ? pbtn('Back', `data-hx="cwgo" data-id="${s - 1}"`, 'ghost', 'chevL') : '<span></span>'}${next ? `<button type="button" class="pb pri" data-hx="cwnext" ${dis ? 'disabled' : ''}>${next}${pi('chevR')}</button>` : ''}</div>`;
+  let body = '';
+  if (s === 1) {
+    const q = (W.q || '').trim().toLowerCase(), act = c => B.policies.some(p => p.cid === c.id && p.status === 'active');
+    const hits = q.length >= 2 ? B.customers.filter(c => act(c) && (c.name.toLowerCase().includes(q) || c.mobile.includes(q) || B.policies.some(p => p.cid === c.id && (p.no.toLowerCase().includes(q) || (p.reg || '').toLowerCase().replace(/\s/g, '').includes(q.replace(/\s/g, '')))))).slice(0, 6) : [];
+    body = pcard('Find the customer', `<p class="p-muted small">By name, registered mobile, policy number or vehicle number.</p><label class="p-search cw-q">${pi('search')}<input data-cwq placeholder="Name, mobile, policy or vehicle number" value="${esc(W.q || '')}" autocomplete="off" aria-label="Find the customer"></label>
+      ${hits.length ? `<div class="cw-hits">${hits.map(c => `<button type="button" data-hx="cwcust" data-id="${c.id}">${av(c.name, 'sm')}<span><b>${esc(c.name)}</b><small>${esc(maskMobile(c.mobile))} · ${esc(c.area)}</small></span>${pi('chevR')}</button>`).join('')}</div>` : q.length >= 2 ? '<p class="p-muted">No customer with an active policy matches that.</p>' : ''}
+      <div class="cw-recent"><span>Recent customers</span>${B.customers.filter(act).slice(0, 6).map(c => `<button type="button" class="cw-chip" data-hx="cwcust" data-id="${c.id}">${esc(c.name)} · ${esc(maskMobile(c.mobile))}</button>`).join('')}</div>`);
+  } else if (s === 2) {
+    const pols = B.policies.filter(p => p.cid === W.cust && p.status === 'active');
+    body = pcard('', `${cwHead(W)}<h3 class="cw-h">Which policy is the claim on? One policy for each claim.</h3><div class="cw-pols">${pols.map(p => `<button type="button" class="cw-p" data-hx="cwpick" data-id="${esc(p.no)}" aria-pressed="${W.pol === p.no}"><span class="rn-ic ${renFam(p)}">${pi(ptIco(p.type))}</span><span><b>${esc(ptLabel(p.type))}</b><small class="mono">${esc(p.no)}</small><small>${esc(p.what)}</small></span><span class="cw-pm"><b>${inr(p.premium)}</b><small>Till ${fdS(p.end)} ${p.end.getFullYear()}</small>${ppill('Active', 'ok')}</span></button>`).join('')}</div>${nav(true, 'Continue', !W.pol)}`);
+  } else if (s === 3) {
+    const p = cwPol(W), T = W.type && clmType(W.type);
+    body = pcard('', `${cwHead(W)}<h3 class="cw-h">What kind of claim is it?</h3><div class="cw-types">${clmFor(p.type).map(t => `<button type="button" class="cw-t" data-hx="cwtype" data-id="${t.k}" aria-pressed="${W.type === t.k}"><span class="cw-ti">${pi(t.ic)}</span><b>${esc(t.t)}</b><small>${esc(t.mode)}</small><small>${esc(t.slaT)}</small></button>`).join('')}</div>
+      ${T ? `<h3 class="cw-h">The details</h3>${cwFields(W, T, p)}` : ''}${nav(true, 'Continue to the documents', !T)}`);
+  } else if (s === 4) {
+    const T = clmType(W.type), need = T.docs.map((d, i) => [d, i]);
+    const row = ([[k, t], i]) => { const st = W.docs[i]; if (k === 'auto') return `<li class="ok"><span class="cw-dk">${pi('check')}</span><span><b>${esc(t)}</b><small>Done automatically</small></span></li>`; if (k === 'confirm') return `<li class="${st ? 'ok' : ''}"><label class="cw-cf"><input type="checkbox" data-cwc="${i}" ${st ? 'checked' : ''}><span><b>${esc(t)}</b><small>Confirm with the customer</small></span></label></li>`; return `<li class="${st ? 'ok' : ''}"><span class="cw-dk">${st ? pi(st.st === 'up' ? 'check' : 'send') : pi('doc')}</span><span><b>${esc(t)}${k === 'opt' ? ' <em>optional</em>' : ''}</b><small>${st ? (st.st === 'up' ? `Uploaded: ${esc(st.name)}` : 'On the link to the customer') : k === 'opt' ? 'Add it if there is one' : 'Needed for the claim'}</small></span><span class="cw-da">${st && st.st === 'up' ? pbtn('Remove', `data-hx="cwdocx" data-id="${i}"`, 'ghost sm') : `<label class="pb ghost sm">${pi('upload')}Upload<input type="file" data-cwup="${i}" hidden></label>${st ? '' : pbtn('Ask the customer', `data-hx="cwask" data-id="${i}"`, 'ghost sm', 'wa')}`}</span></li>`; };
+    const req = T.docs.map((d, i) => [d, i]).filter(([[k]]) => k === 'doc' || k === 'confirm'), ready = req.filter(([, i]) => W.docs[i]).length;
+    const asked = Object.values(W.docs).filter(x => x && x.st === 'ask').length;
+    body = pcard('', `${cwHead(W)}<h3 class="cw-h">Documents for ${esc(lc1(T.t))}</h3><ul class="cw-docs">${need.map(row).join('')}</ul>
+      <div class="cw-sum2">${ppill(`${ready} of ${req.length} ready`, ready === req.length ? 'ok' : 'warn')}<span>${asked ? `${asked} document${asked > 1 ? 's go' : ' goes'} to the customer in one link when you intimate the claim.` : 'Anything you ask the customer for goes to them in one link.'}</span></div>${nav(true, 'Review the claim', ready < req.length)}`);
+  } else if (s === 5) {
+    const T = clmType(W.type), p = cwPol(W), c = cwCus(W), d = W.d, up = Object.values(W.docs).filter(x => x && x.st === 'up').length, asked = Object.values(W.docs).filter(x => x && x.st === 'ask').length;
+    const amt = d.estimate || d.amount || d.loss;
+    body = pcard('', `${cwHead(W)}<div class="cw-rev"><div>${kv([['Claim', `${esc(T.t)}<small class="sub">${esc(T.mode)}</small>`], ['When', fd(fromIso(d.when || d.admit || iso(TODAY)))], ['Where', d.where ? esc(d.where) : ''], ['Who', d.member ? esc(d.member) : d.driver ? `Driven by ${esc(d.driver)}` : ''], ['What happened', d.how ? esc(d.how) : d.ailment ? esc(d.ailment) : ''], ['Garage', d.garage ? esc(d.garage) : ''], ['Hospital', d.hospital ? esc(d.hospital) : ''], ['FIR', d.fir ? esc(d.fir) : ''], ['Amount', amt ? inr(Number(String(amt).replace(/\D/g, ''))) : ''], ['Documents', `${up} uploaded${asked ? `, ${asked} on a link to ${esc(first(c.name))}` : ''}`]])}</div>
+      <div class="cw-next"><h3 class="cw-h">What happens next</h3>${ptrack(T.stages, 0, true)}<dl class="cw-nx"><div><dt>First step</dt><dd>${esc(T.next)}</dd></div><div><dt>With</dt><dd>${esc(T.with)}</dd></div><div><dt>Expect</dt><dd>${esc(T.slaT)}</dd></div><div><dt>${esc(first(c.name))} gets</dt><dd>The claim number on WhatsApp${asked ? `, and one link for ${asked} document${asked > 1 ? 's' : ''}` : ''}</dd></div></dl></div></div>
+      <label class="pf-agree"><input type="checkbox" data-cwok ${W.ok ? 'checked' : ''}><span>${esc(first(c.name))} has confirmed these details are true and wants to make this claim on policy ${esc(p.no)}.</span></label>${nav(true, 'Intimate the claim', false)}`);
+  } else {
+    const it = svcList().find(x => x.id === W.out), T = clmType(W.type);
+    body = pcard('', `<div class="cw-done"><span class="cw-ok">${pi('shield')}</span><div><b>Claim ${esc(it.id)} intimated</b><small>${esc(T.t)} · ${esc(it.customer)} · <span class="mono">${esc(it.policy)}</span></small></div></div>${ptrack(T.stages, 1)}
+      ${kv([['Now with', esc(it.with)], ['Waiting for', esc(it.action)], ['Due', `<span class="sv-sla soon">${esc(svWhen(it.due))}</span>`], ['Sent to the customer', `The claim number on WhatsApp${(it.asked || 0) ? `, and a link for ${it.asked} document${it.asked > 1 ? 's' : ''}` : ''}`]])}
+      <div class="cw-foot">${pbtn('Back to servicing', 'data-hx="cwlist"', 'ghost', 'chevL')}<span class="pf-acts">${pbtn('Open the claim', `data-hx="svopen" data-id="${esc(it.id)}"`, 'ghost')}${pbtn('Intimate another claim', 'data-hx="svnew:claim"', 'pri', 'plus')}</span></div>`);
+  }
+  return { title: 'Intimate a claim', html: `<button type="button" class="cw-back" data-hx="cwlist">${pi('chevL')}Servicing and claims</button>${phead('Intimate a claim', s === 1 ? 'Start with the customer' : s === 'done' ? 'Done' : esc(cwCus(W).name + (W.pol ? ' · ' + ptLabel(cwPol(W).type) : '')))}${steps}${body}`, wire: cwWire };
+}
+function cwWire(root) {
+  const W = P.f.cw; if (!W) return;
+  const q = root.querySelector('[data-cwq]'); if (q) { q.addEventListener('input', () => { W.q = q.value; const pos = q.selectionStart; render(); const i = $('[data-cwq]'); if (i) { i.focus(); try { i.setSelectionRange(pos, pos); } catch (e) { /* not a text box */ } } }); if (W.step === 1 && matchMedia('(pointer:fine)').matches) setTimeout(() => { const i = $('[data-cwq]'); if (i && document.activeElement !== i) { i.focus(); const l = i.value.length; i.setSelectionRange(l, l); } }, 30); }
+  root.querySelectorAll('[data-cwd]').forEach(i => { const k = i.dataset.cwd, set = () => { if (i.type === 'radio' && !i.checked) return; W.d[k] = i.value; W.err = ''; const e = $('[data-cwerr]'); if (e) e.hidden = true; }; i.addEventListener('input', set); i.addEventListener('change', set); });
+  root.querySelectorAll('[data-cwc]').forEach(i => i.addEventListener('change', () => { W.docs[i.dataset.cwc] = i.checked ? { st: 'ok' } : null; render(); }));
+  root.querySelectorAll('[data-cwup]').forEach(i => i.addEventListener('change', () => { const f = i.files && i.files[0]; if (!f) return; W.docs[i.dataset.cwup] = { st: 'up', name: f.name }; render(); }));
+  const ok = root.querySelector('[data-cwok]'); if (ok) ok.addEventListener('change', () => { W.ok = ok.checked; W.err = ''; });
+}
+function cwSubmit() {
+  const W = P.f.cw, T = clmType(W.type), p = cwPol(W), c = cwCus(W), d = W.d, now = new Date();
+  const asked = Object.values(W.docs).filter(x => x && x.st === 'ask').length, amt = Number(String(d.estimate || d.amount || d.loss || '').replace(/\D/g, '')) || 0;
+  const it = { id: 'NX-CL-' + code(6), kind: 'claim', type: T.t, ctype: T.k, customer: c.name, policy: p.no, ptype: p.type, action: T.next, with: T.with, raised: now, due: new Date(+now + T.sla * 36e5), status: 'Open', stage: 1, stages: T.stages, amount: amt, asked, mine: true, log: [[now, 'System', `With ${T.with === 'Hospital' ? 'the hospital' : T.with}`]].concat(asked ? [[now, 'System', `Link sent to the customer for ${asked} document${asked > 1 ? 's' : ''}`]] : []) };
+  book().svx.unshift(it);
+  simSms(`To ${c.name}`, `Your NxSure claim ${it.id} is registered on policy ${p.no}. ${T.with === 'Surveyor' ? 'A surveyor will call you within a day.' : T.with === 'Hospital' ? 'Show your e-card at the hospital\'s insurance desk.' : 'We\'ll keep you posted here.'}${asked ? ` Upload the rest of the documents here: nxsure.in/c/${code(6)}.` : ''} ${P.user.who}`);
+  W.step = 'done'; W.out = it.id; render(); window.scrollTo({ top: 0 });
+}
+HX.cwgo = id => { const W = P.f.cw; if (!W) return; W.err = ''; W.step = Number(id); render(); };
+HX.cwlist = () => { const done = P.f.cw && P.f.cw.out; P.f.cw = null; P.f.svk = done ? 'claim' : P.f.svk || 'claim'; if (done) Object.assign(P.f, { ssla: 'all', swith: 'all', sst: 'open', sq: '' }); render(); window.scrollTo({ top: 0 }); };
+HX.cwcust = id => { const W = P.f.cw; W.cust = id; W.pol = null; W.type = null; W.d = {}; W.docs = {}; const ps = book().policies.filter(p => p.cid === id && p.status === 'active'); if (ps.length === 1) W.pol = ps[0].no; W.step = 2; render(); };
+HX.cwpick = id => { const W = P.f.cw; if (W.pol !== id) { W.type = null; W.d = {}; W.docs = {}; } W.pol = id; render(); };
+HX.cwtype = id => { const W = P.f.cw; if (W.type !== id) { W.d = {}; W.docs = {}; } W.type = id; W.err = ''; render(); };
+HX.cwask = id => { P.f.cw.docs[id] = { st: 'ask' }; render(); };
+HX.cwdocx = id => { P.f.cw.docs[id] = null; render(); };
+HX.cwnext = () => {
+  const W = P.f.cw, s = W.step;
+  if (s === 3) { const m = cwCheck(W, clmType(W.type)); if (m) { W.err = m; render(); return; } }
+  if (s === 5) { if (!W.ok) { W.err = `Tick the box once ${first(cwCus(W).name)} has confirmed the details.`; render(); return; } cwSubmit(); return; }
+  W.err = ''; W.step = s + 1; render(); window.scrollTo({ top: 0 });
+};
+HX.cwpol = id => { const p = book().policies.find(x => x.no === id); closeLayers(); if (p) cwStart({ cust: p.cid, pol: p.no, step: 3 }); };
+
+/* ---------------- the hub's actions ---------------- */
+const svFind = id => svcList().find(x => x.id === id);
+HX.svmenu = (id, t) => { const m = t.closest('.p-mw').querySelector('.p-menu'); const open = m.hidden; $$('.p-menu').forEach(x => { x.hidden = true; }); m.hidden = !open; if (open) setTimeout(() => document.addEventListener('click', function off(e) { if (!e.target.closest('.p-mw')) { m.hidden = true; document.removeEventListener('click', off); } }), 0); };
+HX.svnew = (id, t, k) => {
+  $$('.p-menu').forEach(x => { x.hidden = true; });
+  if (k === 'claim') return cwStart();
+  if (k === 'change') return formAct('newreq', t);
+  const B = book(), pols = B.policies.filter(p => p.status === 'active'), opts = pols.map(p => `<option value="${esc(p.no)}">${esc(p.customer)} · ${esc(ptLabel(p.type))} · ${esc(p.no)}</option>`).join('');
+  if (k === 'copy') {
+    const d = pmodal('Send a policy copy', `${fld('Policy', `<select name="pol">${opts}</select>`)}<div class="p-f"><span>Send by</span>${pfSeg('via', [['WhatsApp', 'WhatsApp'], ['Email', 'Email']], 'WhatsApp')}</div><p class="p-muted small">It goes only to the mobile or email on the policy.</p>`, pbtn('Cancel', 'data-close', 'ghost') + pbtn('Send', 'data-go2', 'pri', 'send'));
+    d.querySelector('[data-go2]').addEventListener('click', () => { const p = pols.find(x => x.no === d.querySelector('[name=pol]').value), via = d.querySelector('[name=via]:checked').value, now = new Date(); B.svx.unshift({ id: 'NX-PC-' + digits(4), kind: 'copy', type: 'Policy copy', customer: p.customer, policy: p.no, ptype: p.type, action: 'Done', with: '', raised: now, due: now, status: 'Done', done: now, verify: `Sent to the registered ${via === 'Email' ? 'email' : 'mobile on WhatsApp'}` }); closeLayers(); toast(`Policy copy sent to ${p.customer} on ${via}`); reH(); });
+    return;
+  }
+  if (k === 'cancel') {
+    const d = pmodal('Cancel a policy', `${fld('Policy', `<select name="pol">${opts}</select>`)}${fld('Why', `<select name="why">${['Vehicle sold', 'Bought elsewhere', 'Premium too high', 'Duplicate policy', 'No longer needed'].map(x => `<option>${x}</option>`).join('')}</select>`)}<p class="p-muted small">You'll get a call to make first, to see if they'd like to keep it. The refund is worked out on the days left.</p>`, pbtn('Cancel', 'data-close', 'ghost') + pbtn('Raise it', 'data-go2', 'pri'));
+    d.querySelector('[data-go2]').addEventListener('click', () => { const p = pols.find(x => x.no === d.querySelector('[name=pol]').value), why = d.querySelector('[name=why]').value, now = new Date(); B.svx.unshift({ id: 'NX-CN-' + digits(4), kind: 'cancel', type: `Cancel: ${lc1(why)}`, customer: p.customer, policy: p.no, ptype: p.type, action: 'Call the customer before it\'s cancelled', with: 'You', raised: now, due: new Date(+now + 24 * 36e5), status: 'Open' }); closeLayers(); toast('Cancellation raised. Call the customer first.'); reH(); });
+  }
+};
+HX.svopen = id => svDrawer(svFind(id));
+HX.svrem = id => { const it = svFind(id); if (!it) return; simSms(`To ${it.customer}`, `Hi ${first(it.customer)}, a reminder about ${it.id} on policy ${it.policy}: ${lc1(it.action)}. Do it here: nxsure.in/s/${code(6)}. ${P.user.who}`); (it.log = it.log || []).push([new Date(), 'You', 'Reminded the customer']); closeLayers(); toast(`Reminder sent to ${first(it.customer)}`); };
+HX.svnudge = id => { const it = svFind(id); if (!it) return; (it.log = it.log || []).push([new Date(), 'You', `Nudged ${it.with}`]); closeLayers(); toast(`${it.with} nudged about ${it.id}`); };
+HX.svnudgeall = () => { const late = svcList().filter(x => x.status !== 'Done' && svSla(x).k === 'late' && x.with !== 'You'); late.forEach(x => (x.log = x.log || []).push([new Date(), 'You', `Nudged ${x.with}`])); toast(`${late.length} owners nudged. Requests waiting on you are still yours to do.`); };
+HX.svlate = () => { Object.assign(P.f, { ssla: 'late', sst: 'open', svk: 'all', swith: 'all' }); render(); };
+const svClose = (id, note) => { const B = book(), it = svFind(id); if (!it) return; const now = new Date(); if (B.svx.includes(it)) Object.assign(it, { status: 'Done', done: now, with: '', action: 'Done', verify: note }); else { const r = B.requests.find(x => x.id === id); if (r) r.status = 'Done'; } closeLayers(); toast(`${id} marked done`); reH(); };
+HX.svdone = id => svClose(id, 'Done by you');
+HX.svkeep = id => svClose(id, 'The customer decided to keep the policy');
+
+/* ================= NxSure Partners: campaigns and learning =================
+   Campaigns: each one a card with its list, how far it has got and what it has brought in; open one to work the list.
+   Learning: what to do next, what you're certified to sell, and one question a day. */
+
+/* ---------------- campaigns ---------------- */
+const CMP_AVG = { motor: 12000, health: 22000, home: 5000, biz: 9000 };
+const CMP_MSG = {
+  motor: 'Hi {name}, your car policy renews soon. I can add roadside assistance and engine protect before the rains. Your price is ready: {link}',
+  health: 'Hi {name}, your parents can be covered too, with cashless treatment at network hospitals near you. Shall I send a quote? {link}',
+  home: 'Hi {name}, your home and what\'s in it can be covered in one policy. A short video tour of the home takes 5% off. {link}',
+  biz: 'Hi {name}, your shop\'s stock, fittings and cash can be covered in one policy, worked out from your GST and QR sales. {link}',
+};
+function cmpSeed() {
+  const d = P.d; if (!d || !d.campaigns) return;
+  d.campaigns.forEach(c => {
+    if (c.size) return;
+    const h = hash(c.id + c.name), mine = ['agent', 'dealer'].includes(P.role);
+    c.fam = famOfText(c.name + ' ' + c.desc);
+    c.channel = mine ? c.who : 'WhatsApp and calls';
+    c.size = c.reach + Math.max(4, Math.round(c.reach * (0.22 + (h % 25) / 100)));
+    c.quoted = Math.min(c.reach, c.won + Math.ceil(c.won * 0.7) + (h % 3));
+    c.interested = Math.min(c.reach, c.quoted + Math.ceil(c.won * 0.9) + (h % 4));
+    c.premium = c.won * CMP_AVG[c.fam];
+    c.start = addDays(c.ends, -30);
+    c.msg = CMP_MSG[c.fam];
+  });
+}
+// who is on an agent's list, and where each one has got to
+function cmpPeople(c) {
+  if (c.people) return c.people;
+  const B = book(), r = seeded(hash(c.id)), notInt = Math.round((c.reach - c.interested) * 0.35);
+  const st = [].concat(Array(c.won).fill('Converted'), Array(c.quoted - c.won).fill('Quoted'), Array(c.interested - c.quoted).fill('Interested'), Array(notInt).fill('Not interested'), Array(c.reach - c.interested - notInt).fill('Reached'), Array(c.size - c.reach).fill('Not reached'));
+  c.people = st.map((s, i) => { const cu = B.customers[(i * 5 + (hash(c.id) % 7)) % B.customers.length], nm = i < B.customers.length ? cu.name : person(r); return { id: c.id + '-' + i, name: nm, mobile: i < B.customers.length ? cu.mobile : mob(r), st: s, at: s === 'Not reached' ? null : addDays(TODAY, -between(0, 12, r)), prem: s === 'Converted' ? Math.round(CMP_AVG[c.fam] * (0.6 + r() * 0.8) / 10) * 10 : 0 }; });
+  return c.people;
+}
+// for an RM: the campaign by agent, dealer or branch
+function cmpTeams(c) {
+  const T = P.role === 'arm' ? P.d.agents.filter(a => a.mtd > 0).map(a => a.name) : P.role === 'drm' ? P.d.dealers.map(x => x.name) : P.role === 'brm' ? P.d.branches.map(b => b.name.replace('Meridian Bank, ', '')) : ['Agency', 'Dealers', 'Banca'];
+  const r = seeded(hash(c.id + 'teams')), w = T.map(() => 0.4 + r()), tw = w.reduce((s, x) => s + x, 0);
+  let lr = c.reach, lw = c.won;
+  return T.map((n, i) => { const last = i === T.length - 1, rc = last ? lr : Math.round(c.reach * w[i] / tw), wn = last ? lw : Math.min(rc, Math.round(c.won * w[i] / tw)); lr -= rc; lw -= wn; return { n, reach: Math.max(0, rc), won: Math.max(0, wn) }; }).sort((a, b) => b.won - a.won || b.reach - a.reach);
+}
+const CMP_ST = { 'Not reached': 'mute', Reached: 'info', Interested: 'brand', Quoted: 'warn', Converted: 'ok', 'Not interested': 'mute' };
+function cmpCard(c) {
+  const days = daysTo2(c.ends);
+  return `<article class="cg">
+    <header><span class="cg-ic ${c.fam}">${pi(PF_PICO[c.fam === 'biz' ? 'shop' : c.fam === 'motor' ? 'motor' : c.fam])}</span><div><b>${esc(c.name)}</b><small>${esc(c.desc)}</small></div>${spill(c.status)}</header>
+    <div class="cg-m"><span>${pi(/Call/.test(c.channel) ? 'phone' : 'wa')}${esc(c.channel)}</span><span>${pi('cal')}${c.status === 'Scheduled' ? `Starts ${fdS(c.start)}` : `Ends ${fdS(c.ends)}, ${days === 0 ? 'today' : `in ${days} days`}`}</span></div>
+    <div class="cg-p"><span>Reached <b>${c.reach.toLocaleString('en-IN')}</b> of ${c.size.toLocaleString('en-IN')}</span>${prog(c.reach, c.size, 'brand')}</div>
+    <dl class="cg-s"><div><dt>Converted</dt><dd>${c.won} <small>${Math.round(c.won / Math.max(1, c.reach) * 100)}%</small></dd></div><div><dt>Quoted</dt><dd>${c.quoted}</dd></div><div><dt>Premium</dt><dd>${inrK(c.premium)}</dd></div></dl>
+    <footer>${pbtn(['agent', 'dealer'].includes(P.role) ? 'Work the list' : 'See the results', `data-hx="cmpopen" data-id="${c.id}"`, 'pri sm', 'chevR')}${pbtn('The message', `data-hx="cmpmsg" data-id="${c.id}"`, 'ghost sm', 'wa')}</footer></article>`;
+}
+V.campaigns = () => {
+  cmpSeed();
+  const all = P.d.campaigns, mine = ['agent', 'dealer'].includes(P.role);
+  if (P.f.cmp) { const c = all.find(x => x.id === P.f.cmp); if (c) return cmpDetail(c, mine); }
+  const tab = P.f.ctab || 'all', fam = P.f.cfam || 'all', q = (P.f.cq || '').trim().toLowerCase();
+  const list = all.filter(c => (tab === 'all' || c.status === tab) && (fam === 'all' || c.fam === fam) && (!q || [c.name, c.desc, c.channel].join(' ').toLowerCase().includes(q)));
+  const live = all.filter(c => c.status === 'Live'), S = k => sumOf(live, c => c[k]);
+  return { title: 'Campaigns', html: `${phead('Campaigns', mine ? 'Lists to work and messages to send, with what each one has brought in' : 'Campaigns for your team, and how each one is converting', mine ? '' : pbtn('New campaign', 'data-act="newcamp"', 'pri', 'plus'))}
+    <div class="kpis">${kpi({ ic: 'users', label: mine ? 'Customers on your lists' : 'Customers in live campaigns', value: S('size').toLocaleString('en-IN'), sub: `${live.length} live campaign${live.length === 1 ? '' : 's'}` })}${kpi({ ic: 'send', tint: 'info', label: 'Reached', value: S('reach').toLocaleString('en-IN'), sub: `${Math.round(S('reach') / Math.max(1, S('size')) * 100)}% of the lists` })}${kpi({ ic: 'check', tint: 'ok', label: 'Converted', value: S('won').toLocaleString('en-IN'), sub: `${Math.round(S('won') / Math.max(1, S('reach')) * 100)}% of those reached` })}${kpi({ ic: 'rupee', tint: 'warn', label: 'Premium from campaigns', value: inrK(S('premium')), sub: 'From the live campaigns' })}</div>
+    <div class="cg-top">${pcard('From the list to the policy', pfunnel([['On the lists', S('size')], ['Reached', S('reach')], ['Interested', S('interested')], ['Quoted', S('quoted')], ['Converted', S('won')]]), '<span class="pc-note">Live campaigns</span>')}</div>
+    ${ptool(pfq('cq', 'Search campaigns'), pseg('ctab', [['all', 'All', all.length], ['Live', 'Live', all.filter(c => c.status === 'Live').length], ['Scheduled', 'Scheduled', all.filter(c => c.status === 'Scheduled').length]], tab), psel('cfam', FAMS, fam, 'Product'))}
+    ${list.length ? `<div class="cg-grid">${list.map(cmpCard).join('')}</div>` : `<section class="pc"><div class="p-empty">${pi('search')}<b>No campaigns match</b><small>Clear the search or pick another tab.</small></div></section>`}` };
+};
+function cmpDetail(c, mine) {
+  const top = `<button type="button" class="cw-back" data-hx="cmpback">${pi('chevL')}All campaigns</button>${phead(esc(c.name), `${esc(c.desc)} · ${c.status === 'Scheduled' ? `starts ${fdS(c.start)}` : `${fdS(c.start)} to ${fdS(c.ends)}`}`, (mine ? pbtn('Message everyone not reached', `data-hx="cmpall" data-id="${c.id}"`, 'pri', 'wa') : '') + pbtn('The message', `data-hx="cmpmsg" data-id="${c.id}"`, 'ghost', 'doc'))}`;
+  const fun = pcard('How it\'s going', pfunnel([['On the list', c.size], ['Reached', c.reach], ['Interested', c.interested], ['Quoted', c.quoted], ['Converted', c.won]]), `<span class="pc-note">${inrK(c.premium)} premium so far</span>`);
+  if (!mine) {
+    const T = cmpTeams(c), who = P.role === 'arm' ? 'Agent' : P.role === 'drm' ? 'Dealer' : P.role === 'brm' ? 'Branch' : 'Channel';
+    return { title: c.name, html: `${top}<div class="grid2">${fun}${pcard('The message', cmpMsgHtml(c))}</div>${pcard(`By ${who.toLowerCase()}`, ptable([{ t: who, r: x => `<b>${esc(x.n)}</b>` }, { t: 'Reached', cls: 'r', r: x => x.reach }, { t: 'Converted', cls: 'r', r: x => `<b>${x.won}</b>` }, { t: 'Conversion', r: x => `<span class="cg-cv">${prog(x.won, Math.max(1, x.reach), 'brand')}<small>${Math.round(x.won / Math.max(1, x.reach) * 100)}%</small></span>` }], T), '', '')}` };
+  }
+  const ppl = cmpPeople(c), st = P.f.cpst || 'todo', q = (P.f.cpq || '').trim().toLowerCase(), sts = ['Not reached', 'Reached', 'Interested', 'Quoted', 'Converted', 'Not interested'];
+  const ORD = ['Quoted', 'Interested', 'Reached', 'Not reached', 'Converted', 'Not interested'], todo = p => ORD.indexOf(p.st) < 4;
+  const all = ppl.filter(p => (st === 'all' || (st === 'todo' ? todo(p) : p.st === st)) && (!q || [p.name, p.mobile].join(' ').toLowerCase().includes(q))).sort((a, b) => ORD.indexOf(a.st) - ORD.indexOf(b.st));
+  const shown = P.f.cpn || 20, list = all.slice(0, shown);
+  return { title: c.name, html: `${top}<div class="grid2">${fun}${pcard('The message', cmpMsgHtml(c))}</div>
+    ${ptool(pfq('cpq', 'Search the list'), pseg('cpst', [['todo', 'To work', ppl.filter(todo).length], ...sts.map(s => [s, s, ppl.filter(p => p.st === s).length]), ['all', 'All', ppl.length]], st))}
+    ${pcard('', ptable([{ t: 'Customer', r: p => `<span class="who">${av(p.name, 'sm')}<span><b>${esc(p.name)}</b><small>${esc(maskMobile(p.mobile))}</small></span></span>` }, { t: 'Where they are', r: p => ppill(p.st, CMP_ST[p.st]) }, { t: 'Last contact', r: p => p.at ? fdS(p.at) : '<span class="p-muted">Not yet</span>' }, { t: 'Premium', cls: 'r', r: p => p.prem ? `<b>${inr(p.prem)}</b>` : '' }, { t: '', cls: 'r', r: p => p.st === 'Converted' || p.st === 'Not interested' ? '' : `<span class="cg-a"><button type="button" class="p-ib sm" data-hx="cmpwa" data-id="${p.id}" title="Send the message on WhatsApp" aria-label="Send ${esc(first(p.name))} the message on WhatsApp">${pi('wa')}</button><button type="button" class="p-ib sm" data-hx="cmpcall" data-id="${p.id}" title="Call" aria-label="Call ${esc(first(p.name))}">${pi('phone')}</button>${['Interested', 'Quoted'].includes(p.st) ? pbtn('Quote', `data-start="${c.fam === 'biz' ? 'shop' : c.fam}"`, 'ghost sm', 'plus') : ''}</span>` }], list, { empty: 'Nobody here', emptySub: 'Pick another status.' }) + (all.length > list.length ? `<div class="pt-foot"><span>Showing ${list.length} of ${all.length}</span><button type="button" class="pb ghost sm" data-hx="cmpmore">Show ${Math.min(20, all.length - list.length)} more</button></div>` : ''), '', 'flush')}` };
+}
+const cmpMsgHtml = c => `<div class="cg-msg"><small>WhatsApp, from ${esc(P.user.who)}</small><p>${esc(c.msg.replace('{name}', 'Priya').replace('{link}', 'nxsure.in/q/…'))}</p></div><p class="p-muted small">Each customer's name and own link go in when it's sent. Replies come back to Leads.</p>`;
+const cmpOf = id => P.d.campaigns.find(c => id && (c.id === id || id.startsWith(c.id + '-')));
+HX.cmpopen = id => { P.f.cmp = id; P.f.cpst = 'todo'; P.f.cpq = ''; P.f.cpn = 20; render(); window.scrollTo({ top: 0 }); };
+HX.cmpmore = () => { P.f.cpn = (P.f.cpn || 20) + 20; render(); };
+HX.cmpback = () => { P.f.cmp = null; render(); window.scrollTo({ top: 0 }); };
+HX.cmpmsg = id => { const c = cmpOf(id); pmodal(c.name, cmpMsgHtml(c), pbtn('Close', 'data-close', 'ghost')); };
+HX.cmpwa = id => { const c = cmpOf(id), p = cmpPeople(c).find(x => x.id === id); if (!p) return; simSms(`To ${p.name}`, c.msg.replace('{name}', first(p.name)).replace('{link}', 'nxsure.in/q/' + code(6))); if (p.st === 'Not reached') { p.st = 'Reached'; c.reach++; } p.at = TODAY; reH(); };
+HX.cmpcall = id => { const c = cmpOf(id), p = cmpPeople(c).find(x => x.id === id); if (p) toast(`Calling ${p.name}. Mark how it went from the list.`); };
+HX.cmpall = id => { const c = cmpOf(id), left = cmpPeople(c).filter(p => p.st === 'Not reached'); left.forEach(p => { p.st = 'Reached'; p.at = TODAY; }); c.reach += left.length; toast(left.length ? `Message sent to ${left.length} customers on WhatsApp` : 'Everyone on the list has been reached'); reH(); };
+
+/* ---------------- learning ---------------- */
+const QOTD = [
+  { topic: 'Health waiting periods', q: 'A customer bought health cover 4 months ago and now needs a planned cataract surgery. What do you tell them?', o: ['It\'s covered, because the 30-day waiting period is over', 'Cataract has its own waiting period in the policy. Check it before they plan the surgery', 'Cataract is never covered', 'It\'s covered if they pay an extra premium now'], a: 1, why: 'The 30-day wait is for illnesses in general. Some named conditions, like cataract, have their own longer waiting period, written in the policy wording.' },
+  { topic: 'No-claim bonus', q: 'A customer\'s car policy ended 100 days ago and was never renewed. What happens to their no-claim bonus?', o: ['It carries over as it was', 'It drops by one step', 'It\'s lost, because the policy wasn\'t renewed within 90 days', 'It\'s kept if they show the old policy'], a: 2, why: 'The no-claim bonus carries over only when the policy is renewed within 90 days of the end date. After that it goes back to zero.' },
+  { topic: 'Zero depreciation', q: 'What does the zero depreciation add-on change in an own-damage claim?', o: ['Nothing is taken off for depreciation on replaced parts', 'There\'s no deductible at all', 'Third-party claims are paid faster', 'The insured declared value goes up'], a: 0, why: 'Without it, depreciation on parts like plastic, rubber and metal comes off the claim. With it, those parts are paid in full. The compulsory deductible still applies.' },
+  { topic: 'Home video tour', q: 'A home video tour was recorded about 2 km from the address on the proposal. What happens?', o: ['The 5% discount still applies', 'No video discount, and the mismatch is shown in the assessment', 'The proposal is declined', 'The customer has to visit a branch'], a: 1, why: 'The discount is only for a video recorded at the address. A video from somewhere else gets no discount, and the underwriter sees the mismatch.' },
+  { topic: 'KYC for companies', q: 'A private limited company is buying a fire policy. Whose KYC is needed?', o: ['Only the director who signs', 'Only the company\'s PAN', 'The company, the people who own or control it, and the person signing, with their authority to sign', 'Nobody, if the GSTIN is valid'], a: 2, why: 'The company is verified first and its beneficial owners are identified. Then the person signing does their own KYC and shows they are allowed to sign for it.' },
+  { topic: 'Free look', q: 'A customer bought a health policy 10 days ago and wants to cancel it. What can you tell them?', o: ['No refund once the policy is issued', 'They can cancel in the free-look period and get the premium back, less the days covered and any medical test costs', 'Only half the premium comes back', 'They have to wait for the renewal date'], a: 1, why: 'Health policies have a free-look period from the day the policy document reaches the customer. If they cancel in it, the premium comes back, less a charge for the days covered and the cost of any medical tests.' },
+];
+const qToday = () => QOTD[Math.floor(TODAY / 864e5) % QOTD.length];
+const QD = () => (P.qd = P.qd || { streak: 6, points: 340, done: null });
+const LMOD = t => LEARN.find(l => l[0] === t);
+// what each product needs before an agent can sell it
+const CERTS = () => [['Motor', 'Motor add-ons explained', 86, 'Certified'], ['Health', 'Selling health insurance the right way', 78, 'Certified'], ['Home and shop', 'Home and shop insurance, and the video tour', null], ['Business covers', 'KYC for companies, firms and trusts', null]].map(([p, m, sc, st]) => { const l = LMOD(m) || [m, '', 15, 0]; return { p, m, sc, ok: !!st, pct: st ? 100 : l[3], min: l[2] }; });
+const SESS = () => [['Home cover and the video tour, a live demo', addDays(TODAY, 1), '4:00 pm', 'Online, 30 min'], ['Claims on day one: what to tell customers', addDays(TODAY, 3), '11:00 am', 'Online, 45 min'], ['KYC for companies, firms and trusts', addDays(TODAY, 6), '5:00 pm', 'Online, 30 min']];
+V.learning = () => {
+  const Q = QD(), C = CERTS(), ok = C.filter(c => c.ok), avg = Math.round(sumOf(ok, c => c.sc) / Math.max(1, ok.length)), man = LMOD('KYC and the AML basics'), due = addDays(TODAY, 7), booked = P.f.booked || {};
+  const doing = LEARN.filter(l => l[3] > 0 && l[3] < 100), doneN = LEARN.filter(l => l[3] === 100).length;
+  const todo = [
+    !Q.done && ['spark', 'Today\'s question', `Takes 20 seconds. Keeps your ${Q.streak}-day streak going.`, ppill('Today', 'brand'), pbtn('Answer', 'data-hx="qotd"', 'pri sm')],
+    man && man[3] < 100 && ['shield', man[0], `Required to keep selling. ${man[2]} min, due ${fd(due)}.`, ppill('Required', 'bad'), pbtn(man[3] ? 'Continue' : 'Start', `data-hx="learn" data-id="${esc(man[0])}"`, 'ghost sm')],
+    ...C.filter(c => !c.ok).map(c => ['grad', c.m, `Needed to sell ${c.p.toLowerCase().replace(/ covers$/, '')} covers. ${c.min} min.`, ppill('New', 'info'), pbtn(c.pct ? 'Continue' : 'Start', `data-hx="learn" data-id="${esc(c.m)}"`, 'ghost sm')]),
+    ['cal', SESS()[0][0], `${fd(SESS()[0][1])}, ${SESS()[0][2]}. ${SESS()[0][3]}.`, ppill('Live', 'warn'), booked[0] ? ppill('Booked', 'ok') : pbtn('Book a seat', 'data-hx="book" data-id="0"', 'ghost sm')],
+  ].filter(Boolean);
+  const qCard = Q.done ? `<div class="qc done"><span class="qc-ic ${Q.done.ok ? 'ok' : 'no'}">${pi(Q.done.ok ? 'check' : 'x')}</span><div><b>${Q.done.ok ? 'Right. +20 points' : 'Not quite, today'}</b><small>${esc(qToday().topic)}. Back tomorrow for the next one.</small></div>${pbtn('See it again', 'data-hx="qotd"', 'ghost sm')}</div>`
+    : `<div class="qc"><span class="qc-ic">${pi('spark')}</span><div><b>${esc(qToday().topic)}</b><small>One question, 20 seconds, +20 points.</small></div>${pbtn('Answer', 'data-hx="qotd"', 'pri sm')}</div>`;
+  return { title: 'Learning', html: `${phead('Learning and certification', 'What to do next, what you\'re certified to sell, and a question a day', pbtn('Today\'s question', 'data-hx="qotd"', Q.done ? 'ghost' : 'pri', 'spark'))}
+    ${man && man[3] < 100 ? palert('warn', 'shield', `${esc(man[0])} is due by ${fd(due)}`, `It's required to keep selling. ${man[2]} minutes, with a short check at the end.`, pbtn(man[3] ? 'Continue' : 'Start now', `data-hx="learn" data-id="${esc(man[0])}"`, 'pri sm')) : ''}
+    <div class="kpis">${kpi({ ic: 'shield', tint: 'ok', label: 'Licence', value: 'Valid', sub: 'Till 14 Mar 2028' })}${kpi({ ic: 'check', tint: 'info', label: 'Certified to sell', value: `${ok.length} of ${C.length}`, sub: C.filter(c => !c.ok).map(c => c.p).join(', ') + ' to go' })}${kpi({ ic: 'grad', label: 'Average test score', value: `${avg}%`, sub: 'The pass mark is 70%' })}${kpi({ ic: 'star', tint: 'warn', label: 'Question streak', value: `${Q.streak} days`, sub: `${Q.points} points so far` })}</div>
+    <div class="lr-grid"><div class="lr-col">
+      ${pcard('Do next', `<ul class="lr-todo">${todo.map(([ic, t, s, tag, b]) => `<li><span class="ann-ic">${pi(ic)}</span><span><b>${esc(t)} ${tag}</b><small>${esc(s)}</small></span>${b}</li>`).join('')}</ul>`, '<span class="pc-note">The most urgent first</span>')}
+      ${pcard('Carry on', doing.length ? `<ul class="lr-cont">${doing.map(l => `<li>${pring(l[3])}<span><b>${esc(l[0])}</b><small>${esc(l[1])}</small></span>${pbtn('Continue', `data-hx="learn" data-id="${esc(l[0])}"`, 'ghost sm', 'chevR')}</li>`).join('')}</ul>` : '<p class="p-muted">Nothing half done.</p>', `<span class="pc-note">${doneN} of ${LEARN.length} modules done</span>`)}
+    </div><div class="lr-col">
+      ${pcard('Question of the day', qCard)}
+      ${pcard('Certified to sell', `<ul class="lr-cert">${C.map(c => `<li><span class="lr-ck ${c.ok ? 'ok' : ''}">${pi(c.ok ? 'check' : 'clock')}</span><span><b>${esc(c.p)}</b><small>${c.ok ? `Test score ${c.sc}%` : `${esc(c.m)}, ${c.min} min`}</small></span>${c.ok ? ppill('Certified', 'ok') : c.pct ? `<span class="lr-pc">${prog(c.pct, 100, 'brand')}<small>${c.pct}%</small></span>` : ppill('Not started', 'mute')}</li>`).join('')}</ul>`)}
+      ${pcard('Coming up', `<ul class="lr-sess">${SESS().map(([t, d, tm, w], i) => `<li><span class="lr-d"><b>${d.getDate()}</b><small>${d.toLocaleDateString('en-IN', { month: 'short' })}</small></span><span><b>${esc(t)}</b><small>${tm} · ${esc(w)}</small></span>${booked[i] ? ppill('Booked', 'ok') : pbtn('Book', `data-hx="book" data-id="${i}"`, 'ghost sm')}</li>`).join('')}</ul>`)}
+    </div></div>` };
+};
+function qotdOpen() {
+  const Q = qToday(), S2 = QD();
+  closeLayers();
+  const d = el(`<div class="p-layer center" data-layer><div class="qd" role="dialog" aria-modal="true" aria-label="Question of the day">
+    <div class="qd-h"><div><small>${esc(greet2())}, ${esc(first(P.user.who))}</small><h2>Question of the day</h2></div><span class="qd-pts">+20 points</span><button type="button" class="p-x" data-close aria-label="Close">${pi('x')}</button></div>
+    <div class="qd-b"><div class="qd-tags">${ppill(Q.topic, 'brand')}<span>${pi('star')}${S2.streak}-day streak</span></div><p class="qd-q">${esc(Q.q)}</p>
+      <div class="qd-o">${Q.o.map((t, i) => `<button type="button" data-qa="${i}"><i>${'ABCD'[i]}</i><span>${esc(t)}</span></button>`).join('')}</div>
+      <div class="qd-why" hidden></div></div>
+    <div class="qd-f"><button type="button" class="pb ghost sm" data-close>${S2.done ? 'Close' : 'Skip for today'}</button><small>One question a day. It takes 20 seconds.</small></div></div></div>`);
+  document.body.appendChild(d); requestAnimationFrame(() => d.classList.add('in'));
+  const show = (k, fresh) => {
+    const okk = k === Q.a;
+    $$('[data-qa]', d).forEach(b => { b.disabled = true; const i = Number(b.dataset.qa); b.classList.toggle('ok', i === Q.a); b.classList.toggle('no', i === k && !okk); });
+    const w = d.querySelector('.qd-why'); w.hidden = false;
+    w.innerHTML = `<b>${okk ? (fresh ? 'Right. +20 points' : 'You got this one right') : 'Not quite'}</b><p>${esc(Q.why)}</p>`;
+    d.querySelector('.qd-f .pb').textContent = 'Done for today';
+  };
+  if (S2.done) show(S2.done.k, false);
+  d.addEventListener('click', e => {
+    if (e.target === d || e.target.closest('[data-close]')) { closeLayers(); if (P.view === 'learning') render(); return; }
+    const b = e.target.closest('[data-qa]'); if (!b || S2.done) return;
+    const k = Number(b.dataset.qa), okk = k === Q.a;
+    S2.done = { k, ok: okk }; if (okk) { S2.streak += 1; S2.points += 20; } else S2.streak = 0;
+    show(k, true);
+  });
+  setTimeout(() => { const b = d.querySelector('[data-qa]'); if (b && !S2.done && matchMedia('(pointer:fine)').matches) b.focus(); }, 60);
+}
+HX.qotd = () => qotdOpen();
+HX.book = id => { P.f.booked = Object.assign({}, P.f.booked, { [id]: true }); const s = SESS()[Number(id)]; toast(`Booked: ${s[0]}, ${fd(s[1])} at ${s[2]}. The link comes on WhatsApp.`); reH(); };
+HX.learn = id => {
+  const l = LMOD(id); if (!l) return;
+  const parts = [['What it covers', 4], ['How to sell it, and what not to say', 5], ['What customers ask', 3], ['A 5-question check', 3]], doneP = Math.floor(l[3] / 25);
+  const d = pmodal(l[0], `<p class="p-muted">${esc(l[1])}. About ${l[2]} minutes in all, and your place is saved as you go.</p><ol class="lr-parts">${parts.map(([t, m], i) => `<li class="${i < doneP ? 'done' : i === doneP ? 'now' : ''}"><span class="d">${i < doneP ? pi('check') : i + 1}</span><span><b>${esc(t)}</b><small>${m} min</small></span></li>`).join('')}</ol>`, pbtn('Close', 'data-close', 'ghost') + (l[3] < 100 ? pbtn(doneP ? `Continue with part ${doneP + 1}` : 'Start part 1', 'data-go2', 'pri', 'chevR') : ''));
+  const g = d.querySelector('[data-go2]'); if (g) g.addEventListener('click', () => { l[3] = Math.min(100, l[3] + 25); closeLayers(); toast(l[3] === 100 ? `${l[0]}: done` : `Part ${Math.floor(l[3] / 25)} done. Your place is saved.`); reH(); });
+};
 
 /* ================= NxSure Partners: selling a policy, inside the portal =================
    The same rules, prices, KYC, underwriting, recording and photo checks as the customer journey, laid out as a
@@ -15167,7 +16113,7 @@ V.flow = () => {
   const who = prop && S.biz.who === 'biz' && S.biz.src ? (S.biz.src.gst.trade || S.biz.src.gst.legal) : S.kyc ? S.kyc.name : S.sent ? S.sent.name : 'New customer';
   const head = `<div class="pf-head"><div><span class="pf-kick">New ${PF_PKICK[S.product] || 'policy'}${ref ? ` · <span class="mono">${esc(ref)}</span>` : ''}</span><h1>${esc(who)}</h1>
     <p>${S.mode === 'assisted' ? 'With the customer' : S.mode === 'remote' ? 'Customer not present: they finish on a link' : 'Setting up'}${REC.cur && REC.cur.s === S ? ` · <span class="pf-rec"><i></i><span data-rect>Recording ${mmss((performance.now() - REC.cur.t0) / 1000)}</span></span>` : S.verifyCall ? ' · <span class="txt-bad">Not recorded: a verification call is due</span>' : ''}</p></div>
-    <div class="ph-a">${S.paid || id === 'sent' ? pbtn('Proposals', 'data-nav="proposals"', 'ghost', 'doc') : pbtn('Save and exit', 'data-pf="exit"', 'ghost', 'logout')}</div></div>`;
+    <div class="ph-a">${S.paid || id === 'sent' ? pbtn('Leads', 'data-nav="leads"', 'ghost', 'target') : pbtn('Save and exit', 'data-pf="exit"', 'ghost', 'logout')}</div></div>`;
   const rail = id === 'done' || id === 'sent' ? '' : `<ol class="pf-steps">${steps.map(([s, t], j) => `<li class="${j < i ? 'done' : j === i ? 'now' : ''}">${j < i ? `<button type="button" data-pfgo="${s}">${pi('check')}<span>${esc(t)}</span></button>` : `<span><b>${j + 1}</b><span>${esc(t)}</span></span>`}</li>`).join('')}</ol>`;
   const v = PFV[id] ? PFV[id]() : prop && STEP[id] ? pfEngView(id) : { html: '' };
   return {
@@ -15185,7 +16131,7 @@ V.flow = () => {
         const g = e.target.closest('[data-pfgo]'); if (g) { FL.go(g.dataset.pfgo); return; }
         const b = e.target.closest('[data-pf]'); if (!b) return;
         if (b.dataset.pf === 'back') FL.back();
-        if (b.dataset.pf === 'exit') { FL.leave(); location.hash = 'proposals'; }
+        if (b.dataset.pf === 'exit') { FL.leave(); location.hash = 'leads'; }
         if (b.dataset.pf === 'next') run(b);
       });
       // Continue, or a step moving on by itself (a tile picked on one of the website's steps)
@@ -15679,7 +16625,7 @@ PFV.assess = () => {
     : `${V.done ? `<div data-x="vm">${pfVmHtml(H)}</div>` : ''}${opts.length ? pfCard('Choose the terms with the customer', `<div class="pf-uw">${uwOptsHtml(H, opts)}</div>`) : ''}${T ? pfCard('Medical tests', `<div class="pf-uw">${testsHtml(H)}</div>`) : ''}`;
   return {
     html: `<div data-x="dec">${pfDecHtml(H)}</div>${body}`
-      + (all ? `<div class="pd-note">${pi('info')}<span>NxSure can't offer cover to anyone on this proposal right now. ${esc(pfFirst())} can apply again later. Accident cover doesn't depend on health.</span></div><div class="pf-acts">${pbtn('Go to proposals', 'data-nav="proposals"', 'ghost', 'doc')}</div>`
+      + (all ? `<div class="pd-note">${pi('info')}<span>NxSure can't offer cover to anyone on this proposal right now. ${esc(pfFirst())} can apply again later. Accident cover doesn't depend on health.</span></div><div class="pf-acts">${pbtn('Go to leads', 'data-nav="leads"', 'ghost', 'target')}</div>`
         : declined.length ? `<div class="pd-note">${pi('info')}<span>${esc(listText(declined.map(nm)))} can't be covered right now, so the policy continues without ${declined.length > 1 ? 'them' : relLabel(H, declined[0]) === 'You' ? 'the customer' : 'them'}.</span></div>` : ''),
     next: all ? null : pfAssessNext(H),
     wire(api) {
@@ -15842,7 +16788,7 @@ PFV.done = () => {
     foot: false,
     wire(api) {
       document.body.classList.remove('rec-on');
-      api.main.insertAdjacentHTML('beforeend', `<div class="pf-acts pf-end">${pbtn(mot || !S.health.proposalNo ? 'Download policy' : 'Download acknowledgement', 'data-pa="pdf"', 'pri', 'download')}${pbtn('Go to proposals', 'data-nav="proposals"', 'ghost', 'doc')}${pbtn('New policy', 'data-nav="new"', 'ghost', 'plus')}</div>`);
+      api.main.insertAdjacentHTML('beforeend', `<div class="pf-acts pf-end">${pbtn(mot || !S.health.proposalNo ? 'Download policy' : 'Download acknowledgement', 'data-pa="pdf"', 'pri', 'download')}${pbtn('Go to leads', 'data-nav="leads"', 'ghost', 'target')}${pbtn('New policy', 'data-nav="new"', 'ghost', 'plus')}</div>`);
       api.main.addEventListener('click', e => {
         const a = e.target.closest('[data-pa]'); if (!a) return;
         if (a.dataset.pa === 'pdf') { if (mot) saveFile(`NxSure-policy-${S.motor.policyNo.replace(/\//g, '-')}.pdf`, motorPdf('policy')); else saveFile(S.health.proposalNo ? `NxSure-proposal-${S.health.proposalNo}.pdf` : `NxSure-policy-${S.health.policyNo.replace(/\//g, '-')}.pdf`, healthPdf(S.health.proposalNo ? 'ack' : 'policy')); }
@@ -16325,7 +17271,7 @@ function pfPropDone() {
     next: null, foot: false,
     wire(api) {
       document.body.classList.remove('rec-on');
-      api.main.insertAdjacentHTML('beforeend', `<div class="pf-acts pf-end">${pbtn('Download policy', 'data-pa="pdf"', 'pri', 'download')}${pbtn('Go to proposals', 'data-nav="proposals"', 'ghost', 'doc')}${pbtn('New policy', 'data-nav="new"', 'ghost', 'plus')}</div>`);
+      api.main.insertAdjacentHTML('beforeend', `<div class="pf-acts pf-end">${pbtn('Download policy', 'data-pa="pdf"', 'pri', 'download')}${pbtn('Go to leads', 'data-nav="leads"', 'ghost', 'target')}${pbtn('New policy', 'data-nav="new"', 'ghost', 'plus')}</div>`);
       api.main.addEventListener('click', e => {
         const x = e.target.closest('[data-px]'); if (x) { pfPropCross(x.dataset.px); return; }
         const a = e.target.closest('[data-pa=pdf]'); if (a) saveFile(`NxSure-policy-${b.policyNo.replace(/\//g, '-')}.pdf`, smePdf('policy'));
@@ -16432,8 +17378,13 @@ function route() {
   const h = (location.hash || '').slice(1);
   if (!P.role) { paintLogin(); return; }
   const was = P.view;
+  // Proposals are part of Leads now: an old link opens Leads on the proposals
+  if (h === 'proposals') { P.f.lst = 'Proposal'; P.f.lview = 'list'; history.replaceState(null, '', '#leads'); route(); return; }
   P.view = V[h] ? h : 'home';
+  if (was !== P.view && P.view === 'campaigns') P.f.cmp = null;
   if (was === 'flow' && P.view !== 'flow') FL.leave();
+  // back from selling: the proposal just saved or issued is at the top of Leads
+  if (was === 'flow' && P.view === 'leads') Object.assign(P.f, { lst: 'all', lsort: 'latest', lview: 'list', lq: '', lfam: 'all', lsrc: 'all' });
   closeLayers(); render(); window.scrollTo({ top: 0, behavior: 'instant' });
   const pv = $('#pview'); if (pv) pv.scrollTop = 0;
 }
@@ -16447,6 +17398,7 @@ function wireGs() {
     B.customers.filter(c => c.name.toLowerCase().includes(q) || c.mobile.includes(q)).slice(0, 4).forEach(c => hits.push(['customer:' + c.id, 'user', c.name, `Customer · ${c.area}`]));
     B.policies.filter(p => p.no.toLowerCase().includes(q) || (p.reg || '').toLowerCase().replace(/\s/g, '').includes(q.replace(/\s/g, ''))).slice(0, 4).forEach(p => hits.push(['policy:' + p.no, 'shield', p.no, `${p.customer} · ${p.what}`]));
     B.leads.filter(l => l.name.toLowerCase().includes(q)).slice(0, 3).forEach(l => hits.push(['lead:' + l.id, 'target', l.name, `Lead · ${l.product}`]));
+    B.proposals.filter(p => p.customer.toLowerCase().includes(q) || p.id.toLowerCase().includes(q)).slice(0, 3).forEach(p => hits.push(['proposal:' + p.id, 'doc', p.customer, `Proposal · ${p.status} · ${p.id}`]));
     if (P.role === 'arm' || P.role === 'mgr') P.d.agents.filter(a => a.name.toLowerCase().includes(q) || a.id.toLowerCase().includes(q)).slice(0, 4).forEach(a => hits.push(['agent:' + a.id, 'users', a.name, `${a.type} · ${a.id}`]));
     if (P.role === 'drm' || P.role === 'mgr') P.d.dealers.filter(d => d.name.toLowerCase().includes(q)).slice(0, 4).forEach(d => hits.push(['dealer:' + d.id, 'store', d.name, `${d.brand} · ${d.city}`]));
     if (['dealer', 'drm'].includes(P.role)) P.d.workshop.filter(w => w.reg.toLowerCase().replace(/\s/g, '').includes(q.replace(/\s/g, ''))).forEach(w => hits.push(['ws:' + w.id, 'wrench', w.reg, `Workshop · ${w.stage}`]));
@@ -16496,7 +17448,7 @@ function polDrawer(p, ren) {
   if (!p) return;
   drawer(ren ? `Renewal, ${p.customer}` : p.no, `${esc(p.what)} · ${spill(p.status)}`, `${kv([['Policy', `<span class="mono">${esc(p.no)}</span>`], ['Customer', esc(p.customer)], ['Cover', esc(p.what)], ['Period', `${fdS(p.start)} ${p.start.getFullYear()} to ${fdS(p.end)} ${p.end.getFullYear()}`], ['Premium', inr(p.premium)], ['No-claim bonus', p.ncb != null ? `${p.ncb}%, rising at renewal if there's no claim` : '']])}
     ${ren ? `<div class="pd-note">${pi('info')}<span>${daysTo2(p.end) < 0 ? `Lapsed ${-daysTo2(p.end)} days ago. ${isPropT(p.type) ? 'Renew it to put the cover back in place. The details from last year are carried over.' : p.type !== 'health' ? 'A lapsed motor policy needs a self-inspection, and the no-claim bonus is lost after 90 days.' : 'Renew within the grace period to keep the waiting periods already served.'}` : `Renews ${whenText(p.end).toLowerCase()}. The renewal link has the price ready, with the bonus applied.`}</span></div>` : ''}`,
-    pbtn('Send renewal link', `data-act="renlink" data-id="${esc(p.no)}"`, 'ghost', 'wa') + (isPropT(p.type) ? pbtn('Renew now', `data-start="${p.type}"`, 'pri', 'renew') : p.type !== 'health' ? pbtn('Renew now', `data-act="renew" data-id="${esc(p.no)}"`, 'pri', 'renew') : pbtn('Renew now', `data-start="health"`, 'pri', 'renew')));
+    (p.status === 'active' ? pbtn('Intimate a claim', `data-hx="cwpol" data-id="${esc(p.no)}"`, 'ghost', 'shield') : '') + pbtn('Send renewal link', `data-act="renlink" data-id="${esc(p.no)}"`, 'ghost', 'wa') + (isPropT(p.type) ? pbtn('Renew now', `data-start="${p.type}"`, 'pri', 'renew') : p.type !== 'health' ? pbtn('Renew now', `data-act="renew" data-id="${esc(p.no)}"`, 'pri', 'renew') : pbtn('Renew now', `data-start="health"`, 'pri', 'renew')));
 }
 const leadProd = t => /Health/.test(t) ? 'health' : /Home/.test(t) ? 'home' : /Shop/.test(t) ? 'shop' : /Fire|factory|warehouse/i.test(t) ? 'fire' : /Marine|cargo/i.test(t) ? 'marine' : /Workers/.test(t) ? 'wc' : 'motor';
 function leadDrawer(l) {
@@ -16749,8 +17701,8 @@ function jxDoneExtra() {
     const dm = e.target.closest('[data-demo2]'); if (dm) { closeLayers(); signIn(dm.dataset.demo2); return; }
     const sd = e.target.closest('[data-side]'); if (sd) { document.body.classList.toggle('side-open', sd.dataset.side === 'open'); return; }
     if (e.target.closest('.ps-nav a')) document.body.classList.remove('side-open');
-    const nv = e.target.closest('[data-nav]'); if (nv) { e.preventDefault(); closeLayers(); location.hash = nv.dataset.nav; return; }
-    const st = e.target.closest('[data-start]'); if (st) { closeLayers(); const k = st.dataset.start; if (k === 'link') { if (P.view === 'flow') FL.leave(); S = fresh(); CFG.channel = 'agent'; CFG.agent = { name: P.user.who, code: P.user.code, mobile: P.user.mobile }; pfSendModal('start').then(r => { if (r) { toast(`Link sent to ${r.name}. You'll see when they start.`); if (P.view === 'flow') location.hash = 'proposals'; } }); } else { if (P.view === 'flow') FL.leave(); FL.open({ product: k }); } return; }
+    const nv = e.target.closest('[data-nav]'); if (nv) { e.preventDefault(); closeLayers(); if (nv.dataset.lst) P.f.lst = nv.dataset.lst; location.hash = nv.dataset.nav; return; }
+    const st = e.target.closest('[data-start]'); if (st) { closeLayers(); const k = st.dataset.start; if (k === 'link') { if (P.view === 'flow') FL.leave(); S = fresh(); CFG.channel = 'agent'; CFG.agent = { name: P.user.who, code: P.user.code, mobile: P.user.mobile }; pfSendModal('start').then(r => { if (r) { toast(`Link sent to ${r.name}. You'll see when they start.`); if (P.view === 'flow') location.hash = 'leads'; } }); } else { if (P.view === 'flow') FL.leave(); FL.open({ product: k }); } return; }
     const go = e.target.closest('[data-go]'); if (go) { $('#gsRes') && ($('#gsRes').hidden = true); openRow(go.dataset.go); return; }
     const ac = e.target.closest('[data-act]'); if (ac) { e.preventDefault(); doAct(ac.dataset.act, ac); return; }
     const ch = e.target.closest('[data-chip]'); if (ch) { P.f[ch.closest('[data-chips]').dataset.chips] = ch.dataset.chip; render(); return; }
