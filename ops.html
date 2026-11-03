@@ -461,6 +461,159 @@ main{min-height:0;position:relative;overflow:hidden}
   .steps{grid-template-columns:1fr}
 }
 
+/* ---------- step journey ---------- */
+.case{display:flex;flex-direction:column;height:100%;min-height:0}
+.case-h .r .btn.xs{height:28px}
+.stepbar{display:flex;align-items:center;gap:6px;padding:8px 16px;background:var(--surface);border-bottom:1px solid var(--line);overflow-x:auto}
+.sb{display:flex;align-items:center;gap:9px;border:0;background:none;padding:5px 10px 5px 6px;border-radius:9px;text-align:left;white-space:nowrap}
+.sb:hover{background:var(--hover)}
+.sb .n{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;border:1.5px solid var(--line2);color:var(--ink3);flex:none}
+.sb .n svg{width:13px;height:13px}
+.sb .l{display:grid;line-height:1.2}
+.sb .l b{font-weight:650;font-size:13px;color:var(--ink2)}
+.sb .l small{font-size:11px;color:var(--ink3)}
+.sb.on{background:var(--brand-soft)}
+.sb.on .n{background:var(--brand);border-color:var(--brand);color:#fff}
+.sb.on .l b{color:var(--ink)}
+.sb.done .n{background:var(--ok-soft);border-color:var(--ok-line);color:var(--ok)}
+.sb.part .n{background:var(--warn-soft);border-color:var(--warn-line);color:var(--warn)}
+.sb.part .l small{color:var(--warn)}
+.stepbar .sep{flex:0 1 40px;min-width:12px;height:1.5px;background:var(--line2)}
+.cwrap{flex:1;min-height:0;position:relative;background:var(--bg)}
+.cbody{height:100%;overflow:auto}
+.wrapc{max-width:900px;margin:0 auto;padding:18px 20px 40px;display:flex;flex-direction:column;gap:14px}
+.do{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
+.do .ico{width:28px;height:28px;border-radius:8px;background:var(--pri);color:var(--pri-ink)}
+.do .ico svg{width:15px;height:15px}
+.do b{font-size:16px;font-weight:650;letter-spacing:-.01em;display:block;line-height:1.35;padding-top:2px}
+.do p{font-size:13px;color:var(--ink3);margin-top:2px}
+.why{font-size:12px;color:var(--ink3);display:flex;gap:6px;align-items:center}
+.why svg{width:14px;height:14px;flex:none}
+.outcome{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:14px 16px;border-radius:12px;border:1px solid var(--ok-line);background:var(--ok-soft)}
+.outcome .ico svg{width:22px;height:22px}
+.outcome b{font-size:16px;font-weight:700}
+.outcome p{font-size:13px;color:var(--ink2);margin-top:2px}
+.outcome.warn{border-color:var(--warn-line);background:var(--warn-soft)}
+.outcome.bad{border-color:var(--bad-line);background:var(--bad-soft)}
+.gates-h{display:flex;gap:12px;font-size:12px;font-weight:650;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:-6px}
+.gates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.gates.one{grid-template-columns:1fr}
+.gate{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:9px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+.gate .ico{margin-top:1px}
+.gate .tt{font-weight:600;font-size:13px}
+.gate .dt{font-size:12px;color:var(--ink3);margin-top:1px}
+.gate.warn{border-color:var(--warn-line)}
+.gate.bad{border-color:var(--bad-line);background:var(--bad-soft)}
+.lines{display:flex;flex-direction:column;gap:8px}
+.line{display:flex;gap:9px;align-items:center;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;flex-wrap:wrap}
+.line>svg{width:16px;height:16px;color:var(--ink3);flex:none}
+.more{border-radius:10px}
+.morebtn{display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:var(--brand-ink);font-weight:600;font-size:12.5px;padding:4px 2px}
+.morebtn:hover{text-decoration:underline}
+.morebtn svg{width:14px;height:14px}
+.morebtn .c{font-size:11px;background:var(--brand-soft);border-radius:999px;padding:0 7px;color:var(--brand-ink)}
+.moreb{margin-top:6px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;overflow:auto}
+.moreb .gate{border:0;border-bottom:1px solid var(--line);border-radius:0;padding:8px 0;background:none}
+.moreb .gate:last-child{border-bottom:0}
+.flow{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 14px}
+.fr{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13.5px;align-items:baseline}
+.fr:last-child{border-bottom:0}
+.fr span{display:grid}
+.fr small{font-size:12px;color:var(--ink3)}
+.fr b{font-weight:600;white-space:nowrap}
+.fr.minus b{color:var(--bad)}
+.fr.total{border-top:1.5px solid var(--ink);border-bottom:0;margin-top:2px}
+.fr.total span{font-weight:650}
+.fr.total b{font-size:17px;font-weight:700}
+.bign{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.bign>div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:2px}
+.bign span{font-size:12px;color:var(--ink3);font-weight:600}
+.bign b{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.bign small{font-size:12px;color:var(--ink2)}
+.bign .b{border-color:var(--brand-line);box-shadow:inset 3px 0 0 var(--brand)}
+.subnav{display:flex;gap:6px;flex-wrap:wrap}
+.subnav button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px 5px 6px;font-weight:600;font-size:13px;color:var(--ink2)}
+.subnav button:hover{background:var(--hover)}
+.subnav button .n{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--hover);font-size:11px;color:var(--ink3)}
+.subnav button.on{background:var(--pri);color:var(--pri-ink);border-color:var(--pri)}
+.subnav button.on .n{background:rgba(127,127,127,.3);color:inherit}
+.subnav .c{font-size:11px;border-radius:999px;padding:0 6px;display:inline-grid;place-items:center;min-height:16px}
+.subnav .c svg{width:11px;height:11px}
+.subnav .c.warn{background:var(--warn-soft);color:var(--warn)}
+.subnav .c.ok{background:var(--ok-soft);color:var(--ok)}
+.subwrap{padding:12px 16px 0;background:var(--bg)}
+.stack{display:flex;flex-direction:column;height:100%}
+.stack .docstep{flex:1;min-height:0}
+.qbox{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px 14px}
+.qbh{font-size:11.5px;font-weight:650;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);padding:8px 0 2px}
+.q{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.q:last-child{border-bottom:0}
+.q .tt{font-weight:600;font-size:13.5px}
+.q .dt{font-size:12px;color:var(--ink3)}
+.q .lnk{margin-top:2px}
+.qa{display:inline-flex;border:1px solid var(--line2);border-radius:8px;overflow:hidden;flex:none}
+.qa button{border:0;background:var(--surface);padding:6px 10px;font-weight:600;font-size:12.5px;display:inline-flex;gap:5px;align-items:center;color:var(--ink2)}
+.qa button+button{border-left:1px solid var(--line2)}
+.qa button svg{width:13px;height:13px}
+.qa button:hover{background:var(--hover)}
+.qa button.on.ok{background:var(--ok);color:#fff}
+.qa button.on.bad{background:var(--bad);color:#fff}
+.qa button[disabled]{opacity:.5;cursor:not-allowed}
+.q.yes .tt{color:var(--ok)} .q.no .tt{color:var(--bad)}
+.cardkv{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.cardkv.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pick button{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;text-align:left;display:grid;gap:2px}
+.pick button:hover{border-color:var(--line2)}
+.pick button.on{border-color:var(--brand);box-shadow:0 0 0 1px var(--brand)}
+.pick small{font-size:12px;color:var(--ink3);font-weight:600}
+.pick b{font-size:22px;font-weight:700}
+.pick span{font-size:12px;color:var(--ink2)}
+.secs{display:grid;gap:8px}
+.secs>div{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:10px;padding:10px 12px;display:grid;gap:2px;font-size:13px}
+.secs>div.warn{border-left-color:var(--warn)}
+.secs span{color:var(--ink2)}
+.ul{margin:6px 0 0;padding-left:18px;font-size:13px;color:var(--ink2)}
+.callout b{display:block}
+.callout .lnk{margin-left:6px}
+/* documents with questions */
+.docstep{display:grid;grid-template-columns:minmax(300px,380px) minmax(0,1fr);height:100%;min-height:0}
+.dsl{overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--line);background:var(--bg)}
+.dsl .do b{font-size:15px}
+.dsr{min-height:0;display:flex}
+.dsr .viewer{flex:1;border-bottom:0}
+.dlist{display:grid;gap:4px}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:center;border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:7px 10px;text-align:left}
+.dl:hover{border-color:var(--line2)}
+.dl.on{border-color:var(--brand);box-shadow:0 0 0 1px var(--brand)}
+.dl .ico{color:var(--ink3)}
+.dl b{display:block;font-weight:600;font-size:13px}
+.dl small{font-size:11.5px}
+.dq{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px 12px}
+.dqh{font-weight:650;font-size:13px;padding:8px 0 2px}
+.dq .q{grid-template-columns:1fr;gap:6px}
+.vmain.nothumbs{grid-template-columns:minmax(0,1fr)}
+/* drawer */
+.drawer{position:absolute;top:0;right:0;bottom:0;width:min(520px,92%);background:var(--surface);border-left:1px solid var(--line);box-shadow:var(--sh);z-index:20;display:flex;flex-direction:column;animation:drin .16s ease}
+.drawer.wide{width:min(860px,94%)}
+@keyframes drin{from{transform:translateX(24px);opacity:0}}
+.dr-scrim{position:absolute;inset:0;background:rgba(16,14,40,.18);z-index:19}
+.dr-h{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-right:8px}
+.dr-h .tabs{border-bottom:0}
+.dr-b{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column}
+.dr-b .viewer{flex:1;border-bottom:0}
+.dpad{padding:14px 16px}
+@media (max-width:1100px){
+  .docstep{grid-template-columns:1fr;height:auto}
+  .dsr{height:560px}
+  .gates{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .pick,.cardkv.three{grid-template-columns:1fr}
+  .q{grid-template-columns:1fr}
+  .stepbar .sb .l small{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -1043,7 +1196,7 @@ const OPS = [];
       sys: [C('Free look is over', `Ended ${fd(start + 30 * DAY)}, so the refund is for the days left`, 'info', 'Rules'), C('No claims on this policy', 'None paid or in process', 'ok', 'CDP · TPA'), C('Retention closed: not retained', 'Has employer cover', 'ok', 'Retention'), C('Bank account checked with ₹1', 'Northbridge Bank •••• 4471, name matches 100%', 'ok', 'Penny drop'), C('Policy isn\'t assigned to a lender', '', 'ok', 'Policy record')],
       ops: [T('o1', 'Refund is for the right dates', 'From the request date to the end date'), T('o2', 'Reason for cancelling is recorded', 'For the retention report')],
     },
-    insight: { act: 'approve', title: 'Suggested: approve the cancellation', text: 'Retention couldn\'t keep him: his employer covers the family for ₹5 lakh. No claims were made, so the refund is for the 174 days left. The bank account is checked.' },
+    insight: { act: 'approve', title: 'Suggested: approve the cancellation', text: `Retention couldn't keep him: his employer covers the family for ₹5 lakh. No claims were made, so the refund is for the ${365 - days(start, recv)} days left. The bank account is checked.` },
     log: [L(recv, 'Kiran Desai', 'Asked to cancel in the app'), L(recv + MIN, 'System', 'Sent to retention'), L(at(-3, 16, 52), 'Sahil Khanna, retention', 'Not retained'), L(at(-3, 16, 53), 'System', 'Sent to Operations for approval')],
   });
 })();
@@ -1119,7 +1272,7 @@ const OPS = [];
     checks: {
       cust: [C('Bank\'s request letter', 'Uploaded by the bank', 'ok', 'Partner', 'req'), C('Property papers with the area', 'Uploaded', 'ok', 'App', 'sale'), C('Extra premium paid', `On ${lakh(asked)}`, 'ok', 'Payments')],
       sys: [C('Rebuild cost is ₹27,60,000', '1,150 sq ft at ₹2,400 a sq ft in Pune. Asked: ₹55,00,000', 'warn', 'Rebuild calculator', 'sale'), C('Address matches the policy', '', 'ok', 'Document reader', 'san'), C('Unity Bank is a known lender', 'On our partner list', 'ok', 'Partner list')],
-      ops: [T('o1', 'Bank\'s letter names this flat', '', 'san'), T('o2', 'Built-up area is read right', '1,150 sq ft', 'sale'), T('o3', 'Building cover is set to the rebuild cost', 'Change it in the table on the left')],
+      ops: [T('o1', 'Bank\'s letter names this flat', '', 'san'), T('o2', 'Built-up area is read right', '1,150 sq ft', 'sale'), T('o3', 'Building cover is set to the rebuild cost', 'Change it in step 1 if needed')],
     },
     insight: { act: 'approve', tone: 'warn', title: 'Suggested: approve with building cover of ₹27,60,000', text: 'That is what it costs to rebuild 1,150 sq ft in Pune. Building cover pays to rebuild, not the flat\'s price, so ₹55 lakh would charge her for cover she can\'t claim. The extra she paid on the difference goes back.', fix: { k: 'bsi', v: 2760000, label: 'Use ₹27,60,000' } },
     log: [L(recv - 30 * MIN, 'Unity Bank, Baner', 'Raised the request on the partner portal'), L(recv - 4 * MIN, 'Aditi Kulkarni', 'Paid the extra premium'), L(recv, 'System', 'Cover is above the rebuild cost. Sent to Operations')],
@@ -1477,6 +1630,103 @@ const RF = (w, t, d, src = '') => ({ w, t, d, src });
   });
 })();
 
+/* ---------- pre-admissibility: the gate checks that decide whether a claim goes to assessment ---------- */
+const G = (t, r, st = 'ok', doc = '') => ({ t, r, st, doc });
+const GATES = {
+  'CL-H-260931': {
+    checks: [
+      G('Premium received before cover started', 'Section 64VB: renewal premium received by UPI before the renewal date'),
+      G('Admission is within the policy period', 'Policy year started 25 Sep. Continuous cover since 2023'),
+      G('Patient is insured on this policy', 'Sunita Rao, member NXM-4417-02', 'ok', 'card'),
+      G('Claim type is covered', 'In-patient stay for an illness, with surgery'),
+      G('Waiting periods are over', '30 days, and 24 months for gall bladder surgery. Covered 3 years'),
+      G('No exclusion applies', 'Gall stones aren\'t excluded. No pre-existing condition declared', 'ok', 'usg'),
+      G('Hospital can give cashless', 'Network hospital, not on the IIB caution list'),
+      G('Told us in time', 'Within 48 hours of an emergency admission'),
+      G('Amount is within cover', 'Asked ₹1,53,000. Cover left ₹17,50,000', 'ok', 'pa'),
+      G('No red flags', 'Fraud score 6 of 100'),
+    ],
+    out: { st: 'ok', t: 'Admissible: go to assessment', d: 'Every check passed. In assessment, confirm the diagnosis and set the amount: the estimate is above our package.' },
+  },
+  'CL-H-260918': {
+    checks: [
+      G('Premium received before cover started', 'Section 64VB: premium received through the partner before the start date'),
+      G('Admission is within the policy period', 'Continuous cover since 2024'),
+      G('Patient is insured on this policy', 'Arvind Kulkarni, member NXM-2236-01'),
+      G('Claim type is covered', 'In-patient stay for an illness'),
+      G('Waiting periods are over', 'Pneumonia is a new illness. 30-day wait long over'),
+      G('No exclusion applies', 'Nothing in the discharge summary is excluded', 'ok', 'dsum'),
+      G('Cashless was approved at admission', '₹80,000 approved at pre-authorisation'),
+      G('Amount is within cover', 'Bill ₹1,26,800. Cover left ₹5,50,000', 'ok', 'bill'),
+      G('Plan limits apply', 'Room above ₹5,000 a day, and 20% co-pay from age 61', 'warn', 'bill'),
+      G('No red flags', 'Fraud score 9 of 100'),
+    ],
+    out: { st: 'ok', t: 'Admissible: go to assessment', d: 'Every check passed. Two plan limits will reduce what we pay: the room rent limit and the co-pay.' },
+  },
+  'CL-H-260877': {
+    checks: [
+      G('Premium received before cover started', 'Section 64VB: premium received through the agent before the start date'),
+      G('Admission is within the policy period', 'Day 50 of a new policy, not ported', 'warn'),
+      G('Patient is insured on this policy', 'Rajesh Yadav, member NXM-4410-01'),
+      G('Claim type is covered', 'In-patient stay for an illness'),
+      G('Waiting periods are over', '30-day initial wait is over'),
+      G('No exclusion applies', 'Gastroenteritis isn\'t excluded', 'ok', 'ds'),
+      G('Hospital is eligible', 'Registered on ROHINI, but on the IIB caution list', 'warn'),
+      G('Submitted in time', 'Within 30 days of discharge'),
+      G('Amount is within cover', 'Claimed ₹96,400. Cover left ₹10,00,000', 'ok', 'bill'),
+      G('Red flags found', 'Fraud score 78 of 100: an edited bill total, a pharmacy that isn\'t GST registered, a bank account used on 2 other claims', 'bad', 'bill'),
+    ],
+    out: { st: 'bad', t: 'Admissible on paper: investigate before assessing', d: 'The claim passes the policy checks, but three strong red flags need a field visit first. Don\'t decline on suspicion alone.', route: 'inv' },
+  },
+  'CL-M-260455': {
+    checks: [
+      G('Premium received before cover started', 'Section 64VB: paid online before the start date'),
+      G('Accident is within the policy period', 'Policy year started in June'),
+      G('Car is insured on this policy', 'MH-14-JK-3390. Chassis number matches'),
+      G('Claim type is covered', 'Accident damage under own damage'),
+      G('Driver had a valid licence', 'LMV licence valid till 2039, checked with Sarathi', 'ok', 'dl'),
+      G('No exclusion applies', 'Private use, licensed driver, no injury or alcohol reported'),
+      G('Told us in time', 'Within an hour, with photos', 'ok', 'ph'),
+      G('Surveyed within the timelines', 'Surveyor in 5 hours, report in 4 days', 'ok', 'sr'),
+      G('Amount is within cover', 'Assessed ₹70,000. Cover ₹7,10,000, well below the 75% that makes it a total loss', 'ok', 'sr'),
+      G('No red flags', 'Fraud score 11 of 100. Photos match the survey'),
+    ],
+    out: { st: 'ok', t: 'Admissible: go to assessment', d: 'Every check passed. In assessment, check the survey and the depreciation.' },
+  },
+  'CL-M-260462': {
+    checks: [
+      G('Premium received before cover started', 'Section 64VB: paid online before the start date'),
+      G('Theft is within the policy period', 'Policy bought 23 days before the theft, after a 4-month gap', 'warn', 'insp'),
+      G('Bike is insured on this policy', 'KA-05-KS-9124, inspected at purchase', 'ok', 'insp'),
+      G('Claim type is covered', 'Theft of the whole vehicle'),
+      G('FIR filed in time', 'Within 24 hours', 'ok', 'fir'),
+      G('Police closed it as untraced', 'Final report received', 'ok', 'utr'),
+      G('No exclusion applies', 'Bike was locked; no sign it was lent or sold'),
+      G('Amount is above the cover', 'Asked ₹1,90,000, the bike\'s price today. Cover is the IDV of ₹1,74,000, so the most we can pay is ₹1,73,900 after the ₹100 deductible', 'warn'),
+      G('Not claimed elsewhere', 'IIB shows no theft claim with another insurer'),
+      G('Red flags checked', 'Early claim explained: the investigation saw the theft on CCTV', 'ok', 'inv'),
+    ],
+    out: { st: 'warn', t: 'Admissible up to ₹1,73,900: go to assessment', d: 'The theft is covered, but only up to the cover amount, not the ₹1,90,000 asked for.' },
+  },
+  'CL-P-260021': {
+    checks: [
+      G('Premium received before cover started', 'Section 64VB: paid through the bank before the start date'),
+      G('Fire is within the policy period', 'Policy year started in June'),
+      G('Shop is the insured location', 'Vastra Collections, 27th Cross, Jayanagar'),
+      G('Claim type is covered', 'Fire from a short circuit is an insured peril', 'ok', 'fb'),
+      G('No exclusion applies', 'Fire damage to stock is covered. The switchboard itself isn\'t, and isn\'t claimed', 'ok', 'fb'),
+      G('Told us in time', 'Within 2 hours'),
+      G('Surveyed within the timelines', 'Surveyor in 7 hours, report in 13 days', 'ok', 'sr'),
+      G('Amount is within cover', 'Loss ₹9,30,000. Cover ₹31,00,000', 'ok', 'sr'),
+      G('Cover is short of the value at risk', 'Stock is 20% short, over the 15% this product forgives. The average clause will apply to stock', 'warn', 'stk'),
+      G('Red flags checked', 'Business under strain, but the fire brigade confirms the cause', 'warn', 'fb'),
+    ],
+    out: { st: 'ok', t: 'Admissible: go to assessment', d: 'The fire is covered. Stock will be paid in proportion because it was underinsured.' },
+  },
+};
+CLAIMS.forEach(c => { c.gate = GATES[c.id]; });
+(CLAIMS.find(c => c.id === 'CL-M-260462') || {}).claimed = 190000;
+
 /* ======================= UNDERWRITING ======================= */
 const UW = [];
 const DV = (item, who, dec, found, src, st) => ({ item, who, dec, found, src, st });
@@ -1757,7 +2007,7 @@ const EXTRA = [
 /* ======================= state ======================= */
 const ALL = [...OPS, ...CLAIMS, ...UW, ...EXTRA];
 ALL.forEach(c => {
-  c.state = { edits: {}, ticks: {}, doc: 0, zoom: null, rot: 0, marks: true, rtab: 'check', stage: null, adj: {}, adjWhy: {}, editing: null, kyc: {} };
+  c.state = { edits: {}, ticks: {}, doc: 0, zoom: null, rot: 0, marks: true, adj: {}, adjWhy: {}, editing: null, kyc: {}, more: {}, step: 1, sub: null, drawer: null };
   if (!c.lite) { buildDocs(c); c.log = c.log || []; }
 });
 const byId = id => ALL.find(c => c.id === id);
@@ -1910,35 +2160,33 @@ function queuesHtml() {
     const cs = ALL.filter(c => c.mod === mod), open = cs.filter(c => c.bucket !== 'closed');
     const risk = open.filter(c => tatTone(c) === 'bad').length;
     return `<div class="card"><h2>${MODS[mod]}<span class="chip ${risk ? 'bad' : 'ok'}">${risk ? `${risk} at risk` : 'On time'}</span></h2><div class="h2s">${open.length} open · ${cs.filter(c => c.bucket === 'closed').length} closed today</div>
-      <div style="margin-top:6px">${Object.entries(BUCKETS).map(([k, v]) => `<div class="qrow"><span>${v.t}<div class="sm mut">${v.d}</div></span><b>${cs.filter(c => c.bucket === k).length}</b><button class="lnk" data-act="goq" data-m="${mod}" data-b="${k}">See</button></div>`).join('')}</div></div>`;
+      <div style="margin-top:6px">${Object.entries(BUCKETS).map(([k, v]) => `<div class="qrow"><span>${v.t}<div class="sm mut">${v.d}</div></span><b>${cs.filter(c => c.bucket === k).length}</b><button class="lnk" data-act="gobucket" data-m="${mod}" data-b="${k}">See</button></div>`).join('')}</div></div>`;
   };
   const team = USERS.map(x => { const o = myOpen(x); const st = x.id === u.id ? (ST.avail ? (o ? `On ${o.id}` : 'Taking cases') : 'Paused') : x.sup ? 'Approvals' : o ? `On ${o.id}` : ['u2', 'u4'].includes(x.id) ? 'Taking cases' : 'On a break'; const k = /Paused|break/.test(st) ? '' : st.startsWith('On ') ? 'brand' : 'ok'; return `<div class="tm"><span class="av">${x.ini}</span><div><div class="nm">${esc(x.name)}${x.id === u.id ? ' <span class="mut sm">(you)</span>' : ''}</div><div class="rl">${esc(x.team)}</div></div>${chip(esc(st), k)}</div>`; }).join('');
   return `<div class="page"><div class="page-h"><div><h1>Queues</h1><p>How work reaches people, and where every case is right now.</p></div></div>
     ${u.sup ? '' : `<div class="today"><div><b>${done}</b><span>Finished by you today</span></div><div><b>${q.filter(c => !c.asg).length}</b><span>Waiting in your queue</span></div><div><b class="${q.some(c => tatTone(c) === 'bad') ? 'st-bad' : ''}">${q.filter(c => tatTone(c) === 'bad').length}</b><span>Close to the deadline</span></div><div><b>${ALL.filter(c => c.bucket === 'cust' && canDo(u, c)).length}</b><span>Your kind of case, with the customer</span></div></div>`}
     <div class="grid3">${card('ops')}${card('claims')}${card('uw')}</div>
     <div class="grid3" style="margin-top:12px">
-      <div class="card"><h2>How cases are assigned</h2><ol class="rules">
-        <li>A case reaches a team only when the customer's checklist is complete. Until then it stays <b>With customer</b>, and reminders go out on their own.</li>
-        <li>Cancellations go to <b>retention</b> first. Sales has 48 hours to try, then the case comes to Operations with the full log.</li>
-        <li>When you're <b>taking cases</b>, the next one opens the moment you finish. You hold one case at a time.</li>
-        <li>Order: health cashless first, then the least time left against the deadline.</li>
-        <li>Only cases that match your team, your lines of business and your authority come to you. Anything above your authority goes to a supervisor.</li>
-        <li>If you release a case, it goes back to the top of the queue for someone else.</li></ol></div>
-      <div class="card"><h2>Service standards</h2><div class="h2s">The deadlines the clocks count down to</div>
-        <table class="tbl" style="margin-top:6px"><tbody>
-          <tr><td>Service requests and cancellations</td><td class="num b">7 days</td></tr>
-          <tr><td>Free-look refund</td><td class="num b">7 days</td></tr>
-          <tr><td>Cashless authorisation</td><td class="num b">1 hour</td></tr>
-          <tr><td>Final authorisation at discharge</td><td class="num b">3 hours</td></tr>
-          <tr><td>Health claims other than cashless</td><td class="num b">15 days</td></tr>
-          <tr><td>Motor and property: surveyor allocated</td><td class="num b">24 hours</td></tr>
-          <tr><td>Survey report, then our decision</td><td class="num b">15 + 7 days</td></tr>
-          <tr><td>Proposal decision, with requirements</td><td class="num b">7 days</td></tr>
-          <tr><td>Complaints resolved</td><td class="num b">14 days</td></tr></tbody></table>
-        <p class="note" style="margin-top:6px">From IRDAI's 2024 master circulars on health and general insurance, and on protection of policyholders' interests.</p></div>
       <div class="card"><h2>Team on shift</h2><div class="team" style="margin-top:4px">${team}</div></div>
+      <div class="card" style="grid-column:span 2"><h2>How it works</h2><div class="h2s">Open only what you need</div>
+        <div style="margin-top:8px;display:grid;gap:6px">
+          ${qInfo('rules', 'How cases are assigned', `<ol class="rules">
+            <li>A case reaches a team only when the customer's checklist is complete. Until then it stays <b>With customer</b>, and reminders go out on their own.</li>
+            <li>Cancellations go to <b>retention</b> first. Sales has 48 hours to try, then the case comes to Operations with the full log.</li>
+            <li>When you're <b>taking cases</b>, the next one opens the moment you finish. You hold one case at a time.</li>
+            <li>Order: health cashless first, then the least time left against the deadline.</li>
+            <li>Only cases that match your team, your lines of business and your authority come to you. Anything above your authority goes to a supervisor.</li>
+            <li>If you release a case, it goes back to the top of the queue for someone else.</li></ol>`)}
+          ${qInfo('std', 'Service standards the clocks count down to', `<table class="tbl"><tbody>
+            <tr><td>Service requests and cancellations</td><td class="num b">7 days</td></tr><tr><td>Free-look refund</td><td class="num b">7 days</td></tr>
+            <tr><td>Cashless authorisation</td><td class="num b">1 hour</td></tr><tr><td>Final authorisation at discharge</td><td class="num b">3 hours</td></tr>
+            <tr><td>Health claims other than cashless</td><td class="num b">15 days</td></tr><tr><td>Motor and property: surveyor allocated</td><td class="num b">24 hours</td></tr>
+            <tr><td>Survey report, then our decision</td><td class="num b">15 + 7 days</td></tr><tr><td>Proposal decision, with requirements</td><td class="num b">7 days</td></tr>
+            <tr><td>Complaints resolved</td><td class="num b">14 days</td></tr></tbody></table><p class="note" style="margin-top:6px">From IRDAI's 2024 master circulars on health insurance, general insurance, and protection of policyholders' interests.</p>`)}
+        </div></div>
     </div></div>`;
 }
+const qInfo = (k, label, body) => { const on = ST.qinfo && ST.qinfo[k]; return `<div class="more ${on ? 'on' : ''}"><button class="morebtn" data-act="qinfo" data-k="${k}">${ic(on ? 'down' : 'chev')}<span>${label}</span></button>${on ? `<div class="moreb">${body}</div>` : ''}</div>`; };
 
 /* ======================= calculations ======================= */
 function assessH(c) {
@@ -1995,165 +2243,294 @@ function premS(c, t) {
   return { rate, load, net, g, total: net + g };
 }
 
-/* ======================= the case screen ======================= */
+/* ======================= the case screen: three steps, one job each ======================= */
 const isMine = c => ST.user && ((c.bucket === 'work' && c.asg === ST.user.id) || (c.bucket === 'ref' && c.refTo === ST.user.id));
+const STEPS = {
+  ops: ['The request', 'Documents', 'Decide'],
+  claims: ['Pre-admissibility', 'Assessment', 'Decision'],
+  uw: ['The proposal', 'Evidence', 'Decide'],
+};
+const qList = c => c.checks.ops || [];
+const qOpen = c => qList(c).filter(t => c.state.ticks[t.id] === undefined);
+const qNo = c => qList(c).filter(t => c.state.ticks[t.id] === false);
+const doLine = (t, sub) => `<div class="do"><span class="ico">${ic('arrow')}</span><div><b>${t}</b>${sub ? `<p>${sub}</p>` : ''}</div></div>`;
+function more(c, key, label, body, cnt) {
+  const on = !!c.state.more[key];
+  return `<div class="more ${on ? 'on' : ''}"><button class="morebtn" data-act="more" data-k="${key}" aria-expanded="${on}">${ic(on ? 'down' : 'chev')}<span>${on ? label.replace(/^See /, 'Hide ').replace(/^Show /, 'Hide ') : label}</span>${cnt != null ? `<span class="c">${cnt}</span>` : ''}</button>${on ? `<div class="moreb">${body}</div>` : ''}</div>`;
+}
+function qRow(c, t, ro) {
+  const v = c.state.ticks[t.id];
+  return `<div class="q ${v === true ? 'yes' : v === false ? 'no' : ''}"><div class="qt"><div class="tt">${esc(t.t)}</div>${t.d ? `<div class="dt">${esc(t.d)}</div>` : ''}${t.doc && !c.state.inlineDocs ? `<button class="lnk" data-act="view" data-doc="${t.doc}">See the document</button>` : ''}</div>
+    <div class="qa"><button class="${v === true ? 'on ok' : ''}" data-act="ans" data-id="${t.id}" data-v="1" ${ro ? 'disabled' : ''}>${ic('check')}Correct</button><button class="${v === false ? 'on bad' : ''}" data-act="ans" data-id="${t.id}" data-v="0" ${ro ? 'disabled' : ''}>${ic('x')}Not correct</button></div></div>`;
+}
+const gateRow = g => `<div class="gate ${g.st}">${stIc(g.st)}<div><div class="tt">${esc(g.t)}</div><div class="dt">${esc(g.r)}</div></div>${g.doc ? `<button class="lnk" data-act="view" data-doc="${g.doc}">Proof</button>` : '<span></span>'}</div>`;
+const sysRow = x => gateRow({ t: x.t, r: x.d, st: x.st, doc: x.doc });
+function flow(rows) { // a short money walk: start, minus lines, result
+  return `<div class="flow">${rows.map(([l, v, k, n]) => `<div class="fr ${k || ''}"><span>${esc(l)}${n ? `<small>${esc(n)}</small>` : ''}</span><b>${k === 'minus' ? '−' + inr(v) : inr(v)}</b></div>`).join('')}</div>`;
+}
+function bigNums(items) { return `<div class="bign">${items.map(([l, v, k, s]) => `<div class="${k || ''}"><span>${esc(l)}</span><b>${v}</b>${s ? `<small>${esc(s)}</small>` : ''}</div>`).join('')}</div>`; }
+
 function caseHtml(c) {
-  const mine = isMine(c), u = ST.user;
-  const name = c.cust.name;
+  const mine = isMine(c), u = ST.user, s = c.state.step || 1, name = c.cust.name, steps = STEPS[c.mod];
+  c.state.inlineDocs = (c.mod === 'ops' && s === 2) || (c.mod === 'uw' && s === 2 && (c.state.sub || 'docs') === 'docs');
   let ro = '';
   if (!mine) {
-    const myc = myOpen();
-    const take = c.bucket === 'work' && !c.asg && canDo(u, c) && !myc && !u.sup;
-    const why = c.bucket === 'work' ? (c.asg ? `It's assigned to ${userById(c.asg).name}.` : canDo(u, c) ? 'It\'s waiting in the queue.' : `It's in the ${MODS[c.mod]} queue for ${LOBS[c.lob].toLowerCase()}.`) : `Status: ${BUCKETS[c.bucket].t}.`;
+    const myc = myOpen(), take = c.bucket === 'work' && !c.asg && canDo(u, c) && !myc && !u.sup;
+    const why = c.bucket === 'work' ? (c.asg ? `It's assigned to ${userById(c.asg).name}.` : canDo(u, c) ? 'It\'s waiting in the queue.' : `It's in the ${MODS[c.mod]} queue.`) : `Status: ${BUCKETS[c.bucket].t}.`;
     ro = `<div class="ro">${ic('eye')}<span><b>You're viewing this case.</b> ${esc(why)}</span><span style="margin-left:auto;display:flex;gap:8px">${take ? `<button class="btn xs" data-act="take">Assign to me</button>` : ''}${myc && myc.id !== c.id ? `<button class="btn xs" data-act="open" data-id="${myc.id}">${ic('back')}Back to ${myc.id}</button>` : ''}</span></div>`;
   }
-  const asg = c.asg && c.bucket === 'work' ? `<div class="asg">${c.asg === u.id ? '<b>Assigned to you</b>' : `With <b>${esc(userById(c.asg).name)}</b>`}<br>${c.asgAt ? 'by auto-allocation, ' + ft(c.asgAt) : ''}</div>` : c.bucket === 'ref' ? `<div class="asg">${c.refTo === u.id ? '<b>Waiting for your approval</b>' : `With <b>${esc(c.ref.to)}</b>`}<br>sent ${fdt(c.ref.when)}</div>` : `<div class="asg">${bucketChip(c)}</div>`;
-  return `<div class="case" data-case="${c.id}">
-    <div class="case-h"><div class="t"><h1>${esc(c.type)} ${chip(LOBS[c.lob], '', lobIc(c.lob))}${chip(esc(c.prod))}${c.sub ? chip(esc(c.sub), 'plain') : ''}</h1>
-      <div class="meta"><b>${c.id}</b><span>${esc(c.pol.no)}</span><span>${esc(name)}</span><span>From ${esc(c.channel)}${c.chSub ? ' · ' + esc(c.chSub) : ''}</span><span>Received ${fdt(c.recv)}</span></div>
-      <div class="meta" style="margin-top:3px"><span>${ic('info').replace('<svg', '<svg style="width:13px;height:13px;vertical-align:-2px"')} ${esc(c.why)}</span></div></div>
-      <div class="r">${c.bucket !== 'closed' ? tatHtml(c) : ''}${asg}${mine && c.bucket === 'work' ? `<button class="btn xs ghost" data-act="release" title="Put it back in the queue">Release</button>` : ''}</div></div>
-    ${ro}
-    <div class="case-b ${c.state.full ? 'full' : ''}"><section class="pane left" aria-label="Details">${c.mod === 'ops' ? leftOps(c) : c.mod === 'claims' ? leftClaim(c) : leftUw(c)}</section>
-      <section class="right" aria-label="Documents and checks">${viewerHtml(c)}${evidHtml(c, !mine)}</section></div>
-    ${footHtml(c, mine)}</div>`;
+  const status = k => { if (k < s) return 'Done'; if (k > s) return ''; return 'You are here'; };
+  const claimLeft = () => claimSubs(c).reduce((a, x) => a + x[2].filter(id => c.state.ticks[id] === undefined).length, 0);
+  const extra = k => { if (c.mod === 'ops' && k === 2 || c.mod === 'uw' && k === 2) { const n = qOpen(c).length; return n ? `${n} to confirm` : ''; } if (c.mod === 'claims' && k === 1) return c.gate.out.st === 'bad' ? 'Red flags' : c.gate.checks.filter(g => g.st !== 'ok').length ? `${c.gate.checks.filter(g => g.st !== 'ok').length} to note` : 'All passed'; if (c.mod === 'claims' && k === 2) { const n = claimLeft(); return n ? `${n} to confirm` : ''; } return ''; };
+  const pend = k => (c.mod !== 'claims' && k === 2 && qOpen(c).length) || (c.mod === 'claims' && k === 2 && claimSubs(c).some(x => x[2].some(id => c.state.ticks[id] === undefined)));
+  const bar = `<nav class="stepbar" aria-label="Steps">${steps.map((t, i) => { const k = i + 1, done = k < s && !pend(k); return `<button class="sb ${k === s ? 'on' : done ? 'done' : k < s ? 'part' : ''}" data-act="step" data-s="${k}" aria-current="${k === s ? 'step' : 'false'}"><span class="n">${done ? ic('check') : k}</span><span class="l"><b>${esc(t)}</b><small>${esc(extra(k) || status(k))}</small></span></button>${k < 3 ? '<span class="sep"></span>' : ''}`; }).join('')}</nav>`;
+  const asg = c.bucket === 'work' && c.asg ? (c.asg === u.id ? 'Assigned to you' : `With ${userById(c.asg).name}`) : c.bucket === 'ref' ? (c.refTo === u.id ? 'Waiting for your approval' : `With ${c.ref.to}`) : BUCKETS[c.bucket].t;
+  const body = c.mod === 'ops' ? opsStep(c, s, !mine) : c.mod === 'claims' ? claimStep(c, s, !mine) : uwStep(c, s, !mine);
+  return `<div class="case" data-case="${c.id}" data-step="${s}">
+    <div class="case-h"><div class="t"><h1>${esc(c.type)} ${chip(LOBS[c.lob], '', lobIc(c.lob))}${chip(esc(c.prod))}</h1>
+      <div class="meta"><b>${c.id}</b><span>${esc(name)}</span><span>${esc(c.pol.no)}</span><span>From ${esc(c.channel)}</span></div></div>
+      <div class="r">${c.bucket !== 'closed' ? tatHtml(c) : ''}<div class="asg"><b>${esc(asg)}</b></div>
+        ${c.state.inlineDocs ? '' : `<button class="btn xs" data-act="drawer" data-t="docs">${ic('doc')}Documents <span class="mut">${c.docs.length}</span></button>`}<button class="btn xs" data-act="drawer" data-t="policy">${ic('info')}Details</button>${mine && c.bucket === 'work' ? `<button class="btn xs ghost" data-act="release" title="Put it back in the queue">Release</button>` : ''}</div></div>
+    ${ro}${bar}
+    <div class="cwrap"><div class="cbody">${body}</div>${drawerHtml(c)}</div>
+    ${footHtml(c, mine, s)}</div>`;
 }
 
-/* ---------- operations ---------- */
-function leftOps(c) {
-  const mine = isMine(c), m = c.money(c);
-  const rows = c.changes.map(ch => {
-    const ed = c.state.edits[ch.k], fmt = v => ch.fmt === 'inr' ? inr(v) : esc(v);
-    let reqCell;
-    if (c.state.editing === ch.k) reqCell = `<span style="display:flex;gap:6px;align-items:center"><input class="inp" id="edv" type="number" inputmode="numeric" value="${ed != null ? ed : ch.req}" aria-label="New value for ${esc(ch.f)}"><button class="btn xs pri" data-act="edsave" data-k="${ch.k}">Save</button><button class="btn xs ghost" data-act="edcancel">Cancel</button></span>`;
-    else reqCell = ed != null && ed !== ch.req ? `<span class="was">${fmt(ch.req)}</span><span class="new">${fmt(ed)}</span> ${chip('Changed by you', 'brand')}` : `<span class="new">${fmt(ch.req)}</span>`;
-    return `<tr><td class="k">${esc(ch.f)}</td><td>${ch.fmt === 'inr' && typeof ch.now === 'number' ? inr(ch.now) : esc(ch.now)}</td><td>${reqCell}</td><td class="num">${ch.edit && mine && c.state.editing !== ch.k ? `<button class="edit" data-act="edit" data-k="${ch.k}" aria-label="Change ${esc(ch.f)}">${ic('pen')}Change</button>` : ''}</td></tr>`;
-  }).join('');
-  const changeTbl = `<div class="wrap-tbl"><table class="tbl"><thead><tr><th style="width:26%">Field</th><th style="width:30%">On the policy now</th><th>Requested</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
-  const moneyBox = m.kind === 'none' ? '' : sec(esc(m.title), `<div class="box pad money">${m.rows.map(([k, v]) => `<div class="row"><span>${esc(k)}</span><b>${inr(v)}</b></div>`).join('')}
-      <div class="row tot"><span>${m.kind === 'refund' ? 'Refund' : 'Total'}</span><span>${inr(m.total)}</span></div>
-      ${m.kind === 'collect' && m.paid != null ? (() => { const d = m.paid - m.total; return `<div class="row"><span>${esc(m.paidNote)}</span><b class="st-ok">${inr(m.paid)}</b></div>${Math.abs(d) >= 1 ? `<div class="row"><span>${d > 0 ? 'Goes back to the customer after approval' : 'Still to collect: a payment link goes after approval'}</span><b class="${d > 0 ? 'st-ok' : 'st-warn'}">${inr(Math.abs(d))}</b></div>` : ''}`; })() : ''}
-      ${m.note ? `<p class="note" style="margin-top:4px">${esc(m.note)}</p>` : ''}</div>`);
-  const cancel = c.kind === 'cancel' ? sec('Retention', `<div class="box pad"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><span class="sm mut">Reason given: “${esc(c.reason)}”</span>${chip(esc(c.retOutcome.t), c.retOutcome.st)}</div><div class="tl">${c.retention.map(e => `<div class="it"><span class="when">${fdt(e.t)}</span><div><span class="who">${esc(e.who)}</span><div class="out">${esc(e.what)}</div></div></div>`).join('')}</div></div>`)
-    + sec('Refund goes to', `<div class="callout ${c.bank.ok ? 'ok' : 'bad'}"><span class="ico">${ic(c.bank.ok ? 'bank' : 'warn')}</span><div><b>${esc(c.bank.t)}</b><div>${esc(c.bank.d)}</div></div></div>`) : '';
+/* ---------- details and documents, only when asked for ---------- */
+function drawerHtml(c) {
+  const t = c.state.drawer; if (!t) return '';
+  const tabs = [['docs', 'Documents'], ['policy', 'Policy'], ['cust', 'Customer']];
+  if (c.mod === 'ops') tabs.push(['kyc', 'KYC']);
+  tabs.push(['log', 'Activity']);
   const p = c.pol;
-  return `${insightHtml(c)}
-    ${sec('What\'s changing', changeTbl, c.changes.length > 1 ? plural(c.changes.length, 'change') : '')}
-    ${cancel}${moneyBox}
-    <div class="callout info"><span class="ico">${ic('info')}</span><span><b>When you approve:</b> ${esc(c.effect)}</span></div>
-    ${sec('Policy', kv([['Policy', esc(p.no)], ['Plan', esc(p.plan)], ['Period', `${fds(p.start)} to ${fd(p.end)}`], ['Premium', `${inr(p.prem)} ${esc(p.premNote || '')}`], ['Insured', esc(p.obj)], p.idv ? ['Cover amount (IDV)', inr(p.idv)] : ['Sold through', esc(p.via)]], 'three'))}
-    ${sec('Customer', kv([['Name', `${esc(c.cust.name)}<span class="mut sm" style="display:block;font-weight:500">${esc(c.cust.sub)}</span>`], ['Mobile', esc(c.cust.mobile)], ['With us', esc(c.cust.since)], ['Other policies', esc(c.cust.other)], ['Claims', esc(c.cust.claims)], ['Requests this year', '1 before this']], 'three'))}`;
+  let b = '';
+  if (t === 'docs') b = viewerHtml(c);
+  else if (t === 'policy') b = `<div class="dpad">${kv([['Policy', esc(p.no)], ['Plan', esc(p.plan)], p.start ? ['Period', `${fds(p.start)} to ${fd(p.end)}`] : null, p.prem ? ['Premium', `${inr(p.prem)} ${esc(p.premNote || '')}`] : null, ['Insured', esc(p.obj)], p.idv ? ['Cover amount (IDV)', inr(p.idv)] : null, ['Sold through', esc(p.via)]])}${c.mod === 'claims' ? `<div style="margin-top:12px">${coverHtml(c)}</div>` : ''}</div>`;
+  else if (t === 'cust') b = `<div class="dpad">${kv([['Name', `${esc(c.cust.name)}<span class="mut sm" style="display:block;font-weight:500">${esc(c.cust.sub)}</span>`], ['Mobile', esc(c.cust.mobile)], ['With NxSure', esc(c.cust.since)], ['Other policies', esc(c.cust.other)], ['Claims', esc(c.cust.claims)]])}${c.lob === 'health' && c.patient ? `<div style="margin-top:12px">${kv([['Patient', `${esc(c.patient.name)}, ${c.patient.age}`], ['Relation', esc(c.patient.rel)], ['Hospital', `${esc(c.hosp.name)}, ${esc(c.hosp.city)}`], ['Treating doctor', esc(c.clin.doctor)]])}</div>` : ''}</div>`;
+  else if (t === 'kyc') b = `<div class="dpad">${c.people.map((pp, i) => { const k = c.state.kyc[i]; return `<div class="ds" style="margin-bottom:8px"><div class="ds-h"><b>${esc(pp.name)}</b>${chip(pp.match >= 90 ? `Face match ${pp.match}%` : `Name match ${pp.match}%`, pp.match >= 90 ? 'ok' : 'warn')}</div><div class="sm mut">${esc(pp.role)}</div><div style="margin-top:6px">${kv([['KYC', esc(pp.kyc)], ['Done', fdt(pp.when)], ['Record', esc(pp.id)], ['Last checked', k ? (k === 'run' ? 'Checking…' : 'Just now, still valid') : fdt(pp.when)]])}</div>${isMine(c) ? `<div style="display:flex;gap:6px;margin-top:8px"><button class="btn xs" data-act="kyc" data-i="${i}">${ic('rot')}Check again</button><button class="btn xs" data-act="kyclink" data-i="${i}">${ic('send')}Send a KYC link</button></div>` : ''}</div>`; }).join('')}</div>`;
+  else if (t === 'log') b = `<div class="dpad"><div class="tl">${c.log.slice().reverse().map(e => `<div class="it"><span class="when">${fdt(e.t)}</span><div><span class="who">${esc(e.who)}</span><div class="out">${esc(e.what)}</div></div></div>`).join('')}</div></div>`;
+  return `<aside class="drawer ${t === 'docs' ? 'wide' : ''}" aria-label="Details"><div class="dr-h"><div class="tabs" role="tablist">${tabs.map(([k, l]) => `<button class="tab ${k === t ? 'on' : ''}" data-act="drawer" data-t="${k}" role="tab">${l}</button>`).join('')}</div><button class="ib" data-act="drawer" data-t="" aria-label="Close">${ic('x')}</button></div><div class="dr-b">${b}</div></aside><div class="dr-scrim" data-act="drawer" data-t=""></div>`;
 }
 
-/* ---------- claims ---------- */
-function claimStages(c) {
-  const bad = c.pre.filter(x => x.st === 'bad').length, warn = c.pre.filter(x => x.st === 'warn').length;
-  const amt = claimAmount(c);
-  return [
-    { k: 'pre', n: '1 · Pre-admissibility', t: bad ? `${plural(bad, 'red flag')}` : warn ? `${plural(warn, 'thing')} to look at` : 'All checks passed', s: 'Run automatically on arrival', cls: bad ? 'red' : warn ? 'flag' : 'done' },
-    { k: 'assess', n: '2 · Assessment', t: c.kind === 'hpre' ? `${inr(amt)} to approve` : `${inr(amt)} payable`, s: c.kind === 'hpre' ? 'Estimate against our package' : c.kind.startsWith('h') ? 'Bill read and checked line by line' : c.kind === 'theft' ? 'Cover amount, less deductible' : 'From the survey report', cls: 'done' },
-    { k: 'dec', n: '3 · Decision', t: c.insight.act === 'inv' ? 'Investigate first' : amt > ST.user.limit && c.mod === 'claims' ? 'Needs approval' : 'Pay or decline', s: c.kind === 'hpre' ? 'Cashless authorisation' : 'What the customer will see', cls: '' },
-  ];
+/* ---------- a document list with questions, beside the viewer ---------- */
+function docStep(c, ro, title) {
+  const qs = qList(c), d = c.docs[c.state.doc] || c.docs[0];
+  const loose = qs.filter(t => !t.doc);
+  const list = c.docs.map((x, j) => { const mineQ = qs.filter(t => t.doc === x.id), left = mineQ.filter(t => c.state.ticks[t.id] === undefined).length, no = mineQ.some(t => c.state.ticks[t.id] === false); const tag = !mineQ.length ? '<span class="mut">Look if you need to</span>' : no ? '<span class="st-bad">Not correct</span>' : left ? `<span class="st-warn">${left} to confirm</span>` : '<span class="st-ok">Done</span>'; return `<button class="dl ${j === c.state.doc ? 'on' : ''}" data-act="doc" data-i="${j}"><span class="ico">${ic(x.kind === 'photo' ? 'eye' : 'doc')}</span><span><b>${esc(x.name)}</b><small>${tag}</small></span></button>`; }).join('');
+  const mineQ = qs.filter(t => t.doc === d.id);
+  return `<div class="docstep"><div class="dsl">${doLine(title, `${qs.length - qOpen(c).length} of ${qs.length} confirmed`)}
+      <div class="dlist">${list}</div>
+      ${mineQ.length ? `<div class="dq"><div class="dqh">${esc(d.name)}</div>${mineQ.map(t => qRow(c, t, ro)).join('')}</div>` : ''}
+      ${loose.length ? `<div class="dq"><div class="dqh">Other things to confirm</div>${loose.map(t => qRow(c, t, ro)).join('')}</div>` : ''}</div>
+    <div class="dsr">${viewerHtml(c, { thumbs: false })}</div></div>`;
 }
-function leftClaim(c) {
-  const st = c.state.stage || (c.pre.some(x => x.st === 'bad') ? 'pre' : 'assess');
-  const stages = claimStages(c);
-  const steps = `<div class="steps" role="tablist">${stages.map(s => `<button class="stp ${s.k === st ? 'on' : ''} ${s.cls}" data-act="stage" data-s="${s.k}" role="tab" aria-selected="${s.k === st}"><span class="n">${s.cls === 'done' ? ic('ok') : s.cls === 'flag' ? ic('warn') : s.cls === 'red' ? ic('bad') : ''}${s.n}</span><b>${esc(s.t)}</b><span class="s">${esc(s.s)}</span></button>`).join('')}</div>`;
-  let body = '';
-  if (st === 'pre') {
-    const flag = c.pre.filter(x => x.st !== 'ok'), ok = c.pre.filter(x => x.st === 'ok');
-    body = sec('Needs a look', flag.length ? `<div class="box pad">${flag.map(ckRow).join('')}</div>` : '<p class="mut">Nothing unusual.</p>') + sec('Passed', `<div class="box pad">${ok.map(ckRow).join('')}</div>`, plural(ok.length, 'check'));
-  } else if (st === 'assess') body = assessHtml(c);
-  else body = decisionHtml(c);
-  return `${insightHtml(c)}${steps}${body}${claimFacts(c)}`;
+
+/* ======================= operations ======================= */
+function opsStep(c, s, ro) {
+  const m = c.money(c);
+  if (s === 1) {
+    const rows = c.changes.map(ch => {
+      const ed = c.state.edits[ch.k], fmt = v => ch.fmt === 'inr' ? inr(v) : esc(v);
+      let req;
+      if (c.state.editing === ch.k) req = `<span style="display:flex;gap:6px;align-items:center"><input class="inp" id="edv" type="number" inputmode="numeric" value="${ed != null ? ed : ch.req}" aria-label="New value for ${esc(ch.f)}"><button class="btn xs pri" data-act="edsave" data-k="${ch.k}">Save</button><button class="btn xs ghost" data-act="edcancel">Cancel</button></span>`;
+      else req = ed != null && ed !== ch.req ? `<span class="was">${fmt(ch.req)}</span><span class="new">${fmt(ed)}</span> ${chip('Changed by you', 'brand')}` : `<span class="new">${fmt(ch.req)}</span>`;
+      return `<tr><td class="k">${esc(ch.f)}</td><td>${ch.fmt === 'inr' && typeof ch.now === 'number' ? inr(ch.now) : esc(ch.now)}</td><td>${req}</td><td class="num">${ch.edit && !ro && c.state.editing !== ch.k ? `<button class="edit" data-act="edit" data-k="${ch.k}">${ic('pen')}Change</button>` : ''}</td></tr>`;
+    }).join('');
+    const sys = c.checks.sys || [], flag = sys.filter(x => x.st === 'bad' || x.st === 'warn');
+    let money = '';
+    if (m.kind === 'collect') { const d = m.paid != null ? m.paid - m.total : 0; money = `<div class="line">${ic('bank')}<span>Extra premium <b>${inr(m.total)}</b>. ${m.paid != null ? (Math.abs(d) < 1 ? '<span class="st-ok">Already paid.</span>' : d > 0 ? `<span class="st-ok">Paid; ${inr(d)} goes back after approval.</span>` : `<span class="st-warn">${inr(-d)} more to collect after approval.</span>`) : ''}</span></div>`; }
+    else if (m.kind === 'refund') money = `<div class="line">${ic('bank')}<span>Refund <b>${inr(m.total)}</b> to ${c.bank.ok ? esc(c.bank.t) : '<span class="st-bad">no account on file</span>'}.</span></div>`;
+    else money = `<div class="line">${ic('bank')}<span>No premium change.</span></div>`;
+    const calc = m.kind === 'none' ? '' : more(c, 'calc', 'See how the amount is worked out', `<div class="money">${m.rows.map(([k, v]) => `<div class="row"><span>${esc(k)}</span><b>${inr(v)}</b></div>`).join('')}<div class="row tot"><span>${m.kind === 'refund' ? 'Refund' : 'Total'}</span><span>${inr(m.total)}</span></div>${m.paidNote ? `<div class="row"><span>${esc(m.paidNote)}</span><b>${inr(m.paid)}</b></div>` : ''}${m.note ? `<p class="note">${esc(m.note)}</p>` : ''}</div>`);
+    const ret = c.kind === 'cancel' ? `<div class="line">${ic('phone')}<span>Retention: ${chip(esc(c.retOutcome.t), c.retOutcome.st)} ${esc(c.retOutcome.d)}. Reason given: “${esc(c.reason)}”</span></div>${more(c, 'ret', 'See the retention log', `<div class="tl">${c.retention.map(e => `<div class="it"><span class="when">${fdt(e.t)}</span><div><span class="who">${esc(e.who)}</span><div class="out">${esc(e.what)}</div></div></div>`).join('')}</div>`, c.retention.length)}` : '';
+    return `<div class="wrapc">${doLine(c.kind === 'cancel' ? 'Check the cancellation, the retention outcome and the refund' : 'Check the change the customer asked for', c.changes.some(x => x.edit) ? 'If a value doesn\'t match the documents, change it here. Then go to the documents.' : 'Then go to the documents.')}
+      ${c.insight.fix || c.insight.act === 'ir' ? insightHtml(c) : ''}
+      <div class="wrap-tbl"><table class="tbl"><thead><tr><th style="width:24%">What</th><th style="width:30%">On the policy now</th><th>Asked for</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
+      <div class="lines">${ret}${money}${calc}
+        <div class="line">${ic(flag.length ? 'warn' : 'ok')}<span>${sys.length - flag.length} of ${sys.length} automatic checks passed${flag.length ? `. <b>${flag.length} need${flag.length > 1 ? '' : 's'} a look:</b>` : '.'}</span></div>
+        ${flag.length ? `<div class="gates one">${flag.map(sysRow).join('')}</div>` : ''}
+        ${more(c, 'sys', 'See all automatic checks', `<div class="gates one">${sys.map(sysRow).join('')}<div class="ckg-h" style="margin-top:6px"><h4>From the customer</h4><span class="x">all done, that's why it reached you</span></div>${(c.checks.cust || []).map(sysRow).join('')}</div>`, sys.length + (c.checks.cust || []).length)}</div>
+      <p class="why">${ic('info')} ${esc(c.why)}</p></div>`;
+  }
+  if (s === 2) return docStep(c, ro, 'Look at each document and confirm what it shows');
+  return decideHtml(c, ro);
 }
-function claimFacts(c) {
-  if (c.lob === 'health') { const k = c.clin, p = c.patient, h = c.hosp; return sec('Patient and treatment', kv([['Patient', `${esc(p.name)}, ${p.age}<span class="mut sm" style="display:block;font-weight:500">${esc(p.rel)} · ${esc(p.id)}</span>`], ['Hospital', `${esc(h.name)}<span class="mut sm" style="display:block;font-weight:500">${esc(h.city)} · ${esc(h.note)}</span>`], ['Diagnosis', `${esc(k.dx)} <span class="mut sm">${esc(k.icd)}</span>`], ['Treatment', esc(k.proc)], ['Admitted', `${esc(k.admType)}, ${fdt(k.adm)}`], ['Stay', `${k.los} days <span class="mut sm">usual ${esc(k.typical)}</span>`], ['Treating doctor', `${esc(k.doctor)}<span class="mut sm" style="display:block;font-weight:500">${esc(k.reg)}</span>`], ['Policy', `${esc(c.pol.no)}<span class="mut sm" style="display:block;font-weight:500">${esc(c.pol.plan)}</span>`], ['Sold through', esc(c.pol.via)]], 'three')); }
-  if (c.kind === 'fire') return sec('Loss', kv([['Insured', esc(c.cust.name)], ['Policy', esc(c.pol.no)], ['Date', fdt(c.loss.t)], ['Where', esc(c.loss.place)], ['What happened', esc(c.loss.how)], ['Surveyor', `${esc(c.survey.name)}<span class="mut sm" style="display:block;font-weight:500">${esc(c.survey.lic)}</span>`]], 'three'));
-  const v = c.veh;
-  return sec('Vehicle and loss', kv([['Vehicle', `${esc(v.name)}<span class="mut sm" style="display:block;font-weight:500">${esc(v.reg)}</span>`], ['Cover amount (IDV)', inr(c.pol.idv)], ['First registered', fd(v.regd)], ['Date', fdt(c.loss.t)], ['Where', esc(c.loss.place)], ['What happened', esc(c.loss.how)], c.survey ? ['Surveyor', `${esc(c.survey.name)}<span class="mut sm" style="display:block;font-weight:500">${esc(c.survey.lic)}</span>`] : ['Policyholder', esc(c.cust.name)], c.garage ? ['Garage', `${esc(c.garage.name)}<span class="mut sm" style="display:block;font-weight:500">${esc(c.garage.city)} · network</span>`] : ['Sold through', esc(c.pol.via)], ['Policy', esc(c.pol.no)]], 'three'));
+
+/* ======================= claims ======================= */
+function claimSubs(c) {
+  return {
+    hpre: [['med', 'Medical review', ['o1', 'o2']], ['amt', 'Amount', ['o3']]],
+    hfinal: [['med', 'Medical review', ['o3']], ['bill', 'Final bill', ['o1', 'o2']]],
+    hreimb: [['flags', 'Red flags', ['o1', 'o3']], ['med', 'Medical review', ['o2']], ['bill', 'Bill', []]],
+    mod: [['survey', 'Survey', ['o1']], ['dep', 'Depreciation', ['o2', 'o3']]],
+    theft: [['inv', 'Investigation', ['o1', 'o2']], ['set', 'Settlement', ['o3']]],
+    fire: [['survey', 'Survey', ['o1', 'o2']], ['under', 'Underinsurance', ['o3']]],
+  }[c.kind];
 }
-function assessHtml(c) {
-  const mine = isMine(c);
-  if (c.kind === 'hpre') {
+function claimStep(c, s, ro) {
+  if (s === 1) {
+    const g = c.gate, ok = g.checks.filter(x => x.st === 'ok').length;
+    return `<div class="wrapc">${doLine('Decide if this claim can go to assessment', 'These checks ran when the claim arrived. Read the result, open any proof you need, then choose below.')}
+      <div class="outcome ${g.out.st}">${stIc(g.out.st)}<div><b>${esc(g.out.t)}</b><p>${esc(g.out.d)}</p></div></div>
+      <div class="gates-h"><span>${ok} of ${g.checks.length} passed</span>${g.checks.length - ok ? `<span class="st-warn">${g.checks.length - ok} to note</span>` : ''}</div>
+      <div class="gates">${g.checks.map(gateRow).join('')}</div>
+      <p class="why">${ic('info')} ${esc(c.why)}</p></div>`;
+  }
+  if (s === 2) {
+    const subs = claimSubs(c), cur = subs.find(x => x[0] === c.state.sub) || subs[0];
+    const nav = `<div class="subnav" role="tablist">${subs.map(([k, t, q], i) => { const left = q.filter(id => c.state.ticks[id] === undefined).length; return `<button class="${k === cur[0] ? 'on' : ''}" data-act="sub" data-k="${k}" role="tab"><span class="n">${i + 1}</span>${esc(t)}${q.length ? (left ? `<span class="c warn">${left}</span>` : `<span class="c ok">${ic('check')}</span>`) : ''}</button>`; }).join('')}</div>`;
+    const qs = cur[2].map(id => qList(c).find(t => t.id === id)).filter(Boolean);
+    return `<div class="wrapc">${nav}${claimSub(c, cur[0], ro)}${qs.length ? `<div class="qbox"><div class="qbh">Confirm</div>${qs.map(t => qRow(c, t, ro)).join('')}</div>` : ''}</div>`;
+  }
+  return decideHtml(c, ro);
+}
+function claimSub(c, k, ro) {
+  const K = c.clin;
+  if (c.kind === 'hpre' && k === 'med') return doLine('Check the diagnosis is backed by the tests, and that surgery is needed now') + kv([['Diagnosis', `${esc(K.dx)} <span class="mut sm">${K.icd}</span>`], ['Backed by', 'Ultrasound: stones with a thickened wall. White cells 13,800'], ['Treatment', esc(K.proc)], ['Stay', `${K.los} days. Usual is ${esc(K.typical)}`]], 'cardkv') + more(c, 'pt', 'See patient, hospital and doctor', kv([['Patient', `${esc(c.patient.name)}, ${c.patient.age}`], ['Hospital', `${esc(c.hosp.name)}, ${esc(c.hosp.city)}`], ['Admitted', `${K.admType}, ${fdt(K.adm)}`], ['Doctor', esc(K.doctor)]]));
+  if (c.kind === 'hpre' && k === 'amt') {
     const est = c.est.reduce((a, r) => a + r[1], 0), amt = claimAmount(c);
-    return sec('Amount to approve now', `<div class="box pad" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><input class="inp" id="amt" type="number" value="${amt}" ${mine ? '' : 'disabled'} aria-label="Amount to approve" style="width:150px;font-weight:650"><span class="seg"><button data-act="amt" data-v="${c.pkg.amt}" class="${amt === c.pkg.amt ? 'on' : ''}">Package ${inr(c.pkg.amt)}</button><button data-act="amt" data-v="${est}" class="${amt === est ? 'on' : ''}">Estimate ${inr(est)}</button></span><span class="note">Cover left: ${inr(c.si.base + c.si.bonus - c.si.used)}</span></div>`) + sec('Estimate against our package', `<div class="wrap-tbl"><table class="tbl"><thead><tr><th>Hospital's estimate</th><th class="num">Amount</th></tr></thead><tbody>${c.est.map(r => `<tr><td>${esc(r[0])}</td><td class="num">${inr(r[1])}</td></tr>`).join('')}</tbody>
-      <tfoot><tr><td>Estimate</td><td class="num">${inr(est)}</td></tr><tr class="sub"><td>Our package at this hospital: ${esc(c.pkg.name)}<div class="sm mut">${esc(c.pkg.inc)}</div></td><td class="num b">${inr(c.pkg.amt)}</td></tr><tr class="sub"><td>Estimate above the package</td><td class="num dd">${inr(est - c.pkg.amt)} · ${Math.round((est / c.pkg.amt - 1) * 100)}%</td></tr></tfoot></table></div>`);
+    return doLine('Choose how much to approve now', 'Our package is what we agreed with this hospital for this surgery. Anything more is looked at with the final bill.') + `<div class="pick"><button class="${amt === c.pkg.amt ? 'on' : ''}" data-act="amt" data-v="${c.pkg.amt}" ${ro ? 'disabled' : ''}><small>Agreed package · suggested</small><b>${inr(c.pkg.amt)}</b><span>Room, surgeon, anaesthesia, theatre, routine medicines</span></button><button class="${amt === est ? 'on' : ''}" data-act="amt" data-v="${est}" ${ro ? 'disabled' : ''}><small>Hospital's estimate</small><b>${inr(est)}</b><span>${Math.round((est / c.pkg.amt - 1) * 100)}% above the package</span></button></div>
+      <div class="line">${ic('pen')}<span>Or type an amount: <input class="inp" id="amt" type="number" value="${amt}" ${ro ? 'disabled' : ''} style="width:130px;margin-left:6px" aria-label="Amount to approve"></span></div>` + more(c, 'est', 'See the estimate line by line', `<table class="tbl">${c.est.map(r => `<tr><td>${esc(r[0])}</td><td class="num">${inr(r[1])}</td></tr>`).join('')}</table>`);
   }
-  if (c.kind === 'hfinal' || c.kind === 'hreimb') {
-    const a = assessH(c);
-    const rows = a.rows.map(r => { const cut = r.np + r.prop + r.adj; return `<tr class="${r.flag ? 'hl' : ''}"><td><b style="font-weight:600">${esc(r.h)}</b><div class="sm mut">${esc(r.d)}${r.flag ? ` · <span class="st-warn">${esc(r.flag)}</span>` : ''}</div>${cut ? `<div class="sm dd">${esc(r.why)}</div>` : ''}</td><td class="num">${inr(r.amt)}</td><td class="num ${cut ? 'dd' : 'mut'}">${cut ? '−' + inr(cut) : '—'}</td><td class="num b">${inr(r.pay)}</td><td class="num">${mine && r.cat !== 'np' ? `<button class="edit" data-act="adj" data-i="${r.i}" aria-label="Deduct from ${esc(r.h)}" title="Deduct">${ic('minus')}</button>` : ''}</td></tr>`; }).join('');
-    return sec(c.kind === 'hfinal' ? 'Final bill, read and checked' : 'Bill, read and checked', `<div class="wrap-tbl"><table class="tbl"><thead><tr><th>Bill line</th><th class="num">Billed</th><th class="num">Not paid</th><th class="num">Payable</th><th></th></tr></thead><tbody>${rows}</tbody>
-      <tfoot><tr><td>Total</td><td class="num">${inr(a.billed)}</td><td class="num dd">−${inr(a.np + a.prop + a.adj)}</td><td class="num">${inr(a.adm)}</td><td></td></tr>
-      ${a.copay ? `<tr class="sub"><td colspan="3">${esc(c.limits.copayNote)}</td><td class="num dd">−${inr(a.copay)}</td><td></td></tr>` : ''}
-      <tr class="sub"><td colspan="3"><b>${c.kind === 'hfinal' ? 'NxSure pays the hospital' : 'Payable if approved'}</b>${c.preauth ? `<div class="sm mut">${inr(c.preauth)} already approved at pre-authorisation</div>` : ''}</td><td class="num b" style="font-size:14px">${inr(a.pay)}</td><td></td></tr>
-      <tr class="sub"><td colspan="3">${c.kind === 'hfinal' ? 'Patient pays at discharge' : 'Not paid'}</td><td class="num">${inr(a.patient)}</td><td></td></tr></tfoot></table></div>
-      ${a.ratio < 1 ? `<p class="note">Medicines, consumables, implants, tests and ICU are paid in full: IRDAI doesn't allow the room-rent share on them.</p>` : ''}`);
+  if (c.kind === 'hfinal' && k === 'med') return doLine('Check the stay matches the illness') + kv([['Diagnosis', `${esc(K.dx)} <span class="mut sm">${K.icd}</span>`], ['Backed by', 'Oxygen 88% on arrival, CRP 112, X-ray and CT show pneumonia'], ['Stay', '4 days: 1 in ICU, 3 in a room'], ['Usual stay', esc(K.typical)]], 'cardkv');
+  if ((c.kind === 'hfinal' || c.kind === 'hreimb') && k === 'bill') {
+    const a = assessH(c), rows = [['Billed by the hospital', a.billed, 'base']];
+    if (a.np) rows.push(['Items that aren\'t payable', a.np, 'minus', c.kind === 'hreimb' ? 'Service and registration charges' : 'Admission kit and toiletries']);
+    if (a.prop) rows.push(['Room above the plan limit', a.prop, 'minus', 'Room is ₹7,500 a day; the plan pays ₹5,000, and the same share of doctor and nursing']);
+    if (a.adj) rows.push(['Deducted by you', a.adj, 'minus']);
+    if (a.copay) rows.push(['Co-pay', a.copay, 'minus', c.limits.copayNote]);
+    rows.push([c.kind === 'hfinal' ? 'NxSure pays the hospital' : 'Payable if the claim is genuine', a.pay, 'total']);
+    const lines = a.rows.map(r => { const cut = r.np + r.prop + r.adj; return `<tr><td><b style="font-weight:600">${esc(r.h)}</b><div class="sm mut">${esc(r.d)}</div>${cut ? `<div class="sm dd">${esc(r.why)}</div>` : ''}</td><td class="num">${inr(r.amt)}</td><td class="num ${cut ? 'dd' : 'mut'}">${cut ? '−' + inr(cut) : '—'}</td><td class="num b">${inr(r.pay)}</td><td class="num">${!ro && r.cat !== 'np' ? `<button class="edit" data-act="adj" data-i="${r.i}" title="Deduct">${ic('minus')}</button>` : ''}</td></tr>`; }).join('');
+    return doLine(c.kind === 'hfinal' ? 'Check what we pay on the final bill' : 'See what would be payable', c.kind === 'hfinal' ? 'The bill was read line by line. Open it only if something looks wrong.' : 'Only if the investigation says the claim is genuine.') + flow(rows) + (c.kind === 'hfinal' ? `<div class="line">${ic('user')}<span>Patient pays <b>${inr(a.patient)}</b> at discharge.</span></div>` : '') + more(c, 'lines', 'See the bill line by line', `<table class="tbl"><thead><tr><th>Line</th><th class="num">Billed</th><th class="num">Not paid</th><th class="num">Payable</th><th></th></tr></thead><tbody>${lines}</tbody></table><p class="note">Medicines, consumables, implants, tests and ICU are paid in full: IRDAI doesn't allow the room-rent share on them.</p>`, a.rows.length);
   }
-  if (c.kind === 'mod') {
-    const a = assessM(c);
-    const rows = a.rows.map(r => `<tr><td><b style="font-weight:600">${esc(r.p)}</b><div class="sm mut">${esc(r.a)}${r.why ? ' · ' + esc(r.why) : ''}</div></td><td class="sm">${r.m[0].toUpperCase() + r.m.slice(1)}</td><td class="num mut">${inr(r.est)}</td><td class="num">${inr(r.ass)}</td><td class="num">${Math.round(r.r * 100)}%</td><td class="num dd">${r.dep ? '−' + inr(r.dep) : '—'}</td></tr>`).join('');
-    return sec('Survey, with depreciation', `<div class="wrap-tbl"><table class="tbl"><thead><tr><th>Part</th><th>Material</th><th class="num">Estimate</th><th class="num">Assessed</th><th class="num">Dep.</th><th class="num">Less</th></tr></thead><tbody>${rows}
-      <tr><td><b style="font-weight:600">Labour</b><div class="sm mut">No depreciation on labour</div></td><td></td><td class="num mut">${inr(c.labour.est)}</td><td class="num">${inr(c.labour.ass)}</td><td class="num">0%</td><td class="num mut">—</td></tr>
-      <tr><td><b style="font-weight:600">Painting</b><div class="sm mut">Material taken as 25% of painting, at 50%</div></td><td></td><td class="num mut">${inr(c.paint.est)}</td><td class="num">${inr(c.paint.ass)}</td><td class="num">50%</td><td class="num dd">−${inr(a.paintDep)}</td></tr></tbody>
-      <tfoot><tr><td colspan="2">Assessed</td><td class="num mut">${inr(a.est)}</td><td class="num">${inr(a.assessed)}</td><td></td><td class="num dd">−${inr(a.dep)}</td></tr>
-      <tr class="sub"><td colspan="5">Compulsory deductible, up to 1,500 cc</td><td class="num dd">−${inr(c.deductible)}</td></tr><tr class="sub"><td colspan="5">Salvage kept by the garage</td><td class="num dd">−${inr(c.salvage)}</td></tr>
-      <tr class="sub"><td colspan="5"><b>NxSure pays ${esc(c.garage.name)}</b></td><td class="num b" style="font-size:14px">${inr(a.pay)}</td></tr><tr class="sub"><td colspan="5">Customer pays at the garage</td><td class="num">${inr(a.cust)}</td></tr></tfoot></table></div>
-      <p class="note">Car is ${Math.floor(c.veh.age / 12)} years ${c.veh.age % 12} months old on the date of loss: metal parts at ${Math.round(a.md * 100)}%, plastic and rubber at 50%, glass nil. She has no zero-depreciation cover.</p>`);
+  if (c.kind === 'hreimb' && k === 'flags') {
+    const f = c.fraud, top = f.signals.filter(x => x.w === 'h');
+    return doLine('Read the strongest red flags and decide if a field visit is needed') + `<div class="score"><span class="big st-bad">${f.score}</span><div style="flex:1"><div class="sm"><b>High risk</b> <span class="mut">out of 100</span></div><div class="meter" style="margin-top:6px"><i style="width:${f.score}%;background:var(--bad)"></i></div></div></div>
+      <div class="gates one" style="margin-top:10px">${top.map(x => gateRow({ t: x.t, r: x.d, st: 'bad' })).join('')}</div>` + more(c, 'allf', 'See all red flags and linked claims', `<div class="gates one">${f.signals.filter(x => x.w !== 'h').map(x => gateRow({ t: x.t, r: x.d, st: x.w === 'm' ? 'warn' : 'info' })).join('')}</div>${graphSvg()}`, f.signals.length);
   }
-  if (c.kind === 'theft') return sec('Settlement', `<div class="box pad money"><div class="row"><span>Cover amount (IDV)</span><b>${inr(c.idv)}</b></div><div class="row dd"><span>Compulsory deductible, two-wheeler</span><b>−${inr(c.deductible)}</b></div><div class="row tot"><span>Payable to Arun Prakash</span><span>${inr(c.idv - c.deductible)}</span></div><p class="note" style="margin-top:4px">Paid after the RC, keys and transfer forms reach us, which they have. If the bike is found later, it belongs to NxSure.</p></div>`);
-  if (c.kind === 'fire') {
-    const a = assessF(c);
-    return sec('Survey, with underinsurance', `<div class="wrap-tbl"><table class="tbl"><thead><tr><th>Section</th><th class="num">Cover</th><th class="num">Value at risk</th><th class="num">Short by</th><th class="num">Loss</th><th class="num">Payable</th></tr></thead><tbody>${a.rows.map(r => `<tr class="${r.avg ? 'hl' : ''}"><td><b style="font-weight:600">${esc(r.s)}</b><div class="sm mut">${r.avg ? `Over the 15% waiver: paid ${inr(r.si)} ÷ ${inr(r.var)} of the loss` : 'Within the 15% waiver: paid in full'}</div></td><td class="num">${inr(r.si)}</td><td class="num">${inr(r.var)}</td><td class="num ${r.avg ? 'st-warn b' : ''}">${pct(r.short)}</td><td class="num">${inr(r.loss)}</td><td class="num b">${inr(r.pay)}</td></tr>`).join('')}</tbody>
-      <tfoot><tr><td colspan="4">Total</td><td class="num">${inr(a.loss)}</td><td class="num">${inr(a.gross)}</td></tr><tr class="sub"><td colspan="5">Excess for each claim</td><td class="num dd">−${inr(c.excess)}</td></tr><tr class="sub"><td colspan="5"><b>Payable to Vastra Collections</b></td><td class="num b" style="font-size:14px">${inr(a.pay)}</td></tr></tfoot></table></div>
-      <p class="note">Bharat Sookshma Udyam Suraksha forgives underinsurance up to 15% of the value at risk. Stock is ${pct(a.rows[0].short)} short, so the average clause applies to stock only.</p>`);
-  }
+  if (c.kind === 'hreimb' && k === 'med') return doLine('Compare the treatment with the test results') + kv([['Diagnosis', `${esc(K.dx)} <span class="mut sm">${K.icd}</span>`], ['Tests on arrival', 'Sodium 138, potassium 4.1, creatinine 0.9, BP 118/76: all normal'], ['Treatment', '2 days in ICU, 1 in a ward'], ['Usual', esc(K.typical)]], 'cardkv');
+  if (c.kind === 'mod' && k === 'survey') { const a = assessM(c); return doLine('Check the survey matches the photos and the accident') + kv([['Cause', 'Rear-ended at a signal. Matches what she reported'], ['Photos', 'Fresh damage, same parts as the survey'], ['Asked and assessed', `${inr(a.est)} asked by the garage, ${inr(a.assessed)} assessed`], ['Surveyor', `${esc(c.survey.name)}, licensed`]], 'cardkv') + more(c, 'parts', 'See parts and labour', partsTbl(c, a), a.rows.length + 2); }
+  if (c.kind === 'mod' && k === 'dep') { const a = assessM(c); return doLine('Check depreciation, the deductible and salvage', `The car is ${Math.floor(c.veh.age / 12)} years ${c.veh.age % 12} months old: metal parts at ${Math.round(a.md * 100)}%, plastic at 50%, glass nil. She has no zero-depreciation cover.`) + flow([['Assessed by the surveyor', a.assessed, 'base'], ['Depreciation on parts and paint', a.dep, 'minus'], ['Compulsory deductible', c.deductible, 'minus', 'Up to 1,500 cc'], ['Salvage kept by the garage', c.salvage, 'minus'], ['NxSure pays the garage', a.pay, 'total']]) + `<div class="line">${ic('user')}<span>Customer pays <b>${inr(a.cust)}</b> at the garage.</span></div>` + more(c, 'parts2', 'See depreciation part by part', partsTbl(c, a), a.rows.length + 2); }
+  if (c.kind === 'theft' && k === 'inv') return doLine('Confirm the theft is genuine') + kv([['Investigation', 'Genuine theft. Society CCTV shows two men taking it at 2:14 am'], ['Police', 'Closed as untraced'], ['Keys', '1 of 2. Indemnity bond signed for the lost one'], ['Since the theft', 'No traffic fines; not on IIB with another insurer']], 'cardkv');
+  if (c.kind === 'theft' && k === 'set') return doLine('Check the amount we pay', 'We pay the cover amount, not the price of a new bike.') + flow([['Asked for', c.claimed, 'base', 'The bike\'s price today'], ['Cover amount (IDV)', c.idv, 'base', 'The most this policy can pay'], ['Compulsory deductible', c.deductible, 'minus', 'Two-wheeler'], ['NxSure pays Arun Prakash', c.idv - c.deductible, 'total']]);
+  if (c.kind === 'fire' && k === 'survey') return doLine('Confirm the cause and the loss') + kv([['Cause', 'Short circuit at the main switchboard, after closing. Confirmed by the fire brigade'], ['Loss', 'Stock ₹8,20,000 · fittings ₹1,10,000'], ['Stock records', 'Stock register and GST returns back ₹31.4 lakh of stock'], ['Surveyor', `${esc(c.survey.name)}, licensed`]], 'cardkv');
+  if (c.kind === 'fire' && k === 'under') { const a = assessF(c); return doLine('Check the average clause is applied only where it should be', 'This product forgives underinsurance up to 15% of the value at risk.') + `<div class="secs">${a.rows.map(r => `<div class="${r.avg ? 'warn' : 'ok'}"><b>${esc(r.s)}</b><span>Cover ${lakh(r.si)} · at risk ${lakh(r.var)} · ${pct(r.short)} short</span><span>${r.avg ? 'Paid in proportion' : 'Paid in full'}: <b>${inr(r.pay)}</b> of ${inr(r.loss)}</span></div>`).join('')}</div>` + flow([['Payable on both sections', a.gross, 'base'], ['Excess for each claim', c.excess, 'minus'], ['NxSure pays Vastra Collections', a.pay, 'total']]); }
   return '';
 }
-function decisionHtml(c) {
-  const amt = claimAmount(c), u = ST.user, over = amt > u.limit && c.kind !== 'hpre';
-  let lines = [];
-  if (c.kind === 'hpre') lines = [`Cashless approved: ${inr(amt)} for ${c.clin.proc.toLowerCase()} at ${c.hosp.name}.`, `Room: any single private room, as the plan allows.`, `Anything above ${inr(amt)} is reviewed at discharge with the final bill.`];
-  else if (c.kind === 'hfinal') { const a = assessH(c); lines = [`NxSure pays ${c.hosp.name} ${inr(a.pay)}.`, `${c.patient.name} pays ${inr(a.patient)} at discharge:`, `· room above the plan's ₹5,000 a day, and the same share of doctor and nursing charges: ${inr(a.prop)} (Essential plan, room rent limit)`, `· items IRDAI lists as not payable: ${inr(a.np)}`, `· 20% co-pay from age 61: ${inr(a.copay)} (Essential plan, co-pay)`]; }
-  else if (c.kind === 'hreimb') { const a = assessH(c); lines = [`If approved: ${inr(a.pay)} to Coastal Bank •••• 7718.`, `Not payable: service and registration charges, ${inr(a.np)}.`, 'Suggested instead: field investigation. The customer is told we are checking the claim and when to expect a decision.']; }
-  else if (c.kind === 'mod') { const a = assessM(c); lines = [`NxSure pays ${c.garage.name} ${inr(a.pay)} directly.`, `${c.cust.name} pays ${inr(a.cust)} at the garage: depreciation ${inr(a.dep)}, deductible ${inr(c.deductible)}, salvage ${inr(c.salvage)}.`, 'No-claim bonus goes to 0% at renewal.', 'We then recover our payment from the other driver\'s insurer.'] }
-  else if (c.kind === 'theft') lines = [`NxSure pays Arun Prakash ${inr(amt)} to Kaveri Bank •••• 0932.`, 'The policy ends on payment; the bike, if found, belongs to NxSure.'];
-  else if (c.kind === 'fire') { const a = assessF(c); lines = [`NxSure pays Vastra Collections ${inr(a.pay)} to Unity Bank •••• 5170.`, `Stock is paid in proportion because it was insured for ${lakh(a.rows[0].si)} against ${lakh(a.rows[0].var)} at risk (underinsurance clause).`, `Fittings paid in full. Excess ${inr(c.excess)}.`]; }
-  return sec('What the customer will be told', `<div class="preview">${lines.map(esc).join('\n')}</div>`) + (over ? `<div class="callout warn"><span class="ico">${ic('warn')}</span><span>${inr(amt)} is above your limit of ${inr(u.limit)}. Approving sends it to Kavita Shah, who gets it with your notes.</span></div>` : '');
+function partsTbl(c, a) {
+  return `<table class="tbl"><thead><tr><th>Part</th><th>Material</th><th class="num">Assessed</th><th class="num">Dep.</th><th class="num">Less</th></tr></thead><tbody>${a.rows.map(r => `<tr><td>${esc(r.p)}</td><td class="sm">${r.m[0].toUpperCase() + r.m.slice(1)}</td><td class="num">${inr(r.ass)}</td><td class="num">${Math.round(r.r * 100)}%</td><td class="num dd">${r.dep ? '−' + inr(r.dep) : '—'}</td></tr>`).join('')}<tr><td>Labour</td><td></td><td class="num">${inr(c.labour.ass)}</td><td class="num">0%</td><td class="num mut">—</td></tr><tr><td>Painting</td><td class="sm">25% is material</td><td class="num">${inr(c.paint.ass)}</td><td class="num">50%</td><td class="num dd">−${inr(a.paintDep)}</td></tr></tbody></table>`;
 }
 
-/* ---------- underwriting ---------- */
-function leftUw(c) {
-  const dvf = `<div class="wrap-tbl"><table class="tbl"><thead><tr><th style="width:20%">What</th><th style="width:28%">Declared</th><th>What we found</th><th style="width:18%">Source</th></tr></thead><tbody>${c.dvf.map(r => `<tr class="${r.st === 'bad' ? 'bd' : ''}"><td><b style="font-weight:600">${esc(r.item)}</b>${r.who ? `<div class="sm mut">${esc(r.who)}</div>` : ''}</td><td>${esc(r.dec)}</td><td><span style="display:flex;gap:6px">${stIc(r.st)}<span>${esc(r.found)}</span></span></td><td class="sm mut">${esc(r.src)}</td></tr>`).join('')}</tbody></table></div>`;
-  let prem = '';
-  if (c.kind === 'uwh') {
-    const loads = c.state.loads || {}, p = premH(c, loads);
-    prem = sec('Members and premium', `<div class="wrap-tbl"><table class="tbl"><thead><tr><th>Member</th><th class="num">Age</th><th class="num">BMI</th><th>Declared</th><th class="num">Loading</th><th class="num">Premium</th></tr></thead><tbody>${p.rows.map(r => { const bmi = r.wt / Math.pow(r.ht / 100, 2); return `<tr><td><b style="font-weight:600">${esc(r.n)}</b><div class="sm mut">${esc(r.rel)}</div></td><td class="num">${r.age}</td><td class="num ${bmi > 30 ? 'st-warn b' : ''}">${bmi.toFixed(1)}</td><td class="sm">${esc(r.cond)}</td><td class="num">${r.ld ? `<b class="st-warn">+${r.ld}%</b>` : '—'}</td><td class="num">${inr(r.prem)}</td></tr>`; }).join('')}</tbody>
-      <tfoot><tr><td colspan="5">Premium${p.total !== p.base ? `, was ${inr(p.base)} before loading` : ''}</td><td class="num">${inr(p.total)}</td></tr>${p.disc ? `<tr class="sub"><td colspan="5">5% off for sharing bank data through an Account Aggregator</td><td class="num dd">−${inr(p.disc)}</td></tr>` : ''}<tr class="sub"><td colspan="5"><b>Customer pays</b> <span class="sm mut">no GST on individual health</span></td><td class="num b">${inr(p.final)}</td></tr></tfoot></table></div>`, `${esc(c.pol.plan)}`);
-  } else if (c.kind === 'uwm') {
-    const q = premM(c, null), t = c.state.terms || { zd: false }, r = premM(c, t);
-    prem = sec('Premium', `<div class="wrap-tbl"><table class="tbl"><thead><tr><th>Section</th><th class="num">As quoted</th><th class="num">After your terms</th></tr></thead><tbody>
-      <tr><td>Own damage <span class="sm mut">before bonus ${inr(c.veh.odBase)}</span></td><td class="num">${inr(q.od)} <span class="sm mut">at 25% bonus</span></td><td class="num">${inr(r.od)} <span class="sm mut">at 0%</span></td></tr>
-      <tr><td>Zero depreciation</td><td class="num">${inr(q.zd)}</td><td class="num">${r.zd ? inr(r.zd) : '<span class="mut">Left out</span>'}</td></tr>
-      <tr><td>Third party, over 1,500 cc</td><td class="num">${inr(q.tp)}</td><td class="num">${inr(r.tp)}</td></tr><tr><td>Owner-driver accident cover</td><td class="num">${inr(q.cpa)}</td><td class="num">${inr(r.cpa)}</td></tr><tr><td>GST 18%</td><td class="num">${inr(q.g)}</td><td class="num">${inr(r.g)}</td></tr></tbody>
-      <tfoot><tr><td>Total</td><td class="num">${inr(q.total)} <span class="sm mut">paid</span></td><td class="num">${inr(r.total)}</td></tr><tr class="sub"><td colspan="2">${r.total > q.total ? 'Customer pays the difference before we issue' : 'Goes back to the customer'}</td><td class="num b">${inr(Math.abs(r.total - q.total))}</td></tr></tfoot></table></div>`, `Cover amount ${inr(c.veh.idv)}`);
-  } else if (c.kind === 'uws') {
-    const t = c.state.terms || { rate: c.sme.suggestRate, load: c.sme.claimLoad }, b = premS(c, null), r = premS(c, t);
-    prem = sec('Sums insured and premium', `<div class="wrap-tbl"><table class="tbl"><tbody>${c.sme.parts.map(([k, v]) => `<tr><td>${esc(k)}</td><td class="num">${lakh(v)}</td></tr>`).join('')}</tbody><tfoot><tr><td>Total sum insured at one location</td><td class="num">${lakh(c.sme.tsi)}</td></tr>
-      <tr class="sub"><td>At the standard high-hazard rate, ${b.rate.toFixed(2)} per mille</td><td class="num mut">${inr(b.net)}</td></tr><tr class="sub"><td><b>At ${c.state.terms ? 'your' : 'the suggested'} terms: ${r.rate.toFixed(2)} per mille, +${r.load}% for the 2024 claim</b></td><td class="num b">${inr(r.net)}</td></tr><tr class="sub"><td>With GST 18%</td><td class="num">${inr(r.total)}</td></tr></tfoot></table></div>`);
+/* ======================= underwriting ======================= */
+function uwStep(c, s, ro) {
+  if (s === 1) {
+    const flag = c.dvf.filter(r => r.st !== 'ok');
+    return `<div class="wrapc">${doLine('Check what was declared against what we found', `${flag.length} of ${c.dvf.length} don't match. The rest agree.`)}
+      ${kv([['Proposer', esc(c.cust.name)], ['Cover asked for', esc(c.pol.plan)], ['Insured', esc(c.pol.obj)]], 'cardkv three')}
+      <div class="flags">${c.triggers.join('')}</div>
+      <div class="gates one">${flag.map(r => gateRow({ t: `${r.item}${r.who ? ' · ' + r.who : ''}`, r: `Declared: ${r.dec}. Found: ${r.found}`, st: r.st })).join('')}</div>
+      ${more(c, 'dvf', 'See everything that matches', `<div class="gates one">${c.dvf.filter(r => r.st === 'ok').map(r => gateRow({ t: `${r.item}${r.who ? ' · ' + r.who : ''}`, r: `Declared: ${r.dec}. Found: ${r.found}`, st: 'ok' })).join('')}</div>`, c.dvf.filter(r => r.st === 'ok').length)}
+      <p class="why">${ic('info')} ${esc(c.why)}</p></div>`;
   }
-  return `${insightHtml(c)}
-    ${sec('Why it\'s here', `<div class="flags">${c.triggers.join('')}</div>`)}
-    ${sec('Declared and what we found', dvf, `${c.dvf.filter(r => r.st === 'bad').length} don't match`)}
-    ${prem}
-    ${sec('Proposal', kv([['Proposer', `${esc(c.cust.name)}<span class="mut sm" style="display:block;font-weight:500">${esc(c.cust.sub)}</span>`], ['Cover asked for', esc(c.pol.plan)], ['Insured', esc(c.pol.obj)], ['Sold through', esc(c.pol.via)], ['With NxSure', esc(c.cust.since)], ['Other policies', esc(c.cust.other)]], 'three'))}`;
+  if (s === 2) {
+    const subs = [['docs', 'Documents']].concat(c.med ? [['med', 'Medical']] : []).concat(c.damages ? [['dmg', 'Inspection']] : []).concat(c.warranties ? [['risk', 'Risk survey']] : []).concat([['data', 'Data sources']]);
+    const cur = subs.find(x => x[0] === c.state.sub) ? c.state.sub : 'docs';
+    const nav = `<div class="subnav inset" role="tablist">${subs.map(([k, t], i) => `<button class="${k === cur ? 'on' : ''}" data-act="sub" data-k="${k}" role="tab"><span class="n">${i + 1}</span>${esc(t)}${k === 'docs' && qOpen(c).length ? `<span class="c warn">${qOpen(c).length}</span>` : ''}</button>`).join('')}</div>`;
+    if (cur === 'docs') return `<div class="stack"><div class="subwrap">${nav}</div>${docStep(c, ro, 'Look at each document and confirm what it shows')}</div>`;
+    let b = '';
+    if (cur === 'med') { const off = c.med.filter(m => m.st !== 'ok'); b = doLine('Look at the results outside the normal range', `${off.length} of ${c.med.length} are outside the range.`) + `<div class="gates one">${off.map(m => gateRow({ t: `${m.test} · ${m.who}`, r: `${m.val} ${m.unit}${m.range ? ', normal ' + m.range : ''}`, st: m.st })).join('')}</div>` + more(c, 'medall', 'See all results', `<div class="gates one">${c.med.filter(m => m.st === 'ok').map(m => gateRow({ t: `${m.test} · ${m.who}`, r: `${m.val} ${m.unit}${m.range ? ', normal ' + m.range : ''}`, st: 'ok' })).join('')}</div>`, c.med.length - off.length); }
+    else if (cur === 'dmg') b = doLine('These damages were found in the self-inspection video', 'Accepting with conditions excludes them, so they can\'t be claimed later.') + `<div class="gates one">${c.damages.map(d => gateRow({ t: d.t, r: 'Seen in the video', st: 'bad', doc: 'v1' })).join('')}</div>`;
+    else if (cur === 'risk') b = doLine('These hazards were seen on the video survey', 'Your terms should answer each one, with a warranty or a higher rate.') + `<div class="gates one">${[['bad', 'Electrical panel next to the solvent store'], ['bad', 'No hydrant system, though one was declared'], ['warn', 'Stock within 1 m of the lights in 2 bays'], ['warn', 'No "No smoking" signs']].map(([st, t]) => gateRow({ t, r: 'Seen on the video survey', st, doc: 'vs' })).join('')}</div>` + more(c, 'okrisk', 'See what was fine', `<div class="gates one">${gateRow({ t: '12 extinguishers, refilled Sep 2026', r: '', st: 'ok' })}${gateRow({ t: 'RCC building, clear exits, fire NOC valid', r: '', st: 'ok' })}</div>`, 2);
+    else if (cur === 'data') b = doLine('See what other data says about this proposal') + `<div class="gates one">${c.data.map((d, i) => gateRow({ t: d.src, r: d.lines[0], st: d.st === 'info' ? 'info' : d.st })).join('')}</div>` + c.data.map((d, i) => more(c, 'ds' + i, `See ${d.src} in detail`, `<div class="sm mut">${esc(d.t)}</div><ul class="ul">${d.lines.map(l => `<li>${esc(l)}</li>`).join('')}</ul>${d.chart ? barChart(d.chart) : ''}`)).join('');
+    return `<div class="wrapc">${nav}${b}</div>`;
+  }
+  return decideHtml(c, ro);
+}
+
+/* ======================= the decision step, all modules ======================= */
+function custLines(c) {
+  const amt = claimAmount(c);
+  if (c.kind === 'hpre') return [`Cashless approved: ${inr(amt)} for ${c.clin.proc.toLowerCase()} at ${c.hosp.name}.`, 'Room: any single private room, as the plan allows.', `Anything above ${inr(amt)} is reviewed at discharge with the final bill.`];
+  if (c.kind === 'hfinal') { const a = assessH(c); return [`NxSure pays ${c.hosp.name} ${inr(a.pay)}.`, `${c.patient.name} pays ${inr(a.patient)} at discharge:`, `· room above the plan's ₹5,000 a day, and the same share of doctor and nursing charges: ${inr(a.prop)} (Essential plan, room rent limit)`, `· items IRDAI lists as not payable: ${inr(a.np)}`, `· 20% co-pay from age 61: ${inr(a.copay)} (Essential plan, co-pay)`]; }
+  if (c.kind === 'hreimb') { const a = assessH(c); return [`If approved: ${inr(a.pay)} to Coastal Bank •••• 7718.`, `Not payable: service and registration charges, ${inr(a.np)}.`]; }
+  if (c.kind === 'mod') { const a = assessM(c); return [`NxSure pays ${c.garage.name} ${inr(a.pay)} directly.`, `${c.cust.name} pays ${inr(a.cust)} at the garage: depreciation ${inr(a.dep)}, deductible ${inr(c.deductible)}, salvage ${inr(c.salvage)}.`, 'The no-claim bonus goes to 0% at renewal.']; }
+  if (c.kind === 'theft') return [`NxSure pays Arun Prakash ${inr(amt)} to Kaveri Bank •••• 0932.`, `That is the cover amount of ${inr(c.idv)} less the ₹100 deductible. The ₹1,90,000 asked for is above the cover.`, 'The policy ends on payment; the bike, if found, belongs to NxSure.'];
+  if (c.kind === 'fire') { const a = assessF(c); return [`NxSure pays Vastra Collections ${inr(a.pay)} to Unity Bank •••• 5170.`, `Stock is paid in proportion because it was insured for ${lakh(a.rows[0].si)} against ${lakh(a.rows[0].var)} at risk (underinsurance clause).`, `Fittings are paid in full. Excess ${inr(c.excess)}.`]; }
+  return [];
+}
+
+function decideHtml(c, ro) {
+  const open = qOpen(c), no = qNo(c), u = ST.user;
+  const pending = open.length ? `<div class="callout warn"><span class="ico">${ic('warn')}</span><div><b>${plural(open.length, 'thing')} still to confirm</b>${open.map(t => `<div class="sm">${esc(t.t)} <button class="lnk" data-act="goq" data-id="${t.id}">Go there</button></div>`).join('')}</div></div>` : '';
+  const nos = no.length ? `<div class="callout bad"><span class="ico">${ic('bad')}</span><div><b>You marked ${plural(no.length, 'item')} as not correct</b>${no.map(t => `<div class="sm">${esc(t.t)}</div>`).join('')}<div class="sm">Raise ${c.mod === 'uw' ? 'a requirement' : 'an IR'} or ${c.mod === 'claims' ? 'recommend a decline' : 'decline'} instead of approving.</div></div></div>` : '';
+  let main = '';
+  if (c.mod === 'ops') {
+    const m = c.money(c);
+    const nums = m.kind === 'refund' ? [['Refund', inr(m.total), 'b', c.bank.ok ? `To ${c.bank.t}` : 'No account to send it to']] : m.kind === 'collect' ? [['Extra premium', inr(m.total), 'b', m.paid != null && Math.abs(m.paid - m.total) < 1 ? 'Already paid' : m.paid > m.total ? `${inr(m.paid - m.total)} goes back` : `${inr(m.total - (m.paid || 0))} to collect`]] : [['Premium', 'No change', 'b']];
+    main = `${bigNums(nums)}<div class="line">${ic('info')}<span><b>When you approve:</b> ${esc(c.effect)}</span></div>${c.kind === 'cancel' && !c.bank.ok ? `<div class="callout bad"><span class="ico">${ic('bank')}</span><span><b>${esc(c.bank.t)}.</b> ${esc(c.bank.d)} Raise an IR for bank details.</span></div>` : ''}`;
+  } else if (c.mod === 'claims') {
+    const amt = claimAmount(c), payee = c.kind === 'hpre' || c.kind === 'hfinal' ? c.hosp.name : c.kind === 'mod' ? c.garage.name : c.cust.name;
+    const cp = c.kind === 'hfinal' ? assessH(c).patient : c.kind === 'mod' ? assessM(c).cust : 0;
+    main = bigNums([[c.kind === 'hpre' ? 'Approve now, cashless' : c.kind === 'hreimb' ? 'Payable if genuine' : 'NxSure pays', inr(amt), 'b', payee]].concat(cp ? [[c.kind === 'mod' ? 'Customer pays at the garage' : 'Patient pays at discharge', inr(cp), '', '']] : []))
+      + (c.kind === 'hreimb' ? `<div class="callout bad"><span class="ico">${ic('flag')}</span><span><b>Suggested: send for field investigation.</b> Three strong red flags. The customer is only told we're checking the claim.</span></div>` : '')
+      + (amt > u.limit && c.kind !== 'hpre' ? `<div class="callout warn"><span class="ico">${ic('warn')}</span><span>${inr(amt)} is above your limit of ${inr(u.limit)}. Approving sends it to Kavita Shah with your note.</span></div>` : '')
+      + more(c, 'tell', 'See what the customer will be told', `<div class="preview">${custLines(c).map(esc).join('\n')}</div>`);
+  } else {
+    if (c.kind === 'uwh') { const base = premH(c, {}), sug = premH(c, c.suggest.load || {}), cur = premH(c, c.state.loads || c.suggest.load || {}); main = bigNums([['At standard terms', inr(base.final), '', 'If you accept'], [c.suggest.load && Object.keys(c.suggest.load).length ? 'With the suggested loading' : 'Suggested', c.suggest.load && Object.keys(c.suggest.load).length ? inr(sug.final) : esc(c.suggest.text), 'b', c.suggest.text]]); }
+    else if (c.kind === 'uwm') { const q = premM(c, null), r = premM(c, c.state.terms || { zd: false }); main = bigNums([['Paid at the quote', inr(q.total), '', '25% bonus, zero depreciation'], ['With the suggested conditions', inr(r.total), 'b', 'Bonus 0%, damage excluded, no zero depreciation']]); }
+    else { const r = premS(c, c.state.terms || { rate: c.sme.suggestRate, load: c.sme.claimLoad }); main = bigNums([['Sum insured', lakh(c.sme.tsi), '', 'One location'], ['Premium at the suggested terms', inr(r.total), 'b', `${(c.state.terms || { rate: c.sme.suggestRate }).rate.toFixed(2)} per mille, +${(c.state.terms || { load: c.sme.claimLoad }).load}%, with GST`]]); }
+  }
+  return `<div class="wrapc">${doLine(c.bucket === 'ref' && c.refTo === u.id ? 'Approve, or send it back' : 'Make the decision', open.length || no.length ? '' : 'Everything is checked.')}${insightHtml(c)}${main}${nos}${pending}</div>`;
+}
+
+/* ======================= footer: what to do on this step ======================= */
+function footHtml(c, mine, s) {
+  const B = (act, label, k = '', extra = '') => `<button class="btn ${k}" data-act="${act}" ${extra}>${label}</button>`;
+  const back = s > 1 ? B('step', `${ic('back')}Back`, 'ghost', `data-s="${s - 1}"`) : '';
+  if (!mine) return `<div class="case-f"><div class="hint">${ic('eye')}<span>You can look, but only the person it's assigned to can decide.</span></div><div class="acts">${back}${s < 3 ? B('step', `Next${ic('arrow')}`, '', `data-s="${s + 1}"`) : ''}<button class="btn" data-act="nav" data-v="search">${ic('search')}Back to search</button></div></div>`;
+  const u = ST.user, sug = c.insight.act, open = qOpen(c).length, no = qNo(c).length, gate = open || no ? 'disabled' : '';
+  if (c.bucket === 'ref' && c.refTo === u.id) return `<div class="case-f"><div class="hint">${ic('info')}<span>Sent by <b>${esc(userById(c.ref.by).name)}</b>: ${esc(c.ref.note || c.ref.why)}</span></div><div class="acts">${B('sendback', 'Send back')}${B('supapprove', `Approve ${inr(c.ref.amt)}`, 'pri')}</div></div>`;
+  const ir = c.mod === 'uw' ? 'Raise requirement' : c.mod === 'claims' ? (c.channel.startsWith('Hospital') ? 'Query hospital' : 'Ask for documents') : 'Raise IR';
+  let hint = '', acts = '';
+  if (s < 3) {
+    if (c.mod === 'claims' && s === 1) {
+      hint = 'Choose where this claim goes next.';
+      const notAdm = c.kind === 'hpre' ? B('deny', 'Deny cashless', 'dng') : B('decline', 'Not admissible', 'dng');
+      acts = notAdm + B('ir', ir) + (c.gate.out.route === 'inv' ? B('step', 'Assess anyway', '', 'data-s="2"') + B('inv', 'Send for investigation', 'pri') : B('step', `Go to assessment${ic('arrow')}`, 'pri', 'data-s="2"'));
+    } else if (c.mod === 'claims' && s === 2) {
+      const subs = claimSubs(c), i = Math.max(0, subs.findIndex(x => x[0] === c.state.sub)), nx = subs[i + 1];
+      const left = subs[i][2].filter(id => c.state.ticks[id] === undefined).length;
+      hint = left ? `Confirm ${plural(left, 'item')} above, then continue.` : `${subs[i][1]} done.`;
+      acts = B('ir', ir) + back + (nx ? B('sub', `Next: ${esc(nx[1])}${ic('arrow')}`, 'pri', `data-k="${nx[0]}"`) : B('step', `Continue to the decision${ic('arrow')}`, 'pri', 'data-s="3"'));
+    } else {
+      const n = qOpen(c).length;
+      hint = s === 1 ? `Step 1 of 3. Next: ${c.mod === 'ops' ? 'confirm the documents' : 'look at the evidence'}.` : n ? `${plural(n, 'item')} still to confirm.` : 'All confirmed.';
+      acts = (c.mod === 'ops' && s === 1 ? B('reject', 'Reject', 'dng') : '') + B('ir', ir, sug === 'ir' || sug === 'req' ? 'pri' : '') + back + B('step', `${s === 1 ? (c.mod === 'ops' ? 'Continue to documents' : 'Continue to evidence') : 'Continue to decide'}${ic('arrow')}`, sug === 'ir' || sug === 'req' ? '' : 'pri', `data-s="${s + 1}"`);
+    }
+    return `<div class="case-f"><div class="hint">${ic('info')}<span>${hint}</span></div><div class="acts">${acts}</div></div>`;
+  }
+  hint = no ? 'Something was marked not correct.' : open ? `${plural(open, 'item')} still to confirm before you approve.` : 'Ready to decide.';
+  if (c.mod === 'ops') {
+    const m = c.money(c), bankBad = c.kind === 'cancel' && !c.bank.ok, sysBad = (c.checks.sys || []).some(x => x.st === 'bad') && c.kind !== 'cancel', over = m.total > u.limit;
+    if (bankBad) hint = 'There\'s nowhere to send the refund. Raise an IR for bank details.'; else if (sysBad && !no && !open) hint = 'A system check failed. Raise an IR, or reject.';
+    acts = back + B('reject', 'Reject', 'dng') + B('ir', ir, sug === 'ir' ? 'pri' : '') + B(over ? 'refer' : 'approve', c.kind === 'cancel' ? `Approve and refund ${inr(m.total)}` : over ? 'Send for approval' : 'Approve', sug === 'ir' ? '' : 'pri', open || no || bankBad || sysBad ? 'disabled' : '');
+  } else if (c.mod === 'claims') {
+    const amt = claimAmount(c), over = amt > u.limit && c.kind !== 'hpre';
+    if (c.kind === 'hpre') acts = back + B('deny', 'Deny cashless', 'dng') + B('ir', ir) + B('approve', `Approve ${inr(amt)}`, 'pri', gate);
+    else if (c.kind === 'hfinal') acts = back + B('ir', ir) + B('approve', `Approve ${inr(amt)} to the hospital`, 'pri', gate);
+    else acts = back + B('decline', 'Recommend decline', 'dng') + B('ir', ir) + (c.kind === 'hreimb' ? B('inv', 'Send for investigation', 'pri') : '') + B(over ? 'refer' : 'approve', over ? `Send ${inr(amt)} for approval` : `Approve ${inr(amt)}`, c.kind === 'hreimb' ? '' : 'pri', gate);
+  } else {
+    if (c.kind === 'uwh') acts = back + B('uwdecline', 'Decline', 'dng') + B('ir', ir, sug === 'req' ? 'pri' : '') + B('load', 'Accept with loading', sug === 'load' ? 'pri' : '', gate) + B('accept', 'Accept', sug === 'accept' ? 'pri' : '', gate);
+    else acts = back + B('uwdecline', 'Decline', 'dng') + B('ir', ir) + B('terms', c.kind === 'uwm' ? 'Accept with conditions' : 'Accept with terms', 'pri', gate);
+  }
+  return `<div class="case-f"><div class="hint">${ic(open || no ? 'warn' : 'ok')}<span>${hint}</span></div><div class="acts">${acts}</div></div>`;
 }
 
 /* ======================= right side: viewer and evidence ======================= */
-function viewerHtml(c) {
+function viewerHtml(c, o = {}) {
   const ds = c.docs, i = Math.min(c.state.doc, ds.length - 1), d = ds[i], s = c.state;
   const r = (d.kind === 'photo' ? renderPhoto : renderDoc)(d, { marks: s.marks });
-  const ticksFor = id => (c.checks.ops || []).filter(t => t.doc === id), allTicked = id => ticksFor(id).length && ticksFor(id).every(t => s.ticks[t.id]);
+  const ticksFor = id => (c.checks.ops || []).filter(t => t.doc === id), allTicked = id => ticksFor(id).length && ticksFor(id).every(t => s.ticks[t.id] === true);
   const bad = x => x.flag === 'bad' || (x.kind !== 'photo' && (x._boxes || []).some(b => b.r === 'bad'));
   const thumbs = ds.map((x, j) => `<button class="vthumb ${j === i ? 'on' : ''}" data-act="doc" data-i="${j}" title="${esc(x.name)}"><span class="pv">${(x.kind === 'photo' ? renderPhoto : renderDoc)(x).svg}</span><span class="nm">${esc(x.name)}</span>${allTicked(x.id) ? `<span class="bdg ok">${ic('check')}</span>` : bad(x) ? `<span class="bdg bad">${ic('x')}</span>` : ''}</button>`).join('');
   const w = s.zoom ? `${Math.round(r.W * s.zoom)}px` : `min(100%, ${Math.round(r.W * 1.15)}px)`;
@@ -2162,54 +2539,11 @@ function viewerHtml(c) {
   return `<div class="viewer">
     <div class="vbar"><span class="dn">${esc(d.name)}</span><span class="src">${esc(d.from)}</span><span class="sp"></span>
       <label class="tg"><input type="checkbox" data-act="marks" ${s.marks ? 'checked' : ''}>${d.kind === 'photo' ? 'Show findings' : 'Show what was read'}</label>
-      <button class="ib" data-act="zoom" data-z="-1" aria-label="Zoom out">${ic('minus')}</button><button class="ib" data-act="zoom" data-z="1" aria-label="Zoom in">${ic('plus')}</button><button class="ib" data-act="zoom" data-z="0" aria-label="Fit to width">${ic('fit')}</button><button class="ib" data-act="rot" aria-label="Rotate">${ic('rot')}</button><button class="ib" data-act="full" aria-label="${s.full ? 'Show details again' : 'Documents full width'}">${ic('expand')}</button></div>
-    <div class="vmain"><div class="vthumbs" role="tablist" aria-label="Documents">${thumbs}</div><div class="vstage" id="vstage"><div class="sheet" ${!s.zoom && d.kind !== 'paper' && (d.kind === 'photo' || d.kind === 'card') ? `data-fit="${(r.W / r.H).toFixed(4)}"` : ''} style="width:${w};transform:rotate(${s.rot}deg);${s.rot % 180 ? 'margin:60px 0' : ''}">${r.svg}</div></div></div>
+      <button class="ib" data-act="zoom" data-z="-1" aria-label="Zoom out">${ic('minus')}</button><button class="ib" data-act="zoom" data-z="1" aria-label="Zoom in">${ic('plus')}</button><button class="ib" data-act="zoom" data-z="0" aria-label="Fit to width">${ic('fit')}</button><button class="ib" data-act="rot" aria-label="Rotate">${ic('rot')}</button></div>
+    <div class="vmain ${o.thumbs === false ? 'nothumbs' : ''}">${o.thumbs === false ? '' : `<div class="vthumbs" role="tablist" aria-label="Documents">${thumbs}</div>`}<div class="vstage" id="vstage"><div class="sheet" ${!s.zoom && d.kind !== 'paper' && (d.kind === 'photo' || d.kind === 'card') ? `data-fit="${(r.W / r.H).toFixed(4)}"` : ''} style="width:${w};transform:rotate(${s.rot}deg);${s.rot % 180 ? 'margin:60px 0' : ''}">${r.svg}</div></div></div>
     <div class="vread">${strip}</div></div>`;
 }
-function ckRow(x) { return `<div class="ck ${x.st === 'bad' ? 'bad' : x.st === 'warn' ? 'warn' : ''}">${stIc(x.st)}<div><div class="tt">${esc(x.t)}</div>${x.d ? `<div class="dt">${esc(x.d)}</div>` : ''}</div><div class="rt">${x.src ? `<span class="src">${esc(x.src)}</span>` : ''}${x.doc ? `<button class="lnk" data-act="view" data-doc="${x.doc}">View</button>` : ''}</div></div>`; }
-function tickRow(c, t, ro) { const on = !!c.state.ticks[t.id]; return `<div class="ck"><input type="checkbox" id="tk-${t.id}" data-act="tick" data-id="${t.id}" ${on ? 'checked' : ''} ${ro ? 'disabled' : ''}><label for="tk-${t.id}"><div class="tt">${esc(t.t)}</div>${t.d ? `<div class="dt">${esc(t.d)}</div>` : ''}</label><div class="rt">${on ? '<span class="st-ok">Checked by you</span>' : ''}${t.doc ? `<button class="lnk" data-act="view" data-doc="${t.doc}">View</button>` : ''}</div></div>`; }
-function evidHtml(c, ro) {
-  const ops = c.checks.ops || [], done = ops.filter(t => c.state.ticks[t.id]).length;
-  const tabs = [['check', 'Checklist', `${done}/${ops.length}`, done === ops.length ? 'ok' : '']];
-  if (c.mod === 'ops') tabs.push(['kyc', 'KYC and people']);
-  if (c.mod === 'claims') { const f = c.fraud; tabs.push(['fraud', 'Fraud signals', f.score, f.score > 60 ? 'bad' : f.score > 30 ? 'warn' : 'ok'], ['cover', 'Cover']); }
-  if (c.mod === 'uw') { if (c.med) tabs.push(['med', 'Medical']); if (c.damages) tabs.push(['dmg', 'Inspection']); if (c.warranties) tabs.push(['risk', 'Risk survey']); tabs.push(['data', 'Data sources']); }
-  tabs.push(['log', 'Activity']);
-  const t = tabs.find(x => x[0] === c.state.rtab) ? c.state.rtab : 'check';
-  let b = '';
-  if (t === 'check') {
-    const cust = c.checks.cust || [], sys = c.checks.sys || [];
-    const custT = c.mod === 'ops' ? 'From the customer' : c.mod === 'claims' ? 'Documents received' : 'From the proposer';
-    b = `<div class="ckg"><div class="ckg-h"><h4>${custT}</h4><span class="x">${cust.length} of ${cust.length} done · that's why it reached ${c.mod === 'uw' ? 'underwriting' : c.mod === 'claims' ? 'claims' : 'Operations'}</span></div>${cust.map(ckRow).join('')}</div>
-      ${sys.length ? `<div class="ckg"><div class="ckg-h"><h4>System checks</h4><span class="x">${sys.filter(x => x.st === 'ok' || x.st === 'info').length} passed${sys.some(x => x.st === 'bad' || x.st === 'warn') ? ` · ${sys.filter(x => x.st === 'bad' || x.st === 'warn').length} to look at` : ''}</span></div>${sys.slice().sort((a, b) => ({ bad: 0, warn: 1, info: 2, ok: 3 }[a.st] - { bad: 0, warn: 1, info: 2, ok: 3 }[b.st])).map(ckRow).join('')}</div>` : ''}
-      <div class="ckg"><div class="ckg-h"><h4>Your checks</h4><span class="x">${done} of ${ops.length}</span></div>${ops.map(x => tickRow(c, x, ro)).join('')}</div>`;
-  } else if (t === 'kyc') {
-    b = `<div class="ckg">${c.people.map((p, i) => { const k = c.state.kyc[i]; return `<div class="ds" style="margin-top:8px"><div class="ds-h"><b>${esc(p.name)}</b>${chip(p.match >= 90 ? `Face match ${p.match}%` : `Name match ${p.match}%`, p.match >= 90 ? 'ok' : 'warn')}</div><div class="sm mut">${esc(p.role)}</div>
-      ${kv([['KYC', esc(p.kyc)], ['Done', fdt(p.when)], ['Record', esc(p.id)], ['Last checked', k ? `${k === 'run' ? 'Checking…' : 'Just now, still valid'}` : fdt(p.when)]])}
-      ${ro ? '' : `<div style="display:flex;gap:6px;margin-top:8px"><button class="btn xs" data-act="kyc" data-i="${i}">${ic('rot')}Check again</button><button class="btn xs" data-act="kyclink" data-i="${i}">${ic('send')}Send a KYC link</button></div>`}</div>`; }).join('')}</div>`;
-  } else if (t === 'fraud') {
-    const f = c.fraud, lvl = f.score > 60 ? ['High', 'var(--bad)'] : f.score > 30 ? ['Medium', 'var(--warn)'] : ['Low', 'var(--ok)'];
-    b = `<div class="ckg"><div class="score"><span class="big" style="color:${lvl[1]}">${f.score}</span><div style="flex:1"><div class="sm"><b>${lvl[0]} risk</b> <span class="mut">· out of 100, from red flag indicators across bills, data and behaviour</span></div><div class="meter" style="margin-top:6px"><i style="width:${f.score}%;background:${lvl[1]}"></i></div></div></div></div>
-      ${f.signals.length ? `<div class="ckg"><div class="ckg-h"><h4>Red flags</h4><span class="x">${f.signals.length}</span></div>${f.signals.map(s => `<div class="sig"><span class="w ${s.w}">${{ h: 'High', m: 'Med', l: 'Low' }[s.w]}</span><div><div class="tt">${esc(s.t)}</div>${s.d ? `<div class="dt">${esc(s.d)}</div>` : ''}</div><span class="src">${esc(s.src)}</span></div>`).join('')}</div>` : ''}
-      ${f.graph ? `<div class="ckg"><div class="ckg-h"><h4>Links to other claims</h4></div>${graphSvg()}</div>` : ''}
-      <div class="ckg"><div class="ckg-h"><h4>Checked and clear</h4></div>${(f.passed || []).map(p => `<div class="ck">${stIc('ok')}<div class="tt" style="font-weight:500">${esc(p)}</div><span></span></div>`).join('')}</div>`;
-  } else if (t === 'cover') {
-    b = coverHtml(c);
-  } else if (t === 'med') {
-    const by = {}; c.med.forEach(m => (by[m.who] = by[m.who] || []).push(m));
-    b = Object.entries(by).map(([w, ms]) => `<div class="ckg"><div class="ckg-h"><h4>${esc(w)}</h4><span class="x">${ms.filter(m => m.st === 'warn' || m.st === 'bad').length} outside range</span></div><table class="tbl"><tbody>${ms.map(m => `<tr><td>${stIc(m.st)}</td><td><b style="font-weight:600">${esc(m.test)}</b></td><td class="num b ${m.st === 'warn' ? 'st-warn' : m.st === 'bad' ? 'st-bad' : ''}">${esc(m.val)} <span class="sm mut" style="font-weight:500">${esc(m.unit)}</span></td><td class="sm mut">${esc(m.range)}</td></tr>`).join('')}</tbody></table></div>`).join('');
-  } else if (t === 'dmg') {
-    b = `<div class="ckg"><div class="ckg-h"><h4>Damage found in the self-inspection video</h4></div>${c.damages.map(d => `<div class="ck">${stIc('bad')}<div><div class="tt">${esc(d.t)}</div><div class="dt">Not claimable if accepted with the exclusion</div></div><button class="lnk" data-act="view" data-doc="v1">View</button></div>`).join('')}</div>`;
-  } else if (t === 'risk') {
-    b = `<div class="ckg"><div class="ckg-h"><h4>Seen on the video survey</h4></div>${[['bad', 'Electrical panel next to the solvent store'], ['warn', 'Stock stacked within 1 m of the lights in 2 bays'], ['bad', 'No hydrant system, though one was declared'], ['warn', 'No "No smoking" signs'], ['ok', '12 extinguishers, refilled Sep 2026'], ['ok', 'RCC building, clear exits, fire NOC valid']].map(([s, x]) => `<div class="ck">${stIc(s)}<div class="tt" style="font-weight:${s === 'ok' ? 500 : 600}">${esc(x)}</div><button class="lnk" data-act="view" data-doc="vs">View</button></div>`).join('')}</div>
-      <div class="ckg"><div class="ckg-h"><h4>Suggested warranties</h4></div>${c.warranties.map(w => `<div class="ck">${stIc('info')}<div class="tt" style="font-weight:500">${esc(w.t)}</div><span></span></div>`).join('')}</div>`;
-  } else if (t === 'data') {
-    b = `<div class="dsrc" style="padding-top:8px">${c.data.map(d => `<div class="ds"><div class="ds-h"><b>${esc(d.src)}</b>${chip(d.st === 'ok' ? 'Fits the declaration' : d.st === 'bad' ? 'Doesn\'t fit' : d.st === 'warn' ? 'Look at this' : 'For information', d.st)}</div><div class="sm mut">${esc(d.t)}</div><ul>${d.lines.map(l => `<li>${esc(l)}</li>`).join('')}</ul>${d.chart ? barChart(d.chart) : ''}</div>`).join('')}</div>`;
-  } else if (t === 'log') {
-    b = `<div class="tl" style="padding-top:8px">${c.log.slice().reverse().map(e => `<div class="it"><span class="when">${fdt(e.t)}</span><div><span class="who">${esc(e.who)}</span><div class="out">${esc(e.what)}</div></div></div>`).join('')}</div>`;
-  }
-  return `<div class="evid"><div class="tabs" role="tablist">${tabs.map(([k, l, n, tone]) => `<button class="tab ${k === t ? 'on' : ''}" data-act="rtab" data-t="${k}" role="tab" aria-selected="${k === t}">${l}${n != null ? `<span class="c ${tone || ''}">${n}</span>` : ''}</button>`).join('')}</div><div class="evid-b">${b}</div></div>`;
-}
+
 function coverHtml(c) {
   if (c.lob === 'health') {
     const used = c.si.used, tot = c.si.base + c.si.bonus, amt = claimAmount(c);
@@ -2234,38 +2568,6 @@ function graphSvg() {
     <text x="220" y="160" text-anchor="middle" font-size="10" fill="var(--ink3)">All three: Shree Sai Nursing Home, sold by Mahesh Patil (POSP)</text></svg></div>`;
 }
 
-/* ======================= footer: the decision ======================= */
-function footHtml(c, mine) {
-  if (!mine) return `<div class="case-f"><div class="hint">${ic('eye')}<span>You can look, but only the person it's assigned to can decide.</span></div><div class="acts"><button class="btn" data-act="nav" data-v="search">${ic('back')}Back to search</button></div></div>`;
-  const u = ST.user, ops = c.checks.ops || [], left = ops.filter(t => !c.state.ticks[t.id]).length;
-  const sug = c.insight.act;
-  const B = (act, label, k = '', extra = '') => `<button class="btn ${k}" data-act="${act}" ${extra}>${label}</button>`;
-  if (c.bucket === 'ref' && c.refTo === u.id) {
-    return `<div class="case-f"><div class="hint">${ic('info')}<span>Sent by <b>${esc(userById(c.ref.by).name)}</b>: ${esc(c.ref.note || c.ref.why)}</span></div><div class="acts">${B('sendback', 'Send back')}${B('supapprove', `Approve ${inr(c.ref.amt)}`, 'pri')}</div></div>`;
-  }
-  let hint = left ? `<button class="lnk" style="font-size:12.5px" data-act="rtab" data-t="check">Tick ${left} more check${left > 1 ? 's' : ''}</button> on the right before you ${c.mod === 'uw' ? 'accept' : 'approve'}.` : 'All your checks are done.';
-  let acts = '';
-  const gate = left ? 'disabled' : '';
-  if (c.mod === 'ops') {
-    const m = c.money(c), bankBad = c.kind === 'cancel' && !c.bank.ok, sysBad = (c.checks.sys || []).some(x => x.st === 'bad') && c.kind !== 'cancel';
-    const over = m.total > u.limit;
-    if (bankBad) hint = 'There\'s nowhere to send the refund. Raise an IR for bank details.';
-    else if (sysBad) hint = 'A system check failed. Raise an IR, or reject.';
-    const apLabel = c.kind === 'cancel' ? `Approve cancellation, refund ${inr(m.total)}` : over ? 'Send for approval' : 'Approve';
-    const apOff = left || bankBad || sysBad ? 'disabled' : '';
-    acts = B('reject', 'Reject', 'dng') + B('ir', 'Raise IR', sug === 'ir' ? 'pri' : '') + B(over ? 'refer' : 'approve', apLabel, sug === 'ir' ? '' : 'pri', apOff);
-  } else if (c.mod === 'claims') {
-    const amt = claimAmount(c), over = amt > u.limit && c.kind !== 'hpre';
-    if (over && !left) hint = `${inr(amt)} is above your limit of ${inr(u.limit)}, so it goes to a supervisor.`;
-    if (c.kind === 'hpre') acts = B('deny', 'Deny cashless', 'dng') + B('ir', 'Query hospital') + B('approve', `Approve ${inr(amt)}`, 'pri', gate);
-    else if (c.kind === 'hfinal') acts = B('ir', 'Query hospital') + B('approve', `Approve ${inr(amt)} to the hospital`, 'pri', gate);
-    else acts = B('decline', 'Recommend decline', 'dng') + B('ir', 'Raise IR') + (c.kind === 'hreimb' ? B('inv', 'Send for investigation', sug === 'inv' ? 'pri' : '') : '') + B(over ? 'refer' : 'approve', over ? `Send ${inr(amt)} for approval` : `Approve ${inr(amt)}`, sug === 'inv' ? '' : 'pri', gate);
-  } else {
-    if (c.kind === 'uwh') acts = B('uwdecline', 'Decline', 'dng') + B('ir', 'Raise requirement', sug === 'req' ? 'pri' : '') + B('load', 'Accept with loading', sug === 'load' ? 'pri' : '', gate) + B('accept', 'Accept', sug === 'accept' ? 'pri' : '', gate);
-    else acts = B('uwdecline', 'Decline', 'dng') + B('ir', 'Raise requirement') + B('terms', c.kind === 'uwm' ? 'Accept with conditions' : 'Accept with terms', 'pri', gate);
-  }
-  return `<div class="case-f"><div class="hint">${ic(left ? 'info' : 'ok')}<span>${hint}</span></div><div class="acts">${acts}</div></div>`;
-}
 
 /* ======================= summary view for cases in other buckets ======================= */
 function liteHtml(c) {
@@ -2373,7 +2675,7 @@ function approve(c) {
   const s = modal(mh(title, `${c.id} · ${esc(c.cust.name)}`) + `<div class="mb">${lines.map(l => `<p>${esc(l)}</p>`).join('')}</div>` + mf(label));
   $('[data-ok]', s).addEventListener('click', () => { const msg = done(); c.bucket = 'closed'; c.by = u.id; closeModal(); afterDecision(c, msg); });
 }
-function decisionLines(c) { const box = document.createElement('div'); box.innerHTML = decisionHtml(c); const p = box.querySelector('.preview'); return p ? p.textContent.split('\n') : []; }
+function decisionLines(c) { return custLines(c); }
 
 /* ======================= send for approval, and the supervisor's side ======================= */
 function refer(c) {
@@ -2491,14 +2793,31 @@ document.addEventListener('click', e => {
     case 'avail': ST.avail = !ST.avail; if (!ST.avail) { ST.nextMsg = null; clearTimeout(nextTimer); toast('Paused. No new cases until you resume.'); render(); } else { toast('Taking cases again.'); if (!myOpen() && ST.view === 'case') openNext(); else render(); } break;
     case 'opennow': clearTimeout(nextTimer); openNext(); break;
     case 'pausenext': clearTimeout(nextTimer); ST.nextMsg = null; ST.avail = false; render(); break;
-    case 'open': { const x = byId(el.dataset.id); if (!x) return; ST.open = x.id; ST.view = 'case'; render(); break; }
+    case 'open': { const x = byId(el.dataset.id); if (!x) return; if (x.bucket === 'ref' && x.refTo === ST.user.id) x.state.step = 3; ST.open = x.id; ST.view = 'case'; render(); break; }
+    case 'step': c.state.step = +el.dataset.s; c.state.drawer = null; c.state.editing = null; if (c.state.step === 2 && c.mod === 'claims' && !c.state.sub) c.state.sub = claimSubs(c)[0][0]; if (c.state.step === 2 && c.mod !== 'claims') firstOpenDoc(c); render(); $('.cbody') && ($('.cbody').scrollTop = 0); break;
+    case 'sub': c.state.sub = el.dataset.k; c.state.step = 2; c.state.drawer = null; if (c.mod === 'uw' && el.dataset.k === 'docs') firstOpenDoc(c); render(); $('.cbody') && ($('.cbody').scrollTop = 0); break;
+    case 'more': c.state.more[el.dataset.k] = !c.state.more[el.dataset.k]; render(); break;
+    case 'drawer': c.state.drawer = el.dataset.t || null; render(); break;
+    case 'ans': {
+      const v = el.dataset.v === '1', t = qList(c).find(x => x.id === el.dataset.id);
+      c.state.ticks[t.id] = c.state.ticks[t.id] === v ? undefined : v;
+      if (c.state.ticks[t.id] !== undefined) c.log.push(L(Date.now(), ST.user.name, `${v ? 'Confirmed' : 'Marked not correct'}: ${t.t}`));
+      // when this document is done, move to the next one that still has questions
+      if (c.state.inlineDocs && c.state.ticks[t.id] !== undefined) {
+        const d = c.docs[c.state.doc];
+        if (qList(c).filter(x => x.doc === d.id).every(x => c.state.ticks[x.id] !== undefined)) { const nx = c.docs.findIndex(x => qList(c).some(q => q.doc === x.id && c.state.ticks[q.id] === undefined)); if (nx >= 0) { c.state.doc = nx; c.state.zoom = null; c.state.rot = 0; } }
+      }
+      render(); break;
+    }
+    case 'goq': { const t = qList(c).find(x => x.id === el.dataset.id); c.state.step = 2; if (c.mod === 'claims') { const sb = claimSubs(c).find(x => x[2].includes(t.id)); c.state.sub = sb ? sb[0] : claimSubs(c)[0][0]; } else { if (c.mod === 'uw') c.state.sub = 'docs'; const i = c.docs.findIndex(d => d.id === t.doc); if (i >= 0) c.state.doc = i; } render(); break; }
     case 'take': { if (!c) return; c.asg = ST.user.id; c.asgAt = Date.now(); c.log.push(L(Date.now(), ST.user.name, 'Took the case from the queue')); render(); break; }
     case 'release': releaseModal(c); break;
     case 'bucket': ST.search.bucket = el.dataset.b; render(); break;
     case 'risk': ST.search.risk = !ST.search.risk; render(); break;
-    case 'goq': ST.search = { q: '', mod: el.dataset.m, lob: 'all', bucket: el.dataset.b, risk: false }; ST.view = 'search'; render(); break;
+    case 'qinfo': ST.qinfo = ST.qinfo || {}; ST.qinfo[el.dataset.k] = !ST.qinfo[el.dataset.k]; render(); break;
+    case 'gobucket': ST.search = { q: '', mod: el.dataset.m, lob: 'all', bucket: el.dataset.b, risk: false }; ST.view = 'search'; render(); break;
     case 'doc': c.state.doc = +el.dataset.i; c.state.zoom = null; c.state.rot = 0; render(); break;
-    case 'view': { const i = c.docs.findIndex(d => d.id === el.dataset.doc); if (i >= 0) { c.state.doc = i; c.state.zoom = null; c.state.rot = 0; c.state.marks = true; render(); } break; }
+    case 'view': { const i = c.docs.findIndex(d => d.id === el.dataset.doc); if (i >= 0) { c.state.doc = i; c.state.zoom = null; c.state.rot = 0; c.state.marks = true; if (!c.state.inlineDocs) c.state.drawer = 'docs'; render(); } break; }
     case 'zoom': { const z = +el.dataset.z, stg = $('#vstage'), d = c.docs[c.state.doc]; if (!z) c.state.zoom = null; else { const cur = c.state.zoom || Math.min(1.15, (stg.clientWidth - 28) / d._W); c.state.zoom = Math.max(0.4, Math.min(3, +(cur + z * 0.25).toFixed(2))); } render(); break; }
     case 'rot': c.state.rot = (c.state.rot + 90) % 360; render(); break;
     case 'full': c.state.full = !c.state.full; render(); break;
@@ -2540,7 +2859,7 @@ document.addEventListener('input', e => {
   if (e.target.id === 'q') { ST.search.q = e.target.value; const pos = e.target.selectionStart; render(); const q = $('#q'); if (q) { q.focus(); q.setSelectionRange(pos, pos); } }
 });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { if ($('#scrim')) closeModal(); else if (ST.menu) { ST.menu = false; render(); } }
+  if (e.key === 'Escape') { const c = ST.open && byId(ST.open); if ($('#scrim')) closeModal(); else if (c && c.state && c.state.drawer) { c.state.drawer = null; render(); } else if (ST.menu) { ST.menu = false; render(); } }
   if (e.key === 'Enter' && e.target.id === 'edv') { const b = $('[data-act=edsave]'); if (b) b.click(); }
 });
 function adjModal(c, i) {
@@ -2549,6 +2868,9 @@ function adjModal(c, i) {
     <div class="fld"><label for="jw">Reason</label><select id="jw"><option>Not medically needed</option><option>Above the hospital's tariff</option><option>Not related to this illness</option><option>Not payable under the policy</option><option>Not supported by the records</option></select></div></div><p class="help">The customer sees each deduction with its reason and the policy clause.</p></div>` + mf('Save deduction'));
   $('[data-ok]', s).addEventListener('click', () => { const v = Math.max(0, Math.min(r.amt - r.np - r.prop, Math.round(+$('#ja', s).value || 0))); c.state.adj[i] = v; c.state.adjWhy[i] = $('#jw', s).value; c.log.push(L(Date.now(), ST.user.name, v ? `Deducted ${inr(v)} from ${r.h}: ${$('#jw', s).value}` : `Removed the deduction on ${r.h}`)); closeModal(); render(); });
 }
+
+// open the documents on the first one that still has something to confirm
+function firstOpenDoc(c) { const d = c.docs[c.state.doc]; if (d && qList(c).some(q => q.doc === d.id && c.state.ticks[q.id] === undefined)) return; const i = c.docs.findIndex(x => qList(c).some(q => q.doc === x.id && c.state.ticks[q.id] === undefined)); if (i >= 0) { c.state.doc = i; c.state.zoom = null; c.state.rot = 0; } }
 
 /* ======================= sign in, clocks, boot ======================= */
 function signIn(id) {
