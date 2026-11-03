@@ -1916,6 +1916,13 @@ button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:
   .org-tabs,.kyc-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-radius:18px}
   .org-tabs span,.kyc-tabs span{border-radius:14px;text-align:center;padding:8px 6px;font-size:13.5px}
 }
+/* points from Find your cover, used at payment */
+.fit-use{display:flex;gap:12px;align-items:center;padding:12px 16px;border:1.5px solid var(--line);border-radius:16px;background:var(--surface);cursor:pointer}
+.fit-use:has(input:checked){border-color:var(--mint);background:var(--mint-soft)}
+.fit-use input{width:18px;height:18px;accent-color:var(--brand);flex:none}
+.fit-use-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#FFD66B,#FF9F43);color:#5A3300;flex:none}.fit-use-ic svg{width:18px;height:18px}
+.fit-use>span:nth-of-type(2){flex:1;min-width:0}.fit-use b{display:block;font-size:15px}.fit-use small{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.45}
+.fit-use em{font-style:normal;font-weight:700;color:var(--mint-2, var(--mint));flex:none}
 
 /* ================= NxSure Partners: ink sidebar, warm paper canvas, one typeface, one accent ================= */
 :root{
@@ -3729,6 +3736,79 @@ body:not(.jx-open) .recwin:not(.docked){left:49px!important;right:auto!important
 .cst-brief{gap:10px}.cst-brief li{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;font-size:13.5px}.cst-brief li b{color:var(--p-ink3);font-weight:600}
 @media (max-width:980px){.cst-two{grid-template-columns:1fr}}
 @media (max-width:640px){.cst-needs{grid-template-columns:1fr}.cst-chat{flex-wrap:wrap}.cst-chat-r{justify-items:start;flex-basis:100%;padding-left:44px}.cst-cal li{grid-template-columns:1fr auto}.cst-cal li span{grid-column:1}}
+
+/* ================= Cover check ================= */
+.cc-acts{display:inline-flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.cc-top b{font-weight:600}
+.cc-nw,.cc-nw small{white-space:nowrap}
+.cc-star{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;flex:none;background:linear-gradient(135deg,#FFD66B,#FF9F43);color:#5A3300}
+.cc-star .pi{width:18px;height:18px}
+.cc-ptsbar{display:flex;gap:12px;align-items:center;margin:16px 0 4px;padding:12px 14px;border-radius:12px;background:var(--p-sub)}
+.cc-ptsbar b{display:block;font-weight:650;font-size:15px}.cc-ptsbar small{display:block;color:var(--p-ink3);font-size:12.5px}
+.cc-ptsbar .cc-next{margin-left:auto;text-align:right;white-space:nowrap}
+.pd-note.warn{background:var(--p-warn-soft)}.pd-note.warn .pi{color:var(--p-warn)}
+.pd-note.warn small,.pd-note small{display:block;margin-top:4px;color:var(--p-ink2)}
+.p-drawer .pd-note{margin-top:14px}
+.cc-have .car-ic,.cc-have li>.car-ic{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--p-sub);color:var(--p-ink2)}
+.cc-have .car-ic .pi{width:16px;height:16px}
+.cc-amt{font-style:normal;font-weight:600;font-size:13px;white-space:nowrap}
+.cc-recs{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.cc-rec{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:start;padding:12px 14px;border:1px solid var(--p-line);border-radius:12px}
+.cc-rec b{display:block;font-weight:600;font-size:14px}.cc-rec small{display:block;color:var(--p-ink3);font-size:12.5px}
+.cc-rec .cc-why{color:var(--p-ink2);margin-top:4px}
+.cc-pri{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--p-sub);color:var(--p-ink3);margin-top:1px}
+.cc-pri.now{background:var(--p-bad-soft);color:var(--p-bad)}
+.cc-rec-r{display:grid;justify-items:end;gap:6px;text-align:right}
+.cc-rec-r b{font-size:14px}.cc-rec-r small{max-width:150px}
+.cc-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.cc-two h4{margin:0 0 6px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--p-ink3)}
+.cc-led{list-style:none;margin:0;padding:0;font-size:12.5px}
+.cc-led li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-top:1px solid var(--p-line);color:var(--p-ink2)}
+.cc-led li:first-child{border-top:0}
+.cc-led b{font-weight:650;white-space:nowrap;color:var(--p-ink2)}.cc-led b.up{color:var(--p-ok)}
+.cc-cdp2{list-style:none;margin:0;padding:0}
+.cc-cdp2 li{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--p-line)}
+.cc-cdp2 li:first-child{border-top:0}
+.cc-cdp2 b{display:block;font-weight:600;font-size:13px}.cc-cdp2 small{display:block;color:var(--p-ink3);font-size:12px}
+.cc-cdp2 .cc-till{grid-column:2;text-align:right;font-size:11.5px}
+/* the customer 360 */
+.cc-mini{display:flex;gap:12px;align-items:center;width:100%;margin-top:14px;padding:11px 13px;border:1px solid var(--p-line);border-radius:12px;background:var(--p-card);color:var(--p-ink);font:inherit;text-align:left;cursor:pointer}
+.cc-mini:hover{border-color:var(--p-line2)}
+.cc-mini b{display:block;font-weight:600;font-size:13.5px}.cc-mini small{display:block;color:var(--p-ink3);font-size:12px}
+.cc-mini>.pi{margin-left:auto;color:var(--p-ink3);flex:none}
+.cc-mini.off .cc-star{background:var(--p-sub);color:var(--p-ink2)}
+/* running it with the customer */
+.cc-prog{height:6px;border-radius:999px;background:var(--p-sub);overflow:hidden;margin-top:14px}
+.cc-prog span{display:block;height:100%;background:var(--p-brand);border-radius:999px;transition:width .2s}
+.cc-progt{display:block;margin-top:6px;color:var(--p-ink3);font-size:12px}
+.cc-lvq{margin-top:6px}
+.cc-q{margin-top:12px}
+.cc-q>span small{color:var(--p-ink3);font-weight:500}
+.cc-opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.cc-o{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;border:1px solid var(--p-line2);background:var(--p-card);color:var(--p-ink);font:500 13px var(--p-font);cursor:pointer}
+.cc-o:hover{border-color:var(--p-ink3)}
+.cc-o.on{border-color:var(--p-ink);background:var(--p-ink);color:var(--p-card)}
+.cc-o em{font-style:normal;font-size:11px;font-weight:700}.cc-o em.up{color:var(--p-ok)}.cc-o em.dn{color:var(--p-ink3)}
+.cc-o.on em.up,.cc-o.on em.dn{color:inherit;opacity:.8}
+.cc-msg{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--p-sub)}
+.cc-msg small{color:var(--p-ink3);font-size:12px}.cc-msg p{margin:4px 0 0;font-size:13.5px;color:var(--p-ink2)}
+/* how it works */
+.cc-how{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;align-items:start}
+.cc-how>.pc:first-child{grid-row:span 2}
+.cc-steps{margin:0;padding-left:20px;display:grid;gap:12px}
+.cc-steps b{display:block;font-weight:600}.cc-steps span{display:block;color:var(--p-ink2);font-size:13.5px;margin-top:2px}
+.cc-lv{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cc-lv li{padding:10px 12px;border-radius:10px;background:var(--p-sub)}.cc-lv b{display:block}.cc-lv small{color:var(--p-ink3);font-size:12px}
+.cc-cdp{list-style:none;margin:0;padding:0}
+.cc-cdp li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--p-line);font-size:13.5px}
+.cc-cdp li:first-child{border-top:0}.cc-cdp b{font-weight:600;white-space:nowrap}
+/* points at payment */
+.cc-use{display:flex;gap:12px;align-items:center;padding:12px 14px;margin-bottom:14px;border:1px solid var(--p-line2);border-radius:12px;cursor:pointer}
+.cc-use input{width:18px;height:18px;flex:none;accent-color:var(--p-pri)}
+.cc-use b{display:block;font-weight:600;font-size:14px}.cc-use small{display:block;color:var(--p-ink3);font-size:12.5px}
+.pf-note2 s{color:var(--p-ink3);font-weight:500;margin-right:4px}
+@media (max-width:900px){.cc-how{grid-template-columns:1fr}.cc-how>.pc:first-child{grid-row:auto}}
+@media (max-width:560px){.cc-two{grid-template-columns:1fr}.cc-rec{grid-template-columns:minmax(0,1fr)}.cc-rec .cc-pri{justify-self:start}.cc-rec-r{justify-items:start;text-align:left}.cc-ptsbar .cc-next{display:none}.cc-lv{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -5416,7 +5496,7 @@ STEP.kyc = {
   view() {
     const k = S.kyc, mot = S.product === 'motor';
     return {
-      say: k ? (mot ? `I'll use the KYC you've already done. The policy has to be in the owner's name, so switch if the ${CLS[S.motor.v.cls].noun} isn't yours.` : `You're already verified, ${esc(first(k.name))}.`) : mot ? 'Now the owner\'s identity. Give me the PAN or Aadhaar and a mobile number, and I\'ll fetch the rest from the KYC record.' : 'Let\'s make sure it\'s you. Give me your PAN or Aadhaar and your mobile number, and I\'ll fetch the rest from your KYC record.',
+      say: k && k.reused ? `I'll use the KYC you did on ${fd(new Date(k.reused.at))}. It's good till ${fd(new Date(k.reused.till))}, so there's no OTP today.${mot ? ` The policy has to be in the owner's name, so switch if the ${CLS[S.motor.v.cls].noun} isn't yours.` : ''}` : k ? (mot ? `I'll use the KYC you've already done. The policy has to be in the owner's name, so switch if the ${CLS[S.motor.v.cls].noun} isn't yours.` : `You're already verified, ${esc(first(k.name))}.`) : mot ? 'Now the owner\'s identity. Give me the PAN or Aadhaar and a mobile number, and I\'ll fetch the rest from the KYC record.' : 'Let\'s make sure it\'s you. Give me your PAN or Aadhaar and your mobile number, and I\'ll fetch the rest from your KYC record.',
       ...(typeof isSme === 'function' && isSme(S.product) && S.biz && S.biz.who === 'biz' && !k ? { say: `Now you, as the person signing for ${esc(S.biz.src.gst.legal)}. ${S.biz.ent === 'prop' ? 'Your PAN is on the GST registration, so I\'ve filled it in.' : 'Your PAN or Aadhaar and mobile number, and I\'ll fetch the rest.'}` } : {}),
       title: k ? `Hi ${esc(first(k.name))}, here's what I have` : KYC_TITLE,
       body: '<div class="q-body" data-x="kyc"></div>',
@@ -5658,7 +5738,7 @@ STEP.review = {
   view0() {
     const k = S.kyc;
     if (S.product === 'motor') {
-      const M = S.motor, r = motorCalc(M), v = M.v, decl = motorDecl(M, r), T = r.total + bundleSum().extras;
+      const M = S.motor, r = motorCalc(M), v = M.v, decl = motorDecl(M, r), G = r.total + bundleSum().extras, T = G - (typeof fitOff === 'function' ? fitOff(G) : 0);
       const nomName = M.nominee != null ? M.nominee : ((S.docOwner && S.docOwner.nominee) || '');
       const nomRel = M.nomRel || (S.docOwner && S.docOwner.nomRel) || 'Spouse';
       return {
@@ -5673,11 +5753,11 @@ STEP.review = {
           <label class="fld"><span>Email for your policy copy (optional)</span><input type="email" name="email" value="${esc(M.email || k.email || '')}" placeholder="you@example.com"></label>
           ${bundleReviewHtml()}<div class="fld"><span>Declarations</span><ol class="decl">${decl.map(d => `<li>${esc(d)}</li>`).join('')}</ol></div>
           <label class="agree"><input type="checkbox" name="agree" ${M.agreed && M.agreedTotal === r.total ? 'checked' : ''}><span>I have read and accept all the declarations above.</span></label>
-          <div class="live"><span>${ICO.lock.replace('<svg', '<svg style="width:15px;height:15px;vertical-align:-2px"')} Secure payment, valid for 24 hours</span><b>${inr(T)}</b></div>`,
+          ${typeof fitRowHtml === 'function' ? fitRowHtml(G) : ''}<div class="live"><span>${ICO.lock.replace('<svg', '<svg style="width:15px;height:15px;vertical-align:-2px"')} Secure payment, valid for 24 hours</span><b>${inr(T)}</b></div>`,
         next: `Pay ${inr(T)}`, hint: 'Say “I accept” and then “pay”',
       };
     }
-    const H = S.health, p = healthCalc(H), others = active(H).filter(m => m.rel !== 'self'), decl = healthDecl(H), T = p.total + bundleSum().extras;
+    const H = S.health, p = healthCalc(H), others = active(H).filter(m => m.rel !== 'self'), decl = healthDecl(H), G = p.total + bundleSum().extras, T = G - (typeof fitOff === 'function' ? fitOff(G) : 0);
     return {
       say: `Last step, ${esc(first(k.name))}. A couple of names, a quick look, and you're covered.`,
       title: 'Review and pay',
@@ -5694,7 +5774,7 @@ STEP.review = {
         <label class="fld"><span>Email for your policy copy (optional)</span><input type="email" name="email" value="${esc(H.email || k.email || '')}" placeholder="you@example.com"></label>
         ${bundleReviewHtml()}<div class="fld"><span>Declarations</span><ol class="decl">${decl.map(d => `<li>${esc(d)}</li>`).join('')}</ol></div>
         <label class="agree"><input type="checkbox" name="agree" ${H.agreed && H.agreedTotal === p.total ? 'checked' : ''}><span>I have read and accept all the declarations above${uwChanges(H).length ? ', and the updated proposal' : ''}.</span></label>
-        <div class="live"><span>${ICO.lock.replace('<svg', '<svg style="width:15px;height:15px;vertical-align:-2px"')} Secure payment, valid for 24 hours</span><b>${inr(T)}</b></div>`,
+        ${typeof fitRowHtml === 'function' ? fitRowHtml(G) : ''}<div class="live"><span>${ICO.lock.replace('<svg', '<svg style="width:15px;height:15px;vertical-align:-2px"')} Secure payment, valid for 24 hours</span><b>${inr(T)}</b></div>`,
       next: `Pay ${inr(T)}`, hint: 'Say “I accept” and then “pay”',
     };
   },
@@ -5704,19 +5784,20 @@ STEP.review = {
     const nom = () => { const o = b.querySelector('[data-x=nomOther]'); const pick = b.querySelector('[name=nomPick]'); if (o && pick) o.hidden = pick.value !== 'other'; };
     nom();
     b.addEventListener('change', nom);
+    if (typeof fitWireReview === 'function') { try { fitWireReview(api, S.product === 'motor' ? motorCalc(S.motor).total + bundleSum().extras : healthCalc(S.health).total + bundleSum().extras); } catch (e) { /* no points row */ } }
   },
   async commit(api) {
     const b = api.body, k = S.kyc, val = n => { const x = b.querySelector(`[name="${n}"]`); return x ? x.value.trim() : ''; };
     const okName = s => /^[A-Za-z][A-Za-z .']{2,}$/.test(s) && s.includes(' ');
     const email = val('email');
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return 'That email address doesn\'t look right. Leave it empty if you prefer.';
-    let amount, label, ref = 'NX-PL-' + code(6);
+    let amount, gross, label, ref = 'NX-PL-' + code(6);
     if (S.product === 'motor') {
       const M = S.motor, r = motorCalc(M);
       if (r.cpa) { M.nominee = val('nominee'); M.nomRel = val('nomRel'); if (!okName(M.nominee)) return 'Enter the nominee\'s full name, first and last.'; }
       M.email = email;
       if (b.querySelector('[name=agree]') && !b.querySelector('[name=agree]').checked) return 'Please tick the box to accept the declarations.';
-      M.agreed = true; M.agreedTotal = r.total; amount = r.total + bundleSum().extras; label = bundleSum().items.length ? `${planName(r)}, ${M.reg.display}, with ${bundleSum().items.length} more cover${bundleSum().items.length > 1 ? 's' : ''}` : `${planName(r)}, ${M.reg.display}`;
+      M.agreed = true; M.agreedTotal = r.total; gross = r.total + bundleSum().extras; amount = gross - (typeof fitOff === 'function' ? fitOff(gross) : 0); label = bundleSum().items.length ? `${planName(r)}, ${M.reg.display}, with ${bundleSum().items.length} more cover${bundleSum().items.length > 1 ? 's' : ''}` : `${planName(r)}, ${M.reg.display}`;
     } else {
       const H = S.health, p = healthCalc(H);
       for (const m of active(H).filter(x => x.rel !== 'self')) { const n = val('mn-' + m.id); if (!okName(n)) return `Enter the full name of ${relLabel(H, m).toLowerCase()}.`; m.name = n.replace(/\s+/g, ' '); }
@@ -5726,13 +5807,14 @@ STEP.review = {
       else { const m = H.members.find(x => x.id === H.nomPick); H.nominee = m.name; H.nomRel = REL[m.rel].label === 'Spouse' ? 'Spouse' : REL[m.rel].label; }
       H.email = email;
       if (b.querySelector('[name=agree]') && !b.querySelector('[name=agree]').checked) return 'Please tick the box to accept the declarations.';
-      H.agreed = true; H.agreedTotal = p.total; amount = p.total + bundleSum().extras; label = bundleSum().items.length ? `NxSure Health ${TIERS[H.tier].name}, with ${bundleSum().items.length} more cover${bundleSum().items.length > 1 ? 's' : ''}` : `NxSure Health ${TIERS[H.tier].name}`;
+      H.agreed = true; H.agreedTotal = p.total; gross = p.total + bundleSum().extras; amount = gross - (typeof fitOff === 'function' ? fitOff(gross) : 0); label = bundleSum().items.length ? `NxSure Health ${TIERS[H.tier].name}, with ${bundleSum().items.length} more cover${bundleSum().items.length > 1 ? 's' : ''}` : `NxSure Health ${TIERS[H.tier].name}`;
     }
     api.err('');
     if (CFG.channel === 'agent' && S.mode === 'remote') { const sent = await sendLinkModal('proposal'); return sent ? '' : 'STAY'; }
     if (CFG.channel === 'agent' && S.mode === 'assisted' && !S.custOk) return 'Ask the customer for the code sent to their mobile, to confirm they accept the proposal.';
     const got = await pay(amount, ref, label);
     if (!got) return 'STAY';
+    if (typeof fitRedeem === 'function') fitRedeem(S, gross, ref);
     finishPayment(got, amount, ref);
     return '';
   },
@@ -10544,18 +10626,19 @@ STEP.breview = {
       body: `${smeReviewHtml(b)}<label class="fld"><span>Email for the policy copy (optional)</span><input type="email" name="email" value="${esc(b.email || S.kyc.email || '')}" placeholder="you@example.com"></label>
         <div class="fld"><span>Declarations</span><ol class="decl">${decl.map(d => `<li>${esc(d)}</li>`).join('')}</ol></div>
         <label class="agree"><input type="checkbox" name="agree" ${b.agreed ? 'checked' : ''}><span>I have read and accept all the declarations above${b.who === 'biz' ? `, on behalf of ${esc(b.src.gst.legal)}` : ''}.</span></label>
-        <div class="live"><span>${ICO.lock.replace('<svg', '<svg style="width:15px;height:15px;vertical-align:-2px"')} Secure payment, valid for 24 hours</span><b>${inr(c.total)}</b></div>`,
-      next: `Pay ${inr(c.total)}`, hint: 'Say “I accept” and then “pay”',
+        ${typeof fitRowHtml === 'function' ? fitRowHtml(c.total) : ''}<div class="live"><span>${ICO.lock.replace('<svg', '<svg style="width:15px;height:15px;vertical-align:-2px"')} Secure payment, valid for 24 hours</span><b>${inr(c.total - (typeof fitOff === 'function' ? fitOff(c.total) : 0))}</b></div>`,
+      next: `Pay ${inr(c.total - (typeof fitOff === 'function' ? fitOff(c.total) : 0))}`, hint: 'Say “I accept” and then “pay”',
     };
   },
+  wire(api) { if (typeof fitWireReview === 'function') { try { fitWireReview(api, smeCalc().total); } catch (e) { /* no points row */ } } },
   async commit(api) {
     const b = B(), bx = api.body, em = bx.querySelector('[name=email]').value.trim();
     if (em && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) return 'That email address doesn\'t look right. Leave it empty if you prefer.';
     if (!bx.querySelector('[name=agree]').checked) return 'Please tick the box to accept the declarations.';
     b.email = em; b.agreed = true; api.err('');
-    const c = smeCalc(), ref = 'NX-PL-' + code(6), got = await pay(c.total, ref, `${SME[b.p].short}${b.who === 'biz' ? `, ${bizName(b)}` : ''}`);
+    const c = smeCalc(), ref = 'NX-PL-' + code(6), got = await pay(c.total - (typeof fitOff === 'function' ? fitOff(c.total) : 0), ref, `${SME[b.p].short}${b.who === 'biz' ? `, ${bizName(b)}` : ''}`);
     if (!got) return 'STAY';
-    smeIssue(got, c.total, ref); return '';
+    const paid = c.total - (typeof fitOff === 'function' ? fitOff(c.total) : 0); if (typeof fitRedeem === 'function') fitRedeem(S, c.total, ref); smeIssue(got, paid, ref); return '';
   },
   value: () => S.paid ? `Paid ${inr(S.paid.amount)}` : '',
   done: () => !!S.paid,
@@ -13679,6 +13762,14 @@ function vmScript(s) {
         then: a => { if (a.v === 'old') { const fu = m.fu[x.k] = Object.assign({}, m.fu[x.k] || {}); fu[x.f] = x.raw; x.reverted = true; aaMark(`Video exam: ${x.label.toLowerCase()} put back to ${x.from}`); } else x.vmOk = true; return null; } });
       return;
     }
+    // different from the last proposal: confirmed on the record, and the underwriter looks at it either way
+    if (x.q === 'prev') {
+      const lb = x.label.replace(/^A /, 'a ').toLowerCase();
+      Q.push({ id: `dg-${i}`, say: `One thing to confirm. In your last proposal, ${lb} was declared${m.rel === 'self' ? '' : ` for ${w.sub}`}. Today it wasn't. Which is right?`, chips: [['now', 'It doesn\'t apply now'], ['then', 'It still applies']],
+        then: a => { V.review = true; if (a.v === 'then') { if (x.kind === 'c') m.conds.add(x.k); else m.flags.add(x.k); x.reverted = true; aaMark(`Video exam: ${lb} still applies`); return [{ id: `dg-${i}-what`, say: 'Thank you for telling me. Please tell me about it in your own words.', open: true }]; } x.vmOk = true; return [{ id: `dg-${i}-why`, say: 'What changed since then? For example, a doctor said it has resolved.', open: true }]; } });
+      return;
+    }
+    if (x.q === 'note') { Q.push({ id: `dg-${i}`, say: `${x.line}. Is today's right?`, chips: [['yes', 'Yes, today\'s is right'], ['no', 'No']], then: a => { if (a.v === 'no') V.review = true; x.vmOk = true; return null; } }); return; }
     const lab = x.label.replace(/^A /, 'a ').toLowerCase();
     Q.push({ id: `dg-${i}`, say: `One thing to confirm. During the questions, ${lab} was ticked and then taken off${m.rel === 'self' ? '' : ` for ${w.sub}`}. Just to be sure, it doesn't apply to ${w.sub}?`, chips: [['yes', 'That\'s right, it doesn\'t'], ['no', m.rel === 'self' ? 'Actually, it does' : 'Actually, it does apply']],
       then: a => { if (a.v === 'no') { if (x.q === 'c') m.conds.add(x.k); else m.flags.add(x.k); x.reverted = true; V.review = true; aaMark(`Video exam: ${lab} confirmed after all`); return [{ id: `dg-${i}-what`, say: 'Thank you for telling me. Please tell me about it in your own words.', open: true }]; } x.vmOk = true; return null; } });
@@ -15272,6 +15363,379 @@ HOOKS.shown.push(id => {
 });
 HOOKS.restart.push(() => { if (REC.cur) recStop('discard'); });
 recLoad();
+
+/* ================= Find your cover: a few simple questions that earn points, then what you have, what you should get,
+   and what fits your budget. Shared by the website and the partner portal.
+   - Every answer earns points. Healthy and safe habits earn more, and a connected app or a shared report earns the most.
+   - Other answers only lower the points, never below zero, and never change a price. They are kept as notes.
+   - Points take money off in the buy journey, within the reward the product allows.
+   - A returning customer's details are reused for as long as each one stays valid. Health answers are always asked fresh,
+     and anything that differs from an earlier proposal goes to the underwriting rules.
+   Point values, the budget guide and the reuse periods are illustrative settings, to be replaced with the filed product
+   terms and the company's data policy. */
+
+CFG.fit = { rupee: 0.5, capPct: 10, maxOff: 2500, ask: 10, level: 25, budget: [[0.5, 4], [0.33, 5], [0, 6]], levels: [[0, 'Starter'], [500, 'Silver'], [1000, 'Gold'], [2000, 'Platinum']], expiryMonths: 24 };
+// how long each kind of detail can be reused before it is checked again, in days (0: always asked fresh)
+CFG.cdp = { kyc: 180, contact: 365, family: 365, vehicle: 365, nominee: 365, work: 365, bank: 365, consent: 365, health: 0, habits: 0 };
+const FIT_ICO = {
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4.2 4-6.5 8-6.5s7.2 2.3 8 6.5"/>',
+  wallet: '<path d="M4 7h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a1 1 0 0 1-1-1z"/><path d="M4 7l11-3v3M16 13h2"/>',
+  heart: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+  home: '<path d="M4 11l8-6.5 8 6.5M6 9.5V20h12V9.5M10 20v-5h4v5"/>',
+  car: '<path d="M5 16v-4l2-5h10l2 5v4M3.5 16h17M7 12h10"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/>',
+  store: '<path d="M4 9l1.5-5h13L20 9M4 9h16v11H4zM10 20v-5h4v5"/>',
+  spark: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>',
+  steps: '<path d="M8.5 4c1.6 0 2.5 1.6 2.5 3.6S10 12 8.5 12 6 9.6 6 7.6 6.9 4 8.5 4zM15.5 9c1.6 0 2.5 1.6 2.5 3.6S17 17 15.5 17 13 14.6 13 12.6 13.9 9 15.5 9zM7 14.5h3M14 19.5h3"/>',
+  doc: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>',
+  shield: '<path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6z"/><path d="M8.8 12l2.3 2.3 4.3-4.6"/>',
+  alarm: '<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/>',
+  star: '<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
+  trophy: '<path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M9 17h6"/>',
+  lock: '<rect x="5" y="10.5" width="14" height="10" rx="2.2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/>',
+  check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  note: '<path d="M5 4h14v12l-4 4H5z"/><path d="M15 20v-4h4M8 9h8M8 13h5"/>',
+  clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+  refresh: '<path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/>',
+  link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+};
+const fitIc = n => `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${FIT_ICO[n] || ''}</svg>`;
+const fitN = v => Number(v).toLocaleString('en-IN');
+function fitRand(seed) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+
+/* ---------------- the questions: one at a time, in plain words ----------------
+   Each option is [value, label, points]. Points on top of the points every answer earns. */
+const FIT_LV = [['you', 'About you', 'user'], ['money', 'Your budget', 'wallet'], ['health', 'Health', 'heart'], ['home', 'Home', 'home'], ['ride', 'Vehicles', 'car'], ['biz', 'Your business', 'store'], ['habits', 'Habits', 'spark']];
+const FIT_Q = [
+  { id: 'age', lv: 'you', q: 'How old are you?', opts: [['22', 'Under 25'], ['30', '25 to 35'], ['40', '36 to 45'], ['52', '46 to 60'], ['65', 'Over 60']] },
+  { id: 'deps', lv: 'you', q: 'Who depends on you?', many: true, help: 'Pick all that apply.', opts: [['spouse', 'Husband or wife'], ['kids', 'Children'], ['parents', 'Parents'], ['none', 'No one right now']] },
+  { id: 'work', lv: 'you', q: 'What do you do?', opts: [['job', 'I have a job'], ['biz', 'I run a business'], ['pro', 'Doctor, lawyer, CA or similar'], ['free', 'Freelance or gig work'], ['home', 'I look after the home'], ['retired', 'I\'m retired'], ['study', 'I\'m a student']] },
+  { id: 'income', lv: 'money', q: 'Roughly, how much do you take home each month?', help: 'Only to suggest cover you can afford. It\'s never shared.', opts: [['20000', 'Under ₹25,000'], ['37500', '₹25,000 to ₹50,000'], ['75000', '₹50,000 to ₹1 lakh'], ['150000', '₹1 lakh to ₹2 lakh'], ['250000', 'Over ₹2 lakh'], ['skip', 'I\'d rather not say']] },
+  { id: 'emi', lv: 'money', q: 'How much of that goes to loan EMIs?', when: A => A.income && A.income !== 'skip', opts: [['0', 'Nothing'], ['0.2', 'Less than a quarter'], ['0.33', 'About a third'], ['0.5', 'Half or more']] },
+  { id: 'hcov', lv: 'health', q: 'Do you have health insurance today?', opts: [['emp', 'Only from my job'], ['own', 'My own policy'], ['both', 'Both'], ['none', 'None']] },
+  { id: 'hsi', lv: 'health', q: 'How much is your own health cover?', when: A => A.hcov === 'own' || A.hcov === 'both', opts: [['300000', 'Under ₹5 lakh'], ['700000', '₹5 to 10 lakh'], ['1500000', 'More than ₹10 lakh'], ['ns', 'Not sure']] },
+  { id: 'par', lv: 'health', q: 'Do your parents have their own health cover?', when: A => (A.deps || []).includes('parents') || Number(A.age) < 50, opts: [['yes', 'Yes'], ['no', 'No'], ['na', 'Not needed']] },
+  { id: 'own', lv: 'home', q: 'Your home is...', opts: [['own', 'Mine'], ['rent', 'Rented'], ['fam', 'My family\'s']] },
+  { id: 'loan', lv: 'home', q: 'Is there a home loan on it?', when: A => A.own === 'own', opts: [['yes', 'Yes'], ['no', 'No']] },
+  { id: 'hins', lv: 'home', q: 'Are the things inside your home insured?', opts: [['yes', 'Yes'], ['no', 'No'], ['ns', 'Not sure']] },
+  { id: 'veh', lv: 'ride', q: 'Do you have a vehicle?', many: true, help: 'Pick all that apply.', opts: [['car', 'A car'], ['bike', 'A two-wheeler'], ['none', 'No vehicle']] },
+  { id: 'carage', lv: 'ride', q: 'How old is your car?', when: A => (A.veh || []).includes('car'), opts: [['new', 'Under 3 years'], ['mid', '3 to 5 years'], ['old', 'Over 5 years']] },
+  { id: 'carren', lv: 'ride', q: 'When does its insurance renew?', when: A => (A.veh || []).includes('car'), opts: [['soon', 'Within a month'], ['q', 'In 1 to 3 months'], ['later', 'Later'], ['ns', 'Not sure']] },
+  { id: 'btype', lv: 'biz', q: 'What kind of business is it?', when: A => A.work === 'biz', opts: [['shop', 'A shop'], ['office', 'An office'], ['factory', 'A factory or warehouse'], ['online', 'Online only']] },
+  { id: 'bstaff', lv: 'biz', q: 'Do you have staff?', when: A => A.work === 'biz', opts: [['0', 'No'], ['few', '1 to 10'], ['many', 'More than 10']] },
+  { id: 'bins', lv: 'biz', q: 'Is the business insured?', when: A => A.work === 'biz', opts: [['yes', 'Yes'], ['no', 'No'], ['ns', 'Not sure']] },
+  { id: 'steps', lv: 'habits', q: 'On a usual day, how much do you walk?', opts: [['a', 'Under 3,000 steps', 0], ['b', '3,000 to 6,000 steps', 20], ['c', '6,000 to 10,000 steps', 40], ['d', 'Over 10,000 steps', 60]] },
+  { id: 'ex', lv: 'habits', q: 'How many days a week do you exercise?', opts: [['0', 'None', 0], ['1', '1 or 2 days', 20], ['3', '3 or 4 days', 40], ['5', '5 days or more', 60]] },
+  { id: 'smoke', lv: 'habits', q: 'Do you smoke or chew tobacco?', opts: [['no', 'No', 40], ['some', 'Now and then', -20], ['daily', 'Every day', -40]] },
+  { id: 'drink', lv: 'habits', q: 'How many drinks do you have in a week?', opts: [['0', 'None', 20], ['1', '1 to 3', 10], ['4', '4 to 10', -10], ['10', 'More than 10', -30]] },
+  { id: 'sleep', lv: 'habits', q: 'How long do you sleep most nights?', opts: [['5', 'Under 6 hours', 0], ['6', '6 to 7 hours', 10], ['7', '7 to 8 hours', 30], ['9', 'More than 8 hours', 20]] },
+  { id: 'check', lv: 'habits', q: 'When was your last full health check-up?', opts: [['y', 'In the last year', 40], ['2', '1 to 2 years ago', 20], ['old', 'Longer ago', 0], ['never', 'Never', 0]] },
+  { id: 'fines', lv: 'habits', q: 'Any traffic fines in the last year?', when: A => (A.veh || []).some(v => v !== 'none'), opts: [['0', 'None', 40], ['1', 'One', 0], ['2', 'Two or more', -30]] },
+  { id: 'belt', lv: 'habits', q: 'Seat belt or helmet, on every trip?', when: A => (A.veh || []).some(v => v !== 'none'), opts: [['always', 'Always', 30], ['most', 'Mostly', 10], ['not', 'Not always', -20]] },
+  { id: 'safe', lv: 'habits', q: 'At home, do you have a smoke alarm or a fire extinguisher?', opts: [['both', 'Both', 30], ['one', 'One of them', 15], ['none', 'Neither', 0]] },
+];
+// what each habit answer means, kept as a note when it lowers the points
+const FIT_NOTE = { smoke: 'Uses tobacco', drink: 'Drinks more than a little', fines: 'Traffic fines in the last year', belt: 'Doesn\'t always wear a seat belt or helmet' };
+const fitQs = A => FIT_Q.filter(q => !q.when || q.when(A));
+const fitLevels = A => FIT_LV.filter(([k]) => fitQs(A).some(q => q.lv === k));
+const fitOpt = (q, v) => q.opts.find(o => o[0] === v);
+const fitAnsTxt = (q, v) => Array.isArray(v) ? v.map(x => (fitOpt(q, x) || [x, x])[1]).join(', ') : (fitOpt(q, v) || [v, v])[1];
+
+/* ---------------- points: a ledger, replayed in order, never below zero ---------------- */
+const FITS = { key: 'nxsure-fit', all: null };
+function fitAll() {
+  if (FITS.all) return FITS.all;
+  try { FITS.all = JSON.parse(localStorage.getItem(FITS.key) || '{}') || {}; } catch (e) { FITS.all = {}; }
+  return FITS.all;
+}
+function fitSave() { if (FITS.hold) return; try { localStorage.setItem(FITS.key, JSON.stringify(FITS.all || {})); } catch (e) { /* kept for this visit only */ } }
+const fitBlank = () => ({ pts: 0, ledger: [], ans: {}, src: {}, boosts: {}, done: false, at: Date.now(), consent: {}, plan: null });
+function fitRec(who) { const A = fitAll(), k = who || 'anon'; if (!A[k]) A[k] = fitBlank(); return A[k]; }
+// a customer who logs in or verifies keeps what they earned before
+function fitMerge(mobile) {
+  const A = fitAll(); if (!mobile || !A.anon || !A.anon.ledger.length) return fitRec(mobile);
+  const me = fitRec(mobile), an = A.anon;
+  an.ledger.forEach(e => { if (!me.ledger.some(x => x.key === e.key)) me.ledger.push(e); });
+  Object.assign(me.ans, an.ans); Object.assign(me.src, an.src); Object.assign(me.boosts, an.boosts); Object.assign(me.consent, an.consent);
+  me.done = me.done || an.done; delete A.anon; fitReplay(me); fitSave(); return me;
+}
+// the balance is what can be spent; the level follows what was earned, so spending points never drops the level
+function fitReplay(R) {
+  let p = 0, t = 0;
+  R.ledger.sort((a, b) => a.at - b.at).forEach(e => {
+    if (e.n >= 0) { e.got = e.n; p += e.n; t += e.n; }
+    else { const take = Math.min(-e.n, p); e.got = -take; p -= take; if (e.kind !== 'used') t = Math.max(0, t - take); }
+  });
+  R.pts = p; R.tier = t; return p;
+}
+const fitTier = R => R.tier != null ? R.tier : R.pts;
+// one entry per reason: answering again replaces the old entry
+function fitSet(R, key, n, why, kind = 'earn', extra = {}) {
+  R.ledger = R.ledger.filter(e => e.key !== key);
+  if (n !== 0 || kind === 'note') R.ledger.push(Object.assign({ key, n, why, kind, at: Date.now() + R.ledger.length }, extra));
+  fitReplay(R); fitSave(); return R.pts;
+}
+const fitNotes = R => R.ledger.filter(e => e.n < 0 || e.kind === 'note');
+const fitLevel = pts => { const L = CFG.fit.levels; let i = 0; L.forEach((l, j) => { if (pts >= l[0]) i = j; }); return { name: L[i][1], at: L[i][0], next: L[i + 1] || null }; };
+const fitValue = pts => Math.floor(pts * CFG.fit.rupee);
+const fitOffFor = (pts, premium) => Math.max(0, Math.min(fitValue(pts), Math.floor(premium * CFG.fit.capPct / 100), CFG.fit.maxOff));
+// an answer: the points for telling us, and for a habit, what the habit is worth
+function fitAnswer(R, q, v, src = 'you') {
+  R.ans[q.id] = v; R.src[q.id] = src;
+  const o = q.many ? null : fitOpt(q, v), habit = !q.many && o && o.length > 2;
+  fitSet(R, 'ask:' + q.id, CFG.fit.ask, `Answered: ${q.q.replace(/\?$/, '').replace(/\.\.\.$/, '')}`);
+  if (habit) {
+    const n = o[2];
+    fitSet(R, 'habit:' + q.id, n, n >= 0 ? `${o[1]}: ${FIT_GOOD[q.id] || 'a good habit'}` : `${FIT_NOTE[q.id] || q.q}: ${o[1].toLowerCase()}`, n >= 0 ? 'habit' : 'note', { q: q.id, ans: o[1] });
+  }
+  // a level finished earns a little extra
+  const lv = q.lv, inLv = fitQs(R.ans).filter(x => x.lv === lv);
+  if (inLv.every(x => R.ans[x.id] != null)) fitSet(R, 'level:' + lv, CFG.fit.level, `Finished ${FIT_LV.find(l => l[0] === lv)[1].toLowerCase()}`, 'level');
+  return R.pts;
+}
+const FIT_GOOD = { steps: 'walking every day', ex: 'regular exercise', smoke: 'tobacco-free', drink: 'drinking little or none', sleep: 'good sleep', check: 'a recent check-up', fines: 'a clean driving record', belt: 'safe on the road', safe: 'a safer home' };
+
+/* ---------------- proving a habit: a connected app, a shared report, a vehicle check ----------------
+   On a hosted site each one calls its partner service (Health Connect, Google Health, Garmin or Apple Health for steps;
+   DigiLocker or the lab for a report; the transport department's e-challan and PUC records for a vehicle). Here the results
+   are built from the person's identity, so they are the same on every visit. */
+const FIT_BOOSTS = [
+  { k: 'fit', ic: 'steps', t: 'Connect your fitness app or watch', s: 'Your average steps over 90 days. Up to 300 points.', max: 300 },
+  { k: 'report', ic: 'doc', t: 'Share your last health check-up', s: 'Upload the report or fetch it from DigiLocker. 200 points.', max: 200 },
+  { k: 'drive', ic: 'car', t: 'Check your vehicle\'s record', s: 'Traffic fines and pollution certificate, from your vehicle number. Up to 150 points.', max: 150, when: A => (A.veh || []).some(v => v !== 'none') },
+  { k: 'home', ic: 'alarm', t: 'Show your smoke alarm', s: 'One photo of the alarm on the ceiling. 100 points.', max: 100 },
+];
+const fitBoostsFor = A => FIT_BOOSTS.filter(b => !b.when || b.when(A));
+function fitBoostRun(R, k, who, extra = {}) {
+  const r = fitRand(hash('fitb' + k + (who || 'anon'))), at = new Date();
+  let out;
+  if (k === 'fit') {
+    const steps = 5200 + Math.round(r() * 60) * 100, n = steps >= 10000 ? 300 : steps >= 8000 ? 250 : steps >= 6000 ? 150 : 50;
+    out = { k, prov: extra.prov || 'Your fitness app', steps, days: 90, active: 2 + Math.floor(r() * 4), sleep: 380 + Math.floor(r() * 90), n, line: `${fitN(steps)} steps a day over 90 days` };
+  } else if (k === 'report') {
+    const watch = [['Cholesterol', 'a little high'], ['Vitamin D', 'low'], ['Blood sugar (fasting)', 'at the upper limit']].filter(() => r() < 0.45).slice(0, 2), tests = 14 + Math.floor(r() * 10);
+    out = { k, from: extra.from || 'Uploaded report', date: addDays(TODAY, -(30 + Math.floor(r() * 200))), tests, ok: tests - watch.length, watch, n: 200, line: `${tests} tests, ${tests - watch.length} in the normal range` };
+  } else if (k === 'drive') {
+    const fines = r() < 0.7 ? 0 : 1, puc = r() < 0.85;
+    out = { k, reg: extra.reg || '', fines, puc, n: fines ? 50 : 150, line: `${fines ? 'One fine' : 'No fines'} in 12 months, pollution certificate ${puc ? 'valid' : 'expired'}` };
+  } else out = { k, n: 100, line: 'Smoke alarm seen in the photo' };
+  out.at = at; R.boosts[k] = out;
+  const B = FIT_BOOSTS.find(b => b.k === k);
+  fitSet(R, 'boost:' + k, out.n, `${B.t.replace(/^(Connect|Share|Check|Show) your /, m => m.replace(/your /, '')).replace(/^./, c => c.toUpperCase())}: ${out.line}`, 'boost');
+  // what a report or the record shows is kept as a note, never as a penalty
+  if (k === 'report' && out.watch.length) fitSet(R, 'note:report', 0, `From the check-up: ${out.watch.map(w => `${w[0].toLowerCase()} ${w[1]}`).join(', ')}`, 'note');
+  if (k === 'drive' && out.fines) fitSet(R, 'note:drive', 0, 'One traffic fine on the vehicle record', 'note');
+  if (k === 'drive' && !out.puc) fitSet(R, 'note:puc', 0, 'Pollution certificate has expired', 'note');
+  fitSave(); return out;
+}
+
+/* ---------------- the customer data platform: what we already know, and for how long it's good ---------------- */
+// status: 'reuse' (good to use), 'confirm' (shown, one tap to confirm), 'fresh' (always asked again)
+function cdpItem(label, value, src, at, days) {
+  const till = at && days ? addDays(at, days) : null, left = till ? Math.round((till - TODAY) / 864e5) : null;
+  const status = days === 0 ? 'fresh' : !at ? 'confirm' : left >= 0 ? 'reuse' : 'confirm';
+  return { label, value, src, at, till, left, status, days };
+}
+// the website's profile for a mobile number: the account, the KYC this device has seen, and saved proposals
+function cdpProfile(mobile) {
+  if (!mobile) return null;
+  const C = CFG.cdp, U = typeof ACCT !== 'undefined' && ACCT.user && ACCT.session && ACCT.session.mobile === mobile ? ACCT.user : null;
+  const cust = typeof custGet === 'function' ? custGet(mobile) : null;
+  if (!U && !cust) return null;
+  const pols = U ? (ACCT.policies || []) : [], props = U ? (ACCT.proposals || []) : [];
+  const leads = typeof leadsAll === 'function' ? leadsAll().filter(l => l.owner === mobile || (l.s.kyc && l.s.kyc.mobile === mobile)) : [];
+  const kycAt = U && U.kyc && U.kyc.at ? new Date(U.kyc.at) : cust && cust.kycAt ? new Date(cust.kycAt) : cust && cust.since ? new Date(cust.since) : null;
+  const name = (U && U.name) || (cust && cust.name) || '', dob = U && U.dob ? iso(new Date(U.dob)) : cust && cust.dob ? cust.dob : '';
+  const hp = pols.find(p => p.product === 'health'), cars = pols.filter(p => p.product === 'motor');
+  const fam = hp ? hp.members.filter(m => m.rel !== 'self') : [];
+  const lastHealth = cdpLastHealth(mobile, leads, hp);
+  const items = [
+    cdpItem('Identity (KYC)', U && U.kyc ? `${U.kyc.via}, ${U.kyc.id}` : cust ? cust.via || 'Verified' : '', 'KYC', kycAt, C.kyc),
+    cdpItem('Name and date of birth', `${name}${dob ? `, ${fd(fromIso(dob))}` : ''}`, 'KYC', kycAt, C.kyc),
+    cdpItem('Address', U ? `${U.addr}, ${U.city} ${U.pin}` : cust ? `${cust.addr}, ${cust.city || ''} ${cust.pin || ''}` : '', 'KYC', kycAt, C.kyc),
+    cdpItem('Mobile and email', `${maskMobile ? maskMobile(mobile) : mobile}${U && U.email ? ', ' + U.email : ''}`, 'Verified with a code', new Date(), C.contact),
+    fam.length ? cdpItem('Family', fam.map(m => `${m.name.split(' ')[0]} (${m.rel === 'spouse' ? 'spouse' : m.rel === 'son' || m.rel === 'daughter' ? 'child' : m.rel})`).join(', '), `Health policy ${hp.no}`, hp.start, C.family) : null,
+    ...cars.map(p => cdpItem(p.cls === 'car' ? 'Car' : 'Two-wheeler', `${p.vehicle.reg}, ${p.vehicle.make} ${p.vehicle.model}`, `Policy ${p.no}`, p.start, C.vehicle)),
+    U && U.nominee ? cdpItem('Nominee', `${U.nominee.name}, ${(U.nominee.rel || '').toLowerCase()}`, 'Your last policy', hp ? hp.start : kycAt, C.nominee) : null,
+    lastHealth ? cdpItem('Health answers', `Given on ${fd(lastHealth.at)}`, `Proposal ${lastHealth.no}`, lastHealth.at, C.health) : cdpItem('Health answers', 'Asked each time', '', null, C.health),
+    cdpItem('Habits like smoking and drinking', 'Asked each time', '', null, C.habits),
+  ].filter(Boolean);
+  return { mobile, name, dob, gender: (cust && cust.gender) || (U && U.gender) || '', U, cust, kycAt, kycOk: !!(kycAt && (TODAY - kycAt) / 864e5 <= C.kyc), kycTill: kycAt ? addDays(kycAt, C.kyc) : null, items, pols, props, leads, hp, fam, lastHealth,
+    since: pols.length ? pols.reduce((m, p) => (p.start < m ? p.start : m), pols[0].start) : kycAt };
+}
+// the most recent health answers we hold, to compare with today's: a saved proposal on this device, or the policy's own
+function cdpLastHealth(mobile, leads, hp) {
+  const L = leads.filter(l => l.s.health && l.s.health.members && l.s.health.members.some(m => m.declDone)).sort((a, b) => b.at - a.at)[0];
+  if (L) return { no: L.s.health.quoteNo || L.id, at: new Date(L.at), members: L.s.health.members.map(m => ({ rel: m.rel, name: m.name, conds: [...(m.conds || [])], flags: [...(m.flags || [])], weight: m.weight })) };
+  if (hp) {
+    // the declaration made when the current health policy was bought
+    const r = fitRand(hash('decl' + mobile));
+    return { no: hp.no.replace('/HL/', '/HP/'), at: addDays(hp.start, -2), members: hp.members.map((m, i) => ({ rel: m.rel, name: m.name, conds: i === 0 ? ['bp'] : [], flags: i === 0 && r() < 0.3 ? ['tobacco'] : [], weight: i === 0 ? 68 + Math.floor(r() * 10) : null })) };
+  }
+  return null;
+}
+// today's health answers against the last proposal: anything left out today goes to the underwriting rules
+function fitPrevCheck(H) {
+  const P = S && S.fitPrev; if (!P || !H) return [];
+  H.dgLog = H.dgLog || [];
+  const out = [];
+  active(H).forEach(m => {
+    if (!m.declDone) return;
+    const was = P.members.find(x => x.rel === m.rel); if (!was) return;
+    const who = typeof relLabel === 'function' ? relLabel(H, m) : m.rel;
+    was.conds.filter(k => !m.conds.has(k)).forEach(k => { const c = CONDS.find(x => x.k === k); if (c) out.push({ m, q: 'prev', k, kind: 'c', label: c.label, line: `${c.label}: declared in proposal ${P.no} on ${fd(P.at)}, not declared today` }); });
+    was.flags.filter(k => !m.flags.has(k)).forEach(k => { const f = FLAGS.find(x => x.k === k); if (f) out.push({ m, q: 'prev', k, kind: 'f', label: f.label, line: `${f.label}: declared in proposal ${P.no} on ${fd(P.at)}, not declared today` }); });
+    if (was.weight && m.weight && Math.abs(Number(m.weight) - was.weight) >= 10) out.push({ m, q: 'note', k: 'weight', kind: 'w', label: 'Weight', line: `Weight ${m.weight} kg today, ${was.weight} kg in proposal ${P.no} on ${fd(P.at)}` });
+    out.forEach(x => { if (x.m !== m) return; const key = `prev:${m.id}:${x.k}`; if (!H.dgLog.some(y => y.key === key)) H.dgLog.push({ key, mid: m.id, who, q: x.q, k: x.k, kind: x.kind, label: x.label, line: x.line, from: 'last proposal', to: 'today', at: new Date(), prev: P.no }); });
+  });
+  return out;
+}
+if (typeof syncReqs === 'function') { const fitSync0 = syncReqs; syncReqs = function (H) { try { fitPrevCheck(H); } catch (e) { /* the check never blocks the journey */ } return fitSync0.apply(this, arguments); }; }
+
+/* ---------------- what you have, what you should get, and what fits the budget ---------------- */
+const FIT_INC_MID = v => Number(v) || 0;
+function fitHealthPrice(ages, si, tier, pin) {
+  try {
+    const keep = S; S = fresh();
+    try {
+      const rels = ['self', 'spouse', 'son', 'daughter', 'father', 'mother'];
+      const H = { members: ages.map((a, i) => newMember(rels[i] || 'son', a, i === 1 ? 'F' : 'M')), pin: pin || '400076', si, tier, type: ages.length > 1 ? 'floater' : 'individual', term: 1, addons: new Set() };
+      const p = healthCalc(H); return p ? p.total : null;
+    } finally { S = keep; }
+  } catch (e) { return null; }
+}
+function fitHomePrice(building, contents) {
+  try { const R = CFG.sme.homeRate; return Math.round((building * R.building + contents * R.contents) / 1000 * 1.18); } catch (e) { return null; }
+}
+// a person's holdings: with NxSure from the profile, and elsewhere from what they told us or shared
+function fitHoldings(A, prof, R) {
+  const nx = (prof ? prof.pols : []).map(p => ({ where: 'nx', t: p.title, s: p.product === 'health' ? `${p.plan}, ${siLabel(p.si)}, ${p.members.length} ${p.members.length === 1 ? 'person' : 'people'}` : p.vehicle ? `${p.vehicle.reg}, ${p.plan}${p.addons && p.addons.length ? `, with ${p.addons.length} add-ons` : ''}` : p.what || p.plan || '', renews: p.end, prem: p.premium, product: p.product, cls: p.cls, p }));
+  const other = [], hasNx = k => nx.some(h => h.product === k || h.cls === k);
+  if (A.hcov === 'emp' || A.hcov === 'both') other.push({ where: 'job', t: 'Health cover from your job', s: 'Usually stops when you leave or retire', src: 'You told us' });
+  if ((A.hcov === 'own' || A.hcov === 'both') && !hasNx('health')) other.push({ where: 'other', t: 'Your own health policy', s: A.hsi && A.hsi !== 'ns' ? `About ${siLabel(Number(A.hsi))}` : 'Cover amount not known', src: 'You told us' });
+  if ((A.veh || []).includes('car') && !hasNx('car')) other.push({ where: 'other', t: 'Car insurance', s: { soon: 'Renews within a month', q: 'Renews in 1 to 3 months', later: 'Renews later', ns: 'Renewal date not known' }[A.carren] || 'With another insurer', src: 'You told us' });
+  if ((A.veh || []).includes('bike') && !hasNx('bike')) other.push({ where: 'other', t: 'Two-wheeler insurance', s: 'With another insurer', src: 'You told us' });
+  if (A.hins === 'yes') other.push({ where: 'other', t: 'Home contents', s: 'Insured elsewhere', src: 'You told us' });
+  if (A.work === 'biz' && A.bins === 'yes') other.push({ where: 'other', t: 'Business insurance', s: 'Insured elsewhere', src: 'You told us' });
+  // found with consent, from the e-insurance account and premiums paid from the bank account
+  if (R && R.consent && R.consent.find) R.consent.find.found.forEach(f => other.push(Object.assign({ where: 'found' }, f)));
+  return { nx, other };
+}
+function fitFind(R, who) {
+  const r = fitRand(hash('fitfind' + (who || 'anon'))), A = R.ans, found = [];
+  found.push({ t: 'Term life cover', s: `${r() < 0.5 ? '₹1 crore' : '₹50 lakh'}, with a life insurer`, prem: 9800 + Math.floor(r() * 9) * 1200, src: 'Premiums paid from your bank account', life: true });
+  if ((A.veh || []).includes('car')) found.push({ t: 'Car insurance', s: `With another insurer, renews ${fd(addDays(TODAY, 20 + Math.floor(r() * 70)))}`, prem: 14000 + Math.floor(r() * 12) * 900, src: 'Your e-insurance account' });
+  if (A.hcov === 'own' || A.hcov === 'both') found.push({ t: 'Health insurance', s: `With another insurer, ${siLabel(A.hsi && A.hsi !== 'ns' ? Number(A.hsi) : 500000)}`, prem: 12000 + Math.floor(r() * 10) * 1100, src: 'Your e-insurance account' });
+  R.consent.find = { at: Date.now(), found }; fitSave(); return found;
+}
+function fitPlan(R, prof) {
+  const A = R.ans, age = Number(A.age) || 32, inc = A.income && A.income !== 'skip' ? FIT_INC_MID(A.income) : null, deps = A.deps || [], recs = [];
+  const H = fitHoldings(A, prof, R), nxH = H.nx.find(h => h.product === 'health'), pin = prof && prof.U ? prof.U.pin : '';
+  // health for you and your family
+  const siWant = !inc ? 1000000 : inc < 40000 ? 500000 : inc < 100000 ? 1000000 : inc < 200000 ? 1500000 : 2500000, tier = inc && inc < 40000 ? 'essential' : 'plus';
+  const ages = [age].concat(deps.includes('spouse') ? [Math.max(21, age - 2)] : []).concat(deps.includes('kids') ? [Math.max(1, Math.min(17, age - 28))] : []);
+  const ownSi = nxH ? nxH.p.si : A.hsi && A.hsi !== 'ns' ? Number(A.hsi) : 0;
+  if (!nxH && (A.hcov === 'none' || A.hcov === 'emp' || ownSi < 500000)) {
+    recs.push({ k: 'health', ic: 'heart', pri: A.hcov === 'none' || A.hcov === 'emp' ? 1 : 2, t: ages.length > 1 ? 'Health cover for your family' : 'Health cover of your own', cover: `${siLabel(siWant)}, NxSure Health ${TIERS[tier].name}${ages.length > 1 ? `, one cover for ${ages.length} people` : ''}`,
+      why: [A.hcov === 'emp' ? 'Cover from your job stops if you change jobs or retire' : A.hcov === 'none' ? 'One hospital stay can cost more than a year\'s savings' : 'Your cover is under ₹5 lakh, which a single surgery can use up', deps.length && !deps.includes('none') ? 'People depend on you' : null].filter(Boolean),
+      est: fitHealthPrice(ages.map(String), siWant, tier, pin), go: { product: 'health', members: ['self'].concat(deps.includes('spouse') ? ['spouse'] : []).concat(deps.includes('kids') ? ['son'] : []) } });
+    if (tier !== 'essential') { const r = recs[recs.length - 1], e = fitHealthPrice(ages.map(String), siWant, 'essential', pin); if (e && r.est) r.lite = { est: e, txt: `NxSure Health Essential, ${siLabel(siWant)}, is about ${inr(e)} a year. It has room-rent limits, and you can move up at renewal.` }; }
+  } else if (nxH && nxH.p.si < siWant) {
+    recs.push({ k: 'health-up', ic: 'heart', pri: 2, t: 'More health cover at renewal', cover: `From ${siLabel(nxH.p.si)} to ${siLabel(siWant)}`, why: ['Hospital costs go up every year', `You renew on ${fd(nxH.renews)}`], est: null, go: { nav: 'renew' } });
+  }
+  // your parents
+  if (A.par === 'no') {
+    const pa = [Math.min(80, age + 28), Math.min(78, age + 25)];
+    recs.push({ k: 'parents', ic: 'heart', pri: 1, t: 'Health cover for your parents', cover: `${siLabel(500000)} each, NxSure Health Plus`, why: ['Over 60, a hospital stay is more likely and costs more', 'Waiting periods start from the day they\'re covered, so sooner is better'], est: (() => { const a = fitHealthPrice([String(pa[0])], 500000, 'plus', pin), b = fitHealthPrice([String(pa[1])], 500000, 'plus', pin); return a && b ? a + b : null; })(), go: { product: 'health', members: ['father', 'mother'] } });
+    const lite = (() => { const a = fitHealthPrice([String(pa[0])], 500000, 'essential', pin), b = fitHealthPrice([String(pa[1])], 500000, 'essential', pin); return a && b ? a + b : null; })();
+    if (lite) recs[recs.length - 1].lite = { est: lite, txt: `For your parents, NxSure Health Essential is about ${inr(lite)} a year. It has a 20% co-pay from age 61, and you can move up to Plus at renewal.` };
+  }
+  // vehicles
+  const nxCar = H.nx.find(h => h.cls === 'car'), nxBike = H.nx.find(h => h.cls === 'bike');
+  if ((A.veh || []).includes('car')) {
+    if (!nxCar) recs.push({ k: 'car', ic: 'car', pri: A.carren === 'soon' ? 1 : 2, t: A.carren === 'soon' ? 'Car insurance, before it renews' : 'Car insurance at your next renewal', cover: A.carage === 'new' ? 'Comprehensive, with zero depreciation and engine protect' : 'Comprehensive, with roadside help', why: [A.carage === 'new' ? 'For a car under 3 years old, zero depreciation keeps claims whole' : 'Comprehensive cover pays for your own car, not just others', 'Your no-claim bonus moves with you'], est: null, estTxt: 'Your price from the number plate', go: { product: 'motor', cls: 'car' } });
+    else if (A.carage === 'new' && !(nxCar.p.addons || []).includes('Zero depreciation')) recs.push({ k: 'car-add', ic: 'car', pri: 2, t: 'Zero depreciation for your car', cover: 'Added at renewal', why: ['Your car is under 3 years old'], est: null, estTxt: 'Priced at renewal', go: { nav: 'renew' } });
+  }
+  if ((A.veh || []).includes('bike') && !nxBike) recs.push({ k: 'bike', ic: 'car', pri: 3, t: 'Two-wheeler insurance', cover: 'Comprehensive', why: ['Cheap to renew online, and the bonus moves with you'], est: null, estTxt: 'Your price from the number plate', go: { product: 'motor', cls: 'bike' } });
+  // home
+  if (A.hins !== 'yes' && A.own && !H.nx.some(h => h.product === 'home')) {
+    const contents = !inc ? 500000 : inc < 50000 ? 300000 : inc < 150000 ? 500000 : 1000000, building = A.own === 'own' ? 3000000 : 0;
+    recs.push({ k: 'home', ic: 'home', pri: A.own === 'own' && A.loan === 'yes' ? 2 : 3, t: A.own === 'own' ? 'Home insurance: the building and what\'s in it' : 'Cover for what\'s in your home', cover: building ? `Building ${siLabel(building)}, contents ${siLabel(contents)}` : `Contents ${siLabel(contents)}`,
+      why: [A.loan === 'yes' ? 'Loan cover protects the bank, not your things' : A.own === 'rent' ? 'Your landlord\'s policy doesn\'t cover your things' : 'Fire, flood and theft can take what took years to build', 'A video tour of the home takes 5% off'], est: fitHomePrice(building, contents), go: { product: 'home' } });
+  }
+  // business
+  if (A.work === 'biz' && A.bins !== 'yes' && !H.nx.some(h => ['shop', 'fire', 'sme'].includes(h.product))) {
+    const t = { shop: ['shop', 'Shop insurance', 'Stock, fittings, cash and theft'], office: ['fire', 'Office and contents cover', 'Fire, flood and burglary for your office'], factory: ['fire', 'Fire and property cover', 'Building, machines and stock'], online: ['fire', 'Stock and equipment cover', 'Fire, flood and burglary where you keep stock'] }[A.btype || 'shop'];
+    recs.push({ k: 'biz', ic: 'store', pri: 2, t: t[1], cover: t[2], why: ['A fire or flood can stop the business for weeks', 'Priced from your GSTIN in a few minutes'], est: null, estTxt: 'Your price from your GSTIN', go: { product: t[0], who: 'biz' } });
+    if (A.bstaff === 'many' || (A.bstaff === 'few' && A.btype === 'factory')) recs.push({ k: 'wc', ic: 'store', pri: 3, t: 'Workers\' compensation', cover: 'For staff injured at work', why: ['The law requires compensation for staff injured at work'], est: null, estTxt: 'Priced from your staff and wages', go: { product: 'wc', who: 'biz' } });
+  }
+  recs.sort((a, b) => a.pri - b.pri);
+  // the budget: a simple guide, a share of what comes in, less when EMIs take a lot
+  const emi = Number(A.emi) || 0, pct = CFG.fit.budget.find(([e]) => emi >= e)[1];
+  const have = H.nx.reduce((s, h) => s + (h.prem || 0), 0) + H.other.filter(o => o.prem && !o.life).reduce((s, o) => s + o.prem, 0);
+  const budget = inc ? { month: Math.round(inc * pct / 100 / 100) * 100, pct, haveMonth: Math.round(have / 12) } : null;
+  let room = budget ? budget.month * 12 - have : Infinity;
+  recs.forEach(x => { const e = x.est || 0; if (!budget || e <= room || x.pri === 1 && room > 0) { x.when = 'now'; room -= e; } else x.when = 'later'; });
+  if (budget) {
+    budget.recMonth = Math.round(recs.filter(x => x.when === 'now').reduce((s, x) => s + (x.est || 0), 0) / 12);
+    // over the guide: say by how much, and offer the lighter version of the first thing to buy
+    budget.over = Math.max(0, budget.haveMonth + budget.recMonth - budget.month);
+    const top = recs.find(x => x.when === 'now' && x.lite && x.lite.est < x.est);
+    if (budget.over && top) budget.tip = top.lite.txt;
+  }
+  const covered = [];
+  if (nxH && nxH.p.si >= siWant) covered.push(`Health: ${siLabel(nxH.p.si)} with NxSure is about right`);
+  if (nxCar && (nxCar.p.addons || []).length) covered.push(`Car: comprehensive with ${listTxt(nxCar.p.addons.map(a => a.toLowerCase()))}`);
+  return { H, recs, budget, covered };
+}
+const listTxt = a => a.length < 2 ? (a[0] || '') : `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`;
+
+/* ---------------- the buy journey: points off at payment, a warm welcome back, KYC reused while it's valid ---------------- */
+function fitWho(s) { s = s || S; return (s && s.fitFor) || (s && s.kyc && s.kyc.mobile) || (typeof ACCT !== 'undefined' && ACCT.session && ACCT.session.mobile) || 'anon'; }
+// on the website, points earned before logging in count; a partner only ever sees the customer's own
+function fitRecFor(s) { const A = fitAll(), w = fitWho(s); return A[w] || (w !== 'anon' && CFG.channel !== 'agent' && A.anon) || null; }
+function fitOff(gross, s) { s = s || S; if (!s || s.fitUse === false) return 0; const R = fitRecFor(s); return R && R.pts > 0 ? fitOffFor(R.pts, gross) : 0; }
+function fitRowHtml(gross) {
+  const R = fitRecFor(S); if (!R || R.pts <= 0) return '';
+  const off = fitOffFor(R.pts, gross), use = S.fitUse !== false;
+  return `<label class="fit-use" data-x="fituse"><input type="checkbox" name="fituse" ${use ? 'checked' : ''}><span class="fit-use-ic">${fitIc('star')}</span><span><b>Use my points: ${inr(off)} off</b><small>${fitN(R.pts)} points, worth ${inr(fitValue(R.pts))}. Up to ${CFG.fit.capPct}% of the premium can come off as a wellness and safety reward.</small></span><em>${use ? '−' + inr(off) : ''}</em></label>`;
+}
+function fitWireReview(api, gross) {
+  const box = api.body.querySelector('[data-x=fituse]'); if (!box) return;
+  box.addEventListener('change', () => {
+    S.fitUse = box.querySelector('input').checked;
+    const off = fitOff(gross), T = gross - off;
+    box.querySelector('em').textContent = S.fitUse ? '−' + inr(fitOffFor(fitRecFor(S).pts, gross)) : '';
+    const lv = api.body.querySelector('.live b'); if (lv) lv.textContent = inr(T);
+    api.setNext(`Pay ${inr(T)}`);
+  });
+}
+// points used are taken off the balance when the payment goes through
+function fitRedeem(s, gross, ref) {
+  const off = fitOff(gross, s); if (!off) return 0;
+  const R = fitRecFor(s), pts = Math.ceil(off / CFG.fit.rupee);
+  fitSet(R, 'use:' + ref, -pts, `Used for ${inr(off)} off, ${ref}`, 'used');
+  s.fitUsed = { off, pts, ref }; return off;
+}
+// a customer we know: the welcome, the KYC while it's valid, and the family; health answers are always fresh
+function fitPrefill(s, o = {}) {
+  const mobile = (typeof ACCT !== 'undefined' && ACCT.session && ACCT.session.mobile) || o.mobile || '';
+  const P = mobile ? cdpProfile(mobile) : null; if (!P) return null;
+  if (!s.kyc && P.kycOk && P.U) {
+    const U = P.U;
+    s.kyc = { name: U.name, dob: iso(new Date(U.dob)), gender: P.gender || (/a$|i$/.test(first(U.name)) ? 'F' : 'M'), mobile, email: U.email || '', addr: U.addr, city: U.city, pin: U.pin, idType: 'pan', idMasked: U.kyc.id, verified: true, reused: { at: P.kycAt, till: P.kycTill } };
+  }
+  if (s.product === 'health' && s.health && P.hp && o.members) {
+    const byRel = r => P.hp.members.find(m => m.rel === r || (r === 'son' && (m.rel === 'son' || m.rel === 'daughter')));
+    s.health.members.forEach(m => { const k = byRel(m.rel); if (k) { m.name = k.name; m.age = String(k.age + Math.floor((TODAY - P.hp.start) / 31536e6)); if (k.rel !== m.rel) m.rel = k.rel; } });
+    if (P.U && P.U.pin) { s.health.pin = P.U.pin; s.health.pinDone = true; }
+  }
+  if (P.lastHealth) s.fitPrev = P.lastHealth;
+  const mon = Math.max(1, Math.round((TODAY - P.since) / (30.4 * 864e5)));
+  const FR = fitRecFor(s), pts = FR && FR.pts > 0 ? fitValue(FR.pts) : 0;
+  s.fitHello = `Welcome back, ${first(P.name)}. ${P.kycOk ? `Your KYC from ${fd(P.kycAt)} is still good, so no OTP today.` : 'It\'s been a while, so a quick KYC check first.'} ${s.product === 'health' ? 'Health questions are always asked fresh.' : pts ? `Your points are worth ${inr(pts)} at payment.` : ''}`.trim();
+  s.fitSince = mon;
+  return P;
+}
 
 /* ================= start-up pieces shared by the desktop and mobile pages ================= */
 ICO.sun = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
@@ -17268,13 +17732,15 @@ PFV.review = () => {
 
 /* assisted: the final photo checks and payment */
 PFV.pay = () => {
-  const tot = mainTotal(S) + bundleSum(S).extras, ph = !!S.photo;
+  const gross = mainTotal(S) + bundleSum(S).extras, tot = gross - fitOff(gross), ph = !!S.photo;
   const S2 = S.pfPay = S.pfPay || { how: 'link', phase: 'pick' };
+  // the customer's cover check points come off here, if they want
+  const FR = fitRecFor(S), pts = FR && FR.pts > 0 && S2.phase !== 'wait' ? `<label class="cc-use"><input type="checkbox" name="fituse" ${S.fitUse !== false ? 'checked' : ''}><span class="cc-star">${pi('star')}</span><span><b>Use ${esc(first(S.fitName || (S.kyc && S.kyc.name) || 'the customer'))}'s points: ${inr(fitOffFor(FR.pts, gross))} off</b><small>${fitN(FR.pts)} points from the cover check. Up to ${CFG.fit.capPct}% of the premium comes off as a wellness and safety reward.</small></span></label>` : '';
   const pay = S2.phase === 'wait' ? `<div class="pf-busy"><span class="spin"></span>${S2.how === 'link' ? `Waiting for ${esc(pfFirst())} to pay on their phone…` : 'Waiting for the UPI payment…'}</div>${S2.how === 'qr' ? `<div class="pf-qr">${qrSvg(`upi://pay?pa=nxsure@hdfcbank&pn=NxSure%20General%20Insurance&am=${tot}&tn=${encodeURIComponent((S.motor && S.motor.quoteNo) || (S.health && S.health.quoteNo) || (S.biz && (S.biz.proposalNo || S.biz.quoteNo)) || 'NxSure')}`, '#15132A', 'UPI QR code')}<small>${esc(pfFirst())} scans this with any UPI app</small></div>` : ''}`
     : `<div class="pf-opts">${pfOpt('payhow', 'link', 'mobile', `${pfFirst()} pays on their phone`, 'A payment link by SMS and WhatsApp: UPI, card or net banking.', S2.how === 'link')}${pfOpt('payhow', 'qr', 'qr', 'Pay here with UPI', 'Show a UPI QR on this screen for them to scan.', S2.how === 'qr')}</div><p class="p-muted small">You never collect cash. The policy is issued as soon as the payment comes in.</p>`;
   return {
     html: (ph ? pfCard('Final checks', '<div class="pf-pc" data-x="pc"></div>') : pfCard('Final checks', `<div class="pd-ok">${pi('shield')}<span><b>KYC verified, consent recorded</b><small>${pfIsProp() && S.biz.terms ? 'The underwriter\'s terms accepted. ' : ''}No photo is needed for this proposal</small></span></div>`))
-      + pfCard('Payment', pay, `<span class="pf-note2">${inr(tot)}</span>`),
+      + pfCard('Payment', pts + pay, `<span class="pf-note2">${tot < gross ? `<s>${inr(gross)}</s> ` : ''}${inr(tot)}</span>`),
     next: S2.phase === 'wait' ? null : `Collect ${inr(tot)}`,
     wire(api) {
       const b = api.main, P2 = S.photo;
@@ -17284,7 +17750,7 @@ PFV.pay = () => {
         paint(); Promise.all([P2.ready, photoMatch(S)]).then(() => { if (S.pf.step === 'pay' && S.photo === P2) { paint(); pfLive(); pfMark(photoAllOk(S) ? 'Faces matched across the KYC photo, recording, video exam and photo: all checks passed' : 'Photo to be taken again'); } });
         box.addEventListener('click', e => { const a = e.target.closest('[data-a]'); if (!a) return; if (a.dataset.a === 'retake') { S.photo = null; S.photoReview = null; FL.go('photo'); } if (a.dataset.a === 'kyc') FL.go('customer'); });
       }
-      b.addEventListener('change', e => { if (e.target.name === 'payhow') S2.how = e.target.value; });
+      b.addEventListener('change', e => { if (e.target.name === 'payhow') S2.how = e.target.value; if (e.target.name === 'fituse') { S.fitUse = e.target.checked; api.repaint(); } });
     },
     async commit(api) {
       if (ph) { const P2 = S.photo; if (!P2.match || P2.vision === undefined) return 'Still checking the photo. Give it a moment.'; if (photoHard(S)) return 'The photo doesn\'t match the KYC photo. Retake it, or verify with a different ID.'; if (!photoAllOk(S)) return 'Retake the photo. It\'s checked straight away.'; }
@@ -17293,7 +17759,8 @@ PFV.pay = () => {
       await sleep(REDUCED ? 80 : 2600);
       if (S.pf.step !== 'pay') return 'STAY';
       const got = { method: S2.how === 'link' ? 'UPI, on the customer\'s phone' : 'UPI, by QR', txn: digits(12), at: new Date() };
-      finishPayment(got, tot, 'NX-PL-' + code(6));
+      const ref = 'NX-PL-' + code(6);
+      finishPayment(got, tot, ref); fitRedeem(S, gross, ref);
       const pend = S.health && S.product === 'health' && active(S.health).some(m => m.status === 'pending');
       upsertJ(S, S.photoReview ? 'Photo check due' : pend ? 'Tests booked' : S.verifyCall ? 'Verification call due' : 'Issued');
       return '';
@@ -20564,6 +21031,292 @@ openRow = function (k) {
   if (s.startsWith('cstcan:')) return cstCancDrawer(s.slice(7));
   if (s.startsWith('cstcus:')) { P.f.cstId = s.slice(7); render(); window.scrollTo({ top: 0 }); return; }
   return cstOpenRow0(k);
+};
+
+/* ================= Cover check: the website's Find your cover, for partners =================
+   Customers take the cover check on the website or the app, from a partner's link, or with the partner beside them.
+   The partner sees what each customer has, what they should get, what fits their budget and the points they can use
+   when they buy. Details from earlier policies are reused while they're valid; health answers are always asked fresh,
+   and anything that differs from the last proposal goes to the underwriting rules. The engine is the website's (fit.js). */
+
+const CC_NAV = ['fit', 'spark', 'Cover check'];
+(() => {
+  const add = (role, after) => { const g = NAV[role] && NAV[role][0][1]; if (!g || g.some(x => x[0] === 'fit')) return; const i = g.findIndex(x => x[0] === after); g.splice(i < 0 ? g.length : i + 1, 0, CC_NAV); };
+  add('agent', 'customers'); add('arm', 'bk-cust'); add('brm', 'bk-suit');
+})();
+// the plan is written to the customer; here it reads about them
+const ccThey = t => String(t || '').replace(/\bYou told us\b/g, 'They told us').replace(/\bYou renew\b/g, 'They renew').replace(/\byou change\b/g, 'they change').replace(/\byou can\b/g, 'they can')
+  .replace(/\b(depend on|moves with) you\b/g, '$1 them').replace(/\bYour\b/g, 'Their').replace(/\byour\b/g, 'their').replace(/\bYou\b/g, 'They').replace(/\byou\b/g, 'they');
+const CC_VIA = { web: ['Website', 'search'], app: ['NxSure app', 'mobile'], link: ['Your link', 'link'], you: ['With you', 'users'] };
+
+/* ---------------- the customer as the cover check sees them: policies, KYC and the last health answers ---------------- */
+function ccPol(p) {
+  const base = { no: p.no, premium: p.premium, start: p.start, end: p.end };
+  if (p.type === 'car' || p.type === 'bike') { const w = String(p.vehicle || '').split(' '); return Object.assign(base, { product: 'motor', cls: p.type, title: p.type === 'car' ? 'Car insurance' : 'Two-wheeler insurance', plan: 'Comprehensive', vehicle: { reg: p.reg, make: w[0], model: w.slice(1).join(' ') }, addons: [] }); }
+  if (p.type === 'health') return Object.assign(base, { product: 'health', title: 'Health insurance', plan: p.plan, si: p.si, members: Array.from({ length: p.members || 1 }, (_, i) => ({ rel: ['self', 'spouse', 'son', 'daughter'][i] || 'son' })) });
+  return Object.assign(base, { product: p.type, title: `${ptLabel(p.type)} insurance`, what: p.what });
+}
+function ccPeople() { return book().customers.concat(P.d.ccNew || []); }
+const ccCust = id => ccPeople().find(c => c.id === id);
+function ccProf(c) {
+  const B = book(), C = CFG.cdp, pols = B.policies.filter(p => p.cid === c.id && p.status === 'active').map(ccPol);
+  const r = fitRand(hash('pkyc' + c.id)), kycAt = c.kyc ? (c.kycAt || addDays(TODAY, -(10 + Math.floor(r() * 250)))) : null;
+  const hp = pols.find(p => p.product === 'health'), veh = pols.filter(p => p.product === 'motor');
+  const decl = hp ? (() => { const r2 = fitRand(hash('decl' + c.mobile)); return { no: hp.no.replace('/HL/', '/HP/'), at: addDays(hp.start, -2), tobacco: r2() < 0.3, drinks: r2() < 0.25 }; })() : null;
+  const items = [
+    cdpItem('Identity (KYC)', c.kyc ? 'PAN with OTP' : 'Not done yet', 'KYC', kycAt, C.kyc),
+    cdpItem('Name, date of birth and address', c.kyc ? `${c.name}, ${c.area || 'Mumbai'}` : c.name, 'KYC', kycAt, C.kyc),
+    cdpItem('Mobile', maskMobile(c.mobile), 'Verified with a code', c.since, C.contact),
+    hp && hp.members.length > 1 ? cdpItem('Family', `${hp.members.length} people on the health policy`, `Policy ${hp.no}`, hp.start, C.family) : null,
+    ...veh.map(p => cdpItem(p.cls === 'car' ? 'Car' : 'Two-wheeler', `${p.vehicle.reg}, ${p.vehicle.make} ${p.vehicle.model}`, `Policy ${p.no}`, p.start, C.vehicle)),
+    pols.length ? cdpItem('Nominee', 'From the last policy', `Policy ${pols[0].no}`, pols[0].start, C.nominee) : null,
+    decl ? cdpItem('Health answers', `Given on ${fd(decl.at)}`, `Proposal ${decl.no}`, decl.at, C.health) : cdpItem('Health answers', 'Asked each time', '', null, C.health),
+    cdpItem('Habits like smoking and drinking', 'Asked each time', '', null, C.habits),
+  ].filter(Boolean);
+  return { mobile: c.mobile, name: c.name, pols, U: { pin: '' }, hp, decl, kycAt, kycOk: !!(kycAt && (TODAY - kycAt) / 864e5 <= C.kyc), kycTill: kycAt ? addDays(kycAt, C.kyc) : null, items, since: c.since };
+}
+// what the customer told the cover check that differs from their last proposal: asked again in the next one, and the underwriting rules apply
+function ccFlags(R, prof) {
+  const A = R.ans, d = prof.decl, out = [];
+  if (!d) return out;
+  if (!d.tobacco && (A.smoke === 'daily' || A.smoke === 'some')) out.push({ k: 'smoke', t: 'Tobacco', was: 'No tobacco', now: A.smoke === 'daily' ? 'Every day' : 'Now and then' });
+  if (d.tobacco && A.smoke === 'no') out.push({ k: 'smoke', t: 'Tobacco', was: 'Uses tobacco', now: 'Doesn\'t now' });
+  if (!d.drinks && (A.drink === '4' || A.drink === '10')) out.push({ k: 'drink', t: 'Drinking', was: 'Little or none', now: A.drink === '10' ? 'More than 10 a week' : '4 to 10 a week' });
+  return out.map(f => Object.assign(f, { at: d.at, no: d.no }));
+}
+
+/* ---------------- customers who've taken the check: built from the book, the same on every visit ---------------- */
+function ccSeed() {
+  if (P.d.ccSeeded) return; P.d.ccSeeded = true;
+  const A = fitAll(), B = book(), seed = { agent: 3, arm: 5, brm: 7 }[P.role] || 9;
+  FITS.hold = true;
+  try {
+    B.customers.forEach((c, i) => {
+      const r = fitRand(hash('cc' + seed + c.id)); if (r() > 0.62 || A[c.mobile]) return;
+      const pols = B.policies.filter(p => p.cid === c.id && p.status === 'active'), has = t => pols.some(p => p.type === t), hp = pols.find(p => p.type === 'health');
+      const pk = (arr, w) => { const t = r() * (w ? w.reduce((s, x) => s + x, 0) : arr.length); if (!w) return arr[Math.floor(t)]; let a = 0; for (let j = 0; j < arr.length; j++) { a += w[j]; if (t < a) return arr[j]; } return arr[arr.length - 1]; };
+      const ans = {};
+      ans.age = pk(['22', '30', '40', '52', '65'], [1, 4, 4, 2, 1]);
+      ans.deps = ans.age === '22' ? ['parents'] : [pk(['spouse', 'spouse', 'none']), r() < 0.55 ? 'kids' : null, r() < 0.4 ? 'parents' : null].filter((x, j, a) => x && a.indexOf(x) === j && !(x === 'none' && a.length > 1));
+      if (!ans.deps.length) ans.deps = ['none'];
+      ans.work = pk(['job', 'biz', 'pro', 'free', 'home', 'retired'], [6, 3, 1, 1, 1, ans.age === '65' ? 4 : 0]);
+      ans.income = pk(['20000', '37500', '75000', '150000', '250000', 'skip'], [1, 3, 4, 2, 1, 1]);
+      if (ans.income !== 'skip') ans.emi = pk(['0', '0.2', '0.33', '0.5'], [3, 3, 2, 1]);
+      ans.hcov = hp ? 'own' : pk(['emp', 'none', 'own', 'both'], [3, 2, 3, 2]);
+      if (ans.hcov === 'own' || ans.hcov === 'both') ans.hsi = hp ? (hp.si < 500000 ? '300000' : hp.si <= 1000000 ? '700000' : '1500000') : pk(['300000', '700000', '1500000', 'ns'], [2, 3, 2, 1]);
+      ans.par = pk(['yes', 'no', 'na'], [2, 3, 1]);
+      ans.own = pk(['own', 'rent', 'fam'], [4, 3, 2]); if (ans.own === 'own') ans.loan = pk(['yes', 'no']);
+      ans.hins = has('home') ? 'yes' : pk(['no', 'ns', 'yes'], [4, 2, 1]);
+      ans.veh = [has('car') || r() < 0.15 ? 'car' : null, has('bike') || r() < 0.2 ? 'bike' : null].filter(Boolean); if (!ans.veh.length) ans.veh = ['none'];
+      if (ans.veh.includes('car')) { ans.carage = pk(['new', 'mid', 'old']); ans.carren = has('car') ? 'later' : pk(['soon', 'q', 'later', 'ns']); }
+      if (ans.work === 'biz') { ans.btype = pk(['shop', 'office', 'factory', 'online'], [4, 2, 1, 1]); ans.bstaff = pk(['0', 'few', 'many'], [2, 3, 1]); ans.bins = has('shop') || has('fire') ? 'yes' : pk(['no', 'ns', 'yes']); }
+      ans.steps = pk(['a', 'b', 'c', 'd'], [2, 4, 3, 1]); ans.ex = pk(['0', '1', '3', '5'], [3, 3, 2, 1]);
+      ans.smoke = pk(['no', 'some', 'daily'], [7, 2, 1]); ans.drink = pk(['0', '1', '4', '10'], [4, 4, 2, 1]);
+      ans.sleep = pk(['5', '6', '7', '9'], [2, 4, 3, 1]); ans.check = pk(['y', '2', 'old', 'never'], [3, 3, 2, 2]);
+      if (ans.veh[0] !== 'none') { ans.fines = pk(['0', '1', '2'], [6, 2, 1]); ans.belt = pk(['always', 'most', 'not'], [5, 3, 1]); }
+      ans.safe = pk(['both', 'one', 'none'], [1, 3, 4]);
+      const R = fitRec(c.mobile), via = pk(['web', 'app', 'link', 'you'], [3, 2, 3, 2]);
+      FIT_Q.forEach(q => { if ((!q.when || q.when(R.ans)) && ans[q.id] != null) fitAnswer(R, q, ans[q.id], via === 'you' ? 'agent' : 'you'); });
+      if (via !== 'you') {
+        if (r() < 0.5) fitBoostRun(R, 'fit', c.mobile, { prov: pk(['Google Fit', 'Apple Health', 'Garmin', 'Fitbit']) });
+        if (r() < 0.35) fitBoostRun(R, 'report', c.mobile, { from: pk(['DigiLocker', 'Uploaded report']) });
+        if (ans.veh[0] !== 'none' && r() < 0.4) fitBoostRun(R, 'drive', c.mobile, { reg: (pols.find(p => p.reg) || {}).reg || '' });
+        if (r() < 0.2) fitBoostRun(R, 'home', c.mobile);
+      }
+      R.done = true; R.via = via; R.at = addDays(TODAY, -Math.floor(1 + r() * 75)).getTime();
+      if (pols.length && r() < 0.15 && R.pts > 200) { const ref = 'NX-PL-' + code(6); fitSet(R, 'use:' + ref, -Math.min(R.pts, 400 + Math.floor(r() * 400)), `Used for points off, ${ref}`, 'used'); }
+    });
+  } finally { FITS.hold = false; }
+  fitSave();
+}
+// one customer's cover check, worked out once per change
+function ccRow(c) {
+  const R = fitAll()[c.mobile]; if (!R || !R.done) return null;
+  const memo = P.d.ccMemo || (P.d.ccMemo = new Map()), key = `${c.id}:${R.ledger.length}:${R.pts}:${Object.keys(R.ans).length}:${R.consent && R.consent.find ? 1 : 0}`;
+  if (memo.has(key)) return memo.get(key);
+  const prof = ccProf(c), plan = fitPlan(R, prof), now = plan.recs.filter(x => x.when === 'now');
+  const out = { c, R, prof, plan, now, top: plan.recs[0] || null, flags: ccFlags(R, prof), est: sumOf(now, x => x.est), lv: fitLevel(fitTier(R)) };
+  memo.set(key, out); return out;
+}
+const ccRows = () => { ccSeed(); return ccPeople().map(ccRow).filter(Boolean).sort((a, b) => b.R.at - a.R.at); };
+
+/* ---------------- the page ---------------- */
+V.fit = () => {
+  const all = ccRows(), tab = P.f.ccT || 'done';
+  const todo = ccPeople().filter(c => !all.some(x => x.c.id === c.id));
+  const head = phead('Cover check', `The website's Find your cover, for your customers. What they have, what they should get, what fits their budget and the points they can use when they buy.`,
+    pbtn('Send the link', 'data-hx="ccLink"', 'ghost', 'link') + pbtn('Run it with a customer', 'data-hx="ccRun"', 'pri', 'spark'));
+  const tabs = ptabs('ccT', [['done', 'Checks done', all.length], ['todo', 'Not done yet', todo.length], ['how', 'How it works']], tab);
+  if (tab === 'how') return { title: 'Cover check', html: head + tabs + ccHow() };
+  if (tab === 'todo') {
+    const cols = [{ t: 'Customer', r: c => `<span class="who">${av(c.name, 'sm')}<span><b>${esc(c.name)}</b><small>${esc(maskMobile(c.mobile))}</small></span></span>` },
+      { t: 'With NxSure', r: c => { const ps = book().policies.filter(p => p.cid === c.id && p.status === 'active'); return ps.length ? esc(listText([...new Set(ps.map(p => ptLabel(p.type)))])) : '<span class="p-muted">Nothing active</span>'; } },
+      { t: 'KYC', r: c => { const pr = ccProf(c); return pr.kycOk ? ppill(`Reuse till ${fdS(pr.kycTill)}`, 'ok') : ppill(c.kyc ? 'Refresh' : 'Not done', 'warn'); } },
+      { t: '', cls: 'r', r: c => `<span class="cc-acts">${pbtn('Send the link', `data-hx="ccLink" data-id="${esc(c.id)}"`, 'ghost sm', 'link')}${pbtn('Run it now', `data-hx="ccRun" data-id="${esc(c.id)}"`, 'pri sm', 'spark')}</span>` }];
+    return { title: 'Cover check', html: head + tabs + pcard('', ptable(cols, todo, { empty: 'Every customer has done the cover check' })) };
+  }
+  const f = P.f.ccF || 'all', q = (P.f.ccQ || '').trim().toLowerCase();
+  const F = { all: () => true, gap: x => x.now.length > 0, pts: x => x.R.pts > 0, kyc: x => !x.prof.kycOk, flag: x => x.flags.length > 0 };
+  const list = all.filter(x => F[f](x) && (!q || [x.c.name, x.c.mobile].join(' ').toLowerCase().includes(q)));
+  const month = all.filter(x => (TODAY - x.R.at) / 864e5 <= 30).length, gapN = sumOf(all, x => x.now.length), gapP = sumOf(all, x => x.est), ptsV = sumOf(all, x => fitValue(x.R.pts));
+  const kp = `<div class="kpis">${kpi({ ic: 'spark', label: 'Cover checks done', value: all.length, sub: `${month} in the last 30 days` })}${kpi({ ic: 'shield', tint: 'warn', label: 'Cover to get now', value: gapN, sub: gapP ? `About ${inrK(gapP)} a year in premium` : 'Nothing priced yet' })}${kpi({ ic: 'star', tint: 'ok', label: 'Points to use', value: inrK(ptsV), sub: 'Off their premium when they buy' })}${kpi({ ic: 'user', tint: 'info', label: 'KYC to refresh', value: all.filter(x => !x.prof.kycOk).length, sub: 'The rest is reused, no OTP' })}</div>`;
+  const cols = [
+    { t: 'Customer', r: x => `<span class="who">${av(x.c.name, 'sm')}<span><b>${esc(x.c.name)}</b><small>${esc(maskMobile(x.c.mobile))}</small></span></span>` },
+    { t: 'Done', r: x => { const v = CC_VIA[x.R.via] || CC_VIA.web; return `<span class="cc-nw">${fdS(new Date(x.R.at))}<small class="sub">${esc(v[0])}</small></span>`; } },
+    { t: 'Points', r: x => `<b>${fitN(x.R.pts)}</b><small class="sub">${esc(x.lv.name)} · worth ${inr(fitValue(x.R.pts))}</small>` },
+    { t: 'Get first', r: x => x.top ? `<span class="cc-top"><b>${esc(ccThey(x.top.t))}</b><small class="sub">${x.top.est ? `About ${inr(x.top.est)} a year` : esc(x.top.estTxt || '')}</small></span>` : '<span class="p-muted">Well covered</span>' },
+    { t: 'Budget', r: x => x.plan.budget ? (x.plan.budget.over ? ppill(`${inr(x.plan.budget.over)} a month over`, 'warn') : ppill('Fits', 'ok')) : '<span class="p-muted">Not shared</span>' },
+    { t: 'KYC', r: x => x.prof.kycOk ? ppill(`Reuse till ${fdS(x.prof.kycTill)}`, 'ok') : ppill(x.c.kyc ? 'Refresh' : 'Not done', 'warn') },
+    { t: 'To check', r: x => x.flags.length ? ppill(`${x.flags.length} answer${x.flags.length > 1 ? 's' : ''} changed`, 'bad') : '' },
+  ];
+  return { title: 'Cover check', html: `${head}${tabs}${kp}
+    ${ptool(pfq('ccQ', 'Search name or mobile'), pseg('ccF', [['all', 'All', all.length], ['gap', 'Cover to get', all.filter(F.gap).length], ['pts', 'Points to use', all.filter(F.pts).length], ['kyc', 'KYC to refresh', all.filter(F.kyc).length], ['flag', 'Answers changed', all.filter(F.flag).length]], f))}
+    ${pcard('', ptable(cols, list, { row: x => 'cc:' + x.c.id, empty: 'No cover checks match', emptySub: 'Clear the search or pick another filter.' }) + `<div class="pt-foot"><span>${list.length} of ${all.length} customers</span><span>${pi('shield')}Habits never change a price. Points come off as a wellness and safety reward, within the filed product terms.</span></div>`)}` };
+};
+function ccHow() {
+  const L = CFG.fit.levels, C = CFG.cdp;
+  return `<div class="cc-how">${pcard('What the customer sees', `<ol class="cc-steps">
+      <li><b>Simple questions, one at a time</b><span>About them, their budget, health cover, home, vehicles, business and habits. ${FIT_Q.length} questions at most; the ones that don't apply are skipped.</span></li>
+      <li><b>Points for every answer</b><span>${CFG.fit.ask} points an answer, ${CFG.fit.level} for each part finished, more for good habits. Proving a habit earns the most: a fitness app, a check-up report, the vehicle record or a smoke alarm photo.</span></li>
+      <li><b>Never a penalty</b><span>Habits like smoking are noted and can lower the points, never below zero. No answer in the cover check changes a price.</span></li>
+      <li><b>Their plan</b><span>What they have with NxSure and elsewhere, what they should get first, and what fits about ${CFG.fit.budget[2][1]}% of what they take home (less with big EMIs).</span></li>
+      <li><b>Points off when they buy</b><span>${CFG.fit.rupee === 0.5 ? '2 points are ₹1' : `1 point is ${inr(CFG.fit.rupee)}`}, up to ${CFG.fit.capPct}% of a premium and ${inr(CFG.fit.maxOff)} a policy. Points last ${CFG.fit.expiryMonths} months.</span></li></ol>`)}
+    ${pcard('Levels', `<ul class="cc-lv">${L.map(([n, t], i) => `<li><b>${esc(t)}</b><small>${fitN(n)}${L[i + 1] ? ` to ${fitN(L[i + 1][0] - 1)}` : '+'} points earned</small></li>`).join('')}</ul><p class="p-muted small">The level follows the points earned, so using points never drops it.</p>`)}
+    ${pcard('What we reuse, and for how long', `<ul class="cc-cdp">${[['Identity (KYC)', C.kyc], ['Mobile, email, family, vehicles, nominee, bank', C.contact], ['Health answers', C.health], ['Habits like smoking and drinking', C.habits]].map(([t, d]) => `<li><span>${esc(t)}</span><b>${d ? `${d} days` : 'Asked fresh every time'}</b></li>`).join('')}</ul>
+      <p class="p-muted small">KYC done in the last ${Math.round(C.kyc / 30)} months is reused with no OTP. If today's health answers differ from the last proposal, the proposal goes to the underwriting rules: a video medical exam asks again, and the underwriter decides.</p>`)}</div>`;
+}
+
+/* ---------------- one customer ---------------- */
+function ccDrawer(id) {
+  const c = ccCust(id); if (!c) return; const x = ccRow(c); if (!x) { HX.ccRun(id); return; }
+  const { R, prof, plan } = x, B = plan.budget, v = CC_VIA[R.via] || CC_VIA.web, earned = R.ledger.filter(e => e.got > 0).sort((a, b) => b.got - a.got), notes = fitNotes(R);
+  const hav = h => `<li><span class="car-ic">${pi(h.where === 'nx' ? 'shield' : h.where === 'job' ? 'brief' : h.where === 'found' ? 'search' : 'doc')}</span><span><b>${esc(ccThey(h.t))}</b><small>${esc(ccThey(h.s))}${h.renews ? ` · renews ${fdS(h.renews)}` : ''}${h.src ? ` · ${esc(ccThey(h.src))}` : ''}</small></span>${h.prem ? `<em class="cc-amt">${inr(h.prem)}</em>` : ''}</li>`;
+  const rec = (r, i) => `<li class="cc-rec"><span class="cc-pri ${r.when === 'now' ? 'now' : ''}">${r.when === 'now' ? 'Now' : 'Later'}</span><span><b>${esc(ccThey(r.t))}</b><small>${esc(r.cover)}</small><small class="cc-why">${esc(ccThey(r.why[0]))}</small></span>
+    <span class="cc-rec-r">${r.est ? `<b>${inr(r.est)}</b><small>a year${R.pts > 0 ? `, ${inr(fitOffFor(R.pts, r.est))} off with points` : ''}</small>` : `<small>${esc(r.estTxt || 'Priced at renewal')}</small>`}${pbtn(r.go.nav ? 'Open renewals' : 'Start a quote', `data-hx="ccGo" data-id="${esc(c.id)}:${i}"`, i === 0 ? 'pri sm' : 'ghost sm', 'chevR')}</span></li>`;
+  const ST = { reuse: ['Reused', 'ok'], confirm: ['Confirm', 'warn'], fresh: ['Asked fresh', 'mute'] };
+  const cdp = `<ul class="cc-cdp2">${prof.items.map(it => `<li><span><b>${esc(it.label)}</b><small>${esc(it.value || '')}${it.src ? ` · ${esc(it.src)}` : ''}</small></span>${ppill(ST[it.status][0], ST[it.status][1])}<small class="cc-till">${it.status === 'reuse' && it.till ? `till ${fdS(it.till)} ${it.till.getFullYear()}` : it.status === 'confirm' && it.at ? `from ${fdS(it.at)} ${it.at.getFullYear()}` : it.status === 'fresh' ? 'every time' : ''}</small></li>`).join('')}</ul>`;
+  const html = `<div class="c360">${av(c.name, 'lg')}<span><b>${esc(c.name)}</b><small>${esc(maskMobile(c.mobile))} · ${esc(v[0])}, ${fdS(new Date(R.at))}</small></span></div>
+    <div class="cc-ptsbar"><span class="cc-star">${pi('star')}</span><span><b>${fitN(R.pts)} points</b><small>${esc(x.lv.name)} · worth ${inr(fitValue(R.pts))} off their next policy</small></span>${x.lv.next ? `<small class="cc-next">${fitN(x.lv.next[0] - fitTier(R))} to ${esc(x.lv.next[1])}</small>` : ''}</div>
+    ${x.flags.length ? `<div class="pd-note warn">${pi('alert')}<span><b>Answers that differ from the last proposal</b>${x.flags.map(f => `<small>${esc(f.t)}: "${esc(f.was)}" on ${esc(f.no)} (${fdS(f.at)} ${f.at.getFullYear()}), "${esc(f.now)}" in the cover check.</small>`).join('')}<small>Health questions are asked fresh in the next proposal. If the answers differ there too, the underwriting rules apply: a video medical exam asks again and the underwriter decides.</small></span></div>` : ''}
+    <h3 class="pd-sub">What they have</h3><ul class="plist cc-have">${plan.H.nx.map(hav).join('') || '<li class="p-muted">Nothing active with NxSure</li>'}${plan.H.other.map(hav).join('')}</ul>
+    <h3 class="pd-sub">What they should get</h3>${plan.recs.length ? `<ul class="cc-recs">${plan.recs.map(rec).join('')}</ul>` : '<p class="p-muted">Well covered for what they told us.</p>'}
+    ${plan.covered.length ? `<ul class="ticks small">${plan.covered.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+    <h3 class="pd-sub">Budget</h3>${B ? `${kv([['Pays now', `${inr(B.haveMonth)} a month`], ['Added now', `${inr(B.recMonth)} a month`], ['A simple guide', `${inr(B.month)} a month<small class="sub">About ${B.pct}% of what they take home</small>`]])}${B.over ? `<div class="pd-note">${pi('info')}<span><b>${inr(B.over)} a month above the guide.</b> ${esc(ccThey(B.tip) || 'Start with the most important cover; the rest can wait till renewal.')}</span></div>` : ''}` : '<p class="p-muted small">They didn\'t share their income, so there\'s no budget guide.</p>'}
+    <h3 class="pd-sub">Points</h3><div class="cc-two"><div><h4>Earned</h4><ul class="cc-led">${earned.slice(0, 8).map(e => `<li><span>${esc(e.why)}</span><b class="up">+${e.got}</b></li>`).join('')}${earned.length > 8 ? `<li class="p-muted"><span>And ${earned.length - 8} more answers</span><b class="up">+${sumOf(earned.slice(8), e => e.got)}</b></li>` : ''}</ul></div>
+      <div><h4>Noted</h4>${notes.length ? `<ul class="cc-led">${notes.map(e => `<li><span>${esc(e.why)}</span>${e.got ? `<b>${e.got}</b>` : ''}</li>`).join('')}</ul>` : '<p class="p-muted small">Nothing noted.</p>'}<p class="p-muted small">Notes never change a price.</p></div></div>
+    <h3 class="pd-sub">What we reuse</h3>${cdp}`;
+  drawer(c.name, `Cover check · ${esc(x.lv.name)}`, html, pbtn('Send the plan', `data-hx="ccSend" data-id="${esc(c.id)}"`, 'ghost', 'wa') + pbtn('Run it again', `data-hx="ccRun" data-id="${esc(c.id)}"`, 'ghost', 'spark') + (plan.recs[0] ? pbtn('Quote the first one', `data-hx="ccGo" data-id="${esc(c.id)}:0"`, 'pri', 'chevR') : ''));
+}
+const ccOpenRow0 = openRow;
+openRow = function (k) { const s = String(k || ''); if (s.startsWith('cc:')) return ccDrawer(s.slice(3)); return ccOpenRow0(k); };
+
+/* ---------------- running it with the customer: every question on one screen, filled from their policies ---------------- */
+function ccRunHtml(W) {
+  const A = W.ans, c = W.cid ? ccCust(W.cid) : null, qs = fitQs(A), done = qs.filter(q => A[q.id] != null).length;
+  const picker = `<div class="pf-row">${fld('Customer', `<select data-ccwho><option value="">Pick a customer</option>${ccPeople().map(p => `<option value="${esc(p.id)}" ${W.cid === p.id ? 'selected' : ''}>${esc(p.name)} · ${esc(maskMobile(p.mobile))}</option>`).join('')}<option value="new" ${W.cid === 'new' ? 'selected' : ''}>Someone new</option></select>`)}
+    ${W.cid === 'new' ? `${fld('Name', `<input data-ccnm value="${esc(W.nm || '')}" autocomplete="off">`)}${fld('Mobile', `<input data-ccmob inputmode="numeric" maxlength="10" value="${esc(W.mob || '')}" autocomplete="off">`)}` : ''}</div>`;
+  const lv = FIT_LV.filter(([k]) => qs.some(q => q.lv === k));
+  return `${picker}${c && W.pre ? `<div class="pd-note">${pi('info')}<span>Filled in from ${esc(first(c.name))}'s policies: ${esc(listText(W.pre))}. Check each with them.</span></div>` : ''}
+    <p class="p-muted small">Read each question out and tap what they say. Habits never change a price; good ones earn points, others are noted.</p>
+    <div class="cc-prog"><span style="width:${Math.round(done / qs.length * 100)}%"></span></div><small class="cc-progt">${done} of ${qs.length} answered</small>
+    ${lv.map(([k, t]) => `<section class="cc-lvq"><h3 class="pd-sub">${esc(t)}</h3>${qs.filter(q => q.lv === k).map(q => `<div class="p-f cc-q"><span>${esc(q.q)}${q.many ? ' <small>Pick all that apply</small>' : ''}</span><div class="cc-opts">${q.opts.map(o => { const on = q.many ? (A[q.id] || []).includes(o[0]) : A[q.id] === o[0]; return `<button type="button" class="cc-o ${on ? 'on' : ''}" data-ccq="${q.id}" data-v="${esc(o[0])}" aria-pressed="${on}">${esc(o[1])}${o.length > 2 && o[2] ? `<em class="${o[2] > 0 ? 'up' : 'dn'}">${o[2] > 0 ? '+' : ''}${o[2]}</em>` : ''}</button>`; }).join('')}</div></div>`).join('')}</section>`).join('')}
+    <p class="p-err" data-ccerr hidden></p>`;
+}
+function ccFromProfile(c, A) {
+  const B = book(), pols = B.policies.filter(p => p.cid === c.id && p.status === 'active'), pre = [];
+  const veh = [...new Set(pols.filter(p => p.type === 'car' || p.type === 'bike').map(p => p.type))];
+  if (veh.length && A.veh == null) { A.veh = veh; pre.push('vehicles'); }
+  const hp = pols.find(p => p.type === 'health'); if (hp && A.hcov == null) { A.hcov = 'own'; A.hsi = hp.si < 500000 ? '300000' : hp.si <= 1000000 ? '700000' : '1500000'; pre.push('health cover'); }
+  if (pols.some(p => p.type === 'home') && A.hins == null) { A.hins = 'yes'; pre.push('home contents'); }
+  if (pols.some(p => p.type === 'shop' || p.type === 'fire')) { if (A.work == null) A.work = 'biz'; if (A.bins == null) A.bins = 'yes'; pre.push('business'); }
+  return pre;
+}
+HX.ccRun = id => {
+  const c = id ? ccCust(id) : null, old = c ? fitAll()[c.mobile] : null;
+  const W = P.f.ccRun = { cid: c ? c.id : '', ans: old ? JSON.parse(JSON.stringify(old.ans)) : {}, pre: null };
+  if (c && !old) W.pre = ccFromProfile(c, W.ans);
+  const d = drawer('Run the cover check', c ? `With ${esc(c.name)}` : 'With a customer, in about 3 minutes', `<div data-ccbody>${ccRunHtml(W)}</div>`, pbtn('Cancel', 'data-close', 'ghost') + pbtn('See their plan', 'data-hx="ccRunSave"', 'pri', 'check'));
+  const body = d.querySelector('[data-ccbody]'), paint = () => { const y = d.querySelector('.pd-b').scrollTop; body.innerHTML = ccRunHtml(W); d.querySelector('.pd-b').scrollTop = y; };
+  body.addEventListener('click', e => {
+    const b = e.target.closest('[data-ccq]'); if (!b) return;
+    const q = FIT_Q.find(x => x.id === b.dataset.ccq), v = b.dataset.v;
+    if (q.many) { let a = (W.ans[q.id] || []).slice(); if (v === 'none') a = ['none']; else { a = a.filter(x => x !== 'none'); a = a.includes(v) ? a.filter(x => x !== v) : a.concat(v); } W.ans[q.id] = a.length ? a : undefined; if (!a.length) delete W.ans[q.id]; }
+    else W.ans[q.id] = v;
+    // an answer that hides a question clears it
+    FIT_Q.forEach(x => { if (x.when && !x.when(W.ans)) delete W.ans[x.id]; });
+    paint();
+  });
+  body.addEventListener('change', e => {
+    if (e.target.matches('[data-ccwho]')) {
+      W.cid = e.target.value; const c2 = W.cid && W.cid !== 'new' ? ccCust(W.cid) : null, o2 = c2 ? fitAll()[c2.mobile] : null;
+      W.ans = o2 ? JSON.parse(JSON.stringify(o2.ans)) : {}; W.pre = c2 && !o2 ? ccFromProfile(c2, W.ans) : null; paint();
+    }
+  });
+  body.addEventListener('input', e => { if (e.target.matches('[data-ccnm]')) W.nm = e.target.value; if (e.target.matches('[data-ccmob]')) W.mob = e.target.value.replace(/\D/g, ''); });
+};
+HX.ccRunSave = () => {
+  const W = P.f.ccRun, er = $('[data-ccerr]'), say = t => { if (er) { er.textContent = t; er.hidden = !t; er.scrollIntoView({ block: 'nearest' }); } };
+  if (!W) return;
+  let c = W.cid && W.cid !== 'new' ? ccCust(W.cid) : null;
+  if (!W.cid) return say('Pick the customer first.');
+  if (W.cid === 'new') {
+    const nm = String(W.nm || '').trim().replace(/\s+/g, ' ');
+    if (!/^[A-Za-z][A-Za-z .']{2,}$/.test(nm) || !nm.includes(' ')) return say('Enter the customer\'s full name.');
+    if (!/^[6-9]\d{9}$/.test(W.mob || '')) return say('Enter a 10-digit mobile number.');
+    c = ccPeople().find(p => p.mobile === W.mob);
+    if (!c) { c = { id: 'CN' + (100 + (P.d.ccNew || []).length), name: nm, mobile: W.mob, area: '', since: TODAY, kyc: false, tags: [] }; (P.d.ccNew = P.d.ccNew || []).push(c); }
+  }
+  const qs = fitQs(W.ans), miss = qs.filter(q => W.ans[q.id] == null);
+  if (miss.length > Math.floor(qs.length / 3)) return say(`${miss.length} questions are still open. Answer at least the first few in each part.`);
+  const R = fitRec(c.mobile), before = R.pts;
+  FITS.hold = true;
+  try { qs.forEach(q => { if (W.ans[q.id] != null) fitAnswer(R, q, W.ans[q.id], 'agent'); }); } finally { FITS.hold = false; }
+  R.done = true; R.via = 'you'; R.at = Date.now(); fitSave(); P.d.ccMemo = null;
+  P.f.ccRun = null; P.f.ccT = 'done';
+  toast(`${first(c.name)} earned ${fitN(Math.max(0, R.pts - before))} points. Here's their plan.`);
+  if (P.view === 'fit') render();
+  ccDrawer(c.id);
+};
+// the link: the customer takes the check themselves, and their points and plan show up here
+HX.ccLink = id => {
+  const c = id ? ccCust(id) : null, ref = `nxsure.in/fit/${(P.user.code || 'NX').replace(/[^A-Z0-9]/gi, '').slice(-6)}`;
+  const d = pmodal('Send the cover check', `${c ? `<p>To <b>${esc(c.name)}</b>, ${esc(maskMobile(c.mobile))}</p>` : `<div class="pf-row">${fld('Name', '<input data-lnm autocomplete="off">')}${fld('Mobile', '<input data-lmob inputmode="numeric" maxlength="10" autocomplete="off">')}</div>`}
+    <div class="cc-msg"><small>Message preview</small><p data-lmsg></p></div><p class="p-err" data-lerr hidden></p>`, pbtn('Cancel', 'data-close', 'ghost') + pbtn('Send on WhatsApp and SMS', 'data-ccsend', 'pri', 'send'));
+  const nm = () => c ? c.name : (d.querySelector('[data-lnm]').value || '').trim(), msg = () => `Hi ${first(nm()) || 'there'}, ${P.user.who} from NxSure here. Take the 3-minute cover check: see what cover you have, what you need and what fits your budget. Every answer earns points you can use when you buy. ${ref}`;
+  const paint = () => { d.querySelector('[data-lmsg]').textContent = msg(); }; paint();
+  d.addEventListener('input', paint);
+  d.querySelector('[data-ccsend]').addEventListener('click', () => {
+    const mob = c ? c.mobile : (d.querySelector('[data-lmob]').value || '').replace(/\D/g, ''), er = d.querySelector('[data-lerr]');
+    if (!c && (!nm() || !/^[6-9]\d{9}$/.test(mob))) { er.textContent = 'Enter the name and a 10-digit mobile number.'; er.hidden = false; return; }
+    closeLayers(); simSms(`To ${nm()}`, msg()); toast(`Sent to ${first(nm())}. Their plan shows up here when they finish.`);
+  });
+};
+HX.ccSend = id => {
+  const x = ccRow(ccCust(id)); if (!x) return;
+  const top = x.plan.recs.slice(0, 3).map(r => r.t.toLowerCase());
+  simSms(`To ${x.c.name}`, `Hi ${first(x.c.name)}, your NxSure cover plan: ${listText(top) || 'you\'re well covered'}. You have ${fitN(x.R.pts)} points, worth ${inr(fitValue(x.R.pts))} off when you buy. ${P.user.who}`);
+  toast('Plan sent on WhatsApp and SMS');
+};
+// a quote straight from the plan: the customer's points come off at payment
+HX.ccGo = id => {
+  const [cid, i] = String(id).split(':'), x = ccRow(ccCust(cid)); if (!x) return;
+  const r = x.plan.recs[+i]; if (!r) return;
+  closeLayers();
+  if (r.go.nav) { location.hash = 'renewals'; return; }
+  if (P.view === 'flow') FL.leave();
+  FL.open({ product: r.go.product });
+  // the customer we know: their KYC comes back in their name, on their mobile, and their points follow
+  S.fitFor = x.c.mobile; S.fitName = x.c.name; S.docOwner = { name: x.c.name, mobile: x.c.mobile };
+  toast(`${first(x.c.name)} has ${fitN(x.R.pts)} points: up to ${inr(fitValue(x.R.pts))} comes off at payment.`);
+};
+
+/* ---------------- the customer 360: the cover check, at a glance ---------------- */
+const ccCust0 = custDrawer;
+custDrawer = function (c) {
+  ccCust0(c); if (!c) return; ccSeed();
+  const x = ccRow(c), b = $('[data-layer] .pd-b .c360'); if (!b) return;
+  b.insertAdjacentHTML('afterend', x ? `<button type="button" class="cc-mini" data-go="cc:${esc(c.id)}"><span class="cc-star">${pi('star')}</span><span><b>Cover check: ${fitN(x.R.pts)} points, ${esc(x.lv.name)}</b><small>${x.top ? `Get first: ${esc(ccThey(x.top.t).toLowerCase())}` : 'Well covered'}${x.flags.length ? ' · answers changed since the last proposal' : ''}</small></span>${pi('chevR')}</button>`
+    : `<button type="button" class="cc-mini off" data-hx="ccLink" data-id="${esc(c.id)}"><span class="cc-star">${pi('spark')}</span><span><b>No cover check yet</b><small>Send the link: every answer earns them points</small></span>${pi('chevR')}</button>`);
 };
 
 /* ================= NxSure Partners: sign-in, the shell, drawers, actions and the buying journey ================= */
