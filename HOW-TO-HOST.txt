@@ -3,6 +3,7 @@ NxSure app - how to host it, free
 What is in this folder
 - index.html             The NxSure website, with the buy journey.
 - partners.html          The NxSure Partners portal.
+- ops.html               The NxSure Workbench, for operations, claims and underwriting.
 - manifest.webmanifest   The app name, icons and colours for the website app.
 - partners.webmanifest   The same for the partner portal app.
 - sw.js                  Keeps both on the device, so they open instantly and work offline.
