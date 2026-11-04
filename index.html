@@ -209,6 +209,38 @@ input[type=range]{width:100%;accent-color:var(--brand);min-height:30px}
 .spin{width:18px;height:18px;border:2.5px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .8s linear infinite;display:inline-block;flex:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* renewal from a policy: the document being read on the left, what's found on the right */
+.rd{display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:22px;align-items:start}
+.rd-page{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:#fff;aspect-ratio:360/500}
+.rd-page svg,.rd-page img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.rd-scan{position:absolute;left:0;right:0;top:0;height:22%;background:linear-gradient(180deg,rgba(91,61,245,0),rgba(91,61,245,.14) 70%,rgba(91,61,245,.5));border-bottom:2px solid #5B3DF5;animation:rdScan 1.8s cubic-bezier(.45,0,.55,1) infinite alternate;pointer-events:none}
+.rd.done .rd-scan{display:none}
+@keyframes rdScan{from{transform:translateY(-100%)}to{transform:translateY(455%)}}
+.rd-hl rect{fill:rgba(91,61,245,.09);stroke:#5B3DF5;stroke-width:1.6;opacity:0;transition:opacity .25s}
+.rd-hl rect.on{opacity:1}
+.rd-hl rect.ok{opacity:1;fill:rgba(16,158,125,.06);stroke:#109E7D;stroke-width:1.1}
+.rd-list{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.rd-list li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;padding:10px 12px;border-radius:14px;opacity:.42;transition:opacity .25s,background .25s}
+.rd-list li.on{opacity:1;background:var(--brand-soft)}
+.rd-list li.ok{opacity:1}
+.rd-list b{display:block;font-size:15px}
+.rd-list small{display:block;color:var(--ink-2);font-size:14px;margin-top:2px;min-height:1.3em}
+.rd-list li.ok small{color:var(--ink)}
+.rd-ic{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;box-sizing:border-box}
+.rd-list li.on .rd-ic{border-top-color:var(--brand);animation:spin .8s linear infinite}
+.rd-list li.ok .rd-ic{border:0;background:var(--mint);color:#fff}
+.rd-ic svg{width:15px;height:15px}
+.samp{justify-self:center;font-size:14px}
+.carry{display:grid;gap:8px;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2)}
+.carry-h{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px}
+.carry-h svg{width:18px;height:18px;color:var(--mint);flex:none}
+.carry ul{margin:0;padding:0;list-style:none;display:grid;gap:4px;font-size:14.5px}
+.carry li{position:relative;padding-left:26px;color:var(--ink-2)}
+.carry li::before{content:"";position:absolute;left:8px;top:.6em;width:5px;height:5px;border-radius:50%;background:var(--ink-2)}
+.carry-a{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+@media (max-width:560px){.rd{grid-template-columns:92px minmax(0,1fr);gap:12px}.rd-list li{grid-template-columns:24px minmax(0,1fr);gap:10px;padding:8px}.rd-ic{width:24px;height:24px}.rd-list b{font-size:14px}.rd-list small{font-size:13px}}
+@media (prefers-reduced-motion:reduce){.rd-scan{display:none}}
+
 /* vehicle reveal */
 .veh-card{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:20px;align-items:center;padding:18px;border-radius:22px;background:linear-gradient(160deg,var(--brand-soft),var(--surface-2))}
 .veh-card .art{animation:drive .8s cubic-bezier(.2,.8,.2,1)}
@@ -6321,6 +6353,7 @@ STEP.vehicle = {
           <label class="doc-tile">${ART.doc('policy')}<span><b>Last year's policy</b><small>Fastest. I'll renew your cover as it is.</small></span><input type="file" accept="image/*,application/pdf" data-doc="policy" aria-label="Upload last year's policy"></label>
           <label class="doc-tile">${ART.doc('rc')}<span><b>Registration certificate</b><small>A clear photo of your RC works.</small></span><input type="file" accept="image/*,application/pdf" data-doc="rc" aria-label="Upload your RC"></label>
         </div>
+        <button type="button" class="link samp" data-a="samplepol">No policy to hand? Try it with a sample</button>
         <div data-x="status"></div>`,
       next: 'Find my vehicle', hint: 'Type or say your number, like KA 01 AB 1234',
     };
@@ -6329,6 +6362,7 @@ STEP.vehicle = {
     const inp = api.body.querySelector('[name=reg]');
     inp.addEventListener('keydown', e => { if (e.key === 'Enter') api.next(); });
     api.body.addEventListener('change', async e => { const t = e.target; if (t.type !== 'file' || !t.files || !t.files[0]) return; const f = t.files[0]; t.value = ''; await readVehicleDoc(api, t.dataset.doc, f); });
+    api.body.addEventListener('click', e => { if (e.target.closest('[data-a=samplepol]')) renewFromPolicy(api, null); });
     if (window.matchMedia('(hover:hover)').matches && !S.motor.reg) inp.focus({ preventScroll: true });
   },
   async commit(api) {
@@ -6347,9 +6381,10 @@ STEP.vehicle = {
   },
   value: () => S.motor && S.motor.reg ? `${S.motor.reg.display}${S.motor.fromDoc ? `, from your ${S.motor.fromDoc === 'policy' ? 'policy' : 'RC'}` : ''}` : '',
   done: () => !!(S.motor && S.motor.v),
-  cmd(t) { const r = parseReg(t) || spokenReg(t); if (!r) return null; S.api.body.querySelector('[name=reg]').value = r.display; S.api.next(); return ''; },
+  cmd(t) { const r = parseReg(t) || spokenReg(t); if (!r) return null; const i = S.api.body.querySelector('[name=reg]'); if (!i) return 'One moment, I\'m reading your policy.'; i.value = r.display; S.api.next(); return ''; },
 };
 async function readVehicleDoc(api, which, file) {
+  if (which === 'policy') { await renewFromPolicy(api, file); return; }
   const st = api.body.querySelector('[data-x=status]'), what = which === 'policy' ? 'policy' : 'RC';
   api.err('');
   if (file.type === 'application/pdf' || /\.pdf$/i.test(file.name)) { api.err(`I can read photos and screenshots of your ${what}, but not PDF files yet. Take a screenshot of the first page and upload that.`); return; }
@@ -6371,6 +6406,137 @@ async function readVehicleDoc(api, which, file) {
   const before = S.enter;
   show(nextTarget('vehicle'), 1);
   reflect(before);
+}
+
+/* ---------- renewal from last year's policy: read it, carry everything over, and go straight to the quote ---------- */
+const RNW = { tok: 0 };
+const RD_STEPS = [['veh', 'Your car'], ['pol', 'Your policy'], ['ncb', 'No-claim bonus'], ['cover', 'Your cover'], ['prem', 'Your renewal quote']];
+// the sample policy read when document reading isn't switched on here, or for a PDF. Its dates move with today, so it is always
+// due for renewal. Last year's IDV and premium are worked out the way NxSure prices: the same car a year younger, on a 20% bonus going to 25%
+function samplePolicyDoc() {
+  const end = addDays(TODAY, 9), start = addDays(addYears(end, -1), 1), regd = addDays(addYears(TODAY, -4), -83);
+  const cat = CATALOG.car.find(x => x.model === 'Creta') || CATALOG.car[0];
+  const reg = parseReg('KA03MX4821');
+  const v = Object.assign({}, vahan(reg, { cls: 'car', idx: CATALOG.car.indexOf(cat) }), { regDate: addYears(regd, 1), financier: null });
+  const M0 = Object.assign(newMotor(), { reg, v, expiry: iso(end), curNcb: 20, plan: 'b2b', planChosen: true, addons: new Set(B2B_INC(v)), cpa: true });
+  const r = motorCalc(M0, 'b2b');
+  return {
+    readable: true, doc_type: 'policy', registration_number: reg.display, vehicle_type: 'private_car',
+    make: cat.make, model: cat.model, variant: cat.variant, fuel: cat.fuel, cc: cat.cc, seating_capacity: 5,
+    registration_date: iso(regd), manufacture_year: regd.getFullYear(), chassis_number: 'MALPC81CLNM204821', engine_number: 'G4FLNM518204',
+    owner_name: 'Rohan Mehta', address: '14, 2nd Cross, HAL 2nd Stage, Indiranagar, Bengaluru 560038', pincode: '560038',
+    insurer: 'Sample General Insurance', policy_number: `3001/MP/${start.getFullYear()}/048213`, policy_start: iso(start), policy_end: iso(end), plan_type: 'comprehensive',
+    idv: r.idv, ncb_percent: 25, total_premium: r.total, addons: ['zero_depreciation', 'engine_protect', 'consumables', 'roadside_assistance'],
+    nominee_name: 'Priya Mehta', nominee_relation: 'Spouse', _p: r,
+  };
+}
+// the sample policy schedule, drawn so each thing read can be outlined on it as it's found
+function policySvg(d) {
+  const r = d._p, F = '#34304F', G = '#8A86A6', B = '#0F4C81';
+  const tx = (x, y, s, o = {}) => `<text x="${x}" y="${y}" font-size="${o.fs || 7.4}" font-weight="${o.fw || 500}" fill="${o.c || F}"${o.a ? ` text-anchor="${o.a}"` : ''}>${esc(s)}</text>`;
+  const kv = (x, y, k, v) => tx(x, y, k, { c: G, fs: 6.2 }) + tx(x, y + 10, v, { fw: 650, fs: 7.6 });
+  const rule = (y, x1 = 18, x2 = 342) => `<path d="M${x1} ${y}H${x2}" stroke="#E6E3F2" stroke-width="1"/>`;
+  const sec = (y, s) => tx(18, y, s.toUpperCase(), { c: B, fs: 6.4, fw: 750 }) + rule(y + 4);
+  const fdd = s => fd(fromIso(s));
+  const names = { zero_depreciation: 'Zero depreciation', engine_protect: 'Engine protect', consumables: 'Consumables', roadside_assistance: 'Roadside assistance', return_to_invoice: 'Return to invoice', ncb_protect: 'No-claim bonus protect', key_replacement: 'Key replacement', tyre_protect: 'Tyre protect', battery_protect: 'Battery protect', personal_belongings: 'Personal belongings' };
+  const adds = (d.addons || []).map(a => names[a]).filter(Boolean);
+  const prem = r ? [['Own damage', r.od], [`No-claim bonus, ${d.ncb_percent}%`, -r.ncbAmt], ['Add-on covers', r.addTotal], ['Third party', r.tp], ['Owner-driver accident cover', r.cpa], ['GST at 18%', r.gst]] : [];
+  const HL = { pol: [12, 61, 336, 27], veh: [12, 135, 336, 50], ncb: [124, 205, 118, 27], cover: [12, 233, 336, 46], prem: [12, 297, 336, 98] };
+  return `<svg viewBox="0 0 360 500" role="img" aria-label="Sample motor policy schedule" style="font-family:var(--text)">
+    <rect width="360" height="500" fill="#fff"/>
+    <rect width="360" height="52" fill="${B}"/>
+    <circle cx="30" cy="26" r="12" fill="#fff" opacity=".95"/><path d="M30 18l7 3v4.6c0 4.2-3 6.6-7 8.4-4-1.8-7-4.2-7-8.4V21z" fill="${B}"/>
+    ${tx(52, 23, 'Sample General Insurance Co. Ltd.', { c: '#fff', fs: 10, fw: 750 })}
+    ${tx(52, 36, 'Private car package policy · Certificate of insurance and schedule', { c: '#CFE0F0', fs: 6.4 })}
+    ${kv(18, 70, 'Policy number', d.policy_number)}${kv(190, 70, 'Period of insurance', `${fdd(d.policy_start)} to ${fdd(d.policy_end)}`)}
+    ${kv(18, 102, 'Insured', String(d.owner_name || '').toUpperCase())}${kv(190, 102, 'Address', 'Indiranagar, Bengaluru 560038')}
+    ${sec(128, 'Vehicle')}
+    ${kv(18, 144, 'Registration number', d.registration_number)}${kv(130, 144, 'Make and model', `${d.make} ${d.model} ${d.variant}`)}${kv(262, 144, 'Fuel and capacity', `${d.fuel}, ${d.cc} cc`)}
+    ${kv(18, 170, 'Registered on', fdd(d.registration_date))}${kv(130, 170, 'Chassis number', d.chassis_number)}${kv(262, 170, 'Engine number', d.engine_number)}
+    ${sec(198, 'Cover')}
+    ${kv(18, 214, 'Insured declared value', inr(d.idv))}${kv(130, 214, 'No-claim bonus', d.ncb_percent + '%')}${kv(262, 214, 'Policy type', 'Comprehensive')}
+    ${tx(18, 246, 'Add-on covers', { c: G, fs: 6.2 })}
+    ${adds.map((a, i) => tx(18 + (i % 2) * 162, 258 + Math.floor(i / 2) * 12, '✓  ' + a, { fw: 600, fs: 7.4 })).join('')}
+    ${sec(292, 'Premium')}
+    ${prem.map(([k, v], i) => tx(18, 309 + i * 12, k, { c: G, fs: 7 }) + tx(342, 309 + i * 12, (v < 0 ? '- ' : '') + inr(Math.abs(v)), { a: 'end', fw: 600, fs: 7.4 })).join('')}
+    ${rule(377)}${tx(18, 389, 'Total premium', { fw: 750, fs: 8.4 })}${tx(342, 389, inr(d.total_premium), { a: 'end', fw: 750, fs: 8.4 })}
+    ${kv(18, 414, 'Nominee', `${d.nominee_name}, ${String(d.nominee_relation || '').toLowerCase()}`)}${kv(190, 414, 'Hypothecation', 'None')}
+    <g fill="#EEEDF5"><rect x="18" y="440" width="324" height="4" rx="2"/><rect x="18" y="449" width="300" height="4" rx="2"/><rect x="18" y="458" width="312" height="4" rx="2"/><rect x="18" y="467" width="210" height="4" rx="2"/></g>
+    ${tx(342, 488, 'Authorised signatory', { a: 'end', c: G, fs: 6 })}
+    <text x="180" y="290" transform="rotate(-32 180 290)" font-size="66" font-weight="800" fill="#5B3DF5" opacity=".06" text-anchor="middle">SAMPLE</text>
+    <g class="rd-hl">${Object.entries(HL).map(([k, b]) => `<rect data-k="${k}" x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${b[3]}" rx="6"/>`).join('')}</g>
+  </svg>`;
+}
+// read the policy (or the sample, when reading isn't available here), tick off what's found, then show the quote for the same cover
+async function renewFromPolicy(api, file) {
+  const tok = ++RNW.tok, alive = () => S.cur === 'vehicle' && S.api === api && RNW.tok === tok;
+  const isPdf = !!file && (file.type === 'application/pdf' || /\.pdf$/i.test(file.name));
+  const lim = file && !isPdf ? await canRead() : null;
+  const real = !!(lim && lim.mediaTypes.includes(file.type) && file.size <= (lim.maxInputBytes || Infinity));
+  if (!alive()) return;
+  let d = real ? null : samplePolicyDoc();
+  const url = real ? URL.createObjectURL(file) : '';
+  const title = api.q.querySelector('.q-title'), say = api.q.querySelector('.nyra-say');
+  if (title) title.textContent = 'Reading your policy';
+  if (say) say.textContent = 'Give me a few seconds. I\'ll carry everything over and price the same cover.';
+  api.err(''); api.hideNext(true);
+  api.body.innerHTML = `<div class="rd" aria-live="polite"><div class="rd-doc"><div class="rd-page">${real ? `<img src="${url}" alt="Your policy">` : policySvg(d)}<span class="rd-scan" aria-hidden="true"></span></div></div>
+    <ol class="rd-list">${RD_STEPS.map(([k, l]) => `<li data-k="${k}"><span class="rd-ic" aria-hidden="true"></span><span><b>${l}</b><small></small></span></li>`).join('')}</ol></div>`;
+  const li = k => api.body.querySelector(`.rd-list li[data-k=${k}]`), hl = k => api.body.querySelector(`.rd-hl rect[data-k=${k}]`);
+  const mark = (k, cls, msg) => { const x = li(k), h = hl(k); x.className = cls; if (msg != null) x.querySelector('small').textContent = msg; if (cls === 'ok') x.querySelector('.rd-ic').innerHTML = ICO.check; if (h) h.setAttribute('class', cls); };
+  const pace = REDUCED ? 60 : real ? 380 : 640;
+  const fail = msg => { if (url) URL.revokeObjectURL(url); if (!alive()) return; show('vehicle', 1); S.api.err(msg); };
+  if (real) {
+    mark('veh', 'on', 'Reading…');
+    let err = '';
+    try { d = await readImage(motorDocPrompt('policy'), file); }
+    catch (e) { err = e && (e.code === 'not_granted' || e.code === 'sampling_disabled') ? 'Reading documents needs your permission. Type the vehicle number instead, or allow it and upload again.' : 'I couldn\'t read that just now. Try again, or type the vehicle number.'; }
+    if (!alive()) { URL.revokeObjectURL(url); return; }
+    if (!err && (!d || typeof d !== 'object' || d.readable === false || d.doc_type === 'other')) err = 'I couldn\'t read that as a motor policy. Try a clearer photo in good light, or type the vehicle number.';
+    if (err) return fail(err);
+  }
+  const reg = parseReg(d.registration_number || '');
+  if (!reg) return fail('I read the document but couldn\'t find a vehicle number on it. Type it in above.');
+  d._from = 'policy';
+  setVehicle(reg, vehicleFromDoc(d, reg), d);
+  const M = S.motor;
+  // no policy dates on it (an RC uploaded in its place): carry on the usual way, from the vehicle
+  if (!M.prev) { if (url) URL.revokeObjectURL(url); const before = S.enter; show(nextTarget('vehicle'), 1); reflect(before); return; }
+  const e = fromIso(M.expiry);
+  M.confirmed = true; M.claimed = false; M.policyDone = !!e && e <= addDays(TODAY, 90);
+  const r = motorCalc(M), v = M.v, save = M.prev.premium && M.prev.premium > r.total ? M.prev.premium - r.total : 0;
+  const steps = [
+    ['veh', `${reg.display} · ${v.make} ${v.model} ${v.variant || ''}`.trim()],
+    ['pol', `${M.prev.insurer || 'Your insurer'}, ends ${fd(e)}`],
+    ['ncb', r.newNcb ? `${M.curNcb}% now, up to ${r.newNcb}% for a claim-free year` : r.lapsed > 90 ? 'Back to 0%, as the policy lapsed over 90 days ago' : `${M.curNcb}% now`],
+    ['cover', `${planName(r)}${r.addons.length ? `, with the same ${r.addons.length} add-on${r.addons.length > 1 ? 's' : ''}` : ''}${M.lost.length ? `. ${listText(M.lost)} can't be renewed at this age` : ''}`],
+  ];
+  for (const [k, msg] of steps) { if (!alive()) return; mark(k, 'on'); await sleep(pace); if (!alive()) return; mark(k, 'ok', msg); }
+  mark('prem', 'on', 'Pricing the same cover…');
+  await sleep(pace + (REDUCED ? 0 : 320)); if (!alive()) return;
+  mark('prem', 'ok', `${inr(r.total)} a year${save ? `, ${inr(save)} less than last year` : ''}`);
+  api.body.querySelector('.rd').classList.add('done');
+  await sleep(REDUCED ? 60 : 800);
+  if (url) URL.revokeObjectURL(url);
+  if (!alive()) return;
+  ['vehicle', 'confirm', 'policy', 'plan', 'addons'].forEach(id => {
+    if (!STEP[id] || !order().includes(id) || !STEP[id].done()) return;
+    S.seen.add(id);
+    const val = STEP[id].value ? String(STEP[id].value() || '').replace(/<[^>]+>/g, '') : '';
+    jlog(`${STEP[id].label}${val ? ': ' + val : ''}`, id);
+  });
+  const before = S.enter;
+  show(nextTarget('vehicle'), 1);
+  reflect(before);
+}
+// on the quote: what came across from the policy, with a way to check it
+function carryHtml(M, r) {
+  const v = M.v, adds = r.addons.map((a, i) => i ? a.label.toLowerCase() : a.label);
+  return `<div class="carry"><span class="carry-h">${ICO.check}Carried over from your policy</span><ul>
+      <li>${esc(M.reg.display)}, ${esc(`${v.make} ${v.model} ${v.variant || ''}`.trim())}</li>
+      <li>${esc(planName(r))}${adds.length ? `: ${esc(listText(adds))}` : ''}</li>
+      ${M.nominee ? `<li>Nominee ${esc(M.nominee)}, ${esc(String(M.nomRel || '').toLowerCase())}</li>` : ''}
+    </ul><span class="carry-a"><button type="button" class="link" data-a="check">Check the details</button>${r.newNcb ? '<button type="button" class="link" data-a="claim">Made a claim this year?</button>' : ''}</span></div>`;
 }
 
 /* ================= motor: confirm vehicle ================= */
@@ -6583,10 +6749,11 @@ STEP.quote = {
       title: `${esc(planName(r))} for your ${CLS[M.v.cls].noun}`,
       body: `<div class="price-hero"><b>${inr(r.total)}</b><span>for 1 year, with GST</span></div>
         ${factList([['Policy period', `${fd(r.start)} to ${fd(r.end)}`], ['IDV', r.plan === 'tp' ? 'Not applicable' : inr(r.idv)], ['No-claim bonus', r.plan === 'tp' ? 'Not applicable' : r.newNcb + '%']])}
-        ${M.prev ? `<div class="prev"><span>Renewing ${esc([M.prev.insurer, M.prev.no].filter(Boolean).join(', policy ') || 'your policy')}</span>${M.prev.premium ? `<span>Last year ${inr(M.prev.premium)}</span>` : ''}</div>` : ''}
+        ${M.prev && M.fromDoc === 'policy' ? carryHtml(M, r) : ''}
+        ${M.prev ? `<div class="prev"><span>Renewing ${esc([M.prev.insurer, M.prev.no].filter(Boolean).join(', policy ') || 'your policy')}</span>${M.prev.premium ? `<span>Last year ${inr(M.prev.premium)}${less ? `, you save ${inr(M.prev.premium - r.total)}` : ''}</span>` : ''}</div>` : ''}
         ${M.lost && M.lost.length ? `<p class="note warn">${esc(listText(M.lost))} ${M.lost.length > 1 ? 'aren\'t' : 'isn\'t'} available at this vehicle's age, so I've left ${M.lost.length > 1 ? 'them' : 'it'} out.</p>` : ''}
         ${r.breakIn && r.plan !== 'tp' ? '<p class="note warn">Your policy has lapsed, so own-damage cover starts after a quick photo inspection.</p>' : ''}
-        <details class="more" open><summary>Premium breakdown</summary><div><table class="brk"><tbody>${rows.map(x => { const c = x.cells || x; return `<tr class="${x.bold ? 'sum' : String(c[1]).startsWith('-') ? 'neg' : ''}"><td>${esc(c[0])}</td><td>${esc(c[1])}</td></tr>`; }).join('')}</tbody></table></div></details>
+        <details class="more" ${M.prev && M.fromDoc === 'policy' ? '' : 'open'}><summary>Premium breakdown</summary><div><table class="brk"><tbody>${rows.map(x => { const c = x.cells || x; return `<tr class="${x.bold ? 'sum' : String(c[1]).startsWith('-') ? 'neg' : ''}"><td>${esc(c[0])}</td><td>${esc(c[1])}</td></tr>`; }).join('')}</tbody></table></div></details>
         <details class="more"><summary>What's covered, and what isn't</summary><div class="cols"><div><span class="sec-h">Covered</span><ul class="ticks">${motorCovered(M, r).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div><div><span class="sec-h">Not covered</span><ul class="crosses">${motorExcluded(M, r).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div></div></details>
         <div class="acts"><button type="button" class="btn-soft" data-a="pdf">${ICO.down}Download quote</button><button type="button" class="link" data-a="edit">Change my cover</button></div>`,
       next: 'Buy now', hint: 'Say “buy now”, “download” or “add engine protect”',
@@ -6597,6 +6764,8 @@ STEP.quote = {
       const a = e.target.closest('[data-a]'); if (!a) return;
       if (a.dataset.a === 'pdf') saveFile(`NxSure-quote-${S.motor.quoteNo}.pdf`, motorPdf('quote'));
       if (a.dataset.a === 'edit') go(S.motor.plan === 'tp' ? 'plan' : 'addons');
+      if (a.dataset.a === 'check') go('confirm');
+      if (a.dataset.a === 'claim') go('policy');
     });
   },
   value: () => S.motor && S.seen.has('quote') && S.motor.planChosen ? `${inr(motorCalc(S.motor).total)}, ${S.motor.quoteNo || ''}` : '',
