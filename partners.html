@@ -210,6 +210,38 @@ input[type=range]{width:100%;accent-color:var(--brand);min-height:30px}
 .spin{width:18px;height:18px;border:2.5px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .8s linear infinite;display:inline-block;flex:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* renewal from a policy: the document being read on the left, what's found on the right */
+.rd{display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:22px;align-items:start}
+.rd-page{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:#fff;aspect-ratio:360/500}
+.rd-page svg,.rd-page img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.rd-scan{position:absolute;left:0;right:0;top:0;height:22%;background:linear-gradient(180deg,rgba(91,61,245,0),rgba(91,61,245,.14) 70%,rgba(91,61,245,.5));border-bottom:2px solid #5B3DF5;animation:rdScan 1.8s cubic-bezier(.45,0,.55,1) infinite alternate;pointer-events:none}
+.rd.done .rd-scan{display:none}
+@keyframes rdScan{from{transform:translateY(-100%)}to{transform:translateY(455%)}}
+.rd-hl rect{fill:rgba(91,61,245,.09);stroke:#5B3DF5;stroke-width:1.6;opacity:0;transition:opacity .25s}
+.rd-hl rect.on{opacity:1}
+.rd-hl rect.ok{opacity:1;fill:rgba(16,158,125,.06);stroke:#109E7D;stroke-width:1.1}
+.rd-list{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.rd-list li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;padding:10px 12px;border-radius:14px;opacity:.42;transition:opacity .25s,background .25s}
+.rd-list li.on{opacity:1;background:var(--brand-soft)}
+.rd-list li.ok{opacity:1}
+.rd-list b{display:block;font-size:15px}
+.rd-list small{display:block;color:var(--ink-2);font-size:14px;margin-top:2px;min-height:1.3em}
+.rd-list li.ok small{color:var(--ink)}
+.rd-ic{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;box-sizing:border-box}
+.rd-list li.on .rd-ic{border-top-color:var(--brand);animation:spin .8s linear infinite}
+.rd-list li.ok .rd-ic{border:0;background:var(--mint);color:#fff}
+.rd-ic svg{width:15px;height:15px}
+.samp{justify-self:center;font-size:14px}
+.carry{display:grid;gap:8px;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2)}
+.carry-h{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px}
+.carry-h svg{width:18px;height:18px;color:var(--mint);flex:none}
+.carry ul{margin:0;padding:0;list-style:none;display:grid;gap:4px;font-size:14.5px}
+.carry li{position:relative;padding-left:26px;color:var(--ink-2)}
+.carry li::before{content:"";position:absolute;left:8px;top:.6em;width:5px;height:5px;border-radius:50%;background:var(--ink-2)}
+.carry-a{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+@media (max-width:560px){.rd{grid-template-columns:92px minmax(0,1fr);gap:12px}.rd-list li{grid-template-columns:24px minmax(0,1fr);gap:10px;padding:8px}.rd-ic{width:24px;height:24px}.rd-list b{font-size:14px}.rd-list small{font-size:13px}}
+@media (prefers-reduced-motion:reduce){.rd-scan{display:none}}
+
 /* vehicle reveal */
 .veh-card{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:20px;align-items:center;padding:18px;border-radius:22px;background:linear-gradient(160deg,var(--brand-soft),var(--surface-2))}
 .veh-card .art{animation:drive .8s cubic-bezier(.2,.8,.2,1)}
@@ -595,7 +627,10 @@ details.more>div{padding-top:10px}
 .fg-card p{margin:0;color:var(--ink-2)}
 .fg-tip{font-size:14px}
 .fg-st{display:inline-flex;align-items:center;justify-content:center;gap:10px;color:var(--brand-ink);font-weight:700;font-size:14.5px}
-.fg-acts{display:grid}
+.fg-acts{display:grid;gap:8px}
+.fg-sm{font-size:12.5px;color:var(--ink-2);text-align:center}
+.recwin .rw-hint{position:absolute;left:6px;right:6px;bottom:6px;padding:4px 6px;border-radius:8px;background:rgba(229,57,74,.88);color:#fff;font:650 10.5px/1.2 var(--text);text-align:center}
+.recwin.min .rw-hint{display:none}
 .fg-acts .btn-next{justify-content:center}
 body.face-paused .recwin{display:none}
 
@@ -1106,6 +1141,14 @@ body.vm-open{overflow:hidden}
 .vm-send svg{width:20px;height:20px}
 .vm-err{margin:0;color:#FFB3BA;font-size:13.5px}
 .vm-ask{display:grid;gap:10px;padding:12px 14px;border-radius:14px;background:rgba(229,57,74,.12);border:1px solid rgba(229,57,74,.35);font-size:14.5px}
+.vm-modal{position:absolute;inset:0;z-index:20;display:grid;place-items:center;padding:16px;background:rgba(8,6,18,.62);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);animation:pop .18s ease}
+.vm-modal-c{width:min(380px,100%);display:grid;gap:14px;padding:20px;border-radius:20px;background:#1A1730;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.vm-modal-c p{margin:0;font:600 16px/1.4 var(--text);color:#F2F0FF}
+.vm-modal-b{display:grid;gap:8px}
+.vm-modal-b button{min-height:46px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;font:650 15px var(--text);cursor:pointer}
+.vm-modal-b button:hover{background:rgba(255,255,255,.12)}
+.vm-modal-b .vm-danger{background:#E5394A;border-color:#E5394A}
+.vm-modal-b .vm-danger:hover{background:#cf2d3e}
 .vm-tx{border-radius:18px;background:#F7F6FC;color:#16142B;padding:14px 16px;overflow:auto;min-height:170px;max-height:42vh}
 .vm-tx-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;position:sticky;z-index:1;top:-14px;background:#F7F6FC;padding:2px 0 8px;margin-top:-2px;border-bottom:1px solid #E7E4F4}
 .vm-tx-h b{font:650 14px var(--text)}
@@ -1931,6 +1974,102 @@ button.vm-mic{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:
 .fit-use-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#FFD66B,#FF9F43);color:#5A3300;flex:none}.fit-use-ic svg{width:18px;height:18px}
 .fit-use>span:nth-of-type(2){flex:1;min-width:0}.fit-use b{display:block;font-size:15px}.fit-use small{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.45}
 .fit-use em{font-style:normal;font-weight:700;color:var(--mint-2, var(--mint));flex:none}
+
+/* ---------- face health scan ---------- */
+.fs,.fs-rep,.jp-ban,.jp-pill,.jp-pop,.jp-earned{--k-brand:var(--p-brand,var(--brand));--k-brand-soft:var(--p-brand-soft,var(--brand-soft));--k-ink:var(--p-ink,var(--ink));--k-ink2:var(--p-ink2,var(--ink-2));--k-line:var(--p-line,var(--line));--k-card:var(--p-card,var(--surface));--k-sub:var(--p-sub,var(--surface-2));--k-ok:var(--mint);--k-ok-soft:var(--mint-soft);--k-warn:var(--warn);--k-warn-soft:var(--warn-soft);--k-gold:#B7791F;--k-gold-soft:#FFF4DC}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .fs,:root:not([data-theme="light"]) .jp-ban,:root:not([data-theme="light"]) .jp-pill,:root:not([data-theme="light"]) .jp-pop,:root:not([data-theme="light"]) .fs-rep,:root:not([data-theme="light"]) .jp-earned{--k-gold:#F5C462;--k-gold-soft:#3A2C10}}
+:root[data-theme="dark"] .fs,:root[data-theme="dark"] .jp-ban,:root[data-theme="dark"] .jp-pill,:root[data-theme="dark"] .jp-pop,:root[data-theme="dark"] .fs-rep,:root[data-theme="dark"] .jp-earned{--k-gold:#F5C462;--k-gold-soft:#3A2C10}
+.fs{display:grid;gap:14px;color:var(--k-ink)}
+.fs-hero{display:flex;gap:14px;align-items:center;padding:16px;border-radius:18px;background:var(--k-brand-soft)}
+.fs-hic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--k-brand);color:#fff;flex:none}.fs-hic svg{width:26px;height:26px}
+.fs-hero>div{flex:1;min-width:0}.fs-hero b{display:block;font-size:16px}.fs-hero small{display:block;font-size:13.5px;line-height:1.45;color:var(--k-ink2);margin-top:2px}
+.fs-pts{display:grid;justify-items:center;padding:8px 12px;border-radius:14px;background:var(--k-gold-soft);color:var(--k-gold);flex:none}.fs-pts b{font-size:20px;line-height:1}.fs-pts small{font-size:11px;font-weight:700;color:inherit;margin:0}
+.fs-earn{display:flex;gap:10px;align-items:flex-start;margin:0;padding:10px 14px;border-radius:14px;border:1.5px dashed var(--k-gold);background:var(--k-gold-soft);font-size:14px;line-height:1.45}.fs-earn svg{width:18px;height:18px;color:var(--k-gold);flex:none;margin-top:1px}
+.fs-how{margin:0;padding:0 0 0 20px;display:grid;gap:4px;font-size:14px;color:var(--k-ink2)}
+.fs-ok{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:14px;border:1.5px solid var(--k-line);background:var(--k-card);font-size:13.5px;line-height:1.45;cursor:pointer}.fs-ok input{width:18px;height:18px;margin:1px 0 0;accent-color:var(--k-brand);flex:none}
+.fs-acts{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.fs-run{justify-items:center}
+.fs-cam{position:relative;width:min(300px,100%);aspect-ratio:3/4;border-radius:24px;overflow:hidden;background:#0D0B16}
+.fs-cam video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.fs-oval{position:absolute;left:18%;right:18%;top:12%;bottom:22%;border:2.5px dashed rgba(255,255,255,.75);border-radius:50%}
+.fs-cam.lost .fs-oval{border-color:#FF8A95}
+.fs-ring{position:absolute;inset:8px;width:calc(100% - 16px);height:calc(100% - 16px);transform:rotate(-90deg);pointer-events:none}.fs-ring circle{fill:none;stroke:rgba(255,255,255,.18);stroke-width:2.2;vector-effect:non-scaling-stroke}.fs-ring .fs-ringv{stroke:#3FE0B5;stroke-linecap:round;stroke-width:3.2;transition:stroke-dasharray .2s linear}
+.fs-cam .fs-ring{inset:auto;left:50%;top:50%;width:min(92%,92vw);height:auto;aspect-ratio:1;transform:translate(-50%,-50%) rotate(-90deg);opacity:0}
+.fs-left{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:grid;justify-items:center;padding:6px 14px;border-radius:999px;background:rgba(13,11,22,.72);color:#fff}.fs-left b{font-size:22px;line-height:1}.fs-left small{font-size:11px;opacity:.8}
+.fs-live{width:min(420px,100%);display:grid;gap:6px}
+.fs-wave{width:100%;height:56px;border-radius:12px;background:var(--k-sub)}.fs-wave path{fill:none;stroke:#E5394A;stroke-width:2;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.fs-tip{margin:0;text-align:center;font-weight:650;font-size:14.5px}.fs-tip.bad{color:var(--bad)}
+.fs-res{gap:12px}
+.fs-rep{border-radius:18px;border:1.5px solid var(--k-line);background:var(--k-card);padding:14px 16px;display:grid;gap:12px;color:var(--k-ink)}
+.fs-rep-h{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.fs-rep-h>div{flex:1;min-width:160px}.fs-rep-h b{display:block;font-size:15.5px}.fs-rep-h small{display:block;font-size:12px;color:var(--k-ink2)}
+.fs-rep-ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;background:var(--k-sub);color:var(--k-ink2)}.fs-rep-ic svg{width:22px;height:22px}.fs-rep-ic.ok{background:var(--k-ok-soft);color:var(--k-ok)}.fs-rep-ic.watch{background:var(--k-warn-soft);color:var(--k-warn)}
+.fs-st{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--k-sub);color:var(--k-ink2)}.fs-st.ok{background:var(--k-ok-soft);color:var(--k-ok)}.fs-st.watch{background:var(--k-warn-soft);color:var(--k-warn)}
+.fs-rows{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.fs-rows li{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--k-sub)}
+.fs-ri{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--k-card);color:var(--k-ink2)}.fs-ri svg{width:19px;height:19px}
+.fs-rows li.ok .fs-ri{color:var(--k-ok)}.fs-rows li.watch .fs-ri{color:var(--k-warn)}
+.fs-rt{font-weight:650;font-size:14px}.fs-rt small{display:block;font-weight:500;font-size:12px;color:var(--k-ink2)}
+.fs-rv{text-align:right}.fs-rv b{display:block;font-size:20px;line-height:1.1;font-variant-numeric:tabular-nums}.fs-rv small{display:block;font-size:11.5px;color:var(--k-ink2)}
+.fs-rows li.watch .fs-rv b{color:var(--k-warn)}.fs-rows li.na .fs-rv b{color:var(--k-ink2)}
+.fs-q{display:grid;grid-template-columns:auto minmax(60px,1fr) auto;gap:10px;align-items:center;font-size:13px;color:var(--k-ink2)}.fs-q b{color:var(--k-ink)}
+.fs-qb{height:8px;border-radius:999px;background:var(--k-sub);overflow:hidden}.fs-qb i{display:block;height:100%;border-radius:999px;background:var(--k-brand)}
+.fs-why{margin:0;font-size:13.5px;line-height:1.45;color:var(--k-warn)}
+.fs-note{margin:0;font-size:12px;line-height:1.45;color:var(--k-ink2)}
+.fs-next{display:flex;gap:10px;align-items:flex-start;margin:0;padding:10px 14px;border-radius:14px;background:var(--k-sub);font-size:14px;line-height:1.45}.fs-next svg{width:18px;height:18px;flex:none;margin-top:1px}.fs-next.normal{background:var(--k-ok-soft)}.fs-next.normal svg{color:var(--k-ok)}.fs-next.high svg{color:var(--k-warn)}
+.fs-acked{display:flex;gap:8px;align-items:flex-start;margin:0;font-size:13px;line-height:1.45;color:var(--k-ok)}.fs-acked svg{width:16px;height:16px;flex:none;margin-top:1px}
+/* on the video exam */
+.fs-rep.dark{--k-card:rgba(255,255,255,.06);--k-sub:rgba(255,255,255,.07);--k-line:rgba(255,255,255,.14);--k-ink:#F2F0FF;--k-ink2:rgba(242,240,255,.7);--k-ok:#3FE0B5;--k-ok-soft:rgba(63,224,181,.16);--k-warn:#F5C462;--k-warn-soft:rgba(245,196,98,.16);--k-brand:#9F8DFF}
+.vm-sw{display:grid;gap:10px}
+.vm-scan{position:absolute;inset:0;pointer-events:none;z-index:3}
+.vm-scan-p{position:absolute;left:0;right:0;top:0;height:5px;background:rgba(255,255,255,.14)}.vm-scan-p i{display:block;height:100%;width:0;background:#3FE0B5;transition:width .2s linear}
+.vm-scan-t{position:absolute;left:14px;top:18px;display:grid;justify-items:center;padding:6px 14px;border-radius:14px;background:rgba(13,11,22,.72);color:#fff}.vm-scan-t b{font-size:24px;line-height:1}.vm-scan-t small{font-size:11px;opacity:.85}
+.vm-scan-o{position:absolute;left:50%;top:50%;width:min(34%,220px);aspect-ratio:3/4;transform:translate(-50%,-56%);border:2.5px dashed rgba(63,224,181,.8);border-radius:50%}
+.vm-scan.lost .vm-scan-o{border-color:#FF8A95}.vm-scan.lost .vm-scan-p i{background:#FF8A95}
+.vm-scan .fs-wave{position:absolute;right:12px;bottom:12px;width:min(34%,260px);height:44px;background:rgba(13,11,22,.6)}
+.vm-repov{display:none}
+@media (min-width:900px){.vm-repov{display:block;position:absolute;left:14px;top:14px;bottom:62px;width:calc(66% - 24px);overflow:auto;z-index:3;animation:pop .3s ease}.vm-repov .fs-rep{background:rgba(20,17,42,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}.vm.rep-on .vm-sw[data-x=scanw]{display:none}.vm.rep-on .vm-ai{opacity:0}}
+.fs-rep.fs-tl .fs-rows{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.fs-rep.fs-tl .fs-rows li{grid-template-columns:30px minmax(0,1fr);align-items:start;row-gap:6px}
+.fs-rep.fs-tl .fs-ri{width:30px;height:30px}
+.fs-rep.fs-tl .fs-rv{grid-column:1/-1;text-align:left;display:flex;align-items:baseline;gap:6px}.fs-rep.fs-tl .fs-rv b{font-size:26px}
+.fs-rep.fs-sd{padding:12px;gap:10px}.fs-rep.fs-sd .fs-rows li{grid-template-columns:28px minmax(0,1fr) auto;padding:8px 10px;gap:8px}.fs-rep.fs-sd .fs-ri{width:28px;height:28px}.fs-rep.fs-sd .fs-rt{font-size:13px}.fs-rep.fs-sd .fs-rt small{font-size:11px}.fs-rep.fs-sd .fs-rv b{font-size:18px}.fs-rep.fs-sd .fs-rv small{font-size:10.5px;white-space:nowrap}.fs-rep.fs-sd .fs-rep-h small{font-size:11px}.fs-rep.fs-sd .fs-why,.fs-rep.fs-sd .fs-note{font-size:12px}
+.vm-stage.scan .vm-me{right:0;top:0;width:100%;height:100%;aspect-ratio:auto;border-radius:0;border:0;background:#0E0C1F}
+.vm-stage.scan .vm-me video{object-fit:contain}
+.vm-stage.scan .vm-ai{opacity:0}
+.vm-stage.scan .vm-me .fp-guide,.vm-stage.scan .vm-you,.vm-stage.scan .vm-listen{opacity:0}
+
+/* ---------- points in the journey ---------- */
+.jp-ban{display:grid;gap:8px;margin:0 0 16px;padding:12px 14px;border-radius:16px;border:1.5px solid var(--k-gold);background:linear-gradient(135deg,var(--k-gold-soft),var(--k-card));color:var(--k-ink)}
+.jp-ban.done{border-style:dashed}
+.jp-ban-h{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.jp-ban-h b{font-size:15.5px;flex:1;min-width:150px}
+.jp-star{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:var(--k-gold);color:#fff;flex:none}.jp-star svg{width:17px;height:17px}
+.jp-bal{font-size:12px;font-weight:700;color:var(--k-gold);background:var(--k-card);border-radius:999px;padding:3px 9px}
+.jp-ban ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.jp-ban li{display:grid;grid-template-columns:20px minmax(0,1fr) auto auto;gap:8px;align-items:center;font-size:13.5px}
+.jp-chk{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--k-line);display:grid;place-items:center;background:var(--k-card)}.jp-chk svg{width:13px;height:13px}
+.jp-ban li.got .jp-chk{background:var(--k-ok);border-color:var(--k-ok);color:#fff}.jp-ban li.got .jp-t{color:var(--k-ink2)}
+.jp-off{font-weight:700;color:var(--k-ok);white-space:nowrap}
+.jp-pt{font-weight:800;color:var(--k-gold);white-space:nowrap}
+.jp-ban li.got .jp-off,.jp-ban li.got .jp-pt{opacity:.75}
+.jp-pill{position:relative;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:999px;border:1.5px solid var(--k-gold);background:var(--k-gold-soft);color:var(--k-ink);font:inherit;font-size:13px;cursor:pointer;flex:none;white-space:nowrap}
+.jp-pill svg{width:16px;height:16px;color:var(--k-gold)}.jp-pill b{font-size:14px}
+.jp-pill.bump{animation:jpbump .7s cubic-bezier(.2,1.4,.4,1)}
+@keyframes jpbump{0%{transform:scale(1)}35%{transform:scale(1.18)}100%{transform:scale(1)}}
+.jp-fly{position:absolute;left:50%;top:-4px;transform:translateX(-50%);font-weight:800;font-size:14px;color:var(--k-gold);pointer-events:none;animation:jpfly 1.5s ease forwards}
+@keyframes jpfly{0%{opacity:0;transform:translate(-50%,6px)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-26px)}}
+@media (prefers-reduced-motion:reduce){.jp-pill.bump,.jp-fly{animation:none}.jp-fly{display:none}}
+@media (max-width:560px){.jp-pill .jp-pl{display:none}.jp-pill{padding:0 10px;height:34px}.jp-ban li{grid-template-columns:20px minmax(0,1fr) auto;row-gap:2px}.jp-ban li .jp-off{grid-column:2;grid-row:2;white-space:normal}.jp-ban li .jp-pt{grid-column:3;grid-row:1}}
+.jp-pop{position:fixed;z-index:90;width:min(340px,calc(100vw - 16px));padding:14px;border-radius:16px;background:var(--k-card);color:var(--k-ink);border:1px solid var(--k-line);box-shadow:var(--shadow);display:grid;gap:10px}
+.jp-pop-h b{display:block;font-size:17px}.jp-pop-h small{display:block;font-size:12.5px;color:var(--k-ink2);line-height:1.4}
+.jp-pop-s{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--k-ink2)}
+.jp-pop-l{list-style:none;margin:0;padding:0;display:grid;gap:6px}.jp-pop-l li{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:13.5px}.jp-pop-l svg{width:16px;height:16px;color:var(--k-ok)}.jp-pop-l em{font-style:normal;font-weight:800;color:var(--k-gold)}
+.jp-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--k-gold);justify-self:center}
+.jp-earned{margin-top:6px;display:grid;gap:4px;font-size:12.5px}.jp-earned b{font-size:12.5px}.jp-earned ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}.jp-earned li{display:flex;justify-content:space-between;gap:10px;color:var(--k-ink2)}.jp-earned em{font-style:normal;font-weight:800;color:var(--k-gold)}
+.fit-use .jp-earned{grid-column:1/-1}
+.pf-jp{width:100%;justify-content:flex-start;margin:0 0 10px;height:40px}
+.dt-off .dt-pts{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:var(--k-gold-soft,#FFF4DC);color:#B7791F;font-style:normal;font-size:12px;font-weight:800;vertical-align:middle}
+:root[data-theme="dark"] .dt-off .dt-pts{background:#3A2C10;color:#F5C462}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dt-off .dt-pts{background:#3A2C10;color:#F5C462}}
 
 /* ================= NxSure Partners: ink sidebar, warm paper canvas, one typeface, one accent ================= */
 :root{
@@ -5220,7 +5359,7 @@ const STEP = {};
 const HOOKS = { shown: [], restart: [], kycDone: [] };
 // after KYC: the discount tiles and the consents, then (health) the declaration, the photo and cover made for them
 const MOTOR_IDS = ['vehicle', 'confirm', 'policy', 'plan', 'addons', 'quote', 'kyc', 'data', 'aa', 'bureau', 'needs', 'xsetup', 'hdecl', 'photo', 'pcheck', 'review', 'sent', 'inspect', 'done'];
-const HEALTH_IDS = ['members', 'pincode', 'cover', 'tier', 'tune', 'hquote', 'kyc', 'data', 'aa', 'bureau', 'health', 'family', 'wellness', 'outcome', 'photo', 'needs', 'xsetup', 'pcheck', 'review', 'sent', 'done'];
+const HEALTH_IDS = ['members', 'pincode', 'cover', 'tier', 'tune', 'hquote', 'kyc', 'data', 'aa', 'bureau', 'health', 'family', 'wellness', 'scan', 'outcome', 'photo', 'needs', 'xsetup', 'pcheck', 'review', 'sent', 'done'];
 function fresh(keep) { return { product: null, cur: 'product', furthest: 'product', seen: new Set(), motor: null, health: null, kyc: keep ? keep.kyc : null, docOwner: keep ? keep.docOwner : null, issued: keep ? keep.issued : [], paid: null, enter: null, mute: 0 }; }
 // the steps depend on who is using the journey: a customer on the website ('web'), an agent ('agent'),
 // or a customer opening an agent's proposal link to accept and pay ('cust')
@@ -6104,7 +6243,8 @@ function motorPdf(kind) {
   if (r.breakIn && r.plan !== 'tp') d.para(isPol && M.inspectedAt ? `Own-damage cover starts after the vehicle inspection, approved on ${fd(M.inspectedAt)}.` : 'The previous policy has lapsed. Own-damage cover starts after a short photo inspection of the vehicle.', { color: d.C.warn, bold: true });
   d.h2('Premium');
   d.table([{ t: 'Item', w: 0.72 }, { t: 'Amount', w: 0.28, right: true }], motorBreakRows(M, r));
-  d.band(isPol ? 'Premium paid' : 'Total premium', inr(r.total), isPol ? `On ${fd(TODAY)} by ${S.paid.method}, transaction ${S.paid.txn}` : 'For one year, including GST');
+  if (isPol && S.fitUsed && S.fitUsed.off) d.kv([['Points used', `${fitN(S.fitUsed.pts)} points, ${inr(S.fitUsed.off)} off this payment, as a wellness and safety reward`]]);
+  d.band(isPol ? 'Premium paid' : 'Total premium', inr(r.total), isPol ? `On ${fd(TODAY)} by ${S.paid.method}, transaction ${S.paid.txn}${S.fitUsed && S.fitUsed.off ? `. ${inr(S.fitUsed.off)} of it paid with points` : ''}` : 'For one year, including GST');
   if (isPol && typeof pdfBundle === 'function') pdfBundle(d);
   d.h2("What's covered");
   d.bullets(motorCovered(M, r));
@@ -6146,7 +6286,8 @@ function healthPdf(kind) {
   if (p.wearAmt) rows.push([`Healthy habits discount (${p.wearPct}% of the policyholder's share), from ${(H.wear && H.wear.name) || 'a fitness app'}`, '- ' + inr(p.wearAmt)]);
   rows.push(['GST', 'Nil (exempt)']);
   d.table([{ t: 'Item', w: 0.72 }, { t: 'Amount', w: 0.28, right: true }], rows);
-  d.band(isPol || isAck ? 'Premium paid' : 'Total premium', inr(p.total), isPol || isAck ? `On ${fd(TODAY)} by ${S.paid.method}, transaction ${S.paid.txn}` : `For ${H.term} year${H.term > 1 ? 's' : ''}. No GST on individual health insurance`);
+  if ((isPol || isAck) && S.fitUsed && S.fitUsed.off) d.kv([['Points used', `${fitN(S.fitUsed.pts)} points, ${inr(S.fitUsed.off)} off this payment, as a wellness and safety reward`]]);
+  d.band(isPol || isAck ? 'Premium paid' : 'Total premium', inr(p.total), isPol || isAck ? `On ${fd(TODAY)} by ${S.paid.method}, transaction ${S.paid.txn}${S.fitUsed && S.fitUsed.off ? `. ${inr(S.fitUsed.off)} of it paid with points` : ''}` : `For ${H.term} year${H.term > 1 ? 's' : ''}. No GST on individual health insurance`);
   if ((isPol || isAck) && typeof pdfBundle === 'function') pdfBundle(d);
   if (isAck) {
     d.h2('What happens next');
@@ -6158,6 +6299,7 @@ function healthPdf(kind) {
     items.push('Once the reviews are done, the policy is issued and the cover starts the next day. If the terms change, you can accept them or take a full refund.');
     d.bullets(items);
   }
+  if ((isPol || isAck) && typeof scanPdf === 'function') scanPdf(d);
   if ((isPol || isAck) && typeof vmPdf === 'function') vmPdf(d);
   d.h2("What's covered"); d.bullets(healthBenefits(H));
   d.h2('Waiting periods'); d.bullets(healthWaits(H));
@@ -6261,6 +6403,7 @@ STEP.vehicle = {
           <label class="doc-tile">${ART.doc('policy')}<span><b>Last year's policy</b><small>Fastest. I'll renew your cover as it is.</small></span><input type="file" accept="image/*,application/pdf" data-doc="policy" aria-label="Upload last year's policy"></label>
           <label class="doc-tile">${ART.doc('rc')}<span><b>Registration certificate</b><small>A clear photo of your RC works.</small></span><input type="file" accept="image/*,application/pdf" data-doc="rc" aria-label="Upload your RC"></label>
         </div>
+        <button type="button" class="link samp" data-a="samplepol">No policy to hand? Try it with a sample</button>
         <div data-x="status"></div>`,
       next: 'Find my vehicle', hint: 'Type or say your number, like KA 01 AB 1234',
     };
@@ -6269,6 +6412,7 @@ STEP.vehicle = {
     const inp = api.body.querySelector('[name=reg]');
     inp.addEventListener('keydown', e => { if (e.key === 'Enter') api.next(); });
     api.body.addEventListener('change', async e => { const t = e.target; if (t.type !== 'file' || !t.files || !t.files[0]) return; const f = t.files[0]; t.value = ''; await readVehicleDoc(api, t.dataset.doc, f); });
+    api.body.addEventListener('click', e => { if (e.target.closest('[data-a=samplepol]')) renewFromPolicy(api, null); });
     if (window.matchMedia('(hover:hover)').matches && !S.motor.reg) inp.focus({ preventScroll: true });
   },
   async commit(api) {
@@ -6287,9 +6431,10 @@ STEP.vehicle = {
   },
   value: () => S.motor && S.motor.reg ? `${S.motor.reg.display}${S.motor.fromDoc ? `, from your ${S.motor.fromDoc === 'policy' ? 'policy' : 'RC'}` : ''}` : '',
   done: () => !!(S.motor && S.motor.v),
-  cmd(t) { const r = parseReg(t) || spokenReg(t); if (!r) return null; S.api.body.querySelector('[name=reg]').value = r.display; S.api.next(); return ''; },
+  cmd(t) { const r = parseReg(t) || spokenReg(t); if (!r) return null; const i = S.api.body.querySelector('[name=reg]'); if (!i) return 'One moment, I\'m reading your policy.'; i.value = r.display; S.api.next(); return ''; },
 };
 async function readVehicleDoc(api, which, file) {
+  if (which === 'policy') { await renewFromPolicy(api, file); return; }
   const st = api.body.querySelector('[data-x=status]'), what = which === 'policy' ? 'policy' : 'RC';
   api.err('');
   if (file.type === 'application/pdf' || /\.pdf$/i.test(file.name)) { api.err(`I can read photos and screenshots of your ${what}, but not PDF files yet. Take a screenshot of the first page and upload that.`); return; }
@@ -6311,6 +6456,137 @@ async function readVehicleDoc(api, which, file) {
   const before = S.enter;
   show(nextTarget('vehicle'), 1);
   reflect(before);
+}
+
+/* ---------- renewal from last year's policy: read it, carry everything over, and go straight to the quote ---------- */
+const RNW = { tok: 0 };
+const RD_STEPS = [['veh', 'Your car'], ['pol', 'Your policy'], ['ncb', 'No-claim bonus'], ['cover', 'Your cover'], ['prem', 'Your renewal quote']];
+// the sample policy read when document reading isn't switched on here, or for a PDF. Its dates move with today, so it is always
+// due for renewal. Last year's IDV and premium are worked out the way NxSure prices: the same car a year younger, on a 20% bonus going to 25%
+function samplePolicyDoc() {
+  const end = addDays(TODAY, 9), start = addDays(addYears(end, -1), 1), regd = addDays(addYears(TODAY, -4), -83);
+  const cat = CATALOG.car.find(x => x.model === 'Creta') || CATALOG.car[0];
+  const reg = parseReg('KA03MX4821');
+  const v = Object.assign({}, vahan(reg, { cls: 'car', idx: CATALOG.car.indexOf(cat) }), { regDate: addYears(regd, 1), financier: null });
+  const M0 = Object.assign(newMotor(), { reg, v, expiry: iso(end), curNcb: 20, plan: 'b2b', planChosen: true, addons: new Set(B2B_INC(v)), cpa: true });
+  const r = motorCalc(M0, 'b2b');
+  return {
+    readable: true, doc_type: 'policy', registration_number: reg.display, vehicle_type: 'private_car',
+    make: cat.make, model: cat.model, variant: cat.variant, fuel: cat.fuel, cc: cat.cc, seating_capacity: 5,
+    registration_date: iso(regd), manufacture_year: regd.getFullYear(), chassis_number: 'MALPC81CLNM204821', engine_number: 'G4FLNM518204',
+    owner_name: 'Rohan Mehta', address: '14, 2nd Cross, HAL 2nd Stage, Indiranagar, Bengaluru 560038', pincode: '560038',
+    insurer: 'Sample General Insurance', policy_number: `3001/MP/${start.getFullYear()}/048213`, policy_start: iso(start), policy_end: iso(end), plan_type: 'comprehensive',
+    idv: r.idv, ncb_percent: 25, total_premium: r.total, addons: ['zero_depreciation', 'engine_protect', 'consumables', 'roadside_assistance'],
+    nominee_name: 'Priya Mehta', nominee_relation: 'Spouse', _p: r,
+  };
+}
+// the sample policy schedule, drawn so each thing read can be outlined on it as it's found
+function policySvg(d) {
+  const r = d._p, F = '#34304F', G = '#8A86A6', B = '#0F4C81';
+  const tx = (x, y, s, o = {}) => `<text x="${x}" y="${y}" font-size="${o.fs || 7.4}" font-weight="${o.fw || 500}" fill="${o.c || F}"${o.a ? ` text-anchor="${o.a}"` : ''}>${esc(s)}</text>`;
+  const kv = (x, y, k, v) => tx(x, y, k, { c: G, fs: 6.2 }) + tx(x, y + 10, v, { fw: 650, fs: 7.6 });
+  const rule = (y, x1 = 18, x2 = 342) => `<path d="M${x1} ${y}H${x2}" stroke="#E6E3F2" stroke-width="1"/>`;
+  const sec = (y, s) => tx(18, y, s.toUpperCase(), { c: B, fs: 6.4, fw: 750 }) + rule(y + 4);
+  const fdd = s => fd(fromIso(s));
+  const names = { zero_depreciation: 'Zero depreciation', engine_protect: 'Engine protect', consumables: 'Consumables', roadside_assistance: 'Roadside assistance', return_to_invoice: 'Return to invoice', ncb_protect: 'No-claim bonus protect', key_replacement: 'Key replacement', tyre_protect: 'Tyre protect', battery_protect: 'Battery protect', personal_belongings: 'Personal belongings' };
+  const adds = (d.addons || []).map(a => names[a]).filter(Boolean);
+  const prem = r ? [['Own damage', r.od], [`No-claim bonus, ${d.ncb_percent}%`, -r.ncbAmt], ['Add-on covers', r.addTotal], ['Third party', r.tp], ['Owner-driver accident cover', r.cpa], ['GST at 18%', r.gst]] : [];
+  const HL = { pol: [12, 61, 336, 27], veh: [12, 135, 336, 50], ncb: [124, 205, 118, 27], cover: [12, 233, 336, 46], prem: [12, 297, 336, 98] };
+  return `<svg viewBox="0 0 360 500" role="img" aria-label="Sample motor policy schedule" style="font-family:var(--text)">
+    <rect width="360" height="500" fill="#fff"/>
+    <rect width="360" height="52" fill="${B}"/>
+    <circle cx="30" cy="26" r="12" fill="#fff" opacity=".95"/><path d="M30 18l7 3v4.6c0 4.2-3 6.6-7 8.4-4-1.8-7-4.2-7-8.4V21z" fill="${B}"/>
+    ${tx(52, 23, 'Sample General Insurance Co. Ltd.', { c: '#fff', fs: 10, fw: 750 })}
+    ${tx(52, 36, 'Private car package policy · Certificate of insurance and schedule', { c: '#CFE0F0', fs: 6.4 })}
+    ${kv(18, 70, 'Policy number', d.policy_number)}${kv(190, 70, 'Period of insurance', `${fdd(d.policy_start)} to ${fdd(d.policy_end)}`)}
+    ${kv(18, 102, 'Insured', String(d.owner_name || '').toUpperCase())}${kv(190, 102, 'Address', 'Indiranagar, Bengaluru 560038')}
+    ${sec(128, 'Vehicle')}
+    ${kv(18, 144, 'Registration number', d.registration_number)}${kv(130, 144, 'Make and model', `${d.make} ${d.model} ${d.variant}`)}${kv(262, 144, 'Fuel and capacity', `${d.fuel}, ${d.cc} cc`)}
+    ${kv(18, 170, 'Registered on', fdd(d.registration_date))}${kv(130, 170, 'Chassis number', d.chassis_number)}${kv(262, 170, 'Engine number', d.engine_number)}
+    ${sec(198, 'Cover')}
+    ${kv(18, 214, 'Insured declared value', inr(d.idv))}${kv(130, 214, 'No-claim bonus', d.ncb_percent + '%')}${kv(262, 214, 'Policy type', 'Comprehensive')}
+    ${tx(18, 246, 'Add-on covers', { c: G, fs: 6.2 })}
+    ${adds.map((a, i) => tx(18 + (i % 2) * 162, 258 + Math.floor(i / 2) * 12, '✓  ' + a, { fw: 600, fs: 7.4 })).join('')}
+    ${sec(292, 'Premium')}
+    ${prem.map(([k, v], i) => tx(18, 309 + i * 12, k, { c: G, fs: 7 }) + tx(342, 309 + i * 12, (v < 0 ? '- ' : '') + inr(Math.abs(v)), { a: 'end', fw: 600, fs: 7.4 })).join('')}
+    ${rule(377)}${tx(18, 389, 'Total premium', { fw: 750, fs: 8.4 })}${tx(342, 389, inr(d.total_premium), { a: 'end', fw: 750, fs: 8.4 })}
+    ${kv(18, 414, 'Nominee', `${d.nominee_name}, ${String(d.nominee_relation || '').toLowerCase()}`)}${kv(190, 414, 'Hypothecation', 'None')}
+    <g fill="#EEEDF5"><rect x="18" y="440" width="324" height="4" rx="2"/><rect x="18" y="449" width="300" height="4" rx="2"/><rect x="18" y="458" width="312" height="4" rx="2"/><rect x="18" y="467" width="210" height="4" rx="2"/></g>
+    ${tx(342, 488, 'Authorised signatory', { a: 'end', c: G, fs: 6 })}
+    <text x="180" y="290" transform="rotate(-32 180 290)" font-size="66" font-weight="800" fill="#5B3DF5" opacity=".06" text-anchor="middle">SAMPLE</text>
+    <g class="rd-hl">${Object.entries(HL).map(([k, b]) => `<rect data-k="${k}" x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${b[3]}" rx="6"/>`).join('')}</g>
+  </svg>`;
+}
+// read the policy (or the sample, when reading isn't available here), tick off what's found, then show the quote for the same cover
+async function renewFromPolicy(api, file) {
+  const tok = ++RNW.tok, alive = () => S.cur === 'vehicle' && S.api === api && RNW.tok === tok;
+  const isPdf = !!file && (file.type === 'application/pdf' || /\.pdf$/i.test(file.name));
+  const lim = file && !isPdf ? await canRead() : null;
+  const real = !!(lim && lim.mediaTypes.includes(file.type) && file.size <= (lim.maxInputBytes || Infinity));
+  if (!alive()) return;
+  let d = real ? null : samplePolicyDoc();
+  const url = real ? URL.createObjectURL(file) : '';
+  const title = api.q.querySelector('.q-title'), say = api.q.querySelector('.nyra-say');
+  if (title) title.textContent = 'Reading your policy';
+  if (say) say.textContent = 'Give me a few seconds. I\'ll carry everything over and price the same cover.';
+  api.err(''); api.hideNext(true);
+  api.body.innerHTML = `<div class="rd" aria-live="polite"><div class="rd-doc"><div class="rd-page">${real ? `<img src="${url}" alt="Your policy">` : policySvg(d)}<span class="rd-scan" aria-hidden="true"></span></div></div>
+    <ol class="rd-list">${RD_STEPS.map(([k, l]) => `<li data-k="${k}"><span class="rd-ic" aria-hidden="true"></span><span><b>${l}</b><small></small></span></li>`).join('')}</ol></div>`;
+  const li = k => api.body.querySelector(`.rd-list li[data-k=${k}]`), hl = k => api.body.querySelector(`.rd-hl rect[data-k=${k}]`);
+  const mark = (k, cls, msg) => { const x = li(k), h = hl(k); x.className = cls; if (msg != null) x.querySelector('small').textContent = msg; if (cls === 'ok') x.querySelector('.rd-ic').innerHTML = ICO.check; if (h) h.setAttribute('class', cls); };
+  const pace = REDUCED ? 60 : real ? 380 : 640;
+  const fail = msg => { if (url) URL.revokeObjectURL(url); if (!alive()) return; show('vehicle', 1); S.api.err(msg); };
+  if (real) {
+    mark('veh', 'on', 'Reading…');
+    let err = '';
+    try { d = await readImage(motorDocPrompt('policy'), file); }
+    catch (e) { err = e && (e.code === 'not_granted' || e.code === 'sampling_disabled') ? 'Reading documents needs your permission. Type the vehicle number instead, or allow it and upload again.' : 'I couldn\'t read that just now. Try again, or type the vehicle number.'; }
+    if (!alive()) { URL.revokeObjectURL(url); return; }
+    if (!err && (!d || typeof d !== 'object' || d.readable === false || d.doc_type === 'other')) err = 'I couldn\'t read that as a motor policy. Try a clearer photo in good light, or type the vehicle number.';
+    if (err) return fail(err);
+  }
+  const reg = parseReg(d.registration_number || '');
+  if (!reg) return fail('I read the document but couldn\'t find a vehicle number on it. Type it in above.');
+  d._from = 'policy';
+  setVehicle(reg, vehicleFromDoc(d, reg), d);
+  const M = S.motor;
+  // no policy dates on it (an RC uploaded in its place): carry on the usual way, from the vehicle
+  if (!M.prev) { if (url) URL.revokeObjectURL(url); const before = S.enter; show(nextTarget('vehicle'), 1); reflect(before); return; }
+  const e = fromIso(M.expiry);
+  M.confirmed = true; M.claimed = false; M.policyDone = !!e && e <= addDays(TODAY, 90);
+  const r = motorCalc(M), v = M.v, save = M.prev.premium && M.prev.premium > r.total ? M.prev.premium - r.total : 0;
+  const steps = [
+    ['veh', `${reg.display} · ${v.make} ${v.model} ${v.variant || ''}`.trim()],
+    ['pol', `${M.prev.insurer || 'Your insurer'}, ends ${fd(e)}`],
+    ['ncb', r.newNcb ? `${M.curNcb}% now, up to ${r.newNcb}% for a claim-free year` : r.lapsed > 90 ? 'Back to 0%, as the policy lapsed over 90 days ago' : `${M.curNcb}% now`],
+    ['cover', `${planName(r)}${r.addons.length ? `, with the same ${r.addons.length} add-on${r.addons.length > 1 ? 's' : ''}` : ''}${M.lost.length ? `. ${listText(M.lost)} can't be renewed at this age` : ''}`],
+  ];
+  for (const [k, msg] of steps) { if (!alive()) return; mark(k, 'on'); await sleep(pace); if (!alive()) return; mark(k, 'ok', msg); }
+  mark('prem', 'on', 'Pricing the same cover…');
+  await sleep(pace + (REDUCED ? 0 : 320)); if (!alive()) return;
+  mark('prem', 'ok', `${inr(r.total)} a year${save ? `, ${inr(save)} less than last year` : ''}`);
+  api.body.querySelector('.rd').classList.add('done');
+  await sleep(REDUCED ? 60 : 800);
+  if (url) URL.revokeObjectURL(url);
+  if (!alive()) return;
+  ['vehicle', 'confirm', 'policy', 'plan', 'addons'].forEach(id => {
+    if (!STEP[id] || !order().includes(id) || !STEP[id].done()) return;
+    S.seen.add(id);
+    const val = STEP[id].value ? String(STEP[id].value() || '').replace(/<[^>]+>/g, '') : '';
+    jlog(`${STEP[id].label}${val ? ': ' + val : ''}`, id);
+  });
+  const before = S.enter;
+  show(nextTarget('vehicle'), 1);
+  reflect(before);
+}
+// on the quote: what came across from the policy, with a way to check it
+function carryHtml(M, r) {
+  const v = M.v, adds = r.addons.map((a, i) => i ? a.label.toLowerCase() : a.label);
+  return `<div class="carry"><span class="carry-h">${ICO.check}Carried over from your policy</span><ul>
+      <li>${esc(M.reg.display)}, ${esc(`${v.make} ${v.model} ${v.variant || ''}`.trim())}</li>
+      <li>${esc(planName(r))}${adds.length ? `: ${esc(listText(adds))}` : ''}</li>
+      ${M.nominee ? `<li>Nominee ${esc(M.nominee)}, ${esc(String(M.nomRel || '').toLowerCase())}</li>` : ''}
+    </ul><span class="carry-a"><button type="button" class="link" data-a="check">Check the details</button>${r.newNcb ? '<button type="button" class="link" data-a="claim">Made a claim this year?</button>' : ''}</span></div>`;
 }
 
 /* ================= motor: confirm vehicle ================= */
@@ -6523,10 +6799,11 @@ STEP.quote = {
       title: `${esc(planName(r))} for your ${CLS[M.v.cls].noun}`,
       body: `<div class="price-hero"><b>${inr(r.total)}</b><span>for 1 year, with GST</span></div>
         ${factList([['Policy period', `${fd(r.start)} to ${fd(r.end)}`], ['IDV', r.plan === 'tp' ? 'Not applicable' : inr(r.idv)], ['No-claim bonus', r.plan === 'tp' ? 'Not applicable' : r.newNcb + '%']])}
-        ${M.prev ? `<div class="prev"><span>Renewing ${esc([M.prev.insurer, M.prev.no].filter(Boolean).join(', policy ') || 'your policy')}</span>${M.prev.premium ? `<span>Last year ${inr(M.prev.premium)}</span>` : ''}</div>` : ''}
+        ${M.prev && M.fromDoc === 'policy' ? carryHtml(M, r) : ''}
+        ${M.prev ? `<div class="prev"><span>Renewing ${esc([M.prev.insurer, M.prev.no].filter(Boolean).join(', policy ') || 'your policy')}</span>${M.prev.premium ? `<span>Last year ${inr(M.prev.premium)}${less ? `, you save ${inr(M.prev.premium - r.total)}` : ''}</span>` : ''}</div>` : ''}
         ${M.lost && M.lost.length ? `<p class="note warn">${esc(listText(M.lost))} ${M.lost.length > 1 ? 'aren\'t' : 'isn\'t'} available at this vehicle's age, so I've left ${M.lost.length > 1 ? 'them' : 'it'} out.</p>` : ''}
         ${r.breakIn && r.plan !== 'tp' ? '<p class="note warn">Your policy has lapsed, so own-damage cover starts after a quick photo inspection.</p>' : ''}
-        <details class="more" open><summary>Premium breakdown</summary><div><table class="brk"><tbody>${rows.map(x => { const c = x.cells || x; return `<tr class="${x.bold ? 'sum' : String(c[1]).startsWith('-') ? 'neg' : ''}"><td>${esc(c[0])}</td><td>${esc(c[1])}</td></tr>`; }).join('')}</tbody></table></div></details>
+        <details class="more" ${M.prev && M.fromDoc === 'policy' ? '' : 'open'}><summary>Premium breakdown</summary><div><table class="brk"><tbody>${rows.map(x => { const c = x.cells || x; return `<tr class="${x.bold ? 'sum' : String(c[1]).startsWith('-') ? 'neg' : ''}"><td>${esc(c[0])}</td><td>${esc(c[1])}</td></tr>`; }).join('')}</tbody></table></div></details>
         <details class="more"><summary>What's covered, and what isn't</summary><div class="cols"><div><span class="sec-h">Covered</span><ul class="ticks">${motorCovered(M, r).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div><div><span class="sec-h">Not covered</span><ul class="crosses">${motorExcluded(M, r).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div></div></details>
         <div class="acts"><button type="button" class="btn-soft" data-a="pdf">${ICO.down}Download quote</button><button type="button" class="link" data-a="edit">Change my cover</button></div>`,
       next: 'Buy now', hint: 'Say “buy now”, “download” or “add engine protect”',
@@ -6537,6 +6814,8 @@ STEP.quote = {
       const a = e.target.closest('[data-a]'); if (!a) return;
       if (a.dataset.a === 'pdf') saveFile(`NxSure-quote-${S.motor.quoteNo}.pdf`, motorPdf('quote'));
       if (a.dataset.a === 'edit') go(S.motor.plan === 'tp' ? 'plan' : 'addons');
+      if (a.dataset.a === 'check') go('confirm');
+      if (a.dataset.a === 'claim') go('policy');
     });
   },
   value: () => S.motor && S.seen.has('quote') && S.motor.planChosen ? `${inr(motorCalc(S.motor).total)}, ${S.motor.quoteNo || ''}` : '',
@@ -7122,6 +7401,8 @@ function syncReqs(H) {
     if (m.r.decline) { m.need = []; continue; }
     const touched = Object.keys(m.rq).filter(k => m.rq[k].touched);
     m.need = [...new Set([...m.r.reqs, ...touched])];
+    // an unusual face-scan reading that the video exam didn't clear: a short check-up, at home
+    if (m.rel === 'self' && typeof scanTests === 'function' && scanTests(H)) ['t_ecg', 't_bp'].forEach(k => { if (!m.need.includes(k)) m.need.push(k); });
     m.need.forEach(k => { if (!m.rq[k]) m.rq[k] = { status: REQ[k].kind === 'record' ? 'open' : 'book', values: {} }; });
     // once the exam has asked for reports, anything not shared is arranged instead
     if (recAsked) m.need.forEach(k => { if (REQ[k].kind === 'record' && m.rq[k].status === 'open') m.rq[k].status = 'missing'; });
@@ -7141,7 +7422,9 @@ function syncReqs(H) {
     // an answer changed from higher to lower risk during the declaration: always the video exam, where Nyra confirms it
     m.dgVm = (H.dgLog || []).some(x => x.mid === m.id) || !!(m.rel === 'self' && H.vmMust && H.vmMust.length);
     // not straight through: reports, tests, a closer look or a changed answer. The video exam always comes first
-    m.nstp = !m.r.decline && (book.length > 0 || d.status === 'refer' || records || m.dgVm);
+    // the face scan in the journey couldn't be read, was cut short, or showed something worth a closer look
+    m.scanVm = m.rel === 'self' && !!(H.scan && !H.scan.skip && H.scan.src !== 'vmer' && H.scan.ack && H.scan.risk !== 'normal');
+    m.nstp = !m.r.decline && (book.length > 0 || d.status === 'refer' || records || m.dgVm || m.scanVm);
     m.booked = [...new Set(book)].filter(k => !(vmDone && REQ[k].kind === 'call'));
     let st = m.r.decline ? 'decline' : d.status, load = d.loading;
     if (!m.r.decline && m.nstp && !vmDone) st = 'exam';
@@ -7615,8 +7898,8 @@ STEP.data = {
       title: x ? `Save up to ${inr(x * 2)} on your premium` : 'Cover made for you',
       help: mot ? (x ? 'The discount is on the own-damage part of the premium. Third-party cover is priced by law.' : 'There\'s no discount on third-party cover, which is priced by law. Sharing still lets me pre-approve cover that fits you.') : '',
       body: `<div class="tiles dt-tiles">
-        ${tile('data-dt="aa"', `<span class="dt-ic">${ICO_BANK}</span><span class="dt-off">${x ? '5% off' : 'Optional'}</span><span class="tile-name">Share your bank statement</span><span class="tile-sub">${x ? `Save ${inr(x)}. ` : ''}12 months from one account, through an RBI-regulated account aggregator.</span>`, D.aa)}
-        ${tile('data-dt="cb"', `<span class="dt-ic">${ICO_SCORE}</span><span class="dt-off">${x ? 'Another 5% off' : 'Optional'}</span><span class="tile-name">Share your credit report</span><span class="tile-sub">${x ? `Save ${inr(x)} more. ` : ''}A soft check, so your credit score isn't affected.</span>`, D.cb)}
+        ${tile('data-dt="aa"', `<span class="dt-ic">${ICO_BANK}</span><span class="dt-off">${x ? '5% off' : 'Optional'}${typeof jpWorth === 'function' && jpWorth(S, 'aa') ? `<em class="dt-pts">+${jpWorth(S, 'aa')} points</em>` : ''}</span><span class="tile-name">Share your bank statement</span><span class="tile-sub">${x ? `Save ${inr(x)}. ` : ''}12 months from one account, through an RBI-regulated account aggregator.</span>`, D.aa)}
+        ${tile('data-dt="cb"', `<span class="dt-ic">${ICO_SCORE}</span><span class="dt-off">${x ? 'Another 5% off' : 'Optional'}${typeof jpWorth === 'function' && jpWorth(S, 'cb') ? `<em class="dt-pts">+${jpWorth(S, 'cb')} points</em>` : ''}</span><span class="tile-name">Share your credit report</span><span class="tile-sub">${x ? `Save ${inr(x)} more. ` : ''}A soft check, so your credit score isn't affected.</span>`, D.cb)}
         ${tile('data-dt="none"', `<span class="dt-ic">${ICO_SKIP}</span><span class="dt-off mute">No discount</span><span class="tile-name">Continue without sharing</span><span class="tile-sub">Pay the full price${(() => { const p = priceInfo(); return p && !p.from ? `, ${inr(p.total + (aaDone(S) || bureauDone(S) ? dataOff(S, 'aaAmt') + dataOff(S, 'cbAmt') : 0))}` : ''; })()}.</span>`, D.none)}
       </div><p class="hint dt-note">You approve each one with a code on your phone. We never see your bank login, and you can withdraw consent any time.</p>`,
       next: 'Continue', hint: 'Say “both”, “bank statement” or “no thanks”',
@@ -13465,7 +13748,7 @@ function orgPdf(d) {
    doesn't have it, answers are tapped or typed. */
 const VOICE = {
   SR: window.SpeechRecognition || window.webkitSpeechRecognition || null,
-  want: false, live: false, blocked: '', r: null, starts: [], net: 0,
+  want: false, live: false, blocked: '', r: null, starts: [], quick: [], net: 0, flaky: false, resAt: 0, startAt: 0, gotRes: false,
   heard: '', interim: '', cut: 0, len: 0, endT: 0, turnAt: 0, turn0: 0, conf: 1,
   subs: [], ui: new Set(), lv: new Set(),
   said: [], tts: null, ttsEnd: 0,
@@ -13512,14 +13795,17 @@ function voiceFlush() { clearTimeout(VOICE.endT); VOICE.heard = ''; VOICE.interi
 /* ---------- the recogniser: continuous, restarted quietly when the browser ends it ---------- */
 function voiceRec() {
   if (!VOICE.SR || VOICE.r || !VOICE.want) return;
-  const now = Date.now(); VOICE.starts = VOICE.starts.filter(t => now - t < 60000);
-  if (VOICE.starts.length >= 12) { VOICE.want = false; VOICE.blocked = 'Voice keeps stopping in this browser. Tap or type your answers for now.'; voicePaint(); return; }
-  VOICE.starts.push(now);
+  // some phones end the recogniser after every sentence: that's normal, and it's started again. Only when it keeps
+  // stopping straight away, without hearing anything, does it wait a little longer before trying again
+  const now = Date.now(); VOICE.quick = VOICE.quick.filter(t => now - t < 30000);
+  if (VOICE.quick.length >= 6) { VOICE.flaky = true; voicePaint(); clearTimeout(VOICE.retryT); VOICE.retryT = setTimeout(() => { VOICE.quick = []; voiceRec(); }, 4000); return; }
+  VOICE.starts.push(now); VOICE.startAt = now; VOICE.gotRes = false;
   let r; try { r = new VOICE.SR(); } catch (e) { VOICE.blocked = 'Voice isn\'t available in this window. Tap or type your answers.'; voicePaint(); return; }
   r.lang = 'en-IN'; r.continuous = true; r.interimResults = true; r.maxAlternatives = 1;
   VOICE.r = r; VOICE.cut = 0; VOICE.len = 0;
   r.onstart = () => { VOICE.live = true; VOICE.net = 0; voicePaint(); };
   r.onresult = e => {
+    VOICE.resAt = Date.now(); VOICE.gotRes = true; VOICE.flaky = false;
     let fin = '', mid = '', last = -1;
     VOICE.len = e.results.length;
     for (let i = Math.max(e.resultIndex, VOICE.cut); i < e.results.length; i++) {
@@ -13537,9 +13823,11 @@ function voiceRec() {
     else if (e.error === 'network' && ++VOICE.net >= 3) { VOICE.want = false; VOICE.blocked = 'Voice needs a connection to the speech service. Tap or type your answers for now.'; }
     voicePaint();
   };
-  r.onend = () => { VOICE.live = false; VOICE.r = null; voicePaint(); if (VOICE.want) setTimeout(voiceRec, 250); };
+  r.onend = () => { VOICE.live = false; VOICE.r = null; if (!VOICE.gotRes && Date.now() - VOICE.startAt < 1500) VOICE.quick.push(Date.now()); voicePaint(); if (VOICE.want) setTimeout(voiceRec, 250); };
   try { r.start(); } catch (e) { VOICE.r = null; }
 }
+// starts listening afresh: used when someone is clearly speaking but no words have come through for a while
+function voiceKick() { if (!VOICE.want || voiceSim()) return; if (VOICE.r) { try { VOICE.r.abort(); } catch (e) { /* restarts on end */ } } else voiceRec(); }
 // while Nyra is speaking, and for a moment after, the microphone mostly hears her: that's set aside, unless the
 // customer clearly talks over her
 const voiceNyra = () => !!VOICE.tts || (Date.now() - VOICE.ttsEnd < 350 && !(VOICE.meter && voiceSpokeMs(VOICE.ttsEnd + 80, Date.now()) >= 200));
@@ -13639,9 +13927,16 @@ function voiceSpeak(text, o = {}) {
   if (o.audio !== false && 'speechSynthesis' in window && !voiceSim()) {
     try {
       speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text), pv = voicePick(); if (pv) u.voice = pv; u.lang = pv ? pv.lang : 'en-IN'; u.rate = o.rate || 1.03;
-      u.onend = () => setTimeout(() => end('end'), 120); u.onerror = () => setTimeout(() => end('end'), Math.min(ms, 1500));
-      speechSynthesis.speak(u); setTimeout(() => end('end'), ms + 8000);
+      // a long line is said a sentence at a time: some browsers stop a long one half-way without saying so, and Nyra
+      // would seem to be talking while the microphone waited
+      const parts = String(text).match(/[^.!?]+[.!?]*\s*/g) || [text], pv = voicePick(), us = [];
+      let left = parts.length;
+      parts.forEach(p => { const u = new SpeechSynthesisUtterance(p.trim()); if (pv) u.voice = pv; u.lang = pv ? pv.lang : 'en-IN'; u.rate = o.rate || 1.03; u.onend = () => { if (--left <= 0) setTimeout(() => end('end'), 120); }; u.onerror = () => { if (--left <= 0) setTimeout(() => end('end'), 120); }; us.push(u); });
+      T.us = us; us.forEach(u => speechSynthesis.speak(u));
+      // if the browser goes quiet without saying it has finished, that's the end too
+      let seen = false, quiet = 0; const t0 = Date.now();
+      const iv = setInterval(() => { if (over) { clearInterval(iv); return; } const on = speechSynthesis.speaking || speechSynthesis.pending; if (on) { seen = true; quiet = 0; } else if (seen || Date.now() - t0 > 2500) { if (++quiet >= 3) { clearInterval(iv); end('end'); } } }, 250);
+      setTimeout(() => end('end'), ms + 8000);
     } catch (e) { setTimeout(() => end('end'), ms); }
   } else setTimeout(() => end('end'), ms);
   return { done, cut: T.cut };
@@ -13927,6 +14222,8 @@ function vmScript(s) {
   Q.push({ id: 'meds', say: `Which medicines ${many ? 'does anyone on the policy' : 'do you'} take regularly? Tell me the names and doses, or that there aren't any.`, open: true });
   Q.push({ id: 'fam', say: 'Have your parents, brothers or sisters had heart disease, diabetes or cancer before the age of 60?', chips: [['no', 'No'], ['yes', 'Yes'], ['ns', 'Not sure']] });
   if (active(H).some(m => (m.need || []).some(x => REQ[x].kind === 'record'))) Q.push({ id: 'reports', kind: 'reports' });
+  // the face scan: when the journey had no video, or its reading needs a closer look
+  if (typeof scanVmNeed === 'function' && scanVmNeed(s)) Q.push({ id: 'scan', kind: 'scan' });
   Q.push({ id: 'photo', kind: 'photo', say: `Thank you, ${nm}. Now one full-length photo, so you don't need to upload one. Please stand up and step back about two metres, so I can see you from head to toe. Tell me when you're ready.` });
   Q.push({ id: 'tests', kind: 'tests' });
   Q.push({ id: 'out', kind: 'auto', say: () => vmOutcome(s) });
@@ -13951,10 +14248,10 @@ function vmOutcome(s) {
 }
 
 /* ---------- watching the picture: in the frame, the light, and who else is there ---------- */
+// the faces in a grey picture: the main one is found leniently, anyone else only when the detector is sure
 function vmFaceDets(g, w, h) {
-  if (!faceInit()) return [[h / 2, w / 2, w * 0.3, 50]];
-  let d = pico.run_cascade({ pixels: g, nrows: h, ncols: w, ldim: w }, FACE.cascade, { shiftfactor: 0.1, minsize: Math.round(w * 0.045), maxsize: w, scalefactor: 1.1 });
-  return pico.cluster_detections(d, 0.2).filter(x => x[3] > 18).sort((a, b) => b[2] - a[2]);
+  if (!faceInit()) return [[h / 2, w / 2, Math.min(w, h) * 0.4, 50]];
+  return faceDets(g, w, h, 10).filter((x, i) => i === 0 || x[3] > 18);
 }
 const vmFaces = (g, w, h) => vmFaceDets(g, w, h).length;
 // When hosted, CFG.faceMatchEndpoint compares a frame with the KYC photo. Without it the demo treats it as a match.
@@ -13981,7 +14278,7 @@ function vmCall(s, o = {}) {
             <div class="vm-sens" role="radiogroup" aria-label="Microphone sensitivity">${Object.entries(VOICE_SENS).map(([k, x]) => `<label><input type="radio" name="vmsens" value="${k}" ${VOICE.sens === k ? 'checked' : ''}><span>${esc(x.label)}</span></label>`).join('')}</div>
             <div class="vm-lvl" aria-hidden="true"><i data-x="lvl"></i><b data-x="thr"></b></div><small class="vm-lvl-t">The bar moves when you speak. Speech needs to go past the line.</small></div></span><button type="button" class="vm-ib on" data-vm="voice" aria-pressed="true" aria-label="Nyra's voice" title="Nyra's voice">${VM_ICO.voice}</button><button type="button" class="vm-end" data-vm="end">${VM_ICO.end}<span>End call</span></button></div>
       <div class="vm-scroll"><div class="vm-grid">
-        <aside class="vm-side vm-l" data-x="left" aria-label="Covers Nyra suggests" hidden><span class="vm-sh">Covers made for you</span><div data-x="xs"></div></aside>
+        <aside class="vm-side vm-l" data-x="left" aria-label="Your face scan, and covers Nyra suggests" hidden><div class="vm-sw" data-x="scanw" hidden><span class="vm-sh">Your face scan</span><div data-x="scanrep"></div></div><div class="vm-sw" data-x="xsw" hidden><span class="vm-sh">Covers made for you</span><div data-x="xs"></div></div></aside>
         <div class="vm-stage" data-x="stage">
           <div class="vm-ai"><span class="vm-orb" data-x="orb"><i></i><i></i><b>N</b></span><span class="vm-name">Nyra<small>AI medical examiner · ${esc(CFG.brand)}</small></span></div>
           <div class="vm-me"><video muted playsinline autoplay></video>${typeof photoGuide === 'function' ? photoGuide() : ''}<span class="vm-you">${esc(nm)}</span><span class="vm-listen" title="Nyra is listening"><i></i><i></i><i></i><i></i><span data-x="lst">Listening</span></span><span class="vm-count" data-x="count" hidden></span></div>
@@ -14018,9 +14315,9 @@ function vmCall(s, o = {}) {
       const i = line('ai', text, { shown: '' }), words = text.split(' '), ms = REDUCED ? 60 : Math.min(9000, 700 + words.length * 290);
       const orb = $v('orb'); orb.classList.add('talk'); $v('cap').textContent = ''; micPaint();
       let n = 0; const step = Math.max(16, ms / Math.max(1, words.length));
-      const typer = setInterval(() => { n++; const part = words.slice(0, n).join(' '); V.tx[i].shown = part; $v('cap').textContent = part; const p = txl.querySelector(`[data-i="${i}"] p`); if (p) p.textContent = part; if (n >= words.length) clearInterval(typer); }, step);
+      const typer = setInterval(() => { if (ended || !V.tx[i]) { clearInterval(typer); return; } n++; const part = words.slice(0, n).join(' '); V.tx[i].shown = part; $v('cap').textContent = part; const p = txl.querySelector(`[data-i="${i}"] p`); if (p) p.textContent = part; if (n >= words.length) clearInterval(typer); }, step);
       const sp = voiceSpeak(text, { audio: voice, ms: ms + 120 });
-      sp.done.then(how => { clearInterval(typer); delete V.tx[i].shown; if (how === 'cut') V.tx[i].cut = true; paintLine(i); $v('cap').textContent = text; orb.classList.remove('talk'); micPaint(); res(); });
+      sp.done.then(how => { clearInterval(typer); if (ended || !V.tx[i]) { res(); return; } delete V.tx[i].shown; if (how === 'cut') V.tx[i].cut = true; paintLine(i); $v('cap').textContent = text; orb.classList.remove('talk'); micPaint(); res(); });
     }));
     const ban = (t, ic) => { const b = $v('ban'); b.hidden = !t; b.innerHTML = t ? `${ic || ''}<span>${esc(t)}</span>` : ''; };
 
@@ -14067,7 +14364,7 @@ function vmCall(s, o = {}) {
       }
     };
     const answer = q => new Promise(res => {
-      const top = { q, res, ask: lastAsk, miss: 0 }; stack.push(top); reply.classList.remove('hold'); renderAns();
+      const top = { q, res, ask: lastAsk, miss: 0, busy }; stack.push(top); reply.classList.remove('hold'); renderAns();
       if (q.open || q.input) clipStart();
       // said while Nyra was still asking: that's the answer
       if (pend && pend.n === sayN && Date.now() - pend.at < 9000) { const t = pend.t; pend = null; setTimeout(() => hear(t), 30); } else pend = null;
@@ -14082,7 +14379,7 @@ function vmCall(s, o = {}) {
     function hear(t) {
       if (ended || !t) return;
       const top = stack[stack.length - 1];
-      if (!top || reply.classList.contains('hold') || busy) { pend = { t, at: Date.now(), n: sayN }; return; }
+      if (!top || reply.classList.contains('hold') || (busy && !top.busy)) { pend = { t, at: Date.now(), n: sayN }; return; }
       heard(t);
       const q = top.q;
       if (vAgain(t)) { aside(top.ask ? `Of course. ${top.ask}` : 'Of course.'); return; }
@@ -14107,10 +14404,13 @@ function vmCall(s, o = {}) {
       interim: t => { if (!ended && stack.length && !reply.classList.contains('hold')) heard(t, true); },
       utter: t => { noiseN = 0; hear(t); },
       // said quietly, or not clearly: taken only when it plainly matches one of the choices on screen
-      weak: t => { if (ended || busy || reply.classList.contains('hold')) return false; const top = stack[stack.length - 1]; if (!top || !(top.q.chips && top.q.chips.length)) return false; if (!vMatch(top.q.chips.filter(c => c[0] !== 'upload'), t)) return false; noiseN = 0; hear(t); return true; },
+      // an answer in their own words is taken even when the recogniser wasn't sure of it: it's shown, and can be corrected
+      weak: (t, why) => { if (ended || reply.classList.contains('hold')) return false; const top = stack[stack.length - 1]; if (!top || (busy && !top.busy)) return false; const q = top.q; if ((q.open || q.input) && why === 'unclear' && vWords(t).length >= 2 && !(q.chips && q.chips.length && !vMatch(q.chips.filter(c => c[0] !== 'upload'), t) && vWords(t).length < 3)) { noiseN = 0; hear(t); return true; } if (!(q.chips && q.chips.length)) return false; if (!vMatch(q.chips.filter(c => c[0] !== 'upload'), t)) return false; noiseN = 0; hear(t); return true; },
       // sounds the recogniser turned into words: not taken as an answer. If it keeps happening, the mic listens for a clearer voice
       noise: (t, why) => {
         if (ended) return; heard('');
+        // only a voice too quiet to be theirs makes the microphone stricter: unclear words from the customer never do
+        if (why !== 'quiet') return;
         noiseN = performance.now() - noiseAt < 30000 ? noiseN + 1 : 1; noiseAt = performance.now();
         if (noiseN >= 3 && VOICE.sens !== 'noisy') { voiceSens(VOICE.sens === 'quiet' ? 'normal' : 'noisy', false); const r0 = $v('micpop').querySelector(`[value=${VOICE.sens}]`); if (r0) r0.checked = true; noiseN = 0; aaMark('Video exam: background noise, microphone made less sensitive'); ban(`There's noise around you, so I'm listening for a clearer voice. Microphone: ${VOICE_SENS[VOICE.sens].label}`, VM_ICO.mic); setTimeout(() => { if (!W.gate) ban(''); }, 5000); }
       },
@@ -14123,41 +14423,45 @@ function vmCall(s, o = {}) {
     /* the picture, checked every second: who's in the frame, the light, whether it's a live person, and where they look */
     const W = { faces: 1, mean: 120, noFace: 0, hits: 0, dark: 0, many: 0, manyAt: 0, gate: null, during: false };
     const T = { pos: [], prev: null, diff: 9, still: 0, stillAt: -1e9, base: null, baseAcc: [], awayEv: [], lastAway: 0, missRun: 0, gazeAt: -1e9, voiceMs: 0, voiceAt: -1e9, x: null };
-    const cv = document.createElement('canvas'); cv.width = 320; cv.height = 240; const cx = cv.getContext('2d', { willReadFrequently: true });
+    const cv = document.createElement('canvas'); cv.width = 320; cv.height = 240;
     const sd = a => { const m = a.reduce((x, y) => x + y, 0) / a.length; return Math.sqrt(a.reduce((x, y) => x + (y - m) * (y - m), 0) / a.length); };
     const watch = setInterval(() => {
       if (ended || !video.videoWidth) return;
+      // d0 is the main face, as [row, column, size], each a share of the picture
       let faces, mean, d0 = null;
       const sim = window.__vmWatch, now = performance.now();
-      if (sim && typeof sim === 'object') { faces = sim.faces ?? 1; mean = sim.mean ?? 120; if (faces) d0 = [120, 160, 90, 50]; }
+      if (sim && typeof sim === 'object') { faces = sim.faces ?? 1; mean = sim.mean ?? 120; if (faces) d0 = [0.5, 0.5, 0.375]; }
       else {
-        cx.drawImage(video, 0, 0, 320, 240); const g = faceGray(cx, 320, 240); mean = g.mean;
-        const dets = mean < 14 ? [] : vmFaceDets(g.g, 320, 240); faces = dets.length; d0 = dets[0] || null;
+        // the picture keeps its own shape: squeezed, a face can't be found
+        const L = faceLook(video, cv, W.noFace >= 1 || W.gate === 'frame'); mean = L.mean;
+        const dets = mean < 14 ? [] : L.d && L.tilt ? [L.d] : vmFaceDets(L.g, L.w, L.h);
+        faces = dets.length; d0 = dets[0] ? [dets[0][0] / L.h, dets[0][1] / L.w, dets[0][2] / Math.min(L.w, L.h)] : null;
+        if (window.__faceSeen === true && !faces) { faces = 1; d0 = [0.5, 0.5, 0.375]; }
         // how much the picture changes from one second to the next: a live camera always moves a little
-        if (T.prev) { let sum = 0, n = 0; for (let i = 0; i < g.g.length; i += 23) { sum += Math.abs(g.g[i] - T.prev[i]); n++; } T.diff = sum / n; }
-        T.prev = g.g;
+        if (T.prev && T.prev.length === L.g.length) { let sum = 0, n = 0; for (let i = 0; i < L.g.length; i += 23) { sum += Math.abs(L.g[i] - T.prev[i]); n++; } T.diff = sum / n; }
+        T.prev = L.g;
       }
       W.faces = faces; W.mean = mean;
       if (faces === 0) { W.noFace++; W.hits = 0; } else { W.noFace = 0; W.hits++; }
       W.dark = mean < 45 ? W.dark + 1 : 0;
       if (faces > 1) { W.many++; if (stack.length) W.during = true; } else W.many = 0;
-      if (W.gate === 'frame' && W.hits >= 2) gateOff();
+      if (W.gate === 'frame' && W.hits >= 1) gateOff();
       if (W.gate === 'dark' && W.dark === 0 && W.hits >= 1) gateOff();
       // a still photo held up, or a picture fed to the camera: the face doesn't move at all for several seconds
-      if (d0) { T.x = d0[1] / 320; T.pos.push([d0[1] / 320, d0[0] / 240, d0[2] / 320]); if (T.pos.length > 12) T.pos.shift(); } else T.pos = [];
+      if (d0) { T.x = d0[1]; T.pos.push([d0[1], d0[0], d0[2]]); if (T.pos.length > 12) T.pos.shift(); } else T.pos = [];
       const frozen = T.pos.length >= 12 && sd(T.pos.map(p => p[0])) < 0.003 && sd(T.pos.map(p => p[1])) < 0.003 && sd(T.pos.map(p => p[2])) < 0.004;
       T.still = (sim && sim.still) || frozen || (faces && T.diff < 0.3) ? T.still + 1 : 0;
       // looking away to read or listen: the face swings well off where it usually is, or drops out for a moment, while a question waits
-      if (d0 && T.base == null) { T.baseAcc.push(d0[1] / 320); if (T.baseAcc.length >= 6) T.base = T.baseAcc.slice().sort((a, b) => a - b)[3]; }
-      else if (d0 && Math.abs(d0[1] / 320 - T.base) < 0.16) T.base = T.base * 0.95 + (d0[1] / 320) * 0.05;
+      if (d0 && T.base == null) { T.baseAcc.push(d0[1]); if (T.baseAcc.length >= 6) T.base = T.baseAcc.slice().sort((a, b) => a - b)[3]; }
+      else if (d0 && Math.abs(d0[1] - T.base) < 0.16) T.base = T.base * 0.95 + d0[1] * 0.05;
       if (stack.length && !W.gate && T.base != null) {
-        const off = d0 ? Math.abs(d0[1] / 320 - T.base) > 0.16 : false, blip = d0 && T.missRun >= 1 && T.missRun <= 2;
+        const off = d0 ? Math.abs(d0[1] - T.base) > 0.16 : false, blip = d0 && T.missRun >= 1 && T.missRun <= 2;
         if ((off || blip || (sim && sim.gaze)) && now - T.lastAway > 1800) { T.lastAway = now; T.awayEv.push(now); }
       }
       T.missRun = d0 ? 0 : T.missRun + 1;
       T.awayEv = T.awayEv.filter(t => now - t < 40000);
-      if (!W.gate && !busy && !$v('stage').classList.contains('big')) {
-        if (W.noFace >= 3) raise('frame');
+      if (!W.gate && !busy && !W.scanning && !$v('stage').classList.contains('big')) {
+        if (W.noFace >= 4 && !W.relax) raise('frame');
         else if (W.dark >= 3 && V.light !== 'low') raise('dark');
         else if (W.many >= 2 && !W.ignoreMany && W.faces - 1 > (V.others || []).length && now - W.manyAt > 45000) raise('many');
         else if (T.still >= 2 && now - T.stillAt > 90000 && (V.stillN || 0) < 2) { T.stillAt = now; V.stillN = (V.stillN || 0) + 1; raise('still'); }
@@ -14180,6 +14484,20 @@ function vmCall(s, o = {}) {
     // the camera's stream carries the microphone: the voice engine listens to it, so nothing is asked for again
     const audioWait = () => new Promise(r => { const t0 = performance.now(), iv = setInterval(() => { const st = video.srcObject; if (st || ended || performance.now() - t0 > 6000) { clearInterval(iv); if (!ended) voiceOn(st || null); micPaint(); r(); } }, 300); });
     audioWait();
+    // when the sound level shows someone speaking but no words come through, the recogniser is started afresh, and
+    // the customer is told plainly that they can tap or type
+    let deafQ = null, deafMs = 0, deafAt = 0;
+    const deaf = setInterval(() => {
+      if (ended || !vOn || window.__vmWatch) return;
+      const top = stack[stack.length - 1], waiting = top && !reply.classList.contains('hold') && !$v('orb').classList.contains('talk');
+      if (!waiting) { deafMs = 0; return; }
+      if (deafQ !== top) { deafQ = top; deafMs = 0; deafAt = Date.now(); return; }
+      if (VOICE.talk) deafMs += 1000;
+      const words = VOICE.resAt > deafAt || VOICE.heard || VOICE.interim;
+      if (words) { deafMs = 0; return; }
+      if (deafMs === 3000) voiceKick();
+      if (deafMs >= 6000 && !top.deaf) { top.deaf = true; err(VOICE.SR ? 'I can hear sound, but I can\'t make out the words. Please try again a little closer, or tap or type your answer.' : 'Please tap or type your answer.'); aaMark('Video exam: speech heard but not understood, offered tap or type'); const f = reply.querySelector('[data-x=form] input'); if (f && matchMedia('(pointer:fine)').matches) f.focus(); }
+    }, 1000);
     // waits for the head to turn: the face moves well across, or drops out for a moment
     const turned = ms => new Promise(r => { const x0 = T.x, t0 = performance.now(), iv = setInterval(() => { const sim = window.__vmWatch; if (sim && typeof sim === 'object' && 'turn' in sim) { if (performance.now() - t0 > 1500) { clearInterval(iv); r(!!sim.turn); } return; } const moved = T.x != null && x0 != null && Math.abs(T.x - x0) > 0.06; if (moved || T.missRun >= 1 || ended) { clearInterval(iv); r(true); } else if (performance.now() - t0 > ms) { clearInterval(iv); r(false); } }, 250); });
     let busy = false, gateRes = null;
@@ -14198,8 +14516,16 @@ function vmCall(s, o = {}) {
         if (ev === 'frame') {
           W.gate = 'frame'; ban('Come back into the frame to carry on', VM_ICO.person); aaMark('Video exam: customer out of the frame');
           await say(`${nm}, I can't see you. Please come back in front of the camera, so we can carry on.`);
-          if (W.gate) await new Promise(r => { gateRes = r; });
-          await say('Thank you, I can see you again.');
+          // the check can miss a face that's there: after a few seconds the customer can say so, and the call carries on
+          const back = W.gate ? new Promise(r => { gateRes = () => r('seen'); }) : Promise.resolve('seen');
+          let how = await Promise.race([back, sleep(REDUCED ? 60 : window.__faceLate != null ? window.__faceLate : 7000).then(() => 'late')]);
+          if (how === 'late' && W.gate && !ended) {
+            const q = { chips: [['here', 'I\'m in front of the camera']] };
+            reply.classList.remove('hold');
+            const a = await Promise.race([back.then(() => ({ v: 'seen' })), answer(q)]); drop(q); reply.classList.add('hold');
+            if (a.v === 'here') { line('me', a.text); how = 'here'; W.relax = true; if (!V.flags.includes('face-unseen')) V.flags.push('face-unseen'); V.review = true; gateOff(); line('note', 'The camera check couldn\'t find a face, and the customer said they were in front of the camera. Our team checks the recording.', { fixed: true }); aaMark('Video exam: face check overridden by the customer'); }
+          }
+          await say(how === 'here' ? 'Thank you. I\'ll note it, and we\'ll carry on.' : 'Thank you, I can see you again.');
         } else if (ev === 'dark') {
           W.gate = 'dark'; ban('Waiting for better light', VM_ICO.sun); aaMark('Video exam: low light');
           await say('It\'s a little dark where you are. Could you turn on a light, or face a window, so I can see you clearly?');
@@ -14408,7 +14734,7 @@ function vmCall(s, o = {}) {
     }
     /* covers made for them, shown on the left as Nyra mentions them, and a motor quote kept ready from a vehicle number */
     const xsCard = (o, st) => `<div class="vm-xs ${st}" data-k="${o.k}"><span class="vm-xs-ic">${typeof ndIco === 'function' ? ndIco(o.ic || 'shield') : ''}</span><b>${esc(o.name)}</b><small>${esc(o.cover || '')}</small><span class="vm-xs-p">${o.total ? `${inr(o.total)} <small>a year${o.health ? '' : ', with GST'}</small>` : 'Price in a moment'}</span>${st === 'on' ? `<span class="vm-xs-st">${ICO.check}Added</span>` : st === 'off' ? '<span class="vm-xs-st off">Not now</span>' : ''}</div>`;
-    const xsShow = (o, st) => { $v('left').hidden = false; const box = $v('xs'), was = box.querySelector(`[data-k="${o.k}"]`); const n = el(xsCard(o, st)); if (was) was.replaceWith(n); else box.appendChild(n); };
+    const xsShow = (o, st) => { $v('left').hidden = false; $v('xsw').hidden = false; const box = $v('xs'), was = box.querySelector(`[data-k="${o.k}"]`); const n = el(xsCard(o, st)); if (was) was.replaceWith(n); else box.appendChild(n); };
     async function crossSell() {
       ndPrep(s);
       const N = s.needs, offs = needOffers(s).filter(o => o.pre === 'yes' && !o.main && !['motor', 'health'].includes(o.k) && !N.picked.has(o.k)).slice(0, 2);
@@ -14426,21 +14752,84 @@ function vmCall(s, o = {}) {
       const a = await answer(q); line('me', a.text, a.audio ? { audio: a.audio } : {});
       if (a.v === 'text') { const r = parseReg(a.text), v = vahan(r, { cls: 'car' }); N.car = { reg: r, v, expiry: iso(addDays(TODAY, 20)), from: 'vmer' }; aaMark(`Motor quote kept ready for ${r.display}`); const o = needOffers(s).find(x => x.k === 'motor'); if (o) xsShow(o, 'ask'); await say(`Got it: a ${vName(v)}, ${r.display}. Its quote is on the left, and it'll be ready on the cover screen, with your no-claim bonus.`); }
     }
+    /* the face health scan on the call: Nyra asks first, reads for 30 seconds, then shows the report and says it */
+    let scanCtl = null;
+    async function scanCall() {
+      const J = H.scan && !H.scan.skip && H.scan.ack && H.scan.src !== 'vmer' ? H.scan : null;
+      await say(J ? `One more thing, ${nm}. The face scan earlier ${J.risk === 'high' ? 'showed a reading worth a second look' : 'couldn\'t get a clear reading'}, so let's take it again now. It takes 30 seconds: your camera reads your pulse and breathing from tiny changes in your skin colour. Is that all right?` : 'Next, a 30-second face scan. Your camera reads your pulse and breathing from tiny changes in your skin colour. It\'s an indication, not a medical test, and the report goes into your policy kit. Is that all right?');
+      const a = await answer({ chips: [['yes', 'Yes, go ahead'], ['no', 'I\'d rather not']] }); line('me', a.text);
+      const mark = () => { if (H.scan) H.scan.vmChecked = true; else H.scan = { src: 'vmer', skip: true, vmChecked: true, at: new Date() }; syncReqs(H); };
+      if (a.v === 'no') { mark(); aaMark('Video exam: face scan declined'); await say('That\'s fine. We\'ll carry on.'); return; }
+      if (!video.videoWidth) { mark(); await say('I can\'t see the camera right now, so I\'ll skip the scan.'); return; }
+      const consentAt = new Date(); aaMark('Video exam: consent to the face scan, given on the call');
+      await say('Please sit still, face the light, and look at the camera. Try not to talk. Starting now.');
+      if (ended) return;
+      const stage = $v('stage'), me = ov.querySelector('.vm-me'), secs = window.__scanSecs || CFG.scan.secs;
+      const hud = el(`<div class="vm-scan"><span class="vm-scan-p" aria-hidden="true"><i></i></span><span class="vm-scan-t" role="timer"><b>${secs}</b><small>Hold still</small></span><span class="vm-scan-o" aria-hidden="true"></span><svg class="fs-wave" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30H300"/></svg></div>`);
+      me.appendChild(hud); stage.classList.add('scan'); W.scanning = true; reply.classList.add('hold');
+      scanCtl = scanRun(video, { onTick: x => {
+        const b = hud.querySelector('b'), sm = hud.querySelector('small'), bar = hud.querySelector('.vm-scan-p i'), wv = hud.querySelector('.fs-wave path');
+        b.textContent = Math.max(0, Math.ceil(x.secs - x.el)); bar.style.width = `${Math.min(100, (x.el / x.secs) * 100).toFixed(1)}%`;
+        sm.textContent = x.face ? (x.el < x.secs - 6 ? 'Hold still' : 'Almost done') : 'Look at the camera';
+        hud.classList.toggle('lost', !x.face); ban(x.face ? '' : 'Look at the camera, so I can read your pulse', VM_ICO.person);
+        if (x.wave.length > 4) { const w = x.wave, mx = Math.max(0.0005, ...w.map(Math.abs)); wv.setAttribute('d', w.map((y, i) => `${i ? 'L' : 'M'}${(i / (w.length - 1) * 300).toFixed(1)} ${(30 - (y / mx) * 24).toFixed(1)}`).join('')); }
+      } });
+      const R = await scanCtl.done; scanCtl = null; W.scanning = false;
+      hud.remove(); stage.classList.remove('scan'); ban(''); reply.classList.remove('hold');
+      if (ended) return;
+      Object.assign(R, { src: 'vmer', consentAt, ack: false });
+      if (J) { J.vm = R; J.vmChecked = true; } else H.scan = Object.assign(R, { vmChecked: true });
+      aaMark(R.risk === 'unclear' ? `Video exam: face scan ${R.cut ? 'cut short' : 'without a clear reading'}` : `Video exam: face scan, pulse ${R.hr}${R.br ? `, breathing ${R.br}` : ''}, quality ${R.qLabel.toLowerCase()}`);
+      // the report, on screen while Nyra says it
+      $v('left').hidden = false; const sw = $v('scanw'); sw.hidden = false;
+      const note = 'An indication from the camera, not a medical diagnosis. This report goes into your policy kit, with the transcript of this call.';
+      $v('scanrep').innerHTML = scanRepHtml(R, { dark: true, side: true, note });
+      // on a wide screen it opens in the middle of the call while Nyra goes through it, then moves to the side
+      const big = el(`<div class="vm-repov">${scanRepHtml(R, { dark: true, tiles: true, note })}</div>`); stage.appendChild(big); ov.classList.add('rep-on');
+      if (!matchMedia('(min-width:900px)').matches) { try { sw.scrollIntoView({ block: 'nearest', behavior: REDUCED ? 'auto' : 'smooth' }); } catch (e) { /* stays where it is */ } }
+      line('note', `Face scan report shown on screen: ${R.risk === 'unclear' ? 'no clear reading' : `pulse ${R.hr} a minute${R.br ? `, breathing ${R.br} a minute` : ''}${R.rhythm ? `, rhythm ${R.rhythm}` : ''}`}, reading quality ${R.qLabel.toLowerCase()}.`, { fixed: true });
+      await say(`${scanSay(R)} The report is on your screen, and it will be part of your policy kit, as part of the transcript of this call.`);
+      await say('Can you confirm you\'ve seen your readings?');
+      const b = await answer({ chips: [['ok', 'Yes, I\'ve seen them'], ['q', 'I have a question']] }); line('me', b.text);
+      if (b.v === 'q') { await say('Of course. The readings are only one part of your assessment, and if anything needs a closer look, our doctor goes over it with you. Shall we carry on?'); const c2 = await answer({ chips: [['ok', 'Yes, carry on']] }); line('me', c2.text); }
+      R.ack = true; R.ackAt = new Date(); R.ackHow = 'said on the video exam, in the transcript';
+      $v('scanrep').insertAdjacentHTML('beforeend', `<p class="fs-acked">${ICO.check}<span>Seen and confirmed on the call, ${fdt(R.ackAt)}</span></p>`);
+      big.remove(); ov.classList.remove('rep-on');
+      aaMark('Video exam: customer confirmed they\'ve seen the face scan readings');
+      syncReqs(H); if (typeof jpSync === 'function') jpSync(s);
+      const f = scanFinal(H);
+      if (f && f.risk === 'high') await say('As the reading needs a closer look, I\'ll add a short check-up to your tests. It\'s routine, and it never declines cover on its own.');
+      else if (R.risk === 'normal') await say('Thank you. That\'s all in order.');
+      else await say('Thank you. That\'s fine. The rest of the exam covers it.');
+    }
     const finish = how => {
       if (ended) return; ended = true;
-      clearInterval(tick); clearInterval(watch); if (aud) clearInterval(aud.t); try { speechSynthesis.cancel(); } catch (e) { /* no speech */ }
-      clipStop(); vRel(); VOICE.ui.delete(micPaint); VOICE.lv.delete(lvlPaint); if (VOICE.tts) VOICE.tts.cut(); if (!vWas) voiceOff();
-      if (own && VOICE.meter && VOICE.meter.st === own) { voiceMeterStop(); if (typeof REC !== 'undefined' && REC.cur) voiceMeter(REC.cur.stream); }
-      if (own) own.getTracks().forEach(t => t.stop());
-      if (typeof faceHold === 'function') faceHold(false);
+      // each step on its own: if one fails, the call still closes
+      const safe = f => { try { f(); } catch (e) { /* carry on closing */ } };
+      safe(() => { clearInterval(tick); clearInterval(watch); if (aud) clearInterval(aud.t); clearInterval(deaf); });
+      safe(() => speechSynthesis.cancel());
+      safe(() => { clipStop(); }); safe(vRel); safe(() => { VOICE.ui.delete(micPaint); VOICE.lv.delete(lvlPaint); }); safe(() => { if (VOICE.tts) VOICE.tts.cut(); }); safe(() => { if (!vWas) voiceOff(); });
+      safe(() => { if (own && VOICE.meter && VOICE.meter.st === own) { voiceMeterStop(); if (typeof REC !== 'undefined' && REC.cur) voiceMeter(REC.cur.stream); } });
+      safe(() => { if (own) own.getTracks().forEach(t => t.stop()); video.srcObject = null; });
+      safe(() => { if (typeof faceHold === 'function') faceHold(false); });
       V.dur = Math.round((performance.now() - t0) / 1000);
       if (how === 'park') { V.saved = { at: new Date(), n: V.doneIds.length }; V.done = false; aaMark('Video medical exam paused: the customer will carry on later'); vmPark(s); }
       else if (how !== 'ok') { V.done = false; V.mode = null; V.tx = []; V.doneIds = []; if (s.photo && s.photo.by === 'vmer') s.photo = null; syncReqs(H); aaMark('Video medical exam ended early'); }
       else { aaMark('Video medical exam done, transcript confirmed'); vmUnpark(); }
+      safe(() => { if (scanCtl) scanCtl.stop(); });
       ov.remove(); document.body.classList.remove('vm-open');
       resolve(how === 'ok' ? true : how === 'park' ? 'park' : false);
     };
-    const confirmBox = (msg, a, b2, onA) => { reply.innerHTML = `<div class="vm-ask"><span>${esc(msg)}</span><div class="vm-chips"><button type="button" data-k="no">${esc(b2)}</button><button type="button" data-k="yes">${esc(a)}</button></div></div>`; reply.querySelector('[data-k=yes]').addEventListener('click', onA); reply.querySelector('[data-k=no]').addEventListener('click', () => renderAns()); };
+    // the question before leaving: a small dialog over the call, so it can always be reached, even while Nyra is speaking
+    const confirmBox = (msg, a, b2, onA, alt) => {
+      const was = ov.querySelector('.vm-modal'); if (was) was.remove();
+      const m = el(`<div class="vm-modal" role="alertdialog" aria-modal="true" aria-labelledby="vmMq"><div class="vm-modal-c"><p id="vmMq">${esc(msg)}</p><div class="vm-modal-b"><button type="button" data-k="yes" class="vm-danger">${esc(a)}</button>${alt ? `<button type="button" data-k="alt">${esc(alt[0])}</button>` : ''}<button type="button" data-k="no">${esc(b2)}</button></div></div></div>`);
+      ov.appendChild(m);
+      const shut = () => m.remove();
+      m.addEventListener('click', e => { const k = e.target.closest('[data-k]'); if (e.target === m) { shut(); return; } if (!k) return; shut(); if (k.dataset.k === 'yes') onA(); else if (k.dataset.k === 'alt') alt[1](); });
+      m.addEventListener('keydown', e => { if (e.key === 'Escape') shut(); });
+      setTimeout(() => { const b = m.querySelector('[data-k=no]'); if (b) b.focus(); }, 20);
+    };
     ov.addEventListener('click', e => {
       const b = e.target.closest('[data-vm]');
       if (b && b.dataset.vm === 'micset') { const p = $v('micpop'); p.hidden = !p.hidden; b.setAttribute('aria-expanded', String(!p.hidden)); return; }
@@ -14449,7 +14838,7 @@ function vmCall(s, o = {}) {
       if (b && b.dataset.vm === 'later') { confirmBox('Stop here and carry on later? Everything so far is saved, and you pick up from this point.', 'Save and leave', 'Keep going', () => finish('park')); return; }
       if (b && b.dataset.vm === 'end') {
         if (V.confirmed) { finish('ok'); return; }
-        confirmBox('End the exam? Your answers so far won\'t be kept. To keep them, choose Continue later instead.', 'End it', 'Keep going', () => finish('end'));
+        confirmBox('End the call now? To keep your answers and pick up from here later, choose Save and leave.', 'End the call', 'Keep going', () => finish('end'), V.tx.some(x => x.who === 'me') ? ['Save and leave', () => finish('park')] : null);
         return;
       }
       const pl = e.target.closest('[data-play]'); if (pl) { const L = V.tx[Number(pl.dataset.play)]; if (L && L.audio) new Audio(L.audio).play().catch(() => { /* blocked */ }); return; }
@@ -14477,6 +14866,7 @@ function vmCall(s, o = {}) {
         else if (q.kind === 'reports') await reports();
         else if (q.kind === 'tests') await tests();
         else if (q.kind === 'xsell') await crossSell();
+        else if (q.kind === 'scan') await scanCall();
         else {
           await say(typeof q.say === 'function' ? q.say() : q.say);
           if (ended) return;
@@ -14512,7 +14902,7 @@ function vmCall(s, o = {}) {
 function vmCardHtml(s, o = {}) {
   const H = s.health, V = vmOf(H), you = !o.agent, nm = esc(first(s.kyc.name));
   if (V.mode === 'now' && V.done) {
-    const said = V.tx.filter(x => x.who === 'me').length, checks = [V.faceOk ? 'face matched the KYC photo' : V.idFlag ? 'identity to be checked by our team' : null, s.photo && s.photo.by === 'vmer' ? 'full-length photo taken' : null, H.booking && !H.booking.later ? 'tests booked' : null].filter(Boolean);
+    const said = V.tx.filter(x => x.who === 'me').length, checks = [V.faceOk ? 'face matched the KYC photo' : V.idFlag ? 'identity to be checked by our team' : null, s.photo && s.photo.by === 'vmer' ? 'full-length photo taken' : null, H.scan && (H.scan.src === 'vmer' ? H.scan.ack : H.scan.vm && H.scan.vm.ack) ? 'face scan read' : null, H.booking && !H.booking.later ? 'tests booked' : null].filter(Boolean);
     return `<section class="vmc done"><div class="vmc-h"><span class="vmc-ic ok">${ICO.check}</span><div><b>Video medical exam done</b><small>${mmss(V.dur || 0)} with Nyra · ${said} answers · ${V.confirmed ? 'transcript checked' : 'transcript to check'}${checks.length ? ' · ' + checks.join(' · ') : ''}</small></div></div>
       <details class="vmc-tx"><summary>Read the transcript</summary><ol>${V.tx.map(x => `<li class="${x.who}"><b>${x.who === 'ai' ? 'Nyra' : x.who === 'note' ? 'Note' : nm}</b>${x.img ? `<span>${x.doc ? `${esc(x.text)}, shown to the camera` : 'Full-length photo taken'}</span>` : `<span>${x.said && !x.edited ? `“${esc(x.said)}” (${esc(x.text)})` : esc(x.text)}${x.edited ? ' <em>(corrected)</em>' : ''}</span>`}</li>`).join('')}</ol></details></section>`;
   }
@@ -14796,18 +15186,35 @@ function faceGray(ctx, w, h) {
   for (let i = 0, j = 0; i < px.length; i += 4, j++) { const y = (px[i] * 2 + px[i + 1] * 7 + px[i + 2]) / 10 | 0; g[j] = y; sum += y; }
   return { g, mean: sum / g.length };
 }
-function faceFind(g, w, h) {
-  let dets = pico.run_cascade({ pixels: g, nrows: h, ncols: w, ldim: w }, FACE.cascade, { shiftfactor: 0.1, minsize: Math.round(w * 0.055), maxsize: w, scalefactor: 1.1 });
-  dets = pico.cluster_detections(dets, 0.2);
-  return dets.some(d => d[3] > 18);
+// a small grey copy of a camera picture, keeping its shape. A picture squeezed into another shape squashes the
+// face, and the detector stops finding it: a phone held upright gives a tall picture, a laptop a wide one.
+// ang turns the picture a little first, for a head tilted to one side
+function faceSnap(v, c, max = 320, ang = 0) {
+  const vw = v.videoWidth || v.width || 640, vh = v.videoHeight || v.height || 480, k = max / Math.max(vw, vh);
+  const w = Math.max(16, Math.round(vw * k)), h = Math.max(16, Math.round(vh * k));
+  if (c.width !== w) c.width = w; if (c.height !== h) c.height = h;
+  const x = c.getContext('2d', { willReadFrequently: true });
+  if (ang) { x.save(); x.fillStyle = '#808080'; x.fillRect(0, 0, w, h); x.translate(w / 2, h / 2); x.rotate(ang); x.drawImage(v, -w / 2, -h / 2, w, h); x.restore(); }
+  else x.drawImage(v, 0, 0, w, h);
+  const r = faceGray(x, w, h); r.w = w; r.h = h; return r;
 }
+// the faces in a grey picture, biggest first, as [row, col, size, score]. q is how sure the detector has to be
+function faceDets(g, w, h, q = 10) {
+  if (!faceInit()) return [[h / 2, w / 2, Math.min(w, h) * 0.4, 50]];
+  const d = pico.run_cascade({ pixels: g, nrows: h, ncols: w, ldim: w }, FACE.cascade, { shiftfactor: 0.1, minsize: Math.max(12, Math.round(Math.min(w, h) * 0.08)), maxsize: Math.min(w, h), scalefactor: 1.1 });
+  return pico.cluster_detections(d, 0.2).filter(x => x[3] > q).sort((a, b) => b[2] - a[2]);
+}
+// a face in a video frame: straight first, then with the head tilted either way. Returns {d, g, w, h, mean}
+function faceLook(v, c, tilt = true) {
+  const r = faceSnap(v, c); r.d = null;
+  if (r.mean < 14) return r;
+  r.d = faceDets(r.g, r.w, r.h)[0] || null;
+  if (!r.d && tilt) for (const a of [0.3, -0.3]) { const t = faceSnap(v, c, 320, a), d = faceDets(t.g, t.w, t.h, 12)[0]; if (d) { r.d = d; r.tilt = a; break; } }
+  return r;
+}
+function faceFind(g, w, h) { return faceDets(g, w, h, 12).length > 0; }
 // the biggest face in a grey picture, as [row, col, size, score], or null
-function faceBest(g, w, h) {
-  if (!faceInit()) return null;
-  let dets = pico.run_cascade({ pixels: g, nrows: h, ncols: w, ldim: w }, FACE.cascade, { shiftfactor: 0.1, minsize: Math.round(w * 0.055), maxsize: w, scalefactor: 1.1 });
-  dets = pico.cluster_detections(dets, 0.2).filter(d => d[3] > 18).sort((a, b) => b[2] - a[2]);
-  return dets[0] || null;
-}
+function faceBest(g, w, h) { return faceInit() ? faceDets(g, w, h)[0] || null : null; }
 // a small signature of a face, to notice when someone else sits down in front of the camera
 function faceSig(g, w, h, d) {
   const n = 12, sz = d[2], r0 = d[0] - sz / 2, c0 = d[1] - sz / 2, out = new Float32Array(n * n);
@@ -14823,46 +15230,64 @@ const sigCorr = (a, b) => { let s = 0; for (let i = 0; i < a.length; i++) s += a
 // is there a face in this picture? (used for the agent's photo)
 function faceIn(canvas) {
   if (!faceInit()) return true;
-  const w = 320, h = Math.round(320 * canvas.height / canvas.width), c = document.createElement('canvas'); c.width = w; c.height = h;
-  const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(canvas, 0, 0, w, h);
-  return faceFind(faceGray(x, w, h).g, w, h);
+  const c = document.createElement('canvas');
+  for (const mx of [320, 480]) for (const a of [0, 0.3, -0.3]) { const t = faceSnap(canvas, c, mx, a); if (faceDets(t.g, t.w, t.h, 10).length) return true; }
+  return false;
 }
 function faceStart(r) {
   if (!faceInit() || FACE.on) return;
   const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.srcObject = r.stream; v.play().catch(() => { /* starts when allowed */ });
   const c = document.createElement('canvas'); c.width = 320; c.height = 240;
-  Object.assign(FACE, { on: true, v, ctx: c.getContext('2d', { willReadFrequently: true }), miss: 0, hit: 0, same: 0, sig: '', since: performance.now() });
+  Object.assign(FACE, { on: true, v, c, miss: 0, hit: 0, same: 0, sig: '', since: performance.now(), relax: 0, gateAt: 0 });
   FACE.timer = setInterval(faceTick, 500);
 }
-function faceStop() { clearInterval(FACE.timer); FACE.on = false; if (FACE.v) { FACE.v.srcObject = null; FACE.v = null; } faceGate(false); }
+// for the automated checks: what the face check sees right now
+window.__face = () => ({ on: FACE.on, gate: !!FACE.gate, why: FACE.why, miss: FACE.miss, hit: FACE.hit, same: FACE.same, relax: !!FACE.relax });
+function faceStop() { clearInterval(FACE.timer); FACE.on = false; if (FACE.v) { FACE.v.srcObject = null; FACE.v = null; } faceGate(false); faceHint(false); }
+// the picture is read from a video that's on screen when there is one: some phones don't update a video that isn't shown
+function faceSrc(r) {
+  const ok = v => v && v.readyState >= 2 && v.videoWidth > 0;
+  const gv = FACE.gate && FACE.gate.querySelector('video'), wv = r.win && !r.win.hidden && r.win.querySelector('video');
+  return [gv, wv, FACE.v].find(ok) || FACE.v;
+}
 function faceTick() {
   const r = REC.cur; if (!r || !FACE.on) return;
   if (FACE.hold) { FACE.miss = 0; FACE.hit = 0; return; }
-  const tr = r.stream.getVideoTracks()[0], v = FACE.v;
+  const tr = r.stream.getVideoTracks()[0], v = faceSrc(r);
   let seen = false, why = 'face';
   if (!tr || tr.readyState === 'ended') why = 'stopped';
-  else if (tr.muted || v.readyState < 2) why = performance.now() - FACE.since > 4000 ? 'frames' : 'wait';
+  else if (tr.muted || !v || v.readyState < 2) why = performance.now() - FACE.since > 4000 ? 'frames' : 'wait';
   else {
-    FACE.ctx.drawImage(v, 0, 0, 320, 240);
-    const { g, mean } = faceGray(FACE.ctx, 320, 240);
-    const sig = [g[9000], g[19200], g[30500], g[41000], g[52000], g[60500], g[70100]].join(',');
+    const L = faceLook(v, FACE.c, FACE.miss >= 1 || !!FACE.gate), g = L.g;
+    const sig = [0.1, 0.25, 0.4, 0.5, 0.6, 0.75, 0.9].map(f => g[Math.floor(g.length * f)]).join(',');
     FACE.same = sig === FACE.sig ? FACE.same + 1 : 0; FACE.sig = sig;
-    if (mean < 14) why = 'dark';
-    else if (FACE.same >= 8) why = 'frames';
-    else { const d = faceBest(g, 320, 240); seen = !!d; if (d) facePerson(g, d); }
+    if (L.mean < 14) why = 'dark';
+    else if (FACE.same >= 10) why = 'frames';
+    else { seen = !!L.d; if (L.d && !L.tilt) facePerson(g, L.d, L.w, L.h); }
   }
   if (why === 'wait') return;
-  if (seen) { FACE.miss = 0; FACE.hit += 1; if (FACE.gate && FACE.hit >= 2) { faceGate(false); FACE.check = 4; } return; }
+  if (window.__faceSeen === false && why === 'face') seen = false; else if (window.__faceSeen === true && why === 'face') seen = true;
+  // one sighting is enough to carry on; it takes three seconds without one to pause
+  if (seen) { FACE.miss = 0; FACE.hit += 1; faceHint(false); if (FACE.gate) { faceGate(false); FACE.check = 4; } return; }
   FACE.hit = 0; FACE.miss += 1; FACE.why = why;
-  if (!FACE.gate && FACE.miss >= 4) faceGate(true);
+  // once the customer has said they're in front of the camera, a face the check can't find doesn't stop them again
+  if (FACE.relax && why === 'face') { if (FACE.miss >= 6) faceHint(true); return; }
+  if (!FACE.gate && FACE.miss >= 6) faceGate(true);
   else if (FACE.gate) faceGatePaint();
+}
+// a quiet note on the camera window, for when the check can't find a face but the journey isn't paused
+function faceHint(on) {
+  const r = REC.cur, w = r && r.win; if (!w) return;
+  let h = w.querySelector('.rw-hint');
+  if (!on) { if (h) h.remove(); return; }
+  if (!h) { h = el('<span class="rw-hint">Keep your face in view</span>'); w.appendChild(h); }
 }
 /* ---------- someone else in front of the camera during the proposal ----------
    The face from the start of the recording is the proposer's. When a face comes back after the frame was empty, it's
    compared with that one; if it looks like someone else, they're asked who they are, and it's noted on the recording.
    On a hosted site, CFG.faceMatchEndpoint can make the comparison instead of this quick check. */
-function facePerson(g, d) {
-  const sig = faceSig(g, 320, 240, d), sim = window.__recPerson;
+function facePerson(g, d, w = 320, h = 240) {
+  const sig = faceSig(g, w, h, d), sim = window.__recPerson;
   if (!FACE.base) { FACE.acc = FACE.acc || []; FACE.acc.push(sig); if (FACE.acc.length >= 4) { const b = new Float32Array(sig.length); FACE.acc.forEach(x => x.forEach((v, i) => { b[i] += v / FACE.acc.length; })); FACE.base = b; FACE.acc = []; } return; }
   if (sim === 'other') { window.__recPerson = null; personAsk(); return; }
   if (!(FACE.check > 0)) return;
@@ -14914,7 +15339,7 @@ function faceGate(on) {
     <div class="fg-st"><span class="spin"></span><span>Looking for a face…</span></div><div class="fg-acts"></div>
   </div></div>`);
   document.body.appendChild(g); document.body.classList.add('face-paused');
-  FACE.gate = g;
+  FACE.gate = g; FACE.gateAt = performance.now();
   const v = g.querySelector('video'); v.srcObject = r.stream; v.play().catch(() => { /* needs a tap */ });
   if (r.win) r.win.hidden = true;
   r.marks.push({ t: Math.round((performance.now() - r.t0) / 100) / 10, label: 'No face in the frame: journey paused' });
@@ -14924,10 +15349,23 @@ function faceGatePaint() {
   const g = FACE.gate; if (!g) return;
   const [t, p] = (FACE_TXT[FACE.why] || FACE_TXT.face)();
   g.querySelector('#fgT').textContent = t; g.querySelector('#fgP').textContent = p;
-  const acts = g.querySelector('.fg-acts');
-  acts.innerHTML = FACE.why === 'stopped' ? '<button type="button" class="btn-next" data-a="cam" style="margin:0"><span>Turn the camera on</span></button>' : '';
+  const acts = g.querySelector('.fg-acts'), ag = CFG.channel === 'agent';
+  // the check can miss a face: a beard, glasses, a tilt or the light. After a few seconds the customer can carry on, and the recording is looked at
+  const late = FACE.why === 'face' && performance.now() - FACE.gateAt > (window.__faceLate != null ? window.__faceLate : 7000);
+  const want = FACE.why === 'stopped' ? 'cam' : late ? 'here' : '';
+  if (acts.dataset.k === want) return;
+  acts.dataset.k = want;
+  acts.innerHTML = want === 'cam' ? '<button type="button" class="btn-next" data-a="cam" style="margin:0"><span>Turn the camera on</span></button>'
+    : want === 'here' ? `<button type="button" class="btn-next" data-a="here" style="margin:0"><span>${ag ? 'The customer is in front of the camera' : 'I\'m in front of the camera'}</span>${ICO.right}</button><small class="fg-sm">${ag ? 'Carry on. The recording is checked by our team.' : 'Carry on. Our team checks the recording, so there\'s nothing else to do.'}</small>` : '';
   const b = acts.querySelector('[data-a=cam]');
   if (b) b.addEventListener('click', () => { const s = REC.cur && REC.cur.s; recStop('closed'); faceGate(false); if (s) { s.recAsked = true; recStart(); } });
+  const h = acts.querySelector('[data-a=here]');
+  if (h) h.addEventListener('click', () => {
+    const r = REC.cur; FACE.relax = performance.now(); FACE.miss = 0;
+    if (r) { r.marks.push({ t: Math.round((performance.now() - r.t0) / 100) / 10, label: 'Customer confirmed they\'re in front of the camera; the face check couldn\'t see them, so the recording is reviewed' }); if (r.s) r.s.recFaceReview = true; }
+    if (typeof aaMark === 'function') aaMark('Recording: face check overridden by the customer, recording to be reviewed');
+    faceGate(false);
+  });
 }
 
 /* ================= the customer's full-length photo =================
@@ -16281,6 +16719,487 @@ function fitQuickIssue(R, item, ti, o = {}) {
   fitSave(); return R.bought[item.k];
 }
 
+/* ================= face health scan: pulse and breathing, read from the camera =================
+   The camera that records the proposal can also read a few health signals from the face. Each heartbeat changes
+   the colour of the skin very slightly; over 30 seconds that change gives the pulse, and the slow rise and fall
+   of the face and the light gives the breathing. This is remote photoplethysmography (rPPG), the method vendors
+   such as Binah.ai build on. Here it runs on the device: the POS method (Wang et al., 2017) over the forehead and
+   cheeks, then the strongest rhythm in the heart-rate band. Only what's actually measured is shown, with how
+   clear the reading was. Blood pressure, oxygen level and stress need a vendor's trained model: when
+   CFG.scan.endpoint is set, the colour trace is sent there and its readings are shown alongside.
+   The readings are an indication, never a diagnosis. An unusual reading, or one that couldn't be taken,
+   means a short video exam with Nyra; never a decline on its own. */
+CFG.scan = Object.assign({ secs: 30, minSecs: 12, minQ: 0.42, hr: [50, 100], br: [8, 24], pts: 200, ptsOk: 100, endpoint: '' }, CFG.scan || {});
+
+const ICO_SCAN = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M7 12.5h2.2l1.4-3 2.2 6 1.5-3H17"/></svg>';
+const ICO_PULSE = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 6.6a5 5 0 0 0-7.1 0L12 7.9l-1.3-1.3a5 5 0 0 0-7.1 7.1L12 22l8.4-8.3a5 5 0 0 0 0-7.1z"/></svg>';
+const ICO_LUNG = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v7M12 11c-1 1.5-3 2-4 1.5M12 11c1 1.5 3 2 4 1.5"/><path d="M8 7c-2.5 0-4.5 4-4.5 8.5 0 2 1 3.5 3 3.5 2.5 0 2.5-2 2.5-4V8.5C9 7.6 8.6 7 8 7zM16 7c2.5 0 4.5 4 4.5 8.5 0 2-1 3.5-3 3.5-2.5 0-2.5-2-2.5-4V8.5c0-.9.4-1.5 1-1.5z"/></svg>';
+const ICO_WAVE = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-5 3 10 3-8 2 3h6"/></svg>';
+
+/* ---------- the measurement ---------- */
+// samples the skin colour about 30 times a second while a face is in view. o.onTick gets the progress; .done gives the result
+function scanRun(v, o = {}) {
+  const secs = window.__scanSecs || CFG.scan.secs, sim = window.__vitals && typeof window.__vitals === 'object' ? window.__vitals : null;
+  const c = document.createElement('canvas'), x = c.getContext('2d', { willReadFrequently: true }), fc = document.createElement('canvas');
+  const X = { t: [], r: [], g: [], b: [], ft: [], fy: [], box: null, faceAt: 0, seenAt: performance.now(), lostMs: 0, frames: 0 };
+  let stop = false, tm = 0, fin = null, last = performance.now();
+  const done = new Promise(r => { fin = r; });
+  const t0 = performance.now();
+  const end = how => {
+    if (stop) return; stop = true; clearTimeout(tm);
+    const el = (performance.now() - t0) / 1000;
+    let R;
+    if (sim) R = scanSimRes(sim, el);
+    else R = scanCalc(X, el);
+    if (how === 'cut' || (sim && sim.cut)) { R.cut = true; R.risk = 'unclear'; }
+    if (how === 'stop') { R.stopped = true; R.risk = 'unclear'; }
+    R.secs = Math.round(el); R.at = new Date(); R.ref = 'NX-FS-' + code(6);
+    scanJudge(R);
+    fin(R);
+  };
+  const frame = () => {
+    if (stop) return;
+    const now = performance.now(), el = (now - t0) / 1000, dt = now - last; last = now;
+    let face = false;
+    if (sim) { face = !sim.cut || el < secs * 0.4; if (face) X.seenAt = now; }
+    else if (v.videoWidth && v.readyState >= 2) {
+      // where the face is, a few times a second: the skin is read from the forehead and the cheeks
+      if (now - X.faceAt > 380) {
+        X.faceAt = now;
+        const L = faceLook(v, fc, true);
+        X.box = L.d && !L.tilt ? [L.d[0] / L.h, L.d[1] / L.w, L.d[2] / Math.min(L.w, L.h)] : null;
+        if (X.box) { X.ft.push(now); X.fy.push(X.box[0] + X.box[2] * 0.0); }
+      }
+      if (X.box) { face = scanSample(v, c, x, X, now); if (face) X.seenAt = now; }
+    }
+    if (!face) X.lostMs += dt;
+    // out of view for long, or the camera gone: the scan stops, and it counts as not taken
+    if (now - X.seenAt > 6000) { end('cut'); return; }
+    if (o.onTick) { try { o.onTick({ el, secs, face, wave: scanWave(X), n: X.t.length }); } catch (e) { /* the screen went away */ } }
+    if (el >= secs) { end('done'); return; }
+    tm = setTimeout(frame, 33);
+  };
+  tm = setTimeout(frame, 60);
+  return { done, stop: () => end('stop'), cut: () => end('cut') };
+}
+// the mean skin colour over three patches: the forehead and both cheeks
+function scanSample(v, c, x, X, now) {
+  const W = 160, H = Math.max(16, Math.round(160 * v.videoHeight / v.videoWidth));
+  if (c.width !== W) c.width = W; if (c.height !== H) c.height = H;
+  x.drawImage(v, 0, 0, W, H);
+  const [rn, cn, sn] = X.box, cy = rn * H, cx = cn * W, s = sn * Math.min(W, H);
+  const boxes = [[cx - 0.2 * s, cy - 0.38 * s, cx + 0.2 * s, cy - 0.2 * s], [cx - 0.32 * s, cy + 0.02 * s, cx - 0.1 * s, cy + 0.2 * s], [cx + 0.1 * s, cy + 0.02 * s, cx + 0.32 * s, cy + 0.2 * s]];
+  const x0 = Math.max(0, Math.floor(Math.min(...boxes.map(b => b[0])))), y0 = Math.max(0, Math.floor(Math.min(...boxes.map(b => b[1]))));
+  const x1 = Math.min(W, Math.ceil(Math.max(...boxes.map(b => b[2])))), y1 = Math.min(H, Math.ceil(Math.max(...boxes.map(b => b[3]))));
+  if (x1 - x0 < 3 || y1 - y0 < 3) return false;
+  const d = x.getImageData(x0, y0, x1 - x0, y1 - y0).data, w = x1 - x0;
+  let r = 0, g = 0, b = 0, n = 0;
+  for (const bx of boxes) {
+    for (let yy = Math.max(y0, Math.round(bx[1])); yy < Math.min(y1, Math.round(bx[3])); yy++) for (let xx = Math.max(x0, Math.round(bx[0])); xx < Math.min(x1, Math.round(bx[2])); xx++) {
+      const i = ((yy - y0) * w + (xx - x0)) * 4, R = d[i], G = d[i + 1], B = d[i + 2];
+      // skin only: not shadow, not glare, warmer than it is blue
+      if (R < 35 || R > 250 || G < 15 || R < B) continue;
+      r += R; g += G; b += B; n++;
+    }
+  }
+  if (n < 12) return false;
+  X.t.push(now); X.r.push(r / n); X.g.push(g / n); X.b.push(b / n); X.frames++;
+  return true;
+}
+// the last few seconds of the pulse signal, for the live wave on screen
+function scanWave(X) {
+  const n = X.g.length; if (n < 20) return [];
+  const k = Math.min(n, 150), g = X.g.slice(n - k), m = g.reduce((a, b) => a + b, 0) / k;
+  const sm = g.map((_, i) => { let s = 0, c = 0; for (let j = Math.max(0, i - 2); j <= Math.min(k - 1, i + 2); j++) { s += g[j]; c++; } return s / c; });
+  const base = sm.map((_, i) => { let s = 0, c = 0; for (let j = Math.max(0, i - 15); j <= Math.min(k - 1, i + 15); j++) { s += sm[j]; c++; } return s / c; });
+  return sm.map((y, i) => (y - base[i]) / (m || 1));
+}
+// samples at an even rate, so the rhythms can be measured
+function scanEven(t, y, fs) {
+  const out = [], a = t[0], b = t[t.length - 1], n = Math.floor((b - a) / 1000 * fs);
+  let j = 0;
+  for (let i = 0; i < n; i++) { const tt = a + i * 1000 / fs; while (j < t.length - 2 && t[j + 1] < tt) j++; const f = (tt - t[j]) / Math.max(1, t[j + 1] - t[j]); out.push(y[j] + (y[j + 1] - y[j]) * Math.max(0, Math.min(1, f))); }
+  return out;
+}
+const scanMean = a => a.reduce((x, y) => x + y, 0) / (a.length || 1);
+const scanSd = a => { const m = scanMean(a); return Math.sqrt(scanMean(a.map(v => (v - m) * (v - m)))); };
+// power at each frequency, on a fine grid, with a Hann window
+function scanSpec(y, fs, f0, f1, step) {
+  const n = y.length, m = scanMean(y), w = y.map((v, i) => (v - m) * (0.5 - 0.5 * Math.cos(2 * Math.PI * i / Math.max(1, n - 1))));
+  const out = [];
+  for (let f = f0; f <= f1 + 1e-9; f += step) { let re = 0, im = 0; const k = 2 * Math.PI * f / fs; for (let i = 0; i < n; i++) { re += w[i] * Math.cos(k * i); im -= w[i] * Math.sin(k * i); } out.push([f, re * re + im * im]); }
+  return out;
+}
+const scanPeak = (sp, lo, hi) => { let best = null; sp.forEach((p, i) => { if (p[0] >= lo && p[0] <= hi && (!best || p[1] > best[1])) best = [p[0], p[1], i]; }); if (!best) return null; const i = best[2], a = sp[i - 1], c = sp[i + 1]; if (a && c) { const d = (a[1] - c[1]) / (2 * (a[1] - 2 * best[1] + c[1]) || 1); if (Math.abs(d) < 1) best[0] += d * (sp[1][0] - sp[0][0]); } return best; };
+const scanBandP = (sp, lo, hi) => sp.reduce((s, p) => s + (p[0] >= lo && p[0] <= hi ? p[1] : 0), 0);
+// the pulse signal from the three colours: the POS projection, over windows of 1.6 seconds
+function scanPOS(R, G, B, fs) {
+  const n = G.length, l = Math.round(1.6 * fs), h = new Array(n).fill(0);
+  for (let s = 0; s + l <= n; s++) {
+    const mr = scanMean(R.slice(s, s + l)), mg = scanMean(G.slice(s, s + l)), mb = scanMean(B.slice(s, s + l));
+    const s1 = [], s2 = [];
+    for (let i = s; i < s + l; i++) { const r = R[i] / mr, g = G[i] / mg, b = B[i] / mb; s1.push(g - b); s2.push(g + b - 2 * r); }
+    const a = scanSd(s1) / (scanSd(s2) || 1), hh = s1.map((v, i) => v + a * s2[i]), m = scanMean(hh);
+    for (let i = 0; i < l; i++) h[s + i] += hh[i] - m;
+  }
+  return h;
+}
+function scanCalc(X, el) {
+  const fs = 30, R = { hr: null, br: null, rhythm: null, q: 0, n: X.t.length, faceShare: 0 };
+  const span = X.t.length > 1 ? (X.t[X.t.length - 1] - X.t[0]) / 1000 : 0;
+  R.faceShare = Math.min(1, X.frames / Math.max(1, el * 28));
+  if (span < CFG.scan.minSecs || X.t.length < fs * CFG.scan.minSecs * 0.6) return R;
+  const r = scanEven(X.t, X.r, fs), g = scanEven(X.t, X.g, fs), b = scanEven(X.t, X.b, fs), h = scanPOS(r, g, b, fs);
+  // the heart: the strongest rhythm between 45 and 180 beats a minute, and how much stronger it is than the rest
+  const sp = scanSpec(h, fs, 0.7, 4, 0.01), pk = scanPeak(sp, 0.75, 3);
+  if (!pk) return R;
+  const f = pk[0], tot = scanBandP(sp, 0.7, 4), sig = scanBandP(sp, f - 0.1, f + 0.1) + scanBandP(sp, 2 * f - 0.15, 2 * f + 0.15);
+  let q = Math.max(0, Math.min(1, (sig / (tot || 1) - 0.15) / 0.35));
+  // the same pulse in the first and second half, or it isn't trusted
+  const half = Math.floor(h.length / 2);
+  if (half > fs * 8) { const a1 = scanPeak(scanSpec(h.slice(0, half), fs, 0.7, 3.2, 0.02), 0.75, 3), a2 = scanPeak(scanSpec(h.slice(half), fs, 0.7, 3.2, 0.02), 0.75, 3); if (a1 && a2 && Math.abs(a1[0] - a2[0]) * 60 > 12) q *= 0.6; }
+  q *= 0.6 + 0.4 * R.faceShare;
+  R.hr = Math.round(f * 60); R.q = Math.round(q * 100) / 100;
+  // breathing: the slow rise and fall of the light on the face, and of the face itself
+  const lum = g.map((v, i) => (r[i] + v + b[i]) / 3);
+  const cands = [];
+  const s1 = scanSpec(lum, fs, 0.1, 0.6, 0.005), p1 = scanPeak(s1, 0.13, 0.55); if (p1) cands.push([p1[0], scanBandP(s1, p1[0] - 0.03, p1[0] + 0.03) / (scanBandP(s1, 0.1, 0.6) || 1)]);
+  if (X.ft.length > 20) { const fy = scanEven(X.ft, X.fy, 5), s2 = scanSpec(fy, 5, 0.1, 0.6, 0.005), p2 = scanPeak(s2, 0.13, 0.55); if (p2) cands.push([p2[0], scanBandP(s2, p2[0] - 0.03, p2[0] + 0.03) / (scanBandP(s2, 0.1, 0.6) || 1)]); }
+  const bb = cands.sort((a, c) => c[1] - a[1])[0];
+  if (bb && bb[1] > 0.28) R.br = Math.round(bb[0] * 60);
+  // the rhythm: the time between beats, only when the signal is clear
+  if (q >= 0.6) {
+    const per = fs / f, w1 = Math.max(1, Math.round(per * 0.12)), w2 = Math.round(per);
+    const sm = h.map((_, i) => scanMean(h.slice(Math.max(0, i - w1), i + w1 + 1))), bp = sm.map((v, i) => v - scanMean(sm.slice(Math.max(0, i - w2), i + w2 + 1)));
+    const pk2 = []; for (let i = 1; i < bp.length - 1; i++) if (bp[i] > bp[i - 1] && bp[i] >= bp[i + 1] && bp[i] > 0 && (!pk2.length || i - pk2[pk2.length - 1] > per * 0.6)) pk2.push(i);
+    const ibi = pk2.slice(1).map((p, i) => (p - pk2[i]) / fs), med = ibi.slice().sort((a, c) => a - c)[Math.floor(ibi.length / 2)] || 0;
+    const ok = ibi.filter(v => v > med * 0.6 && v < med * 1.5);
+    if (ok.length >= 10) { const cv = scanSd(ok) / (scanMean(ok) || 1); R.rhythm = cv > 0.16 ? 'varied' : 'steady'; R.cv = Math.round(cv * 100) / 100; }
+  }
+  return R;
+}
+// in automated checks there's no real face to read: window.__vitals stands in for the measurement
+function scanSimRes(sim, el) { return { hr: sim.hr ?? 72, br: sim.br ?? 15, rhythm: sim.rhythm ?? 'steady', q: sim.q ?? 0.86, n: Math.round(el * 30), faceShare: 1, sim: true }; }
+// what the readings mean: normal, worth a closer look, or not clear enough to say
+function scanJudge(R) {
+  const C = CFG.scan, why = [];
+  if (!R.cut && !R.stopped && R.hr != null && R.q >= C.minQ) {
+    if (R.hr > C.hr[1]) why.push('pulse higher than usual at rest'); else if (R.hr < C.hr[0]) why.push('pulse lower than usual at rest');
+    if (R.br != null && R.br > C.br[1]) why.push('breathing faster than usual at rest'); else if (R.br != null && R.br < C.br[0]) why.push('breathing slower than usual at rest');
+    if (R.rhythm === 'varied') why.push('the time between heartbeats varied');
+    R.risk = why.length ? 'high' : 'normal';
+  } else R.risk = 'unclear';
+  R.why = why;
+  R.qLabel = R.q >= 0.7 ? 'Good' : R.q >= C.minQ ? 'Fair' : 'Not clear';
+  return R;
+}
+
+/* ---------- the report ---------- */
+const scanRange = k => k === 'hr' ? `${CFG.scan.hr[0] + 10} to ${CFG.scan.hr[1]}` : `12 to 20`;
+function scanRows(R) {
+  const C = CFG.scan, out = [];
+  out.push({ k: 'hr', ic: ICO_PULSE, t: 'Pulse', v: R.hr != null && R.risk !== 'unclear' ? `${R.hr}` : '—', u: R.hr != null && R.risk !== 'unclear' ? 'beats a minute' : 'not clear', n: `Usual at rest: ${scanRange('hr')}`, st: R.risk === 'unclear' || R.hr == null ? 'na' : R.hr > C.hr[1] || R.hr < C.hr[0] ? 'watch' : 'ok' });
+  out.push({ k: 'br', ic: ICO_LUNG, t: 'Breathing', v: R.br != null && R.risk !== 'unclear' ? `${R.br}` : '—', u: R.br != null && R.risk !== 'unclear' ? 'breaths a minute' : 'not clear', n: `Usual at rest: ${scanRange('br')}`, st: R.br == null || R.risk === 'unclear' ? 'na' : R.br > C.br[1] || R.br < C.br[0] ? 'watch' : 'ok' });
+  out.push({ k: 'rh', ic: ICO_WAVE, t: 'Heart rhythm', v: R.rhythm === 'steady' ? 'Steady' : R.rhythm === 'varied' ? 'Varied' : '—', u: R.rhythm ? '' : 'needs a clearer signal', n: 'From the time between beats', st: R.rhythm === 'steady' ? 'ok' : R.rhythm === 'varied' ? 'watch' : 'na' });
+  if (R.vendor) Object.entries(R.vendor).forEach(([k, x]) => out.push({ k, ic: ICO_PULSE, t: x.t, v: x.v, u: x.u || '', n: x.n || 'From the partner\'s model', st: x.st || 'ok' }));
+  return out;
+}
+const scanSrc = R => R.src === 'vmer' ? 'On the video exam with Nyra' : R.src === 'agent' ? 'From the proposal video, with the agent' : 'From the video in your journey';
+function scanRepHtml(R, o = {}) {
+  const rows = scanRows(R), dark = !!o.dark;
+  const head = R.risk === 'normal' ? ['ok', 'All in the usual range'] : R.risk === 'high' ? ['watch', 'Worth a closer look'] : ['na', R.cut ? 'The scan was cut short' : 'Not clear enough to read'];
+  return `<div class="fs-rep ${dark ? 'dark' : ''} ${o.tiles ? 'fs-tl' : ''} ${o.side ? 'fs-sd' : ''}" data-risk="${R.risk}">
+    <div class="fs-rep-h"><span class="fs-rep-ic ${head[0]}">${ICO_SCAN}</span><div><b>Face health scan</b><small>${esc(scanSrc(R))} · ${fdt(R.at)} · ${R.secs || 0} seconds · ${esc(R.ref)}</small></div><span class="fs-st ${head[0]}">${esc(head[1])}</span></div>
+    <ul class="fs-rows">${rows.map(x => `<li class="${x.st}"><span class="fs-ri">${x.ic}</span><span class="fs-rt">${esc(x.t)}<small>${esc(x.n)}</small></span><span class="fs-rv"><b>${esc(x.v)}</b>${x.u ? `<small>${esc(x.u)}</small>` : ''}</span></li>`).join('')}</ul>
+    <div class="fs-q"><span>Reading quality</span><span class="fs-qb" aria-hidden="true"><i style="width:${Math.round(Math.max(0.04, R.q || 0) * 100)}%"></i></span><b>${esc(R.qLabel || 'Not clear')}</b></div>
+    ${R.risk === 'high' ? `<p class="fs-why">${esc(cap1(listText(R.why)))}. That can happen for many everyday reasons, like rushing, a coffee or nerves.</p>` : ''}
+    <p class="fs-note">${o.note || 'An indication from the camera, not a medical diagnosis. Blood pressure and oxygen level aren\'t read here.'}</p>
+  </div>`;
+}
+// what Nyra says about the readings, in plain words
+function scanSay(R) {
+  if (R.risk === 'unclear') return R.cut ? 'The scan was cut short, so I don\'t have a reading.' : 'I couldn\'t get a clear enough reading this time.';
+  const parts = [`Your pulse was ${R.hr} beats a minute${R.hr >= CFG.scan.hr[0] + 10 && R.hr <= CFG.scan.hr[1] ? ', which is in the usual range at rest' : R.hr > CFG.scan.hr[1] ? ', a little higher than usual at rest' : R.hr < CFG.scan.hr[0] ? ', a little lower than usual at rest' : ''}`];
+  if (R.br != null) parts.push(`your breathing was about ${R.br} breaths a minute${R.br >= 12 && R.br <= 20 ? ', also in the usual range' : ''}`);
+  if (R.rhythm) parts.push(`and the rhythm looked ${R.rhythm}`);
+  return `Here's what I read. ${cap1(parts.join(', '))}. These are an indication from the camera, not a medical diagnosis.`;
+}
+// what follows from the readings, said to the customer
+const scanNext = (R, agent) => R.risk === 'normal' ? (agent ? 'Nothing more is needed for this.' : 'Nothing more is needed. Thank you.')
+  : R.risk === 'high' ? (agent ? 'A short video exam with Nyra follows, to go over it. It never declines cover on its own.' : 'A short video call with Nyra, our AI medical examiner, goes over it. It never declines cover on its own.')
+  : (agent ? 'Nyra takes the reading again on the video exam instead.' : 'Nyra can take it again on a short video call instead.');
+
+/* ---------- the screen: consent, the scan, the report and the acknowledgement ---------- */
+// box gets the whole thing. o: { s, stream, agent, onDone(R) }. The stream is the proposal's own video, so nothing new is asked for
+function scanBox(box, o) {
+  const s = o.s, H = s.health, ag = !!o.agent, nm = s.kyc ? first(s.kyc.name) : '', C = CFG.scan;
+  const W = scanBox.W = scanBox.W && scanBox.W.s === s ? scanBox.W : { s, st: H.scan && (H.scan.ack || H.scan.skip) ? 'res' : 'intro', ok: false, tries: 0, R: H.scan || null };
+  let ctl = null, vid = null;
+  const pts = typeof jpWorth === 'function' ? jpWorth(s, 'scan') : null;
+  const paint = () => {
+    if (W.st === 'intro') {
+      box.innerHTML = `<div class="fs">
+        <div class="fs-hero"><span class="fs-hic">${ICO_SCAN}</span><div><b>${ag ? `A 30-second face scan for ${esc(nm)}` : 'A 30-second face scan'}</b><small>${ag ? 'The camera already recording reads their pulse, breathing and heart rhythm from tiny changes in skin colour. Nothing to hold or wear.' : 'Your camera, already on, reads your pulse, breathing and heart rhythm from tiny changes in your skin colour. Nothing to hold or wear.'}</small></div>${pts ? `<span class="fs-pts"><b>+${fitN(C.pts)}</b><small>points</small></span>` : ''}</div>
+        ${pts ? `<p class="fs-earn">${fitIc('star')}<span><b>Earn ${fitN(C.pts)} points${C.ptsOk ? `, and ${fitN(C.ptsOk)} more for readings in the usual range` : ''}.</b> Points come off ${ag ? 'their' : 'your'} premium at payment.</span></p>` : ''}
+        <ol class="fs-how"><li>Sit still, facing a light</li><li>Look at the camera for 30 seconds, without talking</li><li>See ${ag ? 'their' : 'your'} readings, and confirm ${ag ? 'they\'ve' : 'you\'ve'} seen them</li></ol>
+        <label class="fs-ok"><input type="checkbox" name="fsok" ${W.ok ? 'checked' : ''}><span>${ag ? `${esc(nm)} agrees` : 'I agree'} to the face scan. The readings are kept with ${ag ? 'the' : 'my'} proposal, used to assess ${ag ? 'the' : 'my'} health cover and added to the policy kit. They're an indication, not a medical diagnosis.</span></label>
+        <div class="fs-acts"><button type="button" class="${ag ? 'pb pri' : 'btn-next'}" data-fs="go" ${W.ok ? '' : 'disabled'} style="margin:0"><span>Start the scan</span>${ag ? '' : ICO.right}</button><button type="button" class="link" data-fs="skip">${ag ? 'They\'d rather not' : 'Skip it'}</button></div>
+      </div>`;
+      return;
+    }
+    if (W.st === 'run') {
+      box.innerHTML = `<div class="fs fs-run">
+        <div class="fs-cam"><video muted playsinline autoplay></video><span class="fs-oval" aria-hidden="true"></span>
+          <svg class="fs-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><circle class="fs-ringv" cx="50" cy="50" r="46" pathLength="100" stroke-dasharray="0 100"/></svg>
+          <span class="fs-left"><b data-x="sec">${window.__scanSecs || C.secs}</b><small>seconds</small></span></div>
+        <div class="fs-live"><svg class="fs-wave" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true"><path data-x="wave" d="M0 30H300"/></svg><p class="fs-tip" data-x="tip" role="status">Hold still and look at the camera</p></div>
+        <div class="fs-acts"><button type="button" class="link" data-fs="stop">Stop the scan</button></div>
+      </div>`;
+      vid = box.querySelector('video'); vid.srcObject = o.stream; vid.play().catch(() => { /* plays on a tap */ });
+      return;
+    }
+    const R = W.R;
+    if (!R || R.skip) { box.innerHTML = `<div class="fs"><p class="note">${ag ? 'Face scan skipped. Nyra can take it on the video exam if one is needed.' : 'Face scan skipped. You can carry on.'}</p><div class="fs-acts"><button type="button" class="link" data-fs="again">${ag ? 'Do the scan after all' : 'Do the scan after all'}</button></div></div>`; return; }
+    box.innerHTML = `<div class="fs fs-res">${scanRepHtml(R)}
+      <p class="fs-next ${R.risk}">${R.risk === 'normal' ? ICO.check : ICO_SCAN}<span>${esc(scanNext(R, ag))}</span></p>
+      ${R.ack ? `<p class="fs-acked">${ICO.check}<span>${ag ? `${esc(nm)} confirmed they've seen the readings` : 'You confirmed you\'ve seen your readings'}, ${fdt(R.ackAt)}. ${ag ? 'The report goes into the policy kit.' : 'The report goes into your policy kit.'}</span></p>`
+        : `<label class="fs-ok"><input type="checkbox" name="fsack"><span>${ag ? `${esc(nm)} has seen these readings and understands they're an indication, not a diagnosis. The report goes into the policy kit.` : 'I\'ve seen my readings and understand they\'re an indication, not a diagnosis. The report goes into my policy kit.'}</span></label>
+      <div class="fs-acts"><button type="button" class="${ag ? 'pb pri' : 'btn-next'}" data-fs="ack" disabled style="margin:0"><span>${ag ? 'Confirm they\'ve seen it' : 'I\'ve seen my readings'}</span>${ag ? '' : ICO.right}</button>${R.risk === 'unclear' && W.tries < 2 ? '<button type="button" class="link" data-fs="redo">Try the scan again</button>' : ''}</div>`}
+    </div>`;
+  };
+  const tick = x => {
+    if (!vid || !box.isConnected) return;
+    const left = Math.max(0, Math.ceil(x.secs - x.el)), sec = box.querySelector('[data-x=sec]'), ring = box.querySelector('.fs-ringv'), tip = box.querySelector('[data-x=tip]'), wave = box.querySelector('[data-x=wave]');
+    if (sec) sec.textContent = left;
+    if (ring) ring.setAttribute('stroke-dasharray', `${Math.min(100, (x.el / x.secs) * 100).toFixed(1)} 100`);
+    if (tip) { const t = x.face ? (x.el < 4 ? 'Hold still and look at the camera' : x.el < x.secs - 6 ? 'Reading your pulse. Keep still' : 'Almost done') : 'I can\'t see your face. Look at the camera'; if (tip.textContent !== t) tip.textContent = t; tip.classList.toggle('bad', !x.face); }
+    box.querySelector('.fs-cam').classList.toggle('lost', !x.face);
+    if (wave && x.wave.length > 4) { const w = x.wave, mx = Math.max(0.0005, ...w.map(Math.abs)); wave.setAttribute('d', w.map((y, i) => `${i ? 'L' : 'M'}${(i / (w.length - 1) * 300).toFixed(1)} ${(30 - (y / mx) * 24).toFixed(1)}`).join('')); }
+  };
+  const start = async () => {
+    W.st = 'run'; W.tries++; W.consentAt = W.consentAt || new Date(); paint();
+    aaMark(`Face health scan started, with ${ag ? 'the customer\'s' : 'the customer\'s'} consent`);
+    if (o.onState) o.onState('run');
+    ctl = scanRun(vid, { onTick: tick });
+    const R = await ctl.done; ctl = null;
+    Object.assign(R, { src: ag ? 'agent' : 'journey', consentAt: W.consentAt, ack: false });
+    W.R = R; W.st = 'res';
+    // what's kept for underwriting: the readings, the quality, and whether a closer look is needed
+    H.scan = R;
+    aaMark(R.risk === 'unclear' ? `Face health scan: ${R.cut ? 'cut short' : 'no clear reading'}` : `Face health scan: pulse ${R.hr}${R.br ? `, breathing ${R.br}` : ''}${R.rhythm ? `, rhythm ${R.rhythm}` : ''}, quality ${R.qLabel.toLowerCase()}${R.risk === 'high' ? ', a closer look needed' : ''}`);
+    if (box.isConnected) paint();
+    if (o.onState) o.onState('res');
+  };
+  box.addEventListener('change', e => {
+    if (e.target.name === 'fsok') { W.ok = e.target.checked; const b = box.querySelector('[data-fs=go]'); if (b) b.disabled = !W.ok; }
+    if (e.target.name === 'fsack') { const b = box.querySelector('[data-fs=ack]'); if (b) b.disabled = !e.target.checked; }
+  });
+  box.addEventListener('click', e => {
+    const b = e.target.closest('[data-fs]'); if (!b) return;
+    const k = b.dataset.fs;
+    if (k === 'go' && W.ok) start();
+    if (k === 'stop' && ctl) ctl.stop();
+    if (k === 'redo') { W.st = 'intro'; paint(); }
+    if (k === 'again') { W.st = 'intro'; W.R = null; H.scan = null; paint(); if (o.onState) o.onState('intro'); }
+    if (k === 'skip') { W.R = H.scan = { skip: true, at: new Date(), src: ag ? 'agent' : 'journey' }; W.st = 'res'; aaMark('Face health scan: skipped'); paint(); if (o.onDone) o.onDone(H.scan); }
+    if (k === 'ack') {
+      const R = W.R; R.ack = true; R.ackAt = new Date(); R.ackHow = ag ? 'confirmed with the agent' : 'confirmed on screen';
+      aaMark(`Face health scan: ${ag ? 'customer' : 'customer'} confirmed they've seen the readings`);
+      syncReqs(H); if (typeof jpSync === 'function') jpSync(s);
+      paint(); if (o.onDone) o.onDone(R);
+    }
+  });
+  paint();
+  return { stop: () => { if (ctl) ctl.stop(); } };
+}
+// is the scan for this proposal: the proposer is insured, an adult, and the camera is recording
+function scanFor(s) {
+  s = s || S; if (!s || s.product !== 'health' || !s.health || !s.kyc) return false;
+  const me = typeof selfOf === 'function' ? selfOf(s.health) : null;
+  if (!me || Number(me.age) < 18) return false;
+  return !!(typeof REC !== 'undefined' && REC.cur && REC.cur.s === s) || !!(s.health.scan && s.health.scan.src !== 'vmer');
+}
+const scanDone = H => !!(H && H.scan && (H.scan.ack || H.scan.skip));
+// the video exam takes the scan when there wasn't one in the journey, or when the one taken needs a closer look
+function scanVmNeed(s) {
+  const H = s.health, me = typeof selfOf === 'function' ? selfOf(H) : null;
+  if (!me || Number(me.age) < 18 || !active(H).includes(me)) return false;
+  const J = H.scan; if (J && J.vm && J.vm.ack) return false;
+  return !J || J.skip || !J.ack || J.risk !== 'normal';
+}
+// the final reading that counts: the video exam's when it was clear, otherwise the journey's
+function scanFinal(H) { const J = H && H.scan; if (!J || J.skip) return null; const v = J.vm; return v && v.ack && v.risk !== 'unclear' ? v : J.ack ? J : null; }
+// physical tests follow only when an unusual reading wasn't cleared on the video exam
+const scanTests = H => { const J = H && H.scan; if (!J || !J.vmChecked) return false; const f = scanFinal(H); return !!(f && f.risk === 'high'); };
+
+/* ---------- in the policy kit ---------- */
+function scanPdf(d, s) {
+  s = s || S; const H = s.health; if (!H || !H.scan || H.scan.skip) return;
+  const list = [H.scan.ack ? H.scan : null, H.scan.vm && H.scan.vm.ack ? H.scan.vm : null].filter(Boolean);
+  if (H.scan.src === 'vmer') list.splice(0, list.length, H.scan);
+  if (!list.length) return;
+  d.h2('Face health scan');
+  d.para('Pulse, breathing and heart rhythm read from the camera, from small changes in skin colour (remote photoplethysmography). These are an indication, not a medical diagnosis. Blood pressure and oxygen level are not read.', { color: d.C.mute });
+  list.forEach(R => {
+    const rows = scanRows(R);
+    d.kv([['Taken', `${scanSrc(R)}, ${fdt(R.at)}, ${R.secs || 0} seconds, reference ${R.ref}`], ...rows.map(x => [x.t, x.v === '—' ? `Not clear${x.u ? '' : ''}` : `${x.v}${x.u ? ' ' + x.u : ''} (${x.n.toLowerCase()})`]), ['Reading quality', `${R.qLabel || 'Not clear'}${R.q != null ? `, ${Math.round(R.q * 100)}%` : ''}`], ['Outcome', R.risk === 'normal' ? 'In the usual range' : R.risk === 'high' ? `A closer look: ${R.why.join('; ')}` : R.cut ? 'Cut short, taken again on the video exam' : 'Not clear enough to read'], ['Consent', fdt(R.consentAt || R.at)], ['Acknowledged', `${fdt(R.ackAt)}, ${R.ackHow || 'confirmed'}`]]);
+  });
+}
+
+/* ---------- the journey step: right after healthy habits, while the proposal is being recorded ---------- */
+STEP.scan = {
+  label: 'Face health scan',
+  when: () => CFG.channel !== 'cust' && scanFor(S),
+  view() {
+    const H = S.health, d = scanDone(H);
+    return {
+      say: d ? (H.scan.skip ? 'No problem. You can carry on.' : 'Thank you. Your report is below, and it goes into your policy kit.') : 'Your camera is already on, so this takes 30 seconds. It\'s optional, and it earns you points.',
+      title: d && !H.scan.skip ? 'Your face scan' : `Earn up to ${fitN(CFG.scan.pts + CFG.scan.ptsOk)} points in 30 seconds`,
+      body: '<div data-x="fs"></div>', next: 'Continue', hint: 'Say “start” or “skip”',
+    };
+  },
+  wire(api) {
+    const H = S.health, r = REC.cur && REC.cur.s === S ? REC.cur : null;
+    const ctl = scanBox(api.body.querySelector('[data-x=fs]'), { s: S, stream: r ? r.stream : null, onState: k => api.hideNext(!(k === 'res' && scanDone(H))), onDone: () => { api.hideNext(false); api.setNext('Continue', true); api.live(); } });
+    api.hideNext(!scanDone(H));
+    HOOKS.leave = () => ctl.stop();
+  },
+  commit() { const H = S.health; if (!scanDone(H)) return H.scan && !H.scan.ack ? 'Confirm you\'ve seen your readings to carry on.' : 'Take the face scan, or choose Skip it.'; syncReqs(H); return ''; },
+  value: () => { const R = S.health && S.health.scan; if (!R || !(R.ack || R.skip)) return ''; return R.skip ? 'Skipped' : R.risk === 'unclear' ? 'No clear reading' : `Pulse ${R.hr}${R.br ? `, breathing ${R.br}` : ''}`; },
+  done: () => scanDone(S.health),
+  cmd(t) { const l = t.toLowerCase(); if (/skip|no thanks|rather not/.test(l)) { press('[data-fs=skip]'); return ''; } if (/start|go|yes|scan/.test(l)) { const c = document.querySelector('[name=fsok]'); if (c && !c.checked) c.click(); press('[data-fs=go]'); return ''; } return null; },
+};
+
+/* ================= points in the buying journey: something back for every extra detail =================
+   Every optional detail the customer shares earns points on top of any discount it brings: the bank statement,
+   the credit report, a fitness app, the face scan, reports, the video exam and a live photo. The points go into
+   the same balance as the cover check, and come off the premium at payment, within the usual cap (CFG.fit).
+   Each step that asks for something optional opens with what it's worth: the discount in rupees and the points.
+   A detail shared once counts once: sharing the bank statement again doesn't earn it again, and points tied to a
+   proposal that was never paid go when a new one starts. Point values are illustrative, like the other rates. */
+const JP_RULES = [
+  { k: 'aa', t: 'Bank statement shared', ask: 'Share the bank statement', pts: 150, per: 'cust', steps: ['data', 'aa'], prod: ['health', 'motor'], got: s => typeof aaDone === 'function' && aaDone(s), off: s => { const x = typeof dataSave === 'function' ? dataSave(s) : 0; return x ? { t: '5% off', amt: x } : null; } },
+  { k: 'cb', t: 'Credit report shared', ask: 'Share the credit report', pts: 100, per: 'cust', steps: ['data', 'bureau'], prod: ['health', 'motor'], got: s => typeof bureauDone === 'function' && bureauDone(s), off: s => { const x = typeof dataSave === 'function' ? dataSave(s) : 0; return x ? { t: '5% off', amt: x } : null; } },
+  { k: 'mdoc', t: 'Current policy uploaded', ask: 'Upload the current policy', pts: 50, per: 'prop', steps: ['vehicle'], prod: ['motor'], got: s => !!(s.motor && s.motor.fromDoc === 'policy') },
+  { k: 'habits', t: 'Workout habit shared', ask: 'Say how often you work out', pts: 25, per: 'cust', steps: ['wellness'], prod: ['health'], got: s => !!(s.health && s.health.workout), off: s => typeof gymOn === 'function' && gymOn(s) ? { t: `${CFG.wellness.fit}% off` } : null },
+  { k: 'wear', t: 'Fitness app connected', ask: 'Connect a fitness app or watch', pts: 150, per: 'cust', steps: ['wellness'], prod: ['health'], got: s => !!(s.health && s.health.wear && s.health.wear.steps), off: () => ({ t: `up to ${CFG.wellness.wear[0][1]}% off` }) },
+  { k: 'scan', t: 'Face health scan taken', ask: 'Take the 30-second face scan', pts: () => CFG.scan.pts, per: 'prop', steps: ['scan'], prod: ['health'], got: s => jpScanTaken(s.health) },
+  { k: 'scanok', t: 'Face scan in the usual range', ask: 'Readings in the usual range', pts: () => CFG.scan.ptsOk, per: 'prop', steps: ['scan'], prod: ['health'], got: s => { const f = typeof scanFinal === 'function' ? scanFinal(s.health) : null; return !!(f && f.risk === 'normal'); } },
+  { k: 'reports', t: 'Medical reports shared', ask: 'Share recent reports', pts: 100, per: 'prop', steps: ['outcome'], prod: ['health'], got: s => !!(s.health && active(s.health).some(m => Object.values(m.rq || {}).some(x => x.fileName))) },
+  { k: 'vmer', t: 'Video medical exam finished', ask: 'Finish the video exam with Nyra', pts: 150, per: 'prop', steps: ['outcome'], prod: ['health'], got: s => !!(s.health && s.health.vmer && s.health.vmer.done && s.health.vmer.confirmed) },
+  { k: 'photo', t: 'Photo taken live', ask: 'Take the photo live with the camera', pts: 50, per: 'prop', steps: ['photo'], prod: ['health', 'motor'], got: s => !!(s.photo && s.photo.how === 'camera') },
+];
+const jpScanTaken = H => !!(H && H.scan && !H.scan.skip && (H.scan.ack || (H.scan.vm && H.scan.vm.ack)));
+const jpPts = r => typeof r.pts === 'function' ? r.pts() : r.pts;
+const jpRules = s => s && s.product ? JP_RULES.filter(r => r.prod.includes(s.product) && (r.k !== 'mdoc' || CFG.channel !== 'cust')) : [];
+const jpKey = (s, r) => r.per === 'prop' ? `jp:${r.k}:${s.jpRef}` : `jp:${r.k}`;
+// the points record: the customer's own once known; on the website, points before KYC are kept and merged after
+function jpRec(s, make) {
+  const who = typeof fitWho === 'function' ? fitWho(s) : 'anon';
+  if (who === 'anon' && CFG.channel === 'agent') return null;
+  if (who !== 'anon' && CFG.channel !== 'agent') { const A = fitAll(); if (A.anon && A.anon.ledger.some(e => String(e.key).startsWith('jp:'))) return fitMerge(who); }
+  return make ? fitRec(who) : fitAll()[who] || null;
+}
+// is this detail worth points for this customer, and how many
+function jpWorth(s, k) { const r = jpRules(s).find(x => x.k === k); return r ? jpPts(r) : 0; }
+// what's been earned and what's still open, for this journey
+function jpState(s) {
+  s = s || S; const R = jpRec(s, false), out = [];
+  jpRules(s).forEach(r => { const e = R && R.ledger.find(x => x.key === jpKey(s, r)); out.push({ r, pts: jpPts(r), got: !!e, mine: !!(e && e.jp === s.jpRef) }); });
+  return { R, list: out, earned: out.filter(x => x.mine).reduce((a, x) => a + x.pts, 0) };
+}
+function jpSync(s, quiet) {
+  s = s || S; if (!s || !s.product || (typeof isSme === 'function' && isSme(s.product))) return;
+  s.jpRef = s.jpRef || 'J' + code(8);
+  const R = jpRec(s, true); if (!R) { jpPaint(s); return; }
+  const gained = [];
+  jpRules(s).forEach(r => {
+    const key = jpKey(s, r), had = R.ledger.find(e => e.key === key);
+    let got = false; try { got = !!r.got(s); } catch (e) { got = false; }
+    if (got && !had) { fitSet(R, key, jpPts(r), r.t, 'earn', { src: 'journey', jp: s.jpRef }); gained.push(r); }
+    else if (!got && had && !had.paid && had.jp === s.jpRef) fitSet(R, key, 0, '');
+  });
+  // points tied to an earlier proposal that was never paid don't carry over
+  R.ledger.filter(e => /^jp:\w+:/.test(e.key) && e.jp && e.jp !== s.jpRef && !e.paid).forEach(e => fitSet(R, e.key, 0, ''));
+  if (gained.length && !quiet) jpCheer(s, gained);
+  jpPaint(s);
+}
+// the moment points are earned: the balance bumps, and a line says what for
+function jpCheer(s, gained) {
+  const n = gained.reduce((a, r) => a + jpPts(r), 0), ag = CFG.channel === 'agent';
+  const p = document.querySelector('.jp-pill');
+  if (p) { p.classList.remove('bump'); void p.offsetWidth; p.classList.add('bump'); const f = el(`<span class="jp-fly" aria-hidden="true">+${fitN(n)}</span>`); p.appendChild(f); setTimeout(() => f.remove(), 1600); }
+  if (typeof toast === 'function') toast(`+${fitN(n)} points${ag ? ' for the customer' : ''}: ${gained.map(r => r.t.toLowerCase()).join(', ')}. ${ag ? 'They come off at payment.' : 'They come off your premium at payment.'}`);
+}
+// when the payment goes through, the points this journey earned are kept for good
+function jpPaid(s) { const R = jpRec(s, false); if (!R || !s.jpRef) return; R.ledger.forEach(e => { if (e.jp === s.jpRef) e.paid = true; }); fitSave(); }
+if (typeof fitRedeem === 'function') { const jpRedeem0 = fitRedeem; fitRedeem = function (s, gross, ref) { try { jpPaid(s); } catch (e) { /* points are best-effort */ } return jpRedeem0(s, gross, ref); }; }
+
+/* ---------- on screen ---------- */
+const jpGross = s => { try { const p = s === S ? priceInfo() : null; return p ? p.total : 0; } catch (e) { return 0; } };
+// the top of a step that asks for something optional: what it's worth, in rupees and in points
+function jpBanHtml(s, id) {
+  const rs = jpRules(s).filter(r => r.steps.includes(id)); if (!rs.length) return '';
+  const st = jpState(s), ag = CFG.channel === 'agent';
+  const items = rs.map(r => { const x = st.list.find(y => y.r === r), o = r.off ? r.off(s) : null; return { r, o, pts: x.pts, got: x.got }; }).filter(x => x.pts || x.o);
+  if (!items.length) return '';
+  const offAmt = items.filter(x => !x.got && x.o && x.o.amt).reduce((a, x) => a + x.o.amt, 0), ptsOpen = items.filter(x => !x.got).reduce((a, x) => a + x.pts, 0);
+  const allGot = items.every(x => x.got);
+  const head = allGot ? (ag ? 'Earned for the customer on this step' : 'Earned on this step') : `${ag ? 'The customer can get' : 'You can get'} ${[offAmt ? `${inr(offAmt)} off` : '', ptsOpen ? `${fitN(ptsOpen)} points` : ''].filter(Boolean).join(' + ')}`;
+  return `<section class="jp-ban ${allGot ? 'done' : ''}" data-jpban="${id}" aria-label="What this step is worth">
+    <div class="jp-ban-h"><span class="jp-star">${fitIc('star')}</span><b>${esc(head)}</b>${st.R && st.R.pts > 0 ? `<span class="jp-bal">${fitN(st.R.pts)} points so far</span>` : ''}</div>
+    <ul>${items.map(x => `<li class="${x.got ? 'got' : ''}"><span class="jp-chk">${x.got ? ICO.check : ''}</span><span class="jp-t">${esc(x.got ? x.r.t : x.r.ask)}</span>${x.o ? `<span class="jp-off">${esc(x.o.t)}${x.o.amt ? ` · ${inr(x.o.amt)}` : ''}</span>` : ''}${x.pts ? `<span class="jp-pt">+${fitN(x.pts)} pts</span>` : ''}</li>`).join('')}</ul>
+  </section>`;
+}
+// the balance, always in view: in the journey's top bar, or the portal's summary
+function jpPillHtml(s) {
+  const st = jpState(s), R = st.R; if (!R || R.pts <= 0) return '';
+  const g = jpGross(s), off = g ? fitOffFor(R.pts, g) : fitValue(R.pts);
+  return `${fitIc('star')}<b>${fitN(R.pts)}</b><span class="jp-pl">points${off ? ` · ${inr(off)} off` : ''}</span>`;
+}
+function jpPaint(s) {
+  s = s || S; if (!s || s !== S) return;
+  const p = document.querySelector('.jp-pill');
+  if (p) { const h = jpPillHtml(s); p.hidden = !h; const fly = p.querySelector('.jp-fly'); p.innerHTML = h; if (fly) p.appendChild(fly); }
+  document.querySelectorAll('[data-jpban]').forEach(b => { const h = jpBanHtml(s, b.dataset.jpban); if (h) b.outerHTML = h; });
+}
+// what this journey earned, listed where the points are used
+function jpEarnedHtml(s) {
+  const st = jpState(s), mine = st.list.filter(x => x.mine);
+  if (!mine.length) return '';
+  return `<div class="jp-earned"><b>${CFG.channel === 'agent' ? 'Earned on this proposal' : 'You earned on this journey'}</b><ul>${mine.map(x => `<li><span>${esc(x.r.t)}</span><em>+${fitN(x.pts)}</em></li>`).join('')}</ul></div>`;
+}
+// the list of ways to earn, opened from the balance
+function jpPopHtml(s) {
+  const st = jpState(s), R = st.R, g = jpGross(s), open = st.list.filter(x => !x.got);
+  return `<div class="jp-pop" role="dialog" aria-label="Your points"><div class="jp-pop-h"><b>${fitN(R ? R.pts : 0)} points</b><small>Worth ${inr(fitValue(R ? R.pts : 0))}. Up to ${CFG.fit.capPct}% of the premium${g ? `, ${inr(fitOffFor(R ? R.pts : 0, g))} here,` : ''} comes off at payment.</small></div>
+    ${st.list.filter(x => x.got).length ? `<ul class="jp-pop-l">${st.list.filter(x => x.got).map(x => `<li class="got">${ICO.check}<span>${esc(x.r.t)}</span><em>+${fitN(x.pts)}</em></li>`).join('')}</ul>` : ''}
+    ${open.length ? `<span class="jp-pop-s">Still to earn</span><ul class="jp-pop-l">${open.map(x => `<li><span class="jp-dot"></span><span>${esc(x.r.ask)}</span><em>+${fitN(x.pts)}</em></li>`).join('')}</ul>` : ''}</div>`;
+}
+// the website journey: the balance in the top bar, and what each step is worth at its top
+function jpMount() {
+  const acts = document.querySelector('.bar-acts'); if (!acts || document.querySelector('.jp-pill')) return;
+  const b = el('<button type="button" class="jp-pill" aria-label="Your points" hidden></button>');
+  acts.insertBefore(b, acts.querySelector('#sumBtn') || acts.firstChild);
+  b.addEventListener('click', e => {
+    e.stopPropagation();
+    const was = document.querySelector('.jp-pop'); if (was) { was.remove(); return; }
+    const p = el(jpPopHtml(S)); document.body.appendChild(p);
+    const r = b.getBoundingClientRect(); p.style.top = `${r.bottom + 8}px`; p.style.right = `${Math.max(8, innerWidth - r.right)}px`;
+    setTimeout(() => document.addEventListener('click', function off(ev) { if (!p.contains(ev.target)) { p.remove(); document.removeEventListener('click', off); } }), 0);
+  });
+}
+if (typeof HOOKS !== 'undefined') {
+  HOOKS.shown.push(id => {
+    if (!S || !S.product || CFG.channel === 'agent') return;
+    jpMount(); jpSync(S);
+    const q = S.api && S.api.q, h = jpBanHtml(S, id);
+    if (q && h && !q.querySelector('[data-jpban]')) { const body = q.querySelector('.q-body'); if (body) body.insertAdjacentHTML('afterbegin', h); }
+  });
+  HOOKS.restart.push(() => { const p = document.querySelector('.jp-pill'); if (p) p.hidden = true; });
+}
+if (typeof fitRowHtml === 'function') { const jpRow0 = fitRowHtml; fitRowHtml = function (gross) { const h = jpRow0(gross); return h ? h + jpEarnedHtml(S) : h; }; }
+
 /* ================= start-up pieces shared by the desktop and mobile pages ================= */
 ICO.sun = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 ICO.moon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
@@ -17583,7 +18502,7 @@ HX.learn = id => {
 const PF_STEPS = {
   // after KYC: the discount tiles and consents; for health, the declaration, the photo, then cover made for them
   motor: [['start', 'Setup'], ['vehicle', 'Vehicle'], ['cover', 'Cover'], ['customer', 'Customer and KYC'], ['data', 'Discounts'], ['offers', 'Made for them'], ['xsetup', 'Extra covers'], ['hdecl', 'Health declaration'], ['photo', 'Photo'], ['review', 'Review and consent'], ['pay', 'Checks and payment']],
-  health: [['start', 'Setup'], ['people', 'People and plan'], ['customer', 'Customer and KYC'], ['data', 'Discounts'], ['health', 'Health details'], ['family', 'Family and wellness'], ['assess', 'Assessment'], ['photo', 'Photo'], ['offers', 'Made for them'], ['xsetup', 'Extra covers'], ['review', 'Review and consent'], ['pay', 'Checks and payment']],
+  health: [['start', 'Setup'], ['people', 'People and plan'], ['customer', 'Customer and KYC'], ['data', 'Discounts'], ['health', 'Health details'], ['family', 'Family and wellness'], ['scan', 'Face scan'], ['assess', 'Assessment'], ['photo', 'Photo'], ['offers', 'Made for them'], ['xsetup', 'Extra covers'], ['review', 'Review and consent'], ['pay', 'Checks and payment']],
 };
 const pfFirst = () => { const n = (S.kyc && S.kyc.name) || (S.sent && S.sent.name) || (S.pfKyc && S.pfKyc.doc && S.pfKyc.doc.f && S.pfKyc.doc.f.name); return n ? first(n) : 'the customer'; };
 const pfRem = () => S.mode === 'remote';
@@ -17595,6 +18514,7 @@ function pfSteps() {
     // health: the photo is taken here only when the proposal goes straight through; otherwise Nyra takes it on the video exam
     if (id === 'photo') return !pfRem() && !(S.photo && S.photo.by === 'vmer') && (mot ? hasHealthExtra(S) : !hNstp(S.health) || !!(S.health.vmer && S.health.vmer.done && !S.photo));
     if (id === 'hdecl') return mot && hasHealthExtra(S);
+    if (id === 'scan') return !mot && !pfRem() && typeof scanFor === 'function' && scanFor(S);
     if (id === 'xsetup') return typeof xsItems === 'function' && xsItems(S).length > 0;
     if (id === 'pay') return !pfRem();
     if ((id === 'data' || id === 'offers') && typeof kycIsOrg === 'function' && kycIsOrg()) return false;
@@ -18291,7 +19211,7 @@ PFV.pay = () => {
   const gross = mainTotal(S) + bundleSum(S).extras, tot = gross - fitOff(gross), ph = !!S.photo;
   const S2 = S.pfPay = S.pfPay || { how: 'link', phase: 'pick' };
   // the customer's cover check points come off here, if they want
-  const FR = fitRecFor(S), pts = FR && FR.pts > 0 && S2.phase !== 'wait' ? `<label class="cc-use"><input type="checkbox" name="fituse" ${S.fitUse !== false ? 'checked' : ''}><span class="cc-star">${pi('star')}</span><span><b>Use ${esc(first(S.fitName || (S.kyc && S.kyc.name) || 'the customer'))}'s points: ${inr(fitOffFor(FR.pts, gross))} off</b><small>${fitN(FR.pts)} points from the cover check. Up to ${CFG.fit.capPct}% of the premium comes off as a wellness and safety reward.</small></span></label>` : '';
+  const FR = fitRecFor(S), pts = FR && FR.pts > 0 && S2.phase !== 'wait' ? `<label class="cc-use"><input type="checkbox" name="fituse" ${S.fitUse !== false ? 'checked' : ''}><span class="cc-star">${pi('star')}</span><span><b>Use ${esc(first(S.fitName || (S.kyc && S.kyc.name) || 'the customer'))}'s points: ${inr(fitOffFor(FR.pts, gross))} off</b><small>${fitN(FR.pts)} points, from the cover check and this proposal. Up to ${CFG.fit.capPct}% of the premium comes off as a wellness and safety reward.</small>${typeof jpEarnedHtml === 'function' ? jpEarnedHtml(S) : ''}</span></label>` : '';
   const pay = S2.phase === 'wait' ? `<div class="pf-busy"><span class="spin"></span>${S2.how === 'link' ? `Waiting for ${esc(pfFirst())} to pay on their phone…` : 'Waiting for the UPI payment…'}</div>${S2.how === 'qr' ? `<div class="pf-qr">${qrSvg(`upi://pay?pa=nxsure@hdfcbank&pn=NxSure%20General%20Insurance&am=${tot}&tn=${encodeURIComponent((S.motor && S.motor.quoteNo) || (S.health && S.health.quoteNo) || (S.biz && (S.biz.proposalNo || S.biz.quoteNo)) || 'NxSure')}`, '#15132A', 'UPI QR code')}<small>${esc(pfFirst())} scans this with any UPI app</small></div>` : ''}`
     : `<div class="pf-opts">${pfOpt('payhow', 'link', 'mobile', `${pfFirst()} pays on their phone`, 'A payment link by SMS and WhatsApp: UPI, card or net banking.', S2.how === 'link')}${pfOpt('payhow', 'qr', 'qr', 'Pay here with UPI', 'Show a UPI QR on this screen for them to scan.', S2.how === 'qr')}</div><p class="p-muted small">You never collect cash. The policy is issued as soon as the payment comes in.</p>`;
   return {
@@ -18606,7 +19526,7 @@ PFV.data = () => {
   const A = S.aa = S.aa || { phase: 'bank' }, B = S.bureau = S.bureau || { phase: 'ask' };
   const bk = () => AA_BANKS.find(y => y[0] === A.bank) || AA_BANKS[1];
   const tile = (k, ic, off, t, s2) => `<button type="button" class="pf-dt ${D[k] ? 'on' : ''}" data-dt="${k}" aria-pressed="${!!D[k]}"><span class="pf-oi">${ic}</span><span class="pf-dt-off ${k === 'none' ? 'mute' : ''}">${off}</span><b>${t}</b><small>${s2}</small><i class="pf-dt-tick">${pi('check')}</i></button>`;
-  const tiles = `<div class="pf-dts">${tile('aa', ICO_BANK, x ? '5% off' : 'Optional', 'Bank statement', `${x ? `Saves ${inr(x)}. ` : ''}12 months from one account, through an account aggregator.`)}${tile('cb', ICO_SCORE, x ? 'Another 5% off' : 'Optional', 'Credit report', `${x ? `Saves ${inr(x)} more. ` : ''}A soft check: their credit score isn't affected.`)}${tile('none', ICO_SKIP, 'No discount', 'Continue without', 'They pay the full price. Cover made for them is limited.')}</div>`;
+  const tiles = `<div class="pf-dts">${tile('aa', ICO_BANK, (x ? '5% off' : 'Optional') + (typeof jpWorth === 'function' && jpWorth(S, 'aa') ? ` · +${jpWorth(S, 'aa')} pts` : ''), 'Bank statement', `${x ? `Saves ${inr(x)}. ` : ''}12 months from one account, through an account aggregator.`)}${tile('cb', ICO_SCORE, (x ? 'Another 5% off' : 'Optional') + (typeof jpWorth === 'function' && jpWorth(S, 'cb') ? ` · +${jpWorth(S, 'cb')} pts` : ''), 'Credit report', `${x ? `Saves ${inr(x)} more. ` : ''}A soft check: their credit score isn't affected.`)}${tile('none', ICO_SKIP, 'No discount', 'Continue without', 'They pay the full price. Cover made for them is limited.')}</div>`;
   let aa = '';
   if (D.aa) {
     if (aaDone(S)) aa = `<div class="pd-ok">${pi('check')}<span><b>Shared from ${esc(bk()[1])} ••••${esc(A.acct)}</b><small>12 months${dataOff(S, 'aaAmt') ? `, ${inr(dataOff(S, 'aaAmt'))} off` : ''}. What it shows stays with underwriting and the offers at the end.</small></span></div>`;
@@ -18882,6 +19802,39 @@ function pfPropCross(p) {
   pfPaint(); window.scrollTo({ top: 0, behavior: REDUCED ? 'auto' : 'smooth' });
 }
 const PF_PICO = { motor: 'car', health: 'hospital', home: 'home', shop: 'store', fire: 'flame', lop: 'chart', marine: 'truck', wc: 'users', dno: 'brief' };
+
+/* ================= NxSure Partners: the face scan, and what each step is worth to the customer =================
+   The face scan runs on the proposal's own video, with the customer in front of the camera. Each step that asks
+   for something optional opens with what it gets the customer: the discount and the points. Their points sit in
+   the summary, and come off at payment. */
+PFV.scan = () => {
+  const H = S.health, d = scanDone(H);
+  return {
+    html: pfCard(`Face health scan with ${esc(pfFirst())}`, '<div data-x="fs"></div>', d ? ppill(H.scan.skip ? 'Skipped' : 'Done', H.scan.skip ? '' : 'ok') : ppill('Optional')),
+    next: 'Continue', dis: !d,
+    wire(api) {
+      const box = api.main.querySelector('[data-x=fs]');
+      const ctl = scanBox(box, { s: S, stream: REC.cur && REC.cur.s === S ? REC.cur.stream : null, agent: true, onState: k => api.setNext(null, k === 'res' && scanDone(H)), onDone: R => { pfMark(R.skip ? 'Face scan: the customer would rather not' : `Face scan: ${R.risk === 'unclear' ? 'no clear reading' : `pulse ${R.hr}`}, seen and confirmed by the customer`); api.setNext('Continue', true); pfLive(); } });
+      HOOKS.leave = () => ctl.stop();
+    },
+    commit() { if (!scanDone(H)) return H.scan && !H.scan.skip && !H.scan.ack ? `Confirm ${pfFirst()} has seen the readings.` : `Take the face scan with ${pfFirst()}, or choose that they'd rather not.`; syncReqs(H); return ''; },
+  };
+};
+// what a step is worth, at its top: the website's step that matches each portal step
+const PF_JP = { vehicle: 'vehicle', data: 'data', family: 'wellness', scan: 'scan', assess: 'outcome', photo: 'photo' };
+Object.entries(PF_JP).forEach(([id, jid]) => {
+  const f = PFV[id]; if (!f) return;
+  PFV[id] = (...a) => { const v = f(...a); try { if (S && S.product && !pfIsProp()) { jpSync(S); const h = jpBanHtml(S, jid); if (h && v && typeof v.html === 'string') v.html = h + v.html; } } catch (e) { /* the step shows without it */ } return v; };
+});
+// the customer's points in the summary
+{
+  const pfSide0 = pfSide;
+  pfSide = function () {
+    const h = pfSide0(); if (!S || !S.pf || pfIsProp()) return h;
+    let pts = ''; try { const p = jpPillHtml(S); pts = p ? `<button type="button" class="jp-pill pf-jp" aria-label="The customer's points">${p}</button>` : ''; } catch (e) { pts = ''; }
+    return pts + h;
+  };
+}
 
 /* ================= RM workspace: the Banca RM and the Agency RM, in NxSure's own pages =================
    The Banca RM (Ananya Iyer, Meridian Bank) and the Agency RM (Neha Kulkarni) share these pages. Pages live in modules:

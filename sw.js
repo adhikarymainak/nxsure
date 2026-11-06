@@ -1,5 +1,5 @@
 /* NxSure offline worker: keeps the website, the partner portal and the workbench on the device, so they open instantly and work offline. */
-const CACHE = 'nxsure-app-4b32d74cbf';
+const CACHE = 'nxsure-app-fa4d2d11be';
 const FILES = ["./", "./index.html", "./partners.html", "./ops.html", "./manifest.webmanifest", "./partners.webmanifest", "./apple-touch-icon.png", "./favicon-32.png", "./icon-192.png", "./icon-512.png", "./icon.svg", "./maskable-192.png", "./maskable-512.png"];
 
 self.addEventListener('install', e => {

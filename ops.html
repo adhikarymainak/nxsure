@@ -614,6 +614,58 @@ main{min-height:0;position:relative;overflow:hidden}
   .stepbar .sb .l small{display:none}
 }
 
+/* ---------- history on the case screen ---------- */
+.hist{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.hist-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.hist-h h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);font-weight:650;display:flex;align-items:center;gap:6px}
+.hist-h h3 svg{width:14px;height:14px}
+.hist-k{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+.hk{display:grid;grid-template-columns:20px minmax(0,1fr);gap:8px;align-items:start;padding:9px 10px;border-radius:10px;background:var(--sub);border:1px solid var(--line)}
+.hk b{display:block;font-size:13px;font-weight:650;line-height:1.3}
+.hk p{font-size:12px;color:var(--ink3);margin-top:2px}
+.hk.bad{background:var(--bad-soft);border-color:var(--bad-line)}
+.hk.warn{background:var(--warn-soft);border-color:var(--warn-line)}
+.hist-hint{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--ink2);padding:8px 10px;border-radius:9px;background:var(--brand-soft);border:1px solid var(--brand-line)}
+.hist-hint svg{width:15px;height:15px;color:var(--brand);flex:none;margin-top:1px}
+.hist-f{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--ink3)}
+.hist-load{display:flex;gap:12px;align-items:center;padding:24px 4px}
+.hist-load b{font-size:14px}
+.hist-d{display:flex;flex-direction:column;gap:16px}
+.hist-d .gate .ul{margin:4px 0 0;padding-left:16px;color:var(--ink2)}
+/* ---------- activity clocks ---------- */
+.tmc{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:650;color:var(--ink3);font-variant-numeric:tabular-nums;margin-top:1px}
+.tmc small{font-weight:500;color:var(--ink3)}
+.tmc.ok{color:var(--ok)}.tmc.warn{color:var(--warn)}.tmc.bad{color:var(--bad)}
+.tmc i,.tmcase i{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block;animation:tmblink 1.2s ease infinite}
+@keyframes tmblink{50%{opacity:.25}}
+.tmcase{display:grid;justify-items:end;line-height:1.2;padding:0 10px 0 0;border-right:1px solid var(--line);font-variant-numeric:tabular-nums}
+.tmcase span{font-size:11px}.tmcase b{font-size:14px;font-weight:700;display:flex;align-items:center;gap:5px}.tmcase small{font-size:11px;color:var(--ink3)}
+.tmcase.ok b{color:var(--ok)}.tmcase.warn b{color:var(--warn)}.tmcase.bad b{color:var(--bad)}
+@media (max-width:900px){.tmcase{display:none}}
+/* ---------- turnaround page ---------- */
+.tms-t{grid-template-columns:repeat(6,minmax(0,1fr))}
+.tms-t small{display:block;font-size:11px;color:var(--ink3);margin-top:1px}
+.tms-t .ok b{color:var(--ok)}.tms-t .warn b{color:var(--warn)}.tms-t .bad b{color:var(--bad)}
+.tms-now{font-size:13px;font-weight:650;color:var(--ink3);font-variant-numeric:tabular-nums}
+.tms-m{margin-bottom:12px}
+.tms-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.tms-bar .seg{display:inline-flex;border:1px solid var(--line2);border-radius:8px;overflow:hidden;background:var(--surface)}
+.tms-bar .seg button{border:0;background:none;padding:6px 12px;font-weight:600;font-size:12.5px;color:var(--ink2)}
+.tms-bar .seg button+button{border-left:1px solid var(--line)}
+.tms-bar .seg button.on{background:var(--brand-soft);color:var(--brand-ink)}
+.tms-r{display:flex;gap:6px;align-items:center;font-size:12.5px;color:var(--ink2)}
+.tms-tbl td{vertical-align:middle}
+.tms-tbl .tl-c b{display:block;font-size:13.5px;font-variant-numeric:tabular-nums}
+.tms-tbl .tl-c small{display:block;font-size:11px}
+.tl-p{display:inline-flex;align-items:center;gap:4px;font-weight:650;color:var(--ink2)}.tl-p svg{width:13px;height:13px}
+.tms-u{position:relative;height:6px;border-radius:6px;background:var(--hover);overflow:visible}
+.tms-u i{display:block;height:100%;border-radius:6px;background:var(--ok)}
+.tms-u.warn i{background:var(--warn)}.tms-u.bad i{background:var(--bad)}.tms-u.p i{background:var(--faint)}
+.tms-u b{position:absolute;top:-3px;width:2px;height:12px;background:var(--ink3);border-radius:2px}
+@media (max-width:1100px){.tms-t{grid-template-columns:repeat(3,minmax(0,1fr))}.tms-t div:nth-child(3){border-right:0}.tms-t div:nth-child(-n+3){border-bottom:1px solid var(--line)}}
+@media (max-width:700px){.tms-t{grid-template-columns:repeat(2,minmax(0,1fr))}.tms-m{grid-template-columns:1fr}}
+@media (max-width:520px){.me>span:last-child{display:none}.me{padding:3px}.top{gap:8px;padding:0 10px}}
+@media (max-width:700px){.tms-t div{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}.tms-t div:nth-child(2n){border-right:0!important}.tms-t div:nth-last-child(-n+2){border-bottom:0!important}}
 </style>
 </head>
 <body>
@@ -2002,7 +2054,7 @@ const EXTRA = [
   { id: 'SR-482095', mod: 'ops', type: 'Cancel the policy', lob: 'health', prod: 'Health Plus', bucket: 'closed', cust: 'Naveen Kumar', pol: 'NX/HE/25/20002214', channel: 'Customer app', recv: at(-6, 10, 0), tat: RULES.srTat, by: 'u1', outcome: { t: 'Retained', st: 'ok', when: at(-2, 12, 0), d: 'Moved to Essential at renewal; cancellation withdrawn' } },
   { id: 'CL-M-260410', mod: 'claims', type: 'Own damage', lob: 'motor', prod: 'Private car', bucket: 'closed', cust: 'Shalini Rao', pol: 'NX/MO/26/10188420', channel: 'Customer app', recv: at(-5, 10, 0), tat: RULES.motorDecide, by: 'u3', outcome: { t: 'Settled', st: 'ok', when: at(-1, 17, 45), d: '₹38,420 paid to Kothrud Motors' } },
   { id: 'PR-H-77380', mod: 'uw', type: 'New health proposal', lob: 'health', prod: 'Health Plus', bucket: 'closed', cust: 'Rohit Malhotra', pol: 'Proposal PR-H-77380', channel: 'NxSure website', recv: at(-4, 10, 0), tat: RULES.proposal, by: 'u4', outcome: { t: 'Accepted with loading', st: 'ok', when: at(-1, 11, 10), d: '20% on the proposer for high blood pressure; customer accepted' } },
-].map(x => ({ ...x, lite: true, tatName: x.tat === RULES.reimb ? '15 days from submission' : x.tat === RULES.motorDecide ? '7 days from the last document' : x.tat === RULES.proposal ? '7-day proposal decision' : '7-day service standard' }));
+].map(x => ({ ...x, lite: true, tatName: x.tat === RULES.reimb ? '15 days from submission' : x.mod === 'claims' && x.tat === RULES.motorDecide ? '7 days from the last document' : x.tat === RULES.proposal ? '7-day proposal decision' : '7-day service standard' }));
 
 /* ======================= state ======================= */
 const ALL = [...OPS, ...CLAIMS, ...UW, ...EXTRA];
@@ -2034,7 +2086,8 @@ function allocate() {
 function openNext() { ST.nextMsg = null; const n = allocate(); ST.open = n ? n.id : null; ST.view = 'case'; render(); }
 let nextTimer = null;
 function afterDecision(c, msg) {
-  ST.handled.push({ id: c.id, t: Date.now(), what: msg });
+  const hm = tmTotal(c); if (hm) c.log.push(L(Date.now(), 'Turnaround', `Hands-on time ${clock(hm)}, against a standard of ${Math.round(shtAll(c) / MIN)} minutes`));
+  ST.handled.push({ id: c.id, t: Date.now(), what: msg, ms: hm });
   c.asg = c.bucket === 'work' ? c.asg : null;
   ST.open = null;
   if (!ST.user.sup && ST.avail && queueFor(ST.user).some(x => !x.asg)) {
@@ -2066,6 +2119,7 @@ const kv = (pairs, cls = '') => `<div class="kv ${cls}">${pairs.filter(Boolean).
 function render() {
   const app = $('#app');
   if (!ST.user) { app.innerHTML = loginHtml(); return; }
+  tmSync();
   const u = ST.user, q = queueFor(u), risk = q.filter(c => tatTone(c) === 'bad').length, mine = myOpen(u);
   const refd = ALL.filter(c => c.bucket === 'ref' && c.refTo === u.id).length;
   app.innerHTML = `<header class="top">
@@ -2074,6 +2128,7 @@ function render() {
         <button class="nv ${ST.view === 'case' ? 'on' : ''}" data-act="nav" data-v="case">${ic('inbox')}<span class="t">${u.sup ? 'Approvals' : 'My case'}</span>${u.sup && refd ? `<span class="cnt">${refd}</span>` : mine ? '<span class="cnt">1</span>' : ''}</button>
         <button class="nv ${ST.view === 'search' ? 'on' : ''}" data-act="nav" data-v="search">${ic('search')}<span class="t">Search</span></button>
         <button class="nv ${ST.view === 'queues' ? 'on' : ''}" data-act="nav" data-v="queues">${ic('layers')}<span class="t">Queues</span></button>
+        <button class="nv ${ST.view === 'tms' ? 'on' : ''}" data-act="nav" data-v="tms">${ic('wait')}<span class="t">Turnaround</span>${(() => { const n = ALL.filter(c => c.bucket !== 'closed' && !tPaused(c) && leftMs(c) < 0).length; return n ? `<span class="cnt" style="color:var(--bad)">${n}</span>` : ''; })()}</button>
       </nav>
       <div class="top-r">
         ${u.sup ? '' : `<span class="qchip" data-qchip>Queue <b>${q.filter(c => !c.asg).length}</b>${risk ? ` · <span class="risk">${risk} at risk</span>` : ''}</span>
@@ -2090,6 +2145,7 @@ function mainHtml() {
   if (ST.booting) return `<div class="idle"><div class="in"><div class="spin"></div><h2>Finding your next case</h2><p>Matching your skills to the queue, cashless and nearest deadlines first.</p></div></div>`;
   if (ST.view === 'search') return searchHtml();
   if (ST.view === 'queues') return queuesHtml();
+  if (ST.view === 'tms') return tmsHtml();
   const u = ST.user;
   const nb = ST.nextMsg ? `<div class="nextbar" role="status"><span>${ic('check')} ${esc(ST.nextMsg)} Next case in <b data-count>${Math.max(0, Math.ceil((ST.nextAt - Date.now()) / 1000))}</b> s</span><button class="btn xs" data-act="opennow">Open now</button><button class="btn xs" data-act="pausenext">${ic('pause')}Pause</button></div>` : '';
   if (ST.open) { const c = byId(ST.open); return nb + (c.lite ? liteHtml(c) : caseHtml(c)); }
@@ -2283,13 +2339,13 @@ function caseHtml(c) {
   const claimLeft = () => claimSubs(c).reduce((a, x) => a + x[2].filter(id => c.state.ticks[id] === undefined).length, 0);
   const extra = k => { if (c.mod === 'ops' && k === 2 || c.mod === 'uw' && k === 2) { const n = qOpen(c).length; return n ? `${n} to confirm` : ''; } if (c.mod === 'claims' && k === 1) return c.gate.out.st === 'bad' ? 'Red flags' : c.gate.checks.filter(g => g.st !== 'ok').length ? `${c.gate.checks.filter(g => g.st !== 'ok').length} to note` : 'All passed'; if (c.mod === 'claims' && k === 2) { const n = claimLeft(); return n ? `${n} to confirm` : ''; } return ''; };
   const pend = k => (c.mod !== 'claims' && k === 2 && qOpen(c).length) || (c.mod === 'claims' && k === 2 && claimSubs(c).some(x => x[2].some(id => c.state.ticks[id] === undefined)));
-  const bar = `<nav class="stepbar" aria-label="Steps">${steps.map((t, i) => { const k = i + 1, done = k < s && !pend(k); return `<button class="sb ${k === s ? 'on' : done ? 'done' : k < s ? 'part' : ''}" data-act="step" data-s="${k}" aria-current="${k === s ? 'step' : 'false'}"><span class="n">${done ? ic('check') : k}</span><span class="l"><b>${esc(t)}</b><small>${esc(extra(k) || status(k))}</small></span></button>${k < 3 ? '<span class="sep"></span>' : ''}`; }).join('')}</nav>`;
+  const bar = `<nav class="stepbar" aria-label="Steps">${steps.map((t, i) => { const k = i + 1, done = k < s && !pend(k); return `<button class="sb ${k === s ? 'on' : done ? 'done' : k < s ? 'part' : ''}" data-act="step" data-s="${k}" aria-current="${k === s ? 'step' : 'false'}"><span class="n">${done ? ic('check') : k}</span><span class="l"><b>${esc(t)}</b><small>${esc(extra(k) || status(k))}</small>${tmStepHtml(c, k)}</span></button>${k < 3 ? '<span class="sep"></span>' : ''}`; }).join('')}</nav>`;
   const asg = c.bucket === 'work' && c.asg ? (c.asg === u.id ? 'Assigned to you' : `With ${userById(c.asg).name}`) : c.bucket === 'ref' ? (c.refTo === u.id ? 'Waiting for your approval' : `With ${c.ref.to}`) : BUCKETS[c.bucket].t;
   const body = c.mod === 'ops' ? opsStep(c, s, !mine) : c.mod === 'claims' ? claimStep(c, s, !mine) : uwStep(c, s, !mine);
   return `<div class="case" data-case="${c.id}" data-step="${s}">
     <div class="case-h"><div class="t"><h1>${esc(c.type)} ${chip(LOBS[c.lob], '', lobIc(c.lob))}${chip(esc(c.prod))}</h1>
       <div class="meta"><b>${c.id}</b><span>${esc(name)}</span><span>${esc(c.pol.no)}</span><span>From ${esc(c.channel)}</span></div></div>
-      <div class="r">${c.bucket !== 'closed' ? tatHtml(c) : ''}<div class="asg"><b>${esc(asg)}</b></div>
+      <div class="r">${tmCaseHtml(c)}${c.bucket !== 'closed' ? tatHtml(c) : ''}<div class="asg"><b>${esc(asg)}</b></div>
         ${c.state.inlineDocs ? '' : `<button class="btn xs" data-act="drawer" data-t="docs">${ic('doc')}Documents <span class="mut">${c.docs.length}</span></button>`}<button class="btn xs" data-act="drawer" data-t="policy">${ic('info')}Details</button>${mine && c.bucket === 'work' ? `<button class="btn xs ghost" data-act="release" title="Put it back in the queue">Release</button>` : ''}</div></div>
     ${ro}${bar}
     <div class="cwrap"><div class="cbody">${body}</div>${drawerHtml(c)}</div>
@@ -2301,6 +2357,7 @@ function drawerHtml(c) {
   const t = c.state.drawer; if (!t) return '';
   const tabs = [['docs', 'Documents'], ['policy', 'Policy'], ['cust', 'Customer']];
   if (c.mod === 'ops') tabs.push(['kyc', 'KYC']);
+  if (histOf(c)) tabs.push(['hist', 'History']);
   tabs.push(['log', 'Activity']);
   const p = c.pol;
   let b = '';
@@ -2308,6 +2365,7 @@ function drawerHtml(c) {
   else if (t === 'policy') b = `<div class="dpad">${kv([['Policy', esc(p.no)], ['Plan', esc(p.plan)], p.start ? ['Period', `${fds(p.start)} to ${fd(p.end)}`] : null, p.prem ? ['Premium', `${inr(p.prem)} ${esc(p.premNote || '')}`] : null, ['Insured', esc(p.obj)], p.idv ? ['Cover amount (IDV)', inr(p.idv)] : null, ['Sold through', esc(p.via)]])}${c.mod === 'claims' ? `<div style="margin-top:12px">${coverHtml(c)}</div>` : ''}</div>`;
   else if (t === 'cust') b = `<div class="dpad">${kv([['Name', `${esc(c.cust.name)}<span class="mut sm" style="display:block;font-weight:500">${esc(c.cust.sub)}</span>`], ['Mobile', esc(c.cust.mobile)], ['With NxSure', esc(c.cust.since)], ['Other policies', esc(c.cust.other)], ['Claims', esc(c.cust.claims)]])}${c.lob === 'health' && c.patient ? `<div style="margin-top:12px">${kv([['Patient', `${esc(c.patient.name)}, ${c.patient.age}`], ['Relation', esc(c.patient.rel)], ['Hospital', `${esc(c.hosp.name)}, ${esc(c.hosp.city)}`], ['Treating doctor', esc(c.clin.doctor)]])}</div>` : ''}</div>`;
   else if (t === 'kyc') b = `<div class="dpad">${c.people.map((pp, i) => { const k = c.state.kyc[i]; return `<div class="ds" style="margin-bottom:8px"><div class="ds-h"><b>${esc(pp.name)}</b>${chip(pp.match >= 90 ? `Face match ${pp.match}%` : `Name match ${pp.match}%`, pp.match >= 90 ? 'ok' : 'warn')}</div><div class="sm mut">${esc(pp.role)}</div><div style="margin-top:6px">${kv([['KYC', esc(pp.kyc)], ['Done', fdt(pp.when)], ['Record', esc(pp.id)], ['Last checked', k ? (k === 'run' ? 'Checking…' : 'Just now, still valid') : fdt(pp.when)]])}</div>${isMine(c) ? `<div style="display:flex;gap:6px;margin-top:8px"><button class="btn xs" data-act="kyc" data-i="${i}">${ic('rot')}Check again</button><button class="btn xs" data-act="kyclink" data-i="${i}">${ic('send')}Send a KYC link</button></div>` : ''}</div>`; }).join('')}</div>`;
+  else if (t === 'hist') b = histDrawer(c);
   else if (t === 'log') b = `<div class="dpad"><div class="tl">${c.log.slice().reverse().map(e => `<div class="it"><span class="when">${fdt(e.t)}</span><div><span class="who">${esc(e.who)}</span><div class="out">${esc(e.what)}</div></div></div>`).join('')}</div></div>`;
   return `<aside class="drawer ${t === 'docs' ? 'wide' : ''}" aria-label="Details"><div class="dr-h"><div class="tabs" role="tablist">${tabs.map(([k, l]) => `<button class="tab ${k === t ? 'on' : ''}" data-act="drawer" data-t="${k}" role="tab">${l}</button>`).join('')}</div><button class="ib" data-act="drawer" data-t="" aria-label="Close">${ic('x')}</button></div><div class="dr-b">${b}</div></aside><div class="dr-scrim" data-act="drawer" data-t=""></div>`;
 }
@@ -2350,7 +2408,7 @@ function opsStep(c, s, ro) {
         <div class="line">${ic(flag.length ? 'warn' : 'ok')}<span>${sys.length - flag.length} of ${sys.length} automatic checks passed${flag.length ? `. <b>${flag.length} need${flag.length > 1 ? '' : 's'} a look:</b>` : '.'}</span></div>
         ${flag.length ? `<div class="gates one">${flag.map(sysRow).join('')}</div>` : ''}
         ${more(c, 'sys', 'See all automatic checks', `<div class="gates one">${sys.map(sysRow).join('')}<div class="ckg-h" style="margin-top:6px"><h4>From the customer</h4><span class="x">all done, that's why it reached you</span></div>${(c.checks.cust || []).map(sysRow).join('')}</div>`, sys.length + (c.checks.cust || []).length)}</div>
-      <p class="why">${ic('info')} ${esc(c.why)}</p></div>`;
+      ${histCard(c)}<p class="why">${ic('info')} ${esc(c.why)}</p></div>`;
   }
   if (s === 2) return docStep(c, ro, 'Look at each document and confirm what it shows');
   return decideHtml(c, ro);
@@ -2374,7 +2432,7 @@ function claimStep(c, s, ro) {
       <div class="outcome ${g.out.st}">${stIc(g.out.st)}<div><b>${esc(g.out.t)}</b><p>${esc(g.out.d)}</p></div></div>
       <div class="gates-h"><span>${ok} of ${g.checks.length} passed</span>${g.checks.length - ok ? `<span class="st-warn">${g.checks.length - ok} to note</span>` : ''}</div>
       <div class="gates">${g.checks.map(gateRow).join('')}</div>
-      <p class="why">${ic('info')} ${esc(c.why)}</p></div>`;
+      ${histCard(c)}<p class="why">${ic('info')} ${esc(c.why)}</p></div>`;
   }
   if (s === 2) {
     const subs = claimSubs(c), cur = subs.find(x => x[0] === c.state.sub) || subs[0];
@@ -2430,7 +2488,7 @@ function uwStep(c, s, ro) {
       <div class="flags">${c.triggers.join('')}</div>
       <div class="gates one">${flag.map(r => gateRow({ t: `${r.item}${r.who ? ' · ' + r.who : ''}`, r: `Declared: ${r.dec}. Found: ${r.found}`, st: r.st })).join('')}</div>
       ${more(c, 'dvf', 'See everything that matches', `<div class="gates one">${c.dvf.filter(r => r.st === 'ok').map(r => gateRow({ t: `${r.item}${r.who ? ' · ' + r.who : ''}`, r: `Declared: ${r.dec}. Found: ${r.found}`, st: 'ok' })).join('')}</div>`, c.dvf.filter(r => r.st === 'ok').length)}
-      <p class="why">${ic('info')} ${esc(c.why)}</p></div>`;
+      ${histCard(c)}<p class="why">${ic('info')} ${esc(c.why)}</p></div>`;
   }
   if (s === 2) {
     const subs = [['docs', 'Documents']].concat(c.med ? [['med', 'Medical']] : []).concat(c.damages ? [['dmg', 'Inspection']] : []).concat(c.warranties ? [['risk', 'Risk survey']] : []).concat([['data', 'Data sources']]);
@@ -2583,7 +2641,7 @@ function liteHtml(c) {
   else if (c.bucket === 'ref') body = `<div class="card"><h2>With ${esc(c.ref.to)}</h2><div class="h2s">Sent by ${esc(userById(c.by).name)} on ${fdt(c.ref.when)}</div><p style="margin-top:8px">${esc(c.ref.why)}</p></div>`;
   else if (c.bucket === 'closed') body = `<div class="card"><h2>${esc(c.outcome.t)}</h2><div class="h2s">By ${esc(userById(c.by).name)} on ${fdt(c.outcome.when)}</div><p style="margin-top:8px">${esc(c.outcome.d)}</p></div>`;
   const canRemind = ['cust', 'ir'].includes(c.bucket) && canDo(u, c);
-  return `<div class="case"><div class="case-h"><div class="t"><h1>${esc(c.type)} ${chip(LOBS[c.lob], '', lobIc(c.lob))}${chip(esc(c.prod))}</h1><div class="meta"><b>${c.id}</b><span>${esc(c.pol)}</span><span>${esc(c.cust)}</span><span>From ${esc(c.channel)}</span><span>Received ${fdt(c.recv)}</span></div></div><div class="r">${c.bucket !== 'closed' ? tatHtml(c) : ''}<div class="asg">${bucketChip(c)}</div></div></div>
+  return `<div class="case"><div class="case-h"><div class="t"><h1>${esc(c.type)} ${chip(LOBS[c.lob], '', lobIc(c.lob))}${chip(esc(c.prod))}</h1><div class="meta"><b>${c.id}</b><span>${esc(c.pol)}</span><span>${esc(c.cust)}</span><span>From ${esc(c.channel)}</span><span>Received ${fdt(c.recv)}</span></div></div><div class="r">${tmCaseHtml(c)}${c.bucket !== 'closed' ? tatHtml(c) : ''}<div class="asg">${bucketChip(c)}</div></div></div>
     <div class="page" style="max-width:820px">${body}</div>
     <div class="case-f"><div class="hint">${ic('info')}<span>${esc(BUCKETS[c.bucket].d)}.</span></div><div class="acts"><button class="btn" data-act="nav" data-v="search">${ic('back')}Back to search</button>${canRemind ? `<button class="btn pri" data-act="remind">${ic('bell')}Send a reminder</button>` : ''}</div></div></div>`;
 }
@@ -2846,10 +2904,12 @@ document.addEventListener('click', e => {
     case 'uwdecline': uwDecline(c); break;
     case 'supapprove': supApprove(c); break;
     case 'sendback': sendBack(c); break;
+    case 'tmsf': ST.tmsf = ST.tmsf || { mod: 'all', risk: false }; ST.tmsf[el.dataset.k] = el.dataset.v; render(); break;
   }
 });
 document.addEventListener('change', e => {
   const el = e.target;
+  if (el.matches('[data-act=tmsrisk]')) { ST.tmsf = ST.tmsf || { mod: 'all', risk: false }; ST.tmsf.risk = el.checked; render(); return; }
   if (el.matches('[data-act=marks]')) { const c = byId(ST.open); c.state.marks = el.checked; render(); }
   if (el.id === 'fmod') { ST.search.mod = el.value; render(); }
   if (el.id === 'flob') { ST.search.lob = el.value; render(); }
@@ -2872,6 +2932,309 @@ function adjModal(c, i) {
 // open the documents on the first one that still has something to confirm
 function firstOpenDoc(c) { const d = c.docs[c.state.doc]; if (d && qList(c).some(q => q.doc === d.id && c.state.ticks[q.id] === undefined)) return; const i = c.docs.findIndex(x => qList(c).some(q => q.doc === x.id && c.state.ticks[q.id] === undefined)); if (i >= 0) { c.state.doc = i; c.state.zoom = null; c.state.rot = 0; } }
 
+/* ======================= history: what earlier data says about this case =======================
+   The case screen shows only the few signals that matter for the decision. Everything else (every policy, claim,
+   proposal, service request and outside source) stays in the History drawer, and is fetched only when it's opened.
+   Sources: our own records, IIB (policies and claims across insurers), VAHAN, CKYC, credit bureau, e-Challan,
+   Sarathi, ROHINI, GST and the Account Aggregator, each only where the case needs it. Sample data. */
+const H_ = (st, t, d) => ({ st, t, d });
+// [insurer, what, when, status, note]
+const HIST = {
+  /* ---------------- operations ---------------- */
+  'SR-482193': {
+    key: [H_('ok', 'Seller: with us since 2024, no claims', 'Car policy and Health Plus, both renewed on time. 3 claim-free years on this car, so the 35% bonus is right.'), H_('ok', 'Buyer: claim-free, not on the IIB caution list', 'Shreya Kapoor has had a two-wheeler policy with Kaveri General since 2022, no claims.'), H_('info', 'First change of owner on this car', 'Bought new in Mar 2022. VAHAN shows owner serial 2 since 23 Oct 2026.')],
+    hint: 'Nothing in the history changes the decision. Approve the transfer and the bonus recovery as worked out.',
+    other: [['NxSure', 'No other requests open on this car or for either person', '', 'ok']],
+    pols: [['NxSure', 'Car package, KA-03-MN-4521', 'Jun 2026 to Jun 2027', 'In force', 'This policy'], ['NxSure', 'Car package, KA-03-MN-4521', 'Jun 2024 to Jun 2026', 'Renewed', 'No claims'], ['Unity General', 'Car package, from the dealer', 'Mar 2022 to Jun 2024', 'Moved to NxSure', 'No claims'], ['NxSure', 'Health Plus, Rahul Menon', 'Since Feb 2025', 'In force', 'No claims'], ['Kaveri General', 'Two-wheeler, Shreya Kapoor (buyer)', 'Since 2022', 'In force', 'No claims']],
+    clm: [],
+    svc: [['Aug 2025', 'Address change', 'Done the same day'], ['Jun 2026', 'Renewal', 'Online, before the due date']],
+    ext: [{ src: 'IIB, motor', st: 'ok', lines: ['No claims on KA-03-MN-4521 with any insurer', 'No other policy on the car now', 'Neither person is on the caution list'] }, { src: 'VAHAN', st: 'ok', lines: ['Registered Mar 2022', 'Owner serial 2, Shreya Kapoor, since 23 Oct 2026', 'Financier: nil'] }, { src: 'CKYC', st: 'ok', lines: ['Seller\'s record valid, last updated 2024', 'Buyer\'s record created 3 Nov 2026 from Aadhaar'] }],
+  },
+  'SR-482207': {
+    key: [H_('ok', 'First request on this policy', 'With us since 2025. No earlier changes, claims or complaints.'), H_('ok', 'Her earlier entries matched the documents', 'At purchase, the previous policy and bonus she typed matched what we read from the document.'), H_('ok', 'No claims on this car', 'IIB: no claims on MH-12-RT-8834 with any insurer since 2021.')],
+    hint: 'A clean record and a first request: the ₹3,500 gap looks like a slip, not an attempt to raise the value. Take the invoice value, as suggested.',
+    other: [],
+    pols: [['NxSure', 'Car package, MH-12-RT-8834', 'Since 2025', 'In force', 'This policy, renewed once'], ['Unity General', 'Car package', '2021 to 2025', 'Moved to NxSure', 'No claims, bonus carried over']],
+    clm: [],
+    svc: [],
+    ext: [{ src: 'IIB, motor', st: 'ok', lines: ['Policies on this car since 2021: Unity General, then NxSure', 'No claims with any insurer'] }, { src: 'VAHAN', st: 'ok', lines: ['Fuel changed to PETROL/CNG on 28 Oct 2026', 'First owner, registered 2021'] }],
+  },
+  'SR-482236': {
+    key: [H_('info', 'One claim, in 2024, settled', 'Accident repair of ₹14,200, paid to the garage in Sep 2024. Kaveri Bank was on the policy then too.'), H_('warn', 'VAHAN still shows the loan', 'The bank\'s NOC is dated 11 Oct 2026. Until the RTO updates the RC, a claim payment would still need Kaveri Bank\'s name.'), H_('ok', 'Renewed on time for 3 years', 'With us since 2023. No earlier requests or complaints.')],
+    hint: 'His record is clean, and the NOC is genuine. Raise the IR for the RTO-updated RC as suggested; nothing in the history calls for more.',
+    other: [],
+    pols: [['NxSure', 'Two-wheeler package, KA-51-HX-2207', 'Since 2023', 'In force', 'This policy, renewed 3 times']],
+    clm: [['Sep 2024', 'NxSure', 'Accident: front panel and brake lever', '₹14,200', 'Paid to the garage']],
+    svc: [],
+    ext: [{ src: 'VAHAN', st: 'warn', lines: ['Hypothecated to Kaveri Bank, entered Jan 2023', 'No change of owner'] }, { src: 'IIB, motor', st: 'ok', lines: ['Only the 2024 claim, with NxSure'] }],
+  },
+  'SR-482251': {
+    key: [H_('info', 'Name changed on Aadhaar in Sep 2026', 'CKYC was updated from Aadhaar to Pooja Verma on 14 Sep 2026. PAN still has Pooja Sharma.'), H_('ok', 'Same person throughout', 'Date of birth, mobile and face all match the purchase in Feb 2026.'), H_('ok', 'No claims, no earlier requests', 'Her earlier group cover through her employer, 2022 to 2025, had no claims either.')],
+    hint: 'The history backs the change. Approve it and keep Pooja Sharma as an earlier name, so claims paid to her PAN-linked account still match.',
+    other: [],
+    pols: [['NxSure', 'Health Plus, family floater, Pooja and Nikhil', 'Since Feb 2026', 'In force', 'This policy'], ['Brightline group cover', 'Employer group health', '2022 to 2025', 'Ended with the job', 'No claims']],
+    clm: [],
+    svc: [],
+    ext: [{ src: 'CKYC', st: 'info', lines: ['Name updated to Pooja Verma on 14 Sep 2026, from Aadhaar'] }, { src: 'PAN', st: 'warn', lines: ['Name: Pooja Sharma'] }, { src: 'IIB, health', st: 'ok', lines: ['Group cover 2022 to 2025, no claims', 'No other individual policy'] }],
+  },
+  'SR-482265': {
+    key: [H_('ok', 'Maternity claim settled in Sep, for this birth', '₹68,400 paid to Ankur Hospital. The dates and the hospital match the birth certificate.'), H_('ok', 'Added within the plan\'s 90 days', 'Day 36 after birth. No earlier attempt to add the baby.'), H_('ok', 'Both parents covered without a gap since 2025', 'Car policy with us too, no claims.')],
+    hint: 'The maternity claim confirms the birth and the hospital, so the NICU stay needs no more checking. Approve.',
+    other: [],
+    pols: [['NxSure', 'Health Plus, family floater, Neha and Amit', 'Since 2025', 'In force', 'This policy'], ['NxSure', 'Car package', 'Since 2025', 'In force', 'No claims']],
+    clm: [['Sep 2026', 'NxSure', 'Maternity, Neha Joshi, Ankur Hospital', '₹68,400', 'Settled 29 Sep']],
+    svc: [],
+    ext: [{ src: 'IIB, health', st: 'ok', lines: ['Only the maternity claim, with NxSure', 'No other policy for the parents'] }],
+  },
+  'SR-482278': {
+    key: [H_('ok', 'No claims since buying in Apr 2026', 'So the refund is for the days left, with no claims to set off.'), H_('info', 'New employer cover found on IIB', 'Group health with his new employer from 15 Oct 2026, ₹5 lakh, family. It matches the reason he gave.'), H_('warn', 'Bought health cover with us once before', 'An Essential policy in 2024 was cancelled after 5 months when he joined his last employer.')],
+    hint: 'This is the second time he has moved to an employer\'s cover. Approve the refund, and set a reminder for a top-up or personal cover offer if he changes jobs again; that cover ends with the job.',
+    other: [['IIB', 'Group health, new employer, from 15 Oct 2026', '₹5 lakh, family', 'info']],
+    pols: [['NxSure', 'Health Plus, family floater', 'Apr 2026 to Apr 2027', 'Cancelling', 'This policy'], ['NxSure', 'Health Essential, individual', 'Jan to Jun 2024', 'Cancelled', 'Moved to employer cover']],
+    clm: [],
+    svc: [['Jun 2024', 'Cancellation, Essential policy', 'Refund for the days left']],
+    pay: ['Premium paid by UPI from Northbridge Bank •••• 4471', 'Same account checked with ₹1, name matches'],
+    ext: [{ src: 'IIB, health', st: 'info', lines: ['Group cover with his new employer from 15 Oct 2026', 'No claims on any policy'] }, { src: 'Bank account check', st: 'ok', lines: ['Northbridge Bank •••• 4471, in Kiran Desai\'s name'] }],
+  },
+  'SR-482290': {
+    key: [H_('ok', 'Double insurance confirmed on IIB', 'Arcadia General covers TS-09-FK-6612 from 16 Oct 2026, through the same dealer.'), H_('warn', 'The dealer\'s agent has 2 other double-insurance cancellations this year', 'Both were cars insured twice at delivery. Refunds went to the customers after bank details were collected.'), H_('ok', 'No claims on either policy', 'Nothing reported on IIB for this car.')],
+    hint: 'The pattern sits with the dealer\'s agent, not the customer. Raise the IR for his bank details, and flag the agent to the channel team so cars aren\'t insured twice at delivery.',
+    other: [['IIB', 'Arcadia General, car package, TS-09-FK-6612', 'From 16 Oct 2026', 'warn']],
+    pols: [['NxSure', 'Car package, TS-09-FK-6612', 'Oct 2026 to Oct 2027', 'Cancelling', 'This policy, through the dealer'], ['Arcadia General', 'Car package, same car', 'From 16 Oct 2026', 'In force', 'Bought at delivery']],
+    clm: [],
+    svc: [],
+    pay: ['Premium paid from the agent\'s float, not the customer\'s account', 'No checked bank account on file'],
+    ext: [{ src: 'IIB, motor', st: 'warn', lines: ['2 policies on this car from Oct 2026', 'No claims'] }, { src: 'Agent record', st: 'warn', lines: ['3 double-insurance cancellations this year, including this one', 'All from deliveries at the same dealer'] }, { src: 'VAHAN', st: 'ok', lines: ['New car, registered Oct 2026', 'Loan: Tristar Bank'] }],
+  },
+  'SR-482301': {
+    key: [H_('info', 'Building cover was ₹25 lakh at purchase', 'Matched the rebuild cost then. Nothing has changed in the flat since.'), H_('info', 'Home loan taken in Oct 2026', 'Credit bureau shows a new home loan with Unity Bank, ₹48 lakh. Banks often ask for cover equal to the loan, not the rebuild cost.'), H_('ok', 'No claims, Health Essential with us too', 'With us since 2026.')],
+    hint: 'The ₹55 lakh likely comes from the bank\'s loan form, not the rebuild cost. Approve ₹27,60,000 as suggested, and send the rebuild note the bank can accept.',
+    other: [],
+    pols: [['NxSure', 'Home insurance, Essential', 'Since 2026', 'In force', 'This policy'], ['NxSure', 'Health Essential', 'Since 2026', 'In force', 'No claims']],
+    clm: [],
+    svc: [],
+    ext: [{ src: 'Credit bureau', st: 'info', lines: ['Home loan with Unity Bank, Oct 2026, ₹48 lakh', 'No defaults'] }, { src: 'Property records', st: 'ok', lines: ['Flat A-702, 1,150 sq ft carpet, registered to Aditi Kulkarni'] }],
+  },
+  /* ---------------- claims ---------------- */
+  'CL-H-260931': {
+    key: [H_('ok', 'Continuous cover since 2023, no claims', '3 renewals on time, so every waiting period is over, including 24 months for gall bladder surgery.'), H_('ok', 'Nothing earlier for gall stones', 'IIB, our claims and the AA show no earlier treatment for Sunita. Before 2023 she had group cover through Mohan\'s employer, no claims.'), H_('ok', 'Hospital: steady record with us', 'Lakeview Multispeciality: 41 cashless claims in 12 months, none queried after audit.')],
+    hint: 'The history supports a clean approval at the agreed package.',
+    other: [],
+    pols: [['NxSure', 'Health Plus, family floater, Mohan and Sunita', 'Since Sep 2023', 'In force', 'This policy, renewed 3 times'], ['Employer group cover', 'Group health, Mohan Rao', '2015 to 2023', 'Ended at retirement', 'No claims'], ['NxSure', 'Car package', 'Since 2024', 'In force', 'No claims']],
+    clm: [],
+    ext: [{ src: 'IIB, health', st: 'ok', lines: ['No claims for Sunita or Mohan with any insurer', 'No other health policy in force'] }, { src: 'ROHINI', st: 'ok', lines: ['Lakeview Multispeciality, registered and active', 'NABH accredited'] }, { src: 'Hospital record with us', st: 'ok', lines: ['41 cashless claims in 12 months', 'Average stay for gall bladder surgery: 3 days, in line with others'] }],
+  },
+  'CL-H-260918': {
+    key: [H_('ok', 'Cover without a gap since 2024', 'First claim. Pneumonia is a new illness, so no waiting period applies.'), H_('info', 'Plan limits were explained at purchase', 'The welcome call in 2024 covered the ₹5,000 room limit and the 20% co-pay from 61. The recording is on file.'), H_('ok', 'Hospital billing is usually in line', 'Sanjeevani Hospital: 2 of its last 30 bills with us had deductions for room category, none for other items.')],
+    hint: 'History is clean. The deductions are the plan limits he was told about, so approve the final bill as worked out.',
+    other: [],
+    pols: [['NxSure', 'Health Essential, individual', 'Since Jul 2024', 'In force', 'This policy, renewed twice']],
+    clm: [['Now', 'NxSure', 'Pre-authorisation for this stay', '₹80,000', 'Approved at admission']],
+    ext: [{ src: 'IIB, health', st: 'ok', lines: ['No earlier claims with any insurer', 'No other policy in force'] }, { src: 'ROHINI', st: 'ok', lines: ['Sanjeevani Hospital, registered and active'] }],
+  },
+  'CL-H-260877': {
+    key: [H_('bad', 'Bank account used on 2 other claims', 'Kaveri Bank •••• 7718 received payouts on 2 claims with Arcadia General in 2026, for different people.'), H_('bad', 'Hospital on the IIB caution list', 'Shree Sai Nursing Home: flagged in 2025 after inflated bills on 3 claims with other insurers.'), H_('warn', 'New policy, no earlier cover', 'Bought 50 days ago through an agent with 3 early claims this year. No earlier health policy on IIB.')],
+    hint: 'The history adds weight to the red flags, but none of it proves this claim is false. Send it for field investigation; don\'t decline on history.',
+    other: [],
+    pols: [['NxSure', 'Health Plus, individual', 'Since Aug 2026', 'In force', 'This policy, day 50']],
+    clm: [['Now', 'NxSure', 'Gastroenteritis, Shree Sai Nursing Home', '₹96,400', 'Under review']],
+    ext: [{ src: 'IIB, health', st: 'bad', lines: ['Account •••• 7718 paid on 2 Arcadia General claims in 2026', 'Hospital on the caution list since 2025', 'No earlier policy for Rajesh Yadav'] }, { src: 'ROHINI', st: 'warn', lines: ['Registered, 18 beds', 'Not in our network'] }, { src: 'GST', st: 'bad', lines: ['Pharmacy bill 2: GSTIN doesn\'t exist'] }, { src: 'Agent record', st: 'warn', lines: ['3 claims this year within 60 days of purchase'] }],
+  },
+  'CL-M-260455': {
+    key: [H_('ok', 'No claims in 3 years', 'With us since 2023, renewed on time. The 25% bonus is right.'), H_('ok', 'No earlier damage to these parts', 'The rear bumper and boot weren\'t in any earlier claim or in the purchase inspection photos.'), H_('ok', 'Garage bills usually match the survey', 'Kothrud Motors: 94% of its assessed amounts in 12 months were within 5% of the estimate.')],
+    hint: 'A clean history. Approve as assessed, and recover from the other driver\'s insurer.',
+    other: [],
+    pols: [['NxSure', 'Car package, MH-14-JK-3390', 'Since Jun 2023', 'In force', 'This policy, renewed 3 times'], ['NxSure', 'Health Plus', 'Since 2024', 'In force', 'No claims']],
+    clm: [],
+    ext: [{ src: 'IIB, motor', st: 'ok', lines: ['No claims on MH-14-JK-3390 with any insurer', 'The other car, MH-12-PL-7731, insured with Unity General'] }, { src: 'Sarathi', st: 'ok', lines: ['Driving licence valid till 2039, no suspensions'] }, { src: 'e-Challan', st: 'ok', lines: ['No fines in 2 years'] }],
+  },
+  'CL-M-260462': {
+    key: [H_('warn', 'Policy bought 23 days before the theft', 'After a 4-month gap with no cover. The investigation explains it: he bought the bike second-hand in July.'), H_('ok', 'Not claimed elsewhere', 'IIB shows no theft claim on KA-05-KS-9124 with another insurer, and no new policy on it since the theft.'), H_('ok', 'Nothing on the bike since the theft', 'No e-Challan fines, no FASTag or parking records.')],
+    hint: 'The early claim is explained by the purchase date and the CCTV. Settle at the cover amount.',
+    other: [],
+    pols: [['NxSure', 'Two-wheeler package, KA-05-KS-9124', 'Since Aug 2026', 'In force', 'Ends on settlement'], ['Kaveri General', 'Same bike, earlier owner', '2023 to Apr 2026', 'Lapsed', 'No claims']],
+    clm: [['Now', 'NxSure', 'Theft of the bike', '₹1,73,900', 'Under review']],
+    ext: [{ src: 'IIB, motor', st: 'ok', lines: ['No other theft claim on the bike', 'Earlier owner\'s policy lapsed Apr 2026'] }, { src: 'VAHAN', st: 'ok', lines: ['Transferred to Arun Prakash on 18 Jul 2026', 'Owner serial 2'] }, { src: 'e-Challan', st: 'ok', lines: ['No fines since the theft'] }],
+  },
+  'CL-P-260021': {
+    key: [H_('warn', 'Sales fell in the 6 months before the fire', 'GST returns show turnover down 28% on last year. The fire brigade still confirms an electrical cause.'), H_('ok', 'No earlier claims', 'With us since 2025; no claims with the earlier insurer either.'), H_('info', 'Stock cover not raised with the season', 'Stock at risk rises before festivals. The cover stayed at ₹25 lakh since purchase.')],
+    hint: 'The history explains the underinsurance; it doesn\'t change the cause. Apply the average clause on stock, as suggested, and offer a seasonal stock top-up at renewal.',
+    other: [],
+    pols: [['NxSure', 'Bharat Sookshma Udyam Suraksha', 'Since Jun 2025', 'In force', 'This policy, renewed once'], ['Unity General', 'Shop policy', '2021 to 2025', 'Moved to NxSure', 'No claims'], ['NxSure', 'Health, shop owner', 'Since 2025', 'In force', 'No claims']],
+    clm: [['Now', 'NxSure', 'Fire, stock and fittings', '₹9,30,000', 'Under review']],
+    ext: [{ src: 'GST', st: 'warn', lines: ['Turnover down 28% over the last 6 months', 'Returns filed on time'] }, { src: 'Fire brigade report', st: 'ok', lines: ['Short circuit at the main switchboard', 'No sign of deliberate fire'] }, { src: 'Credit bureau', st: 'warn', lines: ['Working capital loan, one payment 30 days late in Aug 2026'] }],
+  },
+  /* ---------------- underwriting ---------------- */
+  'PR-H-77412': {
+    key: [H_('bad', 'Cataract surgery in 2024 on IIB, not declared', '₹62,000 claim with Arcadia General for Vivek. He mentioned it on the video exam.'), H_('warn', 'Earlier health cover lapsed, not ported', 'Arcadia General, 2021 to Jul 2025. A gap of 15 months, so no waiting-period credit.'), H_('ok', 'No other proposals right now', 'Nothing in flight with us or on IIB. Car policy with us since 2024, no claims.')],
+    hint: 'The lapse means no continuity credit, and the cataract was disclosed on the call. Record it as declared and load for diabetes, as suggested.',
+    other: [['NxSure', 'No other proposals', '', 'ok'], ['IIB', 'No health policy in force with another insurer', '', 'ok']],
+    pols: [['Arcadia General', 'Health, family floater, ₹10 lakh', '2021 to Jul 2025', 'Lapsed, not ported', '1 claim'], ['NxSure', 'Car package', 'Since 2024', 'In force', 'No claims']],
+    clm: [['2024', 'Arcadia General', 'Cataract surgery, left eye, Vivek', '₹62,000', 'Paid']],
+    ext: [{ src: 'Face health scan', st: 'ok', lines: ['In the journey, 30 seconds: pulse 84, breathing 17 a minute, rhythm steady', 'Reading quality good. Seen and confirmed by Vivek'] }, { src: 'IIB, health', st: 'bad', lines: ['Arcadia General, 2021 to Jul 2025, lapsed', 'Claim in 2024: cataract surgery, ₹62,000', 'Not on the caution list'] }, { src: 'Credit bureau', st: 'ok', lines: ['Score 781, home loan paid on time'] }, { src: 'Account Aggregator', st: 'ok', lines: ['Pharmacy about ₹2,600 a month, steady', 'Lab tests every 3 months'] }],
+  },
+  'PR-H-77436': {
+    key: [H_('ok', 'No earlier health claims anywhere', 'IIB has no health policy for Imran before this, and no caution flags.'), H_('ok', 'No other proposals right now', 'Nothing in flight with us or elsewhere.'), H_('info', 'Prosthesis since 2015, steady', 'One prosthetic clinic visit in 12 months (Apr 2026, ₹4,200). No hospital bills.')],
+    hint: 'Nothing in the history adds risk. Accept on the medical evidence, at standard terms.',
+    other: [['NxSure', 'No other proposals', '', 'ok']],
+    pols: [['Employer group cover', 'Group health', '2019 to 2024', 'Ended with the job', 'No claims']],
+    clm: [],
+    ext: [{ src: 'Face health scan', st: 'ok', lines: ['In the journey, 30 seconds: pulse 68, breathing 14 a minute, rhythm steady', 'Reading quality good. Seen and confirmed by Imran'] }, { src: 'IIB, health', st: 'ok', lines: ['Group cover 2019 to 2024, no claims', 'Not on the caution list'] }, { src: 'Account Aggregator', st: 'ok', lines: ['Salary every month', 'No hospital or regular pharmacy spends'] }],
+  },
+  'PR-H-77450': {
+    key: [H_('bad', 'A hospital bill of ₹1,82,400 in Feb 2026', 'Paid to Citycare Hospital, Jaipur in 3 parts. Not declared, and no insurer was claimed on IIB.'), H_('bad', 'Proposed with another insurer 3 weeks ago', 'IIB: a proposal with Arcadia General was declined on 14 Oct 2026 after a medical test.'), H_('warn', 'The agent\'s proposals: 2 face mismatches this year', 'Both on video exams. One was later withdrawn.')],
+    hint: 'A recent decline elsewhere, an undeclared hospital bill and a face mismatch together: ask for an in-person medical with original ID, and report the agent pattern to the distribution risk team.',
+    other: [['IIB', 'Arcadia General, health proposal', 'Declined 14 Oct 2026', 'bad'], ['NxSure', 'No other proposals', '', 'ok']],
+    pols: [],
+    clm: [],
+    ext: [{ src: 'Face health scan', st: 'warn', lines: ['Cut short in the journey: the face left the frame twice', 'Taken again on the video exam: pulse 96, quality fair'] }, { src: 'IIB, health', st: 'bad', lines: ['Proposal with Arcadia General declined on 14 Oct 2026', 'No earlier health policy'] }, { src: 'Account Aggregator', st: 'bad', lines: ['₹1,82,400 to Citycare Hospital, Feb 2026', 'Pharmacy about ₹3,900 a month since Mar 2026'] }, { src: 'Agent record', st: 'warn', lines: ['2 other proposals this year with a face mismatch', '1 early claim in 2026'] }],
+  },
+  'PR-M-55120': {
+    key: [H_('bad', 'Claim in Aug 2025 on the last policy', '₹48,000 for the front bumper and grille with Arcadia General. So the 25% bonus claimed isn\'t due.'), H_('warn', 'No cover for 140 days', 'The last policy ended 18 Jun 2026. 2 speeding fines on e-Challan in that time show the car was in use.'), H_('ok', 'No other proposals for this car', 'IIB shows no other insurer quoting or covering it now.')],
+    hint: 'History confirms the bonus goes to 0% and supports the conditions suggested. Keep zero depreciation out until a physical inspection.',
+    other: [['IIB', 'No other policy or proposal on DL-3C-CY-4418', '', 'ok']],
+    pols: [['Arcadia General', 'Car package, DL-3C-CY-4418', 'Apr 2023 to Jun 2026', 'Ended', '1 claim']],
+    clm: [['Aug 2025', 'Arcadia General', 'Front bumper and grille', '₹48,000', 'Paid']],
+    ext: [{ src: 'IIB, motor', st: 'bad', lines: ['Policy ended 18 Jun 2026', 'Claim Aug 2025, ₹48,000'] }, { src: 'VAHAN', st: 'ok', lines: ['First owner, registered Apr 2023', 'Loan: Lotus Finance'] }, { src: 'e-Challan', st: 'warn', lines: ['2 unpaid speeding fines, 2026'] }],
+  },
+  'PR-S-30218': {
+    key: [H_('info', 'One claim in 5 years', '₹4.2 lakh in 2024, a short circuit in the office area, with the earlier insurer.'), H_('warn', 'The hydrant was declared to the earlier insurer too', 'Their 2023 survey also noted no hydrant. It was never fitted.'), H_('ok', 'Business steady, GST filed on time', 'Turnover ₹37.6 crore, steady month to month.')],
+    hint: 'A second short circuit risk and a hydrant declared twice but never fitted: make the electrical and hydrant warranties firm, with the rate suggested.',
+    other: [],
+    pols: [['Unity General', 'Fire and allied perils, Bhosari warehouse', '2019 to 2026', 'Ending', '1 claim']],
+    clm: [['2024', 'Unity General', 'Short circuit, office area', '₹4,20,000', 'Paid']],
+    ext: [{ src: 'GST', st: 'ok', lines: ['Turnover ₹37.6 crore, steady', 'Filed on time'] }, { src: 'Earlier insurer\'s survey, 2023', st: 'warn', lines: ['No hydrant system', 'Electrical panel near the store'] }, { src: 'MCA', st: 'ok', lines: ['Private limited company since 2009', 'Accounts filed on time'] }],
+  },
+};
+const histOf = c => HIST[c.id] || null;
+const H_ICON = { ok: 'ok', warn: 'warn', bad: 'bad', info: 'info' };
+// on the case screen: the signals that matter, and a way into everything else
+function histCard(c) {
+  const h = histOf(c); if (!h) return '';
+  const n = { pols: h.pols.length, clm: h.clm.filter(x => x[0] !== 'Now').length, other: (h.other || []).filter(x => x[3] !== 'ok').length };
+  const srcs = [...new Set(h.ext.map(e => e.src.split(',')[0]))];
+  return `<section class="hist"><div class="hist-h"><h3>${ic('rot')}What the history says</h3><span class="mut sm">From ${esc(srcs.concat(['our records']).join(', '))}</span></div>
+    <div class="hist-k">${h.key.map(k => `<div class="hk ${k.st}">${stIc(k.st)}<div><b>${esc(k.t)}</b><p>${esc(k.d)}</p></div></div>`).join('')}</div>
+    ${h.hint ? `<p class="hist-hint">${ic('spark')}<span>${esc(h.hint)}</span></p>` : ''}
+    <div class="hist-f"><span>${plural(n.pols, 'policy', 'policies')} · ${n.clm ? plural(n.clm, 'earlier claim') : 'no earlier claims'}${c.mod === 'uw' || n.other ? ` · ${n.other ? plural(n.other, 'other proposal or cover', 'other proposals or covers') : 'no other proposals'}` : ''}${h.svc && h.svc.length ? ` · ${plural(h.svc.length, 'earlier request')}` : ''}</span><button class="btn xs" data-act="drawer" data-t="hist">${ic('layers')}See the full history</button></div></section>`;
+}
+// the drawer: fetched when opened, not before
+function histDrawer(c) {
+  const h = histOf(c); if (!h) return '<div class="dpad mut">No history for this case.</div>';
+  const S = c.state;
+  if (!S.histAt) {
+    if (!S.histLoading) { S.histLoading = true; setTimeout(() => { S.histLoading = false; S.histAt = Date.now(); c.log.push(L(Date.now(), ST.user ? ST.user.name : 'System', `Opened the full history: ${h.ext.map(e => e.src).join(', ')}`)); if (ST.open === c.id && S.drawer === 'hist') render(); }, 900); }
+    return `<div class="dpad"><div class="hist-load"><span class="spin"></span><div><b>Fetching the history</b><p class="mut sm">${esc(h.ext.map(e => e.src).concat(['our records']).join(', '))}</p></div></div></div>`;
+  }
+  const st = x => chip(esc(x), /in force|renewed|paid|settled|done|approved/i.test(x) ? 'ok' : /lapsed|declined|cancel|ended/i.test(x) ? 'warn' : /review/i.test(x) ? 'info' : '');
+  const other = (h.other || []);
+  return `<div class="dpad hist-d"><p class="mut sm">Fetched ${fdt(S.histAt)}. Only what's needed for this case is fetched, and each look is logged.</p>
+    ${other.length || c.mod === 'uw' ? sec('Other proposals and cover now', other.length ? `<div class="gates one">${other.map(o => gateRow({ t: `${o[0]}: ${o[1]}`, r: o[2] || '', st: o[3] })).join('')}</div>` : '<p class="mut sm">None found.</p>') : ''}
+    ${sec('Policies', h.pols.length ? `<div class="res"><table class="tbl"><thead><tr><th>Insurer</th><th>Cover</th><th>Period</th><th>Status</th></tr></thead><tbody>${h.pols.map(p => `<tr><td class="b">${esc(p[0])}</td><td>${esc(p[1])}${p[4] ? `<div class="sm mut">${esc(p[4])}</div>` : ''}</td><td class="nowrap">${esc(p[2])}</td><td>${st(p[3])}</td></tr>`).join('')}</tbody></table></div>` : '<p class="mut sm">No earlier policies found, with us or on IIB.</p>', plural(h.pols.length, 'policy', 'policies'))}
+    ${sec('Claims', h.clm.length ? `<div class="res"><table class="tbl"><thead><tr><th>When</th><th>Insurer</th><th>What</th><th class="num">Amount</th><th>Status</th></tr></thead><tbody>${h.clm.map(x => `<tr><td class="nowrap">${esc(x[0])}</td><td>${esc(x[1])}</td><td>${esc(x[2])}</td><td class="num">${esc(x[3])}</td><td>${st(x[4])}</td></tr>`).join('')}</tbody></table></div>` : '<p class="mut sm">No claims found, with us or on IIB.</p>')}
+    ${h.svc ? sec('Earlier requests and complaints', h.svc.length ? `<div class="tl">${h.svc.map(x => `<div class="it"><span class="when">${esc(x[0])}</span><div><span class="who">${esc(x[1])}</span><div class="out">${esc(x[2])}</div></div></div>`).join('')}</div>` : '<p class="mut sm">None. No complaints on record.</p>') : ''}
+    ${h.pay ? sec('Payments', `<ul class="ul">${h.pay.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`) : ''}
+    ${sec('Outside sources', `<div class="gates one">${h.ext.map(e => `<div class="gate ${e.st}">${stIc(e.st)}<div><div class="tt">${esc(e.src)}</div><ul class="ul sm">${e.lines.map(l => `<li>${esc(l)}</li>`).join('')}</ul></div><span></span></div>`).join('')}</div>`)}
+  </div>`;
+}
+
+/* ======================= turnaround: a clock on every case and every activity =======================
+   Two clocks run on each case. The turnaround clock is the service standard the customer is owed (7 days, 1 hour,
+   and so on); it runs from when the case reached us, and pauses while we wait on the customer. The activity clock
+   is the time a person spends hands-on, step by step, against a standard handling time. At 80% of the turnaround
+   the supervisor is alerted; past 100% it counts as a breach. The step standards are NxSure's own targets. */
+const SHT = { ops: [4, 6, 3], claims: [3, 10, 4], uw: [5, 12, 5] };   // minutes a step should take, hands-on
+const ESC_AT = 0.8;
+const shtMs = (c, s) => SHT[c.mod][s - 1] * MIN;
+const shtAll = c => SHT[c.mod].reduce((a, x) => a + x, 0) * MIN;
+const tmOf = c => { const S = c.state; S.tm = S.tm || {}; return S; };
+const tmCan = c => !!c && !c.lite && ST.user && isMine(c) && c.bucket === 'work' && ST.view === 'case' && !document.hidden;
+// starts and stops the activity clock: only the step on screen, on the case that's yours, while the page is in view
+function tmSync() {
+  const c = ST.open && byId(ST.open), now = Date.now();
+  ALL.forEach(x => { if (x.lite || !x.state) return; const S = tmOf(x), r = S.run; if (r && (x !== c || !tmCan(x) || r.s !== (S.step || 1))) { S.tm[r.s] = (S.tm[r.s] || 0) + now - r.t0; S.run = null; } });
+  if (c && tmCan(c) && !tmOf(c).run) c.state.run = { s: c.state.step || 1, t0: now };
+}
+const tmGet = (c, s) => { const S = tmOf(c); return (S.tm[s] || 0) + (S.run && S.run.s === s ? Date.now() - S.run.t0 : 0); };
+const tmTotal = c => (c.lite ? 0 : [1, 2, 3].reduce((a, s) => a + tmGet(c, s), 0));
+const clock = ms => { ms = Math.max(0, ms); const h = Math.floor(ms / HR), m = Math.floor(ms % HR / MIN), s = Math.floor(ms % MIN / 1000); return h ? `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}` : `${m}:${String(s).padStart(2, '0')}`; };
+const tmTone = (ms, std) => ms > std ? 'bad' : ms > std * 0.8 ? 'warn' : 'ok';
+// in the step bar: the time on each step, live on the one on screen
+function tmStepHtml(c, k) {
+  if (c.lite) return '';
+  const ms = tmGet(c, k), on = (c.state.step || 1) === k && !!c.state.run, std = shtMs(c, k);
+  if (!ms && !on) return `<span class="tmc" data-tm="${c.id}:${k}">${SHT[c.mod][k - 1]} min</span>`;
+  return `<span class="tmc ${tmTone(ms, std)} ${on ? 'run' : ''}" data-tm="${c.id}:${k}">${on ? '<i></i>' : ''}${clock(ms)}<small> / ${SHT[c.mod][k - 1]} min</small></span>`;
+}
+// in the case header: hands-on time on the whole case
+function tmCaseHtml(c) {
+  if (c.lite) return '';
+  const ms = tmTotal(c), std = shtAll(c), on = !!c.state.run;
+  return `<div class="tmcase ${tmTone(ms, std)}" data-tmc="${c.id}" title="Hands-on time on this case, against the standard of ${Math.round(std / MIN)} minutes"><span class="mut">Hands-on</span><b>${on ? '<i></i>' : ''}${clock(ms)}</b><small>of ${Math.round(std / MIN)} min</small></div>`;
+}
+// the turnaround clock, paused while the customer has the next move
+const tPaused = c => c.bucket === 'cust' || c.bucket === 'ir';
+const tUsed = c => Math.max(0, Math.min(1.5, (Date.now() - c.recv) / c.tat));
+function tLeftHtml(c) {
+  if (c.bucket === 'closed') return `<span class="mut">Closed${c.outcome && c.outcome.when ? ` ${fdt(c.outcome.when)}` : ''}</span>`;
+  if (tPaused(c)) return `<span class="tl-p">${ic('pause')}Paused</span><small class="mut">With the customer</small>`;
+  const left = leftMs(c), tone = left < 0 ? 'bad' : tatTone(c);
+  return `<b class="st-${tone}">${left < 0 ? `${clockLong(-left)} over` : clockLong(left)}</b><small class="mut">${left < 0 ? 'Breached' : 'left'} · due ${c.tat <= 3 * HR ? ft(dueAt(c)) : fdt(dueAt(c))}</small>`;
+}
+const p2 = n => String(n).padStart(2, '0');
+const clockLong = ms => { ms = Math.max(0, ms); const d = Math.floor(ms / DAY), h = Math.floor(ms % DAY / HR), m = Math.floor(ms % HR / MIN), sec = Math.floor(ms % MIN / 1000); return `${d ? d + 'd ' : ''}${p2(h)}:${p2(m)}:${p2(sec)}`; };
+// alerts at 80% and at breach, once each, in the case's own log
+function tmsWatch() {
+  ALL.forEach(c => {
+    if (c.bucket === 'closed' || tPaused(c) || !c.log) return;
+    const u = (Date.now() - c.recv) / c.tat;
+    if (u >= ESC_AT && !c.escAt) { c.escAt = Date.now(); c.log.push(L(Date.now(), 'Turnaround', `${Math.round(ESC_AT * 100)}% of the ${c.tatName.toLowerCase()} used. Kavita Shah, supervisor, alerted`)); }
+    if (u >= 1 && !c.breachAt) { c.breachAt = Date.now(); c.log.push(L(Date.now(), 'Turnaround', 'Turnaround breached. Logged for the service report')); }
+  });
+}
+const TMS_SLA = [
+  ['ops', 'Service requests and cancellations', '7 days', 'From the complete request'], ['ops', 'Free-look refund', '7 days', 'From the request'],
+  ['claims', 'Cashless authorisation', '1 hour', 'From the hospital\'s request'], ['claims', 'Final authorisation at discharge', '3 hours', 'From the final bill'],
+  ['claims', 'Health claims other than cashless', '15 days', 'From the last document'], ['claims', 'Motor and property: surveyor allocated', '24 hours', 'From intimation'], ['claims', 'Survey report, then our decision', '15 + 7 days', 'From the survey'],
+  ['uw', 'Proposal decision, with requirements', '7 days', 'From the complete proposal'], ['all', 'Complaints resolved', '14 days', 'From the complaint'],
+];
+// the turnaround page: every open case against its clock, live
+function tmsHtml() {
+  const f = ST.tmsf = ST.tmsf || { mod: 'all', risk: false };
+  const open = ALL.filter(c => c.bucket !== 'closed');
+  const run = open.filter(c => !tPaused(c)), over = run.filter(c => leftMs(c) < 0), risk = run.filter(c => leftMs(c) >= 0 && tatTone(c) !== 'ok'), ok = run.filter(c => leftMs(c) >= 0 && tatTone(c) === 'ok');
+  const handled = ST.handled.filter(h => h.ms), avg = handled.length ? handled.reduce((a, h) => a + h.ms, 0) / handled.length : 0;
+  let rows = open.filter(c => f.mod === 'all' || c.mod === f.mod);
+  if (f.risk) rows = rows.filter(c => !tPaused(c) && tatTone(c) !== 'ok');
+  rows.sort((a, b) => (tPaused(a) - tPaused(b)) || (leftMs(a) / a.tat) - (leftMs(b) / b.tat));
+  const who = c => c.bucket === 'work' ? (c.asg ? esc(userById(c.asg).name) : '<span class="mut">In the queue</span>') : esc(BUCKETS[c.bucket].t);
+  const stepOf = c => c.lite ? (c.bucket === 'ref' && c.ref ? esc(c.ref.to) : esc(BUCKETS[c.bucket].d)) : `${esc(STEPS[c.mod][(c.state.step || 1) - 1])}`;
+  const tile = (n, t, k, s) => `<div class="${k || ''}"><b>${n}</b><span>${t}</span>${s ? `<small>${s}</small>` : ''}</div>`;
+  const byMod = m => { const xs = run.filter(c => c.mod === m); return { n: xs.length, over: xs.filter(c => leftMs(c) < 0).length, risk: xs.filter(c => leftMs(c) >= 0 && tatTone(c) !== 'ok').length }; };
+  return `<div class="page tms"><div class="page-h"><div><h1>Turnaround</h1><p>Every open case against its clock, and the time spent on each step. Updates every second.</p></div><span class="tms-now" data-now>${ft(Date.now())}</span></div>
+    <div class="today tms-t">${tile(open.length, 'Open cases')}${tile(ok.length, 'On time', 'ok')}${tile(risk.length, 'Close to the deadline', risk.length ? 'warn' : '', `Supervisor alerted at ${Math.round(ESC_AT * 100)}%`)}${tile(over.length, 'Over the deadline', over.length ? 'bad' : '')}${tile(open.length - run.length, 'Paused, with the customer')}${tile(handled.length ? clock(avg) : '—', 'Average hands-on time', '', handled.length ? `${plural(handled.length, 'case')} you finished` : 'Appears as you finish cases')}</div>
+    <div class="grid3 tms-m">${['ops', 'claims', 'uw'].map(m => { const x = byMod(m); return `<div class="card"><h2>${MODS[m]}<span class="chip ${x.over ? 'bad' : x.risk ? 'warn' : 'ok'}">${x.over ? `${x.over} over` : x.risk ? `${x.risk} close` : 'On time'}</span></h2><div class="h2s">${plural(x.n, 'case')} on the clock · steps ${SHT[m].map((v, i) => `${STEPS[m][i].toLowerCase()} ${v} min`).join(', ')}</div></div>`; }).join('')}</div>
+    <div class="tms-bar"><div class="seg">${[['all', 'All'], ['ops', 'Operations'], ['claims', 'Claims'], ['uw', 'Underwriting']].map(([k, l]) => `<button class="${f.mod === k ? 'on' : ''}" data-act="tmsf" data-k="mod" data-v="${k}">${l}</button>`).join('')}</div><label class="tms-r"><input type="checkbox" data-act="tmsrisk" ${f.risk ? 'checked' : ''}>Only close to or over the deadline</label></div>
+    <div class="res"><table class="tbl tms-tbl"><thead><tr><th>Case</th><th>Activity now</th><th>With</th><th>Clock</th><th>Time left</th><th style="width:16%">Used</th><th>Hands-on</th></tr></thead><tbody>
+      ${rows.map(c => { const u = tUsed(c), tone = tPaused(c) ? 'p' : leftMs(c) < 0 ? 'bad' : tatTone(c); const hm = tmTotal(c); return `<tr data-act="open" data-id="${c.id}" class="${tone === 'bad' ? 'bd' : ''}"><td class="id">${c.id}<div class="sm mut">${esc(c.type)}</div></td><td>${stepOf(c)}${c.escAt && !tPaused(c) ? `<div>${chip('Supervisor alerted', 'warn')}</div>` : ''}</td><td class="sm">${who(c)}</td><td class="sm">${esc(c.tatName)}</td><td class="tl-c" data-tleft="${c.id}">${tLeftHtml(c)}</td><td><div class="tms-u ${tone}"><i style="width:${Math.round(Math.min(1, u) * 100)}%"></i><b style="left:${ESC_AT * 100}%"></b></div><small class="mut" data-tused="${c.id}">${tPaused(c) ? '' : `${Math.round(u * 100)}%`}</small></td><td class="sm" data-tmrow="${c.id}">${c.lite ? '<span class="mut">—</span>' : hm ? `<b>${clock(hm)}</b> <span class="mut">of ${Math.round(shtAll(c) / MIN)} min</span>` : `<span class="mut">Not started · ${Math.round(shtAll(c) / MIN)} min</span>`}</td></tr>`; }).join('') || '<tr><td colspan="7" class="mut">Nothing here right now.</td></tr>'}
+    </tbody></table></div>
+    <div class="grid3" style="margin-top:12px">
+      <div class="card" style="grid-column:span 2"><h2>Service standards</h2><div class="h2s">The turnaround clocks count down to these</div><table class="tbl" style="margin-top:6px"><thead><tr><th>Activity</th><th>Team</th><th class="num">Standard</th><th>Clock starts</th></tr></thead><tbody>${TMS_SLA.map(([m, t, v, s]) => `<tr><td>${esc(t)}</td><td class="sm mut">${m === 'all' ? 'All' : MODS[m]}</td><td class="num b">${esc(v)}</td><td class="sm mut">${esc(s)}</td></tr>`).join('')}</tbody></table><p class="note" style="margin-top:6px">From IRDAI's 2024 master circulars on health insurance, general insurance, and protection of policyholders' interests. Clocks pause while a case waits on the customer.</p></div>
+      <div class="card"><h2>Hands-on standards</h2><div class="h2s">NxSure's own targets for each step</div><table class="tbl" style="margin-top:6px"><tbody>${['ops', 'claims', 'uw'].map(m => `<tr class="sub"><td colspan="2"><b>${MODS[m]}</b></td></tr>${STEPS[m].map((t, i) => `<tr><td>${esc(t)}</td><td class="num b">${SHT[m][i]} min</td></tr>`).join('')}`).join('')}</tbody></table><p class="note" style="margin-top:6px">At ${Math.round(ESC_AT * 100)}% of a turnaround clock the supervisor is alerted. Past 100% it's a breach, logged for the service report.</p></div>
+    </div></div>`;
+}
+// once a second: the clocks on screen move without redrawing the page
+function tmsTick() {
+  tmsWatch();
+  $$('[data-tm]').forEach(el => { const [id, k] = el.dataset.tm.split(':'), c = byId(id); if (c) el.outerHTML = tmStepHtml(c, +k); });
+  $$('[data-tmc]').forEach(el => { const c = byId(el.dataset.tmc); if (c) el.outerHTML = tmCaseHtml(c); });
+  $$('[data-tleft]').forEach(el => { const c = byId(el.dataset.tleft); if (c) el.innerHTML = tLeftHtml(c); });
+  $$('[data-tused]').forEach(el => { const c = byId(el.dataset.tused); if (c && !tPaused(c)) { el.textContent = `${Math.round(tUsed(c) * 100)}%`; const bar = el.previousElementSibling && el.previousElementSibling.querySelector('i'); if (bar) bar.style.width = `${Math.round(Math.min(1, tUsed(c)) * 100)}%`; } });
+  $$('[data-tmrow]').forEach(el => { const c = byId(el.dataset.tmrow); if (c && !c.lite && c.state.run) el.innerHTML = `<b>${clock(tmTotal(c))}</b> <span class="mut">of ${Math.round(shtAll(c) / MIN)} min</span>`; });
+  const nw = $('[data-now]'); if (nw) nw.textContent = ft(Date.now());
+}
+document.addEventListener('visibilitychange', () => { tmSync(); });
+
 /* ======================= sign in, clocks, boot ======================= */
 function signIn(id) {
   ST.user = userById(id); ST.avail = true; ST.view = ST.user.sup ? 'case' : 'case'; ST.open = null; ST.handled = [];
@@ -2887,13 +3250,14 @@ setInterval(() => {
   if (!ST.user) return;
   $$('[data-tat]').forEach(el => { const c = byId(el.dataset.tat); if (c) el.outerHTML = tatHtml(c); });
   const n = $('[data-count]'); if (n) n.textContent = Math.max(0, Math.ceil((ST.nextAt - Date.now()) / 1000));
+  tmsTick();
 }, 1000);
 (function boot() {
   try { const t = localStorage.getItem('nxwb-theme'); if (t) document.documentElement.dataset.theme = t; } catch (x) { }
   const h = location.hash.replace('#', '');
-  const pick = { ops: 'u1', claims: 'u2', motorclaims: 'u3', uw: 'u4', motoruw: 'u5', supervisor: 'u6' }[h];
+  const pick = { ops: 'u1', claims: 'u2', motorclaims: 'u3', uw: 'u4', motoruw: 'u5', supervisor: 'u6', tms: 'u6' }[h];
   render();
-  if (pick) signIn(pick);
+  if (pick) { signIn(pick); if (h === 'tms') { ST.view = 'tms'; render(); } }
 })();
 
 </script>
